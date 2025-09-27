@@ -34,7 +34,6 @@ from app.agents.station_04_reference_miner import Station04ReferenceMiner
 from app.agents.station_04_5_narrator_strategy import Station045NarratorStrategy
 from app.agents.station_05_season_architecture import Station05SeasonArchitect
 from app.agents.station_06_master_style_guide import Station06MasterStyleGuideBuilder
-from app.agents.station_07_reality_check import Station07RealityCheck
 from app.redis_client import RedisClient
 
 
@@ -102,7 +101,7 @@ class FullAutomationRunner:
         print(f"📝 Story Concept: {story_concept[:100]}...")
         print(f"🎯 Mode: {'Auto-approve' if self.auto_approve else 'Interactive'}")
         print(f"🐛 Debug: {'Enabled' if self.debug_mode else 'Disabled'}")
-        print(f"🏭 Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6 → 7")
+        print(f"🏭 Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6")
         print()
         
         # Initialize state
@@ -129,9 +128,6 @@ class FullAutomationRunner:
             
             # Station 6: Master Style Guide
             state = await self._run_station_6(state)
-            
-            # Station 7: Reality Check
-            state = await self._run_station_7(state)
             
             # Save checkpoint after each station
             if self.checkpoint_enabled:
@@ -601,317 +597,6 @@ class FullAutomationRunner:
         except Exception as e:
             raise Exception(f"Station 6 failed: {str(e)}")
     
-    async def _run_station_7(self, state: AudiobookProductionState) -> AudiobookProductionState:
-        """Run Station 7: Reality Check System"""
-        
-        self.emit_progress("Station 7", 0, "Initializing Reality Check System...")
-        
-        try:
-            processor = Station07RealityCheck()
-            await processor.initialize()
-            
-            if self.debug_mode:
-                processor.debug_mode = True
-                
-            self.emit_progress("Station 7", 10, "Loading all station data for validation...")
-            
-            # Process reality check validation
-            result = await processor.process(state.session_id)
-            
-            self.emit_progress("Station 7", 25, "Validating logical consistency...")
-            self.emit_progress("Station 7", 40, "Checking genre appropriateness...")
-            self.emit_progress("Station 7", 55, "Assessing audio feasibility...")
-            self.emit_progress("Station 7", 70, "Evaluating production viability...")
-            self.emit_progress("Station 7", 85, "Generating recommendations...")
-            
-            # Store Station 7 output
-            state.station_outputs["station_7"] = {
-                "working_title": result.working_title,
-                "proceed_recommendation": result.proceed_recommendation.value,
-                "overall_viability_score": result.overall_viability_score,
-                "confidence_score": result.confidence_score,
-                "critical_issues_count": len(result.critical_issues),
-                "major_issues_count": len(result.major_issues),
-                "minor_issues_count": len(result.minor_issues),
-                "validation_status": {
-                    "logical_consistency": result.logical_consistency.status.value,
-                    "genre_appropriateness": result.genre_appropriateness.status.value,
-                    "audio_feasibility": result.audio_feasibility.status.value,
-                    "production_viability": result.production_viability.status.value
-                },
-                "station_feedback": result.station_feedback
-            }
-            
-            # Save reality check report data
-            await self._save_station_output_to_redis(state.session_id, "07", result)
-            
-            # Export reality check report
-            try:
-                # Format for human review
-                human_review = processor.format_for_human_review(result)
-                
-                # Export JSON report
-                json_filename = f"outputs/station7_reality_check_report_{state.session_id}.json"
-                os.makedirs(os.path.dirname(json_filename), exist_ok=True)
-                with open(json_filename, 'w', encoding='utf-8') as f:
-                    json.dump(human_review, f, indent=2)
-                state.generated_files.append(json_filename)
-                
-                # Export text summary
-                text_filename = f"outputs/station7_reality_check_summary_{state.session_id}.txt"
-                with open(text_filename, 'w', encoding='utf-8') as f:
-                    f.write(f"REALITY CHECK REPORT\n")
-                    f.write(f"=" * 50 + "\n\n")
-                    f.write(f"Project: {result.working_title}\n")
-                    f.write(f"Validation Date: {result.validation_timestamp}\n")
-                    f.write(f"Overall Viability Score: {result.overall_viability_score:.2f}\n")
-                    f.write(f"Confidence Score: {result.confidence_score:.2f}\n")
-                    f.write(f"Recommendation: {result.proceed_recommendation.value}\n\n")
-                    
-                    f.write(f"VALIDATION RESULTS:\n")
-                    f.write(f"- Logical Consistency: {result.logical_consistency.status.value}\n")
-                    f.write(f"- Genre Appropriateness: {result.genre_appropriateness.status.value}\n")
-                    f.write(f"- Audio Feasibility: {result.audio_feasibility.status.value}\n")
-                    f.write(f"- Production Viability: {result.production_viability.status.value}\n\n")
-                    
-                    if result.critical_issues:
-                        f.write(f"CRITICAL ISSUES ({len(result.critical_issues)}):\n")
-                        for i, issue in enumerate(result.critical_issues, 1):
-                            f.write(f"{i}. {issue.description}\n")
-                            f.write(f"   Fix: {issue.recommended_fix}\n\n")
-                    
-                    if result.major_issues:
-                        f.write(f"MAJOR ISSUES ({len(result.major_issues)}):\n")
-                        for i, issue in enumerate(result.major_issues, 1):
-                            f.write(f"{i}. {issue.description}\n")
-                            f.write(f"   Improvement: {issue.recommended_fix}\n\n")
-                    
-                    f.write(f"IMMEDIATE ACTIONS:\n")
-                    for action in result.recommendations.get("immediate_actions", []):
-                        f.write(f"- {action}\n")
-                
-                state.generated_files.append(text_filename)
-                
-                # Export PDF report
-                try:
-                    pdf_content = self._create_station7_pdf(result)
-                    pdf_filename = f"outputs/station7_reality_check_report_{state.session_id}.pdf"
-                    with open(pdf_filename, 'wb') as f:
-                        f.write(pdf_content)
-                    state.generated_files.append(pdf_filename)
-                    self.emit_progress("Station 7", 95, f"Exported PDF reality check report")
-                except Exception as pdf_e:
-                    logger.warning(f"PDF export failed: {pdf_e}")
-                
-                self.emit_progress("Station 7", 90, f"Exported reality check report")
-                
-            except Exception as e:
-                logger.warning(f"Report export failed: {e}")
-            
-            # Display validation summary
-            status_emoji = "✅" if result.proceed_recommendation.value == "PROCEED" else "⚠️" if result.proceed_recommendation.value == "REVISE" else "❌"
-            self.emit_progress("Station 7", 100, f"Station 7 completed! {status_emoji} {result.proceed_recommendation.value}")
-            
-            # Print validation summary
-            print(f"\n🔍 REALITY CHECK RESULTS:")
-            print(f"   Overall Score: {result.overall_viability_score:.2f}")
-            print(f"   Confidence: {result.confidence_score:.2f}")
-            print(f"   Critical Issues: {len(result.critical_issues)}")
-            print(f"   Major Issues: {len(result.major_issues)}")
-            print(f"   Recommendation: {status_emoji} {result.proceed_recommendation.value}")
-            
-            state.current_station = 7
-            return state
-            
-        except Exception as e:
-            raise Exception(f"Station 7 failed: {str(e)}")
-    
-    def _create_station7_pdf(self, report) -> bytes:
-        """Create comprehensive PDF for Station 7 Reality Check Report"""
-        try:
-            from reportlab.lib.pagesizes import letter
-            from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Table, TableStyle
-            from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-            from reportlab.lib.units import inch
-            from reportlab.lib import colors
-            from reportlab.lib.enums import TA_CENTER, TA_LEFT
-            from io import BytesIO
-        except ImportError:
-            # Fallback to simple text-based PDF
-            return self._create_simple_station7_pdf(report)
-        
-        # Create PDF buffer
-        buffer = BytesIO()
-        doc = SimpleDocTemplate(buffer, pagesize=letter, rightMargin=72, leftMargin=72, 
-                               topMargin=72, bottomMargin=72)
-        
-        # Get styles
-        styles = getSampleStyleSheet()
-        
-        # Custom styles
-        title_style = ParagraphStyle(
-            'CustomTitle',
-            parent=styles['Heading1'],
-            fontSize=20,
-            spaceAfter=30,
-            alignment=TA_CENTER,
-            textColor=colors.darkblue
-        )
-        
-        section_style = ParagraphStyle(
-            'SectionHeader',
-            parent=styles['Heading2'],
-            fontSize=14,
-            spaceAfter=15,
-            spaceBefore=15,
-            textColor=colors.darkgreen
-        )
-        
-        # Build PDF content
-        story = []
-        
-        # Title page
-        story.append(Paragraph("STATION 7: REALITY CHECK REPORT", title_style))
-        story.append(Spacer(1, 20))
-        story.append(Paragraph(f"Project: {report.working_title}", styles['Heading3']))
-        story.append(Spacer(1, 10))
-        story.append(Paragraph(f"Validation Date: {report.validation_timestamp.strftime('%Y-%m-%d %H:%M:%S')}", styles['Normal']))
-        story.append(Spacer(1, 40))
-        
-        # Executive Summary
-        story.append(Paragraph("EXECUTIVE SUMMARY", section_style))
-        
-        # Summary table
-        summary_data = [
-            ['Metric', 'Score', 'Status'],
-            ['Overall Viability', f"{report.overall_viability_score:.2f}", "Good" if report.overall_viability_score > 0.7 else "Needs Work"],
-            ['Confidence Level', f"{report.confidence_score:.2f}", "High" if report.confidence_score > 0.8 else "Medium"],
-            ['Critical Issues', str(len(report.critical_issues)), "❌" if report.critical_issues else "✅"],
-            ['Major Issues', str(len(report.major_issues)), "⚠️" if report.major_issues else "✅"],
-            ['Minor Issues', str(len(report.minor_issues)), "Minor" if report.minor_issues else "None"],
-            ['Recommendation', report.proceed_recommendation.value, "✅ PROCEED" if report.proceed_recommendation.value == "PROCEED" else "⚠️ REVISE"]
-        ]
-        
-        summary_table = Table(summary_data, colWidths=[2*inch, 1.5*inch, 2*inch])
-        summary_table.setStyle(TableStyle([
-            ('BACKGROUND', (0, 0), (-1, 0), colors.darkblue),
-            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-            ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-            ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
-            ('FONTSIZE', (0, 0), (-1, -1), 10),
-            ('TOPPADDING', (0, 0), (-1, -1), 8),
-            ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
-            ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
-            ('GRID', (0, 0), (-1, -1), 1, colors.black)
-        ]))
-        
-        story.append(summary_table)
-        story.append(PageBreak())
-        
-        # Validation Results
-        story.append(Paragraph("DETAILED VALIDATION RESULTS", section_style))
-        
-        validation_data = [
-            ['Validation Category', 'Status', 'Issues Found'],
-            ['Logical Consistency', report.logical_consistency.status.value, str(len(report.logical_consistency.issues))],
-            ['Genre Appropriateness', report.genre_appropriateness.status.value, str(len(report.genre_appropriateness.issues))],
-            ['Audio Feasibility', report.audio_feasibility.status.value, str(len(report.audio_feasibility.issues))],
-            ['Production Viability', report.production_viability.status.value, str(len(report.production_viability.issues))]
-        ]
-        
-        validation_table = Table(validation_data, colWidths=[2.5*inch, 1.5*inch, 1.5*inch])
-        validation_table.setStyle(TableStyle([
-            ('BACKGROUND', (0, 0), (-1, 0), colors.darkgreen),
-            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-            ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-            ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
-            ('FONTSIZE', (0, 0), (-1, -1), 10),
-            ('TOPPADDING', (0, 0), (-1, -1), 8),
-            ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
-            ('BACKGROUND', (0, 1), (-1, -1), colors.lightgrey),
-            ('GRID', (0, 0), (-1, -1), 1, colors.black)
-        ]))
-        
-        story.append(validation_table)
-        story.append(Spacer(1, 20))
-        
-        # Critical Issues
-        if report.critical_issues:
-            story.append(Paragraph("CRITICAL ISSUES REQUIRING IMMEDIATE ATTENTION", section_style))
-            for i, issue in enumerate(report.critical_issues, 1):
-                story.append(Paragraph(f"{i}. {issue.description}", styles['Normal']))
-                story.append(Paragraph(f"<b>Recommended Fix:</b> {issue.recommended_fix}", styles['Normal']))
-                story.append(Paragraph(f"<b>Complexity:</b> {issue.fix_complexity}", styles['Normal']))
-                story.append(Spacer(1, 10))
-        
-        # Major Issues
-        if report.major_issues:
-            story.append(Paragraph("MAJOR ISSUES FOR IMPROVEMENT", section_style))
-            for i, issue in enumerate(report.major_issues, 1):
-                story.append(Paragraph(f"{i}. {issue.description}", styles['Normal']))
-                story.append(Paragraph(f"<b>Recommended Fix:</b> {issue.recommended_fix}", styles['Normal']))
-                story.append(Spacer(1, 8))
-        
-        # Recommendations
-        story.append(Paragraph("RECOMMENDATIONS", section_style))
-        
-        if report.recommendations.get("immediate_actions"):
-            story.append(Paragraph("<b>Immediate Actions:</b>", styles['Normal']))
-            for action in report.recommendations["immediate_actions"]:
-                story.append(Paragraph(f"• {action}", styles['Normal']))
-            story.append(Spacer(1, 10))
-        
-        if report.recommendations.get("optimization_opportunities"):
-            story.append(Paragraph("<b>Optimization Opportunities:</b>", styles['Normal']))
-            for opportunity in report.recommendations["optimization_opportunities"]:
-                story.append(Paragraph(f"• {opportunity}", styles['Normal']))
-        
-        # Build PDF
-        doc.build(story)
-        
-        # Get PDF bytes
-        pdf_bytes = buffer.getvalue()
-        buffer.close()
-        
-        return pdf_bytes
-    
-    def _create_simple_station7_pdf(self, report) -> bytes:
-        """Fallback simple PDF for Station 7"""
-        try:
-            from fpdf import FPDF
-        except ImportError:
-            # Return text as bytes if no PDF library
-            content = f"""STATION 7: REALITY CHECK REPORT
-Project: {report.working_title}
-Date: {report.validation_timestamp}
-Overall Score: {report.overall_viability_score:.2f}
-Recommendation: {report.proceed_recommendation.value}
-Critical Issues: {len(report.critical_issues)}
-Major Issues: {len(report.major_issues)}
-"""
-            return content.encode('utf-8')
-        
-        pdf = FPDF()
-        pdf.add_page()
-        pdf.set_font('Arial', 'B', 16)
-        
-        # Title
-        pdf.cell(0, 10, 'STATION 7: REALITY CHECK REPORT', 0, 1, 'C')
-        pdf.ln(10)
-        
-        # Project info
-        pdf.set_font('Arial', '', 12)
-        pdf.cell(0, 8, f'Project: {report.working_title}', 0, 1)
-        pdf.cell(0, 8, f'Overall Score: {report.overall_viability_score:.2f}', 0, 1)
-        pdf.cell(0, 8, f'Recommendation: {report.proceed_recommendation.value}', 0, 1)
-        pdf.cell(0, 8, f'Critical Issues: {len(report.critical_issues)}', 0, 1)
-        pdf.cell(0, 8, f'Major Issues: {len(report.major_issues)}', 0, 1)
-        
-        return pdf.output(dest='S').encode('latin-1')
     
     async def _generate_final_summary(self, state: AudiobookProductionState):
         """Generate final automation summary"""
@@ -1157,7 +842,7 @@ async def main():
     
     print("🎬 FULL AUDIOBOOK PRODUCTION AUTOMATION")
     print("=" * 60)
-    print("🤖 Complete Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6 → 7")
+    print("🤖 Complete Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6")
     print()
     
     # Get story concept

@@ -18,7 +18,6 @@ from app.agents.station_04_reference_miner import Station04ReferenceMiner
 from app.agents.station_04_5_narrator_strategy import Station045NarratorStrategy
 from app.agents.station_05_season_architecture import Station05SeasonArchitect
 from app.agents.station_06_master_style_guide import Station06MasterStyleGuideBuilder
-from app.agents.station_07_reality_check import Station07RealityCheck
 
 async def check_existing_sessions():
     """Check for existing sessions in Redis"""
@@ -98,33 +97,7 @@ async def run_station(station_num: int, session_id: str):
             result = await station.process(session_id)
             print(f"✅ Station 6 completed: Master Style Guide for {result.get('working_title', 'Unknown')}")
             
-        elif station_num == 7:
-            station = Station07RealityCheck()
-            result = await station.process(session_id)
-            print(f"✅ Station 7 completed!")
-            print(f"   📊 Overall Score: {result.overall_viability_score:.2f}")
-            print(f"   🎯 Confidence: {result.confidence_score:.2f}")
-            print(f"   📋 Recommendation: {result.proceed_recommendation}")
-            
-            # Show validation results
-            validations = [
-                ("Logical Consistency", result.logical_consistency),
-                ("Genre Appropriateness", result.genre_appropriateness),
-                ("Audio Feasibility", result.audio_feasibility),
-                ("Production Viability", result.production_viability)
-            ]
-            
-            print("   🔍 Validation Results:")
-            for name, validation in validations:
-                emoji = "✅" if validation.status.value == "PASS" else "❌"
-                print(f"     {emoji} {name}: {validation.status.value}")
-            
-            # Show issues
-            critical_count = len(result.critical_issues) if isinstance(result.critical_issues, list) else 0
-            major_count = len(result.major_issues) if isinstance(result.major_issues, list) else 0
-            minor_count = len(result.minor_issues) if isinstance(result.minor_issues, list) else 0
-            
-            print(f"   ⚠️ Issues: {critical_count} critical, {major_count} major, {minor_count} minor")
+        # Station 7 removed
             
         else:
             print(f"❌ Station {station_num} not supported")
@@ -168,8 +141,8 @@ async def main():
                 next_station = i
                 break
         
-        if not next_station and len(stations) >= 6:  # Can run Station 7
-            next_station = 7
+        if not next_station and len(stations) >= 6:  # All stations complete
+            next_station = None
             
         if next_station:
             resumable_sessions.append((session_id, next_station, len(stations)))
@@ -202,14 +175,14 @@ async def main():
     print()
     
     # Ask which station to run
-    if resume_station <= 7:
-        station_choice = input(f"🎯 Run Station {resume_station} or specific station? (Enter station number 1-7 or press Enter for {resume_station}): ").strip()
+    if resume_station <= 6:
+        station_choice = input(f"🎯 Run Station {resume_station} or specific station? (Enter station number 1-6 or press Enter for {resume_station}): ").strip()
         
         if station_choice:
             try:
                 target_station = float(station_choice)  # Allow 4.5
-                if target_station not in [1, 2, 3, 4, 4.5, 5, 6, 7]:
-                    print("❌ Please enter a valid station number (1, 2, 3, 4, 4.5, 5, 6, 7)")
+                if target_station not in [1, 2, 3, 4, 4.5, 5, 6]:
+                    print("❌ Please enter a valid station number (1, 2, 3, 4, 4.5, 5, 6)")
                     return
                 resume_station = target_station
             except ValueError:
@@ -226,9 +199,9 @@ async def main():
         print(f"\n🎉 Station {resume_station} completed successfully!")
         
         # Offer to continue to next station
-        if resume_station < 7:
+        if resume_station < 6:
             next_station = resume_station + 1
-            if next_station <= 7:
+            if next_station <= 6:
                 continue_choice = input(f"\n🤔 Continue to Station {next_station}? (Y/n): ").lower().strip()
                 if continue_choice != 'n':
                     success = await run_station(next_station, session_id)

@@ -4,7 +4,7 @@ A sophisticated multi-agent system for automated audiobook production using Lang
 
 ## 🚀 Features
 
-- **Multi-Station Processing**: 7 specialized stations for different aspects of audiobook production
+- **Multi-Station Processing**: 6 specialized stations for different aspects of audiobook production
 - **Character Extraction**: Automatically extracts characters from story concepts
 - **Project DNA Building**: Creates comprehensive project bibles and documentation
 - **Age/Genre Optimization**: Optimizes content for target demographics
@@ -24,7 +24,6 @@ The system consists of multiple specialized agents (stations) that work together
 - **Station 4.5**: Narrator Strategy - Develops narrator selection strategies
 - **Station 5**: Season Architecture - Plans multi-season content structure
 - **Station 6**: Master Style Guide - Creates comprehensive style guidelines
-- **Station 7**: Reality Check - Validates and refines all outputs
 
 ## 🛠️ Installation
 

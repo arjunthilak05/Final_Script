@@ -34,6 +34,9 @@ from app.agents.station_04_reference_miner import Station04ReferenceMiner
 from app.agents.station_04_5_narrator_strategy import Station045NarratorStrategy
 from app.agents.station_05_season_architecture import Station05SeasonArchitect
 from app.agents.station_06_master_style_guide import Station06MasterStyleGuideBuilder
+from app.agents.station_07_reality_check import Station07RealityCheck
+from app.agents.station_08_character_architecture import Station08CharacterArchitecture
+from app.agents.station_09_world_building import Station09WorldBuilding
 from app.redis_client import RedisClient
 
 
@@ -101,7 +104,7 @@ class FullAutomationRunner:
         print(f"📝 Story Concept: {story_concept[:100]}...")
         print(f"🎯 Mode: {'Auto-approve' if self.auto_approve else 'Interactive'}")
         print(f"🐛 Debug: {'Enabled' if self.debug_mode else 'Disabled'}")
-        print(f"🏭 Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6")
+        print(f"🏭 Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6 → 7 → 8 → 9")
         print()
         
         # Initialize state
@@ -128,6 +131,15 @@ class FullAutomationRunner:
             
             # Station 6: Master Style Guide
             state = await self._run_station_6(state)
+            
+            # Station 7: Reality Check
+            state = await self._run_station_7(state)
+            
+            # Station 8: Character Architecture
+            state = await self._run_station_8(state)
+            
+            # Station 9: World Building
+            state = await self._run_station_9(state)
             
             # Save checkpoint after each station
             if self.checkpoint_enabled:
@@ -597,6 +609,302 @@ class FullAutomationRunner:
         except Exception as e:
             raise Exception(f"Station 6 failed: {str(e)}")
     
+    async def _run_station_7(self, state: AudiobookProductionState) -> AudiobookProductionState:
+        """Run Station 7: Reality Check - Comprehensive Quality Assurance"""
+        
+        self.emit_progress("Station 7", 0, "Initializing Reality Check validation...")
+        
+        try:
+            processor = Station07RealityCheck()
+            await processor.initialize()
+            
+            if self.debug_mode:
+                processor.enable_debug_mode()
+                
+            self.emit_progress("Station 7", 10, "Loading all station outputs for validation...")
+            
+            # Process comprehensive validation
+            result = await processor.process(state.session_id)
+            
+            self.emit_progress("Station 7", 30, "Validating station outputs...")
+            self.emit_progress("Station 7", 50, "Analyzing LLM content quality...")
+            self.emit_progress("Station 7", 70, "Detecting fallback/hardcoded content...")
+            self.emit_progress("Station 7", 85, "Generating quality report...")
+            
+            # Store Station 7 output
+            state.station_outputs["station_7"] = {
+                "pipeline_status": result.pipeline_status,
+                "overall_quality_score": result.quality_metrics.overall_quality_score,
+                "pipeline_integrity": result.quality_metrics.pipeline_integrity,
+                "stations_passed": result.quality_metrics.stations_passed,
+                "stations_failed": result.quality_metrics.stations_failed,
+                "stations_with_warnings": result.quality_metrics.stations_with_warnings,
+                "creative_uniqueness_score": result.quality_metrics.creative_uniqueness_score,
+                "technical_completeness_score": result.quality_metrics.technical_completeness_score,
+                "critical_issues_count": len(result.critical_issues),
+                "recommendations_count": len(result.recommendations),
+                "session_id": result.session_id,
+                "validation_timestamp": result.validation_timestamp.isoformat()
+            }
+            
+            # Export validation reports
+            try:
+                # Text report
+                text_content = processor.export_to_text(result)
+                text_filename = f"outputs/station7_reality_check_{state.session_id}.txt"
+                os.makedirs(os.path.dirname(text_filename), exist_ok=True)
+                with open(text_filename, 'w', encoding='utf-8') as f:
+                    f.write(text_content)
+                state.generated_files.append(text_filename)
+                self.emit_progress("Station 7", 90, f"Exported reality check report to {text_filename}")
+            except Exception as e:
+                logger.warning(f"Text export failed: {e}")
+                
+            # JSON data export
+            try:
+                json_data = processor.export_to_json(result)
+                json_filename = f"outputs/station7_reality_check_{state.session_id}.json"
+                os.makedirs(os.path.dirname(json_filename), exist_ok=True)
+                with open(json_filename, 'w', encoding='utf-8') as f:
+                    json.dump(json_data, f, indent=2, default=str)
+                state.generated_files.append(json_filename)
+            except Exception as e:
+                logger.warning(f"JSON export failed: {e}")
+                
+            # PDF export
+            try:
+                pdf_data = processor.export_to_pdf(result)
+                pdf_filename = f"outputs/station7_reality_check_{state.session_id}.pdf"
+                os.makedirs(os.path.dirname(pdf_filename), exist_ok=True)
+                with open(pdf_filename, 'wb') as f:
+                    f.write(pdf_data)
+                state.generated_files.append(pdf_filename)
+                self.emit_progress("Station 7", 95, f"Exported PDF report to {pdf_filename}")
+            except Exception as e:
+                logger.warning(f"PDF export failed: {e}")
+            
+            # Show critical validation results
+            status_icon = "✅" if result.pipeline_status == "PASSED" else "⚠️" if result.pipeline_status == "NEEDS_ATTENTION" else "❌"
+            self.emit_progress("Station 7", 100, f"Station 7 completed! {status_icon} {result.pipeline_status}")
+            
+            # Log critical issues if any
+            if result.critical_issues:
+                logger.warning(f"🚨 {len(result.critical_issues)} critical issues detected:")
+                for issue in result.critical_issues[:3]:  # Show first 3
+                    logger.warning(f"   • {issue}")
+                if len(result.critical_issues) > 3:
+                    logger.warning(f"   ... and {len(result.critical_issues) - 3} more issues")
+            
+            state.current_station = 7
+            
+            return state
+            
+        except Exception as e:
+            raise Exception(f"Station 7 failed: {str(e)}")
+    
+    async def _run_station_8(self, state: AudiobookProductionState) -> AudiobookProductionState:
+        """Run Station 8: Character Architecture - 3-Tier Character System"""
+        
+        self.emit_progress("Station 8", 0, "Initializing Character Architecture...")
+        
+        try:
+            processor = Station08CharacterArchitecture()
+            await processor.initialize()
+            
+            if self.debug_mode:
+                processor.enable_debug_mode()
+                
+            self.emit_progress("Station 8", 10, "Loading project dependencies...")
+            
+            # Process character architecture
+            result = await processor.process(state.session_id)
+            
+            self.emit_progress("Station 8", 30, "Generating Tier 1 protagonists...")
+            self.emit_progress("Station 8", 50, "Creating Tier 2 supporting characters...")
+            self.emit_progress("Station 8", 70, "Designing Tier 3 recurring characters...")
+            self.emit_progress("Station 8", 85, "Building character relationships...")
+            
+            # Store Station 8 output
+            state.station_outputs["station_8"] = {
+                "working_title": result.working_title,
+                "total_characters": result.character_count_summary['total_characters'],
+                "tier1_protagonists": result.character_count_summary['tier1_protagonists'],
+                "tier2_supporting": result.character_count_summary['tier2_supporting'],
+                "tier3_recurring": result.character_count_summary['tier3_recurring'],
+                "protagonist_names": [char.full_name for char in result.tier1_protagonists],
+                "supporting_names": [char.full_name for char in result.tier2_supporting],
+                "voice_samples_count": len(result.voice_sample_collection),
+                "relationship_count": len(result.relationship_matrix),
+                "session_id": result.session_id,
+                "created_timestamp": result.created_timestamp.isoformat()
+            }
+            
+            # Export character bible files
+            try:
+                # Text export
+                text_content = processor.export_to_text(result)
+                text_filename = f"outputs/station8_character_bible_{state.session_id}.txt"
+                os.makedirs(os.path.dirname(text_filename), exist_ok=True)
+                with open(text_filename, 'w', encoding='utf-8') as f:
+                    f.write(text_content)
+                state.generated_files.append(text_filename)
+                self.emit_progress("Station 8", 90, f"Exported character bible to {text_filename}")
+            except Exception as e:
+                logger.warning(f"Text export failed: {e}")
+                
+            # JSON data export
+            try:
+                json_data = processor.export_to_json(result)
+                json_filename = f"outputs/station8_character_bible_{state.session_id}.json"
+                os.makedirs(os.path.dirname(json_filename), exist_ok=True)
+                with open(json_filename, 'w', encoding='utf-8') as f:
+                    json.dump(json_data, f, indent=2, default=str)
+                state.generated_files.append(json_filename)
+            except Exception as e:
+                logger.warning(f"JSON export failed: {e}")
+                
+            # PDF export
+            try:
+                pdf_data = processor.export_to_pdf(result)
+                pdf_filename = f"outputs/station8_character_bible_{state.session_id}.pdf"
+                os.makedirs(os.path.dirname(pdf_filename), exist_ok=True)
+                with open(pdf_filename, 'wb') as f:
+                    f.write(pdf_data)
+                state.generated_files.append(pdf_filename)
+                self.emit_progress("Station 8", 95, f"Exported PDF character bible to {pdf_filename}")
+            except Exception as e:
+                logger.warning(f"PDF export failed: {e}")
+            
+            # Save to Redis for potential future stations
+            try:
+                redis_key = f"audiobook:{state.session_id}:station_08"
+                json_data = json.dumps(state.station_outputs["station_8"], default=str)
+                await self.redis.set(redis_key, json_data, expire=3600)
+                if self.debug_mode:
+                    logger.info(f"✅ Saved Station 8 output to Redis: {redis_key}")
+            except Exception as e:
+                logger.error(f"❌ Failed to save Station 8 to Redis: {e}")
+            
+            # Show character creation results
+            self.emit_progress("Station 8", 100, f"Station 8 completed! Created {result.character_count_summary['total_characters']} characters")
+            
+            # Log character summary
+            logger.info(f"🎭 Character Bible Summary:")
+            logger.info(f"   Protagonists: {result.character_count_summary['tier1_protagonists']}")
+            logger.info(f"   Supporting: {result.character_count_summary['tier2_supporting']}")
+            logger.info(f"   Recurring: {result.character_count_summary['tier3_recurring']}")
+            logger.info(f"   Total: {result.character_count_summary['total_characters']} characters")
+            
+            state.current_station = 8
+            
+            return state
+            
+        except Exception as e:
+            raise Exception(f"Station 8 failed: {str(e)}")
+    
+    async def _run_station_9(self, state: AudiobookProductionState) -> AudiobookProductionState:
+        """Run Station 9: World Building System - Audio-Focused World Architecture"""
+        
+        self.emit_progress("Station 9", 0, "Initializing World Building System...")
+        
+        try:
+            processor = Station09WorldBuilding()
+            await processor.initialize()
+            
+            if self.debug_mode:
+                processor.enable_debug_mode()
+                
+            self.emit_progress("Station 9", 10, "Loading project dependencies...")
+            
+            # Process world building
+            result = await processor.process(state.session_id)
+            
+            self.emit_progress("Station 9", 25, "Generating geography with sonic signatures...")
+            self.emit_progress("Station 9", 40, "Creating social systems with audio manifestations...")
+            self.emit_progress("Station 9", 55, "Designing technology/magic with signature sounds...")
+            self.emit_progress("Station 9", 70, "Building history/lore with audio echoes...")
+            self.emit_progress("Station 9", 85, "Compiling sensory palette and audio cue library...")
+            
+            # Store Station 9 output
+            state.station_outputs["station_9"] = {
+                "working_title": result.working_title,
+                "total_locations": result.world_statistics['total_locations'],
+                "tech_magic_systems": result.world_statistics['tech_magic_systems'],
+                "historical_events": result.world_statistics['historical_events'],
+                "mythology_entries": result.world_statistics['mythology_entries'],
+                "audio_cues": result.world_statistics['audio_cues'],
+                "glossary_entries": result.world_statistics['glossary_entries'],
+                "location_names": [loc.name for loc in result.geography],
+                "system_names": [sys.name for sys in result.tech_magic_systems],
+                "major_events": [event.name for event in result.historical_events],
+                "session_id": result.session_id,
+                "created_timestamp": result.created_timestamp.isoformat()
+            }
+            
+            # Export world bible files
+            try:
+                # Text export
+                text_content = processor.export_to_text(result)
+                text_filename = f"outputs/station9_world_bible_{state.session_id}.txt"
+                os.makedirs(os.path.dirname(text_filename), exist_ok=True)
+                with open(text_filename, 'w', encoding='utf-8') as f:
+                    f.write(text_content)
+                state.generated_files.append(text_filename)
+                self.emit_progress("Station 9", 90, f"Exported world bible to {text_filename}")
+            except Exception as e:
+                logger.warning(f"Text export failed: {e}")
+                
+            # JSON data export
+            try:
+                json_data = processor.export_to_json(result)
+                json_filename = f"outputs/station9_world_bible_{state.session_id}.json"
+                os.makedirs(os.path.dirname(json_filename), exist_ok=True)
+                with open(json_filename, 'w', encoding='utf-8') as f:
+                    json.dump(json_data, f, indent=2, default=str)
+                state.generated_files.append(json_filename)
+            except Exception as e:
+                logger.warning(f"JSON export failed: {e}")
+                
+            # PDF export
+            try:
+                pdf_data = processor.export_to_pdf(result)
+                pdf_filename = f"outputs/station9_world_bible_{state.session_id}.pdf"
+                os.makedirs(os.path.dirname(pdf_filename), exist_ok=True)
+                with open(pdf_filename, 'wb') as f:
+                    f.write(pdf_data)
+                state.generated_files.append(pdf_filename)
+                self.emit_progress("Station 9", 95, f"Exported PDF world bible to {pdf_filename}")
+            except Exception as e:
+                logger.warning(f"PDF export failed: {e}")
+            
+            # Save to Redis for potential future stations
+            try:
+                redis_key = f"audiobook:{state.session_id}:station_09"
+                json_data = json.dumps(state.station_outputs["station_9"], default=str)
+                await self.redis.set(redis_key, json_data, expire=3600)
+                if self.debug_mode:
+                    logger.info(f"✅ Saved Station 9 output to Redis: {redis_key}")
+            except Exception as e:
+                logger.error(f"❌ Failed to save Station 9 to Redis: {e}")
+            
+            # Show world building results
+            self.emit_progress("Station 9", 100, f"Station 9 completed! Created world with {result.world_statistics['total_locations']} locations")
+            
+            # Log world summary
+            logger.info(f"🌍 World Bible Summary:")
+            logger.info(f"   Locations: {result.world_statistics['total_locations']}")
+            logger.info(f"   Tech/Magic Systems: {result.world_statistics['tech_magic_systems']}")
+            logger.info(f"   Historical Events: {result.world_statistics['historical_events']}")
+            logger.info(f"   Audio Cues: {result.world_statistics['audio_cues']}")
+            logger.info(f"   Glossary Entries: {result.world_statistics['glossary_entries']}")
+            
+            state.current_station = 9
+            
+            return state
+            
+        except Exception as e:
+            raise Exception(f"Station 9 failed: {str(e)}")
+    
     
     async def _generate_final_summary(self, state: AudiobookProductionState):
         """Generate final automation summary"""
@@ -624,7 +932,10 @@ class FullAutomationRunner:
                 "station_4": f"Seed bank with {state.station_outputs.get('station_4', {}).get('total_seeds', 0)} story elements",
                 "station_4_5": f"Narrator strategy: {state.station_outputs.get('station_4_5', {}).get('recommendation', 'Unknown')}",
                 "station_5": f"Season architecture: {state.station_outputs.get('station_5', {}).get('chosen_style', 'Unknown')} style with {state.station_outputs.get('station_5', {}).get('total_episodes', 0)} episodes",
-                "station_6": f"Master style guide: {state.station_outputs.get('station_6', {}).get('character_voices_count', 0)} character voices, {state.station_outputs.get('station_6', {}).get('audio_conventions_count', 0)} audio conventions"
+                "station_6": f"Master style guide: {state.station_outputs.get('station_6', {}).get('character_voices_count', 0)} character voices, {state.station_outputs.get('station_6', {}).get('audio_conventions_count', 0)} audio conventions",
+                "station_7": f"Reality check: {state.station_outputs.get('station_7', {}).get('pipeline_status', 'Unknown')} - Quality: {state.station_outputs.get('station_7', {}).get('overall_quality_score', 0):.1%}, Passed: {state.station_outputs.get('station_7', {}).get('stations_passed', 0)}/{state.station_outputs.get('station_7', {}).get('stations_passed', 0) + state.station_outputs.get('station_7', {}).get('stations_failed', 0) + state.station_outputs.get('station_7', {}).get('stations_with_warnings', 0)}",
+                "station_8": f"Character bible: {state.station_outputs.get('station_8', {}).get('total_characters', 0)} characters ({state.station_outputs.get('station_8', {}).get('tier1_protagonists', 0)} protagonists, {state.station_outputs.get('station_8', {}).get('tier2_supporting', 0)} supporting, {state.station_outputs.get('station_8', {}).get('tier3_recurring', 0)} recurring)",
+                "station_9": f"World bible: {state.station_outputs.get('station_9', {}).get('total_locations', 0)} locations, {state.station_outputs.get('station_9', {}).get('tech_magic_systems', 0)} tech/magic systems, {state.station_outputs.get('station_9', {}).get('audio_cues', 0)} audio cues, {state.station_outputs.get('station_9', {}).get('glossary_entries', 0)} glossary entries"
             },
             "generated_files": state.generated_files,
             "full_outputs": processed_outputs
@@ -781,6 +1092,22 @@ class FullAutomationRunner:
             if state.current_station < 5:
                 state = await self._run_station_5(state)
                 await self._save_checkpoint(state)
+                
+            if state.current_station < 6:
+                state = await self._run_station_6(state)
+                await self._save_checkpoint(state)
+                
+            if state.current_station < 7:
+                state = await self._run_station_7(state)
+                await self._save_checkpoint(state)
+                
+            if state.current_station < 8:
+                state = await self._run_station_8(state)
+                await self._save_checkpoint(state)
+                
+            if state.current_station < 9:
+                state = await self._run_station_9(state)
+                await self._save_checkpoint(state)
             
             # Generate final summary
             await self._generate_final_summary(state)
@@ -842,7 +1169,7 @@ async def main():
     
     print("🎬 FULL AUDIOBOOK PRODUCTION AUTOMATION")
     print("=" * 60)
-    print("🤖 Complete Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6")
+    print("🤖 Complete Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6 → 7 → 8 → 9")
     print()
     
     # Get story concept

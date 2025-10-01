@@ -18,6 +18,9 @@ from app.agents.station_04_reference_miner import Station04ReferenceMiner
 from app.agents.station_04_5_narrator_strategy import Station045NarratorStrategy
 from app.agents.station_05_season_architecture import Station05SeasonArchitect
 from app.agents.station_06_master_style_guide import Station06MasterStyleGuideBuilder
+from app.agents.station_07_reality_check import Station07RealityCheck
+from app.agents.station_08_character_architecture import Station08CharacterArchitecture
+from app.agents.station_09_world_building import Station09WorldBuilding
 
 async def check_existing_sessions():
     """Check for existing sessions in Redis"""
@@ -95,9 +98,25 @@ async def run_station(station_num: int, session_id: str):
             station = Station06MasterStyleGuideBuilder()
             await station.initialize()
             result = await station.process(session_id)
-            print(f"✅ Station 6 completed: Master Style Guide for {result.get('working_title', 'Unknown')}")
+            print(f"✅ Station 6 completed: Master Style Guide for {result.working_title if hasattr(result, 'working_title') else 'Unknown'}")
             
-        # Station 7 removed
+        elif station_num == 7:
+            station = Station07RealityCheck()
+            await station.initialize()
+            result = await station.process(session_id)
+            print(f"✅ Station 7 completed: Reality Check - {result.pipeline_status}")
+            
+        elif station_num == 8:
+            station = Station08CharacterArchitecture()
+            await station.initialize()
+            result = await station.process(session_id)
+            print(f"✅ Station 8 completed: Character Bible - {result.character_count_summary['total_characters']} characters")
+            
+        elif station_num == 9:
+            station = Station09WorldBuilding()
+            await station.initialize()
+            result = await station.process(session_id)
+            print(f"✅ Station 9 completed: World Bible - {result.world_statistics['total_locations']} locations, {result.world_statistics['audio_cues']} audio cues")
             
         else:
             print(f"❌ Station {station_num} not supported")
@@ -132,7 +151,7 @@ async def main():
     resumable_sessions = []
     for session_id, stations in sorted(existing_sessions.items()):
         stations.sort()
-        expected_stations = ["station_01", "station_02", "station_03", "station_04", "station_04_5", "station_05", "station_06"]
+        expected_stations = ["station_01", "station_02", "station_03", "station_04", "station_04_5", "station_05", "station_06", "station_07", "station_08", "station_09"]
         
         # Find next station to resume from
         next_station = None
@@ -141,7 +160,7 @@ async def main():
                 next_station = i
                 break
         
-        if not next_station and len(stations) >= 6:  # All stations complete
+        if not next_station and len(stations) >= 9:  # All stations complete
             next_station = None
             
         if next_station:
@@ -175,14 +194,14 @@ async def main():
     print()
     
     # Ask which station to run
-    if resume_station <= 6:
-        station_choice = input(f"🎯 Run Station {resume_station} or specific station? (Enter station number 1-6 or press Enter for {resume_station}): ").strip()
+    if resume_station <= 9:
+        station_choice = input(f"🎯 Run Station {resume_station} or specific station? (Enter station number 1-9 or press Enter for {resume_station}): ").strip()
         
         if station_choice:
             try:
                 target_station = float(station_choice)  # Allow 4.5
-                if target_station not in [1, 2, 3, 4, 4.5, 5, 6]:
-                    print("❌ Please enter a valid station number (1, 2, 3, 4, 4.5, 5, 6)")
+                if target_station not in [1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9]:
+                    print("❌ Please enter a valid station number (1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9)")
                     return
                 resume_station = target_station
             except ValueError:
@@ -199,9 +218,9 @@ async def main():
         print(f"\n🎉 Station {resume_station} completed successfully!")
         
         # Offer to continue to next station
-        if resume_station < 6:
+        if resume_station < 9:
             next_station = resume_station + 1
-            if next_station <= 6:
+            if next_station <= 9:
                 continue_choice = input(f"\n🤔 Continue to Station {next_station}? (Y/n): ").lower().strip()
                 if continue_choice != 'n':
                     success = await run_station(next_station, session_id)

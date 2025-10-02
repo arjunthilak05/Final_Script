@@ -37,8 +37,8 @@ from app.agents.station_06_master_style_guide import Station06MasterStyleGuideBu
 from app.agents.station_07_reality_check import Station07RealityCheck
 from app.agents.station_08_character_architecture import Station08CharacterArchitecture
 from app.agents.station_09_world_building import Station09WorldBuilding
-from app.agents.station_10_placeholder import Station10Placeholder
-from app.agents.station_11_placeholder import Station11Placeholder
+from app.agents.station_10_narrative_reveal_strategy import Station10NarrativeRevealStrategy
+from app.agents.station_11_runtime_planning import Station11RuntimePlanning
 from app.agents.station_12_hook_cliffhanger import Station12HookCliffhanger
 from app.agents.station_13_multiworld_timeline import Station13MultiworldTimeline
 from app.agents.station_14_episode_blueprint import Station14EpisodeBlueprint
@@ -926,42 +926,67 @@ class FullAutomationRunner:
             raise Exception(f"Station 9 failed: {str(e)}")
     
     async def _run_station_10(self, state: AudiobookProductionState) -> AudiobookProductionState:
-        """Run Station 10: Placeholder (Future Implementation)"""
+        """Run Station 10: Narrative Reveal Strategy - Complete Reveal Matrix"""
         
-        self.emit_progress("Station 10", 0, "Initializing Station 10 Placeholder...")
+        self.emit_progress("Station 10", 0, "Initializing Narrative Reveal Strategy...")
         
         try:
-            processor = Station10Placeholder(state.session_id)
-            await processor.initialize()
+            processor = Station10NarrativeRevealStrategy()
             
-            self.emit_progress("Station 10", 50, "Processing placeholder...")
+            if self.debug_mode:
+                logger.info("Debug mode enabled for Station 10")
+                
+            self.emit_progress("Station 10", 10, "Loading project dependencies...")
             
-            # Process placeholder
-            result = await processor.run()
+            # Process narrative reveal strategy
+            result = await processor.process(state.session_id)
+            
+            self.emit_progress("Station 10", 25, "Building information taxonomy...")
+            self.emit_progress("Station 10", 40, "Selecting reveal methods from 45+ catalog...")
+            self.emit_progress("Station 10", 55, "Creating plant/proof/payoff grid...")
+            self.emit_progress("Station 10", 70, "Designing misdirection strategy...")
+            self.emit_progress("Station 10", 85, "Conducting fairness check...")
             
             # Store Station 10 output
             state.station_outputs["station_10"] = {
-                "placeholder": True,
-                "implemented": False,
-                "outputs": result['outputs'],
+                "information_items": result["summary"]["information_items"],
+                "reveal_methods": result["summary"]["reveal_methods"],
+                "plant_proof_payoffs": result["summary"]["plant_proof_payoffs"],
+                "red_herrings": result["summary"]["red_herrings"],
+                "outputs": result["outputs"],
                 "session_id": state.session_id,
                 "created_timestamp": datetime.now().isoformat()
             }
             
             # Add generated files to state
-            state.generated_files.extend([
-                result['outputs']['txt'],
-                result['outputs']['json'],
-                result['outputs']['pdf']
-            ])
+            if "outputs" in result:
+                for output_type, file_path in result["outputs"].items():
+                    if file_path and os.path.exists(file_path):
+                        state.generated_files.append(file_path)
+                        self.emit_progress("Station 10", 90, f"Generated {output_type} output: {file_path}")
             
-            self.emit_progress("Station 10", 100, "Station 10 placeholder completed")
+            # Save to Redis for potential future stations
+            try:
+                if not self.redis:
+                    self.redis = RedisClient()
+                    await self.redis.initialize()
+                redis_key = f"audiobook:{state.session_id}:station_10"
+                json_data = json.dumps(state.station_outputs["station_10"], default=str)
+                await self.redis.set(redis_key, json_data, expire=3600)
+                if self.debug_mode:
+                    logger.info(f"✅ Saved Station 10 output to Redis: {redis_key}")
+            except Exception as e:
+                logger.error(f"❌ Failed to save Station 10 to Redis: {e}")
             
-            # Log placeholder status
-            logger.info(f"📋 Station 10 Placeholder:")
-            logger.info(f"   Status: Placeholder")
-            logger.info(f"   Implementation: Future")
-            logger.info(f"   Pipeline: Maintained")
+            # Show narrative reveal strategy results
+            self.emit_progress("Station 10", 100, f"Station 10 completed! Created reveal matrix with {result['summary']['information_items']} information items")
+            
+            # Log reveal strategy summary
+            logger.info(f"🎭 Narrative Reveal Strategy Summary:")
+            logger.info(f"   Information Items: {result['summary']['information_items']}")
+            logger.info(f"   Reveal Methods: {result['summary']['reveal_methods']}")
+            logger.info(f"   Plant/Proof/Payoffs: {result['summary']['plant_proof_payoffs']}")
+            logger.info(f"   Red Herrings: {result['summary']['red_herrings']}")
             
             state.current_station = 10
             
@@ -971,42 +996,67 @@ class FullAutomationRunner:
             raise Exception(f"Station 10 failed: {str(e)}")
     
     async def _run_station_11(self, state: AudiobookProductionState) -> AudiobookProductionState:
-        """Run Station 11: Placeholder (Future Implementation)"""
+        """Run Station 11: Runtime Planning - Complete Production Timeline"""
         
-        self.emit_progress("Station 11", 0, "Initializing Station 11 Placeholder...")
+        self.emit_progress("Station 11", 0, "Initializing Runtime Planning...")
         
         try:
-            processor = Station11Placeholder(state.session_id)
+            processor = Station11RuntimePlanning()
             await processor.initialize()
             
-            self.emit_progress("Station 11", 50, "Processing placeholder...")
+            if self.debug_mode:
+                processor.enable_debug_mode()
+                
+            self.emit_progress("Station 11", 10, "Loading project dependencies...")
             
-            # Process placeholder
-            result = await processor.run()
+            # Process runtime planning
+            result = await processor.process(state.session_id)
+            
+            self.emit_progress("Station 11", 25, "Analyzing production requirements...")
+            self.emit_progress("Station 11", 40, "Creating episode breakdown...")
+            self.emit_progress("Station 11", 55, "Generating production timeline...")
+            self.emit_progress("Station 11", 70, "Calculating resource requirements...")
+            self.emit_progress("Station 11", 85, "Finalizing production plan...")
             
             # Store Station 11 output
             state.station_outputs["station_11"] = {
-                "placeholder": True,
-                "implemented": False,
-                "outputs": result['outputs'],
+                "working_title": result.get("working_title", "Unknown"),
+                "total_episodes": result.get("summary", {}).get("total_episodes", 0),
+                "production_timeline": result.get("summary", {}).get("production_timeline", ""),
+                "resource_requirements": result.get("summary", {}).get("resource_requirements", {}),
+                "budget_estimate": result.get("summary", {}).get("budget_estimate", ""),
                 "session_id": state.session_id,
                 "created_timestamp": datetime.now().isoformat()
             }
             
             # Add generated files to state
-            state.generated_files.extend([
-                result['outputs']['txt'],
-                result['outputs']['json'],
-                result['outputs']['pdf']
-            ])
+            if "outputs" in result:
+                for output_type, file_path in result["outputs"].items():
+                    if file_path and os.path.exists(file_path):
+                        state.generated_files.append(file_path)
+                        self.emit_progress("Station 11", 90, f"Generated {output_type} output: {file_path}")
             
-            self.emit_progress("Station 11", 100, "Station 11 placeholder completed")
+            # Save to Redis for potential future use
+            try:
+                if not self.redis:
+                    self.redis = RedisClient()
+                    await self.redis.initialize()
+                redis_key = f"audiobook:{state.session_id}:station_11"
+                json_data = json.dumps(state.station_outputs["station_11"], default=str)
+                await self.redis.set(redis_key, json_data, expire=3600)
+                if self.debug_mode:
+                    logger.info(f"✅ Saved Station 11 output to Redis: {redis_key}")
+            except Exception as e:
+                logger.error(f"❌ Failed to save Station 11 to Redis: {e}")
             
-            # Log placeholder status
-            logger.info(f"📋 Station 11 Placeholder:")
-            logger.info(f"   Status: Placeholder")
-            logger.info(f"   Implementation: Future")
-            logger.info(f"   Pipeline: Maintained")
+            # Show runtime planning results
+            self.emit_progress("Station 11", 100, f"Station 11 completed! Created production plan for {result.get('summary', {}).get('total_episodes', 0)} episodes")
+            
+            # Log runtime planning summary
+            logger.info(f"📅 Runtime Planning Summary:")
+            logger.info(f"   Total Episodes: {result.get('summary', {}).get('total_episodes', 0)}")
+            logger.info(f"   Production Timeline: {result.get('summary', {}).get('production_timeline', 'Unknown')}")
+            logger.info(f"   Budget Estimate: {result.get('summary', {}).get('budget_estimate', 'Unknown')}")
             
             state.current_station = 11
             
@@ -1213,7 +1263,12 @@ class FullAutomationRunner:
                 "station_6": f"Master style guide: {state.station_outputs.get('station_6', {}).get('character_voices_count', 0)} character voices, {state.station_outputs.get('station_6', {}).get('audio_conventions_count', 0)} audio conventions",
                 "station_7": f"Reality check: {state.station_outputs.get('station_7', {}).get('pipeline_status', 'Unknown')} - Quality: {state.station_outputs.get('station_7', {}).get('overall_quality_score', 0):.1%}, Passed: {state.station_outputs.get('station_7', {}).get('stations_passed', 0)}/{state.station_outputs.get('station_7', {}).get('stations_passed', 0) + state.station_outputs.get('station_7', {}).get('stations_failed', 0) + state.station_outputs.get('station_7', {}).get('stations_with_warnings', 0)}",
                 "station_8": f"Character bible: {state.station_outputs.get('station_8', {}).get('total_characters', 0)} characters ({state.station_outputs.get('station_8', {}).get('tier1_protagonists', 0)} protagonists, {state.station_outputs.get('station_8', {}).get('tier2_supporting', 0)} supporting, {state.station_outputs.get('station_8', {}).get('tier3_recurring', 0)} recurring)",
-                "station_9": f"World bible: {state.station_outputs.get('station_9', {}).get('total_locations', 0)} locations, {state.station_outputs.get('station_9', {}).get('tech_magic_systems', 0)} tech/magic systems, {state.station_outputs.get('station_9', {}).get('audio_cues', 0)} audio cues, {state.station_outputs.get('station_9', {}).get('glossary_entries', 0)} glossary entries"
+                "station_9": f"World bible: {state.station_outputs.get('station_9', {}).get('total_locations', 0)} locations, {state.station_outputs.get('station_9', {}).get('tech_magic_systems', 0)} tech/magic systems, {state.station_outputs.get('station_9', {}).get('audio_cues', 0)} audio cues, {state.station_outputs.get('station_9', {}).get('glossary_entries', 0)} glossary entries",
+                "station_10": f"Narrative reveal strategy: {state.station_outputs.get('station_10', {}).get('information_items', 0)} information items, {state.station_outputs.get('station_10', {}).get('reveal_methods', 0)} reveal methods, {state.station_outputs.get('station_10', {}).get('plant_proof_payoffs', 0)} plant/proof/payoffs, {state.station_outputs.get('station_10', {}).get('red_herrings', 0)} red herrings",
+                "station_11": f"Runtime planning: {state.station_outputs.get('station_11', {}).get('total_episodes', 0)} episodes planned, {state.station_outputs.get('station_11', {}).get('production_timeline', 'Unknown')} timeline, {state.station_outputs.get('station_11', {}).get('budget_estimate', 'Unknown')} budget estimate",
+                "station_12": f"Hook & cliffhanger design: {state.station_outputs.get('station_12', {}).get('hooks_designed', 0)} hooks, {state.station_outputs.get('station_12', {}).get('cliffhangers_designed', 0)} cliffhangers, {state.station_outputs.get('station_12', {}).get('bridges_created', 0)} bridges",
+                "station_13": f"Multi-world management: {state.station_outputs.get('station_13', {}).get('world_count', 1)} worlds, complexity {state.station_outputs.get('station_13', {}).get('complexity_level', 'simple')}, applicable: {state.station_outputs.get('station_13', {}).get('is_applicable', False)}",
+                "station_14": f"Episode blueprints: {state.station_outputs.get('station_14', {}).get('blueprints_generated', 0)} episodes ready for approval"
             },
             "generated_files": state.generated_files,
             "full_outputs": processed_outputs

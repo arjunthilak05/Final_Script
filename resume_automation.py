@@ -21,8 +21,8 @@ from app.agents.station_06_master_style_guide import Station06MasterStyleGuideBu
 from app.agents.station_07_reality_check import Station07RealityCheck
 from app.agents.station_08_character_architecture import Station08CharacterArchitecture
 from app.agents.station_09_world_building import Station09WorldBuilding
-from app.agents.station_10_placeholder import Station10Placeholder
-from app.agents.station_11_placeholder import Station11Placeholder
+from app.agents.station_10_narrative_reveal_strategy import Station10NarrativeRevealStrategy
+from app.agents.station_11_runtime_planning import Station11RuntimePlanning
 from app.agents.station_12_hook_cliffhanger import Station12HookCliffhanger
 from app.agents.station_13_multiworld_timeline import Station13MultiworldTimeline
 from app.agents.station_14_episode_blueprint import Station14EpisodeBlueprint
@@ -124,16 +124,15 @@ async def run_station(station_num: int, session_id: str):
             print(f"✅ Station 9 completed: World Bible - {result.world_statistics['total_locations']} locations, {result.world_statistics['audio_cues']} audio cues")
             
         elif station_num == 10:
-            station = Station10Placeholder(session_id)
-            await station.initialize()
-            result = await station.run()
-            print(f"✅ Station 10 completed: Placeholder - Ready for future implementation")
+            station = Station10NarrativeRevealStrategy()
+            result = await station.process(session_id)
+            print(f"✅ Station 10 completed: Narrative Reveal Strategy - {result['summary']['information_items']} information items")
             
         elif station_num == 11:
-            station = Station11Placeholder(session_id)
+            station = Station11RuntimePlanning()
             await station.initialize()
-            result = await station.run()
-            print(f"✅ Station 11 completed: Placeholder - Ready for future implementation")
+            result = await station.process(session_id)
+            print(f"✅ Station 11 completed: Runtime Planning - {result.get('summary', {}).get('total_episodes', 0)} episodes planned")
             
         elif station_num == 12:
             station = Station12HookCliffhanger(session_id)

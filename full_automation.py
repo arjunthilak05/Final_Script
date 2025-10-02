@@ -37,6 +37,11 @@ from app.agents.station_06_master_style_guide import Station06MasterStyleGuideBu
 from app.agents.station_07_reality_check import Station07RealityCheck
 from app.agents.station_08_character_architecture import Station08CharacterArchitecture
 from app.agents.station_09_world_building import Station09WorldBuilding
+from app.agents.station_10_placeholder import Station10Placeholder
+from app.agents.station_11_placeholder import Station11Placeholder
+from app.agents.station_12_hook_cliffhanger import Station12HookCliffhanger
+from app.agents.station_13_multiworld_timeline import Station13MultiworldTimeline
+from app.agents.station_14_episode_blueprint import Station14EpisodeBlueprint
 from app.redis_client import RedisClient
 
 
@@ -104,7 +109,7 @@ class FullAutomationRunner:
         print(f"📝 Story Concept: {story_concept[:100]}...")
         print(f"🎯 Mode: {'Auto-approve' if self.auto_approve else 'Interactive'}")
         print(f"🐛 Debug: {'Enabled' if self.debug_mode else 'Disabled'}")
-        print(f"🏭 Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6 → 7 → 8 → 9")
+        print(f"🏭 Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6 → 7 → 8 → 9 → 10 → 11 → 12 → 13 → 14")
         print()
         
         # Initialize state
@@ -141,6 +146,21 @@ class FullAutomationRunner:
             # Station 9: World Building
             state = await self._run_station_9(state)
             
+            # Station 10: Placeholder (Future Implementation)
+            state = await self._run_station_10(state)
+            
+            # Station 11: Placeholder (Future Implementation)
+            state = await self._run_station_11(state)
+            
+            # Station 12: Hook & Cliffhanger Designer
+            state = await self._run_station_12(state)
+            
+            # Station 13: Multi-World/Timeline Manager
+            state = await self._run_station_13(state)
+            
+            # Station 14: Simple Episode Blueprint
+            state = await self._run_station_14(state)
+            
             # Save checkpoint after each station
             if self.checkpoint_enabled:
                 await self._save_checkpoint(state)
@@ -156,7 +176,7 @@ class FullAutomationRunner:
                 "session_id": state.session_id,
                 "outputs": state.station_outputs,
                 "files": state.generated_files,
-                "summary": "All 6 stations completed successfully"
+                "summary": "All 14 stations completed successfully"
             }
             
         except Exception as e:
@@ -904,6 +924,264 @@ class FullAutomationRunner:
             
         except Exception as e:
             raise Exception(f"Station 9 failed: {str(e)}")
+    
+    async def _run_station_10(self, state: AudiobookProductionState) -> AudiobookProductionState:
+        """Run Station 10: Placeholder (Future Implementation)"""
+        
+        self.emit_progress("Station 10", 0, "Initializing Station 10 Placeholder...")
+        
+        try:
+            processor = Station10Placeholder(state.session_id)
+            await processor.initialize()
+            
+            self.emit_progress("Station 10", 50, "Processing placeholder...")
+            
+            # Process placeholder
+            result = await processor.run()
+            
+            # Store Station 10 output
+            state.station_outputs["station_10"] = {
+                "placeholder": True,
+                "implemented": False,
+                "outputs": result['outputs'],
+                "session_id": state.session_id,
+                "created_timestamp": datetime.now().isoformat()
+            }
+            
+            # Add generated files to state
+            state.generated_files.extend([
+                result['outputs']['txt'],
+                result['outputs']['json'],
+                result['outputs']['pdf']
+            ])
+            
+            self.emit_progress("Station 10", 100, "Station 10 placeholder completed")
+            
+            # Log placeholder status
+            logger.info(f"📋 Station 10 Placeholder:")
+            logger.info(f"   Status: Placeholder")
+            logger.info(f"   Implementation: Future")
+            logger.info(f"   Pipeline: Maintained")
+            
+            state.current_station = 10
+            
+            return state
+            
+        except Exception as e:
+            raise Exception(f"Station 10 failed: {str(e)}")
+    
+    async def _run_station_11(self, state: AudiobookProductionState) -> AudiobookProductionState:
+        """Run Station 11: Placeholder (Future Implementation)"""
+        
+        self.emit_progress("Station 11", 0, "Initializing Station 11 Placeholder...")
+        
+        try:
+            processor = Station11Placeholder(state.session_id)
+            await processor.initialize()
+            
+            self.emit_progress("Station 11", 50, "Processing placeholder...")
+            
+            # Process placeholder
+            result = await processor.run()
+            
+            # Store Station 11 output
+            state.station_outputs["station_11"] = {
+                "placeholder": True,
+                "implemented": False,
+                "outputs": result['outputs'],
+                "session_id": state.session_id,
+                "created_timestamp": datetime.now().isoformat()
+            }
+            
+            # Add generated files to state
+            state.generated_files.extend([
+                result['outputs']['txt'],
+                result['outputs']['json'],
+                result['outputs']['pdf']
+            ])
+            
+            self.emit_progress("Station 11", 100, "Station 11 placeholder completed")
+            
+            # Log placeholder status
+            logger.info(f"📋 Station 11 Placeholder:")
+            logger.info(f"   Status: Placeholder")
+            logger.info(f"   Implementation: Future")
+            logger.info(f"   Pipeline: Maintained")
+            
+            state.current_station = 11
+            
+            return state
+            
+        except Exception as e:
+            raise Exception(f"Station 11 failed: {str(e)}")
+    
+    async def _run_station_12(self, state: AudiobookProductionState) -> AudiobookProductionState:
+        """Run Station 12: Hook & Cliffhanger Designer"""
+        
+        self.emit_progress("Station 12", 0, "Initializing Hook & Cliffhanger Designer...")
+        
+        try:
+            processor = Station12HookCliffhanger(state.session_id)
+            await processor.initialize()
+            
+            self.emit_progress("Station 12", 10, "Loading episode and character dependencies...")
+            
+            # Process hook and cliffhanger design
+            result = await processor.run()
+            
+            self.emit_progress("Station 12", 25, "Generating opening hooks for episodes...")
+            self.emit_progress("Station 12", 50, "Designing act turns and cliffhangers...")
+            self.emit_progress("Station 12", 75, "Creating episode tension curves...")
+            self.emit_progress("Station 12", 90, "Building episode bridges...")
+            
+            # Store Station 12 output
+            state.station_outputs["station_12"] = {
+                "total_episodes": result['statistics']['total_episodes'],
+                "hooks_designed": result['statistics']['hooks_designed'],
+                "cliffhangers_designed": result['statistics']['cliffhangers_designed'],
+                "bridges_created": result['statistics']['bridges_created'],
+                "outputs": result['outputs'],
+                "session_id": state.session_id,
+                "created_timestamp": datetime.now().isoformat()
+            }
+            
+            # Add generated files to state
+            state.generated_files.extend([
+                result['outputs']['txt'],
+                result['outputs']['json'],
+                result['outputs']['pdf']
+            ])
+            
+            self.emit_progress("Station 12", 100, f"Station 12 completed! {result['statistics']['hooks_designed']} hooks and cliffhangers designed")
+            
+            # Log hook summary
+            logger.info(f"⚡ Hook & Cliffhanger Summary:")
+            logger.info(f"   Episodes: {result['statistics']['total_episodes']}")
+            logger.info(f"   Hooks: {result['statistics']['hooks_designed']}")
+            logger.info(f"   Cliffhangers: {result['statistics']['cliffhangers_designed']}")
+            logger.info(f"   Bridges: {result['statistics']['bridges_created']}")
+            
+            state.current_station = 12
+            
+            return state
+            
+        except Exception as e:
+            raise Exception(f"Station 12 failed: {str(e)}")
+    
+    async def _run_station_13(self, state: AudiobookProductionState) -> AudiobookProductionState:
+        """Run Station 13: Multi-World/Timeline Manager"""
+        
+        self.emit_progress("Station 13", 0, "Initializing Multi-World/Timeline Manager...")
+        
+        try:
+            processor = Station13MultiworldTimeline(state.session_id)
+            await processor.initialize()
+            
+            self.emit_progress("Station 13", 10, "Analyzing world/timeline structure...")
+            
+            # Process multi-world management
+            result = await processor.run()
+            
+            self.emit_progress("Station 13", 25, "Detecting scenario complexity...")
+            self.emit_progress("Station 13", 50, "Generating world management rules...")
+            self.emit_progress("Station 13", 75, "Designing audio differentiation...")
+            self.emit_progress("Station 13", 90, "Creating orientation strategies...")
+            
+            # Store Station 13 output
+            state.station_outputs["station_13"] = {
+                "is_applicable": result['is_applicable'],
+                "world_count": result['statistics']['world_count'],
+                "transition_types": result['statistics']['transition_types'],
+                "complexity_level": result['statistics']['complexity_level'],
+                "outputs": result['outputs'],
+                "session_id": state.session_id,
+                "created_timestamp": datetime.now().isoformat()
+            }
+            
+            # Add generated files to state
+            state.generated_files.extend([
+                result['outputs']['txt'],
+                result['outputs']['json'],
+                result['outputs']['pdf']
+            ])
+            
+            if result['is_applicable']:
+                self.emit_progress("Station 13", 100, f"Station 13 completed! Multi-world system with {result['statistics']['world_count']} worlds")
+                logger.info(f"🌐 Multi-World Summary:")
+                logger.info(f"   Applicable: {result['is_applicable']}")
+                logger.info(f"   Worlds: {result['statistics']['world_count']}")
+                logger.info(f"   Complexity: {result['statistics']['complexity_level']}")
+            else:
+                self.emit_progress("Station 13", 100, "Station 13 completed! Single-world narrative detected")
+                logger.info(f"🌐 Single World Detected - Station 13 gracefully skipped")
+            
+            state.current_station = 13
+            
+            return state
+            
+        except Exception as e:
+            raise Exception(f"Station 13 failed: {str(e)}")
+    
+    async def _run_station_14(self, state: AudiobookProductionState) -> AudiobookProductionState:
+        """Run Station 14: Simple Episode Blueprint"""
+        
+        self.emit_progress("Station 14", 0, "Initializing Episode Blueprint Generator...")
+        
+        try:
+            processor = Station14EpisodeBlueprint(state.session_id)
+            await processor.initialize()
+            
+            self.emit_progress("Station 14", 10, "Loading all station dependencies...")
+            
+            # Process episode blueprints
+            result = await processor.run()
+            
+            self.emit_progress("Station 14", 25, "Generating episode summaries...")
+            self.emit_progress("Station 14", 50, "Creating character goals and obstacles...")
+            self.emit_progress("Station 14", 70, "Building season narrative overview...")
+            self.emit_progress("Station 14", 85, "Generating approval checklist...")
+            
+            # Store Station 14 output
+            state.station_outputs["station_14"] = {
+                "total_episodes": result['statistics']['total_episodes'],
+                "blueprints_generated": result['statistics']['blueprints_generated'],
+                "ready_for_approval": result['statistics']['ready_for_approval'],
+                "outputs": result['outputs'],
+                "session_id": state.session_id,
+                "created_timestamp": datetime.now().isoformat()
+            }
+            
+            # Add generated files to state
+            state.generated_files.extend([
+                result['outputs']['txt'],
+                result['outputs']['json'],
+                result['outputs']['pdf']
+            ])
+            
+            self.emit_progress("Station 14", 100, f"Station 14 completed! {result['statistics']['blueprints_generated']} episode blueprints ready for approval")
+            
+            # Log blueprint summary
+            logger.info(f"📋 Episode Blueprint Summary:")
+            logger.info(f"   Episodes: {result['statistics']['total_episodes']}")
+            logger.info(f"   Blueprints: {result['statistics']['blueprints_generated']}")
+            logger.info(f"   Ready for Approval: {result['statistics']['ready_for_approval']}")
+            logger.info(f"   PDF Approval Doc: {result['outputs']['pdf']}")
+            
+            # Important human gate message
+            print("\n" + "="*70)
+            print("🚨 HUMAN APPROVAL GATE - REVIEW REQUIRED")
+            print("="*70)
+            print(f"📄 Review Document: {result['outputs']['pdf']}")
+            print("👤 Please review and approve episode blueprints before proceeding")
+            print("✅ This completes the automated pipeline - human review required")
+            print("="*70)
+            
+            state.current_station = 14
+            
+            return state
+            
+        except Exception as e:
+            raise Exception(f"Station 14 failed: {str(e)}")
     
     
     async def _generate_final_summary(self, state: AudiobookProductionState):

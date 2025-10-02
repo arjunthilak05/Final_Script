@@ -21,6 +21,11 @@ from app.agents.station_06_master_style_guide import Station06MasterStyleGuideBu
 from app.agents.station_07_reality_check import Station07RealityCheck
 from app.agents.station_08_character_architecture import Station08CharacterArchitecture
 from app.agents.station_09_world_building import Station09WorldBuilding
+from app.agents.station_10_placeholder import Station10Placeholder
+from app.agents.station_11_placeholder import Station11Placeholder
+from app.agents.station_12_hook_cliffhanger import Station12HookCliffhanger
+from app.agents.station_13_multiworld_timeline import Station13MultiworldTimeline
+from app.agents.station_14_episode_blueprint import Station14EpisodeBlueprint
 
 async def check_existing_sessions():
     """Check for existing sessions in Redis"""
@@ -118,6 +123,41 @@ async def run_station(station_num: int, session_id: str):
             result = await station.process(session_id)
             print(f"✅ Station 9 completed: World Bible - {result.world_statistics['total_locations']} locations, {result.world_statistics['audio_cues']} audio cues")
             
+        elif station_num == 10:
+            station = Station10Placeholder(session_id)
+            await station.initialize()
+            result = await station.run()
+            print(f"✅ Station 10 completed: Placeholder - Ready for future implementation")
+            
+        elif station_num == 11:
+            station = Station11Placeholder(session_id)
+            await station.initialize()
+            result = await station.run()
+            print(f"✅ Station 11 completed: Placeholder - Ready for future implementation")
+            
+        elif station_num == 12:
+            station = Station12HookCliffhanger(session_id)
+            await station.initialize()
+            result = await station.run()
+            print(f"✅ Station 12 completed: Hook & Cliffhanger Strategy - {result['statistics']['hooks_designed']} hooks, {result['statistics']['cliffhangers_designed']} cliffhangers")
+            
+        elif station_num == 13:
+            station = Station13MultiworldTimeline(session_id)
+            await station.initialize()
+            result = await station.run()
+            if result['is_applicable']:
+                print(f"✅ Station 13 completed: Multi-World Management - {result['statistics']['world_count']} worlds, complexity: {result['statistics']['complexity_level']}")
+            else:
+                print(f"✅ Station 13 completed: Single-world narrative detected (gracefully skipped)")
+            
+        elif station_num == 14:
+            station = Station14EpisodeBlueprint(session_id)
+            await station.initialize()
+            result = await station.run()
+            print(f"✅ Station 14 completed: Episode Blueprints - {result['statistics']['blueprints_generated']} blueprints ready for approval")
+            print(f"📄 Approval Document: {result['outputs']['pdf']}")
+            print("🚨 HUMAN GATE: Review and approve blueprints before proceeding")
+            
         else:
             print(f"❌ Station {station_num} not supported")
             return False
@@ -151,16 +191,17 @@ async def main():
     resumable_sessions = []
     for session_id, stations in sorted(existing_sessions.items()):
         stations.sort()
-        expected_stations = ["station_01", "station_02", "station_03", "station_04", "station_04_5", "station_05", "station_06", "station_07", "station_08", "station_09"]
+        expected_stations = ["station_01", "station_02", "station_03", "station_04", "station_04_5", "station_05", "station_06", "station_07", "station_08", "station_09", "station_10", "station_11", "station_12", "station_13", "station_14"]
+        station_numbers = [1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
         
         # Find next station to resume from
         next_station = None
-        for i, expected in enumerate(expected_stations, 1):
+        for i, expected in enumerate(expected_stations):
             if expected not in stations:
-                next_station = i
+                next_station = station_numbers[i]
                 break
         
-        if not next_station and len(stations) >= 9:  # All stations complete
+        if not next_station and len(stations) >= 15:  # All stations complete
             next_station = None
             
         if next_station:
@@ -194,19 +235,19 @@ async def main():
     print()
     
     # Ask which station to run
-    if resume_station <= 9:
-        station_choice = input(f"🎯 Run Station {resume_station} or specific station? (Enter station number 1-9 or press Enter for {resume_station}): ").strip()
-        
-        if station_choice:
-            try:
-                target_station = float(station_choice)  # Allow 4.5
-                if target_station not in [1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9]:
-                    print("❌ Please enter a valid station number (1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9)")
-                    return
-                resume_station = target_station
-            except ValueError:
-                print("❌ Invalid station number")
+    valid_stations = [1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+    station_choice = input(f"🎯 Run Station {resume_station} or specific station? (Enter station number {valid_stations} or press Enter for {resume_station}): ").strip()
+    
+    if station_choice:
+        try:
+            target_station = float(station_choice)  # Allow 4.5
+            if target_station not in valid_stations:
+                print(f"❌ Please enter a valid station number: {valid_stations}")
                 return
+            resume_station = target_station
+        except ValueError:
+            print("❌ Invalid station number")
+            return
     
     print(f"\n🚀 RUNNING STATION {resume_station}")
     print("=" * 40)
@@ -218,14 +259,21 @@ async def main():
         print(f"\n🎉 Station {resume_station} completed successfully!")
         
         # Offer to continue to next station
-        if resume_station < 9:
-            next_station = resume_station + 1
-            if next_station <= 9:
+        valid_stations = [1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+        try:
+            current_index = valid_stations.index(resume_station)
+            if current_index < len(valid_stations) - 1:
+                next_station = valid_stations[current_index + 1]
                 continue_choice = input(f"\n🤔 Continue to Station {next_station}? (Y/n): ").lower().strip()
                 if continue_choice != 'n':
                     success = await run_station(next_station, session_id)
                     if success:
                         print(f"\n🎉 Station {next_station} completed successfully!")
+                        if next_station == 14:
+                            print("\n🎉 ALL STATIONS COMPLETED!")
+                            print("📄 Human review required for episode blueprints")
+        except ValueError:
+            pass  # Station not in sequence
     else:
         print(f"\n💥 Station {resume_station} failed!")
 

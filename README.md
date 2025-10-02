@@ -4,7 +4,7 @@ A sophisticated multi-agent system for automated audiobook production using Lang
 
 ## 🚀 Features
 
-- **Multi-Station Processing**: 9 specialized stations for different aspects of audiobook production
+- **Multi-Station Processing**: 14 specialized stations for different aspects of audiobook production
 - **Character Extraction**: Automatically extracts characters from story concepts
 - **Project DNA Building**: Creates comprehensive project bibles and documentation
 - **Age/Genre Optimization**: Optimizes content for target demographics
@@ -15,6 +15,9 @@ A sophisticated multi-agent system for automated audiobook production using Lang
 - **Reality Check**: Comprehensive quality assurance and validation checkpoint
 - **Character Architecture**: Complete 3-tier character development with audio identification
 - **World Building**: 5-section world architecture with audio-focused design and sonic signatures
+- **Hook & Cliffhanger Design**: Episode engagement strategy with 60-second hooks and cliffhangers
+- **Multi-World Management**: Conditional station for multi-world/timeline narratives with audio differentiation
+- **Episode Blueprints**: Simple, human-readable episode summaries ready for stakeholder approval
 
 ## 🏗️ Architecture
 
@@ -30,6 +33,50 @@ The system consists of multiple specialized agents (stations) that work together
 - **Station 7**: Reality Check - Validates all outputs and ensures quality standards
 - **Station 8**: Character Architecture - Creates 3-tier character system with voice signatures
 - **Station 9**: World Building - Audio-focused world architecture with comprehensive sonic design
+- **Station 12**: Hook & Cliffhanger Designer - Episode engagement strategy with opening hooks, act turns, and cliffhangers
+- **Station 13**: Multi-World/Timeline Manager - Conditional station for multi-world scenarios with audio differentiation strategies  
+- **Station 14**: Simple Episode Blueprint - Human-readable episode summaries ready for stakeholder approval
+
+### New Station Details
+
+**Station 12: Hook & Cliffhanger Designer**
+- **Purpose**: Episode engagement strategy with hooks and cliffhangers
+- **Input**: Season architecture (Station 5), Character bible (Station 8)
+- **Output**: Hook/cliffhanger strategy per episode (TXT, JSON, PDF)
+- **Key Features**:
+  - 60-second opening hook design
+  - Three act turn mapping
+  - Cliffhanger type and intensity (1-10 scale)
+  - Episode-to-episode bridges
+  - Tension curve mapping
+  - 10+ cliffhanger types catalog
+
+**Station 13: Multi-World/Timeline Manager**
+- **Purpose**: CONDITIONAL station for multi-world/timeline stories
+- **Input**: World bible (Station 9), Season architecture (Station 5)
+- **Output**: Multi-world management bible (TXT, JSON, PDF)
+- **Key Features**:
+  - Auto-detection of single vs multi-world scenarios
+  - World/timeline inventory (if applicable)
+  - Transition rules and audio strategies
+  - Sonic differentiation per world
+  - Timeline consistency rules
+  - Listener orientation strategy
+- **Note**: Gracefully skips if single-world story
+
+**Station 14: Simple Episode Blueprint**
+- **Purpose**: Final blueprint with simple summaries for human approval
+- **Input**: All previous stations (5, 8, 9, 10, 11, 12, 13)
+- **Output**: Episode blueprints ready for approval (TXT, JSON, PDF)
+- **Key Features**:
+  - 2-3 paragraph simple language summaries per episode
+  - NO dialogue, just story beats
+  - Character goals and obstacles
+  - Story connections and significance
+  - Production essentials
+  - Season narrative overview
+  - Approval checklist
+- **HUMAN GATE**: Requires stakeholder approval before proceeding
 
 ## 🛠️ Installation
 
@@ -136,8 +183,31 @@ The system generates comprehensive documentation including:
 - Narrator strategies
 - Reference materials
 - Production timelines
+- Hook and cliffhanger strategies
+- Multi-world management rules (if applicable)
+- Episode blueprints ready for human approval
 
 All outputs are saved in the `outputs/` directory with timestamps.
+
+### Generated Files
+Each station produces multiple output formats:
+- `station12_hook_cliffhanger_[session].{txt,json,pdf}` - Episode engagement strategies
+- `station13_multiworld_[session].{txt,json,pdf}` - World management rules (conditional)
+- `station14_episode_blueprint_[session].{txt,json,pdf}` - Human approval documents
+
+### Human Approval Gate
+Station 14 produces the **Episode Blueprint** - a human-readable approval document. This is a mandatory review point where stakeholders must:
+
+1. Review all episode summaries
+2. Check story coherence and pacing
+3. Verify character arcs
+4. Approve production requirements
+5. Sign off before proceeding to detailed scripting
+
+**Review Files**:
+- Primary: `station14_episode_blueprint_[session].pdf` (approval document)
+- Reference: `station14_episode_blueprint_[session].txt` (readable format)
+- Data: `station14_episode_blueprint_[session].json` (structured data)
 
 ## 🤝 Contributing
 
@@ -160,10 +230,12 @@ For issues and questions:
 ## 🔄 Automation Features
 
 The system uses LangGraph Swarm technology for seamless execution:
-- **Station 1 → Station 2**: Automatic progression without manual intervention
+- **Complete Pipeline**: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6 → 7 → 8 → 9 → 12 → 13 → 14
 - **Error Handling**: Robust error recovery and retry mechanisms
 - **State Management**: Persistent state across stations
 - **Parallel Processing**: Optimized for performance
+- **Conditional Stations**: Station 13 gracefully skips for single-world narratives
+- **Human Gate**: Station 14 requires stakeholder approval before proceeding
 
 ---
 

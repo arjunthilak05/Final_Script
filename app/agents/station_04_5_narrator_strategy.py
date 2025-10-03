@@ -470,11 +470,9 @@ Quality_Control: [Testing requirements]
             )
             
             # Get LLM response
-            response = await self.openrouter.generate(
-                prompt=prompt,
-                model="grok-4",
-                max_tokens=2000,
-                temperature=0.3  # Lower temperature for consistent scoring
+            response = await self.openrouter.process_message(
+                prompt,
+                model_name="grok-4",
             )
             
             # Parse complexity analysis
@@ -499,11 +497,9 @@ Quality_Control: [Testing requirements]
             )
             
             # Get LLM response
-            response = await self.openrouter.generate(
-                prompt=prompt,
-                model="grok-4", 
-                max_tokens=4000,
-                temperature=0.7  # Higher creativity for scene writing
+            response = await self.openrouter.process_message(
+                prompt,
+                model_name="grok-4", 
             )
             
             # Parse scene response
@@ -530,11 +526,9 @@ Quality_Control: [Testing requirements]
             )
             
             # Get LLM response
-            response = await self.openrouter.generate(
-                prompt=prompt,
-                model="grok-4",
-                max_tokens=3000,
-                temperature=0.4
+            response = await self.openrouter.process_message(
+                prompt,
+                model_name="grok-4",
             )
             
             # Parse recommendation response

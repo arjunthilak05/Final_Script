@@ -397,11 +397,9 @@ OUTPUT CATEGORIES:
             prompt = self.reference_prompt.format(**context)
             
             # Get LLM response
-            response = await self.openrouter.generate(
-                prompt=prompt,
-                model="grok-4",
-                max_tokens=4000,
-                temperature=0.3
+            response = await self.openrouter.process_message(
+                prompt,
+                model_name="grok-4",
             )
             
             # Parse references from response
@@ -444,11 +442,9 @@ WHY SELECTED: {reference.why_selected}
                     )
                     
                     # Get LLM response
-                    response = await self.openrouter.generate(
-                        prompt=prompt,
-                        model="grok-4",
-                        max_tokens=1500,
-                        temperature=0.4
+                    response = await self.openrouter.process_message(
+                        prompt,
+                        model_name="grok-4",
                     )
                     
                     # Parse extraction from response
@@ -1301,11 +1297,9 @@ TACTIC {i} (from {extraction.reference_title}):
             )
             
             # Get LLM response
-            response = await self.openrouter.generate(
-                prompt=prompt,
-                model="grok-4",
-                max_tokens=8000,
-                temperature=0.7
+            response = await self.openrouter.process_message(
+                prompt,
+                model_name="grok-4",
             )
             
             # Debug mode logging if enabled
@@ -1371,11 +1365,9 @@ SEED_END
 Generate {count} seeds now:
 """
         
-        response = await self.openrouter.generate(
-            prompt=prompt,
-            model="grok-4",
-            max_tokens=4000,
-            temperature=0.7
+        response = await self.openrouter.process_message(
+            prompt,
+            model_name="grok-4",
         )
         
         return self._extract_seeds_from_simple_response(response)
@@ -1416,11 +1408,9 @@ Generate {count} seeds now:
             )
         
         # Get LLM response
-        response = await self.openrouter.generate(
-            prompt=prompt,
-            model="grok-4",
-            max_tokens=8000,
-            temperature=0.7
+        response = await self.openrouter.process_message(
+            prompt,
+            model_name="grok-4",
         )
         
         # Parse seeds from response

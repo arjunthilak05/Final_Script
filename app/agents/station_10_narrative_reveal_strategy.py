@@ -224,7 +224,8 @@ class Station10NarrativeRevealStrategy:
         
         # Extract story information
         story_concept = dependencies['project_bible'].get('story_concept', 'Unknown story')
-        episode_count = dependencies['season_architecture'].get('episode_count', 10)
+        # Try total_episodes first (new format), fallback to episode_count (old format)
+        episode_count = dependencies['season_architecture'].get('total_episodes') or dependencies['season_architecture'].get('episode_count', 10)
         characters = dependencies['character_bible'].get('characters', [])
         
         # Build information taxonomy

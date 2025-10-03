@@ -270,7 +270,11 @@ class Station09WorldBuilding:
         # Get character locations for reference
         protagonist_names = []
         if isinstance(character_bible, dict) and 'tier1_protagonists' in character_bible:
-            protagonist_names = [char.get('full_name', '') for char in character_bible['tier1_protagonists']]
+            # tier1_protagonists could be a list of characters or an int (count) if generation failed
+            tier1_data = character_bible['tier1_protagonists']
+            if isinstance(tier1_data, list):
+                protagonist_names = [char.get('full_name', '') for char in tier1_data if isinstance(char, dict)]
+            # If it's an int or not a list, keep protagonist_names empty
         
         geography_prompt = f"""
         Create 5-10 KEY LOCATIONS for the audiobook "{working_title}".
@@ -318,10 +322,9 @@ class Station09WorldBuilding:
         """
         
         try:
-            response = await self.openrouter_agent.generate_response(
+            response = await self.openrouter_agent.process_message(
                 geography_prompt,
-                model="anthropic/claude-3-sonnet",
-                max_tokens=3000
+                model_name="grok-4"
             )
             
             locations = await self._parse_geography_response(response)
@@ -531,10 +534,9 @@ class Station09WorldBuilding:
         """
         
         try:
-            response = await self.openrouter_agent.generate_response(
+            response = await self.openrouter_agent.process_message(
                 social_prompt,
-                model="anthropic/claude-3-sonnet",
-                max_tokens=2500
+                model_name="grok-4"
             )
             
             social_system = await self._parse_social_systems_response(response)
@@ -704,10 +706,9 @@ class Station09WorldBuilding:
         """
         
         try:
-            response = await self.openrouter_agent.generate_response(
+            response = await self.openrouter_agent.process_message(
                 tech_magic_prompt,
-                model="anthropic/claude-3-sonnet",
-                max_tokens=2500
+                model_name="grok-4"
             )
             
             systems = await self._parse_tech_magic_response(response)
@@ -856,10 +857,9 @@ class Station09WorldBuilding:
         """
         
         try:
-            response = await self.openrouter_agent.generate_response(
+            response = await self.openrouter_agent.process_message(
                 history_prompt,
-                model="anthropic/claude-3-sonnet",
-                max_tokens=2500
+                model_name="grok-4"
             )
             
             events, mythology = await self._parse_history_lore_response(response)
@@ -1016,10 +1016,9 @@ class Station09WorldBuilding:
             """
             
             try:
-                response = await self.openrouter_agent.generate_response(
+                response = await self.openrouter_agent.process_message(
                     sensory_prompt,
-                    model="anthropic/claude-3-sonnet",
-                    max_tokens=2000
+                    model_name="grok-4"
                 )
                 
                 palette = await self._parse_sensory_palette_response(response, location.name)
@@ -1172,10 +1171,9 @@ class Station09WorldBuilding:
         """
         
         try:
-            response = await self.openrouter_agent.generate_response(
+            response = await self.openrouter_agent.process_message(
                 glossary_prompt,
-                model="anthropic/claude-3-sonnet",
-                max_tokens=2500
+                model_name="grok-4"
             )
             
             glossary = await self._parse_audio_glossary_response(response)

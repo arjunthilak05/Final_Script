@@ -204,10 +204,9 @@ class AgeAgent:
         """
         
         try:
-            response = await self.agent.generate(
-                prompt=age_prompt,
-                model="grok-4",
-                max_tokens=2500
+            response = await self.agent.process_message(
+                age_prompt,
+                model_name="grok-4"
             )
             
             # Extract JSON from response with improved parsing
@@ -400,10 +399,9 @@ class GenreAgent:
         """
         
         try:
-            response = await self.agent.generate(
-                prompt=genre_prompt,
-                model="grok-4",
-                max_tokens=3000
+            response = await self.agent.process_message(
+                genre_prompt,
+                model_name="grok-4"
             )
             
             # Extract JSON from response with improved parsing
@@ -583,10 +581,9 @@ class ToneAgent:
         """
         
         try:
-            response = await self.agent.generate(
-                prompt=tone_prompt,
-                model="grok-4",  # Use Sonoma Sky Alpha
-                max_tokens=2500
+            response = await self.agent.process_message(
+                tone_prompt,
+                model_name="grok-4"
             )
             
             # Extract JSON from response with improved parsing
@@ -748,6 +745,44 @@ class Station03AgeGenreOptimizer:
             print("   🎭 Genre Agent: Creating optimized genre blend options...")
             genre_options = await self.genre_agent.create_genre_blends(project_bible_data)
             
+            # Validate that we have genre options
+            if not genre_options or len(genre_options) == 0:
+                logger.error("No genre options generated, using fallback defaults")
+                # Create fallback genre options
+                primary = project_bible_data.get('genre_tone', {}).get('primary_genre', 'Drama')
+                genre_options = [
+                    GenreBlend(
+                        primary_genre=primary,
+                        complementary_genre="Thriller",
+                        enhancement_analysis="Thriller elements add tension and pacing to core drama",
+                        audio_elements=["Suspenseful music", "Strategic silence", "Tension-building sound design"],
+                        pacing_implications="Alternating calm and suspenseful moments",
+                        audience_expectations="Engaging tension with emotional depth",
+                        signature_sounds=["Heartbeat rhythms", "Environmental tension"],
+                        mood_transitions=["Gradual tension buildup", "Quick emotional releases"]
+                    ),
+                    GenreBlend(
+                        primary_genre=primary,
+                        complementary_genre="Mystery",
+                        enhancement_analysis="Mystery elements add intrigue and discovery to storytelling",
+                        audio_elements=["Investigative music", "Clue revelation sounds", "Atmospheric mystery"],
+                        pacing_implications="Deliberate pacing with revelation moments",
+                        audience_expectations="Puzzle-solving satisfaction with emotional payoff",
+                        signature_sounds=["Discovery chimes", "Thinking space silence"],
+                        mood_transitions=["Contemplative to revelatory", "Confusion to clarity"]
+                    ),
+                    GenreBlend(
+                        primary_genre=primary,
+                        complementary_genre="Adventure",
+                        enhancement_analysis="Adventure elements add energy and forward momentum",
+                        audio_elements=["Dynamic music", "Movement sounds", "Energy-building sequences"],
+                        pacing_implications="Varied pacing with energetic peaks",
+                        audience_expectations="Excitement balanced with character development",
+                        signature_sounds=["Movement rhythms", "Achievement fanfares"],
+                        mood_transitions=["Calm to exciting", "Restful to energetic"]
+                    )
+                ]
+            
             # Display genre options for user choice
             print(f"\n🎭 GENRE BLEND OPTIONS:")
             print("-" * 40)
@@ -781,6 +816,11 @@ class Station03AgeGenreOptimizer:
                     print(f"\n✅ Using default: Option A")
                     choice = "A"
                     break
+            
+            # Validate chosen_index is within bounds
+            if chosen_index >= len(genre_options):
+                logger.warning(f"chosen_index {chosen_index} out of bounds for {len(genre_options)} options, using first option")
+                chosen_index = 0
             
             chosen_blend = genre_options[chosen_index]
             

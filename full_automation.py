@@ -82,6 +82,7 @@ class FullAutomationRunner:
         self.retry_attempts = 3
         self.checkpoint_enabled = True
         self.redis = None
+        self.current_session_id = None  # Track current session for resume
         
     def set_progress_callback(self, callback):
         """Set callback function for progress updates"""
@@ -114,7 +115,8 @@ class FullAutomationRunner:
         
         # Initialize state
         state = AudiobookProductionState(story_concept)
-        
+        self.current_session_id = state.session_id  # Track for interruption handling
+
         try:
             # Station 1: Seed Processing & Scale Evaluation
             state = await self._run_station_1(state)
@@ -493,7 +495,12 @@ class FullAutomationRunner:
             self.emit_progress("Station 5", 60, "Creating season structure...")
             self.emit_progress("Station 5", 80, "Mapping rhythm and pacing...")
             
-            # Store Station 5 output
+            # Store Station 5 output with COMPLETE structure for downstream stations
+            from dataclasses import asdict
+
+            # Convert episode_grid to list of dicts
+            episode_grid_list = [asdict(ep) for ep in result.episode_grid]
+
             state.station_outputs["station_5"] = {
                 "working_title": result.working_title,
                 "chosen_style": result.chosen_style,
@@ -504,7 +511,12 @@ class FullAutomationRunner:
                 "breathing_room": result.rhythm_mapping.breathing_room,
                 "narrator_integration": result.narrator_integration,
                 "session_id": result.session_id,
-                "created_timestamp": result.created_timestamp.isoformat()
+                "created_timestamp": result.created_timestamp.isoformat(),
+                # Add complete structures for downstream stations
+                "episode_grid": episode_grid_list,
+                "episodes": episode_grid_list,  # Alias for compatibility
+                "macro_structure": asdict(result.macro_structure),
+                "rhythm_mapping": asdict(result.rhythm_mapping)
             }
             
             # Export to text file
@@ -544,7 +556,10 @@ class FullAutomationRunner:
             
             self.emit_progress("Station 5", 100, f"Station 5 completed! Chosen style: {result.chosen_style}")
             state.current_station = 5
-            
+
+            # Save to Redis for next stations
+            await self._save_station_output_to_redis(state.session_id, "05", state.station_outputs["station_5"])
+
             return state
             
         except Exception as e:
@@ -623,7 +638,10 @@ class FullAutomationRunner:
             
             self.emit_progress("Station 6", 100, f"Station 6 completed! Master Style Guide for {result.working_title}")
             state.current_station = 6
-            
+
+            # Save to Redis for next stations
+            await self._save_station_output_to_redis(state.session_id, "06", state.station_outputs["station_6"])
+
             return state
             
         except Exception as e:
@@ -716,7 +734,10 @@ class FullAutomationRunner:
                     logger.warning(f"   ... and {len(result.critical_issues) - 3} more issues")
             
             state.current_station = 7
-            
+
+            # Save to Redis for next stations
+            await self._save_station_output_to_redis(state.session_id, "07", state.station_outputs["station_7"])
+
             return state
             
         except Exception as e:
@@ -799,7 +820,7 @@ class FullAutomationRunner:
             try:
                 redis_key = f"audiobook:{state.session_id}:station_08"
                 json_data = json.dumps(state.station_outputs["station_8"], default=str)
-                await self.redis.set(redis_key, json_data, expire=3600)
+                await self.redis.set(redis_key, json_data, expire=7200)
                 if self.debug_mode:
                     logger.info(f"✅ Saved Station 8 output to Redis: {redis_key}")
             except Exception as e:
@@ -901,7 +922,7 @@ class FullAutomationRunner:
             try:
                 redis_key = f"audiobook:{state.session_id}:station_09"
                 json_data = json.dumps(state.station_outputs["station_9"], default=str)
-                await self.redis.set(redis_key, json_data, expire=3600)
+                await self.redis.set(redis_key, json_data, expire=7200)
                 if self.debug_mode:
                     logger.info(f"✅ Saved Station 9 output to Redis: {redis_key}")
             except Exception as e:
@@ -972,7 +993,7 @@ class FullAutomationRunner:
                     await self.redis.initialize()
                 redis_key = f"audiobook:{state.session_id}:station_10"
                 json_data = json.dumps(state.station_outputs["station_10"], default=str)
-                await self.redis.set(redis_key, json_data, expire=3600)
+                await self.redis.set(redis_key, json_data, expire=7200)
                 if self.debug_mode:
                     logger.info(f"✅ Saved Station 10 output to Redis: {redis_key}")
             except Exception as e:
@@ -1043,7 +1064,7 @@ class FullAutomationRunner:
                     await self.redis.initialize()
                 redis_key = f"audiobook:{state.session_id}:station_11"
                 json_data = json.dumps(state.station_outputs["station_11"], default=str)
-                await self.redis.set(redis_key, json_data, expire=3600)
+                await self.redis.set(redis_key, json_data, expire=7200)
                 if self.debug_mode:
                     logger.info(f"✅ Saved Station 11 output to Redis: {redis_key}")
             except Exception as e:
@@ -1327,20 +1348,59 @@ class FullAutomationRunner:
             if not self.redis:
                 self.redis = RedisClient()
                 await self.redis.initialize()
-            
+
             # Convert station data to JSON string
             json_data = json.dumps(station_data, default=str)
-            
+
             # Save with the expected key format
             redis_key = f"audiobook:{session_id}:station_{station_number.replace('.', '_')}"
-            
-            await self.redis.set(redis_key, json_data, expire=3600)  # Expire after 1 hour
-            
+
+            await self.redis.set(redis_key, json_data, expire=7200)  # Expire after 2 hours
+
             if self.debug_mode:
                 logger.info(f"✅ Saved station {station_number} output to Redis: {redis_key}")
-                
+
         except Exception as e:
             logger.error(f"❌ Failed to save station {station_number} to Redis: {e}")
+
+    async def _restore_redis_from_checkpoint(self, state: AudiobookProductionState):
+        """Restore all station outputs from checkpoint to Redis"""
+        try:
+            if not self.redis:
+                self.redis = RedisClient()
+                await self.redis.initialize()
+
+            # Map station keys to Redis format
+            station_mapping = {
+                "station_1": "01",
+                "station_2": "02",
+                "station_3": "03",
+                "station_4": "04",
+                "station_4_5": "04_5",
+                "station_5": "05",
+                "station_6": "06",
+                "station_7": "07",
+                "station_8": "08",
+                "station_9": "09",
+                "station_10": "10",
+                "station_11": "11",
+                "station_12": "12",
+                "station_13": "13",
+                "station_14": "14"
+            }
+
+            restored_count = 0
+            for station_key, station_data in state.station_outputs.items():
+                if station_key in station_mapping:
+                    redis_number = station_mapping[station_key]
+                    await self._save_station_output_to_redis(state.session_id, redis_number, station_data)
+                    restored_count += 1
+
+            logger.info(f"✅ Restored {restored_count} station outputs to Redis")
+
+        except Exception as e:
+            logger.error(f"❌ Failed to restore Redis data: {e}")
+            # Non-fatal - stations can still work with checkpoint data
 
     def _convert_enums_to_strings(self, data):
         """Recursively convert enum objects to their string values"""
@@ -1352,6 +1412,31 @@ class FullAutomationRunner:
             return data.value
         else:
             return data
+
+    @staticmethod
+    def list_available_checkpoints():
+        """List all available checkpoint files"""
+        checkpoint_dir = Path("outputs")
+        if not checkpoint_dir.exists():
+            return []
+
+        checkpoints = []
+        for checkpoint_file in checkpoint_dir.glob("checkpoint_*.json"):
+            try:
+                with open(checkpoint_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                    state = data.get('state', {})
+                    checkpoints.append({
+                        'session_id': state.get('session_id', 'unknown'),
+                        'file': str(checkpoint_file),
+                        'checkpoint_time': data.get('checkpoint_time', 'unknown'),
+                        'current_station': state.get('current_station', 0),
+                        'story_concept': state.get('story_concept', '')[:80] + '...'
+                    })
+            except Exception as e:
+                logger.warning(f"Failed to read checkpoint {checkpoint_file}: {e}")
+
+        return sorted(checkpoints, key=lambda x: x['checkpoint_time'], reverse=True)
 
     async def load_checkpoint(self, session_id: str) -> Optional[AudiobookProductionState]:
         """Load automation checkpoint for recovery"""
@@ -1385,11 +1470,11 @@ class FullAutomationRunner:
     
     async def resume_automation(self, session_id: str) -> Dict[str, Any]:
         """Resume automation from checkpoint"""
-        
+
         print(f"🔄 RESUMING AUTOMATION FROM CHECKPOINT")
         print(f"🆔 Session ID: {session_id}")
         print("=" * 50)
-        
+
         # Load checkpoint
         state = await self.load_checkpoint(session_id)
         if not state:
@@ -1397,9 +1482,15 @@ class FullAutomationRunner:
                 "success": False,
                 "error": f"No checkpoint found for session {session_id}"
             }
-        
+
         print(f"✅ Checkpoint loaded - resuming from Station {state.current_station + 1}")
-        
+        self.current_session_id = state.session_id  # Track for interruption handling
+
+        # Restore Redis data from checkpoint
+        print(f"🔄 Restoring station outputs to Redis...")
+        await self._restore_redis_from_checkpoint(state)
+        print(f"✅ Redis data restored for {len(state.station_outputs)} stations")
+
         try:
             # Resume from where we left off
             if state.current_station < 1:
@@ -1441,7 +1532,27 @@ class FullAutomationRunner:
             if state.current_station < 9:
                 state = await self._run_station_9(state)
                 await self._save_checkpoint(state)
-            
+
+            if state.current_station < 10:
+                state = await self._run_station_10(state)
+                await self._save_checkpoint(state)
+
+            if state.current_station < 11:
+                state = await self._run_station_11(state)
+                await self._save_checkpoint(state)
+
+            if state.current_station < 12:
+                state = await self._run_station_12(state)
+                await self._save_checkpoint(state)
+
+            if state.current_station < 13:
+                state = await self._run_station_13(state)
+                await self._save_checkpoint(state)
+
+            if state.current_station < 14:
+                state = await self._run_station_14(state)
+                await self._save_checkpoint(state)
+
             # Generate final summary
             await self._generate_final_summary(state)
             
@@ -1499,45 +1610,120 @@ class FullAutomationRunner:
 
 async def main():
     """Main entry point for full automation"""
-    
+
+    import argparse
+
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(description='Full Audiobook Production Automation')
+    parser.add_argument('--resume', type=str, help='Resume from checkpoint using session ID')
+    parser.add_argument('--list-checkpoints', action='store_true', help='List all available checkpoints')
+    parser.add_argument('--auto-approve', action='store_true', help='Auto-approve all decisions')
+    parser.add_argument('--debug', action='store_true', help='Enable debug mode')
+    args = parser.parse_args()
+
+    # List checkpoints if requested
+    if args.list_checkpoints:
+        print("📋 AVAILABLE CHECKPOINTS")
+        print("=" * 80)
+        checkpoints = FullAutomationRunner.list_available_checkpoints()
+        if not checkpoints:
+            print("❌ No checkpoints found")
+            print("💡 Run the automation first to create checkpoints")
+        else:
+            for i, cp in enumerate(checkpoints, 1):
+                print(f"\n{i}. Session: {cp['session_id']}")
+                print(f"   ⏰ Saved: {cp['checkpoint_time']}")
+                print(f"   📊 Progress: Station {cp['current_station']}")
+                print(f"   📝 Story: {cp['story_concept']}")
+                print(f"   📂 File: {cp['file']}")
+            print(f"\n💡 Resume using: python full_automation.py --resume SESSION_ID")
+        sys.exit(0)
+
     print("🎬 FULL AUDIOBOOK PRODUCTION AUTOMATION")
     print("=" * 60)
-    print("🤖 Complete Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6 → 7 → 8 → 9")
+    print("🤖 Complete Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6 → 7 → 8 → 9 → 10 → 11 → 12 → 13 → 14")
     print()
-    
-    # Get story concept
-    story_concept = None
-    while not story_concept or len(story_concept.strip()) < 10:
-        story_concept = input("📝 Enter your story concept (minimum 10 characters): ").strip()
-        if len(story_concept) < 10:
-            print("❌ Story concept too short. Please provide more detail.")
-    
-    # Configuration options
-    print("\n⚙️  AUTOMATION CONFIGURATION:")
-    auto_approve = input("🤖 Auto-approve all decisions? (Y/n): ").lower().strip() != 'n'
-    debug_mode = input("🐛 Enable debug mode? (y/N): ").lower().strip() == 'y'
-    
-    # Initialize and run automation
-    runner = FullAutomationRunner(auto_approve=auto_approve, debug_mode=debug_mode)
-    
-    try:
-        results = await runner.run_full_automation(story_concept)
-        
-        if results["success"]:
-            print(f"\n✅ SUCCESS! Session ID: {results['session_id']}")
-            print(f"📁 Generated files: {len(results['files'])}")
-            for file in results['files']:
-                print(f"   📄 {file}")
-        else:
-            print(f"\n❌ FAILED after {results['completed_stations']} stations")
-            print(f"💥 Error: {results['error']}")
-            
-    except KeyboardInterrupt:
-        print("\n\n👋 Automation stopped by user.")
-        sys.exit(0)
-    except Exception as e:
-        print(f"\n💥 Fatal error: {str(e)}")
-        sys.exit(1)
+
+    # Initialize runner
+    auto_approve = args.auto_approve
+    debug_mode = args.debug
+
+    # Check for resume mode
+    if args.resume:
+        print(f"🔄 RESUME MODE")
+        print(f"🆔 Session ID: {args.resume}")
+        print("=" * 60)
+
+        # Interactive config if not provided via CLI
+        if not args.auto_approve:
+            auto_approve = input("🤖 Auto-approve all decisions? (Y/n): ").lower().strip() != 'n'
+        if not args.debug:
+            debug_mode = input("🐛 Enable debug mode? (y/N): ").lower().strip() == 'y'
+
+        runner = FullAutomationRunner(auto_approve=auto_approve, debug_mode=debug_mode)
+
+        try:
+            results = await runner.resume_automation(args.resume)
+
+            if results["success"]:
+                print(f"\n✅ SUCCESS! Session ID: {results['session_id']}")
+                print(f"📁 Generated files: {len(results.get('files', []))}")
+                for file in results.get('files', []):
+                    print(f"   📄 {file}")
+            else:
+                print(f"\n❌ RESUME FAILED after {results.get('completed_stations', 0)} stations")
+                print(f"💥 Error: {results.get('error', 'Unknown error')}")
+
+        except KeyboardInterrupt:
+            print("\n\n👋 Resume stopped by user.")
+            sys.exit(0)
+        except Exception as e:
+            print(f"\n💥 Fatal error: {str(e)}")
+            import traceback
+            traceback.print_exc()
+            sys.exit(1)
+    else:
+        # NEW AUTOMATION RUN
+        # Get story concept
+        story_concept = None
+        while not story_concept or len(story_concept.strip()) < 10:
+            story_concept = input("📝 Enter your story concept (minimum 10 characters): ").strip()
+            if len(story_concept) < 10:
+                print("❌ Story concept too short. Please provide more detail.")
+
+        # Configuration options (if not provided via CLI)
+        print("\n⚙️  AUTOMATION CONFIGURATION:")
+        if not args.auto_approve:
+            auto_approve = input("🤖 Auto-approve all decisions? (Y/n): ").lower().strip() != 'n'
+        if not args.debug:
+            debug_mode = input("🐛 Enable debug mode? (y/N): ").lower().strip() == 'y'
+
+        # Initialize and run automation
+        runner = FullAutomationRunner(auto_approve=auto_approve, debug_mode=debug_mode)
+
+        try:
+            results = await runner.run_full_automation(story_concept)
+
+            if results["success"]:
+                print(f"\n✅ SUCCESS! Session ID: {results['session_id']}")
+                print(f"📁 Generated files: {len(results['files'])}")
+                for file in results['files']:
+                    print(f"   📄 {file}")
+            else:
+                print(f"\n❌ FAILED after {results['completed_stations']} stations")
+                print(f"💥 Error: {results['error']}")
+
+        except KeyboardInterrupt:
+            session_id = getattr(runner, 'current_session_id', 'SESSION_ID')
+            print("\n\n👋 Automation stopped by user.")
+            print(f"💾 Progress saved to checkpoint")
+            print(f"\n💡 TIP: Resume using: python full_automation.py --resume {session_id}")
+            sys.exit(0)
+        except Exception as e:
+            print(f"\n💥 Fatal error: {str(e)}")
+            import traceback
+            traceback.print_exc()
+            sys.exit(1)
 
 
 if __name__ == "__main__":

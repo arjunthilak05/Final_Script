@@ -439,11 +439,9 @@ INITIAL EXPANSION FROM STATION 1:
                 prompt = self.section_prompts[section_name].format(context=context)
                 
                 # Generate section with AI
-                response = await self.openrouter.generate(
-                    prompt=prompt,
-                    model="grok-4",
-                    max_tokens=2000,
-                    temperature=0.4
+                response = await self.openrouter.process_message(
+                    prompt,
+                    model_name="grok-4"
                 )
                 
                 sections[section_name] = response.strip()
@@ -463,11 +461,9 @@ INITIAL EXPANSION FROM STATION 1:
             
             integration_prompt = self.section_prompts["integration"].format(all_sections=all_sections_text)
             
-            integration_response = await self.openrouter.generate(
-                prompt=integration_prompt,
-                model="grok-4", 
-                max_tokens=1500,
-                temperature=0.3
+            integration_response = await self.openrouter.process_message(
+                integration_prompt,
+                model_name="grok-4"
             )
             
             logger.info("Integration analysis completed")

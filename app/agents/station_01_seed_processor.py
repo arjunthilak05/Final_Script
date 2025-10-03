@@ -180,11 +180,9 @@ Be specific, detailed, and tailor every element to the provided seed concept.
             formatted_prompt = self.prompt_template.format(seed_input=seed_input)
             
             # Get LLM response - using optimal settings for structured output
-            response = await self.openrouter.generate(
-                prompt=formatted_prompt,
-                model="grok-4",  # Grok-4 Fast model
-                max_tokens=3000,  # Increased for detailed response
-                temperature=0.4  # Balanced temperature for creativity and consistency
+            response = await self.openrouter.process_message(
+                formatted_prompt,
+                model_name="grok-4"
             )
             
             # Parse the response into structured data

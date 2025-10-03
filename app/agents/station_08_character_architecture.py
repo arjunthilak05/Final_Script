@@ -292,10 +292,9 @@ class Station08CharacterArchitecture:
             protagonist_prompt = self._build_protagonist_prompt(dependencies, i + 1, protagonist_count)
             
             try:
-                response = await self.openrouter_agent.generate_response(
+                response = await self.openrouter_agent.process_message(
                     protagonist_prompt,
-                    model="anthropic/claude-3-sonnet",
-                    max_tokens=2000
+                    model_name="grok-4"
                 )
                 
                 protagonist = await self._parse_protagonist_response(response, dependencies)
@@ -399,6 +398,8 @@ class Station08CharacterArchitecture:
             # Extract basic info
             name_match = re.search(r'Full name[:\s]*([^\n]+)', response, re.IGNORECASE)
             full_name = name_match.group(1).strip() if name_match else "Generated Character"
+            # Clean markdown artifacts
+            full_name = full_name.replace('**', '').replace('*', '').strip().strip(':')
             
             age_match = re.search(r'Age[:\s]*(\d+)', response, re.IGNORECASE)
             age = age_match.group(1) if age_match else "30"
@@ -545,10 +546,9 @@ class Station08CharacterArchitecture:
             supporting_prompt = self._build_supporting_prompt(dependencies, tier1_characters, i + 1)
             
             try:
-                response = await self.openrouter_agent.generate_response(
+                response = await self.openrouter_agent.process_message(
                     supporting_prompt,
-                    model="anthropic/claude-3-sonnet",
-                    max_tokens=1500
+                    model_name="grok-4",
                 )
                 
                 supporting_char = await self._parse_supporting_response(response, dependencies)
@@ -560,8 +560,23 @@ class Station08CharacterArchitecture:
             except Exception as e:
                 logger.error(f"Failed to generate supporting character {i + 1}: {e}")
                 supporting_characters.append(await self._create_fallback_supporting(dependencies, i + 1))
-        
-        return supporting_characters
+
+        # Deduplicate characters by name and clean markdown artifacts
+        seen_names = set()
+        cleaned_characters = []
+        for char in supporting_characters:
+            # Clean markdown from name
+            clean_name = char.full_name.replace('**', '').replace('*', '').strip().strip(':')
+
+            if clean_name not in seen_names:
+                seen_names.add(clean_name)
+                # Update character with cleaned name
+                char.full_name = clean_name
+                cleaned_characters.append(char)
+            else:
+                logger.warning(f"Duplicate character removed: {clean_name}")
+
+        return cleaned_characters
 
     def _build_supporting_prompt(self, dependencies: Dict[str, Any], protagonists: List[Tier1Character], char_num: int) -> str:
         """Build prompt for supporting character generation"""
@@ -627,6 +642,8 @@ class Station08CharacterArchitecture:
         try:
             name_match = re.search(r'Full name[:\s]*([^\n]+)', response, re.IGNORECASE)
             full_name = name_match.group(1).strip() if name_match else "Supporting Character"
+            # Clean markdown artifacts from name
+            full_name = full_name.replace('**', '').replace('*', '').strip().strip(':')
             
             age_match = re.search(r'Age[:\s]*(\d+)', response, re.IGNORECASE)
             age = age_match.group(1) if age_match else "35"
@@ -709,18 +726,25 @@ class Station08CharacterArchitecture:
 
     async def _generate_tier3_recurring(self, dependencies: Dict[str, Any], tier1_characters: List[Tier1Character]) -> List[Tier3Character]:
         """Generate 5-10 recurring characters"""
-        
-        # Generate 5-8 recurring characters based on project scope
-        recurring_count = 6
+
+        # Generate recurring characters based on episode count
+        # 3-6 eps: 3-4 recurring, 7-12 eps: 5-6 recurring, 13+ eps: 7-8 recurring
+        total_episodes = dependencies.get('season_architecture', {}).get('total_episodes', 10)
+        if total_episodes <= 6:
+            recurring_count = 4
+        elif total_episodes <= 12:
+            recurring_count = 6
+        else:
+            recurring_count = 8
+
         recurring_characters = []
         
         recurring_prompt = self._build_recurring_prompt(dependencies, tier1_characters)
         
         try:
-            response = await self.openrouter_agent.generate_response(
+            response = await self.openrouter_agent.process_message(
                 recurring_prompt,
-                model="anthropic/claude-3-sonnet",
-                max_tokens=2000
+                model_name="grok-4"
             )
             
             recurring_characters = await self._parse_recurring_response(response, recurring_count)
@@ -880,10 +904,9 @@ class Station08CharacterArchitecture:
         """
         
         try:
-            response = await self.openrouter_agent.generate_response(
+            response = await self.openrouter_agent.process_message(
                 relationship_prompt,
-                model="anthropic/claude-3-sonnet",
-                max_tokens=1500
+                model_name="grok-4",
             )
             
             # Parse relationships from response
@@ -982,10 +1005,9 @@ class Station08CharacterArchitecture:
         """
         
         try:
-            response = await self.openrouter_agent.generate_response(
+            response = await self.openrouter_agent.process_message(
                 casting_prompt,
-                model="anthropic/claude-3-sonnet",
-                max_tokens=1000
+                model_name="grok-4",
             )
             
             return response.strip()

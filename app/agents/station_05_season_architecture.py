@@ -83,13 +83,25 @@ class StyleRecommendation:
 
 @dataclass
 class MacroStructure:
-    """Season-level 4-act structure mapping"""
+    """Season-level act structure mapping (supports 2/3/4-act structures)"""
     act_1_episodes: List[int]
-    act_2a_episodes: List[int]
-    act_2b_episodes: List[int]
-    act_3_episodes: List[int]
-    structure_explanation: str
-    total_episodes: int
+    act_2a_episodes: List[int] = None
+    act_2b_episodes: List[int] = None
+    act_3_episodes: List[int] = None
+    act_2_episodes: List[int] = None  # For 2-act and 3-act structures
+    structure_explanation: str = ""
+    total_episodes: int = 0
+
+    def __post_init__(self):
+        # Convert None to empty lists for consistency
+        if self.act_2a_episodes is None:
+            self.act_2a_episodes = []
+        if self.act_2b_episodes is None:
+            self.act_2b_episodes = []
+        if self.act_3_episodes is None:
+            self.act_3_episodes = []
+        if self.act_2_episodes is None:
+            self.act_2_episodes = []
 
 @dataclass
 class EpisodeSlot:
@@ -970,26 +982,73 @@ FADE OUT.
         return self._create_comprehensive_season_skeleton(project_inputs, chosen_style)
     
     def _create_comprehensive_season_skeleton(self, project_inputs: Dict[str, Any], chosen_style) -> Dict[str, Any]:
-        """Create comprehensive season skeleton with all 10 episodes detailed"""
+        """Create comprehensive season skeleton with all episodes detailed"""
+
+        # Determine total episodes from project inputs, default to 10
+        episode_count_str = str(project_inputs.get('episode_count', '10'))
+        if '-' in episode_count_str:
+            # For ranges like "3-6", use the maximum value
+            parts = episode_count_str.split('-')
+            total_episodes = int(''.join(filter(str.isdigit, parts[1]))) if len(parts) > 1 else 10
+        else:
+            digits = ''.join(filter(str.isdigit, episode_count_str))
+            total_episodes = int(digits) if digits else 10
+
+        # Create macro structure based on total episodes
+        if total_episodes <= 4:
+            # Simple 2-act structure for very short series
+            act_1 = list(range(1, (total_episodes // 2) + 1))
+            act_2 = list(range(len(act_1) + 1, total_episodes + 1))
+            macro = {
+                "act_1_episodes": act_1,
+                "act_2_episodes": act_2,
+            }
+        elif total_episodes <= 6:
+            # 3-act structure for short series
+            act_size = total_episodes // 3
+            macro = {
+                "act_1_episodes": list(range(1, act_size + 1)),
+                "act_2_episodes": list(range(act_size + 1, act_size * 2 + 1)),
+                "act_3_episodes": list(range(act_size * 2 + 1, total_episodes + 1)),
+            }
+        else:
+            # 4-act structure for standard/long series (8+ episodes)
+            # Act 1: ~20%, Act 2A: ~30%, Act 2B: ~20%, Act 3: ~30%
+            act1_end = max(2, int(total_episodes * 0.2))
+            act2a_end = act1_end + int(total_episodes * 0.3)
+            act2b_end = act2a_end + int(total_episodes * 0.2)
+
+            macro = {
+                "act_1_episodes": list(range(1, act1_end + 1)),
+                "act_2a_episodes": list(range(act1_end + 1, act2a_end + 1)),
+                "act_2b_episodes": list(range(act2a_end + 1, act2b_end + 1)),
+                "act_3_episodes": list(range(act2b_end + 1, total_episodes + 1)),
+            }
+
+        macro["structure_explanation"] = f"The {chosen_style.style_name if chosen_style else 'Character-Driven Drama'} structure maps perfectly to this season flow for '{project_inputs.get('working_title', 'this story')}' with {total_episodes} episodes, allowing for natural character development and emotional progression."
+
         return {
-            "macro_structure": {
-                "act_1_episodes": [1, 2],
-                "act_2a_episodes": [3, 4, 5, 6],
-                "act_2b_episodes": [7, 8],
-                "act_3_episodes": [9, 10],
-                "structure_explanation": f"The {chosen_style.style_name if chosen_style else 'Character-Driven Drama'} structure maps perfectly to a 4-act season flow for '{project_inputs.get('working_title', 'this story')}' because it allows for natural character development and emotional progression. Act 1 (Episodes 1-2) establishes the main characters and central situation. Act 2A (Episodes 3-6) develops relationships and explores the central conflict in depth. Act 2B (Episodes 7-8) escalates the emotional stakes and brings characters toward key revelations. Act 3 (Episodes 9-10) provides resolution and character growth, delivering satisfying closure to the character arcs and emotional journey."
-            },
-            "episode_grid": self._generate_generic_episode_grid(project_inputs, chosen_style)
+            "macro_structure": macro,
+            "episode_grid": self._generate_generic_episode_grid(project_inputs, chosen_style, total_episodes)
         }
     
-    def _generate_generic_episode_grid(self, project_inputs: Dict[str, Any], chosen_style) -> List[Dict[str, Any]]:
+    def _generate_generic_episode_grid(self, project_inputs: Dict[str, Any], chosen_style, total_episodes: int = None) -> List[Dict[str, Any]]:
         """Generate generic episode grid based on project inputs"""
         title = project_inputs.get('working_title', 'this story')
         genre = project_inputs.get('primary_genre', 'Drama')
-        episodes_count = int(project_inputs.get('episode_count', '10').split('-')[0] if '-' in str(project_inputs.get('episode_count', '10')) else project_inputs.get('episode_count', '10'))
-        
+
+        # Use provided total_episodes or parse from project inputs
+        if total_episodes is None:
+            episode_count_str = str(project_inputs.get('episode_count', '10'))
+            if '-' in episode_count_str:
+                parts = episode_count_str.split('-')
+                total_episodes = int(''.join(filter(str.isdigit, parts[1]))) if len(parts) > 1 else 10
+            else:
+                digits = ''.join(filter(str.isdigit, episode_count_str))
+                total_episodes = int(digits) if digits else 10
+
         episodes = []
-        for i in range(1, episodes_count + 1):
+        for i in range(1, total_episodes + 1):
             # Determine act and function based on episode number
             if i <= 2:
                 act = "Act 1"
@@ -1013,7 +1072,7 @@ FADE OUT.
                 "primary_function": function,
                 "energy_level": energy,
                 "subplot_focus": f"Episode {i} develops the {genre.lower()} elements of '{title}', focusing on character relationships and story progression appropriate for this part of the narrative arc.",
-                "cliffhanger_type": "Character Development" if i == episodes_count else "Story Progression",
+                "cliffhanger_type": "Character Development" if i == total_episodes else "Story Progression",
                 "act_equivalent": act,
                 "special_notes": f"Episode {i} serves the {function.lower()} function in the {act} structure, maintaining audience engagement through character development and narrative progression suitable for the {genre} genre."
             })
@@ -1026,27 +1085,71 @@ FADE OUT.
         Design sophisticated pacing across the complete season
         """
         logger.info("Designing sophisticated rhythm and pacing mapping")
-        
+
+        # Get total episodes from macro structure
+        macro_data = season_structure.get("macro_structure", {})
+        all_episodes = []
+        for key in macro_data:
+            if key.endswith('_episodes') and isinstance(macro_data[key], list):
+                all_episodes.extend(macro_data[key])
+        total_eps = max(all_episodes) if all_episodes else 10
+
+        # Calculate dynamic tension peaks and breathing room based on total episodes
+        # Tension peaks at: ~20%, ~50%, ~70%, ~90% of series
+        tension_peaks = [
+            max(1, int(total_eps * 0.2)),
+            max(2, int(total_eps * 0.5)),
+            max(3, int(total_eps * 0.7)),
+            max(total_eps - 1, int(total_eps * 0.9))
+        ]
+
+        # Breathing room at: start, ~30%, ~60%, end
+        breathing_room = [
+            1,
+            max(2, int(total_eps * 0.3)),
+            max(3, int(total_eps * 0.6)),
+            total_eps
+        ]
+
+        # Format breaks at: ~40% and ~80% of series
+        format_breaks = [
+            [max(2, int(total_eps * 0.4)), f"Character development special - focused episode exploring key relationships in '{project_inputs.get('working_title', 'the story')}'"],
+            [max(3, int(total_eps * 0.8)), f"Revelation special - major story developments and character revelations for the {project_inputs.get('primary_genre', 'drama')} storyline"]
+        ]
+
+        # Revelation cascade points at key story moments
+        revelation_points = [
+            [tension_peaks[0], f"Major character or plot development that advances '{project_inputs.get('working_title', 'the story')}' narrative"],
+            [tension_peaks[1], f"Significant relationship or conflict development appropriate for the {project_inputs.get('primary_genre', 'drama')} genre"],
+            [tension_peaks[2], f"Escalating stakes and character development as the story reaches its turning point"],
+            [max(total_eps - 2, int(total_eps * 0.8)), f"Major revelations and plot developments that set up the final act"],
+            [tension_peaks[3], f"Climactic revelations and character resolutions for '{project_inputs.get('working_title', 'the story')}'"]
+        ]
+
+        # Generate dynamic energy curve based on total episodes
+        energy_curve = []
+        for i in range(1, total_eps + 1):
+            # Start moderate, peak in middle and near end, end calm
+            if i == 1:
+                energy_curve.append(7)
+            elif i in tension_peaks:
+                energy_curve.append(9 if i < total_eps - 1 else 10)
+            elif i in breathing_room:
+                energy_curve.append(6)
+            else:
+                energy_curve.append(7 + (i % 3))
+
         # Create comprehensive rhythm mapping
         return RhythmMapping(
-            tension_peaks=[2, 5, 7, 9],
-            breathing_room=[1, 3, 6, 10],
-            format_breaks=[
-                [4, f"Character development special - focused episode exploring key relationships in '{project_inputs.get('working_title', 'the story')}'"],
-                [8, f"Revelation special - major story developments and character revelations for the {project_inputs.get('primary_genre', 'drama')} storyline"]
-            ],
-            revelation_cascade_points=[
-                [2, f"Major character or plot development that advances '{project_inputs.get('working_title', 'the story')}' narrative"],
-                [5, f"Significant relationship or conflict development appropriate for the {project_inputs.get('primary_genre', 'drama')} genre"],
-                [7, f"Escalating stakes and character development as the story reaches its turning point"],
-                [8, f"Major revelations and plot developments that set up the final act"],
-                [9, f"Climactic revelations and character resolutions for '{project_inputs.get('working_title', 'the story')}'"]
-            ],
-            energy_curve=[7, 8, 6, 7, 8, 7, 9, 8, 10, 6],
+            tension_peaks=tension_peaks,
+            breathing_room=breathing_room,
+            format_breaks=format_breaks,
+            revelation_cascade_points=revelation_points,
+            energy_curve=energy_curve,
             pacing_strategy={
-                "overall_approach": f"The pacing strategy for '{project_inputs.get('working_title', 'this story')}' builds through character development and emotional progression appropriate for the {project_inputs.get('primary_genre', 'drama')} genre. The rhythm balances character moments with story progression, maintaining audience engagement through the {project_inputs.get('episode_count', '10')}-episode structure.",
-                "climax_episodes": "Episodes 2, 5, 7, and 9 serve as major tension peaks with character development, relationship progression, emotional escalation, and final resolution respectively",
-                "recovery_episodes": "Episodes 1, 3, 6, and 10 provide breathing room through character exploration, relationship building, and emotional processing while maintaining story momentum",
+                "overall_approach": f"The pacing strategy for '{project_inputs.get('working_title', 'this story')}' builds through character development and emotional progression appropriate for the {project_inputs.get('primary_genre', 'drama')} genre. The rhythm balances character moments with story progression, maintaining audience engagement through the {total_eps}-episode structure.",
+                "climax_episodes": f"Episodes {', '.join(map(str, tension_peaks))} serve as major tension peaks with character development, relationship progression, emotional escalation, and final resolution respectively",
+                "recovery_episodes": f"Episodes {', '.join(map(str, breathing_room))} provide breathing room through character exploration, relationship building, and emotional processing while maintaining story momentum",
                 "momentum_maintenance": "Episodes maintain engagement through character development, relationship dynamics, and steady story progression without overwhelming the audience"
             },
             narrator_rhythm_integration=f"The {project_inputs.get('narrator_strategy', 'Limited Omniscient')} narrator enhances pacing by providing smooth transitions between story beats, offering character insights during development moments, and building emotional connection during key scenes throughout the series"
@@ -1058,13 +1161,21 @@ FADE OUT.
         
         # Create macro structure
         macro_data = season_structure.get("macro_structure", {})
+
+        # Calculate total_episodes from episode_grid (source of truth)
+        episode_grid_data = season_structure.get("episode_grid", [])
+        total_eps = len(episode_grid_data) if episode_grid_data else 10
+
+        # Use macro_data acts if they exist and are valid, otherwise empty lists
+        # The acts should have been created correctly in _create_comprehensive_season_skeleton
         macro_structure = MacroStructure(
-            act_1_episodes=macro_data.get("act_1_episodes", [1, 2]),
-            act_2a_episodes=macro_data.get("act_2a_episodes", [3, 4, 5, 6]),
-            act_2b_episodes=macro_data.get("act_2b_episodes", [7, 8]),
-            act_3_episodes=macro_data.get("act_3_episodes", [9, 10]),
+            act_1_episodes=macro_data.get("act_1_episodes", []),
+            act_2a_episodes=macro_data.get("act_2a_episodes", []),
+            act_2b_episodes=macro_data.get("act_2b_episodes", []),
+            act_3_episodes=macro_data.get("act_3_episodes", []),
+            act_2_episodes=macro_data.get("act_2_episodes", []),  # For 3-act structure
             structure_explanation=macro_data.get("structure_explanation", ""),
-            total_episodes=10
+            total_episodes=total_eps
         )
         
         # Create episode grid
@@ -1302,6 +1413,7 @@ FADE OUT.
             "working_title": season_document.working_title,
             "session_id": season_document.session_id,
             "created_timestamp": season_document.created_timestamp.isoformat(),
+            "total_episodes": season_document.macro_structure.total_episodes,  # Add for easy access
             "chosen_style": season_document.chosen_style,
             "style_recommendations": [
                 {
@@ -1316,9 +1428,10 @@ FADE OUT.
             ],
             "macro_structure": {
                 "act_1_episodes": season_document.macro_structure.act_1_episodes,
-                "act_2a_episodes": season_document.macro_structure.act_2a_episodes,
-                "act_2b_episodes": season_document.macro_structure.act_2b_episodes,
-                "act_3_episodes": season_document.macro_structure.act_3_episodes,
+                "act_2_episodes": season_document.macro_structure.act_2_episodes or [],  # For 2/3-act structures
+                "act_2a_episodes": season_document.macro_structure.act_2a_episodes or [],
+                "act_2b_episodes": season_document.macro_structure.act_2b_episodes or [],
+                "act_3_episodes": season_document.macro_structure.act_3_episodes or [],
                 "total_episodes": season_document.macro_structure.total_episodes
             },
             "episode_grid": episode_grid_json,

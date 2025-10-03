@@ -110,11 +110,23 @@ class RuntimePlanningGrid:
 
 class Station11RuntimePlanning:
     """Station 11: Runtime Planning Builder"""
-    
+
     def __init__(self):
         self.openrouter_agent = OpenRouterAgent()
         self.redis_client = RedisClient()
         self.settings = Settings()
+        self.debug_mode = False
+
+    def enable_debug_mode(self):
+        """Enable debug mode for detailed logging"""
+        self.debug_mode = True
+        logger.setLevel(logging.DEBUG)
+        logger.debug("🐛 Debug mode enabled for Station 11")
+
+    async def initialize(self):
+        """Initialize the station (compatibility with other stations)"""
+        await self.redis_client.initialize()
+        logger.info("✅ Station 11 Runtime Planning initialized")
         
     async def process(self, session_id: str) -> Dict[str, Any]:
         """Main processing function for Station 11"""
@@ -166,9 +178,12 @@ class Station11RuntimePlanning:
     
     async def _build_runtime_planning_grid(self, dependencies: Dict[str, Any]) -> RuntimePlanningGrid:
         """Build the complete runtime planning strategy"""
-        
+
         # Extract story information
-        total_episodes = dependencies['season_architecture'].get('total_episodes', 10)
+        # Use episode_grid length as source of truth, not total_episodes field which may be wrong
+        episode_grid = dependencies['season_architecture'].get('episodes',
+                       dependencies['season_architecture'].get('episode_grid', []))
+        total_episodes = len(episode_grid) if episode_grid else dependencies['season_architecture'].get('total_episodes', 10)
         chosen_style = dependencies['season_architecture'].get('chosen_style', 'Standard')
         information_taxonomy = dependencies['reveal_strategy'].get('information_taxonomy', [])
         
@@ -260,13 +275,13 @@ class Station11RuntimePlanning:
         try:
             episodes_data = json.loads(response)
             episode_breakdowns = []
-            
-            for ep_data in episodes_data:
+
+            for idx, ep_data in enumerate(episodes_data, start=1):
                 # Ensure ep_data is a dictionary
                 if not isinstance(ep_data, dict):
                     logger.warning(f"Episode data is not a dict: {type(ep_data)} = {ep_data}")
                     continue
-                    
+
                 # Map episode type string to enum
                 type_map = {
                     "Standard": EpisodeType.STANDARD,
@@ -276,22 +291,22 @@ class Station11RuntimePlanning:
                     "Premiere": EpisodeType.PREMIERE,
                     "Finale": EpisodeType.FINALE
                 }
-                
+
                 episode_type = type_map.get(ep_data.get('episode_type', 'Standard'), EpisodeType.STANDARD)
-                
+
                 # Build segments
                 segments = []
                 segments_data = ep_data.get('segments', [])
                 if not isinstance(segments_data, list):
                     logger.warning(f"Segments data is not a list: {type(segments_data)} = {segments_data}")
                     segments_data = []
-                    
+
                 for seg_data in segments_data:
                     # Ensure seg_data is a dictionary
                     if not isinstance(seg_data, dict):
                         logger.warning(f"Segment data is not a dict: {type(seg_data)} = {seg_data}")
                         continue
-                        
+
                     # Map segment type string to enum
                     seg_type_map = {
                         "Teaser/Cold Open": SegmentType.TEASER_COLD_OPEN,
@@ -300,9 +315,9 @@ class Station11RuntimePlanning:
                         "Act 3": SegmentType.ACT_3,
                         "Tag/Credits": SegmentType.TAG_CREDITS
                     }
-                    
+
                     segment_type = seg_type_map.get(seg_data.get('segment_type', 'Act 1'), SegmentType.ACT_1)
-                    
+
                     segments.append(EpisodeSegment(
                         segment_type=segment_type,
                         duration_minutes=seg_data.get('duration_minutes', 15.0),
@@ -310,9 +325,15 @@ class Station11RuntimePlanning:
                         purpose=seg_data.get('purpose', ''),
                         pacing_notes=seg_data.get('pacing_notes', '')
                     ))
-                
+
+                # Use enumerated index if episode_number is missing or incorrect
+                episode_num = ep_data.get('episode_number', idx)
+                if episode_num == 1 and idx > 1:
+                    # LLM likely failed to provide correct episode numbers, use index
+                    episode_num = idx
+
                 episode_breakdowns.append(EpisodeBreakdown(
-                    episode_number=ep_data.get('episode_number', 1),
+                    episode_number=episode_num,
                     episode_type=episode_type,
                     total_runtime_minutes=ep_data.get('total_runtime_minutes', 50.0),
                     segments=segments,
@@ -320,7 +341,7 @@ class Station11RuntimePlanning:
                     pacing_style=ep_data.get('pacing_style', ''),
                     special_considerations=ep_data.get('special_considerations', [])
                 ))
-            
+
             return episode_breakdowns
             
         except json.JSONDecodeError:
@@ -528,13 +549,28 @@ class Station11RuntimePlanning:
         json_path = output_dir / f"station11_runtime_planning_{session_id}.json"
         with open(json_path, 'w', encoding='utf-8') as f:
             json.dump(json_output, f, indent=2, ensure_ascii=False)
-        
+
+        # Generate PDF output
+        pdf_path = output_dir / f"station11_runtime_planning_{session_id}.pdf"
+        try:
+            pdf_output = self._format_pdf_output(runtime_grid)
+            with open(pdf_path, 'wb') as f:
+                f.write(pdf_output)
+            has_pdf = True
+        except Exception as e:
+            logger.warning(f"PDF generation failed: {e}")
+            has_pdf = False
+
+        outputs = {
+            "txt": str(txt_path),
+            "json": str(json_path)
+        }
+        if has_pdf:
+            outputs["pdf"] = str(pdf_path)
+
         return {
             "status": "success",
-            "outputs": {
-                "txt": str(txt_path),
-                "json": str(json_path)
-            },
+            "outputs": outputs,
             "summary": {
                 "total_episodes": len(runtime_grid.episode_breakdowns),
                 "total_runtime_hours": runtime_grid.series_totals.total_runtime_hours,
@@ -589,19 +625,19 @@ class Station11RuntimePlanning:
         output.append("")
         output.append("Fast Episodes:")
         for key, value in runtime_grid.pacing_variations.fast_episodes.items():
-            output.append(f"  {key}: {value}")
+            output.append(f"  {key}: {str(value)}")
         output.append("")
         output.append("Slow Episodes:")
         for key, value in runtime_grid.pacing_variations.slow_episodes.items():
-            output.append(f"  {key}: {value}")
+            output.append(f"  {key}: {str(value)}")
         output.append("")
         output.append("Standard Episodes:")
         for key, value in runtime_grid.pacing_variations.standard_episodes.items():
-            output.append(f"  {key}: {value}")
+            output.append(f"  {key}: {str(value)}")
         output.append("")
         output.append("Special Format Episodes:")
         for key, value in runtime_grid.pacing_variations.special_format_episodes.items():
-            output.append(f"  {key}: {value}")
+            output.append(f"  {key}: {str(value)}")
         output.append("")
         output.append(f"Pacing Rhythm: {runtime_grid.pacing_variations.pacing_rhythm}")
         output.append(f"Audience Engagement Strategy: {runtime_grid.pacing_variations.audience_engagement_strategy}")
@@ -623,21 +659,21 @@ class Station11RuntimePlanning:
         output.append("=== PRODUCTION GUIDELINES ===")
         output.append("")
         for key, value in runtime_grid.production_guidelines.items():
-            output.append(f"{key.replace('_', ' ').title()}: {value}")
+            output.append(f"{key.replace('_', ' ').title()}: {str(value)}")
             output.append("")
-        
+
         # Section 6: Audio-Specific Considerations
         output.append("=== AUDIO-SPECIFIC CONSIDERATIONS ===")
         output.append("")
         for key, value in runtime_grid.audio_specific_considerations.items():
-            output.append(f"{key.replace('_', ' ').title()}: {value}")
+            output.append(f"{key.replace('_', ' ').title()}: {str(value)}")
             output.append("")
-        
+
         # Section 7: Quality Control Metrics
         output.append("=== QUALITY CONTROL METRICS ===")
         output.append("")
         for key, value in runtime_grid.quality_control_metrics.items():
-            output.append(f"{key.replace('_', ' ').title()}: {value}")
+            output.append(f"{key.replace('_', ' ').title()}: {str(value)}")
             output.append("")
         
         output.append("=" * 80)
@@ -786,6 +822,75 @@ class Station11RuntimePlanning:
             pacing_rhythm="Alternating fast and slow episodes for engagement",
             audience_engagement_strategy="Vary pacing to maintain interest"
         )
+
+    def _format_pdf_output(self, runtime_grid: RuntimePlanningGrid) -> bytes:
+        """Format runtime planning grid as PDF"""
+        try:
+            from fpdf import FPDF
+
+            pdf = FPDF()
+            pdf.add_page()
+            pdf.set_font("Arial", "B", 16)
+
+            # Title
+            pdf.cell(0, 10, "RUNTIME PLANNING GRID", ln=True, align="C")
+            pdf.set_font("Arial", "", 10)
+            pdf.cell(0, 8, f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", ln=True, align="C")
+            pdf.ln(5)
+
+            # Series Totals
+            pdf.set_font("Arial", "B", 12)
+            pdf.cell(0, 8, "SERIES TOTALS", ln=True)
+            pdf.set_font("Arial", "", 10)
+            pdf.cell(0, 6, f"Total Episodes: {runtime_grid.series_totals.total_episodes}", ln=True)
+            pdf.cell(0, 6, f"Total Runtime: {runtime_grid.series_totals.total_runtime_hours:.1f} hours", ln=True)
+            pdf.cell(0, 6, f"Total Word Count: {runtime_grid.series_totals.total_word_count:,} words", ln=True)
+            pdf.cell(0, 6, f"Average Pace: {runtime_grid.series_totals.average_pace_words_per_minute:.1f} words/min", ln=True)
+            pdf.ln(5)
+
+            # Episode Breakdowns
+            pdf.set_font("Arial", "B", 12)
+            pdf.cell(0, 8, "EPISODE BREAKDOWNS", ln=True)
+            pdf.set_font("Arial", "", 9)
+
+            for episode in runtime_grid.episode_breakdowns:
+                pdf.set_font("Arial", "B", 10)
+                pdf.cell(0, 6, f"Episode {episode.episode_number}: {episode.episode_type.value}", ln=True)
+                pdf.set_font("Arial", "", 9)
+                pdf.cell(0, 5, f"  Runtime: {episode.total_runtime_minutes:.1f} min | Words: {episode.total_word_count:,}", ln=True)
+
+                # Truncate pacing style if too long
+                pacing = episode.pacing_style[:120] + "..." if len(episode.pacing_style) > 120 else episode.pacing_style
+                pdf.multi_cell(0, 5, f"  Pacing: {pacing}")
+                pdf.ln(2)
+
+            # Word Budgets
+            pdf.add_page()
+            pdf.set_font("Arial", "B", 12)
+            pdf.cell(0, 8, "WORD BUDGETS", ln=True)
+            pdf.set_font("Arial", "", 10)
+            pdf.cell(0, 6, f"Spoken Words/Min: {runtime_grid.word_budgets.spoken_words_per_minute}", ln=True)
+            pdf.cell(0, 6, f"Total Words/Episode: {runtime_grid.word_budgets.total_words_per_episode:,}", ln=True)
+            pdf.cell(0, 6, f"Dialogue Ratio: {runtime_grid.word_budgets.dialogue_ratio:.1%}", ln=True)
+            pdf.cell(0, 6, f"Narration Ratio: {runtime_grid.word_budgets.narration_ratio:.1%}", ln=True)
+            pdf.ln(5)
+
+            # Production Guidelines
+            pdf.set_font("Arial", "B", 12)
+            pdf.cell(0, 8, "PRODUCTION GUIDELINES", ln=True)
+            pdf.set_font("Arial", "", 9)
+            for key, value in runtime_grid.production_guidelines.items():
+                value_str = str(value)[:100] + "..." if len(str(value)) > 100 else str(value)
+                pdf.multi_cell(0, 5, f"{key}: {value_str}")
+                pdf.ln(1)
+
+            return pdf.output(dest='S').encode('latin-1')
+
+        except ImportError:
+            logger.warning("fpdf not installed, generating text-based PDF")
+            # Fallback: return text as bytes
+            txt_output = self._format_txt_output(runtime_grid)
+            return txt_output.encode('utf-8')
 
 # Main execution
 async def main():

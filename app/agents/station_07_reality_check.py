@@ -513,10 +513,9 @@ class Station07RealityCheck:
         """
         
         try:
-            response = await self.openrouter_agent.generate_response(
+            response = await self.openrouter_agent.process_message(
                 prompt, 
-                model="anthropic/claude-3-sonnet",
-                max_tokens=300
+                model_name="grok-4"
             )
             return response.strip()
         except Exception as e:

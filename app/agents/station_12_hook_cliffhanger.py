@@ -92,7 +92,7 @@ class Station12HookCliffhanger:
         dependencies = {}
         
         # Load season_architecture (Station 5)
-        season_raw = await self.redis_client.get(f"audiobook:{self.session_id}:station_5")
+        season_raw = await self.redis_client.get(f"audiobook:{self.session_id}:station_05")
         if season_raw:
             dependencies['season_architecture'] = json.loads(season_raw)
             
@@ -249,11 +249,52 @@ Expected JSON format:
 """
         
         response = await self.openrouter.process_message(prompt, "grok-4")
-        return self._parse_json_response(response, {
+        result = self._parse_json_response(response, {
             "act1_turn": {"story_beat": "TBD", "character_decision": "TBD", "stakes_shift": "TBD", "audio_signature": "TBD", "emotional_shift": "TBD"},
             "act2_turn": {"story_beat": "TBD", "character_decision": "TBD", "stakes_shift": "TBD", "audio_signature": "TBD", "emotional_shift": "TBD"},
             "act3_turn": {"story_beat": "TBD", "character_decision": "TBD", "stakes_shift": "TBD", "audio_signature": "TBD", "emotional_shift": "TBD"}
         })
+
+        # If LLM returned TBD values, generate basic fallback
+        if self._has_tbd_values(result):
+            result = self._generate_fallback_act_turns(episode_num, episode_context)
+
+        return result
+
+    def _has_tbd_values(self, result: Dict) -> bool:
+        """Check if any act turn has TBD values"""
+        for turn_key in ['act1_turn', 'act2_turn', 'act3_turn']:
+            if turn_key in result and isinstance(result[turn_key], dict):
+                for value in result[turn_key].values():
+                    if value == 'TBD' or (isinstance(value, str) and 'TBD' in value):
+                        return True
+        return False
+
+    def _generate_fallback_act_turns(self, episode_num: int, episode_context: Dict) -> Dict[str, Any]:
+        """Generate basic act turns when LLM fails"""
+        return {
+            "act1_turn": {
+                "story_beat": f"Episode {episode_num} introduces the central conflict and establishes character motivations",
+                "character_decision": "Protagonist makes initial choice that sets the episode's events in motion",
+                "stakes_shift": "Personal stakes become clear as the situation develops",
+                "audio_signature": "Shift in music tempo or introduction of tension-building sound motif",
+                "emotional_shift": "From curiosity to concern as challenges emerge"
+            },
+            "act2_turn": {
+                "story_beat": f"Episode {episode_num} midpoint reveals new information or complicates the situation",
+                "character_decision": "Protagonist commits to a course of action despite obstacles",
+                "stakes_shift": "Stakes escalate from personal to broader implications",
+                "audio_signature": "Dramatic music swell or sudden silence for impact",
+                "emotional_shift": "From concern to determination or urgency"
+            },
+            "act3_turn": {
+                "story_beat": f"Episode {episode_num} approaches climax as final confrontation or revelation nears",
+                "character_decision": "Protagonist makes final commitment or discovery",
+                "stakes_shift": "Maximum tension as outcome becomes uncertain",
+                "audio_signature": "Intense soundscape with layered effects building to peak",
+                "emotional_shift": "From urgency to climactic tension"
+            }
+        }
         
     async def generate_cliffhanger(self, episode_num: int, episode_context: Dict, dependencies: Dict, next_episode_hint: str = None) -> Dict[str, Any]:
         """Generate cliffhanger strategy for episode ending"""

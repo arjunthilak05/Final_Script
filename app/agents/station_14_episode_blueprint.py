@@ -71,17 +71,17 @@ class Station14EpisodeBlueprint:
         dependencies = {}
         
         # Station 5: Season Architecture
-        season_raw = await self.redis_client.get(f"audiobook:{self.session_id}:station_5")
+        season_raw = await self.redis_client.get(f"audiobook:{self.session_id}:station_05")
         if season_raw:
             dependencies['season_architecture'] = json.loads(season_raw)
             
         # Station 8: Character Bible
-        character_raw = await self.redis_client.get(f"audiobook:{self.session_id}:station_8")
+        character_raw = await self.redis_client.get(f"audiobook:{self.session_id}:station_08")
         if character_raw:
             dependencies['character_bible'] = json.loads(character_raw)
             
         # Station 9: World Bible
-        world_raw = await self.redis_client.get(f"audiobook:{self.session_id}:station_9")
+        world_raw = await self.redis_client.get(f"audiobook:{self.session_id}:station_09")
         if world_raw:
             dependencies['world_bible'] = json.loads(world_raw)
             
@@ -699,13 +699,21 @@ Expected JSON format:
             for idx, episode in enumerate(episodes):
                 episode_num = idx + 1
                 print(f"📝 Episode {episode_num}/{total_episodes}: Generating blueprint...")
-                
+
+                # Handle case where episode might be an int or dict
+                if isinstance(episode, int):
+                    # Episode is just a number, create basic dict
+                    episode = {'episode_number': episode}
+                elif not isinstance(episode, dict):
+                    # Episode is something else, create default dict
+                    episode = {'episode_number': episode_num}
+
                 episode_blueprint = await self.generate_episode_blueprint(
                     episode_num,
                     episode,
                     dependencies
                 )
-                
+
                 episode_blueprint['episode_number'] = episode_num
                 episode_blueprint['episode_title'] = episode.get('title', f'Episode {episode_num}')
                 

@@ -210,11 +210,22 @@ class Station11RuntimePlanning:
 
         # Extract story information
         # Use episode_grid length as source of truth, not total_episodes field which may be wrong
-        episode_grid = dependencies['season_architecture'].get('episodes',
-                       dependencies['season_architecture'].get('episode_grid', []))
-        total_episodes = len(episode_grid) if episode_grid else dependencies['season_architecture'].get('total_episodes', 10)
-        chosen_style = dependencies['season_architecture'].get('chosen_style', 'Standard')
-        information_taxonomy = dependencies['reveal_strategy'].get('information_taxonomy', [])
+        
+        # Defensive check: ensure season_architecture is a dict
+        season_arch = dependencies.get('season_architecture', {})
+        if not isinstance(season_arch, dict):
+            season_arch = {}
+            
+        episode_grid = season_arch.get('episodes', season_arch.get('episode_grid', []))
+        total_episodes = len(episode_grid) if episode_grid else season_arch.get('total_episodes', 10)
+        chosen_style = season_arch.get('chosen_style', 'Standard')
+        
+        # Defensive check: ensure reveal_strategy is a dict
+        reveal_strat = dependencies.get('reveal_strategy', {})
+        if not isinstance(reveal_strat, dict):
+            reveal_strat = {}
+            
+        information_taxonomy = reveal_strat.get('information_taxonomy', [])
         
         # Build episode breakdowns
         episode_breakdowns = await self._build_episode_breakdowns(

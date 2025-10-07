@@ -111,7 +111,31 @@ async def run_station(station_num: int, session_id: str):
             station = Station07RealityCheck()
             await station.initialize()
             result = await station.process(session_id)
-            print(f"✅ Station 7 completed: Reality Check - {result.pipeline_status}")
+            
+            # Check pipeline status and handle accordingly
+            if result.pipeline_status == "FAILED":
+                print(f"❌ Station 7 completed: Reality Check - FAILED")
+                print(f"🚨 Critical Issues: {len(result.critical_issues)}")
+                for issue in result.critical_issues[:3]:  # Show first 3 issues
+                    print(f"   • {issue}")
+                if len(result.critical_issues) > 3:
+                    print(f"   ... and {len(result.critical_issues) - 3} more issues")
+                
+                # Show which stations failed
+                failed_stations = [v for v in result.station_validations if v.status == "FAIL"]
+                if failed_stations:
+                    print(f"🔍 Failed Stations:")
+                    for station in failed_stations:
+                        print(f"   • Station {station.station_number} ({station.station_name}): {', '.join(station.issues)}")
+                
+                return False  # Stop automation on failure
+            elif result.pipeline_status == "NEEDS_ATTENTION":
+                print(f"⚠️ Station 7 completed: Reality Check - NEEDS_ATTENTION")
+                print(f"💡 Recommendations: {len(result.recommendations)}")
+                for rec in result.recommendations[:2]:  # Show first 2 recommendations
+                    print(f"   • {rec}")
+            else:  # PASSED
+                print(f"✅ Station 7 completed: Reality Check - PASSED")
             
         elif station_num == 8:
             station = Station08CharacterArchitecture()

@@ -115,15 +115,23 @@ class Station14EpisodeBlueprint:
         characters_summary = ""
         if dependencies.get('character_bible'):
             char_data = dependencies['character_bible']
-            # Handle both old format (counts) and new format (actual character data)
-            main_chars = char_data.get('tier1_protagonists', [])
-            if isinstance(main_chars, int):
-                # Old format - just use character names if available
-                protagonist_names = char_data.get('protagonist_names', [])
-                characters_summary = f"Protagonists: {', '.join(protagonist_names[:3])}"
-            elif isinstance(main_chars, list):
-                # New format - use actual character data
-                characters_summary = json.dumps(main_chars[:3], indent=2)[:1500]
+            
+            # Defensive check: ensure char_data is a dict
+            if isinstance(char_data, dict):
+                # Handle both old format (counts) and new format (actual character data)
+                main_chars = char_data.get('tier1_protagonists', [])
+                if isinstance(main_chars, int):
+                    # Old format - just use character names if available
+                    protagonist_names = char_data.get('protagonist_names', [])
+                    characters_summary = f"Protagonists: {', '.join(protagonist_names[:3])}"
+                elif isinstance(main_chars, list):
+                    # New format - use actual character data
+                    characters_summary = json.dumps(main_chars[:3], indent=2)[:1500]
+                else:
+                    characters_summary = "Character data unavailable"
+            elif isinstance(char_data, list):
+                # If char_data is a list (unexpected), try to use it directly
+                characters_summary = json.dumps(char_data[:3], indent=2)[:1500]
             else:
                 characters_summary = "Character data unavailable"
         
@@ -131,14 +139,48 @@ class Station14EpisodeBlueprint:
         world_summary = ""
         if dependencies.get('world_bible'):
             world_data = dependencies['world_bible']
-            locations = world_data.get('geography', {}).get('locations', [])[:3]
+            locations = []
+            
+            # ROBUST DATA TYPE HANDLING:
+            # world_data could be:
+            # 1. A dict with 'geography' key containing a list of location dicts (normal case)
+            # 2. A dict with 'geography' key containing a dict with 'locations' key (old format)
+            # 3. A list directly (if only geography was saved)
+            # 4. Something else (corrupted data)
+            
+            if isinstance(world_data, list):
+                # Case 3: world_data is the geography list itself
+                locations = world_data[:3]
+            elif isinstance(world_data, dict):
+                # Cases 1 & 2: world_data is a proper dict
+                geography_data = world_data.get('geography', [])
+                
+                if isinstance(geography_data, list):
+                    # Case 1: geography is a list of location dicts (Station 9 format)
+                    locations = geography_data[:3]
+                elif isinstance(geography_data, dict):
+                    # Case 2: geography is a dict with 'locations' key (old format)
+                    locations = geography_data.get('locations', [])[:3]
+                else:
+                    # Unexpected format, use empty list
+                    locations = []
+            else:
+                # Case 4: Unexpected data type
+                locations = []
+                
             world_summary = json.dumps(locations, indent=2)[:1000]
         
         # Get hook/cliffhanger for this episode
         episode_hooks = {}
         if dependencies.get('hook_cliffhanger'):
-            hook_cliff_episodes = dependencies['hook_cliffhanger'].get('episodes', [])
-            episode_hooks = next((ep for ep in hook_cliff_episodes if ep.get('episode_number') == episode_num), {})
+            hook_data = dependencies['hook_cliffhanger']
+            # Defensive check: ensure hook_data is a dict
+            if isinstance(hook_data, dict):
+                hook_cliff_episodes = hook_data.get('episodes', [])
+                # Ensure hook_cliff_episodes is a list
+                if isinstance(hook_cliff_episodes, list):
+                    episode_hooks = next((ep for ep in hook_cliff_episodes if isinstance(ep, dict) and ep.get('episode_number') == episode_num), {})
+            # If hook_data is not a dict, episode_hooks remains empty dict
         
         prompt = f"""
 Create a SIMPLE EPISODE BLUEPRINT for Episode {episode_num}.

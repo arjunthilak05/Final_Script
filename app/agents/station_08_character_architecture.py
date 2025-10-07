@@ -251,7 +251,11 @@ class Station08CharacterArchitecture:
             project_bible_data = await self.redis_client.get(project_bible_key)
             if project_bible_data:
                 dependencies['project_bible'] = json.loads(project_bible_data)
-                dependencies['working_title'] = dependencies['project_bible'].get('working_title', 'Untitled')
+                # Defensive check: ensure project_bible is a dict
+                if isinstance(dependencies['project_bible'], dict):
+                    dependencies['working_title'] = dependencies['project_bible'].get('working_title', 'Untitled')
+                else:
+                    dependencies['working_title'] = 'Untitled'
                 logger.info("✅ Loaded Project Bible from Station 2")
             else:
                 logger.warning("⚠️ No Project Bible found from Station 2")

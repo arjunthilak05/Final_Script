@@ -276,10 +276,9 @@ class Station07RealityCheck:
                 
                 if data:
                     station_data[station_num.replace("_", ".")] = json.loads(data)
-                    if self.debug_mode:
-                        logger.info(f"✅ Loaded Station {station_num} data")
+                    logger.info(f"✅ Loaded Station {station_num} data from Redis key: {redis_key}")
                 else:
-                    logger.warning(f"⚠️ No data found for Station {station_num}")
+                    logger.warning(f"⚠️ No data found for Station {station_num} at Redis key: {redis_key}")
                     
             except Exception as e:
                 logger.error(f"❌ Failed to load Station {station_num}: {e}")

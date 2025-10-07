@@ -257,10 +257,23 @@ class Station10NarrativeRevealStrategy:
         """Build the complete narrative reveal strategy"""
         
         # Extract story information
-        story_concept = dependencies['project_bible'].get('story_concept', 'Unknown story')
+        # Defensive checks: ensure all dependencies are dicts
+        project_bible = dependencies.get('project_bible', {})
+        if not isinstance(project_bible, dict):
+            project_bible = {}
+            
+        season_arch = dependencies.get('season_architecture', {})
+        if not isinstance(season_arch, dict):
+            season_arch = {}
+            
+        char_bible = dependencies.get('character_bible', {})
+        if not isinstance(char_bible, dict):
+            char_bible = {}
+        
+        story_concept = project_bible.get('story_concept', 'Unknown story')
         # Try total_episodes first (new format), fallback to episode_count (old format)
-        episode_count = dependencies['season_architecture'].get('total_episodes') or dependencies['season_architecture'].get('episode_count', 10)
-        characters = dependencies['character_bible'].get('characters', [])
+        episode_count = season_arch.get('total_episodes') or season_arch.get('episode_count', 10)
+        characters = char_bible.get('characters', [])
         
         # Build information taxonomy
         information_taxonomy = await self._build_information_taxonomy(

@@ -1,0 +1,101 @@
+# Station 4.5: Narrator Strategy Designer Configuration
+
+model: "qwen-72b"
+temperature: 0.7
+max_tokens: 3000
+
+prompts:
+  complexity_analysis: |
+    You are analyzing story complexity for narrator necessity in an audio series.
+
+    PROJECT CONTEXT:
+    {project_context}
+
+    STORY ELEMENTS:
+    {story_elements}
+
+    TASK: Score each factor from 0-5 based on the story elements provided.
+
+    COMPLEXITY FACTORS (0-35 total):
+    1. Multiple timelines or locations (0-5)
+    2. Large cast requiring identification (0-5)  
+    3. Internal character thoughts crucial (0-5)
+    4. Timeline jumps or flashbacks (0-5)
+    5. World-building exposition needs (0-5)
+    6. Abstract concepts or themes (0-5)
+    7. Multiple POV characters (0-5)
+
+    AUDIO CLARITY FACTORS (0-20 total):
+    1. Scene transition clarity (0-5)
+    2. Character distinction via dialogue alone (0-5)
+    3. Exposition integration in dialogue (0-5)
+    4. Internal monologue alternatives (0-5)
+
+    STYLISTIC FACTORS (0-15 total):
+    1. Artistic/poetic narration adds value (0-5)
+    2. Retrospective frame enhances story (0-5)
+    3. Themed narrator concept fits (0-5)
+
+    Provide detailed scoring with explanations for each category.
+
+  scene_generation: |
+    Generate 3 sample scenes demonstrating the story WITH and WITHOUT a narrator.
+
+    PROJECT CONTEXT:
+    {project_context}
+
+    STORY ELEMENTS:
+    {story_elements}
+
+    For each scene, create TWO versions:
+
+    VERSION A: WITH NARRATOR
+    - Include narrator voiceover providing context, transitions, or internal thoughts
+    - Show how narrator enhances clarity and atmosphere
+    - Demonstrate narrator's voice and style
+
+    VERSION B: WITHOUT NARRATOR  
+    - Pure dialogue and sound design
+    - Show how same information is conveyed through character dialogue
+    - Demonstrate alternative techniques for clarity
+
+    Each scene should be 60-90 seconds of runtime and demonstrate:
+    1. Scene transitions
+    2. Character identification
+    3. Internal thoughts or emotions
+    4. Exposition delivery
+    5. Atmosphere/tone setting
+
+  recommendation: |
+    Based on the complexity analysis and sample scenes, provide a comprehensive narrator strategy recommendation.
+
+    COMPLEXITY ANALYSIS:
+    {complexity_analysis}
+
+    SAMPLE SCENES:
+    {sample_scenes}
+
+    Provide:
+    1. **FINAL RECOMMENDATION**: WITH_NARRATOR / WITHOUT_NARRATOR / HYBRID_APPROACH
+    2. **JUSTIFICATION**: 2-3 paragraphs explaining the decision
+    3. **NARRATOR STRATEGY** (if applicable):
+       - Identity type (omniscient, character, witness, themed)
+       - Presence level (heavy/moderate/light/minimal)
+       - Key functions
+       - Voice casting notes
+       - Sample narrator lines
+    4. **ALTERNATIVE STRATEGY** (if no narrator):
+       - Character identification methods
+       - Scene transition techniques
+       - Exposition integration tactics
+       - Internal thought alternatives
+    5. **PRODUCTION IMPACT**:
+       - Budget implications
+       - Schedule changes
+       - Technical requirements
+       - Casting needs
+    6. **IMPLEMENTATION GUIDELINES**:
+       - How this affects subsequent stations
+       - Integration with script development
+       - Quality control checkpoints
+

@@ -22,18 +22,18 @@ class OpenRouterAgent:
         
         # Available models on OpenRouter
         self.available_models = {
-            "grok-4": "x-ai/grok-4-fast:free",
             "qwen-72b": "qwen/qwen-2.5-72b-instruct:free",
-            "llama-3b": "meta-llama/llama-3.2-3b-instruct",
+            "grok-4": "x-ai/grok-4-fast:free",
+            "llama-3b": "meta-llama/llama-3.2-3b-instruct:free",
             "gpt-4o": "openai/gpt-4o-2024-08-06",
             "claude-3-haiku": "anthropic/claude-3-haiku"
         }
     
-    async def process_message(self, user_input: str, model_name: str = "grok-4") -> str:
+    async def process_message(self, user_input: str, model_name: str = "qwen-72b") -> str:
         """Process a user message using OpenRouter"""
         try:
             # Get the actual model ID
-            model_id = self.available_models.get(model_name, self.available_models["grok-4"])
+            model_id = self.available_models.get(model_name, self.available_models["qwen-72b"])
             
             # Create system message based on model
             system_message = self._get_system_message(model_name)
@@ -72,14 +72,15 @@ class OpenRouterAgent:
     def _get_system_message(self, model_name: str) -> str:
         """Get appropriate system message for each model"""
         system_messages = {
-            "grok-4": "You are Grok-4, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses.",
             "qwen-72b": "You are Qwen2.5 72B, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses.",
+            "grok-4": "You are Grok-4, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses.",
+            "llama-3b": "You are Llama 3.2 3B, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses.",
             "gpt-4o": "You are GPT-4o, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses.",
             "claude-3-haiku": "You are Claude 3 Haiku, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses."
         }
-        return system_messages.get(model_name, system_messages["grok-4"])
+        return system_messages.get(model_name, system_messages["qwen-72b"])
     
-    async def generate(self, prompt: str, model: str = "grok-4", 
+    async def generate(self, prompt: str, model: str = "qwen-72b", 
                       max_tokens: int = 3000, temperature: float = 0.7) -> str:
         """Generate response using specified model (for Station agents)"""
         try:
@@ -119,7 +120,7 @@ class OpenRouterAgent:
             if "402 Payment Required" in error_msg:
                 # Try with a free model as fallback
                 print("⚠️ Payment required for selected model, switching to free model...")
-                free_model_id = "x-ai/grok-4-fast:free"
+                free_model_id = "qwen/qwen-2.5-72b-instruct:free"
                 data["model"] = free_model_id
                 
                 try:

@@ -17,6 +17,7 @@ from dataclasses import dataclass, asdict
 from pathlib import Path
 
 from app.openrouter_agent import OpenRouterAgent
+from app.agents.config_loader import load_station_config
 from app.redis_client import RedisClient
 from app.config import Settings
 
@@ -87,6 +88,9 @@ class Station07RealityCheck:
         self.redis_client = None
         self.openrouter_agent = None
         self.debug_mode = False
+        
+        # Load station configuration from YML
+        self.config = load_station_config(station_number=7)
         
         # Hardcoded patterns to detect
         self.fallback_indicators = [
@@ -515,7 +519,7 @@ class Station07RealityCheck:
         try:
             response = await self.openrouter_agent.process_message(
                 prompt, 
-                model_name="grok-4"
+                model_name=self.config.model
             )
             return response.strip()
         except Exception as e:
@@ -931,60 +935,10 @@ class Station07RealityCheck:
             "detailed_report": result.detailed_report
         }
 
-    def export_to_pdf(self, result: Station07Output) -> bytes:
-        """Export validation results to PDF format"""
-        
-        try:
-            from reportlab.lib.pagesizes import letter
-            from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
-            from reportlab.lib.styles import getSampleStyleSheet
-            from io import BytesIO
-            
-            buffer = BytesIO()
-            doc = SimpleDocTemplate(buffer, pagesize=letter)
-            styles = getSampleStyleSheet()
-            story = []
-            
-            # Title
-            title = Paragraph("Station 7: Reality Check Report", styles['Title'])
-            story.append(title)
-            story.append(Spacer(1, 12))
-            
-            # Executive Summary
-            summary_title = Paragraph("Executive Summary", styles['Heading1'])
-            story.append(summary_title)
-            summary_text = Paragraph(result.executive_summary, styles['Normal'])
-            story.append(summary_text)
-            story.append(Spacer(1, 12))
-            
-            # Convert text report to PDF
-            text_content = self.export_to_text(result)
-            for line in text_content.split('\n'):
-                if line.strip():
-                    if line.startswith('=') or line.startswith('-'):
-                        continue  # Skip decoration lines
-                    elif line.isupper():
-                        # Section headers
-                        story.append(Paragraph(line, styles['Heading2']))
-                    else:
-                        # Regular content
-                        story.append(Paragraph(line, styles['Normal']))
-                else:
-                    story.append(Spacer(1, 6))
-            
-            doc.build(story)
-            pdf_data = buffer.getvalue()
-            buffer.close()
-            
-            return pdf_data
-            
-        except ImportError:
-            logger.warning("ReportLab not available for PDF generation")
-            # Return text as bytes if PDF generation fails
-            return self.export_to_text(result).encode('utf-8')
-        except Exception as e:
-            logger.error(f"PDF generation failed: {e}")
-            return self.export_to_text(result).encode('utf-8')
+    # PDF export removed - use JSON and TXT formats instead
+    # def export_to_pdf(self, result: Station07Output) -> bytes:
+    #     """Export validation results to PDF format - REMOVED"""
+    #     pass
 
 
 # CLI interface for testing

@@ -18,11 +18,12 @@ from dataclasses import dataclass
 
 from app.openrouter_agent import OpenRouterAgent
 from app.redis_client import RedisClient
-from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Table, TableStyle
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.units import inch
-from reportlab.lib import colors
+# PDF generation removed - reportlab imports commented out
+# from reportlab.lib.pagesizes import letter
+# from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Table, TableStyle
+# from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+# from reportlab.lib.units import inch
+# from reportlab.lib import colors
 
 @dataclass
 class OpeningHook:
@@ -173,7 +174,7 @@ Expected JSON format:
 }}
 """
         
-        response = await self.openrouter.process_message(prompt, "grok-4")
+        response = await self.openrouter.process_message(prompt, "qwen-72b")
         return self._parse_json_response(response, {
             "hook_type": "mystery",
             "audio_strategy": "TBD",
@@ -248,7 +249,7 @@ Expected JSON format:
 }}
 """
         
-        response = await self.openrouter.process_message(prompt, "grok-4")
+        response = await self.openrouter.process_message(prompt, "qwen-72b")
         result = self._parse_json_response(response, {
             "act1_turn": {"story_beat": "TBD", "character_decision": "TBD", "stakes_shift": "TBD", "audio_signature": "TBD", "emotional_shift": "TBD"},
             "act2_turn": {"story_beat": "TBD", "character_decision": "TBD", "stakes_shift": "TBD", "audio_signature": "TBD", "emotional_shift": "TBD"},
@@ -355,7 +356,7 @@ Expected JSON format:
 }}
 """
         
-        response = await self.openrouter.process_message(prompt, "grok-4")
+        response = await self.openrouter.process_message(prompt, "qwen-72b")
         return self._parse_json_response(response, {
             "type": "Question",
             "intensity": 7,
@@ -411,7 +412,7 @@ Expected JSON format:
 }}
 """
         
-        response = await self.openrouter.process_message(prompt, "grok-4")
+        response = await self.openrouter.process_message(prompt, "qwen-72b")
         return self._parse_json_response(response, {
             "continuity_elements": [],
             "time_gap_handling": "TBD",
@@ -463,7 +464,7 @@ Expected JSON format:
 ]
 """
         
-        response = await self.openrouter.process_message(prompt, "grok-4")
+        response = await self.openrouter.process_message(prompt, "qwen-72b")
         parsed = self._parse_json_response(response, [])
         if not isinstance(parsed, list):
             return [{"timestamp": "0:00", "tension": 7, "reason": "Opening hook", "emotional_state": "engaged", "audio_intensity": "moderate"}]
@@ -538,58 +539,10 @@ Expected JSON format:
         with open(filepath, 'w', encoding='utf-8') as f:
             json.dump(hook_cliffhanger_bible, f, indent=2, ensure_ascii=False)
             
-    def export_pdf(self, hook_cliffhanger_bible: Dict, filepath: str):
-        """Export professional PDF report"""
-        doc = SimpleDocTemplate(filepath, pagesize=letter)
-        styles = getSampleStyleSheet()
-        story = []
-        
-        # Title page
-        title_style = ParagraphStyle(
-            'CustomTitle',
-            parent=styles['Heading1'],
-            fontSize=24,
-            textColor=colors.HexColor('#2C3E50'),
-            spaceAfter=30,
-            alignment=1
-        )
-        
-        story.append(Paragraph("HOOK & CLIFFHANGER STRATEGY", title_style))
-        story.append(Paragraph("Episode Engagement Bible", styles['Heading2']))
-        story.append(Spacer(1, 0.5*inch))
-        story.append(Paragraph(f"Session: {self.session_id}", styles['Normal']))
-        story.append(Paragraph(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", styles['Normal']))
-        story.append(PageBreak())
-        
-        # Episodes
-        for episode_data in hook_cliffhanger_bible.get('episodes', []):
-            episode_num = episode_data.get('episode_number', 'N/A')
-            
-            story.append(Paragraph(f"Episode {episode_num}", styles['Heading1']))
-            
-            # Opening Hook section
-            story.append(Paragraph("Opening Hook", styles['Heading2']))
-            hook = episode_data.get('opening_hook', {})
-            story.append(Paragraph(f"<b>Type:</b> {hook.get('hook_type', 'N/A')}", styles['Normal']))
-            story.append(Paragraph(f"<b>Strategy:</b> {hook.get('audio_strategy', 'N/A')}", styles['Normal']))
-            story.append(Spacer(1, 0.2*inch))
-            
-            # Act Turns
-            story.append(Paragraph("Act Turns", styles['Heading2']))
-            turns = episode_data.get('act_turns', {})
-            story.append(Paragraph(f"<b>Act 1:</b> {str(turns.get('act1_turn', {}).get('story_beat', 'N/A'))[:300]}", styles['Normal']))
-            story.append(Paragraph(f"<b>Act 2:</b> {str(turns.get('act2_turn', {}).get('story_beat', 'N/A'))[:300]}", styles['Normal']))
-            story.append(Paragraph(f"<b>Act 3:</b> {str(turns.get('act3_turn', {}).get('story_beat', 'N/A'))[:300]}", styles['Normal']))
-            story.append(Spacer(1, 0.2*inch))
-            
-            # Cliffhanger
-            story.append(Paragraph("Cliffhanger", styles['Heading2']))
-            cliff = episode_data.get('cliffhanger', {})
-            story.append(Paragraph(f"<b>Type:</b> {cliff.get('type', 'N/A')} (Intensity: {cliff.get('intensity', 'N/A')}/10)", styles['Normal']))
-            story.append(Paragraph(f"<b>Question:</b> {cliff.get('unanswered_question', 'N/A')}", styles['Normal']))
-            story.append(PageBreak())
-        
-        doc.build(story)
+    # PDF export removed - use JSON and TXT formats instead
+    # def export_pdf(self, hook_cliffhanger_bible: Dict, filepath: str):
+    #     """Export professional PDF report - REMOVED"""
+    #     pass
         
     async def run(self) -> Dict[str, Any]:
         """Main execution method"""
@@ -681,16 +634,18 @@ Expected JSON format:
             
             txt_path = os.path.join(output_dir, f"{base_filename}.txt")
             json_path = os.path.join(output_dir, f"{base_filename}.json")
-            pdf_path = os.path.join(output_dir, f"{base_filename}.pdf")
-            
+            # PDF export removed
+            # pdf_path = os.path.join(output_dir, f"{base_filename}.pdf")
+
             self.export_txt(hook_cliffhanger_bible, txt_path)
             print(f"  ✅ Text: {txt_path}")
-            
+
             self.export_json(hook_cliffhanger_bible, json_path)
             print(f"  ✅ JSON: {json_path}")
-            
-            self.export_pdf(hook_cliffhanger_bible, pdf_path)
-            print(f"  ✅ PDF: {pdf_path}")
+
+            # PDF export removed
+            # self.export_pdf(hook_cliffhanger_bible, pdf_path)
+            # print(f"  ✅ PDF: {pdf_path}")
             
             # Save to Redis
             print("\n💾 Saving to Redis...")
@@ -705,8 +660,8 @@ Expected JSON format:
                 'status': 'complete',
                 'outputs': {
                     'txt': txt_path,
-                    'json': json_path,
-                    'pdf': pdf_path
+                    'json': json_path
+                    # PDF output removed
                 },
                 'statistics': {
                     'total_episodes': total_episodes,

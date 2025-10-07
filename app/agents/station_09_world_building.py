@@ -24,6 +24,7 @@ from dataclasses import dataclass, asdict
 from pathlib import Path
 
 from app.openrouter_agent import OpenRouterAgent
+from app.agents.config_loader import load_station_config
 from app.redis_client import RedisClient
 from app.config import Settings
 
@@ -126,6 +127,9 @@ class Station09WorldBuilding:
         self.openrouter_agent = None
         self.debug_mode = False
         
+        # Load station configuration from YML
+        self.config = load_station_config(station_number=9)
+        
     async def initialize(self):
         """Initialize the station components"""
         try:
@@ -208,6 +212,17 @@ class Station09WorldBuilding:
                     "glossary_entries": len(audio_glossary)
                 }
             )
+            
+            # Save to Redis before returning
+            try:
+                output_dict = self.export_to_json(world_bible)
+                key = f"audiobook:{session_id}:station_09"
+                json_str = json.dumps(output_dict, default=str)
+                await self.redis_client.set(key, json_str, expire=86400)  # 24 hour expiry
+                logger.info(f"Station 9 output stored successfully in Redis at key: {key}")
+            except Exception as e:
+                logger.error(f"Failed to store Station 9 output to Redis: {str(e)}")
+                raise
             
             logger.info(f"✅ Station 9 completed: World Bible with {world_bible.world_statistics['total_locations']} locations")
             return world_bible
@@ -324,7 +339,7 @@ class Station09WorldBuilding:
         try:
             response = await self.openrouter_agent.process_message(
                 geography_prompt,
-                model_name="grok-4"
+                model_name=self.config.model
             )
             
             locations = await self._parse_geography_response(response)
@@ -536,7 +551,7 @@ class Station09WorldBuilding:
         try:
             response = await self.openrouter_agent.process_message(
                 social_prompt,
-                model_name="grok-4"
+                model_name="qwen-72b"
             )
             
             social_system = await self._parse_social_systems_response(response)
@@ -708,7 +723,7 @@ class Station09WorldBuilding:
         try:
             response = await self.openrouter_agent.process_message(
                 tech_magic_prompt,
-                model_name="grok-4"
+                model_name="qwen-72b"
             )
             
             systems = await self._parse_tech_magic_response(response)
@@ -859,7 +874,7 @@ class Station09WorldBuilding:
         try:
             response = await self.openrouter_agent.process_message(
                 history_prompt,
-                model_name="grok-4"
+                model_name="qwen-72b"
             )
             
             events, mythology = await self._parse_history_lore_response(response)
@@ -1018,7 +1033,7 @@ class Station09WorldBuilding:
             try:
                 response = await self.openrouter_agent.process_message(
                     sensory_prompt,
-                    model_name="grok-4"
+                    model_name="qwen-72b"
                 )
                 
                 palette = await self._parse_sensory_palette_response(response, location.name)
@@ -1173,7 +1188,7 @@ class Station09WorldBuilding:
         try:
             response = await self.openrouter_agent.process_message(
                 glossary_prompt,
-                model_name="grok-4"
+                model_name="qwen-72b"
             )
             
             glossary = await self._parse_audio_glossary_response(response)
@@ -1370,135 +1385,10 @@ class Station09WorldBuilding:
             "audio_glossary": world_bible.audio_glossary
         }
 
-    def export_to_pdf(self, world_bible: WorldBible) -> bytes:
-        """Export world bible to PDF format"""
-        
-        try:
-            from reportlab.lib.pagesizes import letter
-            from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Table, TableStyle
-            from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-            from reportlab.lib.units import inch
-            from reportlab.lib import colors
-            from io import BytesIO
-            
-            buffer = BytesIO()
-            doc = SimpleDocTemplate(buffer, pagesize=letter, topMargin=1*inch)
-            styles = getSampleStyleSheet()
-            story = []
-            
-            # Custom styles
-            title_style = ParagraphStyle(
-                'CustomTitle',
-                parent=styles['Title'],
-                fontSize=24,
-                textColor=colors.HexColor('#2C3E50'),
-                spaceAfter=30,
-                alignment=1  # Center
-            )
-            
-            section_style = ParagraphStyle(
-                'SectionHeader',
-                parent=styles['Heading1'],
-                fontSize=16,
-                textColor=colors.HexColor('#34495E'),
-                spaceAfter=12
-            )
-            
-            # Title page
-            story.append(Paragraph("WORLD BIBLE", title_style))
-            story.append(Paragraph("Audio Drama World Building", styles['Heading2']))
-            story.append(Spacer(1, 20))
-            story.append(Paragraph(f"Project: {world_bible.working_title}", styles['Normal']))
-            story.append(Paragraph(f"Session: {world_bible.session_id}", styles['Normal']))
-            story.append(Paragraph(f"Generated: {world_bible.created_timestamp.strftime('%Y-%m-%d %H:%M:%S')}", styles['Normal']))
-            story.append(PageBreak())
-            
-            # Statistics overview
-            story.append(Paragraph("WORLD STATISTICS", section_style))
-            stats_data = [
-                ['Metric', 'Count'],
-                ['Total Locations', str(world_bible.world_statistics['total_locations'])],
-                ['Tech/Magic Systems', str(world_bible.world_statistics['tech_magic_systems'])],
-                ['Historical Events', str(world_bible.world_statistics['historical_events'])],
-                ['Audio Cues', str(world_bible.world_statistics['audio_cues'])],
-                ['Glossary Entries', str(world_bible.world_statistics['glossary_entries'])]
-            ]
-            
-            stats_table = Table(stats_data)
-            stats_table.setStyle(TableStyle([
-                ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
-                ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-                ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-                ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-                ('FONTSIZE', (0, 0), (-1, 0), 12),
-                ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
-                ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
-                ('GRID', (0, 0), (-1, -1), 1, colors.black)
-            ]))
-            
-            story.append(stats_table)
-            story.append(PageBreak())
-            
-            # Section 1: Geography
-            story.append(Paragraph("SECTION 1: GEOGRAPHY & SPACES", section_style))
-            for location in world_bible.geography:
-                story.append(Paragraph(f"{location.name} ({location.location_type})", styles['Heading3']))
-                story.append(Paragraph(f"<b>Description:</b> {location.physical_description}", styles['Normal']))
-                story.append(Paragraph(f"<b>Sonic Signature:</b> {location.sonic_signature.get('primary_ambient', 'N/A')}", styles['Normal']))
-                story.append(Spacer(1, 12))
-            
-            story.append(PageBreak())
-            
-            # Section 2: Social Systems
-            story.append(Paragraph("SECTION 2: SOCIAL SYSTEMS", section_style))
-            story.append(Paragraph(f"<b>Government:</b> {world_bible.social_systems.government_structure}", styles['Normal']))
-            story.append(Paragraph(f"<b>Economy:</b> {world_bible.social_systems.economic_system}", styles['Normal']))
-            story.append(Spacer(1, 12))
-            
-            # Section 3: Technology/Magic
-            story.append(Paragraph("SECTION 3: TECHNOLOGY & MAGIC", section_style))
-            for system in world_bible.tech_magic_systems:
-                story.append(Paragraph(f"{system.name} ({system.access_level})", styles['Heading3']))
-                story.append(Paragraph(f"<b>Description:</b> {system.description}", styles['Normal']))
-                story.append(Paragraph(f"<b>Audio Signature:</b> {system.audio_distinctiveness}", styles['Normal']))
-                story.append(Spacer(1, 12))
-            
-            story.append(PageBreak())
-            
-            # Audio Glossary
-            story.append(Paragraph("AUDIO GLOSSARY", section_style))
-            glossary_data = [['Sound', 'Description']]
-            for sound_name, description in list(world_bible.audio_glossary.items())[:20]:  # Limit for PDF space
-                glossary_data.append([sound_name, description[:100] + "..." if len(description) > 100 else description])
-            
-            glossary_table = Table(glossary_data, colWidths=[2*inch, 4*inch])
-            glossary_table.setStyle(TableStyle([
-                ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
-                ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-                ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
-                ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-                ('FONTSIZE', (0, 0), (-1, 0), 10),
-                ('FONTSIZE', (0, 1), (-1, -1), 8),
-                ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
-                ('GRID', (0, 0), (-1, -1), 1, colors.black),
-                ('VALIGN', (0, 0), (-1, -1), 'TOP')
-            ]))
-            
-            story.append(glossary_table)
-            
-            # Build PDF
-            doc.build(story)
-            pdf_data = buffer.getvalue()
-            buffer.close()
-            
-            return pdf_data
-            
-        except ImportError:
-            logger.warning("ReportLab not available for PDF generation")
-            return self.export_to_text(world_bible).encode('utf-8')
-        except Exception as e:
-            logger.error(f"PDF generation failed: {e}")
-            return self.export_to_text(world_bible).encode('utf-8')
+    # PDF export removed - use JSON and TXT formats instead
+    # def export_to_pdf(self, world_bible: WorldBible) -> bytes:
+    #     """Export world bible to PDF format - REMOVED"""
+    #     pass
 
 
 # CLI interface for testing
@@ -1548,15 +1438,15 @@ async def main():
             json.dump(station.export_to_json(result), f, indent=2, default=str)
         print(f"📊 JSON Data: {json_filename}")
         
-        # PDF export
-        try:
-            pdf_data = station.export_to_pdf(result)
-            pdf_filename = f"outputs/station9_world_bible_{session_id}.pdf"
-            with open(pdf_filename, 'wb') as f:
-                f.write(pdf_data)
-            print(f"📑 PDF Bible: {pdf_filename}")
-        except Exception as e:
-            print(f"⚠️ PDF export failed: {e}")
+        # PDF export removed
+        # try:
+        #     pdf_data = station.export_to_pdf(result)
+        #     pdf_filename = f"outputs/station9_world_bible_{session_id}.pdf"
+        #     with open(pdf_filename, 'wb') as f:
+        #         f.write(pdf_data)
+        #     print(f"📑 PDF Bible: {pdf_filename}")
+        # except Exception as e:
+        #     print(f"⚠️ PDF export failed: {e}")
         
         # Show world summary
         print(f"\n🗺️ LOCATIONS:")

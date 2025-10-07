@@ -18,11 +18,12 @@ from dataclasses import dataclass
 
 from app.openrouter_agent import OpenRouterAgent
 from app.redis_client import RedisClient
-from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Table, TableStyle
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.units import inch
-from reportlab.lib import colors
+# PDF generation removed - reportlab imports commented out
+# from reportlab.lib.pagesizes import letter
+# from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Table, TableStyle
+# from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+# from reportlab.lib.units import inch
+# from reportlab.lib import colors
 
 @dataclass
 class WorldDefinition:
@@ -128,7 +129,7 @@ RESPOND WITH JSON:
 If this is a SINGLE WORLD with no significant timeline complexity, set is_multiworld to false.
 """
         
-        response = await self.openrouter.process_message(prompt, "grok-4")
+        response = await self.openrouter.process_message(prompt, "qwen-72b")
         detection_result = self._parse_json_response(response, {
             'is_multiworld': False,
             'type': 'single_world',
@@ -207,7 +208,7 @@ Expected JSON format:
 ]
 """
         
-        response = await self.openrouter.process_message(prompt, "grok-4")
+        response = await self.openrouter.process_message(prompt, "qwen-72b")
         return self._parse_json_response(response, [])
         
     async def generate_transition_rules(self, world_inventory: List[Dict], dependencies: Dict) -> Dict[str, Any]:
@@ -287,7 +288,7 @@ Expected JSON format:
 }}
 """
         
-        response = await self.openrouter.process_message(prompt, "grok-4")
+        response = await self.openrouter.process_message(prompt, "qwen-72b")
         return self._parse_json_response(response, {})
         
     async def generate_audio_differentiation(self, world_inventory: List[Dict]) -> Dict[str, Any]:
@@ -355,7 +356,7 @@ Expected JSON format:
 }}
 """
         
-        response = await self.openrouter.process_message(prompt, "grok-4")
+        response = await self.openrouter.process_message(prompt, "qwen-72b")
         return self._parse_json_response(response, {})
         
     async def generate_transition_sounds(self, world_inventory: List[Dict], transition_rules: Dict) -> List[Dict[str, Any]]:
@@ -432,7 +433,7 @@ Expected JSON format:
 ]
 """
         
-        response = await self.openrouter.process_message(prompt, "grok-4")
+        response = await self.openrouter.process_message(prompt, "qwen-72b")
         return self._parse_json_response(response, [])
         
     async def generate_episode_world_mapping(self, world_inventory: List[Dict], dependencies: Dict) -> List[Dict[str, Any]]:
@@ -505,7 +506,7 @@ Expected JSON format:
 ]
 """
         
-        response = await self.openrouter.process_message(prompt, "grok-4")
+        response = await self.openrouter.process_message(prompt, "qwen-72b")
         return self._parse_json_response(response, [])
         
     async def generate_orientation_strategy(self, world_inventory: List[Dict], dependencies: Dict) -> Dict[str, Any]:
@@ -580,7 +581,7 @@ Expected JSON format:
 }}
 """
         
-        response = await self.openrouter.process_message(prompt, "grok-4")
+        response = await self.openrouter.process_message(prompt, "qwen-72b")
         return self._parse_json_response(response, {})
         
     async def generate_timeline_consistency_rules(self, world_inventory: List[Dict], dependencies: Dict) -> Dict[str, Any]:
@@ -664,7 +665,7 @@ Expected JSON format:
 }}
 """
         
-        response = await self.openrouter.process_message(prompt, "grok-4")
+        response = await self.openrouter.process_message(prompt, "qwen-72b")
         return self._parse_json_response(response, {})
         
     def _parse_json_response(self, response: str, fallback: Any) -> Any:
@@ -771,62 +772,10 @@ Expected JSON format:
         with open(filepath, 'w', encoding='utf-8') as f:
             json.dump(multiworld_bible, f, indent=2, ensure_ascii=False)
             
-    def export_pdf(self, multiworld_bible: Dict, filepath: str):
-        """Export professional PDF report"""
-        doc = SimpleDocTemplate(filepath, pagesize=letter)
-        styles = getSampleStyleSheet()
-        story = []
-        
-        # Title page
-        title_style = ParagraphStyle(
-            'CustomTitle',
-            parent=styles['Heading1'],
-            fontSize=24,
-            textColor=colors.HexColor('#2C3E50'),
-            spaceAfter=30,
-            alignment=1
-        )
-        
-        story.append(Paragraph("MULTI-WORLD/TIMELINE BIBLE", title_style))
-        story.append(Paragraph("Audio Drama World Management", styles['Heading2']))
-        story.append(Spacer(1, 0.5*inch))
-        story.append(Paragraph(f"Session: {self.session_id}", styles['Normal']))
-        story.append(Paragraph(f"Applicable: {multiworld_bible.get('is_applicable', False)}", styles['Normal']))
-        story.append(PageBreak())
-        
-        if not multiworld_bible.get('is_applicable', False):
-            story.append(Paragraph("Single World Narrative", styles['Heading1']))
-            story.append(Paragraph("This story takes place in a single world/timeline. Multi-world management is not required.", styles['Normal']))
-            detection = multiworld_bible.get('detection_analysis', {})
-            story.append(Spacer(1, 0.2*inch))
-            story.append(Paragraph(f"<b>Analysis:</b> {detection.get('description', 'N/A')}", styles['Normal']))
-        else:
-            # World Inventory
-            story.append(Paragraph("World/Timeline Inventory", styles['Heading1']))
-            for world in multiworld_bible.get('world_inventory', []):
-                story.append(Paragraph(f"<b>{world.get('name', 'N/A')}</b>", styles['Heading2']))
-                story.append(Paragraph(f"Type: {world.get('type', 'N/A')}", styles['Normal']))
-                story.append(Paragraph(f"Purpose: {world.get('story_purpose', 'N/A')}", styles['Normal']))
-                story.append(Spacer(1, 0.2*inch))
-            story.append(PageBreak())
-            
-            # Audio Differentiation
-            story.append(Paragraph("Audio Differentiation Strategy", styles['Heading1']))
-            audio_diff = multiworld_bible.get('audio_differentiation', {})
-            for world_name, audio_spec in audio_diff.items():
-                story.append(Paragraph(f"<b>{world_name}</b>", styles['Heading2']))
-                story.append(Paragraph(f"Sonic Signature: {audio_spec.get('sonic_signature', 'N/A')}", styles['Normal']))
-                story.append(Spacer(1, 0.2*inch))
-            story.append(PageBreak())
-            
-            # Transition Sounds
-            story.append(Paragraph("Transition Sound Library", styles['Heading1']))
-            for trans_sound in multiworld_bible.get('transition_sounds', []):
-                story.append(Paragraph(f"<b>{trans_sound.get('transition_type', 'N/A')}</b>", styles['Heading2']))
-                story.append(Paragraph(f"Audio: {trans_sound.get('audio_cue', 'N/A')}", styles['Normal']))
-                story.append(Spacer(1, 0.2*inch))
-        
-        doc.build(story)
+    # PDF export removed - use JSON and TXT formats instead
+    # def export_pdf(self, multiworld_bible: Dict, filepath: str):
+    #     """Export professional PDF report - REMOVED"""
+    #     pass
         
     async def run(self) -> Dict[str, Any]:
         """Main execution method"""
@@ -866,12 +815,14 @@ Expected JSON format:
                 
                 txt_path = os.path.join(output_dir, f"{base_filename}.txt")
                 json_path = os.path.join(output_dir, f"{base_filename}.json")
-                pdf_path = os.path.join(output_dir, f"{base_filename}.pdf")
-                
+                # PDF export removed
+                # pdf_path = os.path.join(output_dir, f"{base_filename}.pdf")
+
                 self.export_txt(multiworld_bible, txt_path)
                 self.export_json(multiworld_bible, json_path)
-                self.export_pdf(multiworld_bible, pdf_path)
-                
+                # PDF export removed
+                # self.export_pdf(multiworld_bible, pdf_path)
+
                 print("💾 Outputs generated (Not Applicable status)\n")
                 
             else:
@@ -930,16 +881,18 @@ Expected JSON format:
                 
                 txt_path = os.path.join(output_dir, f"{base_filename}.txt")
                 json_path = os.path.join(output_dir, f"{base_filename}.json")
-                pdf_path = os.path.join(output_dir, f"{base_filename}.pdf")
-                
+                # PDF export removed
+                # pdf_path = os.path.join(output_dir, f"{base_filename}.pdf")
+
                 self.export_txt(multiworld_bible, txt_path)
                 print(f"  ✅ Text: {txt_path}")
-                
+
                 self.export_json(multiworld_bible, json_path)
                 print(f"  ✅ JSON: {json_path}")
-                
-                self.export_pdf(multiworld_bible, pdf_path)
-                print(f"  ✅ PDF: {pdf_path}")
+
+                # PDF export removed
+                # self.export_pdf(multiworld_bible, pdf_path)
+                # print(f"  ✅ PDF: {pdf_path}")
             
             # Save to Redis
             print("\n💾 Saving to Redis...")
@@ -955,8 +908,8 @@ Expected JSON format:
                 'is_applicable': multiworld_bible.get('is_applicable', False),
                 'outputs': {
                     'txt': txt_path,
-                    'json': json_path,
-                    'pdf': pdf_path
+                    'json': json_path
+                    # PDF output removed
                 },
                 'statistics': {
                     'world_count': len(multiworld_bible.get('world_inventory', [])),

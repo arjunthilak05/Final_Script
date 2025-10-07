@@ -1,0 +1,150 @@
+# Station 3: Age & Genre Optimizer Configuration
+
+model: "qwen-72b"
+temperature: 0.7
+max_tokens: 3000
+
+prompts:
+  age_analysis: |
+    You are an Age-Appropriate Content Specialist for audiobook production.
+    
+    Based on this Project Bible data:
+    - Target Age Range: {target_age_range}
+    - Content Rating: {content_rating}
+    - Primary Genre: {primary_genre}
+    - Mood Profile: {mood_profile}
+    
+    Create comprehensive age-appropriate guidelines in this EXACT JSON format. 
+    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
+    {{
+        "target_age_range": "specific age range",
+        "content_rating": "rating with justification",
+        "action_scene_limits": [
+            "specific limit 1",
+            "specific limit 2", 
+            "specific limit 3"
+        ],
+        "emotional_boundaries": [
+            "boundary 1 with reasoning",
+            "boundary 2 with reasoning",
+            "boundary 3 with reasoning"
+        ],
+        "language_guidelines": {{
+            "vocabulary_level": "age-appropriate description",
+            "forbidden_topics": "topics to avoid",
+            "complexity_cap": "sentence/concept complexity limits"
+        }},
+        "sound_restrictions": [
+            "sound type 1 to avoid/limit",
+            "sound type 2 to avoid/limit",
+            "sound type 3 to avoid/limit"
+        ],
+        "theme_complexity": "detailed description of appropriate theme depth",
+        "violence_level": "NONE/MINIMAL/MILD/MODERATE/STRONG",
+        "emotional_intensity": "LIGHT/MILD/MODERATE/STRONG/INTENSE",
+        "duration_caps": {{
+            "action_scenes": "max duration and reasoning",
+            "emotional_scenes": "max duration and reasoning",
+            "suspense_buildup": "max duration and reasoning"
+        }}
+    }}
+    
+    Focus on AUDIO-SPECIFIC considerations. What sounds, pacing, and content work for this age group?
+
+  genre_blending: |
+    You are a Genre Blending Specialist for audiobook production.
+    
+    Based on this Project Bible data:
+    - Primary Genre: {primary_genre}
+    - Secondary Genres: {secondary_genres}
+    - Tone Descriptors: {tone_descriptors}
+    - Episode Length: {episode_length}
+    - Target Age: {target_age}
+    - Listening Context: {listening_context}
+    
+    Create 3 distinct genre blend options in this EXACT JSON format.
+    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
+    {{
+        "option_a": {{
+            "primary_genre": "main genre",
+            "complementary_genre": "supporting genre that enhances main",
+            "enhancement_analysis": "detailed explanation of how genres work together",
+            "audio_elements": ["specific audio element 1", "specific audio element 2", "specific audio element 3"],
+            "pacing_implications": "how blend affects episode pacing and rhythm",
+            "audience_expectations": "what audiences expect from this combination",
+            "signature_sounds": ["unique sound 1 for this blend", "unique sound 2 for this blend"],
+            "mood_transitions": ["how mood shifts work in this blend", "transition techniques specific to audio"]
+        }},
+        "option_b": {{
+            "primary_genre": "different main genre approach",
+            "complementary_genre": "different supporting genre",
+            "enhancement_analysis": "different enhancement strategy",
+            "audio_elements": ["different audio element 1", "different audio element 2", "different audio element 3"],
+            "pacing_implications": "different pacing approach",
+            "audience_expectations": "different audience appeal",
+            "signature_sounds": ["different unique sound 1", "different unique sound 2"],
+            "mood_transitions": ["different mood shift approach", "different transition techniques"]
+        }},
+        "option_c": {{
+            "primary_genre": "third main genre approach",
+            "complementary_genre": "third supporting genre",
+            "enhancement_analysis": "third enhancement strategy",
+            "audio_elements": ["third set audio element 1", "third set audio element 2", "third set audio element 3"],
+            "pacing_implications": "third pacing strategy",
+            "audience_expectations": "third audience approach",
+            "signature_sounds": ["third set unique sound 1", "third set unique sound 2"],
+            "mood_transitions": ["third mood shift approach", "third transition techniques"]
+        }}
+    }}
+    
+    Make each option DISTINCTLY different. Focus on AUDIO-SPECIFIC elements that work without visuals.
+
+  tone_calibration: |
+    You are a Tone Calibration Specialist for audiobook production.
+    
+    Based on this Project Bible and chosen genre blend:
+    - Episode Count: {episode_count}
+    - Episode Length: {episode_length}
+    - Mood Profile: {mood_profile}
+    - Chosen Blend: {chosen_blend_primary} + {chosen_blend_complementary}
+    - Enhancement Analysis: {enhancement_analysis}
+    
+    Create comprehensive tone calibration in this EXACT JSON format.
+    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
+    {{
+        "chosen_blend": "{chosen_blend_primary} + {chosen_blend_complementary}",
+        "episode_progression": [
+            "Episode 1-3: tone description and purpose",
+            "Episode 4-6: tone evolution and changes",
+            "Episode 7-9: tone development and intensification",
+            "Final episodes: tone resolution and conclusion"
+        ],
+        "tonal_shift_moments": [
+            "Key moment 1: when and how tone shifts",
+            "Key moment 2: when and how tone shifts",
+            "Key moment 3: when and how tone shifts",
+            "Key moment 4: when and how tone shifts"
+        ],
+        "audio_tone_techniques": [
+            "Music technique: how music conveys tone",
+            "Voice technique: how narration conveys tone", 
+            "Sound design technique: how effects convey tone",
+            "Pacing technique: how timing conveys tone",
+            "Silence technique: how pauses convey tone"
+        ],
+        "light_dark_balance": "detailed description of how light and dark moments are balanced throughout",
+        "tension_curves": [
+            "Episode arc: how tension builds and releases within episodes",
+            "Season arc: how tension builds across multiple episodes",
+            "Character arc: how emotional tension follows character development"
+        ],
+        "audio_cues": {{
+            "rising_tension": "specific audio technique for building tension",
+            "emotional_peak": "specific audio technique for emotional climax",
+            "comic_relief": "specific audio technique for lightening mood",
+            "resolution": "specific audio technique for satisfying conclusion"
+        }}
+    }}
+    
+    Focus on AUDIO-ONLY techniques. How do you convey tone without visuals?
+

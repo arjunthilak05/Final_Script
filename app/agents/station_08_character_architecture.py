@@ -20,6 +20,7 @@ from dataclasses import dataclass, asdict
 from pathlib import Path
 
 from app.openrouter_agent import OpenRouterAgent
+from app.agents.config_loader import load_station_config
 from app.redis_client import RedisClient
 from app.config import Settings
 
@@ -131,6 +132,9 @@ class Station08CharacterArchitecture:
         self.openrouter_agent = None
         self.debug_mode = False
         
+        # Load station configuration from YML
+        self.config = load_station_config(station_number=8)
+        
     async def initialize(self):
         """Initialize the station components"""
         try:
@@ -218,6 +222,17 @@ class Station08CharacterArchitecture:
                 casting_notes=casting_notes
             )
             
+            # Save to Redis before returning
+            try:
+                output_dict = self.export_to_json(character_bible)
+                key = f"audiobook:{session_id}:station_08"
+                json_str = json.dumps(output_dict, default=str)
+                await self.redis_client.set(key, json_str, expire=86400)  # 24 hour expiry
+                logger.info(f"Station 8 output stored successfully in Redis at key: {key}")
+            except Exception as e:
+                logger.error(f"Failed to store Station 8 output to Redis: {str(e)}")
+                raise
+            
             logger.info(f"✅ Station 8 completed: {character_bible.character_count_summary['total_characters']} characters created")
             return character_bible
             
@@ -294,7 +309,7 @@ class Station08CharacterArchitecture:
             try:
                 response = await self.openrouter_agent.process_message(
                     protagonist_prompt,
-                    model_name="grok-4"
+                    model_name=self.config.model
                 )
                 
                 protagonist = await self._parse_protagonist_response(response, dependencies)
@@ -548,7 +563,7 @@ class Station08CharacterArchitecture:
             try:
                 response = await self.openrouter_agent.process_message(
                     supporting_prompt,
-                    model_name="grok-4",
+                    model_name=self.config.model,
                 )
                 
                 supporting_char = await self._parse_supporting_response(response, dependencies)
@@ -744,7 +759,7 @@ class Station08CharacterArchitecture:
         try:
             response = await self.openrouter_agent.process_message(
                 recurring_prompt,
-                model_name="grok-4"
+                model_name=self.config.model
             )
             
             recurring_characters = await self._parse_recurring_response(response, recurring_count)
@@ -906,7 +921,7 @@ class Station08CharacterArchitecture:
         try:
             response = await self.openrouter_agent.process_message(
                 relationship_prompt,
-                model_name="grok-4",
+                model_name=self.config.model,
             )
             
             # Parse relationships from response
@@ -1007,7 +1022,7 @@ class Station08CharacterArchitecture:
         try:
             response = await self.openrouter_agent.process_message(
                 casting_prompt,
-                model_name="grok-4",
+                model_name=self.config.model,
             )
             
             return response.strip()
@@ -1120,106 +1135,10 @@ class Station08CharacterArchitecture:
             "casting_notes": character_bible.casting_notes
         }
 
-    def export_to_pdf(self, character_bible: CharacterBible) -> bytes:
-        """Export character bible to PDF format"""
-        
-        try:
-            from reportlab.lib.pagesizes import letter
-            from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak
-            from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-            from reportlab.lib.units import inch
-            from io import BytesIO
-            
-            buffer = BytesIO()
-            doc = SimpleDocTemplate(buffer, pagesize=letter, topMargin=1*inch)
-            styles = getSampleStyleSheet()
-            story = []
-            
-            # Custom styles
-            title_style = ParagraphStyle(
-                'CustomTitle',
-                parent=styles['Title'],
-                fontSize=24,
-                textColor='darkblue',
-                spaceAfter=30
-            )
-            
-            header_style = ParagraphStyle(
-                'CustomHeader',
-                parent=styles['Heading1'],
-                fontSize=16,
-                textColor='darkred',
-                spaceAfter=12
-            )
-            
-            # Title page
-            story.append(Paragraph("CHARACTER BIBLE", title_style))
-            story.append(Spacer(1, 20))
-            story.append(Paragraph(f"Project: {character_bible.working_title}", styles['Heading2']))
-            story.append(Paragraph(f"Total Characters: {character_bible.character_count_summary['total_characters']}", styles['Normal']))
-            story.append(Paragraph(f"Generated: {character_bible.created_timestamp.strftime('%Y-%m-%d %H:%M:%S')}", styles['Normal']))
-            story.append(PageBreak())
-            
-            # Character summary
-            story.append(Paragraph("CHARACTER OVERVIEW", header_style))
-            story.append(Paragraph(f"Tier 1 Protagonists: {character_bible.character_count_summary['tier1_protagonists']}", styles['Normal']))
-            story.append(Paragraph(f"Tier 2 Supporting: {character_bible.character_count_summary['tier2_supporting']}", styles['Normal']))
-            story.append(Paragraph(f"Tier 3 Recurring: {character_bible.character_count_summary['tier3_recurring']}", styles['Normal']))
-            story.append(Spacer(1, 20))
-            
-            # Tier 1 characters
-            story.append(Paragraph("TIER 1: PROTAGONISTS", header_style))
-            for char in character_bible.tier1_protagonists:
-                story.append(Paragraph(f"{char.full_name} (Age {char.age})", styles['Heading3']))
-                story.append(Paragraph(f"<b>Psychology:</b> {char.psychological_profile}", styles['Normal']))
-                story.append(Paragraph(f"<b>Voice:</b> {char.voice_signature.pitch_range}, {char.voice_signature.pace_pattern}", styles['Normal']))
-                story.append(Paragraph(f"<b>Audio ID:</b> {char.audio_markers.voice_identification}", styles['Normal']))
-                
-                story.append(Paragraph("<b>Sample Dialogue:</b>", styles['Normal']))
-                for dialogue in char.sample_dialogue[:2]:  # Limit for PDF space
-                    story.append(Paragraph(f"• \"{dialogue}\"", styles['Normal']))
-                story.append(Spacer(1, 12))
-            
-            story.append(PageBreak())
-            
-            # Tier 2 characters
-            story.append(Paragraph("TIER 2: MAJOR SUPPORTING", header_style))
-            for char in character_bible.tier2_supporting:
-                story.append(Paragraph(f"{char.full_name} (Age {char.age})", styles['Heading3']))
-                story.append(Paragraph(f"<b>Role:</b> {char.role_in_story}", styles['Normal']))
-                story.append(Paragraph(f"<b>Voice:</b> {char.voice_signature.pitch_range}", styles['Normal']))
-                story.append(Paragraph(f"<b>Audio ID:</b> {char.audio_markers.voice_identification}", styles['Normal']))
-                story.append(Spacer(1, 12))
-            
-            # Tier 3 characters
-            story.append(Paragraph("TIER 3: RECURRING CHARACTERS", header_style))
-            for char in character_bible.tier3_recurring:
-                story.append(Paragraph(f"<b>{char.name}:</b> {char.defining_trait}", styles['Normal']))
-                story.append(Paragraph(f"Voice Hook: {char.voice_hook}", styles['Normal']))
-                story.append(Spacer(1, 6))
-            
-            story.append(PageBreak())
-            
-            # Audio guide
-            story.append(Paragraph("AUDIO IDENTIFICATION GUIDE", header_style))
-            audio_guide_lines = character_bible.audio_identification_guide.split('\n')
-            for line in audio_guide_lines:
-                if line.strip():
-                    story.append(Paragraph(line, styles['Normal']))
-            
-            # Build PDF
-            doc.build(story)
-            pdf_data = buffer.getvalue()
-            buffer.close()
-            
-            return pdf_data
-            
-        except ImportError:
-            logger.warning("ReportLab not available for PDF generation")
-            return self.export_to_text(character_bible).encode('utf-8')
-        except Exception as e:
-            logger.error(f"PDF generation failed: {e}")
-            return self.export_to_text(character_bible).encode('utf-8')
+    # PDF export removed - use JSON and TXT formats instead
+    # def export_to_pdf(self, character_bible: CharacterBible) -> bytes:
+    #     """Export character bible to PDF format - REMOVED"""
+    #     pass
 
 
 # CLI interface for testing

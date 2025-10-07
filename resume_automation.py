@@ -26,6 +26,7 @@ from app.agents.station_11_runtime_planning import Station11RuntimePlanning
 from app.agents.station_12_hook_cliffhanger import Station12HookCliffhanger
 from app.agents.station_13_multiworld_timeline import Station13MultiworldTimeline
 from app.agents.station_14_episode_blueprint import Station14EpisodeBlueprint
+from app.agents.station_15_detailed_episode_outlining import Station15DetailedEpisodeOutlining
 
 async def check_existing_sessions():
     """Check for existing sessions in Redis"""
@@ -73,7 +74,7 @@ async def run_station(station_num: int, session_id: str):
             station = Station02ProjectDNABuilder()
             await station.initialize()
             result = await station.process(session_id)
-            print(f"✅ Station 2 completed: Project DNA for {result.get('working_title', 'Unknown')}")
+            print(f"✅ Station 2 completed: Project DNA for {result.working_title}")
             
         elif station_num == 3:
             station = Station03AgeGenreOptimizer()
@@ -85,19 +86,20 @@ async def run_station(station_num: int, session_id: str):
             station = Station04ReferenceMiner()
             await station.initialize()
             result = await station.process(session_id)
-            print(f"✅ Station 4 completed: {len(result.get('seeds', []))} seeds generated")
+            total_seeds = len(result.seed_collection.micro_moments) + len(result.seed_collection.episode_beats) + len(result.seed_collection.season_arcs) + len(result.seed_collection.series_defining)
+            print(f"✅ Station 4 completed: {total_seeds} seeds generated")
             
         elif station_num == 4.5:
             station = Station045NarratorStrategy()
             await station.initialize()
             result = await station.process(session_id)
-            print(f"✅ Station 4.5 completed: Narrator strategy - {result.get('recommendation', 'Unknown')}")
+            print(f"✅ Station 4.5 completed: Narrator strategy - {result.recommendation.value}")
             
         elif station_num == 5:
             station = Station05SeasonArchitect()
             await station.initialize()
             result = await station.process(session_id)
-            print(f"✅ Station 5 completed: {result.get('chosen_style', 'Unknown style')}")
+            print(f"✅ Station 5 completed: {result.chosen_style}")
             
         elif station_num == 6:
             station = Station06MasterStyleGuideBuilder()
@@ -125,6 +127,7 @@ async def run_station(station_num: int, session_id: str):
             
         elif station_num == 10:
             station = Station10NarrativeRevealStrategy()
+            await station.initialize()
             result = await station.process(session_id)
             print(f"✅ Station 10 completed: Narrative Reveal Strategy - {result['summary']['information_items']} information items")
             
@@ -154,8 +157,18 @@ async def run_station(station_num: int, session_id: str):
             await station.initialize()
             result = await station.run()
             print(f"✅ Station 14 completed: Episode Blueprints - {result['statistics']['blueprints_generated']} blueprints ready for approval")
-            print(f"📄 Approval Document: {result['outputs']['pdf']}")
+            print(f"📄 Approval Document (TXT): {result['outputs']['txt']}")
+            print(f"📄 Approval Document (JSON): {result['outputs']['json']}")
             print("🚨 HUMAN GATE: Review and approve blueprints before proceeding")
+            
+        elif station_num == 15:
+            station = Station15DetailedEpisodeOutlining(session_id)
+            await station.initialize()
+            result = await station.run()
+            print(f"✅ Station 15 completed: Detailed Episode Outlining - {result['statistics']['outlines_generated']} production-ready outlines")
+            print(f"📄 Production Document (TXT): {result['outputs']['txt']}")
+            print(f"📄 Production Document (JSON): {result['outputs']['json']}")
+            print("🎬 PRODUCTION-READY: Detailed scene-by-scene outlines ready for voice actors")
             
         else:
             print(f"❌ Station {station_num} not supported")
@@ -190,8 +203,8 @@ async def main():
     resumable_sessions = []
     for session_id, stations in sorted(existing_sessions.items()):
         stations.sort()
-        expected_stations = ["station_01", "station_02", "station_03", "station_04", "station_04_5", "station_05", "station_06", "station_07", "station_08", "station_09", "station_10", "station_11", "station_12", "station_13", "station_14"]
-        station_numbers = [1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+        expected_stations = ["station_01", "station_02", "station_03", "station_04", "station_04_5", "station_05", "station_06", "station_07", "station_08", "station_09", "station_10", "station_11", "station_12", "station_13", "station_14", "station_15"]
+        station_numbers = [1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
         
         # Find next station to resume from
         next_station = None
@@ -234,7 +247,7 @@ async def main():
     print()
     
     # Ask which station to run
-    valid_stations = [1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+    valid_stations = [1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     station_choice = input(f"🎯 Run Station {resume_station} or specific station? (Enter station number {valid_stations} or press Enter for {resume_station}): ").strip()
     
     if station_choice:
@@ -251,30 +264,33 @@ async def main():
     print(f"\n🚀 RUNNING STATION {resume_station}")
     print("=" * 40)
     
-    # Run the station
-    success = await run_station(resume_station, session_id)
+    # Run all stations from resume_station to the end
+    valid_stations = [1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     
-    if success:
-        print(f"\n🎉 Station {resume_station} completed successfully!")
+    try:
+        current_index = valid_stations.index(resume_station)
+    except ValueError:
+        print(f"❌ Invalid starting station: {resume_station}")
+        return
+    
+    # Run all remaining stations
+    for i in range(current_index, len(valid_stations)):
+        current_station = valid_stations[i]
+        print(f"\n🚀 Running Station {current_station}...")
+        print("=" * 40)
         
-        # Offer to continue to next station
-        valid_stations = [1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-        try:
-            current_index = valid_stations.index(resume_station)
-            if current_index < len(valid_stations) - 1:
-                next_station = valid_stations[current_index + 1]
-                continue_choice = input(f"\n🤔 Continue to Station {next_station}? (Y/n): ").lower().strip()
-                if continue_choice != 'n':
-                    success = await run_station(next_station, session_id)
-                    if success:
-                        print(f"\n🎉 Station {next_station} completed successfully!")
-                        if next_station == 14:
-                            print("\n🎉 ALL STATIONS COMPLETED!")
-                            print("📄 Human review required for episode blueprints")
-        except ValueError:
-            pass  # Station not in sequence
-    else:
-        print(f"\n💥 Station {resume_station} failed!")
+        success = await run_station(current_station, session_id)
+        
+        if success:
+            print(f"\n🎉 Station {current_station} completed successfully!")
+            
+            if current_station == 15:
+                print("\n🎉 ALL STATIONS COMPLETED!")
+                print("🎬 Production-ready episode outlines completed")
+        else:
+            print(f"\n💥 Station {current_station} failed!")
+            print(f"❌ Stopping automation at Station {current_station}")
+            return
 
 if __name__ == "__main__":
     asyncio.run(main())

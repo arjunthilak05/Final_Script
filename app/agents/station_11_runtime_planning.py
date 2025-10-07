@@ -127,6 +127,35 @@ class Station11RuntimePlanning:
         """Initialize the station (compatibility with other stations)"""
         await self.redis_client.initialize()
         logger.info("✅ Station 11 Runtime Planning initialized")
+    
+    def _extract_json_from_response(self, response: str) -> str:
+        """Extract JSON from LLM response, handling markdown code blocks"""
+        # Remove markdown code blocks if present
+        if response.strip().startswith('```json'):
+            # Find the start and end of JSON block
+            start_marker = '```json'
+            end_marker = '```'
+            start_idx = response.find(start_marker)
+            end_idx = response.find(end_marker, start_idx + len(start_marker))
+            
+            if start_idx != -1 and end_idx != -1:
+                json_content = response[start_idx + len(start_marker):end_idx].strip()
+                logger.info("Extracted JSON from markdown code block")
+                return json_content
+        elif response.strip().startswith('```'):
+            # Generic code block
+            start_marker = '```'
+            end_marker = '```'
+            start_idx = response.find(start_marker)
+            end_idx = response.find(end_marker, start_idx + len(start_marker))
+            
+            if start_idx != -1 and end_idx != -1:
+                json_content = response[start_idx + len(start_marker):end_idx].strip()
+                logger.info("Extracted JSON from generic code block")
+                return json_content
+        
+        # Return original response if no code blocks found
+        return response.strip()
         
     async def process(self, session_id: str) -> Dict[str, Any]:
         """Main processing function for Station 11"""
@@ -273,7 +302,8 @@ class Station11RuntimePlanning:
         response = await self.openrouter_agent.generate(prompt)
         
         try:
-            episodes_data = json.loads(response)
+            json_text = self._extract_json_from_response(response)
+            episodes_data = json.loads(json_text)
             episode_breakdowns = []
 
             for idx, ep_data in enumerate(episodes_data, start=1):
@@ -344,39 +374,49 @@ class Station11RuntimePlanning:
 
             return episode_breakdowns
             
-        except json.JSONDecodeError:
-            logger.warning("Failed to parse episode breakdowns, using fallback")
-            return self._create_fallback_episode_breakdowns(total_episodes)
+        except json.JSONDecodeError as e:
+            logger.error(f"❌ CRITICAL: Failed to parse episode breakdowns: {str(e)}")
+            logger.error(f"Response was: {response[:500]}...")
+            raise ValueError(f"CRITICAL: Unable to parse episode breakdowns from LLM response: {str(e)}")
     
     async def _build_word_budgets(self, total_episodes: int, chosen_style: str) -> WordBudget:
         """Build word budget specifications"""
-        
+
         prompt = f"""
         You are the Runtime Planner. Create word budget specifications for this audiobook series:
-        
+
         TOTAL EPISODES: {total_episodes}
         CHOSEN STYLE: {chosen_style}
-        
+
         Calculate optimal word budgets considering:
-        
+
         1. SPOKEN WORDS PER MINUTE: 150-160 words (typical for audiobooks)
         2. TOTAL WORDS PER EPISODE: Based on 45-60 minute episodes
-        3. DIALOGUE VS NARRATION RATIO: 
+        3. DIALOGUE VS NARRATION RATIO:
            - Dialogue: 60-70% (character interactions)
            - Narration: 30-40% (description, exposition)
         4. SFX/SILENCE ALLOWANCE: 5-10% of total time
         5. WORD COUNT VARIATION RANGE: ±15% for pacing variety
-        
+
         Consider the chosen style's impact on word density and pacing.
-        
-        Return as JSON object with word budget specifications.
+
+        Return ONLY a valid JSON object with these exact fields:
+        {{
+          "spoken_words_per_minute": <integer>,
+          "total_words_per_episode": <integer>,
+          "dialogue_ratio": <float between 0 and 1>,
+          "narration_ratio": <float between 0 and 1>,
+          "sfx_silence_allowance": <float between 0 and 1>,
+          "word_count_variation_range": "<string like ±15%>"
+        }}
         """
-        
+
         response = await self.openrouter_agent.generate(prompt)
-        
+
         try:
-            budget_data = json.loads(response)
-            
+            json_text = self._extract_json_from_response(response)
+            budget_data = json.loads(json_text)
+
             return WordBudget(
                 spoken_words_per_minute=budget_data.get('spoken_words_per_minute', 155),
                 total_words_per_episode=budget_data.get('total_words_per_episode', 8000),
@@ -385,9 +425,10 @@ class Station11RuntimePlanning:
                 sfx_silence_allowance=budget_data.get('sfx_silence_allowance', 0.08),
                 word_count_variation_range=budget_data.get('word_count_variation_range', '±15%')
             )
-            
-        except json.JSONDecodeError:
-            logger.warning("Failed to parse word budgets, using fallback")
+
+        except (json.JSONDecodeError, ValueError) as e:
+            logger.warning(f"⚠️ Failed to parse word budgets from LLM, using fallback: {str(e)}")
+            logger.warning(f"Response was: {response[:500]}...")
             return self._create_fallback_word_budget()
     
     async def _build_pacing_variations(self, total_episodes: int, chosen_style: str, information_taxonomy: List[Dict]) -> PacingVariation:
@@ -433,8 +474,9 @@ class Station11RuntimePlanning:
         response = await self.openrouter_agent.generate(prompt)
         
         try:
-            pacing_data = json.loads(response)
-            
+            json_text = self._extract_json_from_response(response)
+            pacing_data = json.loads(json_text)
+
             return PacingVariation(
                 fast_episodes=pacing_data.get('fast_episodes', {}),
                 slow_episodes=pacing_data.get('slow_episodes', {}),
@@ -443,9 +485,10 @@ class Station11RuntimePlanning:
                 pacing_rhythm=pacing_data.get('pacing_rhythm', ''),
                 audience_engagement_strategy=pacing_data.get('audience_engagement_strategy', '')
             )
-            
-        except json.JSONDecodeError:
-            logger.warning("Failed to parse pacing variations, using fallback")
+
+        except (json.JSONDecodeError, ValueError) as e:
+            logger.warning(f"⚠️ Failed to parse pacing variations from LLM, using fallback: {str(e)}")
+            logger.warning(f"Response was: {response[:500]}...")
             return self._create_fallback_pacing_variations(total_episodes)
     
     async def _build_series_totals(self, episode_breakdowns: List[EpisodeBreakdown], word_budgets: WordBudget) -> SeriesTotals:
@@ -550,23 +593,24 @@ class Station11RuntimePlanning:
         with open(json_path, 'w', encoding='utf-8') as f:
             json.dump(json_output, f, indent=2, ensure_ascii=False)
 
-        # Generate PDF output
-        pdf_path = output_dir / f"station11_runtime_planning_{session_id}.pdf"
-        try:
-            pdf_output = self._format_pdf_output(runtime_grid)
-            with open(pdf_path, 'wb') as f:
-                f.write(pdf_output)
-            has_pdf = True
-        except Exception as e:
-            logger.warning(f"PDF generation failed: {e}")
-            has_pdf = False
+        # PDF generation removed
+        # pdf_path = output_dir / f"station11_runtime_planning_{session_id}.pdf"
+        # try:
+        #     pdf_output = self._format_pdf_output(runtime_grid)
+        #     with open(pdf_path, 'wb') as f:
+        #         f.write(pdf_output)
+        #     has_pdf = True
+        # except Exception as e:
+        #     logger.warning(f"PDF generation failed: {e}")
+        #     has_pdf = False
 
         outputs = {
             "txt": str(txt_path),
             "json": str(json_path)
         }
-        if has_pdf:
-            outputs["pdf"] = str(pdf_path)
+        # PDF output removed
+        # if has_pdf:
+        #     outputs["pdf"] = str(pdf_path)
 
         return {
             "status": "success",
@@ -606,17 +650,51 @@ class Station11RuntimePlanning:
             if episode.special_considerations:
                 output.append("  Special Considerations:")
                 for consideration in episode.special_considerations:
-                    output.append(f"    - {consideration}")
+                    # Handle dict considerations
+                    if isinstance(consideration, dict):
+                        consideration_str = json.dumps(consideration, indent=2)
+                    else:
+                        consideration_str = str(consideration)
+                    output.append(f"    - {consideration_str}")
             output.append("")
         
         # Section 2: Word Budgets
         output.append("=== WORD BUDGETS ===")
         output.append("")
-        output.append(f"Spoken Words per Minute: {runtime_grid.word_budgets.spoken_words_per_minute}")
-        output.append(f"Total Words per Episode: {runtime_grid.word_budgets.total_words_per_episode:,}")
-        output.append(f"Dialogue Ratio: {runtime_grid.word_budgets.dialogue_ratio:.1%}")
-        output.append(f"Narration Ratio: {runtime_grid.word_budgets.narration_ratio:.1%}")
-        output.append(f"SFX/Silence Allowance: {runtime_grid.word_budgets.sfx_silence_allowance:.1%}")
+
+        # Safely format spoken words per minute
+        spoken_wpm = runtime_grid.word_budgets.spoken_words_per_minute
+        if isinstance(spoken_wpm, (int, float)):
+            output.append(f"Spoken Words per Minute: {spoken_wpm}")
+        else:
+            output.append(f"Spoken Words per Minute: {spoken_wpm}")
+
+        # Safely format total words per episode
+        total_words = runtime_grid.word_budgets.total_words_per_episode
+        if isinstance(total_words, (int, float)):
+            output.append(f"Total Words per Episode: {total_words:,}")
+        else:
+            output.append(f"Total Words per Episode: {total_words}")
+        
+        # Safely format ratio fields
+        dialogue_ratio = runtime_grid.word_budgets.dialogue_ratio
+        if isinstance(dialogue_ratio, (int, float)):
+            output.append(f"Dialogue Ratio: {dialogue_ratio:.1%}")
+        else:
+            output.append(f"Dialogue Ratio: {dialogue_ratio}")
+            
+        narration_ratio = runtime_grid.word_budgets.narration_ratio
+        if isinstance(narration_ratio, (int, float)):
+            output.append(f"Narration Ratio: {narration_ratio:.1%}")
+        else:
+            output.append(f"Narration Ratio: {narration_ratio}")
+            
+        sfx_allowance = runtime_grid.word_budgets.sfx_silence_allowance
+        if isinstance(sfx_allowance, (int, float)):
+            output.append(f"SFX/Silence Allowance: {sfx_allowance:.1%}")
+        else:
+            output.append(f"SFX/Silence Allowance: {sfx_allowance}")
+            
         output.append(f"Word Count Variation Range: {runtime_grid.word_budgets.word_count_variation_range}")
         output.append("")
         
@@ -625,19 +703,39 @@ class Station11RuntimePlanning:
         output.append("")
         output.append("Fast Episodes:")
         for key, value in runtime_grid.pacing_variations.fast_episodes.items():
-            output.append(f"  {key}: {str(value)}")
+            # Safely convert value to string, handling dicts and other types
+            if isinstance(value, dict):
+                value_str = json.dumps(value, indent=2)
+            else:
+                value_str = str(value)
+            output.append(f"  {key}: {value_str}")
         output.append("")
         output.append("Slow Episodes:")
         for key, value in runtime_grid.pacing_variations.slow_episodes.items():
-            output.append(f"  {key}: {str(value)}")
+            # Safely convert value to string, handling dicts and other types
+            if isinstance(value, dict):
+                value_str = json.dumps(value, indent=2)
+            else:
+                value_str = str(value)
+            output.append(f"  {key}: {value_str}")
         output.append("")
         output.append("Standard Episodes:")
         for key, value in runtime_grid.pacing_variations.standard_episodes.items():
-            output.append(f"  {key}: {str(value)}")
+            # Safely convert value to string, handling dicts and other types
+            if isinstance(value, dict):
+                value_str = json.dumps(value, indent=2)
+            else:
+                value_str = str(value)
+            output.append(f"  {key}: {value_str}")
         output.append("")
         output.append("Special Format Episodes:")
         for key, value in runtime_grid.pacing_variations.special_format_episodes.items():
-            output.append(f"  {key}: {str(value)}")
+            # Safely convert value to string, handling dicts and other types
+            if isinstance(value, dict):
+                value_str = json.dumps(value, indent=2)
+            else:
+                value_str = str(value)
+            output.append(f"  {key}: {value_str}")
         output.append("")
         output.append(f"Pacing Rhythm: {runtime_grid.pacing_variations.pacing_rhythm}")
         output.append(f"Audience Engagement Strategy: {runtime_grid.pacing_variations.audience_engagement_strategy}")
@@ -659,21 +757,36 @@ class Station11RuntimePlanning:
         output.append("=== PRODUCTION GUIDELINES ===")
         output.append("")
         for key, value in runtime_grid.production_guidelines.items():
-            output.append(f"{key.replace('_', ' ').title()}: {str(value)}")
+            # Safely convert value to string, handling dicts and other types
+            if isinstance(value, dict):
+                value_str = json.dumps(value, indent=2)
+            else:
+                value_str = str(value)
+            output.append(f"{key.replace('_', ' ').title()}: {value_str}")
             output.append("")
 
         # Section 6: Audio-Specific Considerations
         output.append("=== AUDIO-SPECIFIC CONSIDERATIONS ===")
         output.append("")
         for key, value in runtime_grid.audio_specific_considerations.items():
-            output.append(f"{key.replace('_', ' ').title()}: {str(value)}")
+            # Safely convert value to string, handling dicts and other types
+            if isinstance(value, dict):
+                value_str = json.dumps(value, indent=2)
+            else:
+                value_str = str(value)
+            output.append(f"{key.replace('_', ' ').title()}: {value_str}")
             output.append("")
 
         # Section 7: Quality Control Metrics
         output.append("=== QUALITY CONTROL METRICS ===")
         output.append("")
         for key, value in runtime_grid.quality_control_metrics.items():
-            output.append(f"{key.replace('_', ' ').title()}: {str(value)}")
+            # Safely convert value to string, handling dicts and other types
+            if isinstance(value, dict):
+                value_str = json.dumps(value, indent=2)
+            else:
+                value_str = str(value)
+            output.append(f"{key.replace('_', ' ').title()}: {value_str}")
             output.append("")
         
         output.append("=" * 80)
@@ -823,74 +936,10 @@ class Station11RuntimePlanning:
             audience_engagement_strategy="Vary pacing to maintain interest"
         )
 
-    def _format_pdf_output(self, runtime_grid: RuntimePlanningGrid) -> bytes:
-        """Format runtime planning grid as PDF"""
-        try:
-            from fpdf import FPDF
-
-            pdf = FPDF()
-            pdf.add_page()
-            pdf.set_font("Arial", "B", 16)
-
-            # Title
-            pdf.cell(0, 10, "RUNTIME PLANNING GRID", ln=True, align="C")
-            pdf.set_font("Arial", "", 10)
-            pdf.cell(0, 8, f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", ln=True, align="C")
-            pdf.ln(5)
-
-            # Series Totals
-            pdf.set_font("Arial", "B", 12)
-            pdf.cell(0, 8, "SERIES TOTALS", ln=True)
-            pdf.set_font("Arial", "", 10)
-            pdf.cell(0, 6, f"Total Episodes: {runtime_grid.series_totals.total_episodes}", ln=True)
-            pdf.cell(0, 6, f"Total Runtime: {runtime_grid.series_totals.total_runtime_hours:.1f} hours", ln=True)
-            pdf.cell(0, 6, f"Total Word Count: {runtime_grid.series_totals.total_word_count:,} words", ln=True)
-            pdf.cell(0, 6, f"Average Pace: {runtime_grid.series_totals.average_pace_words_per_minute:.1f} words/min", ln=True)
-            pdf.ln(5)
-
-            # Episode Breakdowns
-            pdf.set_font("Arial", "B", 12)
-            pdf.cell(0, 8, "EPISODE BREAKDOWNS", ln=True)
-            pdf.set_font("Arial", "", 9)
-
-            for episode in runtime_grid.episode_breakdowns:
-                pdf.set_font("Arial", "B", 10)
-                pdf.cell(0, 6, f"Episode {episode.episode_number}: {episode.episode_type.value}", ln=True)
-                pdf.set_font("Arial", "", 9)
-                pdf.cell(0, 5, f"  Runtime: {episode.total_runtime_minutes:.1f} min | Words: {episode.total_word_count:,}", ln=True)
-
-                # Truncate pacing style if too long
-                pacing = episode.pacing_style[:120] + "..." if len(episode.pacing_style) > 120 else episode.pacing_style
-                pdf.multi_cell(0, 5, f"  Pacing: {pacing}")
-                pdf.ln(2)
-
-            # Word Budgets
-            pdf.add_page()
-            pdf.set_font("Arial", "B", 12)
-            pdf.cell(0, 8, "WORD BUDGETS", ln=True)
-            pdf.set_font("Arial", "", 10)
-            pdf.cell(0, 6, f"Spoken Words/Min: {runtime_grid.word_budgets.spoken_words_per_minute}", ln=True)
-            pdf.cell(0, 6, f"Total Words/Episode: {runtime_grid.word_budgets.total_words_per_episode:,}", ln=True)
-            pdf.cell(0, 6, f"Dialogue Ratio: {runtime_grid.word_budgets.dialogue_ratio:.1%}", ln=True)
-            pdf.cell(0, 6, f"Narration Ratio: {runtime_grid.word_budgets.narration_ratio:.1%}", ln=True)
-            pdf.ln(5)
-
-            # Production Guidelines
-            pdf.set_font("Arial", "B", 12)
-            pdf.cell(0, 8, "PRODUCTION GUIDELINES", ln=True)
-            pdf.set_font("Arial", "", 9)
-            for key, value in runtime_grid.production_guidelines.items():
-                value_str = str(value)[:100] + "..." if len(str(value)) > 100 else str(value)
-                pdf.multi_cell(0, 5, f"{key}: {value_str}")
-                pdf.ln(1)
-
-            return pdf.output(dest='S').encode('latin-1')
-
-        except ImportError:
-            logger.warning("fpdf not installed, generating text-based PDF")
-            # Fallback: return text as bytes
-            txt_output = self._format_txt_output(runtime_grid)
-            return txt_output.encode('utf-8')
+    # PDF export removed - use JSON and TXT formats instead
+    # def _format_pdf_output(self, runtime_grid: RuntimePlanningGrid) -> bytes:
+    #     """Format runtime planning grid as PDF - REMOVED"""
+    #     pass
 
 # Main execution
 async def main():

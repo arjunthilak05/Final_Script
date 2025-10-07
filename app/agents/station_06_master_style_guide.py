@@ -176,6 +176,17 @@ class Station06MasterStyleGuideBuilder:
             dialogue_principles, narration_style, sonic_signature, session_id
         )
         
+        # Save to Redis before returning
+        try:
+            output_dict = self.export_to_json(style_guide)
+            key = f"audiobook:{session_id}:station_06"
+            json_str = json.dumps(output_dict, default=str)
+            await self.redis.set(key, json_str, expire=86400)  # 24 hour expiry
+            logger.info(f"Station 6 output stored successfully in Redis at key: {key}")
+        except Exception as e:
+            logger.error(f"Failed to store Station 6 output to Redis: {str(e)}")
+            raise
+        
         logger.info(f"Station 6 completed: Master Style Guide for {style_guide.working_title}")
         return style_guide
     
@@ -1176,271 +1187,19 @@ class Station06MasterStyleGuideBuilder:
             "quality_control_checklist": style_guide.quality_control_checklist
         }
     
-    def export_to_pdf(self, style_guide: MasterStyleGuide) -> bytes:
-        """
-        Export complete Master Style Guide to PDF format
-        """
-        try:
-            from reportlab.lib.pagesizes import letter
-            from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Table, TableStyle
-            from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-            from reportlab.lib.units import inch
-            from reportlab.lib import colors
-            from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_JUSTIFY
-        except ImportError:
-            # Fallback to simple text-based PDF if reportlab not available
-            return self._create_simple_pdf(style_guide)
+    # PDF export removed - use JSON and TXT formats instead
+    # def export_to_pdf(self, style_guide: MasterStyleGuide) -> bytes:
+    #     """
+    #     Export complete Master Style Guide to PDF format - REMOVED
+    #     """
+    #     pass
         
-        # Create PDF buffer
-        buffer = BytesIO()
-        doc = SimpleDocTemplate(buffer, pagesize=letter, rightMargin=72, leftMargin=72, 
-                               topMargin=72, bottomMargin=18)
-        
-        # Get styles
-        styles = getSampleStyleSheet()
-        
-        # Custom styles
-        title_style = ParagraphStyle(
-            'CustomTitle',
-            parent=styles['Heading1'],
-            fontSize=24,
-            spaceAfter=30,
-            alignment=TA_CENTER,
-            textColor=colors.darkgreen
-        )
-        
-        section_style = ParagraphStyle(
-            'CustomSection', 
-            parent=styles['Heading2'],
-            fontSize=16,
-            spaceAfter=12,
-            spaceBefore=20,
-            textColor=colors.darkgreen
-        )
-        
-        subsection_style = ParagraphStyle(
-            'CustomSubsection',
-            parent=styles['Heading3'], 
-            fontSize=14,
-            spaceAfter=8,
-            spaceBefore=12,
-            textColor=colors.green
-        )
-        
-        body_style = ParagraphStyle(
-            'CustomBody',
-            parent=styles['Normal'],
-            fontSize=10,
-            spaceAfter=6,
-            alignment=TA_JUSTIFY
-        )
-        
-        # Build PDF content
-        story = []
-        
-        # Title page
-        story.append(Paragraph("STATION 6: MASTER STYLE GUIDE", title_style))
-        story.append(Spacer(1, 20))
-        story.append(Paragraph("Complete Creative Framework for Audio-Only Drama Production", styles['Heading3']))
-        story.append(Spacer(1, 40))
-        
-        # Project info table
-        project_data = [
-            ['Working Title:', style_guide.working_title],
-            ['Session ID:', style_guide.session_id],
-            ['Created:', style_guide.created_timestamp.strftime('%Y-%m-%d %H:%M:%S')],
-            ['Target Age:', style_guide.project_context.get('target_age_range', 'N/A')],
-            ['Content Rating:', style_guide.project_context.get('content_rating', 'N/A')],
-            ['Narrator Strategy:', style_guide.project_context.get('narrator_strategy', 'N/A')]
-        ]
-        
-        project_table = Table(project_data, colWidths=[2*inch, 4*inch])
-        project_table.setStyle(TableStyle([
-            ('BACKGROUND', (0, 0), (0, -1), colors.lightgreen),
-            ('TEXTCOLOR', (0, 0), (-1, -1), colors.black),
-            ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
-            ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-            ('FONTNAME', (0, 0), (-1, -1), 'Helvetica'),
-            ('FONTSIZE', (0, 0), (-1, -1), 9),
-            ('TOPPADDING', (0, 0), (-1, -1), 6),
-            ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
-            ('LEFTPADDING', (0, 0), (-1, -1), 6),
-            ('RIGHTPADDING', (0, 0), (-1, -1), 6),
-            ('BACKGROUND', (1, 0), (1, -1), colors.beige),
-            ('GRID', (0, 0), (-1, -1), 1, colors.black)
-        ]))
-        
-        story.append(project_table)
-        story.append(Spacer(1, 20))
-        
-        # Executive Summary
-        story.append(Paragraph("EXECUTIVE SUMMARY", section_style))
-        story.append(Paragraph(style_guide.executive_summary, body_style))
-        story.append(PageBreak())
-        
-        # Section 1: Language Rules
-        story.append(Paragraph("SECTION 1: LANGUAGE RULES SYSTEM", section_style))
-        
-        story.append(Paragraph("Vocabulary Architecture", subsection_style))
-        story.append(Paragraph(style_guide.language_rules.vocabulary_ceiling, body_style))
-        story.append(Spacer(1, 10))
-        
-        # Complexity ratios table
-        complexity_data = [['Type', 'Percentage']]
-        for complexity, ratio in style_guide.language_rules.complexity_ratios.items():
-            complexity_data.append([complexity.title(), f"{ratio:.1%}"])
-        
-        complexity_table = Table(complexity_data, colWidths=[2*inch, 1.5*inch])
-        complexity_table.setStyle(TableStyle([
-            ('BACKGROUND', (0, 0), (-1, 0), colors.lightgreen),
-            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-            ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
-            ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-            ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
-            ('FONTSIZE', (0, 0), (-1, -1), 9),
-            ('TOPPADDING', (0, 0), (-1, -1), 6),
-            ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
-            ('LEFTPADDING', (0, 0), (-1, -1), 6),
-            ('RIGHTPADDING', (0, 0), (-1, -1), 6),
-            ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
-            ('GRID', (0, 0), (-1, -1), 1, colors.black)
-        ]))
-        
-        story.append(Paragraph("Sentence Complexity Ratios", subsection_style))
-        story.append(complexity_table)
-        story.append(PageBreak())
-        
-        # Section 2: Character Voices
-        story.append(Paragraph("SECTION 2: DIALECT & ACCENT MAP", section_style))
-        
-        for voice in style_guide.dialect_accent_map.character_voices:
-            story.append(Paragraph(f"Character: {voice.character_name}", subsection_style))
-            story.append(Paragraph(f"<b>Voice Signature:</b> {voice.voice_signature}", body_style))
-            story.append(Paragraph(f"<b>Vocabulary Level:</b> {voice.vocabulary_level}", body_style))
-            story.append(Paragraph(f"<b>Emotional Range:</b> {voice.emotional_range}", body_style))
-            story.append(Spacer(1, 10))
-        
-        story.append(PageBreak())
-        
-        # Section 3: Audio Conventions
-        story.append(Paragraph("SECTION 3: AUDIO CONVENTIONS FRAMEWORK", section_style))
-        
-        for convention in style_guide.audio_conventions.scene_transitions:
-            story.append(Paragraph(f"Convention: {convention.convention_type}", subsection_style))
-            story.append(Paragraph(f"<b>Audio Signature:</b> {convention.audio_signature}", body_style))
-            story.append(Paragraph(f"<b>Timing:</b> {convention.timing_guidelines}", body_style))
-            story.append(Spacer(1, 10))
-        
-        story.append(PageBreak())
-        
-        # Section 4: Dialogue Principles
-        story.append(Paragraph("SECTION 4: DIALOGUE PRINCIPLES SYSTEM", section_style))
-        story.append(Paragraph(f"<b>Naturalism Balance:</b> {style_guide.dialogue_principles.naturalism_balance}", body_style))
-        story.append(Paragraph(f"<b>Character ID Frequency:</b> {style_guide.dialogue_principles.character_id_frequency}", body_style))
-        story.append(Spacer(1, 15))
-        
-        # Section 5: Narration Style
-        story.append(Paragraph("SECTION 5: NARRATION STYLE SYSTEM", section_style))
-        if style_guide.narration_style:
-            story.append(Paragraph(f"<b>Narrator Personality:</b> {style_guide.narration_style.narrator_personality}", body_style))
-            story.append(Paragraph(f"<b>Knowledge Scope:</b> {style_guide.narration_style.knowledge_scope}", body_style))
-            story.append(Paragraph(f"<b>Reliability Level:</b> {style_guide.narration_style.reliability_level}", body_style))
-        else:
-            story.append(Paragraph("No narrator strategy selected for this production.", body_style))
-        
-        story.append(Spacer(1, 15))
-        
-        # Section 6: Sonic Signature
-        story.append(Paragraph("SECTION 6: SONIC SIGNATURE SYSTEM", section_style))
-        
-        # Character musical signatures
-        music_data = [['Character', 'Musical Signature']]
-        for character, signature in style_guide.sonic_signature.character_musical_signatures.items():
-            music_data.append([character, signature[:60] + "..." if len(signature) > 60 else signature])
-        
-        music_table = Table(music_data, colWidths=[2*inch, 4*inch])
-        music_table.setStyle(TableStyle([
-            ('BACKGROUND', (0, 0), (-1, 0), colors.lightgreen),
-            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-            ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
-            ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-            ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
-            ('FONTSIZE', (0, 0), (-1, -1), 8),
-            ('TOPPADDING', (0, 0), (-1, -1), 4),
-            ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
-            ('LEFTPADDING', (0, 0), (-1, -1), 4),
-            ('RIGHTPADDING', (0, 0), (-1, -1), 4),
-            ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
-            ('GRID', (0, 0), (-1, -1), 1, colors.black)
-        ]))
-        
-        story.append(Paragraph("Character Musical Signatures", subsection_style))
-        story.append(music_table)
-        story.append(Spacer(1, 15))
-        
-        # Implementation Guidelines
-        story.append(Paragraph("IMPLEMENTATION GUIDELINES", section_style))
-        for guideline in style_guide.implementation_guidelines:
-            story.append(Paragraph(f"• {guideline}", body_style))
-        
-        story.append(Spacer(1, 15))
-        
-        # Quality Control Checklist
-        story.append(Paragraph("QUALITY CONTROL CHECKLIST", section_style))
-        for item in style_guide.quality_control_checklist:
-            story.append(Paragraph(f"□ {item}", body_style))
-        
-        # Build PDF
-        doc.build(story)
-        
-        # Get PDF bytes
-        pdf_bytes = buffer.getvalue()
-        buffer.close()
-        
-        return pdf_bytes
-        
-    def _create_simple_pdf(self, style_guide: MasterStyleGuide) -> bytes:
-        """
-        Fallback simple PDF creation if reportlab is not available
-        """
-        try:
-            from fpdf import FPDF
-        except ImportError:
-            # If no PDF library available, return text as bytes
-            text_content = self.export_to_text(style_guide)
-            return text_content.encode('utf-8')
-        
-        pdf = FPDF()
-        pdf.add_page()
-        pdf.set_font('Arial', 'B', 16)
-        
-        # Title
-        pdf.cell(0, 10, 'STATION 6: MASTER STYLE GUIDE', 0, 1, 'C')
-        pdf.ln(10)
-        
-        # Project info
-        pdf.set_font('Arial', '', 12)
-        pdf.cell(0, 8, f'Working Title: {style_guide.working_title}', 0, 1)
-        pdf.cell(0, 8, f'Session ID: {style_guide.session_id}', 0, 1)
-        pdf.cell(0, 8, f'Target Age: {style_guide.project_context.get("target_age_range", "N/A")}', 0, 1)
-        pdf.ln(10)
-        
-        # Basic content
-        content_lines = self.export_to_text(style_guide).split('\n')
-        pdf.set_font('Arial', '', 8)
-        
-        for line in content_lines[:300]:  # Limit lines to avoid issues
-            if len(line.strip()) > 0:
-                try:
-                    # Handle encoding issues
-                    safe_line = line.encode('latin-1', 'replace').decode('latin-1')
-                    pdf.cell(0, 4, safe_line[:100], 0, 1)  # Limit line length
-                except:
-                    pdf.cell(0, 4, '[Text encoding issue]', 0, 1)
-        
-        return pdf.output(dest='S').encode('latin-1')
+    # Fallback PDF method also removed
+    # def _create_simple_pdf(self, style_guide: MasterStyleGuide) -> bytes:
+    #     """
+    #     Fallback simple PDF creation if reportlab is not available - REMOVED
+    #     """
+    #     pass
     
     def _extract_character_names_from_story(self, premise: str, genre: str) -> tuple:
         """Extract character names from story premise or generate appropriate ones"""

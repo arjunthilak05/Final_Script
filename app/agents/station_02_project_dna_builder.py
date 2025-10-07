@@ -20,6 +20,7 @@ from enum import Enum
 from app.openrouter_agent import OpenRouterAgent
 from app.redis_client import RedisClient
 from app.config import Settings
+from app.agents.config_loader import load_station_config
 
 logger = logging.getLogger(__name__)
 
@@ -129,8 +130,11 @@ class Station02ProjectDNABuilder:
         self.redis = RedisClient()
         self.station_id = "station_02"
         
-        # Section-specific prompts
-        self.section_prompts = self._load_section_prompts()
+        # Load station configuration from YML
+        self.config = load_station_config(station_number=2)
+        
+        # Section-specific prompts (loaded from config)
+        self.section_prompts = self.config.get_all_prompts()
         
     async def initialize(self):
         """Initialize Station 2 processor"""
@@ -138,7 +142,9 @@ class Station02ProjectDNABuilder:
         
     def _load_section_prompts(self) -> Dict[str, str]:
         """Load specialized prompts for each bible section"""
-        return {
+        # This method is deprecated - prompts are now loaded from YML config
+        # Keeping for backwards compatibility
+        return self.section_prompts if hasattr(self, 'section_prompts') else {
             "world": """
 You are the World Building Specialist for audiobook production.
 
@@ -438,10 +444,10 @@ INITIAL EXPANSION FROM STATION 1:
                 # Format prompt with context
                 prompt = self.section_prompts[section_name].format(context=context)
                 
-                # Generate section with AI
+                # Generate section with AI using config model
                 response = await self.openrouter.process_message(
                     prompt,
-                    model_name="grok-4"
+                    model_name=self.config.model
                 )
                 
                 sections[section_name] = response.strip()
@@ -463,7 +469,7 @@ INITIAL EXPANSION FROM STATION 1:
             
             integration_response = await self.openrouter.process_message(
                 integration_prompt,
-                model_name="grok-4"
+                model_name=self.config.model
             )
             
             logger.info("Integration analysis completed")

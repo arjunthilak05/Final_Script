@@ -1,0 +1,117 @@
+# Station 12: Hook & Cliffhanger Designer Configuration
+
+model: "qwen-72b"
+temperature: 0.7
+max_tokens: 3000
+
+prompts:
+  opening_hook: |
+    You are designing the OPENING HOOK for Episode {episode_number} of an audio drama.
+
+    EPISODE CONTEXT:
+    {episode_context}
+
+    CHARACTERS AVAILABLE:
+    {characters_summary}
+
+    WORLD SETTING:
+    {world_summary}
+
+    Design a compelling OPENING HOOK (first 60 seconds) that:
+
+    1. HOOK TYPE: Choose from (mystery, action, emotion, revelation, conflict, question)
+    2. AUDIO STRATEGY:
+       - First sound listener hears (within 3 seconds)
+       - Sound sequence that builds tension
+       - When first voice enters
+       - Audio environment setup
+    3. CHARACTER MOMENT:
+       - Who speaks first (and why this character)
+       - What they say/do in opening moment
+       - Emotional state
+    4. QUESTION RAISED:
+       - What mystery/problem is immediately presented
+       - Why listener must keep listening
+    5. TONE SETTING:
+       - Emotional temperature (tense, excited, mysterious, etc.)
+       - Pace (fast/slow)
+       - Genre signals
+    6. PRODUCTION NOTES:
+       - Sound design recommendations
+       - Music/ambience cues
+       - Mixing notes for maximum impact
+
+    Make it IMMEDIATELY engaging and audio-focused.
+
+  act_turns: |
+    You are designing the THREE ACT TURNS for Episode {episode_number} of an audio drama.
+
+    EPISODE CONTEXT:
+    {episode_context}
+
+    CHARACTERS:
+    {characters_summary}
+
+    Design three act turn points that:
+
+    1. ACT 1 TURN (around 25% mark):
+       - Story beat (what changes)
+       - Character decision
+       - Stakes shift
+       - Audio signature
+       - Emotional shift
+
+    2. ACT 2 TURN (around 60% mark):
+       - Story beat
+       - Character decision
+       - Stakes shift
+       - Audio signature
+       - Emotional shift
+
+    3. ACT 3 TURN (climax point):
+       - Story beat
+       - Character decision
+       - Stakes shift
+       - Audio signature
+       - Emotional shift
+
+    Each turn should create momentum and propel story forward.
+
+  cliffhanger: |
+    You are designing the CLIFFHANGER for Episode {episode_number} of an audio drama.
+
+    EPISODE CONTEXT:
+    {episode_context}
+
+    CHARACTERS:
+    {characters_summary}
+
+    Design a compelling cliffhanger that:
+
+    1. CLIFFHANGER TYPE: Choose from (Question, Danger, Revelation, Choice, Arrival, Betrayal, Loss, Discovery, Transformation, Time)
+    2. INTENSITY RATING: 1-10 scale
+    3. UNANSWERED QUESTION: What question left hanging
+    4. AUDIO EXECUTION:
+       - How to cut/end episode
+       - Sound design for maximum impact
+       - Music/silence strategy
+    5. EMOTIONAL STATE: Emotion to leave listener with
+    6. CONNECTION SETUP: Setup for next episode
+
+    Create urgency to listen to next episode.
+
+  tension_curve: |
+    Map the tension curve for Episode {episode_number}.
+
+    EPISODE CONTEXT:
+    {episode_context}
+
+    Provide tension points throughout episode:
+    - Timestamp (e.g., "5:00", "12:30")
+    - Tension level (1-10)
+    - Reason for this rating
+    - Emotional state
+    - Audio intensity recommendation
+
+    Create dynamic tension curve with peaks and valleys.
+

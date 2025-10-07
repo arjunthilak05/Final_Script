@@ -19,6 +19,7 @@ from datetime import datetime
 from app.openrouter_agent import OpenRouterAgent
 from app.redis_client import RedisClient
 from app.config import Settings
+from app.agents.config_loader import load_station_config
 # from app.pdf_exporter import Station1PDFExporter  # Not implemented
 
 # Configure logging
@@ -72,8 +73,11 @@ class Station01SeedProcessor:
         self.station_id = "station_01"
         # self.pdf_exporter = Station1PDFExporter()  # Not implemented
         
-        # Station-specific prompt template
-        self.prompt_template = self._load_prompt_template()
+        # Load station configuration from YML
+        self.config = load_station_config(station_number=1)
+        
+        # Station-specific prompt template (loaded from config)
+        self.prompt_template = self.config.get_prompt('main')
         
     async def initialize(self):
         """Initialize the Station 1 processor"""
@@ -81,82 +85,9 @@ class Station01SeedProcessor:
         
     def _load_prompt_template(self) -> str:
         """Load the enhanced Station 1 prompt with better structured output"""
-        return """
-You are the Seed Processor for an audio-only series production system.
-
-SEED TO ANALYZE: {seed_input}
-
-TASK 1: EVALUATE GROWTH POTENTIAL
-Analyze the seed and present 3 development options:
-
-Option A: MINI SERIES (3-6 episodes, 15-25 min each)
-- Core story arc focused on single emotional journey
-- Estimated word count: 15,000-30,000 total
-- Best for: contained stories, single mystery, limited cast
-- Audio focus: Intimate character moments, minimal locations
-- STRENGTHS: [List 3 specific strengths for this seed]
-- LIMITATIONS: [List 2 specific limitations for this seed] 
-- JUSTIFICATION: [2-3 sentences explaining why this scale fits this story]
-
-Option B: STANDARD SERIES (8-12 episodes, 35-45 min each)  
-- Main arc with 2-3 subplots and character development
-- Estimated word count: 60,000-100,000 total
-- Best for: character journeys, mystery with layers, relationship dynamics
-- Audio focus: Multiple perspectives, rich soundscapes, evolving relationships
-- STRENGTHS: [List 3 specific strengths for this seed]
-- LIMITATIONS: [List 2 specific limitations for this seed]
-- JUSTIFICATION: [2-3 sentences explaining why this scale fits this story]
-
-Option C: EXTENDED SERIES (20-40 episodes, 35-45 min each)
-- Complex multi-arc structure with ensemble cast
-- Estimated word count: 150,000-300,000 total
-- Best for: world-building, ensemble casts, epic scope
-- Audio focus: Complex sound design, multiple storylines, deep character exploration
-- STRENGTHS: [List 3 specific strengths for this seed]
-- LIMITATIONS: [List 2 specific limitations for this seed]
-- JUSTIFICATION: [2-3 sentences explaining why this scale fits this story]
-
-RECOMMENDATION: Choose Option A, B, or C and explain why in 2-3 sentences.
-
-TASK 2: INITIAL EXPANSION
-For the recommended option, create:
-
-WORKING TITLES:
-1. [Audio-friendly title option 1]
-2. [Audio-friendly title option 2]
-3. [Audio-friendly title option 3]
-
-CORE PREMISE: [2-3 sentences describing the core story, emphasizing audio storytelling elements]
-
-MAIN CHARACTERS:
-- [Primary character name 1 - extract from story]
-- [Primary character name 2 - extract from story]  
-- [Supporting character name 3 - extract from story]
-- [Supporting character name 4 - extract from story]
-
-CENTRAL CONFLICT: [The main dramatic tension that drives the audio drama]
-
-EPISODE RATIONALE: [Explanation of why the recommended episode count is perfect for this story]
-
-AUDIO BREAKING POINTS:
-- Episode 1 ending: [Natural episode division point]
-- Episode 2 ending: [Natural episode division point]
-- Episode 3 ending: [Natural episode division point]
-- Episode 4 ending: [Natural episode division point]
-
-SIGNATURE SOUNDS:
-- [Key audio element 1 that defines this story]
-- [Key audio element 2 that defines this story]
-- [Key audio element 3 that defines this story]
-
-SPECIAL AUDIO CONSIDERATIONS:
-- Focus on dialogue, internal monologue, and sound design
-- Consider phone calls, voice messages, ambient sounds
-- Think about how story beats translate to audio-only format
-- Identify signature sounds that define the story
-
-Be specific, detailed, and tailor every element to the provided seed concept.
-"""
+        # This method is deprecated - prompt is now loaded from YML config
+        # Keeping for backwards compatibility
+        return self.prompt_template
 
     async def process(self, seed_input: str, session_id: str) -> SeedProcessorOutput:
         """
@@ -179,10 +110,10 @@ Be specific, detailed, and tailor every element to the provided seed concept.
             # Format prompt with input
             formatted_prompt = self.prompt_template.format(seed_input=seed_input)
             
-            # Get LLM response - using optimal settings for structured output
+            # Get LLM response - using optimal settings for structured output from config
             response = await self.openrouter.process_message(
                 formatted_prompt,
-                model_name="grok-4"
+                model_name=self.config.model
             )
             
             # Parse the response into structured data

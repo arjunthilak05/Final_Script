@@ -1,0 +1,67 @@
+# Station 6: Master Style Guide Configuration
+
+model: "qwen-72b"
+temperature: 0.7
+max_tokens: 3000
+
+prompts:
+  main: |
+    You are the Master Style Guide Builder for audio-only drama production.
+
+    PROJECT CONTEXT:
+    {project_context}
+
+    Create a comprehensive Master Style Guide with these sections:
+
+    1. LANGUAGE RULES SYSTEM:
+       - Vocabulary ceiling and forbidden words
+       - Preferred alternatives dictionary
+       - Max sentence length
+       - Complexity ratios
+       - Technical term protocols
+       - Narrator voice traits
+       - Tense consistency rules
+       - Transition phrases
+
+    2. DIALECT & ACCENT MAP:
+       - Character voice specifications
+       - Regional markers
+       - Pronunciation guide
+       - Voice evolution rules
+       - Cultural speech patterns
+
+    3. AUDIO CONVENTIONS FRAMEWORK:
+       - Scene transitions audio signatures
+       - Temporal markers
+       - Environmental signatures
+       - Silence protocols
+       - Perspective shift cues
+
+    4. DIALOGUE PRINCIPLES:
+       - Naturalism balance
+       - Character ID frequency
+       - Subtext conversion ratio
+       - Interruption protocols
+       - Exposition integration methods
+       - Emotional expression guidelines
+       - Multi-character management
+
+    5. NARRATION STYLE (if applicable):
+       - Narrator personality
+       - Activation triggers
+       - Knowledge scope
+       - Emotional involvement level
+       - Reliability level
+       - Voice characteristics
+       - Screenplay integration
+
+    6. SONIC SIGNATURE:
+       - Main theme variations
+       - Character musical signatures
+       - Emotional audio palette
+       - Environmental soundscapes
+       - Recurring audio elements
+       - Motif applications
+
+    Provide detailed, production-ready guidelines for each section.
+

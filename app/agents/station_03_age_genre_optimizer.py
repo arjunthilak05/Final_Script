@@ -20,6 +20,7 @@ from enum import Enum
 from app.openrouter_agent import OpenRouterAgent
 from app.redis_client import RedisClient
 from app.config import Settings
+from app.agents.config_loader import load_station_config
 
 logger = logging.getLogger(__name__)
 
@@ -89,8 +90,9 @@ class AgeGenreStyleGuide:
 class AgeAgent:
     """Specialized agent for age-appropriate content guidelines"""
     
-    def __init__(self, openrouter_agent: OpenRouterAgent):
+    def __init__(self, openrouter_agent: OpenRouterAgent, config):
         self.agent = openrouter_agent
+        self.config = config
     
     def _extract_json_from_response(self, response: str) -> Optional[str]:
         """Extract JSON from AI response using multiple strategies"""
@@ -206,7 +208,7 @@ class AgeAgent:
         try:
             response = await self.agent.process_message(
                 age_prompt,
-                model_name="grok-4"
+                model_name=self.config.model
             )
             
             # Extract JSON from response with improved parsing
@@ -270,8 +272,9 @@ class AgeAgent:
 class GenreAgent:
     """Specialized agent for genre blending and optimization"""
     
-    def __init__(self, openrouter_agent: OpenRouterAgent):
+    def __init__(self, openrouter_agent: OpenRouterAgent, config):
         self.agent = openrouter_agent
+        self.config = config
     
     def _extract_json_from_response(self, response: str) -> Optional[str]:
         """Extract JSON from AI response using multiple strategies"""
@@ -401,7 +404,7 @@ class GenreAgent:
         try:
             response = await self.agent.process_message(
                 genre_prompt,
-                model_name="grok-4"
+                model_name=self.config.model
             )
             
             # Extract JSON from response with improved parsing
@@ -482,8 +485,9 @@ class GenreAgent:
 class ToneAgent:
     """Specialized agent for tone calibration and audio conveyance"""
     
-    def __init__(self, openrouter_agent: OpenRouterAgent):
+    def __init__(self, openrouter_agent: OpenRouterAgent, config):
         self.agent = openrouter_agent
+        self.config = config
     
     def _extract_json_from_response(self, response: str) -> Optional[str]:
         """Extract JSON from AI response using multiple strategies"""
@@ -583,15 +587,57 @@ class ToneAgent:
         try:
             response = await self.agent.process_message(
                 tone_prompt,
-                model_name="grok-4"
+                model_name=self.config.model
             )
             
             # Extract JSON from response with improved parsing
             json_text = self._extract_json_from_response(response)
             if not json_text:
-                print(f"⚠️ No JSON found in tone calibration response, using fallback")
-                logger.warning(f"No JSON found in tone response: {response[:200]}...")
-                raise ValueError("No JSON found in tone calibration response")
+                logger.error(f"❌ CRITICAL: No JSON found in tone calibration response")
+                logger.error(f"Full response: {response}")
+                # Try one more time with a simpler, more explicit prompt
+                retry_prompt = f"""
+                Return ONLY valid JSON (no other text) for tone calibration:
+                {{
+                    "chosen_blend": "{chosen_blend.primary_genre} + {chosen_blend.complementary_genre}",
+                    "episode_progression": [
+                        "Episodes 1-2: Initial tone",
+                        "Episodes 3-4: Development",
+                        "Episodes 5-6: Intensification",
+                        "Final episodes: Resolution"
+                    ],
+                    "tonal_shift_moments": [
+                        "Key moment 1 description",
+                        "Key moment 2 description",
+                        "Key moment 3 description"
+                    ],
+                    "audio_tone_techniques": [
+                        "Music technique",
+                        "Voice technique",
+                        "Sound design technique",
+                        "Pacing technique",
+                        "Silence technique"
+                    ],
+                    "light_dark_balance": "Description of balance",
+                    "tension_curves": [
+                        "Episode arc description",
+                        "Season arc description",
+                        "Character arc description"
+                    ],
+                    "audio_cues": {{
+                        "rising_tension": "Technique",
+                        "emotional_peak": "Technique",
+                        "comic_relief": "Technique",
+                        "resolution": "Technique"
+                    }}
+                }}
+                """
+                retry_response = await self.agent.process_message(retry_prompt, model_name=self.config.model)
+                json_text = self._extract_json_from_response(retry_response)
+                if not json_text:
+                    logger.error("❌ RETRY FAILED: Still no JSON in tone calibration")
+                    logger.error(f"Retry response: {retry_response}")
+                    raise ValueError("CRITICAL: Unable to get valid JSON from tone calibration after retry")
             
             try:
                 data = json.loads(json_text)
@@ -606,8 +652,8 @@ class ToneAgent:
                     data = json.loads(json_text_cleaned)
                 except json.JSONDecodeError as e2:
                     logger.error(f"Cleaned JSON parsing also failed: {str(e2)}")
-                    print(f"⚠️ JSON parsing failed in tone calibration, using fallback")
-                    raise ValueError("Invalid JSON in tone calibration response")
+                    logger.error("❌ CRITICAL: Cannot proceed without valid JSON from tone calibration")
+                    raise ValueError("CRITICAL: Invalid JSON in tone calibration response - cannot use fallback")
             
             return ToneCalibration(
                 chosen_blend=data.get('chosen_blend', f"{chosen_blend.primary_genre} + {chosen_blend.complementary_genre}"),
@@ -620,42 +666,9 @@ class ToneAgent:
             )
             
         except Exception as e:
-            logger.error(f"Tone calibration failed: {str(e)}")
-            # Fallback default calibration
-            return ToneCalibration(
-                chosen_blend=f"{chosen_blend.primary_genre} + {chosen_blend.complementary_genre}",
-                episode_progression=[
-                    "Episodes 1-3: Establish tone and introduce key elements",
-                    "Episodes 4-6: Develop tone complexity and deepen mood",
-                    "Episodes 7-9: Intensify tone and build toward climax",
-                    "Final episodes: Resolve tone and provide satisfying conclusion"
-                ],
-                tonal_shift_moments=[
-                    "Initial hook: Immediate tone establishment",
-                    "First conflict: Tone darkening and complexity increase",
-                    "Mid-season turn: Major tonal shift based on story events",
-                    "Final resolution: Return to balanced, conclusive tone"
-                ],
-                audio_tone_techniques=[
-                    "Music: Layered soundscapes that reflect emotional state",
-                    "Voice: Narration pace and inflection changes",
-                    "Sound design: Environmental audio that supports mood",
-                    "Pacing: Strategic use of timing and pauses",
-                    "Silence: Meaningful pauses for emotional impact"
-                ],
-                light_dark_balance="Balanced progression with darker moments offset by lighter character interactions and hopeful elements",
-                tension_curves=[
-                    "Episode arc: Build tension early, peak mid-episode, resolve with setup for next",
-                    "Season arc: Escalating tension with periodic releases and character moments", 
-                    "Character arc: Emotional tension follows character growth and challenges"
-                ],
-                audio_cues={
-                    "rising_tension": "Gradual music intensity increase with selective sound layering",
-                    "emotional_peak": "Music crescendo with focused vocal performance",
-                    "comic_relief": "Lighter instrumentation with timing-based humor",
-                    "resolution": "Satisfying musical resolution with peaceful environmental sounds"
-                }
-            )
+            logger.error(f"❌ CRITICAL: Tone calibration failed: {str(e)}")
+            logger.error("Station 3 cannot proceed without valid tone calibration data")
+            raise RuntimeError(f"CRITICAL FAILURE in Station 3 tone calibration: {str(e)}")
 
 class Station03AgeGenreOptimizer:
     """Station 3: Age & Genre Optimizer using multi-agent Swarm coordination"""
@@ -664,6 +677,9 @@ class Station03AgeGenreOptimizer:
         self.settings = Settings()
         self.openrouter_agent = None
         self.redis_client = None
+        
+        # Load station configuration from YML
+        self.config = load_station_config(station_number=3)
         
         # Initialize specialized agents
         self.age_agent = None
@@ -676,10 +692,10 @@ class Station03AgeGenreOptimizer:
         self.redis_client = RedisClient()
         await self.redis_client.initialize()
         
-        # Initialize specialized Swarm agents
-        self.age_agent = AgeAgent(self.openrouter_agent)
-        self.genre_agent = GenreAgent(self.openrouter_agent)
-        self.tone_agent = ToneAgent(self.openrouter_agent)
+        # Initialize specialized Swarm agents with config
+        self.age_agent = AgeAgent(self.openrouter_agent, self.config)
+        self.genre_agent = GenreAgent(self.openrouter_agent, self.config)
+        self.tone_agent = ToneAgent(self.openrouter_agent, self.config)
         
         logger.info("Station 3: Age & Genre Optimizer initialized with Swarm agents")
     
@@ -923,23 +939,10 @@ class Station03AgeGenreOptimizer:
             logger.error(f"Failed to store style guide in Redis: {str(e)}")
             # Non-critical error, continue processing
 
-    def export_style_guide_to_pdf(self, style_guide: AgeGenreStyleGuide, filename: str = None) -> str:
-        """Export style guide to PDF format"""
-        try:
-            # from app.pdf_exporter import Station3PDFExporter  # Not implemented
-            
-            if filename is None:
-                filename = f"station3_age_genre_guide_{style_guide.session_id}.pdf"
-            
-            # exporter = Station3PDFExporter()  # Not implemented
-            # pdf_path = exporter.create_age_genre_guide_pdf(style_guide, filename)
-            
-            logger.info(f"PDF export not implemented for: {filename}")
-            return "PDF export not implemented"
-            
-        except Exception as e:
-            logger.error(f"PDF export failed: {str(e)}")
-            raise
+    # PDF export removed - use JSON and TXT formats instead
+    # def export_style_guide_to_pdf(self, style_guide: AgeGenreStyleGuide, filename: str = None) -> str:
+    #     """Export style guide to PDF format - REMOVED"""
+    #     pass
 
     def display_style_guide_summary(self, style_guide: AgeGenreStyleGuide):
         """Display a formatted summary of the style guide"""

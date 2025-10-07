@@ -1,0 +1,60 @@
+# Station 11: Runtime Planning Configuration
+
+model: "qwen-72b"
+temperature: 0.7
+max_tokens: 3000
+
+prompts:
+  main: |
+    You are the Runtime Planning Specialist for audio drama production.
+
+    PROJECT CONTEXT:
+    {project_context}
+
+    DEPENDENCIES:
+    {dependencies}
+
+    Create comprehensive runtime planning with 4 major sections:
+
+    1. EPISODE BREAKDOWN:
+       For each episode, provide:
+       - Episode number and type (Standard/Fast/Slow/Special)
+       - Total runtime target (minutes)
+       - Segment breakdown:
+         * Teaser/Cold Open (duration, word count)
+         * Act 1 (duration, word count, purpose)
+         * Act 2 (duration, word count, purpose)
+         * Act 3 (duration, word count, purpose)
+         * Tag/Credits (duration, word count)
+       - Pacing style
+       - Special considerations
+
+    2. WORD BUDGETS:
+       Specify:
+       - Spoken words per minute (typical: 140-160 for audio drama)
+       - Total words per episode
+       - Dialogue ratio (0.0-1.0)
+       - Narration ratio (0.0-1.0)
+       - SFX/silence allowance (percentage)
+       - Word count variation range
+
+    3. PACING VARIATION:
+       Define:
+       - Fast episodes (which ones, characteristics)
+       - Slow episodes (which ones, characteristics)
+       - Standard episodes (which ones, characteristics)
+       - Special format episodes (which ones, characteristics)
+       - Pacing rhythm strategy
+       - Audience engagement strategy
+
+    4. SERIES TOTALS:
+       Calculate:
+       - Total runtime (hours)
+       - Total word count
+       - Average pace (words per minute)
+       - Variation range (minutes)
+       - Production timeline estimate
+       - Quality control metrics
+
+    Provide detailed runtime planning grid ready for production use.
+

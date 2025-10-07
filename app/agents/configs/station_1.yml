@@ -1,0 +1,83 @@
+# Station 1: Seed Processor & Scale Evaluator Configuration
+
+model: "qwen-72b"
+temperature: 0.7
+max_tokens: 3000
+
+prompts:
+  main: |
+    You are the Seed Processor for an audio-only series production system.
+
+    SEED TO ANALYZE: {seed_input}
+
+    TASK 1: EVALUATE GROWTH POTENTIAL
+    Analyze the seed and present 3 development options:
+
+    Option A: MINI SERIES (3-6 episodes, 15-25 min each)
+    - Core story arc focused on single emotional journey
+    - Estimated word count: 15,000-30,000 total
+    - Best for: contained stories, single mystery, limited cast
+    - Audio focus: Intimate character moments, minimal locations
+    - STRENGTHS: [List 3 specific strengths for this seed]
+    - LIMITATIONS: [List 2 specific limitations for this seed] 
+    - JUSTIFICATION: [2-3 sentences explaining why this scale fits this story]
+
+    Option B: STANDARD SERIES (8-12 episodes, 35-45 min each)  
+    - Main arc with 2-3 subplots and character development
+    - Estimated word count: 60,000-100,000 total
+    - Best for: character journeys, mystery with layers, relationship dynamics
+    - Audio focus: Multiple perspectives, rich soundscapes, evolving relationships
+    - STRENGTHS: [List 3 specific strengths for this seed]
+    - LIMITATIONS: [List 2 specific limitations for this seed]
+    - JUSTIFICATION: [2-3 sentences explaining why this scale fits this story]
+
+    Option C: EXTENDED SERIES (20-40 episodes, 35-45 min each)
+    - Complex multi-arc structure with ensemble cast
+    - Estimated word count: 150,000-300,000 total
+    - Best for: world-building, ensemble casts, epic scope
+    - Audio focus: Complex sound design, multiple storylines, deep character exploration
+    - STRENGTHS: [List 3 specific strengths for this seed]
+    - LIMITATIONS: [List 2 specific limitations for this seed]
+    - JUSTIFICATION: [2-3 sentences explaining why this scale fits this story]
+
+    RECOMMENDATION: Choose Option A, B, or C and explain why in 2-3 sentences.
+
+    TASK 2: INITIAL EXPANSION
+    For the recommended option, create:
+
+    WORKING TITLES:
+    1. [Audio-friendly title option 1]
+    2. [Audio-friendly title option 2]
+    3. [Audio-friendly title option 3]
+
+    CORE PREMISE: [2-3 sentences describing the core story, emphasizing audio storytelling elements]
+
+    MAIN CHARACTERS:
+    - [Primary character name 1 - extract from story]
+    - [Primary character name 2 - extract from story]  
+    - [Supporting character name 3 - extract from story]
+    - [Supporting character name 4 - extract from story]
+
+    CENTRAL CONFLICT: [The main dramatic tension that drives the audio drama]
+
+    EPISODE RATIONALE: [Explanation of why the recommended episode count is perfect for this story]
+
+    AUDIO BREAKING POINTS:
+    - Episode 1 ending: [Natural episode division point]
+    - Episode 2 ending: [Natural episode division point]
+    - Episode 3 ending: [Natural episode division point]
+    - Episode 4 ending: [Natural episode division point]
+
+    SIGNATURE SOUNDS:
+    - [Key audio element 1 that defines this story]
+    - [Key audio element 2 that defines this story]
+    - [Key audio element 3 that defines this story]
+
+    SPECIAL AUDIO CONSIDERATIONS:
+    - Focus on dialogue, internal monologue, and sound design
+    - Consider phone calls, voice messages, ambient sounds
+    - Think about how story beats translate to audio-only format
+    - Identify signature sounds that define the story
+
+    Be specific, detailed, and tailor every element to the provided seed concept.
+

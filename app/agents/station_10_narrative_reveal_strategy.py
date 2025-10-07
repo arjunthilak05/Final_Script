@@ -158,6 +158,40 @@ class Station10NarrativeRevealStrategy:
         self.openrouter_agent = OpenRouterAgent()
         self.redis_client = RedisClient()
         self.settings = Settings()
+    
+    async def initialize(self):
+        """Initialize the station - MUST be called before process()"""
+        await self.redis_client.initialize()
+        logger.info("✅ Station 10 Redis client initialized")
+    
+    def _extract_json_from_response(self, response: str) -> str:
+        """Extract JSON from LLM response, handling markdown code blocks"""
+        # Remove markdown code blocks if present
+        if response.strip().startswith('```json'):
+            # Find the start and end of JSON block
+            start_marker = '```json'
+            end_marker = '```'
+            start_idx = response.find(start_marker)
+            end_idx = response.find(end_marker, start_idx + len(start_marker))
+            
+            if start_idx != -1 and end_idx != -1:
+                json_content = response[start_idx + len(start_marker):end_idx].strip()
+                logger.info("Extracted JSON from markdown code block")
+                return json_content
+        elif response.strip().startswith('```'):
+            # Generic code block
+            start_marker = '```'
+            end_marker = '```'
+            start_idx = response.find(start_marker)
+            end_idx = response.find(end_marker, start_idx + len(start_marker))
+            
+            if start_idx != -1 and end_idx != -1:
+                json_content = response[start_idx + len(start_marker):end_idx].strip()
+                logger.info("Extracted JSON from generic code block")
+                return json_content
+        
+        # Return original response if no code blocks found
+        return response.strip()
         
     async def process(self, session_id: str) -> Dict[str, Any]:
         """Main processing function for Station 10"""
@@ -190,32 +224,32 @@ class Station10NarrativeRevealStrategy:
         # Get Station 2: Project Bible
         project_bible_key = f"audiobook:{session_id}:station_02"
         project_bible_data = await self.redis_client.get(project_bible_key)
-        if project_bible_data:
-            project_bible = json.loads(project_bible_data)
-            dependencies['project_bible'] = project_bible
-        else:
-            logger.warning("Station 2 output not found, using fallback")
-            dependencies['project_bible'] = {"story_concept": "Unknown story"}
+        if not project_bible_data:
+            logger.error(f"❌ CRITICAL: Station 2 output not found in Redis at key {project_bible_key}")
+            raise ValueError("CRITICAL: Station 2 (Project Bible) output is required for Station 10")
+        project_bible = json.loads(project_bible_data)
+        dependencies['project_bible'] = project_bible
+        logger.info(f"✅ Loaded Station 2 output")
         
-        # Get Station 5: Season Architecture
+        # Get Station 5: Season Architecture  
         season_architecture_key = f"audiobook:{session_id}:station_05"
         season_architecture_data = await self.redis_client.get(season_architecture_key)
-        if season_architecture_data:
-            season_architecture = json.loads(season_architecture_data)
-            dependencies['season_architecture'] = season_architecture
-        else:
-            logger.warning("Station 5 output not found, using fallback")
-            dependencies['season_architecture'] = {"episode_count": 10, "season_structure": "Unknown"}
+        if not season_architecture_data:
+            logger.error(f"❌ CRITICAL: Station 5 output not found in Redis at key {season_architecture_key}")
+            raise ValueError("CRITICAL: Station 5 (Season Architecture) output is required for Station 10")
+        season_architecture = json.loads(season_architecture_data)
+        dependencies['season_architecture'] = season_architecture
+        logger.info(f"✅ Loaded Station 5 output")
         
         # Get Station 8: Character Bible
         character_bible_key = f"audiobook:{session_id}:station_08"
         character_bible_data = await self.redis_client.get(character_bible_key)
-        if character_bible_data:
-            character_bible = json.loads(character_bible_data)
-            dependencies['character_bible'] = character_bible
-        else:
-            logger.warning("Station 8 output not found, using fallback")
-            dependencies['character_bible'] = {"characters": []}
+        if not character_bible_data:
+            logger.error(f"❌ CRITICAL: Station 8 output not found in Redis at key {character_bible_key}")
+            raise ValueError("CRITICAL: Station 8 (Character Bible) output is required for Station 10")
+        character_bible = json.loads(character_bible_data)
+        dependencies['character_bible'] = character_bible
+        logger.info(f"✅ Loaded Station 8 output")
         
         return dependencies
     
@@ -315,7 +349,8 @@ class Station10NarrativeRevealStrategy:
         
         try:
             # Parse the response to extract information items
-            items_data = json.loads(response)
+            json_text = self._extract_json_from_response(response)
+            items_data = json.loads(json_text)
             information_items = []
             
             for item_data in items_data:
@@ -333,7 +368,7 @@ class Station10NarrativeRevealStrategy:
                     name=item_data.get('name', 'Unknown'),
                     description=item_data.get('description', ''),
                     priority=priority,
-                    target_episode=item_data.get('target_episode', 'Episode 5'),
+                    target_episode=str(item_data.get('target_episode', 'Episode 5')),
                     category=item_data.get('category', 'plot'),
                     importance_level=item_data.get('importance_level', 5),
                     emotional_impact=item_data.get('emotional_impact', ''),
@@ -342,9 +377,10 @@ class Station10NarrativeRevealStrategy:
             
             return information_items
             
-        except json.JSONDecodeError:
-            logger.warning("Failed to parse information taxonomy, using fallback")
-            return self._create_fallback_information_taxonomy(story_concept, episode_count)
+        except json.JSONDecodeError as e:
+            logger.error(f"❌ CRITICAL: Failed to parse information taxonomy JSON: {str(e)}")
+            logger.error(f"Response was: {response[:500]}...")
+            raise ValueError(f"CRITICAL: Unable to parse information taxonomy from LLM response: {str(e)}")
     
     async def _build_reveal_methods(self, story_concept: str, information_taxonomy: List[InformationItem]) -> List[RevealExecution]:
         """Build reveal methods for each major revelation"""
@@ -427,7 +463,8 @@ class Station10NarrativeRevealStrategy:
             response = await self.openrouter_agent.generate(prompt)
             
             try:
-                method_data = json.loads(response)
+                json_text = self._extract_json_from_response(response)
+                method_data = json.loads(json_text)
                 
                 # Map method string to enum
                 method_map = {
@@ -490,9 +527,9 @@ class Station10NarrativeRevealStrategy:
                     production_notes=method_data.get('production_notes', '')
                 ))
                 
-            except json.JSONDecodeError:
-                logger.warning(f"Failed to parse reveal method for {revelation.name}, using fallback")
-                reveal_executions.append(self._create_fallback_reveal_execution(revelation))
+            except json.JSONDecodeError as e:
+                logger.error(f"❌ CRITICAL: Failed to parse reveal method for {revelation.name}: {str(e)}")
+                raise ValueError(f"CRITICAL: Unable to parse reveal method from LLM response: {str(e)}")
         
         return reveal_executions
     
@@ -541,7 +578,8 @@ class Station10NarrativeRevealStrategy:
             response = await self.openrouter_agent.generate(prompt)
             
             try:
-                ppp_data = json.loads(response)
+                json_text = self._extract_json_from_response(response)
+                ppp_data = json.loads(json_text)
                 
                 plant_proof_payoff_items.append(PlantProofPayoff(
                     revelation_name=revelation.name,
@@ -552,9 +590,9 @@ class Station10NarrativeRevealStrategy:
                     audience_satisfaction=ppp_data.get('audience_satisfaction', '')
                 ))
                 
-            except json.JSONDecodeError:
-                logger.warning(f"Failed to parse plant/proof/payoff for {revelation.name}, using fallback")
-                plant_proof_payoff_items.append(self._create_fallback_plant_proof_payoff(revelation, episode_count))
+            except json.JSONDecodeError as e:
+                logger.error(f"❌ CRITICAL: Failed to parse plant/proof/payoff for {revelation.name}: {str(e)}")
+                raise ValueError(f"CRITICAL: Unable to parse plant/proof/payoff from LLM response: {str(e)}")
         
         return plant_proof_payoff_items
     
@@ -588,7 +626,8 @@ class Station10NarrativeRevealStrategy:
         response = await self.openrouter_agent.generate(prompt)
         
         try:
-            red_herrings_data = json.loads(response)
+            json_text = self._extract_json_from_response(response)
+            red_herrings_data = json.loads(json_text)
             red_herrings = []
             
             for herring_data in red_herrings_data:
@@ -604,9 +643,9 @@ class Station10NarrativeRevealStrategy:
             
             return red_herrings
             
-        except json.JSONDecodeError:
-            logger.warning("Failed to parse misdirection strategy, using fallback")
-            return self._create_fallback_red_herrings(story_concept)
+        except json.JSONDecodeError as e:
+            logger.error(f"❌ CRITICAL: Failed to parse misdirection strategy: {str(e)}")
+            raise ValueError(f"CRITICAL: Unable to parse misdirection strategy from LLM response: {str(e)}")
     
     async def _build_fairness_assessment(self, information_taxonomy: List[InformationItem], reveal_methods: List[RevealExecution]) -> FairnessCheck:
         """Build fairness assessment for audience engagement"""
@@ -655,7 +694,8 @@ class Station10NarrativeRevealStrategy:
         response = await self.openrouter_agent.generate(prompt)
         
         try:
-            fairness_data = json.loads(response)
+            json_text = self._extract_json_from_response(response)
+            fairness_data = json.loads(json_text)
             
             return FairnessCheck(
                 theoretical_solvability=fairness_data.get('theoretical_solvability', ''),
@@ -666,9 +706,9 @@ class Station10NarrativeRevealStrategy:
                 satisfaction_guarantee=fairness_data.get('satisfaction_guarantee', '')
             )
             
-        except json.JSONDecodeError:
-            logger.warning("Failed to parse fairness assessment, using fallback")
-            return self._create_fallback_fairness_check()
+        except json.JSONDecodeError as e:
+            logger.error(f"❌ CRITICAL: Failed to parse fairness assessment: {str(e)}")
+            raise ValueError(f"CRITICAL: Unable to parse fairness assessment from LLM response: {str(e)}")
     
     async def _build_reveal_timeline(self, information_taxonomy: List[InformationItem], episode_count: int) -> Dict[str, List[str]]:
         """Build episode-by-episode reveal timeline"""
@@ -681,7 +721,9 @@ class Station10NarrativeRevealStrategy:
             
             for item in information_taxonomy:
                 # Check if this item reveals in this episode
-                if episode_key in item.target_episode or str(episode_num) in item.target_episode:
+                # Handle both string and integer target_episode values
+                target_episode_str = str(item.target_episode)
+                if episode_key in target_episode_str or str(episode_num) in target_episode_str:
                     episode_reveals.append(f"{item.name} ({item.priority.value})")
             
             if episode_reveals:
@@ -718,16 +760,11 @@ class Station10NarrativeRevealStrategy:
         response = await self.openrouter_agent.generate(prompt)
         
         try:
-            return json.loads(response)
-        except json.JSONDecodeError:
-            logger.warning("Failed to parse audio cue library, using fallback")
-            return {
-                "revelation_moments": ["Dramatic pause", "Music swell", "Echo effect"],
-                "plant_moments": ["Subtle sound motif", "Brief silence", "Background detail"],
-                "proof_moments": ["Music intensification", "Voice emphasis", "Sound callback"],
-                "misdirection_moments": ["False tension music", "Misleading sound", "Distraction effect"],
-                "connection_moments": ["Recognition chord", "Flashback whoosh", "Clarity effect"]
-            }
+            json_text = self._extract_json_from_response(response)
+            return json.loads(json_text)
+        except json.JSONDecodeError as e:
+            logger.error(f"❌ CRITICAL: Failed to parse audio cue library: {str(e)}")
+            raise ValueError(f"CRITICAL: Unable to parse audio cue library from LLM response: {str(e)}")
     
     async def _build_production_guidelines(self, reveal_methods: List[RevealExecution], fairness_assessment: FairnessCheck) -> Dict[str, str]:
         """Build production guidelines for reveal strategy"""
@@ -953,7 +990,7 @@ class Station10NarrativeRevealStrategy:
         """Create fallback plant/proof/payoff"""
         plant_episode = max(1, int(episode_count * 0.2))
         proof_episode = max(1, int(episode_count * 0.6))
-        payoff_episode = revelation.target_episode
+        payoff_episode = str(revelation.target_episode)
         
         return PlantProofPayoff(
             revelation_name=revelation.name,

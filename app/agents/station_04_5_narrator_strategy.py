@@ -20,6 +20,7 @@ from enum import Enum
 from app.openrouter_agent import OpenRouterAgent
 from app.redis_client import RedisClient
 from app.config import Settings
+from app.agents.config_loader import load_station_config
 
 logger = logging.getLogger(__name__)
 
@@ -117,10 +118,13 @@ class Station045NarratorStrategy:
         self.station_id = "station_04_5"
         self.debug_mode = False
         
-        # Station-specific prompt templates
-        self.complexity_analysis_prompt = self._load_complexity_analysis_prompt()
-        self.scene_generation_prompt = self._load_scene_generation_prompt()
-        self.recommendation_prompt = self._load_recommendation_prompt()
+        # Load station configuration from YML
+        self.config = load_station_config(station_number=4, station_suffix="4_5")
+        
+        # Station-specific prompt templates (loaded from config)
+        self.complexity_analysis_prompt = self.config.get_prompt('complexity_analysis')
+        self.scene_generation_prompt = self.config.get_prompt('scene_generation')
+        self.recommendation_prompt = self.config.get_prompt('recommendation')
         
     async def initialize(self):
         """Initialize the Station 4.5 processor"""
@@ -472,7 +476,7 @@ Quality_Control: [Testing requirements]
             # Get LLM response
             response = await self.openrouter.process_message(
                 prompt,
-                model_name="grok-4",
+                model_name=self.config.model,
             )
             
             # Parse complexity analysis
@@ -499,7 +503,7 @@ Quality_Control: [Testing requirements]
             # Get LLM response
             response = await self.openrouter.process_message(
                 prompt,
-                model_name="grok-4", 
+                model_name="qwen-72b", 
             )
             
             # Parse scene response
@@ -528,7 +532,7 @@ Quality_Control: [Testing requirements]
             # Get LLM response
             response = await self.openrouter.process_message(
                 prompt,
-                model_name="grok-4",
+                model_name=self.config.model,
             )
             
             # Parse recommendation response
@@ -948,22 +952,10 @@ Quality_Control: [Testing requirements]
             logger.error(f"Failed to store Station 4.5 output: {str(e)}")
             raise
 
-    def export_to_pdf(self, narrator_document: NarratorRecommendationDocument, filename: str = None) -> str:
-        """
-        Export Station 4.5 output to PDF
-        
-        Args:
-            narrator_document: Station 4.5 processing output
-            filename: Optional custom filename
-            
-        Returns:
-            str: Path to the generated PDF file
-        """
-        # from app.pdf_exporter import Station45PDFExporter  # Not implemented
-        
-        # exporter = Station45PDFExporter()  # Not implemented
-        # return exporter.export_station45_output(narrator_document, filename)
-        return "PDF export not implemented"
+    # PDF export removed - use JSON and TXT formats instead
+    # def export_to_pdf(self, narrator_document: NarratorRecommendationDocument, filename: str = None) -> str:
+    #     """Export Station 4.5 output to PDF - REMOVED"""
+    #     pass
     
     def format_for_human_review(self, narrator_document: NarratorRecommendationDocument) -> Dict:
         """Format output for human review/approval interface"""

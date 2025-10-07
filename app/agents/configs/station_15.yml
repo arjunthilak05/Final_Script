@@ -1,0 +1,68 @@
+# Station 15: Detailed Episode Outlining Configuration
+
+model: "qwen-72b"
+temperature: 0.7
+max_tokens: 4000
+
+prompts:
+  main: |
+    You are the Detailed Episode Outlining Specialist for audio drama production.
+
+    PROJECT CONTEXT:
+    {project_context}
+
+    EPISODE BLUEPRINT:
+    {episode_blueprint}
+
+    Create comprehensive scene-by-scene outline for Episode {episode_number}:
+
+    For each scene, provide:
+
+    1. SCENE HEADER:
+       - Scene number
+       - Location (with audio signature)
+       - Time of day
+       - Characters present
+       - Estimated duration
+
+    2. SCENE PURPOSE:
+       - Story function
+       - Character development
+       - Information revealed/planted
+       - Emotional beat
+
+    3. SCENE BREAKDOWN:
+       - Beat-by-beat description (5-10 beats)
+       - Key dialogue moments
+       - Character actions
+       - Emotional dynamics
+
+    4. AUDIO DESIGN:
+       - Opening sound
+       - Ambient soundscape
+       - Key sound effects
+       - Music cues
+       - Transition to next scene
+
+    5. CHARACTER MOMENTS:
+       - Character states and motivations
+       - Relationship dynamics
+       - Internal conflicts
+       - Voice/performance notes
+
+    6. PRODUCTION NOTES:
+       - Technical requirements
+       - Performance direction
+       - Special considerations
+       - Potential challenges
+
+    Create detailed, production-ready scene outlines with sufficient detail for scriptwriting.
+
+    WORD COUNT GUIDANCE:
+    - Each scene should be detailed enough for a writer to expand into full script
+    - Include sample dialogue for key moments
+    - Specify pacing and rhythm
+    - Note emotional temperature throughout
+
+    Provide comprehensive outline ready for final scriptwriting phase.
+

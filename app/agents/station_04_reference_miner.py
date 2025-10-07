@@ -20,6 +20,7 @@ from enum import Enum
 from app.openrouter_agent import OpenRouterAgent
 from app.redis_client import RedisClient
 from app.config import Settings
+from app.agents.config_loader import load_station_config
 # from app.pdf_exporter import Station4PDFExporter  # Not implemented
 
 logger = logging.getLogger(__name__)
@@ -120,10 +121,13 @@ class Station04ReferenceMiner:
         # self.pdf_exporter = Station4PDFExporter()  # Not implemented
         self.debug_mode = False
         
-        # Station-specific prompt templates
-        self.reference_prompt = self._load_reference_prompt()
-        self.extraction_prompt = self._load_extraction_prompt()
-        self.seed_generation_prompt = self._load_seed_generation_prompt()
+        # Load station configuration from YML
+        self.config = load_station_config(station_number=4)
+        
+        # Station-specific prompt templates (loaded from config)
+        self.reference_prompt = self.config.get_prompt('reference_gathering')
+        self.extraction_prompt = self.config.get_prompt('tactical_extraction')
+        self.seed_generation_prompt = self.config.get_prompt('seed_generation')
         
     async def initialize(self):
         """Initialize the Station 4 processor"""
@@ -245,9 +249,13 @@ PROJECT CONTEXT:
 AVAILABLE TACTICS:
 {available_tactics}
 
-TASK: Generate exactly 65 story seeds across 4 categories.
+CRITICAL INSTRUCTIONS:
+1. You MUST use the EXACT markers shown below
+2. You MUST generate exactly 65 total seeds (30+20+10+5)
+3. Each seed MUST use the SEED_START and SEED_END markers
+4. DO NOT modify or skip the category markers
 
-Use this EXACT format for each seed:
+REQUIRED FORMAT FOR EACH SEED:
 
 SEED_START
 TITLE: [Title Here]
@@ -262,23 +270,25 @@ SOURCE: [Reference title]
 ADAPTATION: [Audio adaptation notes]
 SEED_END
 
-OUTPUT CATEGORIES:
+OUTPUT STRUCTURE (USE THESE EXACT MARKERS):
 
 ==MICRO_MOMENTS_START==
-[Generate exactly 30 seeds here]
+[Generate exactly 30 seeds here using SEED_START/SEED_END format]
 ==MICRO_MOMENTS_END==
 
 ==EPISODE_BEATS_START==
-[Generate exactly 20 seeds here] 
+[Generate exactly 20 seeds here using SEED_START/SEED_END format] 
 ==EPISODE_BEATS_END==
 
 ==SEASON_ARCS_START==
-[Generate exactly 10 seeds here]
+[Generate exactly 10 seeds here using SEED_START/SEED_END format]
 ==SEASON_ARCS_END==
 
 ==SERIES_DEFINING_START==
-[Generate exactly 5 seeds here]
+[Generate exactly 5 seeds here using SEED_START/SEED_END format]
 ==SERIES_DEFINING_END==
+
+IMPORTANT: The markers ==MICRO_MOMENTS_START==, ==MICRO_MOMENTS_END==, etc. MUST appear in your response EXACTLY as shown.
 """
 
     async def process(self, session_id: str) -> SeedBankDocument:
@@ -399,22 +409,55 @@ OUTPUT CATEGORIES:
             # Get LLM response
             response = await self.openrouter.process_message(
                 prompt,
-                model_name="grok-4",
+                model_name=self.config.model,
             )
             
             # Parse references from response
             references = self._parse_references_response(response)
             
-            # Validate we have the right number
-            if len(references) < 20 or len(references) > 25:
-                logger.warning(f"Expected 20-25 references, got {len(references)}")
+            # Validate we have the right number - RETRY if not enough (but don't fail)
+            if len(references) < 20:
+                logger.warning(f"⚠️  Expected 20-25 references, only got {len(references)}")
+                logger.warning("Retrying reference gathering with more explicit prompt...")
+                
+                # Retry with more explicit instructions
+                retry_prompt = prompt + f"""
+                
+                IMPORTANT: You MUST provide EXACTLY 20-25 references (you only provided {len(references)}).
+                Each reference must include ALL required fields:
+                - TITLE
+                - MEDIUM  
+                - RELEASE YEAR
+                - CREATOR
+                - GENRE RELEVANCE
+                - AGE APPROPRIATENESS
+                - WHY SELECTED
+                
+                Generate {25 - len(references)} MORE references now to reach the minimum of 20.
+                """
+                
+                retry_response = await self.openrouter.process_message(
+                    retry_prompt,
+                    model_name="qwen-72b",
+                )
+                
+                additional_refs = self._parse_references_response(retry_response)
+                references.extend(additional_refs)
+                
+                if len(references) < 20:
+                    logger.warning(f"⚠️  After retry, still only have {len(references)} references (target was 20 minimum)")
+                    logger.warning(f"Continuing with {len(references)} references - quality may be impacted")
             
-            logger.info(f"Gathered {len(references)} references")
+            if len(references) > 25:
+                logger.warning(f"Got {len(references)} references, trimming to 25")
+                references = references[:25]
+            
+            logger.info(f"✅ Gathered {len(references)} references (target: 20-25)")
             return references
             
         except Exception as e:
-            logger.error(f"Failed to gather references: {str(e)}")
-            return self._get_fallback_references(project_data)
+            logger.error(f"❌ CRITICAL: Failed to gather references: {str(e)}")
+            raise RuntimeError(f"CRITICAL FAILURE in Station 4 reference gathering: {str(e)}")
 
     async def _extract_tactics(self, references: List[MediaReference], project_data: Dict[str, Any]) -> List[TacticalExtraction]:
         """TASK 2: Extract tactics from each reference"""
@@ -444,7 +487,7 @@ WHY SELECTED: {reference.why_selected}
                     # Get LLM response
                     response = await self.openrouter.process_message(
                         prompt,
-                        model_name="grok-4",
+                        model_name="qwen-72b",
                     )
                     
                     # Parse extraction from response
@@ -688,16 +731,44 @@ TACTIC {i} (from {extraction.reference_title}):
             return SeedCollection([], [], [], [])
 
     def _extract_seeds_by_markers(self, text: str, start_marker: str, end_marker: str) -> List[StoryElement]:
-        """Extract seeds between markers"""
+        """Extract seeds between markers - with lenient end marker handling"""
         seeds = []
         
         # Find content between markers
         start_idx = text.find(start_marker)
         end_idx = text.find(end_marker)
         
-        if start_idx == -1 or end_idx == -1:
-            logger.warning(f"Markers not found: {start_marker}")
-            return []
+        if start_idx == -1:
+            logger.error(f"❌ CRITICAL: Start marker not found: {start_marker}")
+            logger.error(f"Response preview: {text[:500]}...")
+            raise ValueError(f"CRITICAL: Required start marker {start_marker} not found in LLM response")
+        
+        if end_idx == -1:
+            logger.warning(f"⚠️  End marker not found: {end_marker}")
+            logger.warning(f"Attempting to extract content until end of section or next marker")
+            # Try to find the next category marker as end point
+            next_markers = [
+                "==MICRO_MOMENTS_START==", "==MICRO_MOMENTS_END==",
+                "==EPISODE_BEATS_START==", "==EPISODE_BEATS_END==",
+                "==SEASON_ARCS_START==", "==SEASON_ARCS_END==",
+                "==SERIES_DEFINING_START==", "==SERIES_DEFINING_END=="
+            ]
+            # Find next marker after start
+            potential_ends = []
+            for marker in next_markers:
+                if marker == start_marker or marker == end_marker:
+                    continue
+                idx = text.find(marker, start_idx + len(start_marker))
+                if idx != -1:
+                    potential_ends.append(idx)
+            
+            if potential_ends:
+                end_idx = min(potential_ends)
+                logger.warning(f"Using next marker position as end: {end_idx}")
+            else:
+                # Use end of text
+                end_idx = len(text)
+                logger.warning(f"Using end of text as end marker")
         
         content = text[start_idx + len(start_marker):end_idx]
         
@@ -1299,7 +1370,7 @@ TACTIC {i} (from {extraction.reference_title}):
             # Get LLM response
             response = await self.openrouter.process_message(
                 prompt,
-                model_name="grok-4",
+                model_name=self.config.model,
             )
             
             # Debug mode logging if enabled
@@ -1367,7 +1438,7 @@ Generate {count} seeds now:
         
         response = await self.openrouter.process_message(
             prompt,
-            model_name="grok-4",
+            model_name="qwen-72b",
         )
         
         return self._extract_seeds_from_simple_response(response)
@@ -1410,7 +1481,7 @@ Generate {count} seeds now:
         # Get LLM response
         response = await self.openrouter.process_message(
             prompt,
-            model_name="grok-4",
+            model_name="qwen-72b",
         )
         
         # Parse seeds from response
@@ -1616,32 +1687,14 @@ GENRE: {project_context.get('primary_genre', 'Drama')}
             "next_step": "Please review the seed bank and approve to proceed to Station 5: Character Constellation Development"
         }
 
-    def export_to_pdf(self, seed_bank_document: SeedBankDocument, filename: str = None) -> str:
-        """
-        Export Station 4 output to PDF
-        
-        Args:
-            seed_bank_document: Station 4 processing output
-            filename: Optional custom filename
-            
-        Returns:
-            str: Path to the generated PDF file
-        """
-        return self.pdf_exporter.export_station4_output(seed_bank_document, filename)
-    
-    def export_review_to_pdf(self, seed_bank_document: SeedBankDocument, filename: str = None) -> str:
-        """
-        Export formatted review data to PDF
-        
-        Args:
-            seed_bank_document: Station 4 processing output
-            filename: Optional custom filename
-            
-        Returns:
-            str: Path to the generated PDF file
-        """
-        review_data = self.format_for_human_review(seed_bank_document)
-        return self.pdf_exporter.export_formatted_review(review_data, filename)
+    # PDF export removed - use JSON and TXT formats instead
+    # def export_to_pdf(self, seed_bank_document: SeedBankDocument, filename: str = None) -> str:
+    #     """Export Station 4 output to PDF - REMOVED"""
+    #     pass
+
+    # def export_review_to_pdf(self, seed_bank_document: SeedBankDocument, filename: str = None) -> str:
+    #     """Export formatted review data to PDF - REMOVED"""
+    #     pass
 
     def enable_debug_mode(self):
         """Enable detailed logging for debugging"""

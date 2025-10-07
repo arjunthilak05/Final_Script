@@ -18,11 +18,12 @@ from dataclasses import dataclass
 
 from app.openrouter_agent import OpenRouterAgent
 from app.redis_client import RedisClient
-from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Table, TableStyle
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.units import inch
-from reportlab.lib import colors
+# PDF generation removed - reportlab imports commented out
+# from reportlab.lib.pagesizes import letter
+# from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Table, TableStyle
+# from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+# from reportlab.lib.units import inch
+# from reportlab.lib import colors
 
 @dataclass
 class EpisodeBlueprint:
@@ -114,8 +115,17 @@ class Station14EpisodeBlueprint:
         characters_summary = ""
         if dependencies.get('character_bible'):
             char_data = dependencies['character_bible']
-            main_chars = char_data.get('tier1_protagonists', [])[:3]  # Top 3 characters
-            characters_summary = json.dumps(main_chars, indent=2)[:1500]
+            # Handle both old format (counts) and new format (actual character data)
+            main_chars = char_data.get('tier1_protagonists', [])
+            if isinstance(main_chars, int):
+                # Old format - just use character names if available
+                protagonist_names = char_data.get('protagonist_names', [])
+                characters_summary = f"Protagonists: {', '.join(protagonist_names[:3])}"
+            elif isinstance(main_chars, list):
+                # New format - use actual character data
+                characters_summary = json.dumps(main_chars[:3], indent=2)[:1500]
+            else:
+                characters_summary = "Character data unavailable"
         
         # Get relevant world info
         world_summary = ""
@@ -222,7 +232,7 @@ Expected JSON format:
 }}
 """
         
-        response = await self.openrouter.process_message(prompt, "grok-4")
+        response = await self.openrouter.process_message(prompt, "qwen-72b")
         return self._parse_json_response(response, {
             'simple_summary': 'TBD',
             'why_it_matters': 'TBD',
@@ -313,7 +323,7 @@ Expected JSON format:
 }}
 """
         
-        response = await self.openrouter.process_message(prompt, "grok-4")
+        response = await self.openrouter.process_message(prompt, "qwen-72b")
         return self._parse_json_response(response, {
             'season_arc_summary': 'TBD',
             'key_story_threads': [],
@@ -407,7 +417,7 @@ Expected JSON format:
 }}
 """
         
-        response = await self.openrouter.process_message(prompt, "grok-4")
+        response = await self.openrouter.process_message(prompt, "qwen-72b")
         return self._parse_json_response(response, {
             'story_coherence': [],
             'character_consistency': [],
@@ -525,140 +535,10 @@ Expected JSON format:
         with open(filepath, 'w', encoding='utf-8') as f:
             json.dump(blueprint_bible, f, indent=2, ensure_ascii=False)
             
-    def export_pdf(self, blueprint_bible: Dict, filepath: str):
-        """Export professional PDF report - APPROVAL DOCUMENT"""
-        doc = SimpleDocTemplate(filepath, pagesize=letter,
-                               topMargin=0.75*inch, bottomMargin=0.75*inch)
-        styles = getSampleStyleSheet()
-        story = []
-        
-        # Custom styles
-        title_style = ParagraphStyle(
-            'CustomTitle',
-            parent=styles['Heading1'],
-            fontSize=26,
-            textColor=colors.HexColor('#1a1a1a'),
-            spaceAfter=20,
-            alignment=1,
-            fontName='Helvetica-Bold'
-        )
-        
-        subtitle_style = ParagraphStyle(
-            'Subtitle',
-            parent=styles['Normal'],
-            fontSize=14,
-            textColor=colors.HexColor('#666666'),
-            spaceAfter=30,
-            alignment=1
-        )
-        
-        # Title Page
-        story.append(Spacer(1, 1.5*inch))
-        story.append(Paragraph("EPISODE BLUEPRINT", title_style))
-        story.append(Paragraph("Human Approval Document", subtitle_style))
-        story.append(Spacer(1, 0.5*inch))
-        
-        info_data = [
-            ['Session ID:', self.session_id],
-            ['Generated:', datetime.now().strftime('%Y-%m-%d %H:%M:%S')],
-            ['Total Episodes:', str(len(blueprint_bible.get('episodes', [])))]
-        ]
-        info_table = Table(info_data, colWidths=[2*inch, 4*inch])
-        info_table.setStyle(TableStyle([
-            ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
-            ('FONTNAME', (0, 0), (0, -1), 'Helvetica-Bold'),
-            ('FONTSIZE', (0, 0), (-1, -1), 11),
-            ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
-        ]))
-        story.append(info_table)
-        story.append(PageBreak())
-        
-        # Season Overview
-        story.append(Paragraph("Season Overview", styles['Heading1']))
-        story.append(Spacer(1, 0.2*inch))
-        overview = blueprint_bible.get('season_overview', {})
-        story.append(Paragraph(overview.get('season_arc_summary', 'N/A'), styles['Normal']))
-        story.append(PageBreak())
-        
-        # Episode Blueprints
-        for episode_bp in blueprint_bible.get('episodes', []):
-            episode_num = episode_bp.get('episode_number', 'N/A')
-            episode_title = episode_bp.get('episode_title', 'Untitled')
-            
-            story.append(Paragraph(f"Episode {episode_num}: {episode_title}", styles['Heading1']))
-            story.append(Spacer(1, 0.2*inch))
-            
-            # Story Summary
-            story.append(Paragraph("<b>Story Summary</b>", styles['Heading2']))
-            story.append(Paragraph(episode_bp.get('simple_summary', 'N/A'), styles['Normal']))
-            story.append(Spacer(1, 0.2*inch))
-            
-            # Why It Matters
-            story.append(Paragraph("<b>Why This Episode Matters</b>", styles['Heading2']))
-            story.append(Paragraph(episode_bp.get('why_it_matters', 'N/A'), styles['Normal']))
-            story.append(Spacer(1, 0.2*inch))
-            
-            # Character Goals
-            story.append(Paragraph("<b>Character Goals & Obstacles</b>", styles['Heading2']))
-            for char_goal in episode_bp.get('character_goals', []):
-                char_text = f"<b>{char_goal.get('character', 'N/A')}:</b> {char_goal.get('goal', 'N/A')}"
-                story.append(Paragraph(char_text, styles['Normal']))
-                story.append(Paragraph(f"Obstacle: {char_goal.get('obstacle', 'N/A')}", styles['Normal']))
-            story.append(Spacer(1, 0.2*inch))
-            
-            # Production Essentials Table
-            story.append(Paragraph("<b>Production Essentials</b>", styles['Heading2']))
-            prod = episode_bp.get('production_essentials', {})
-            prod_data = [
-                ['Length:', f"{prod.get('estimated_length', 'N/A')} minutes"],
-                ['Characters:', str(prod.get('character_count', 'N/A'))],
-                ['Locations:', str(prod.get('location_count', 'N/A'))],
-                ['Complexity:', prod.get('audio_complexity', 'N/A')]
-            ]
-            prod_table = Table(prod_data, colWidths=[1.5*inch, 4*inch])
-            prod_table.setStyle(TableStyle([
-                ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
-                ('BACKGROUND', (0, 0), (0, -1), colors.HexColor('#f0f0f0')),
-                ('FONTNAME', (0, 0), (0, -1), 'Helvetica-Bold'),
-                ('PADDING', (0, 0), (-1, -1), 8),
-            ]))
-            story.append(prod_table)
-            story.append(PageBreak())
-        
-        # Approval Checklist
-        story.append(Paragraph("Approval Checklist", styles['Heading1']))
-        story.append(Spacer(1, 0.2*inch))
-        checklist = blueprint_bible.get('approval_checklist', {})
-        
-        for category, items in checklist.items():
-            if isinstance(items, list) and items:
-                story.append(Paragraph(f"<b>{category.replace('_', ' ').title()}</b>", styles['Heading2']))
-                for item in items:
-                    story.append(Paragraph(f"☐ {item}", styles['Normal']))
-                story.append(Spacer(1, 0.1*inch))
-        
-        story.append(PageBreak())
-        
-        # Approval Signature Page
-        story.append(Spacer(1, 2*inch))
-        story.append(Paragraph("Approval Signature", styles['Heading1']))
-        story.append(Spacer(1, 0.5*inch))
-        
-        sig_data = [
-            ['Approved by:', '_'*40],
-            ['Date:', '_'*40],
-            ['', ''],
-            ['Notes/Changes Required:', '']
-        ]
-        sig_table = Table(sig_data, colWidths=[2*inch, 4.5*inch])
-        sig_table.setStyle(TableStyle([
-            ('FONTNAME', (0, 0), (0, 1), 'Helvetica-Bold'),
-            ('FONTSIZE', (0, 0), (-1, -1), 12),
-            ('BOTTOMPADDING', (0, 0), (-1, 1), 15),
-        ]))
-        story.append(sig_table)
-        
-        doc.build(story)
+    # PDF export removed - use JSON and TXT formats instead
+    # def export_pdf(self, blueprint_bible: Dict, filepath: str):
+    #     """Export professional PDF report - APPROVAL DOCUMENT - REMOVED"""
+    #     pass
         
     async def run(self) -> Dict[str, Any]:
         """Main execution method"""
@@ -681,9 +561,28 @@ Expected JSON format:
                 
             print("✅ Dependencies loaded\n")
             
-            # Get episode list
+            # Get episode list from multiple possible locations
             season_data = dependencies.get('season_architecture', {})
-            episodes = season_data.get('episodes', [])
+            station_11_data = dependencies.get('station_11', {})
+            
+            # Try to get episode list from various sources
+            episodes = []
+            if station_11_data.get('episode_breakdowns'):
+                episodes = station_11_data.get('episode_breakdowns', [])
+            elif season_data.get('episodes'):
+                episodes = season_data.get('episodes', [])
+            elif season_data.get('episode_grid'):
+                episodes = season_data.get('episode_grid', [])
+            elif season_data.get('total_episodes'):
+                # Create basic episode list from total count
+                total_count = season_data.get('total_episodes', 10)
+                episodes = [{'episode_number': i+1} for i in range(total_count)]
+            else:
+                # Ultimate fallback - check for series_totals
+                series_totals = station_11_data.get('series_totals', {})
+                total_count = series_totals.get('total_episodes', 10)
+                episodes = [{'episode_number': i+1} for i in range(total_count)]
+            
             total_episodes = len(episodes)
             
             print(f"📺 Generating blueprints for {total_episodes} episodes...\n")
@@ -700,13 +599,21 @@ Expected JSON format:
                 episode_num = idx + 1
                 print(f"📝 Episode {episode_num}/{total_episodes}: Generating blueprint...")
 
-                # Handle case where episode might be an int or dict
+                # Normalize episode to dict format
                 if isinstance(episode, int):
-                    # Episode is just a number, create basic dict
-                    episode = {'episode_number': episode}
-                elif not isinstance(episode, dict):
-                    # Episode is something else, create default dict
-                    episode = {'episode_number': episode_num}
+                    # Episode is just a number
+                    episode_dict = {'episode_number': episode}
+                elif isinstance(episode, dict):
+                    # Episode is already a dict - ensure it has episode_number
+                    episode_dict = episode.copy()
+                    if 'episode_number' not in episode_dict:
+                        episode_dict['episode_number'] = episode_num
+                else:
+                    # Episode is something else
+                    episode_dict = {'episode_number': episode_num}
+                
+                # Ensure we use the dict going forward
+                episode = episode_dict
 
                 episode_blueprint = await self.generate_episode_blueprint(
                     episode_num,
@@ -747,16 +654,18 @@ Expected JSON format:
             
             txt_path = os.path.join(output_dir, f"{base_filename}.txt")
             json_path = os.path.join(output_dir, f"{base_filename}.json")
-            pdf_path = os.path.join(output_dir, f"{base_filename}.pdf")
-            
+            # PDF export removed
+            # pdf_path = os.path.join(output_dir, f"{base_filename}.pdf")
+
             self.export_txt(blueprint_bible, txt_path)
             print(f"  ✅ Text (Human Review): {txt_path}")
-            
+
             self.export_json(blueprint_bible, json_path)
             print(f"  ✅ JSON (Data): {json_path}")
-            
-            self.export_pdf(blueprint_bible, pdf_path)
-            print(f"  ✅ PDF (Approval Doc): {pdf_path}")
+
+            # PDF export removed
+            # self.export_pdf(blueprint_bible, pdf_path)
+            # print(f"  ✅ PDF (Approval Doc): {pdf_path}")
             
             # Save to Redis
             print("\n💾 Saving to Redis...")
@@ -771,8 +680,8 @@ Expected JSON format:
                 'status': 'complete',
                 'outputs': {
                     'txt': txt_path,
-                    'json': json_path,
-                    'pdf': pdf_path
+                    'json': json_path
+                    # PDF output removed
                 },
                 'statistics': {
                     'total_episodes': total_episodes,
@@ -785,7 +694,7 @@ Expected JSON format:
             print(f"{'='*70}")
             print(f"✅ STATION 14 COMPLETE: Episode Blueprints Ready for Human Approval")
             print(f"{'='*70}\n")
-            print(f"📄 Review Document: {pdf_path}")
+            print(f"📄 Review Document: {txt_path}")
             print(f"👤 HUMAN GATE: Please review and approve blueprints before proceeding\n")
             
             return result

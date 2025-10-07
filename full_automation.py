@@ -42,6 +42,7 @@ from app.agents.station_11_runtime_planning import Station11RuntimePlanning
 from app.agents.station_12_hook_cliffhanger import Station12HookCliffhanger
 from app.agents.station_13_multiworld_timeline import Station13MultiworldTimeline
 from app.agents.station_14_episode_blueprint import Station14EpisodeBlueprint
+from app.agents.station_15_detailed_episode_outlining import Station15DetailedEpisodeOutlining
 from app.redis_client import RedisClient
 
 
@@ -110,7 +111,7 @@ class FullAutomationRunner:
         print(f"📝 Story Concept: {story_concept[:100]}...")
         print(f"🎯 Mode: {'Auto-approve' if self.auto_approve else 'Interactive'}")
         print(f"🐛 Debug: {'Enabled' if self.debug_mode else 'Disabled'}")
-        print(f"🏭 Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6 → 7 → 8 → 9 → 10 → 11 → 12 → 13 → 14")
+        print(f"🏭 Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6 → 7 → 8 → 9 → 10 → 11 → 12 → 13 → 14 → 15")
         print()
         
         # Initialize state
@@ -163,6 +164,9 @@ class FullAutomationRunner:
             # Station 14: Simple Episode Blueprint
             state = await self._run_station_14(state)
             
+            # Station 15: Detailed Episode Outlining
+            state = await self._run_station_15(state)
+            
             # Save checkpoint after each station
             if self.checkpoint_enabled:
                 await self._save_checkpoint(state)
@@ -178,7 +182,7 @@ class FullAutomationRunner:
                 "session_id": state.session_id,
                 "outputs": state.station_outputs,
                 "files": state.generated_files,
-                "summary": "All 14 stations completed successfully"
+                "summary": "All 15 stations completed successfully"
             }
             
         except Exception as e:
@@ -364,14 +368,6 @@ class FullAutomationRunner:
                 "created_timestamp": result.created_timestamp.isoformat()
             }
             
-            # Export to PDF
-            try:
-                pdf_path = processor.export_to_pdf(result, 
-                    filename=f"station4_seedbank_{state.session_id}.pdf")
-                state.generated_files.append(pdf_path)
-                self.emit_progress("Station 4", 95, f"Exported seed bank to {pdf_path}")
-            except Exception as e:
-                logger.warning(f"PDF export failed: {e}")
             
             self.emit_progress("Station 4", 100, f"Station 4 completed! Generated {total_seeds} seeds")
             state.current_station = 4
@@ -419,16 +415,6 @@ class FullAutomationRunner:
                 "created_timestamp": result.created_timestamp.isoformat()
             }
             
-            # Export to PDF
-            try:
-                pdf_path = processor.export_to_pdf(result, 
-                    filename=f"station45_narrator_strategy_{state.session_id}.pdf")
-                state.generated_files.append(pdf_path)
-                self.emit_progress("Station 4.5", 95, f"Exported narrator strategy to {pdf_path}")
-                logger.info(f"✅ Station 4.5 PDF exported: {pdf_path}")
-            except Exception as e:
-                logger.error(f"❌ PDF export failed: {e}")
-                self.emit_progress("Station 4.5", 95, f"PDF export failed: {e}")
                 
             # Export strategy document as text backup
             try:
@@ -542,17 +528,6 @@ class FullAutomationRunner:
             except Exception as e:
                 logger.warning(f"JSON export failed: {e}")
                 
-            # Export PDF
-            try:
-                pdf_data = processor.export_to_pdf(result)
-                pdf_filename = f"outputs/station5_season_architecture_{state.session_id}.pdf"
-                os.makedirs(os.path.dirname(pdf_filename), exist_ok=True)
-                with open(pdf_filename, 'wb') as f:
-                    f.write(pdf_data)
-                state.generated_files.append(pdf_filename)
-                self.emit_progress("Station 5", 95, f"Exported PDF to {pdf_filename}")
-            except Exception as e:
-                logger.warning(f"PDF export failed: {e}")
             
             self.emit_progress("Station 5", 100, f"Station 5 completed! Chosen style: {result.chosen_style}")
             state.current_station = 5
@@ -624,17 +599,6 @@ class FullAutomationRunner:
             except Exception as e:
                 logger.warning(f"JSON export failed: {e}")
                 
-            # Export PDF
-            try:
-                pdf_data = processor.export_to_pdf(result)
-                pdf_filename = f"outputs/station6_master_style_guide_{state.session_id}.pdf"
-                os.makedirs(os.path.dirname(pdf_filename), exist_ok=True)
-                with open(pdf_filename, 'wb') as f:
-                    f.write(pdf_data)
-                state.generated_files.append(pdf_filename)
-                self.emit_progress("Station 6", 95, f"Exported PDF to {pdf_filename}")
-            except Exception as e:
-                logger.warning(f"PDF export failed: {e}")
             
             self.emit_progress("Station 6", 100, f"Station 6 completed! Master Style Guide for {result.working_title}")
             state.current_station = 6
@@ -709,17 +673,6 @@ class FullAutomationRunner:
             except Exception as e:
                 logger.warning(f"JSON export failed: {e}")
                 
-            # PDF export
-            try:
-                pdf_data = processor.export_to_pdf(result)
-                pdf_filename = f"outputs/station7_reality_check_{state.session_id}.pdf"
-                os.makedirs(os.path.dirname(pdf_filename), exist_ok=True)
-                with open(pdf_filename, 'wb') as f:
-                    f.write(pdf_data)
-                state.generated_files.append(pdf_filename)
-                self.emit_progress("Station 7", 95, f"Exported PDF report to {pdf_filename}")
-            except Exception as e:
-                logger.warning(f"PDF export failed: {e}")
             
             # Show critical validation results
             status_icon = "✅" if result.pipeline_status == "PASSED" else "⚠️" if result.pipeline_status == "NEEDS_ATTENTION" else "❌"
@@ -769,9 +722,10 @@ class FullAutomationRunner:
             state.station_outputs["station_8"] = {
                 "working_title": result.working_title,
                 "total_characters": result.character_count_summary['total_characters'],
-                "tier1_protagonists": result.character_count_summary['tier1_protagonists'],
-                "tier2_supporting": result.character_count_summary['tier2_supporting'],
-                "tier3_recurring": result.character_count_summary['tier3_recurring'],
+                "character_count_summary": result.character_count_summary,
+                "tier1_protagonists": [asdict(char) for char in result.tier1_protagonists],
+                "tier2_supporting": [asdict(char) for char in result.tier2_supporting],
+                "tier3_recurring": [asdict(char) for char in result.tier3_recurring],
                 "protagonist_names": [char.full_name for char in result.tier1_protagonists],
                 "supporting_names": [char.full_name for char in result.tier2_supporting],
                 "voice_samples_count": len(result.voice_sample_collection),
@@ -804,17 +758,6 @@ class FullAutomationRunner:
             except Exception as e:
                 logger.warning(f"JSON export failed: {e}")
                 
-            # PDF export
-            try:
-                pdf_data = processor.export_to_pdf(result)
-                pdf_filename = f"outputs/station8_character_bible_{state.session_id}.pdf"
-                os.makedirs(os.path.dirname(pdf_filename), exist_ok=True)
-                with open(pdf_filename, 'wb') as f:
-                    f.write(pdf_data)
-                state.generated_files.append(pdf_filename)
-                self.emit_progress("Station 8", 95, f"Exported PDF character bible to {pdf_filename}")
-            except Exception as e:
-                logger.warning(f"PDF export failed: {e}")
             
             # Save to Redis for potential future stations
             try:
@@ -906,17 +849,6 @@ class FullAutomationRunner:
             except Exception as e:
                 logger.warning(f"JSON export failed: {e}")
                 
-            # PDF export
-            try:
-                pdf_data = processor.export_to_pdf(result)
-                pdf_filename = f"outputs/station9_world_bible_{state.session_id}.pdf"
-                os.makedirs(os.path.dirname(pdf_filename), exist_ok=True)
-                with open(pdf_filename, 'wb') as f:
-                    f.write(pdf_data)
-                state.generated_files.append(pdf_filename)
-                self.emit_progress("Station 9", 95, f"Exported PDF world bible to {pdf_filename}")
-            except Exception as e:
-                logger.warning(f"PDF export failed: {e}")
             
             # Save to Redis for potential future stations
             try:
@@ -953,6 +885,7 @@ class FullAutomationRunner:
         
         try:
             processor = Station10NarrativeRevealStrategy()
+            await processor.initialize()
             
             if self.debug_mode:
                 logger.info("Debug mode enabled for Station 10")
@@ -1119,8 +1052,7 @@ class FullAutomationRunner:
             # Add generated files to state
             state.generated_files.extend([
                 result['outputs']['txt'],
-                result['outputs']['json'],
-                result['outputs']['pdf']
+                result['outputs']['json']
             ])
             
             self.emit_progress("Station 12", 100, f"Station 12 completed! {result['statistics']['hooks_designed']} hooks and cliffhangers designed")
@@ -1172,8 +1104,7 @@ class FullAutomationRunner:
             # Add generated files to state
             state.generated_files.extend([
                 result['outputs']['txt'],
-                result['outputs']['json'],
-                result['outputs']['pdf']
+                result['outputs']['json']
             ])
             
             if result['is_applicable']:
@@ -1225,8 +1156,7 @@ class FullAutomationRunner:
             # Add generated files to state
             state.generated_files.extend([
                 result['outputs']['txt'],
-                result['outputs']['json'],
-                result['outputs']['pdf']
+                result['outputs']['json']
             ])
             
             self.emit_progress("Station 14", 100, f"Station 14 completed! {result['statistics']['blueprints_generated']} episode blueprints ready for approval")
@@ -1236,13 +1166,15 @@ class FullAutomationRunner:
             logger.info(f"   Episodes: {result['statistics']['total_episodes']}")
             logger.info(f"   Blueprints: {result['statistics']['blueprints_generated']}")
             logger.info(f"   Ready for Approval: {result['statistics']['ready_for_approval']}")
-            logger.info(f"   PDF Approval Doc: {result['outputs']['pdf']}")
-            
+            logger.info(f"   TXT Approval Doc: {result['outputs']['txt']}")
+            logger.info(f"   JSON Data: {result['outputs']['json']}")
+
             # Important human gate message
             print("\n" + "="*70)
             print("🚨 HUMAN APPROVAL GATE - REVIEW REQUIRED")
             print("="*70)
-            print(f"📄 Review Document: {result['outputs']['pdf']}")
+            print(f"📄 Review Document (TXT): {result['outputs']['txt']}")
+            print(f"📄 Review Document (JSON): {result['outputs']['json']}")
             print("👤 Please review and approve episode blueprints before proceeding")
             print("✅ This completes the automated pipeline - human review required")
             print("="*70)
@@ -1253,6 +1185,73 @@ class FullAutomationRunner:
             
         except Exception as e:
             raise Exception(f"Station 14 failed: {str(e)}")
+    
+    async def _run_station_15(self, state: AudiobookProductionState) -> AudiobookProductionState:
+        """Run Station 15: Detailed Episode Outlining"""
+        
+        self.emit_progress("Station 15", 0, "Initializing Detailed Episode Outlining...")
+        
+        try:
+            processor = Station15DetailedEpisodeOutlining(state.session_id)
+            await processor.initialize()
+            
+            if self.debug_mode:
+                processor.enable_debug_mode()
+                
+            self.emit_progress("Station 15", 10, "Loading episode blueprint dependencies...")
+            
+            # Process detailed episode outlining
+            result = await processor.run()
+            
+            self.emit_progress("Station 15", 25, "Generating detailed episode outlines...")
+            self.emit_progress("Station 15", 50, "Creating scene-by-scene breakdowns...")
+            self.emit_progress("Station 15", 75, "Building character arc progressions...")
+            self.emit_progress("Station 15", 90, "Finalizing production-ready outlines...")
+            
+            # Store Station 15 output
+            state.station_outputs["station_15"] = {
+                "total_episodes": result['statistics']['total_episodes'],
+                "outlines_generated": result['statistics']['outlines_generated'],
+                "scenes_per_episode": result['statistics']['scenes_per_episode'],
+                "ready_for_production": result['statistics']['ready_for_production'],
+                "outputs": result['outputs'],
+                "session_id": state.session_id,
+                "created_timestamp": datetime.now().isoformat()
+            }
+            
+            # Add generated files to state
+            state.generated_files.extend([
+                result['outputs']['txt'],
+                result['outputs']['json']
+            ])
+            
+            self.emit_progress("Station 15", 100, f"Station 15 completed! {result['statistics']['outlines_generated']} detailed episode outlines ready for production")
+            
+            # Log detailed outlining summary
+            logger.info(f"📝 Detailed Episode Outlining Summary:")
+            logger.info(f"   Episodes: {result['statistics']['total_episodes']}")
+            logger.info(f"   Outlines: {result['statistics']['outlines_generated']}")
+            logger.info(f"   Scenes per Episode: {result['statistics']['scenes_per_episode']}")
+            logger.info(f"   Ready for Production: {result['statistics']['ready_for_production']}")
+            logger.info(f"   TXT Production Doc: {result['outputs']['txt']}")
+            logger.info(f"   JSON Data: {result['outputs']['json']}")
+
+            # Important production-ready message
+            print("\n" + "="*70)
+            print("🎬 PRODUCTION-READY EPISODE OUTLINES COMPLETED")
+            print("="*70)
+            print(f"📄 Production Document (TXT): {result['outputs']['txt']}")
+            print(f"📄 Production Document (JSON): {result['outputs']['json']}")
+            print("🎭 Detailed scene-by-scene outlines ready for voice actors")
+            print("✅ Complete audiobook production pipeline finished!")
+            print("="*70)
+            
+            state.current_station = 15
+            
+            return state
+            
+        except Exception as e:
+            raise Exception(f"Station 15 failed: {str(e)}")
     
     
     async def _generate_final_summary(self, state: AudiobookProductionState):
@@ -1289,7 +1288,8 @@ class FullAutomationRunner:
                 "station_11": f"Runtime planning: {state.station_outputs.get('station_11', {}).get('total_episodes', 0)} episodes planned, {state.station_outputs.get('station_11', {}).get('production_timeline', 'Unknown')} timeline, {state.station_outputs.get('station_11', {}).get('budget_estimate', 'Unknown')} budget estimate",
                 "station_12": f"Hook & cliffhanger design: {state.station_outputs.get('station_12', {}).get('hooks_designed', 0)} hooks, {state.station_outputs.get('station_12', {}).get('cliffhangers_designed', 0)} cliffhangers, {state.station_outputs.get('station_12', {}).get('bridges_created', 0)} bridges",
                 "station_13": f"Multi-world management: {state.station_outputs.get('station_13', {}).get('world_count', 1)} worlds, complexity {state.station_outputs.get('station_13', {}).get('complexity_level', 'simple')}, applicable: {state.station_outputs.get('station_13', {}).get('is_applicable', False)}",
-                "station_14": f"Episode blueprints: {state.station_outputs.get('station_14', {}).get('blueprints_generated', 0)} episodes ready for approval"
+                "station_14": f"Episode blueprints: {state.station_outputs.get('station_14', {}).get('blueprints_generated', 0)} episodes ready for approval",
+                "station_15": f"Detailed episode outlining: {state.station_outputs.get('station_15', {}).get('outlines_generated', 0)} production-ready outlines, {state.station_outputs.get('station_15', {}).get('scenes_per_episode', 0)} scenes per episode"
             },
             "generated_files": state.generated_files,
             "full_outputs": processed_outputs
@@ -1386,7 +1386,8 @@ class FullAutomationRunner:
                 "station_11": "11",
                 "station_12": "12",
                 "station_13": "13",
-                "station_14": "14"
+                "station_14": "14",
+                "station_15": "15"
             }
 
             restored_count = 0
@@ -1553,6 +1554,10 @@ class FullAutomationRunner:
                 state = await self._run_station_14(state)
                 await self._save_checkpoint(state)
 
+            if state.current_station < 15:
+                state = await self._run_station_15(state)
+                await self._save_checkpoint(state)
+
             # Generate final summary
             await self._generate_final_summary(state)
             
@@ -1641,7 +1646,7 @@ async def main():
 
     print("🎬 FULL AUDIOBOOK PRODUCTION AUTOMATION")
     print("=" * 60)
-    print("🤖 Complete Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6 → 7 → 8 → 9 → 10 → 11 → 12 → 13 → 14")
+    print("🤖 Complete Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6 → 7 → 8 → 9 → 10 → 11 → 12 → 13 → 14 → 15")
     print()
 
     # Initialize runner
@@ -1684,10 +1689,23 @@ async def main():
             sys.exit(1)
     else:
         # NEW AUTOMATION RUN
-        # Get story concept
+        # Get story concept from file or direct input
         story_concept = None
         while not story_concept or len(story_concept.strip()) < 10:
-            story_concept = input("📝 Enter your story concept (minimum 10 characters): ").strip()
+            concept_input = input("📝 Enter story concept file path or text (minimum 10 characters): ").strip()
+
+            # Check if it's a file path
+            if os.path.exists(concept_input):
+                try:
+                    with open(concept_input, 'r', encoding='utf-8') as f:
+                        story_concept = f.read().strip()
+                    print(f"✅ Loaded story concept from file: {concept_input}")
+                except Exception as e:
+                    print(f"❌ Error reading file: {e}")
+                    continue
+            else:
+                story_concept = concept_input
+
             if len(story_concept) < 10:
                 print("❌ Story concept too short. Please provide more detail.")
 

@@ -548,65 +548,109 @@ class Station10NarrativeRevealStrategy:
     
     async def _build_plant_proof_payoff_grid(self, information_taxonomy: List[InformationItem], episode_count: int) -> List[PlantProofPayoff]:
         """Build plant/proof/payoff grid for each revelation"""
-        
+
         # Focus on high-importance revelations
         key_revelations = [item for item in information_taxonomy if item.importance_level >= 6]
-        
+
         plant_proof_payoff_items = []
-        
+
         for revelation in key_revelations:
             prompt = f"""
             You are the Narrative Reveal Architect. Create a Plant/Proof/Payoff structure for this revelation:
-            
+
             REVELATION: {revelation.name}
             DESCRIPTION: {revelation.description}
             TARGET EPISODE: {revelation.target_episode}
             IMPORTANCE LEVEL: {revelation.importance_level}/10
             TOTAL EPISODES: {episode_count}
-            
+
             Design the three-act structure:
-            
+
             PLANT (Episode/Scene/Line):
             - When and where is the first hint dropped?
             - What specific line, action, or detail plants this revelation?
             - How subtle or obvious should this be?
-            
+
             PROOF (Episode/Scene/Evidence):
             - When does the evidence become clear?
             - What concrete proof supports this revelation?
             - How does the audience connect the plant to the proof?
-            
+
             PAYOFF (Episode/Scene/Impact):
             - When does the full revelation occur?
             - What is the emotional and narrative impact?
             - How does this change the story going forward?
-            
+
             Also specify:
             - Connection strength (1-10 scale)
             - Audience satisfaction (how satisfying is this reveal)
-            
+
             Return as JSON object.
             """
-            
-            response = await self.openrouter_agent.generate(prompt)
-            
-            try:
-                json_text = self._extract_json_from_response(response)
-                ppp_data = json.loads(json_text)
-                
-                plant_proof_payoff_items.append(PlantProofPayoff(
-                    revelation_name=revelation.name,
-                    plant=ppp_data.get('plant', {}),
-                    proof=ppp_data.get('proof', {}),
-                    payoff=ppp_data.get('payoff', {}),
-                    connection_strength=ppp_data.get('connection_strength', 7),
-                    audience_satisfaction=ppp_data.get('audience_satisfaction', '')
-                ))
-                
-            except json.JSONDecodeError as e:
-                logger.error(f"❌ CRITICAL: Failed to parse plant/proof/payoff for {revelation.name}: {str(e)}")
-                raise ValueError(f"CRITICAL: Unable to parse plant/proof/payoff from LLM response: {str(e)}")
-        
+
+            # Retry logic with exponential backoff
+            max_retries = 3
+            retry_delay = 2  # Start with 2 seconds
+
+            for attempt in range(max_retries):
+                try:
+                    # Add delay between API calls to prevent rate limiting
+                    if attempt > 0:
+                        await asyncio.sleep(retry_delay * attempt)
+
+                    response = await self.openrouter_agent.generate(prompt)
+
+                    # Validate response is not empty
+                    if not response or not response.strip():
+                        logger.warning(f"⚠️ Empty response for {revelation.name}, attempt {attempt + 1}/{max_retries}")
+                        if attempt < max_retries - 1:
+                            continue
+                        else:
+                            logger.error(f"❌ All retries exhausted for {revelation.name}, skipping...")
+                            break
+
+                    json_text = self._extract_json_from_response(response)
+
+                    # Validate JSON text is not empty
+                    if not json_text or not json_text.strip():
+                        logger.warning(f"⚠️ Empty JSON text for {revelation.name}, attempt {attempt + 1}/{max_retries}")
+                        if attempt < max_retries - 1:
+                            continue
+                        else:
+                            logger.error(f"❌ All retries exhausted for {revelation.name}, skipping...")
+                            break
+
+                    ppp_data = json.loads(json_text)
+
+                    plant_proof_payoff_items.append(PlantProofPayoff(
+                        revelation_name=revelation.name,
+                        plant=ppp_data.get('plant', {}),
+                        proof=ppp_data.get('proof', {}),
+                        payoff=ppp_data.get('payoff', {}),
+                        connection_strength=ppp_data.get('connection_strength', 7),
+                        audience_satisfaction=ppp_data.get('audience_satisfaction', '')
+                    ))
+
+                    logger.info(f"✅ Successfully processed {revelation.name}")
+                    break  # Success - exit retry loop
+
+                except json.JSONDecodeError as e:
+                    logger.warning(f"⚠️ JSON parse error for {revelation.name}, attempt {attempt + 1}/{max_retries}: {str(e)}")
+                    if attempt < max_retries - 1:
+                        continue  # Retry
+                    else:
+                        logger.error(f"❌ Failed to parse {revelation.name} after {max_retries} attempts, skipping...")
+
+                except Exception as e:
+                    logger.warning(f"⚠️ Unexpected error for {revelation.name}, attempt {attempt + 1}/{max_retries}: {str(e)}")
+                    if attempt < max_retries - 1:
+                        continue  # Retry
+                    else:
+                        logger.error(f"❌ Failed to process {revelation.name} after {max_retries} attempts, skipping...")
+
+            # Add delay between revelations to prevent rate limiting
+            await asyncio.sleep(1.5)
+
         return plant_proof_payoff_items
     
     async def _build_misdirection_strategy(self, story_concept: str, characters: List[Dict]) -> List[RedHerring]:

@@ -306,27 +306,50 @@ class Station08CharacterArchitecture:
             protagonist_count = 2
         
         protagonists = []
-        
+
         for i in range(protagonist_count):
             protagonist_prompt = self._build_protagonist_prompt(dependencies, i + 1, protagonist_count)
-            
-            try:
-                response = await self.openrouter_agent.process_message(
-                    protagonist_prompt,
-                    model_name=self.config.model
-                )
-                
-                protagonist = await self._parse_protagonist_response(response, dependencies)
+
+            # Retry logic - try up to 3 times
+            max_retries = 3
+            retry_delay = 2  # seconds
+
+            protagonist = None
+            for attempt in range(max_retries):
+                try:
+                    if attempt > 0:
+                        logger.info(f"Retry attempt {attempt + 1}/{max_retries} for protagonist {i + 1}")
+                        await asyncio.sleep(retry_delay * attempt)
+
+                    response = await self.openrouter_agent.process_message(
+                        protagonist_prompt,
+                        model_name=self.config.model
+                    )
+
+                    protagonist = await self._parse_protagonist_response(response, dependencies)
+
+                    if self.debug_mode:
+                        logger.info(f"✅ Generated protagonist {i + 1}: {protagonist.full_name}")
+
+                    break  # Success - exit retry loop
+
+                except ValueError as e:
+                    logger.warning(f"⚠️ Parse error for protagonist {i + 1}, attempt {attempt + 1}/{max_retries}: {e}")
+                    if attempt == max_retries - 1:
+                        # Final attempt failed
+                        logger.error(f"❌ FAILED to generate protagonist {i + 1} after {max_retries} attempts")
+                        raise ValueError(f"Failed to generate protagonist {i + 1} after {max_retries} retries: {e}")
+                except Exception as e:
+                    logger.warning(f"⚠️ Unexpected error for protagonist {i + 1}, attempt {attempt + 1}/{max_retries}: {e}")
+                    if attempt == max_retries - 1:
+                        logger.error(f"❌ FAILED to generate protagonist {i + 1} after {max_retries} attempts")
+                        raise
+
+            if protagonist:
                 protagonists.append(protagonist)
-                
-                if self.debug_mode:
-                    logger.info(f"Generated protagonist {i + 1}: {protagonist.full_name}")
-                    
-            except Exception as e:
-                logger.error(f"Failed to generate protagonist {i + 1}: {e}")
-                # Create a minimal protagonist to avoid pipeline failure
-                protagonists.append(await self._create_fallback_protagonist(dependencies, i + 1))
-        
+            else:
+                raise ValueError(f"Failed to generate protagonist {i + 1} - no protagonist created")
+
         return protagonists
 
     def _build_protagonist_prompt(self, dependencies: Dict[str, Any], protagonist_num: int, total_protagonists: int) -> str:
@@ -408,46 +431,93 @@ class Station08CharacterArchitecture:
         return prompt
 
     async def _parse_protagonist_response(self, response: str, dependencies: Dict[str, Any]) -> Tier1Character:
-        """Parse LLM response into structured Tier1Character"""
-        
-        # Extract information from response using pattern matching
-        # This is a simplified parser - in production, you'd want more robust parsing
-        
-        try:
-            # Extract basic info
-            name_match = re.search(r'Full name[:\s]*([^\n]+)', response, re.IGNORECASE)
-            full_name = name_match.group(1).strip() if name_match else "Generated Character"
-            # Clean markdown artifacts
-            full_name = full_name.replace('**', '').replace('*', '').strip().strip(':')
-            
-            age_match = re.search(r'Age[:\s]*(\d+)', response, re.IGNORECASE)
-            age = age_match.group(1) if age_match else "30"
-            
-            # Extract voice signature components
-            pitch_match = re.search(r'Pitch range[:\s]*([^\n]+)', response, re.IGNORECASE)
-            pitch_range = pitch_match.group(1).strip() if pitch_match else "Mid-range vocal tone"
-            
-            pace_match = re.search(r'Speaking pace[:\s]*([^\n]+)', response, re.IGNORECASE)
-            pace_pattern = pace_match.group(1).strip() if pace_match else "Moderate speaking pace"
-            
-            # Extract dialogue samples
-            dialogue_matches = re.findall(r'"([^"]*)"', response)
-            sample_dialogue = dialogue_matches[:3] if dialogue_matches else [
-                "Sample dialogue generated for this character.",
-                "Another line showing their speaking style.",
-                "A third example of their voice."
-            ]
-            
-            # Create voice signature
-            voice_signature = VoiceSignature(
-                pitch_range=pitch_range,
-                pace_pattern=pace_pattern,
-                vocabulary_level=self._extract_section(response, "vocabulary level", "Educated speech patterns"),
-                accent_details=self._extract_section(response, "accent", "Neutral accent"),
-                verbal_tics=self._extract_list(response, "verbal tics", ["Unique speech pattern", "Characteristic pause"]),
-                catchphrases=self._extract_list(response, "catchphrases", ["Signature phrase"]),
-                emotional_baseline=self._extract_section(response, "emotional", "Balanced emotional state")
-            )
+        """Parse LLM response into structured Tier1Character - NO FALLBACKS, FAIL IF DATA NOT FOUND"""
+
+        # Log the response for debugging
+        if self.debug_mode:
+            logger.debug(f"Parsing protagonist response (first 500 chars): {response[:500]}")
+
+        # Extract basic info - try multiple patterns
+        name_match = re.search(r'(?:Full\s+name|Name)[:\s]*[\*\-]?\s*([^\n]+)', response, re.IGNORECASE)
+        if not name_match:
+            # Try finding name after "BASIC INFO" section
+            name_match = re.search(r'BASIC\s+INFO.*?(?:Full\s+name|Name)[:\s]*[\*\-]?\s*([^\n]+)', response, re.IGNORECASE | re.DOTALL)
+
+        if not name_match:
+            logger.error("CRITICAL: Failed to extract character name from LLM response")
+            raise ValueError("Failed to extract character name from LLM response. Response format may be incorrect.")
+
+        full_name = name_match.group(1).strip()
+        # Clean markdown artifacts
+        full_name = full_name.replace('**', '').replace('*', '').replace('-', '').strip().strip(':').strip()
+        # Remove bullet points and extra whitespace
+        full_name = re.sub(r'^[\s\-\*•]+', '', full_name).strip()
+
+        if not full_name or len(full_name) < 3 or full_name.lower() == 'name':
+            logger.error(f"CRITICAL: Invalid name extracted: '{full_name}'")
+            raise ValueError(f"Invalid character name extracted: '{full_name}'. LLM response may be malformed.")
+
+        age_match = re.search(r'Age[:\s]*[\*\-]?\s*(\d+)', response, re.IGNORECASE)
+        if not age_match:
+            logger.error("CRITICAL: Failed to extract character age from LLM response")
+            raise ValueError("Failed to extract character age from LLM response.")
+
+        age = age_match.group(1)
+
+        # Extract voice signature components - FAIL if not found
+        pitch_range = self._extract_section(response, r"(?:Pitch\s+range|Pitch)", None)
+        if not pitch_range:
+            raise ValueError("Failed to extract pitch range from LLM response.")
+
+        pace_pattern = self._extract_section(response, r"(?:Speaking\s+pace|Pace)", None)
+        if not pace_pattern:
+            raise ValueError("Failed to extract speaking pace from LLM response.")
+
+        # Extract dialogue samples - look for quoted text
+        dialogue_matches = re.findall(r'["""]([^"""]+)["""]', response)
+        if not dialogue_matches:
+            dialogue_matches = re.findall(r'"([^"]{10,})"', response)  # At least 10 chars
+
+        sample_dialogue = [d.strip() for d in dialogue_matches[:3] if len(d.strip()) > 5]
+        if len(sample_dialogue) < 3:
+            logger.error(f"CRITICAL: Only found {len(sample_dialogue)} dialogue samples, expected 3")
+            raise ValueError(f"Only found {len(sample_dialogue)} dialogue samples, expected at least 3.")
+
+        # Extract catchphrases - REQUIRED
+        catchphrases = self._extract_list(response, r"(?:catchphrases?|signature\s+phrases?)", [])
+        if not catchphrases:
+            logger.error("CRITICAL: No catchphrases found in LLM response")
+            raise ValueError("Failed to extract catchphrases from LLM response.")
+
+        # Extract verbal tics - REQUIRED
+        verbal_tics = self._extract_list(response, r"(?:verbal\s+tics?|speech\s+quirks?)", [])
+        if not verbal_tics:
+            logger.error("CRITICAL: No verbal tics found in LLM response")
+            raise ValueError("Failed to extract verbal tics from LLM response.")
+
+        # Extract other required fields
+        vocabulary_level = self._extract_section(response, "vocabulary level", None)
+        if not vocabulary_level:
+            raise ValueError("Failed to extract vocabulary level from LLM response.")
+
+        accent_details = self._extract_section(response, r"(?:accent|regional\s+details?)", None)
+        if not accent_details:
+            raise ValueError("Failed to extract accent details from LLM response.")
+
+        emotional_baseline = self._extract_section(response, r"(?:emotional|baseline)", None)
+        if not emotional_baseline:
+            raise ValueError("Failed to extract emotional baseline from LLM response.")
+
+        # Create voice signature
+        voice_signature = VoiceSignature(
+            pitch_range=pitch_range,
+            pace_pattern=pace_pattern,
+            vocabulary_level=vocabulary_level,
+            accent_details=accent_details,
+            verbal_tics=verbal_tics,
+            catchphrases=catchphrases,
+            emotional_baseline=emotional_baseline
+        )
             
             # Create audio markers
             audio_markers = AudioMarkers(
@@ -489,26 +559,60 @@ class Station08CharacterArchitecture:
             logger.error(f"Failed to parse protagonist response: {e}")
             return await self._create_fallback_protagonist(dependencies, 1)
 
-    def _extract_section(self, text: str, keyword: str, fallback: str) -> str:
-        """Extract a section from LLM response"""
-        pattern = rf'{keyword}[:\s]*([^\n]*(?:\n(?![\*\-])[^\n]*)*)'
-        match = re.search(pattern, text, re.IGNORECASE | re.MULTILINE)
-        if match:
-            return match.group(1).strip()
+    def _extract_section(self, text: str, keyword: str, fallback: str = None) -> str:
+        """Extract a section from LLM response with improved pattern matching"""
+        # Try multiple patterns to capture content
+        patterns = [
+            rf'{keyword}[:\s]*[\*\-]?\s*([^\n]+(?:\n(?![\*\-#])[^\n]+)*)',  # Multi-line content
+            rf'{keyword}[:\s]*[\*\-]?\s*([^\n]+)',  # Single line
+            rf'\*\*{keyword}\*\*[:\s]*([^\n]+)',  # Markdown bold
+        ]
+
+        for pattern in patterns:
+            match = re.search(pattern, text, re.IGNORECASE | re.MULTILINE)
+            if match:
+                result = match.group(1).strip()
+                # Clean markdown artifacts
+                result = result.replace('**', '').replace('*', '').strip()
+                if result and result.lower() not in [keyword.lower(), 'none', 'n/a', '']:
+                    return result
+
+        if self.debug_mode:
+            logger.debug(f"Could not extract '{keyword}', fallback={fallback}")
+
+        if fallback is None:
+            return None  # Signal that extraction failed
         return fallback
 
     def _extract_list(self, text: str, keyword: str, fallback: List[str]) -> List[str]:
-        """Extract a list from LLM response"""
+        """Extract a list from LLM response with improved extraction"""
+        # First try to find the section
         section = self._extract_section(text, keyword, "")
+
         if section:
             # Look for bullet points or numbered items
             items = re.findall(r'[-•*]\s*([^\n]+)', section)
             if not items:
-                items = re.findall(r'\d+\.\s*([^\n]+)', section)
+                items = re.findall(r'\d+[\.)]\s*([^\n]+)', section)
+            if not items:
+                # Try finding items in quotes
+                items = re.findall(r'["""]([^"""]+)["""]', section)
             if not items:
                 # Split by commas or semicolons
                 items = [item.strip() for item in re.split(r'[,;]', section) if item.strip()]
-            return items[:5] if items else fallback
+
+            # Clean items
+            cleaned_items = []
+            for item in items:
+                cleaned = item.strip().replace('**', '').replace('*', '').strip()
+                if cleaned and len(cleaned) > 2:
+                    cleaned_items.append(cleaned)
+
+            if cleaned_items:
+                return cleaned_items[:5]
+
+        if self.debug_mode:
+            logger.debug(f"Could not extract list for '{keyword}', using fallback")
         return fallback
 
     async def _create_fallback_protagonist(self, dependencies: Dict[str, Any], protagonist_num: int) -> Tier1Character:
@@ -659,28 +763,48 @@ class Station08CharacterArchitecture:
         """Parse supporting character response"""
         
         try:
-            name_match = re.search(r'Full name[:\s]*([^\n]+)', response, re.IGNORECASE)
-            full_name = name_match.group(1).strip() if name_match else "Supporting Character"
-            # Clean markdown artifacts from name
-            full_name = full_name.replace('**', '').replace('*', '').strip().strip(':')
-            
-            age_match = re.search(r'Age[:\s]*(\d+)', response, re.IGNORECASE)
+            if self.debug_mode:
+                logger.debug(f"Parsing supporting character response (first 500 chars): {response[:500]}")
+
+            # Extract name with improved pattern
+            name_match = re.search(r'(?:Full\s+name|Name)[:\s]*[\*\-]?\s*([^\n]+)', response, re.IGNORECASE)
+            if name_match:
+                full_name = name_match.group(1).strip()
+                full_name = full_name.replace('**', '').replace('*', '').replace('-', '').strip().strip(':').strip()
+                full_name = re.sub(r'^[\s\-\*•]+', '', full_name).strip()
+                if not full_name or len(full_name) < 3:
+                    full_name = "Supporting Character Name Not Found"
+            else:
+                full_name = "Supporting Character Name Not Found"
+                logger.warning("No name match found for supporting character")
+
+            age_match = re.search(r'Age[:\s]*[\*\-]?\s*(\d+)', response, re.IGNORECASE)
             age = age_match.group(1) if age_match else "35"
-            
-            # Extract dialogue samples
-            dialogue_matches = re.findall(r'"([^"]*)"', response)
-            sample_dialogue = dialogue_matches[:2] if dialogue_matches else [
-                "Supporting character dialogue sample.",
-                "Another line showing their relationship dynamic."
-            ]
-            
+
+            # Extract dialogue samples with better matching
+            dialogue_matches = re.findall(r'["""]([^"""]+)["""]', response)
+            if not dialogue_matches:
+                dialogue_matches = re.findall(r'"([^"]{10,})"', response)
+
+            sample_dialogue = [d.strip() for d in dialogue_matches[:2] if len(d.strip()) > 5]
+            if not sample_dialogue:
+                logger.warning("No dialogue samples found for supporting character")
+
+            # Extract catchphrases
+            catchphrases = self._extract_list(response, r"(?:catchphrases?|signature\s+phrases?)", [])
+            if not catchphrases and sample_dialogue:
+                catchphrases = sample_dialogue[:1]
+
+            # Extract verbal tics
+            verbal_tics = self._extract_list(response, r"(?:verbal\s+tics?|speech\s+habits?|tics)", [])
+
             voice_signature = VoiceSignature(
-                pitch_range=self._extract_section(response, "pitch", "Supporting character vocal range"),
+                pitch_range=self._extract_section(response, "pitch", "Natural vocal range"),
                 pace_pattern=self._extract_section(response, "pace", "Natural speaking rhythm"),
                 vocabulary_level=self._extract_section(response, "vocabulary", "Educated speech"),
-                accent_details=self._extract_section(response, "accent", "Regional speech pattern"),
-                verbal_tics=self._extract_list(response, "tics", ["Speech habit"]),
-                catchphrases=self._extract_list(response, "catchphrase", ["Signature phrase"]),
+                accent_details=self._extract_section(response, r"(?:accent|speech\s+patterns?)", "Regional speech pattern"),
+                verbal_tics=verbal_tics if verbal_tics else ["No specific verbal tics defined"],
+                catchphrases=catchphrases if catchphrases else ["No specific catchphrases defined"],
                 emotional_baseline=self._extract_section(response, "personality", "Balanced demeanor")
             )
             

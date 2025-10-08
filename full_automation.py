@@ -43,6 +43,11 @@ from app.agents.station_12_hook_cliffhanger import Station12HookCliffhanger
 from app.agents.station_13_multiworld_timeline import Station13MultiworldTimeline
 from app.agents.station_14_episode_blueprint import Station14EpisodeBlueprint
 from app.agents.station_15_detailed_episode_outlining import Station15DetailedEpisodeOutlining
+from app.agents.station_16_canon_check import Station16CanonCheck
+from app.agents.station_17_dialect_planning import Station17DialectPlanning
+from app.agents.station_18_evergreen_check import Station18EvergreenCheck
+from app.agents.station_19_procedure_check import Station19ProcedureCheck
+from app.agents.station_20_geography_transit import Station20GeographyTransit
 from app.redis_client import RedisClient
 
 
@@ -111,7 +116,7 @@ class FullAutomationRunner:
         print(f"📝 Story Concept: {story_concept[:100]}...")
         print(f"🎯 Mode: {'Auto-approve' if self.auto_approve else 'Interactive'}")
         print(f"🐛 Debug: {'Enabled' if self.debug_mode else 'Disabled'}")
-        print(f"🏭 Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6 → 7 → 8 → 9 → 10 → 11 → 12 → 13 → 14 → 15")
+        print(f"🏭 Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6 → 7 → 8 → 9 → 10 → 11 → 12 → 13 → 14 → 15 → 16 → 17 → 18 → 19 → 20")
         print()
         
         # Initialize state
@@ -121,56 +126,109 @@ class FullAutomationRunner:
         try:
             # Station 1: Seed Processing & Scale Evaluation
             state = await self._run_station_1(state)
-            
-            # Station 2: Project DNA Building
-            state = await self._run_station_2(state)
-            
-            # Station 3: Age & Genre Optimization  
-            state = await self._run_station_3(state)
-            
-            # Station 4: Reference Mining & Seed Extraction
-            state = await self._run_station_4(state)
-            
-            # Station 4.5: Narrator Strategy Designer
-            state = await self._run_station_4_5(state)
-            
-            # Station 5: Season Architecture
-            state = await self._run_station_5(state)
-            
-            # Station 6: Master Style Guide
-            state = await self._run_station_6(state)
-            
-            # Station 7: Reality Check
-            state = await self._run_station_7(state)
-            
-            # Station 8: Character Architecture
-            state = await self._run_station_8(state)
-            
-            # Station 9: World Building
-            state = await self._run_station_9(state)
-            
-            # Station 10: Placeholder (Future Implementation)
-            state = await self._run_station_10(state)
-            
-            # Station 11: Placeholder (Future Implementation)
-            state = await self._run_station_11(state)
-            
-            # Station 12: Hook & Cliffhanger Designer
-            state = await self._run_station_12(state)
-            
-            # Station 13: Multi-World/Timeline Manager
-            state = await self._run_station_13(state)
-            
-            # Station 14: Simple Episode Blueprint
-            state = await self._run_station_14(state)
-            
-            # Station 15: Detailed Episode Outlining
-            state = await self._run_station_15(state)
-            
-            # Save checkpoint after each station
             if self.checkpoint_enabled:
                 await self._save_checkpoint(state)
-            
+
+            # Station 2: Project DNA Building
+            state = await self._run_station_2(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
+            # Station 3: Age & Genre Optimization
+            state = await self._run_station_3(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
+            # Station 4: Reference Mining & Seed Extraction
+            state = await self._run_station_4(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
+            # Station 4.5: Narrator Strategy Designer
+            state = await self._run_station_4_5(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
+            # Station 5: Season Architecture
+            state = await self._run_station_5(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
+            # Station 6: Master Style Guide
+            state = await self._run_station_6(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
+            # Station 7: Reality Check
+            state = await self._run_station_7(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
+            # Station 8: Character Architecture
+            state = await self._run_station_8(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
+            # Station 9: World Building
+            state = await self._run_station_9(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
+            # Station 10: Placeholder (Future Implementation)
+            state = await self._run_station_10(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
+            # Station 11: Placeholder (Future Implementation)
+            state = await self._run_station_11(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
+            # Station 12: Hook & Cliffhanger Designer
+            state = await self._run_station_12(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
+            # Station 13: Multi-World/Timeline Manager
+            state = await self._run_station_13(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
+            # Station 14: Simple Episode Blueprint
+            state = await self._run_station_14(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
+            # Station 15: Detailed Episode Outlining
+            state = await self._run_station_15(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
+            # Station 16: Canon Check (Validation Suite)
+            state = await self._run_station_16(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
+            # Station 17: Dialect Planning
+            state = await self._run_station_17(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
+            # Station 18: Evergreen Check
+            state = await self._run_station_18(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
+            # Station 19: Procedure Check
+            state = await self._run_station_19(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
+            # Station 20: Geography/Transit Check
+            state = await self._run_station_20(state)
+            if self.checkpoint_enabled:
+                await self._save_checkpoint(state)
+
             # Generate final summary
             await self._generate_final_summary(state)
             
@@ -182,7 +240,7 @@ class FullAutomationRunner:
                 "session_id": state.session_id,
                 "outputs": state.station_outputs,
                 "files": state.generated_files,
-                "summary": "All 15 stations completed successfully"
+                "summary": "All 20 stations completed successfully (including validation suite)"
             }
             
         except Exception as e:
@@ -763,7 +821,7 @@ class FullAutomationRunner:
             try:
                 redis_key = f"audiobook:{state.session_id}:station_08"
                 json_data = json.dumps(state.station_outputs["station_8"], default=str)
-                await self.redis.set(redis_key, json_data, expire=7200)
+                await self.redis.set(redis_key, json_data, expire=21600)
                 if self.debug_mode:
                     logger.info(f"✅ Saved Station 8 output to Redis: {redis_key}")
             except Exception as e:
@@ -854,7 +912,7 @@ class FullAutomationRunner:
             try:
                 redis_key = f"audiobook:{state.session_id}:station_09"
                 json_data = json.dumps(state.station_outputs["station_9"], default=str)
-                await self.redis.set(redis_key, json_data, expire=7200)
+                await self.redis.set(redis_key, json_data, expire=21600)
                 if self.debug_mode:
                     logger.info(f"✅ Saved Station 9 output to Redis: {redis_key}")
             except Exception as e:
@@ -926,7 +984,7 @@ class FullAutomationRunner:
                     await self.redis.initialize()
                 redis_key = f"audiobook:{state.session_id}:station_10"
                 json_data = json.dumps(state.station_outputs["station_10"], default=str)
-                await self.redis.set(redis_key, json_data, expire=7200)
+                await self.redis.set(redis_key, json_data, expire=21600)
                 if self.debug_mode:
                     logger.info(f"✅ Saved Station 10 output to Redis: {redis_key}")
             except Exception as e:
@@ -997,7 +1055,7 @@ class FullAutomationRunner:
                     await self.redis.initialize()
                 redis_key = f"audiobook:{state.session_id}:station_11"
                 json_data = json.dumps(state.station_outputs["station_11"], default=str)
-                await self.redis.set(redis_key, json_data, expire=7200)
+                await self.redis.set(redis_key, json_data, expire=21600)
                 if self.debug_mode:
                     logger.info(f"✅ Saved Station 11 output to Redis: {redis_key}")
             except Exception as e:
@@ -1247,13 +1305,282 @@ class FullAutomationRunner:
             print("="*70)
             
             state.current_station = 15
-            
+
             return state
-            
+
         except Exception as e:
             raise Exception(f"Station 15 failed: {str(e)}")
-    
-    
+
+    async def _run_station_16(self, state: AudiobookProductionState) -> AudiobookProductionState:
+        """Run Station 16: Canon Consistency Check"""
+
+        self.emit_progress("Station 16", 0, "Initializing Canon Check...")
+
+        try:
+            processor = Station16CanonCheck(state.session_id)
+            await processor.initialize()
+
+            self.emit_progress("Station 16", 20, "Validating character consistency...")
+
+            # Process canon validation
+            result = await processor.run()
+
+            self.emit_progress("Station 16", 50, "Validating location consistency...")
+            self.emit_progress("Station 16", 70, "Validating timeline consistency...")
+            self.emit_progress("Station 16", 90, "Validating plot consistency...")
+
+            # Store Station 16 output
+            state.station_outputs["station_16"] = {
+                "validation_status": result['statistics']['validation_status'],
+                "consistency_score": result['statistics']['consistency_score'],
+                "total_issues": result['statistics']['total_issues'],
+                "critical_issues": result['statistics']['critical_issues'],
+                "outputs": result['outputs'],
+                "session_id": state.session_id,
+                "created_timestamp": datetime.now().isoformat()
+            }
+
+            # Add generated files
+            state.generated_files.extend([
+                result['outputs']['txt'],
+                result['outputs']['json']
+            ])
+
+            self.emit_progress("Station 16", 100, f"Station 16 completed! Validation: {result['statistics']['validation_status']}")
+
+            logger.info(f"📋 Canon Check Summary:")
+            logger.info(f"   Status: {result['statistics']['validation_status']}")
+            logger.info(f"   Consistency Score: {result['statistics']['consistency_score']}/100")
+            logger.info(f"   Issues Found: {result['statistics']['total_issues']}")
+
+            state.current_station = 16
+
+            # Save to Redis
+            await self._save_station_output_to_redis(state.session_id, "16", state.station_outputs["station_16"])
+
+            return state
+
+        except Exception as e:
+            raise Exception(f"Station 16 failed: {str(e)}")
+
+    async def _run_station_17(self, state: AudiobookProductionState) -> AudiobookProductionState:
+        """Run Station 17: Dialect Planning"""
+
+        self.emit_progress("Station 17", 0, "Initializing Dialect Planning...")
+
+        try:
+            processor = Station17DialectPlanning(state.session_id)
+            await processor.initialize()
+
+            self.emit_progress("Station 17", 20, "Validating character voices...")
+
+            # Process dialect validation
+            result = await processor.run()
+
+            self.emit_progress("Station 17", 50, "Validating age appropriateness...")
+            self.emit_progress("Station 17", 70, "Generating vocabulary banks...")
+
+            # Store Station 17 output
+            state.station_outputs["station_17"] = {
+                "validation_status": result['statistics']['validation_status'],
+                "overall_score": result['statistics']['overall_score'],
+                "total_issues": result['statistics']['total_issues'],
+                "characters_analyzed": result['statistics']['characters_analyzed'],
+                "outputs": result['outputs'],
+                "session_id": state.session_id,
+                "created_timestamp": datetime.now().isoformat()
+            }
+
+            # Add generated files
+            state.generated_files.extend([
+                result['outputs']['txt'],
+                result['outputs']['json']
+            ])
+
+            self.emit_progress("Station 17", 100, f"Station 17 completed! Validation: {result['statistics']['validation_status']}")
+
+            logger.info(f"🗣️  Dialect Planning Summary:")
+            logger.info(f"   Status: {result['statistics']['validation_status']}")
+            logger.info(f"   Overall Score: {result['statistics']['overall_score']}/100")
+            logger.info(f"   Characters Analyzed: {result['statistics']['characters_analyzed']}")
+
+            state.current_station = 17
+
+            # Save to Redis
+            await self._save_station_output_to_redis(state.session_id, "17", state.station_outputs["station_17"])
+
+            return state
+
+        except Exception as e:
+            raise Exception(f"Station 17 failed: {str(e)}")
+
+    async def _run_station_18(self, state: AudiobookProductionState) -> AudiobookProductionState:
+        """Run Station 18: Evergreen Content Check"""
+
+        self.emit_progress("Station 18", 0, "Initializing Evergreen Check...")
+
+        try:
+            processor = Station18EvergreenCheck(state.session_id)
+            await processor.initialize()
+
+            self.emit_progress("Station 18", 20, "Detecting dated references...")
+
+            # Process evergreen validation
+            result = await processor.run()
+
+            self.emit_progress("Station 18", 50, "Analyzing cultural references...")
+            self.emit_progress("Station 18", 70, "Validating theme universality...")
+
+            # Store Station 18 output
+            state.station_outputs["station_18"] = {
+                "validation_status": result['statistics']['validation_status'],
+                "evergreen_score": result['statistics']['evergreen_score'],
+                "dated_references": result['statistics']['dated_references'],
+                "high_risk": result['statistics']['high_risk'],
+                "outputs": result['outputs'],
+                "session_id": state.session_id,
+                "created_timestamp": datetime.now().isoformat()
+            }
+
+            # Add generated files
+            state.generated_files.extend([
+                result['outputs']['txt'],
+                result['outputs']['json']
+            ])
+
+            self.emit_progress("Station 18", 100, f"Station 18 completed! Validation: {result['statistics']['validation_status']}")
+
+            logger.info(f"⏳ Evergreen Check Summary:")
+            logger.info(f"   Status: {result['statistics']['validation_status']}")
+            logger.info(f"   Evergreen Score: {result['statistics']['evergreen_score']}/100")
+            logger.info(f"   Dated References: {result['statistics']['dated_references']}")
+
+            state.current_station = 18
+
+            # Save to Redis
+            await self._save_station_output_to_redis(state.session_id, "18", state.station_outputs["station_18"])
+
+            return state
+
+        except Exception as e:
+            raise Exception(f"Station 18 failed: {str(e)}")
+
+    async def _run_station_19(self, state: AudiobookProductionState) -> AudiobookProductionState:
+        """Run Station 19: Procedure Accuracy Check"""
+
+        self.emit_progress("Station 19", 0, "Initializing Procedure Check...")
+
+        try:
+            processor = Station19ProcedureCheck(state.session_id)
+            await processor.initialize()
+
+            self.emit_progress("Station 19", 20, "Validating professional procedures...")
+
+            # Process procedure validation
+            result = await processor.run()
+
+            self.emit_progress("Station 19", 50, "Validating timelines...")
+            self.emit_progress("Station 19", 70, "Validating technology usage...")
+
+            # Store Station 19 output
+            state.station_outputs["station_19"] = {
+                "validation_status": result['statistics']['validation_status'],
+                "overall_realism_score": result['statistics']['overall_realism_score'],
+                "procedures_validated": result['statistics']['procedures_validated'],
+                "timelines_validated": result['statistics']['timelines_validated'],
+                "outputs": result['outputs'],
+                "session_id": state.session_id,
+                "created_timestamp": datetime.now().isoformat()
+            }
+
+            # Add generated files
+            state.generated_files.extend([
+                result['outputs']['txt'],
+                result['outputs']['json']
+            ])
+
+            self.emit_progress("Station 19", 100, f"Station 19 completed! Validation: {result['statistics']['validation_status']}")
+
+            logger.info(f"⚖️  Procedure Check Summary:")
+            logger.info(f"   Status: {result['statistics']['validation_status']}")
+            logger.info(f"   Realism Score: {result['statistics']['overall_realism_score']}/100")
+            logger.info(f"   Procedures Validated: {result['statistics']['procedures_validated']}")
+
+            state.current_station = 19
+
+            # Save to Redis
+            await self._save_station_output_to_redis(state.session_id, "19", state.station_outputs["station_19"])
+
+            return state
+
+        except Exception as e:
+            raise Exception(f"Station 19 failed: {str(e)}")
+
+    async def _run_station_20(self, state: AudiobookProductionState) -> AudiobookProductionState:
+        """Run Station 20: Geography & Transit Check"""
+
+        self.emit_progress("Station 20", 0, "Initializing Geography Check...")
+
+        try:
+            processor = Station20GeographyTransit(state.session_id)
+            await processor.initialize()
+
+            self.emit_progress("Station 20", 20, "Validating location network...")
+
+            # Process geography validation
+            result = await processor.run()
+
+            self.emit_progress("Station 20", 50, "Validating weather continuity...")
+            self.emit_progress("Station 20", 70, "Validating temporal consistency...")
+
+            # Store Station 20 output
+            state.station_outputs["station_20"] = {
+                "validation_status": result['statistics']['validation_status'],
+                "geography_score": result['statistics']['geography_score'],
+                "transit_realism_score": result['statistics']['transit_realism_score'],
+                "location_pairs_analyzed": result['statistics']['location_pairs_analyzed'],
+                "outputs": result['outputs'],
+                "session_id": state.session_id,
+                "created_timestamp": datetime.now().isoformat()
+            }
+
+            # Add generated files
+            state.generated_files.extend([
+                result['outputs']['txt'],
+                result['outputs']['json']
+            ])
+
+            self.emit_progress("Station 20", 100, f"Station 20 completed! Validation: {result['statistics']['validation_status']}")
+
+            logger.info(f"🗺️  Geography Check Summary:")
+            logger.info(f"   Status: {result['statistics']['validation_status']}")
+            logger.info(f"   Geography Score: {result['statistics']['geography_score']}/100")
+            logger.info(f"   Location Pairs: {result['statistics']['location_pairs_analyzed']}")
+
+            # Display validation suite completion
+            print("\n" + "="*70)
+            print("✅ VALIDATION SUITE COMPLETE (Stations 16-20)")
+            print("="*70)
+            print("Canon Consistency: " + ("✅ PASS" if state.station_outputs["station_16"]["validation_status"] == "PASS" else "⚠️  " + state.station_outputs["station_16"]["validation_status"]))
+            print("Dialect Planning: " + ("✅ PASS" if state.station_outputs["station_17"]["validation_status"] == "PASS" else "⚠️  " + state.station_outputs["station_17"]["validation_status"]))
+            print("Evergreen Content: " + ("✅ PASS" if state.station_outputs["station_18"]["validation_status"] == "PASS" else "⚠️  " + state.station_outputs["station_18"]["validation_status"]))
+            print("Procedure Accuracy: " + ("✅ PASS" if state.station_outputs["station_19"]["validation_status"] == "PASS" else "⚠️  " + state.station_outputs["station_19"]["validation_status"]))
+            print("Geography & Transit: " + ("✅ PASS" if state.station_outputs["station_20"]["validation_status"] == "PASS" else "⚠️  " + state.station_outputs["station_20"]["validation_status"]))
+            print("="*70)
+            print("🎬 Ready to proceed to script writing phase!")
+            print("="*70)
+
+            state.current_station = 20
+
+            # Save to Redis
+            await self._save_station_output_to_redis(state.session_id, "20", state.station_outputs["station_20"])
+
+            return state
+
+        except Exception as e:
+            raise Exception(f"Station 20 failed: {str(e)}")
+
+
     async def _generate_final_summary(self, state: AudiobookProductionState):
         """Generate final automation summary"""
         
@@ -1289,7 +1616,12 @@ class FullAutomationRunner:
                 "station_12": f"Hook & cliffhanger design: {state.station_outputs.get('station_12', {}).get('hooks_designed', 0)} hooks, {state.station_outputs.get('station_12', {}).get('cliffhangers_designed', 0)} cliffhangers, {state.station_outputs.get('station_12', {}).get('bridges_created', 0)} bridges",
                 "station_13": f"Multi-world management: {state.station_outputs.get('station_13', {}).get('world_count', 1)} worlds, complexity {state.station_outputs.get('station_13', {}).get('complexity_level', 'simple')}, applicable: {state.station_outputs.get('station_13', {}).get('is_applicable', False)}",
                 "station_14": f"Episode blueprints: {state.station_outputs.get('station_14', {}).get('blueprints_generated', 0)} episodes ready for approval",
-                "station_15": f"Detailed episode outlining: {state.station_outputs.get('station_15', {}).get('outlines_generated', 0)} production-ready outlines, {state.station_outputs.get('station_15', {}).get('scenes_per_episode', 0)} scenes per episode"
+                "station_15": f"Detailed episode outlining: {state.station_outputs.get('station_15', {}).get('outlines_generated', 0)} production-ready outlines, {state.station_outputs.get('station_15', {}).get('scenes_per_episode', 0)} scenes per episode",
+                "station_16": f"Canon check: {state.station_outputs.get('station_16', {}).get('validation_status', 'Unknown')} - Consistency: {state.station_outputs.get('station_16', {}).get('consistency_score', 0)}/100, Issues: {state.station_outputs.get('station_16', {}).get('total_issues', 0)}",
+                "station_17": f"Dialect planning: {state.station_outputs.get('station_17', {}).get('validation_status', 'Unknown')} - Voice consistency: {state.station_outputs.get('station_17', {}).get('overall_score', 0)}/100, Characters analyzed: {state.station_outputs.get('station_17', {}).get('characters_analyzed', 0)}",
+                "station_18": f"Evergreen check: {state.station_outputs.get('station_18', {}).get('validation_status', 'Unknown')} - Evergreen score: {state.station_outputs.get('station_18', {}).get('evergreen_score', 0)}/100, Dated references: {state.station_outputs.get('station_18', {}).get('dated_references', 0)}",
+                "station_19": f"Procedure check: {state.station_outputs.get('station_19', {}).get('validation_status', 'Unknown')} - Realism: {state.station_outputs.get('station_19', {}).get('overall_realism_score', 0)}/100, Procedures validated: {state.station_outputs.get('station_19', {}).get('procedures_validated', 0)}",
+                "station_20": f"Geography check: {state.station_outputs.get('station_20', {}).get('validation_status', 'Unknown')} - Geography score: {state.station_outputs.get('station_20', {}).get('geography_score', 0)}/100, Locations analyzed: {state.station_outputs.get('station_20', {}).get('location_pairs_analyzed', 0)}"
             },
             "generated_files": state.generated_files,
             "full_outputs": processed_outputs
@@ -1355,7 +1687,7 @@ class FullAutomationRunner:
             # Save with the expected key format
             redis_key = f"audiobook:{session_id}:station_{station_number.replace('.', '_')}"
 
-            await self.redis.set(redis_key, json_data, expire=7200)  # Expire after 2 hours
+            await self.redis.set(redis_key, json_data, expire=21600)  # Expire after 6 hours
 
             if self.debug_mode:
                 logger.info(f"✅ Saved station {station_number} output to Redis: {redis_key}")
@@ -1387,7 +1719,12 @@ class FullAutomationRunner:
                 "station_12": "12",
                 "station_13": "13",
                 "station_14": "14",
-                "station_15": "15"
+                "station_15": "15",
+                "station_16": "16",
+                "station_17": "17",
+                "station_18": "18",
+                "station_19": "19",
+                "station_20": "20"
             }
 
             restored_count = 0
@@ -1558,6 +1895,26 @@ class FullAutomationRunner:
                 state = await self._run_station_15(state)
                 await self._save_checkpoint(state)
 
+            if state.current_station < 16:
+                state = await self._run_station_16(state)
+                await self._save_checkpoint(state)
+
+            if state.current_station < 17:
+                state = await self._run_station_17(state)
+                await self._save_checkpoint(state)
+
+            if state.current_station < 18:
+                state = await self._run_station_18(state)
+                await self._save_checkpoint(state)
+
+            if state.current_station < 19:
+                state = await self._run_station_19(state)
+                await self._save_checkpoint(state)
+
+            if state.current_station < 20:
+                state = await self._run_station_20(state)
+                await self._save_checkpoint(state)
+
             # Generate final summary
             await self._generate_final_summary(state)
             
@@ -1691,6 +2048,19 @@ async def main():
         # NEW AUTOMATION RUN
         # Get story concept from file or direct input
         story_concept = None
+        
+        # Check if test story concept file exists
+        test_file = "test_story_concept.txt"
+        if os.path.exists(test_file):
+            try:
+                with open(test_file, 'r', encoding='utf-8') as f:
+                    story_concept = f.read().strip()
+                print(f"✅ Using test story concept from file: {test_file}")
+                print(f"📝 Story: {story_concept}")
+            except Exception as e:
+                print(f"❌ Error reading test file: {e}")
+                story_concept = None
+        
         while not story_concept or len(story_concept.strip()) < 10:
             concept_input = input("📝 Enter story concept file path or text (minimum 10 characters): ").strip()
 

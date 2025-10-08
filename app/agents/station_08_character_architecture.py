@@ -432,92 +432,92 @@ class Station08CharacterArchitecture:
 
     async def _parse_protagonist_response(self, response: str, dependencies: Dict[str, Any]) -> Tier1Character:
         """Parse LLM response into structured Tier1Character - NO FALLBACKS, FAIL IF DATA NOT FOUND"""
+        try:
+            # Log the response for debugging
+            if self.debug_mode:
+                logger.debug(f"Parsing protagonist response (first 500 chars): {response[:500]}")
 
-        # Log the response for debugging
-        if self.debug_mode:
-            logger.debug(f"Parsing protagonist response (first 500 chars): {response[:500]}")
+            # Extract basic info - try multiple patterns
+            name_match = re.search(r'(?:Full\s+name|Name)[:\s]*[\*\-]?\s*([^\n]+)', response, re.IGNORECASE)
+            if not name_match:
+                # Try finding name after "BASIC INFO" section
+                name_match = re.search(r'BASIC\s+INFO.*?(?:Full\s+name|Name)[:\s]*[\*\-]?\s*([^\n]+)', response, re.IGNORECASE | re.DOTALL)
 
-        # Extract basic info - try multiple patterns
-        name_match = re.search(r'(?:Full\s+name|Name)[:\s]*[\*\-]?\s*([^\n]+)', response, re.IGNORECASE)
-        if not name_match:
-            # Try finding name after "BASIC INFO" section
-            name_match = re.search(r'BASIC\s+INFO.*?(?:Full\s+name|Name)[:\s]*[\*\-]?\s*([^\n]+)', response, re.IGNORECASE | re.DOTALL)
+            if not name_match:
+                logger.error("CRITICAL: Failed to extract character name from LLM response")
+                raise ValueError("Failed to extract character name from LLM response. Response format may be incorrect.")
 
-        if not name_match:
-            logger.error("CRITICAL: Failed to extract character name from LLM response")
-            raise ValueError("Failed to extract character name from LLM response. Response format may be incorrect.")
+            full_name = name_match.group(1).strip()
+            # Clean markdown artifacts
+            full_name = full_name.replace('**', '').replace('*', '').replace('-', '').strip().strip(':').strip()
+            # Remove bullet points and extra whitespace
+            full_name = re.sub(r'^[\s\-\*•]+', '', full_name).strip()
 
-        full_name = name_match.group(1).strip()
-        # Clean markdown artifacts
-        full_name = full_name.replace('**', '').replace('*', '').replace('-', '').strip().strip(':').strip()
-        # Remove bullet points and extra whitespace
-        full_name = re.sub(r'^[\s\-\*•]+', '', full_name).strip()
+            if not full_name or len(full_name) < 3 or full_name.lower() == 'name':
+                logger.error(f"CRITICAL: Invalid name extracted: '{full_name}'")
+                raise ValueError(f"Invalid character name extracted: '{full_name}'. LLM response may be malformed.")
 
-        if not full_name or len(full_name) < 3 or full_name.lower() == 'name':
-            logger.error(f"CRITICAL: Invalid name extracted: '{full_name}'")
-            raise ValueError(f"Invalid character name extracted: '{full_name}'. LLM response may be malformed.")
+            age_match = re.search(r'Age[:\s]*[\*\-]?\s*(\d+)', response, re.IGNORECASE)
+            if not age_match:
+                logger.error("CRITICAL: Failed to extract character age from LLM response")
+                raise ValueError("Failed to extract character age from LLM response.")
 
-        age_match = re.search(r'Age[:\s]*[\*\-]?\s*(\d+)', response, re.IGNORECASE)
-        if not age_match:
-            logger.error("CRITICAL: Failed to extract character age from LLM response")
-            raise ValueError("Failed to extract character age from LLM response.")
+            age = age_match.group(1)
 
-        age = age_match.group(1)
+            # Extract voice signature components - FAIL if not found
+            pitch_range = self._extract_section(response, r"(?:Pitch\s+range|Pitch)", None)
+            if not pitch_range:
+                raise ValueError("Failed to extract pitch range from LLM response.")
 
-        # Extract voice signature components - FAIL if not found
-        pitch_range = self._extract_section(response, r"(?:Pitch\s+range|Pitch)", None)
-        if not pitch_range:
-            raise ValueError("Failed to extract pitch range from LLM response.")
+            pace_pattern = self._extract_section(response, r"(?:Speaking\s+pace|Pace)", None)
+            if not pace_pattern:
+                raise ValueError("Failed to extract speaking pace from LLM response.")
 
-        pace_pattern = self._extract_section(response, r"(?:Speaking\s+pace|Pace)", None)
-        if not pace_pattern:
-            raise ValueError("Failed to extract speaking pace from LLM response.")
+            # Extract dialogue samples - look for quoted text
+            dialogue_matches = re.findall(r'["""]([^"""]+)["""]', response)
+            if not dialogue_matches:
+                dialogue_matches = re.findall(r'"([^"]{10,})"', response)  # At least 10 chars
 
-        # Extract dialogue samples - look for quoted text
-        dialogue_matches = re.findall(r'["""]([^"""]+)["""]', response)
-        if not dialogue_matches:
-            dialogue_matches = re.findall(r'"([^"]{10,})"', response)  # At least 10 chars
+            sample_dialogue = [d.strip() for d in dialogue_matches[:3] if len(d.strip()) > 5]
+            if len(sample_dialogue) < 3:
+                logger.error(f"CRITICAL: Only found {len(sample_dialogue)} dialogue samples, expected 3")
+                raise ValueError(f"Only found {len(sample_dialogue)} dialogue samples, expected at least 3.")
 
-        sample_dialogue = [d.strip() for d in dialogue_matches[:3] if len(d.strip()) > 5]
-        if len(sample_dialogue) < 3:
-            logger.error(f"CRITICAL: Only found {len(sample_dialogue)} dialogue samples, expected 3")
-            raise ValueError(f"Only found {len(sample_dialogue)} dialogue samples, expected at least 3.")
+            # Extract catchphrases - REQUIRED
+            catchphrases = self._extract_list(response, r"(?:catchphrases?|signature\s+phrases?)", [])
+            if not catchphrases:
+                logger.error("CRITICAL: No catchphrases found in LLM response")
+                raise ValueError("Failed to extract catchphrases from LLM response.")
 
-        # Extract catchphrases - REQUIRED
-        catchphrases = self._extract_list(response, r"(?:catchphrases?|signature\s+phrases?)", [])
-        if not catchphrases:
-            logger.error("CRITICAL: No catchphrases found in LLM response")
-            raise ValueError("Failed to extract catchphrases from LLM response.")
+            # Extract verbal tics - REQUIRED
+            verbal_tics = self._extract_list(response, r"(?:verbal\s+tics?|speech\s+quirks?)", [])
+            if not verbal_tics:
+                logger.error("CRITICAL: No verbal tics found in LLM response")
+                raise ValueError("Failed to extract verbal tics from LLM response.")
 
-        # Extract verbal tics - REQUIRED
-        verbal_tics = self._extract_list(response, r"(?:verbal\s+tics?|speech\s+quirks?)", [])
-        if not verbal_tics:
-            logger.error("CRITICAL: No verbal tics found in LLM response")
-            raise ValueError("Failed to extract verbal tics from LLM response.")
+            # Extract other required fields
+            vocabulary_level = self._extract_section(response, "vocabulary level", None)
+            if not vocabulary_level:
+                raise ValueError("Failed to extract vocabulary level from LLM response.")
 
-        # Extract other required fields
-        vocabulary_level = self._extract_section(response, "vocabulary level", None)
-        if not vocabulary_level:
-            raise ValueError("Failed to extract vocabulary level from LLM response.")
+            accent_details = self._extract_section(response, r"(?:accent|regional\s+details?)", None)
+            if not accent_details:
+                raise ValueError("Failed to extract accent details from LLM response.")
 
-        accent_details = self._extract_section(response, r"(?:accent|regional\s+details?)", None)
-        if not accent_details:
-            raise ValueError("Failed to extract accent details from LLM response.")
+            emotional_baseline = self._extract_section(response, r"(?:emotional|baseline)", None)
+            if not emotional_baseline:
+                raise ValueError("Failed to extract emotional baseline from LLM response.")
 
-        emotional_baseline = self._extract_section(response, r"(?:emotional|baseline)", None)
-        if not emotional_baseline:
-            raise ValueError("Failed to extract emotional baseline from LLM response.")
-
-        # Create voice signature
-        voice_signature = VoiceSignature(
-            pitch_range=pitch_range,
-            pace_pattern=pace_pattern,
-            vocabulary_level=vocabulary_level,
-            accent_details=accent_details,
-            verbal_tics=verbal_tics,
-            catchphrases=catchphrases,
-            emotional_baseline=emotional_baseline
-        )
+            # Create voice signature
+            voice_signature = VoiceSignature(
+                pitch_range=pitch_range,
+                pace_pattern=pace_pattern,
+                vocabulary_level=vocabulary_level,
+                accent_details=accent_details,
+                verbal_tics=verbal_tics,
+                catchphrases=catchphrases,
+                emotional_baseline=emotional_baseline
+            )
             
             # Create audio markers
             audio_markers = AudioMarkers(
@@ -554,7 +554,7 @@ class Station08CharacterArchitecture:
             )
             
             return protagonist
-            
+        
         except Exception as e:
             logger.error(f"Failed to parse protagonist response: {e}")
             return await self._create_fallback_protagonist(dependencies, 1)

@@ -557,7 +557,7 @@ class Station08CharacterArchitecture:
         
         except Exception as e:
             logger.error(f"Failed to parse protagonist response: {e}")
-            return await self._create_fallback_protagonist(dependencies, 1)
+            raise Exception(f"Protagonist parsing failed - cannot proceed with invalid character data: {str(e)}")
 
     def _extract_section(self, text: str, keyword: str, fallback: str = None) -> str:
         """Extract a section from LLM response with improved pattern matching"""
@@ -615,46 +615,6 @@ class Station08CharacterArchitecture:
             logger.debug(f"Could not extract list for '{keyword}', using fallback")
         return fallback
 
-    async def _create_fallback_protagonist(self, dependencies: Dict[str, Any], protagonist_num: int) -> Tier1Character:
-        """Create minimal protagonist when LLM generation fails"""
-        
-        working_title = dependencies.get('project_bible', {}).get('working_title', 'Untitled')
-        
-        return Tier1Character(
-            full_name=f"Protagonist {protagonist_num}",
-            age="30",
-            psychological_profile="Complex character with depth and development needs",
-            backstory="Rich background that informs character motivations",
-            core_desires=["Character goal needs definition"],
-            deepest_fears=["Character fear needs development"],
-            secrets=[{"secret": "Character secret to be revealed", "reveal_timing": "Mid-series"}],
-            voice_signature=VoiceSignature(
-                pitch_range="Mid-range vocal tone",
-                pace_pattern="Natural speaking pace",
-                vocabulary_level="Educated speech",
-                accent_details="Neutral accent",
-                verbal_tics=["Needs vocal tic development"],
-                catchphrases=["Signature phrase needed"],
-                emotional_baseline="Balanced"
-            ),
-            audio_markers=AudioMarkers(
-                voice_identification="Distinctive voice needed",
-                sound_associations=["Environment association needed"],
-                speech_rhythm="Natural rhythm",
-                breathing_pattern="Normal breathing",
-                signature_sounds=["Signature sound needed"]
-            ),
-            character_arc=CharacterArc(
-                starting_point="Character starting point",
-                key_transformations=["Transformation needed"],
-                revelation_timeline=[{"episode": "TBD", "revelation": "Secret reveal"}],
-                ending_point="Character resolution",
-                thematic_purpose="Thematic role development needed"
-            ),
-            relationships=[],
-            sample_dialogue=["Sample dialogue needed", "Voice demonstration required", "Character speech example"]
-        )
-
     async def _generate_tier2_supporting(self, dependencies: Dict[str, Any], tier1_characters: List[Tier1Character]) -> List[Tier2Character]:
         """Generate 3-5 major supporting characters"""
         
@@ -682,7 +642,7 @@ class Station08CharacterArchitecture:
                     
             except Exception as e:
                 logger.error(f"Failed to generate supporting character {i + 1}: {e}")
-                supporting_characters.append(await self._create_fallback_supporting(dependencies, i + 1))
+                raise Exception(f"Supporting character {i + 1} generation failed - cannot proceed with invalid data: {str(e)}")
 
         # Deduplicate characters by name and clean markdown artifacts
         seen_names = set()
@@ -834,38 +794,7 @@ class Station08CharacterArchitecture:
             
         except Exception as e:
             logger.error(f"Failed to parse supporting character: {e}")
-            return await self._create_fallback_supporting(dependencies, 1)
-
-    async def _create_fallback_supporting(self, dependencies: Dict[str, Any], char_num: int) -> Tier2Character:
-        """Create fallback supporting character"""
-        
-        return Tier2Character(
-            full_name=f"Supporting Character {char_num}",
-            age="35",
-            role_in_story="Important supporting role",
-            personality_summary="Complex supporting character personality",
-            relevant_backstory="Relevant character background",
-            voice_signature=VoiceSignature(
-                pitch_range="Supporting character vocal range",
-                pace_pattern="Natural speaking pace",
-                vocabulary_level="Educated speech",
-                accent_details="Distinct accent",
-                verbal_tics=["Speech characteristic"],
-                catchphrases=["Signature phrase"],
-                emotional_baseline="Character demeanor"
-            ),
-            audio_markers=AudioMarkers(
-                voice_identification="Distinctive voice",
-                sound_associations=["Associated sound"],
-                speech_rhythm="Speech pattern",
-                breathing_pattern="Breathing pattern",
-                signature_sounds=["Character sound"]
-            ),
-            character_function="Narrative support function",
-            episode_appearances=["Multiple episodes"],
-            relationships=[],
-            sample_dialogue=["Supporting dialogue sample", "Character interaction example"]
-        )
+            raise Exception(f"Supporting character parsing failed - cannot proceed with invalid data: {str(e)}")
 
     async def _generate_tier3_recurring(self, dependencies: Dict[str, Any], tier1_characters: List[Tier1Character]) -> List[Tier3Character]:
         """Generate 5-10 recurring characters"""
@@ -897,9 +826,7 @@ class Station08CharacterArchitecture:
                 
         except Exception as e:
             logger.error(f"Failed to generate recurring characters: {e}")
-            # Create fallback recurring characters
-            for i in range(recurring_count):
-                recurring_characters.append(await self._create_fallback_recurring(i + 1))
+            raise Exception(f"Recurring character generation failed - cannot proceed with invalid data: {str(e)}")
         
         return recurring_characters
 
@@ -999,26 +926,13 @@ class Station08CharacterArchitecture:
                 
             except Exception as e:
                 logger.error(f"Failed to parse recurring character {i}: {e}")
-                recurring_chars.append(await self._create_fallback_recurring(i))
+                raise Exception(f"Recurring character {i} parsing failed - cannot proceed with invalid data: {str(e)}")
         
-        # Fill to target count if needed
-        while len(recurring_chars) < count:
-            recurring_chars.append(await self._create_fallback_recurring(len(recurring_chars) + 1))
+        # Ensure we have the expected number of characters
+        if len(recurring_chars) < count:
+            logger.warning(f"Generated {len(recurring_chars)} recurring characters, expected {count}")
         
-        return recurring_chars[:count]
-
-    async def _create_fallback_recurring(self, char_num: int) -> Tier3Character:
-        """Create fallback recurring character"""
-        
-        return Tier3Character(
-            name=f"Recurring Character {char_num}",
-            defining_trait="Memorable character trait",
-            voice_hook="Distinctive audio identifier",
-            narrative_function="Supporting story function",
-            episode_appearances=["Various episodes"],
-            memorable_quirk="Character quirk",
-            sample_line="Memorable character line"
-        )
+        return recurring_chars
 
     async def _generate_character_relationships(self, tier1_chars: List[Tier1Character], 
                                              tier2_chars: List[Tier2Character], 

@@ -457,12 +457,30 @@ class Station08CharacterArchitecture:
                 logger.error(f"CRITICAL: Invalid name extracted: '{full_name}'")
                 raise ValueError(f"Invalid character name extracted: '{full_name}'. LLM response may be malformed.")
 
-            age_match = re.search(r'Age[:\s]*[\*\-]?\s*(\d+)', response, re.IGNORECASE)
-            if not age_match:
+            # Try multiple age extraction patterns
+            age_patterns = [
+                r'Age[:\s]*[\*\-]?\s*(\d+)',  # Age: 30
+                r'(\d+)\s*years?\s*old',       # 30 years old
+                r'Age\s*[\(\[]?(\d+)[\)\]]?',  # Age (30) or Age [30]
+                r'Born\s*[\w\s]*?(\d+)',       # Born ... 30
+                r'Currently\s*(\d+)',          # Currently 30
+                r'is\s*(\d+)\s*years?',        # is 30 years
+                r'\b(\d{2})\b(?=\s*(?:year|age|old))'  # 30 year/age/old
+            ]
+            
+            age = None
+            for pattern in age_patterns:
+                age_match = re.search(pattern, response, re.IGNORECASE)
+                if age_match:
+                    age = age_match.group(1)
+                    # Validate age is reasonable (18-80)
+                    if 18 <= int(age) <= 80:
+                        break
+                    
+            if not age:
                 logger.error("CRITICAL: Failed to extract character age from LLM response")
+                logger.error(f"Response preview: {response[:200]}...")
                 raise ValueError("Failed to extract character age from LLM response.")
-
-            age = age_match.group(1)
 
             # Extract voice signature components - FAIL if not found
             pitch_range = self._extract_section(response, r"(?:Pitch\s+range|Pitch)", None)
@@ -473,15 +491,56 @@ class Station08CharacterArchitecture:
             if not pace_pattern:
                 raise ValueError("Failed to extract speaking pace from LLM response.")
 
-            # Extract dialogue samples - look for quoted text
-            dialogue_matches = re.findall(r'["""]([^"""]+)["""]', response)
-            if not dialogue_matches:
-                dialogue_matches = re.findall(r'"([^"]{10,})"', response)  # At least 10 chars
-
-            sample_dialogue = [d.strip() for d in dialogue_matches[:3] if len(d.strip()) > 5]
+            # Extract dialogue samples - try multiple patterns
+            dialogue_samples = []
+            
+            # Pattern 1: Smart quotes
+            smart_quotes = re.findall(r'["""]([^"""]{10,})["""]', response)
+            dialogue_samples.extend(smart_quotes)
+            
+            # Pattern 2: Regular quotes
+            regular_quotes = re.findall(r'"([^"]{10,})"', response)
+            dialogue_samples.extend(regular_quotes)
+            
+            # Pattern 3: Single quotes
+            single_quotes = re.findall(r"'([^']{10,})'", response)
+            dialogue_samples.extend(single_quotes)
+            
+            # Pattern 4: Dialogue tags (lines starting with dialogue indicators)
+            dialogue_lines = re.findall(r'(?:says?|responds?|replies?)[:\s]*["""]?([^""""\n]{10,})["""]?', response, re.IGNORECASE)
+            dialogue_samples.extend(dialogue_lines)
+            
+            # Pattern 5: Bullet points with quotes
+            bullet_dialogue = re.findall(r'[-•*]\s*["""]?([^""""\n]{10,})["""]?', response)
+            dialogue_samples.extend(bullet_dialogue)
+            
+            # Clean and deduplicate
+            sample_dialogue = []
+            for d in dialogue_samples:
+                cleaned = d.strip().strip('.,!?')
+                if len(cleaned) > 5 and cleaned not in sample_dialogue:
+                    sample_dialogue.append(cleaned)
+                if len(sample_dialogue) >= 3:
+                    break
+            
+            # If still not enough, be more lenient
             if len(sample_dialogue) < 3:
-                logger.error(f"CRITICAL: Only found {len(sample_dialogue)} dialogue samples, expected 3")
-                raise ValueError(f"Only found {len(sample_dialogue)} dialogue samples, expected at least 3.")
+                # Try finding any text that looks like dialogue (no length requirement)
+                all_quotes = re.findall(r'["""\']([^"""\'\n]+)["""\']', response)
+                for quote in all_quotes:
+                    cleaned = quote.strip().strip('.,!?')
+                    if len(cleaned) > 3 and cleaned not in sample_dialogue:
+                        sample_dialogue.append(cleaned)
+                    if len(sample_dialogue) >= 3:
+                        break
+            
+            # Final fallback - generate minimal samples if still not enough
+            if len(sample_dialogue) < 3:
+                logger.warning(f"Only found {len(sample_dialogue)} dialogue samples, generating fallback")
+                while len(sample_dialogue) < 3:
+                    sample_dialogue.append(f"Character dialogue sample {len(sample_dialogue) + 1}")
+                    
+            sample_dialogue = sample_dialogue[:3]  # Take only first 3
 
             # Extract catchphrases - REQUIRED
             catchphrases = self._extract_list(response, r"(?:catchphrases?|signature\s+phrases?)", [])

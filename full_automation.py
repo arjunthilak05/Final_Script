@@ -2081,9 +2081,20 @@ async def main():
 
         # Configuration options (if not provided via CLI)
         print("\n⚙️  AUTOMATION CONFIGURATION:")
-        if not args.auto_approve:
+        if args.auto_approve:
+            auto_approve = True
+            print("🤖 Auto-approve: ✅ ENABLED")
+        else:
             auto_approve = input("🤖 Auto-approve all decisions? (Y/n): ").lower().strip() != 'n'
-        if not args.debug:
+        
+        if args.debug:
+            debug_mode = True
+            print("🐛 Debug mode: ✅ ENABLED")
+        elif args.auto_approve:
+            # Default to no debug mode when auto-approve is set
+            debug_mode = False
+            print("🐛 Debug mode: ❌ DISABLED")
+        else:
             debug_mode = input("🐛 Enable debug mode? (y/N): ").lower().strip() == 'y'
 
         # Initialize and run automation

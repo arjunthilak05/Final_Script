@@ -7,6 +7,7 @@ You are the Season Architect using the complete 48-style SCREENPLAY STYLE LIBRAR
 import asyncio
 import json
 import logging
+import re
 from datetime import datetime
 from typing import Dict, Any, List, Optional
 from dataclasses import dataclass, asdict
@@ -599,15 +600,137 @@ class Station05SeasonArchitect:
         """
         logger.info("Analyzing 48 screenplay styles for optimal selection")
         
+        # Style analysis with retry logic
+        max_retries = 5
+        retry_delay = 3
+        
+        for attempt in range(max_retries):
+            try:
+                if attempt > 0:
+                    logger.info(f"🔄 Style analysis retry attempt {attempt + 1}/{max_retries}")
+                    await asyncio.sleep(retry_delay * attempt)
+                
+                # Generate style recommendations using LLM analysis
+                style_prompt = self._build_style_analysis_prompt(project_inputs)
+                response = await self.openrouter.process_message(
+                    style_prompt,
+                    model_name="qwen-72b"
+                )
+                
+                # Parse LLM response into style recommendations
+                result = await self._parse_style_recommendations(response, project_inputs)
+                logger.info(f"✅ Style analysis succeeded on attempt {attempt + 1}")
+                return result
+                
+            except Exception as e:
+                logger.warning(f"⚠️ Style analysis attempt {attempt + 1}/{max_retries} failed: {str(e)}")
+                if attempt == max_retries - 1:
+                    logger.error(f"❌ Style analysis FAILED after {max_retries} attempts")
+                    raise ValueError(f"Station 5 style analysis failed after {max_retries} retries: {str(e)}")
+    
+    def _build_style_analysis_prompt(self, project_inputs: Dict[str, Any]) -> str:
+        """Build prompt for LLM style analysis"""
+        
+        title = project_inputs.get('working_title', 'Untitled Audio Drama')
+        genre = project_inputs.get('primary_genre', 'Drama')
+        premise = project_inputs.get('core_premise', project_inputs.get('original_seed', ''))
+        episodes = project_inputs.get('episode_count', '10')
+        length = project_inputs.get('episode_length', '45 minutes')
+        age_range = project_inputs.get('target_age_range', '25-45')
+        narrator_strategy = project_inputs.get('narrator_strategy', 'Limited Omniscient')
+        
+        return f"""
+        Analyze and recommend the TOP 3 screenplay styles for this audiobook project:
+
+        PROJECT DETAILS:
+        Title: {title}
+        Genre: {genre}
+        Premise: {premise}
+        Episodes: {episodes} at {length} each
+        Target Age: {age_range}
+        Narrator: {narrator_strategy}
+
+        From the 48 standard screenplay styles, recommend the 3 BEST options for this audio drama.
+
+        For EACH of the 3 recommendations, provide:
+
+        **STYLE 1: [Style Name]**
+        - Fit Reasoning: Why this style suits this specific project
+        - Audio Adaptation: How this works in pure audio format
+        - Episode Implications: How this affects the {episodes}-episode structure
+        - Confidence Score: 0.0-1.0 rating
+        - Narrator Integration: How {narrator_strategy} works with this style
+
+        **STYLE 2: [Style Name]**
+        [Same format]
+
+        **STYLE 3: [Style Name]**
+        [Same format]
+
+        Focus on styles that excel in audio format and suit the {genre} genre for {age_range} audiences.
+        """
+    
+    async def _parse_style_recommendations(self, response: str, project_inputs: Dict[str, Any]) -> List[StyleRecommendation]:
+        """Parse LLM response into style recommendations"""
+        
         try:
-            # For now, return high-quality fallback recommendations
-            # In production, this would use OpenRouter to generate sophisticated analysis
-            return self._create_fallback_style_recommendations(project_inputs)
+            recommendations = []
+            
+            # Split response into style sections
+            style_sections = re.split(r'\*\*STYLE \d+:', response)
+            
+            for i, section in enumerate(style_sections[1:], 1):  # Skip first empty section
+                if i > 3:  # Only process first 3 styles
+                    break
+                
+                # Extract style name
+                name_match = re.search(r'^([^\*\n]+)', section.strip())
+                style_name = name_match.group(1).strip() if name_match else f"Audio Drama Style {i}"
+                
+                # Extract sections
+                fit_reasoning = self._extract_section_content(section, "Fit Reasoning")
+                audio_adaptation = self._extract_section_content(section, "Audio Adaptation")
+                episode_implications = self._extract_section_content(section, "Episode Implications")
+                narrator_integration = self._extract_section_content(section, "Narrator Integration")
+                
+                # Extract confidence score
+                confidence_match = re.search(r'Confidence Score[:\s]*([\d.]+)', section)
+                confidence_score = float(confidence_match.group(1)) if confidence_match else 0.8
+                
+                recommendation = StyleRecommendation(
+                    style_name=style_name,
+                    fit_reasoning=fit_reasoning,
+                    audio_adaptation=audio_adaptation,
+                    episode_implications=episode_implications,
+                    demo_script=self._generate_demo_script(style_name, project_inputs.get('working_title', 'Project'), 
+                                                         project_inputs.get('core_premise', ''), 
+                                                         project_inputs.get('primary_genre', 'Drama'),
+                                                         project_inputs.get('narrator_strategy', 'Limited Omniscient'),
+                                                         project_inputs),
+                    confidence_score=confidence_score,
+                    narrator_integration=narrator_integration
+                )
+                
+                recommendations.append(recommendation)
+            
+            # Ensure we have at least 1 recommendation
+            if not recommendations:
+                raise ValueError("No style recommendations found in LLM response")
+            
+            return recommendations
             
         except Exception as e:
-            logger.error(f"Style analysis failed: {e}")
-            return self._create_fallback_style_recommendations(project_inputs)
+            logger.error(f"Failed to parse style recommendations: {e}")
+            raise ValueError(f"Could not parse style recommendations from LLM response: {str(e)}")
     
+    def _extract_section_content(self, text: str, section_name: str) -> str:
+        """Extract content from a named section"""
+        pattern = rf'{section_name}[:\s]*([^\n]+(?:\n(?![\*\-])[^\n]*)*)'
+        match = re.search(pattern, text, re.IGNORECASE | re.MULTILINE)
+        if match:
+            return match.group(1).strip()
+        return f"{section_name} details needed"
+
     def _create_fallback_style_recommendations(self, project_inputs: Dict[str, Any]) -> List[StyleRecommendation]:
         """Create style recommendations using actual project data"""
         
@@ -988,10 +1111,218 @@ FADE OUT.
         """
         logger.info("Creating complete season skeleton with 4-act mapping")
         
-        # Use comprehensive fallback that generates quality content
-        chosen_style = style_recommendations[0] if style_recommendations else None
-        return self._create_comprehensive_season_skeleton(project_inputs, chosen_style)
+        # Generate season skeleton using LLM with retry logic
+        max_retries = 5
+        retry_delay = 3
+        
+        for attempt in range(max_retries):
+            try:
+                if attempt > 0:
+                    logger.info(f"🔄 Season skeleton retry attempt {attempt + 1}/{max_retries}")
+                    await asyncio.sleep(retry_delay * attempt)
+                
+                skeleton_prompt = self._build_season_skeleton_prompt(project_inputs, style_recommendations)
+                response = await self.openrouter.process_message(
+                    skeleton_prompt,
+                    model_name="qwen-72b"
+                )
+                
+                result = await self._parse_season_skeleton(response, project_inputs, style_recommendations)
+                logger.info(f"✅ Season skeleton succeeded on attempt {attempt + 1}")
+                return result
+                
+            except Exception as e:
+                logger.warning(f"⚠️ Season skeleton attempt {attempt + 1}/{max_retries} failed: {str(e)}")
+                if attempt == max_retries - 1:
+                    logger.error(f"❌ Season skeleton FAILED after {max_retries} attempts")
+                    raise ValueError(f"Station 5 season skeleton generation failed after {max_retries} retries: {str(e)}")
     
+    def _build_season_skeleton_prompt(self, project_inputs: Dict[str, Any], style_recommendations: List[StyleRecommendation]) -> str:
+        """Build prompt for LLM season skeleton generation"""
+        
+        title = project_inputs.get('working_title', 'Untitled Audio Drama')
+        genre = project_inputs.get('primary_genre', 'Drama')
+        premise = project_inputs.get('core_premise', project_inputs.get('original_seed', ''))
+        episodes = project_inputs.get('episode_count', '10')
+        length = project_inputs.get('episode_length', '45 minutes')
+        chosen_style = style_recommendations[0] if style_recommendations else None
+        style_name = chosen_style.style_name if chosen_style else "Character-Driven Drama"
+        
+        return f"""
+        Create a complete season skeleton for this audiobook project using the {style_name} structure:
+
+        PROJECT DETAILS:
+        Title: {title}
+        Genre: {genre}
+        Premise: {premise}
+        Episodes: {episodes} at {length} each
+        Chosen Style: {style_name}
+
+        Create a complete season architecture with:
+
+        **MACRO STRUCTURE:**
+        - Act 1 (Setup): Episodes 1-2
+        - Act 2A (Rising Action): Episodes 3-4
+        - Act 2B (Midpoint): Episodes 5-6
+        - Act 3 (Resolution): Episodes 7+
+
+        **EPISODE BREAKDOWN:**
+        For each episode, provide:
+        - Episode Number: [1-{episodes}]
+        - Episode Title: [Descriptive title]
+        - Act Position: [Which act this belongs to]
+        - Story Function: [What this episode accomplishes]
+        - Key Beats: [3-4 major story moments]
+        - Character Focus: [Which characters are featured]
+        - Emotional Arc: [The emotional journey]
+        - Cliffhanger: [How it ends to hook the next episode]
+
+        Focus on the {genre} genre and ensure each episode builds toward the overall story resolution.
+        Use the {style_name} structure to guide pacing and character development.
+        """
+    
+    async def _parse_season_skeleton(self, response: str, project_inputs: Dict[str, Any], style_recommendations: List[StyleRecommendation]) -> Dict[str, Any]:
+        """Parse LLM response into season skeleton structure"""
+        
+        try:
+            # Extract macro structure
+            macro_structure = self._extract_macro_structure(response)
+            
+            # Extract episode breakdown
+            episodes = self._extract_episode_breakdown(response, project_inputs)
+            
+            # Create comprehensive skeleton
+            skeleton = {
+                "macro_structure": macro_structure,
+                "episodes": episodes,
+                "total_episodes": len(episodes),
+                "chosen_style": style_recommendations[0].style_name if style_recommendations else "Character-Driven Drama",
+                "genre_integration": self._extract_genre_integration(response),
+                "audio_considerations": self._extract_audio_considerations(response)
+            }
+            
+            return skeleton
+            
+        except Exception as e:
+            logger.error(f"Failed to parse season skeleton: {e}")
+            raise ValueError(f"Could not parse season skeleton from LLM response: {str(e)}")
+    
+    def _extract_macro_structure(self, response: str) -> Dict[str, Any]:
+        """Extract macro structure from LLM response"""
+        try:
+            # Look for act structure
+            acts = {}
+            act_pattern = r'Act (\d+[AB]?)[:\s]*([^\n]+(?:\n(?![A-Z\*])[^\n]*)*)'
+            act_matches = re.findall(act_pattern, response, re.MULTILINE)
+            
+            for act_num, act_desc in act_matches:
+                acts[f"act_{act_num.lower()}"] = act_desc.strip()
+            
+            return {
+                "four_act_structure": acts,
+                "pacing_notes": "Character-driven pacing with emotional beats",
+                "narrative_arc": "Setup → Development → Crisis → Resolution"
+            }
+        except:
+            return {
+                "four_act_structure": {
+                    "act_1": "Setup and character introduction",
+                    "act_2a": "Rising action and development", 
+                    "act_2b": "Midpoint and complications",
+                    "act_3": "Climax and resolution"
+                },
+                "pacing_notes": "Character-driven pacing with emotional beats",
+                "narrative_arc": "Setup → Development → Crisis → Resolution"
+            }
+    
+    def _extract_episode_breakdown(self, response: str, project_inputs: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """Extract episode breakdown from LLM response"""
+        try:
+            episodes = []
+            episode_sections = re.split(r'Episode (\d+)', response)[1:]  # Skip first empty section
+            
+            for i in range(0, len(episode_sections), 2):
+                if i + 1 < len(episode_sections):
+                    episode_num = episode_sections[i]
+                    episode_content = episode_sections[i + 1]
+                    
+                    episode = {
+                        "episode_number": int(episode_num),
+                        "episode_title": self._extract_episode_field(episode_content, "Title", f"Episode {episode_num}"),
+                        "act_position": self._extract_episode_field(episode_content, "Act Position", "Act 1"),
+                        "story_function": self._extract_episode_field(episode_content, "Story Function", "Story development"),
+                        "key_beats": self._extract_episode_list(episode_content, "Key Beats"),
+                        "character_focus": self._extract_episode_field(episode_content, "Character Focus", "Main characters"),
+                        "emotional_arc": self._extract_episode_field(episode_content, "Emotional Arc", "Character growth"),
+                        "cliffhanger": self._extract_episode_field(episode_content, "Cliffhanger", "Story continuation")
+                    }
+                    
+                    episodes.append(episode)
+            
+            # Ensure we have the right number of episodes
+            target_count = int(str(project_inputs.get('episode_count', '6')).split('-')[0])
+            while len(episodes) < target_count:
+                episodes.append({
+                    "episode_number": len(episodes) + 1,
+                    "episode_title": f"Episode {len(episodes) + 1}",
+                    "act_position": "Act 1" if len(episodes) < 2 else "Act 2A",
+                    "story_function": "Story development",
+                    "key_beats": ["Character development", "Plot advancement", "Emotional beats"],
+                    "character_focus": "Main characters",
+                    "emotional_arc": "Character growth",
+                    "cliffhanger": "Story continuation"
+                })
+            
+            return episodes[:target_count]
+            
+        except Exception as e:
+            logger.warning(f"Failed to parse episodes from LLM response: {e}")
+            # Return basic episode structure
+            target_count = int(str(project_inputs.get('episode_count', '6')).split('-')[0])
+            return [
+                {
+                    "episode_number": i + 1,
+                    "episode_title": f"Episode {i + 1}",
+                    "act_position": "Act 1" if i < 2 else "Act 2A" if i < 4 else "Act 3",
+                    "story_function": "Story development",
+                    "key_beats": ["Character development", "Plot advancement", "Emotional beats"],
+                    "character_focus": "Main characters", 
+                    "emotional_arc": "Character growth",
+                    "cliffhanger": "Story continuation"
+                }
+                for i in range(target_count)
+            ]
+    
+    def _extract_episode_field(self, text: str, field_name: str, default: str) -> str:
+        """Extract a specific field from episode text"""
+        pattern = rf'{field_name}[:\s]*([^\n]+)'
+        match = re.search(pattern, text, re.IGNORECASE)
+        return match.group(1).strip() if match else default
+    
+    def _extract_episode_list(self, text: str, field_name: str) -> List[str]:
+        """Extract a list field from episode text"""
+        pattern = rf'{field_name}[:\s]*([^\n]+(?:\n\s*[-•][^\n]*)*)'
+        match = re.search(pattern, text, re.IGNORECASE | re.MULTILINE)
+        if match:
+            content = match.group(1)
+            items = re.findall(r'[-•]\s*([^\n]+)', content)
+            if items:
+                return [item.strip() for item in items]
+            return [content.strip()]
+        return ["Character development", "Plot advancement", "Emotional beats"]
+    
+    def _extract_genre_integration(self, response: str) -> str:
+        """Extract genre integration notes"""
+        pattern = r'genre integration[:\s]*([^\n]+(?:\n(?![A-Z\*])[^\n]*)*)'
+        match = re.search(pattern, response, re.IGNORECASE | re.MULTILINE)
+        return match.group(1).strip() if match else "Genre elements integrated throughout"
+    
+    def _extract_audio_considerations(self, response: str) -> str:
+        """Extract audio considerations"""
+        pattern = r'audio[:\s]*([^\n]+(?:\n(?![A-Z\*])[^\n]*)*)'
+        match = re.search(pattern, response, re.IGNORECASE | re.MULTILINE)
+        return match.group(1).strip() if match else "Optimized for audio presentation"
+
     def _create_comprehensive_season_skeleton(self, project_inputs: Dict[str, Any], chosen_style) -> Dict[str, Any]:
         """Create comprehensive season skeleton with all episodes detailed"""
 

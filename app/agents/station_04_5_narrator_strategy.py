@@ -9,6 +9,7 @@ Outputs: Narrator Strategy Recommendation Document
 Human Gate: CRITICAL - Affects all subsequent script development
 """
 
+import asyncio
 import json
 import re
 import logging
@@ -500,14 +501,31 @@ Quality_Control: [Testing requirements]
                 story_elements=story_elements
             )
             
-            # Get LLM response
-            response = await self.openrouter.process_message(
-                prompt,
-                model_name="qwen-72b", 
-            )
+            # Get LLM response with retry logic
+            max_retries = 5
+            retry_delay = 3
             
-            # Parse scene response
-            sample_scene = self._parse_scene_response(response)
+            for attempt in range(max_retries):
+                try:
+                    if attempt > 0:
+                        logger.info(f"🔄 Scene generation retry attempt {attempt + 1}/{max_retries}")
+                        await asyncio.sleep(retry_delay * attempt)
+                    
+                    response = await self.openrouter.process_message(
+                        prompt,
+                        model_name="qwen-72b", 
+                    )
+                    
+                    # Parse scene response
+                    sample_scene = self._parse_scene_response(response)
+                    logger.info(f"✅ Scene generation succeeded on attempt {attempt + 1}")
+                    break
+                    
+                except Exception as e:
+                    logger.warning(f"⚠️ Scene generation attempt {attempt + 1}/{max_retries} failed: {str(e)}")
+                    if attempt == max_retries - 1:
+                        logger.error(f"❌ Scene generation FAILED after {max_retries} attempts")
+                        raise ValueError(f"Station 4.5 scene generation failed after {max_retries} retries: {str(e)}")
             
             logger.info("Sample scenes generated successfully")
             return [sample_scene]
@@ -529,14 +547,31 @@ Quality_Control: [Testing requirements]
                 sample_scenes=json.dumps([asdict(scene) for scene in sample_scenes], indent=2)
             )
             
-            # Get LLM response
-            response = await self.openrouter.process_message(
-                prompt,
-                model_name=self.config.model,
-            )
+            # Get LLM response with retry logic
+            max_retries = 5
+            retry_delay = 3
             
-            # Parse recommendation response
-            recommendation_data = self._parse_recommendation_response(response)
+            for attempt in range(max_retries):
+                try:
+                    if attempt > 0:
+                        logger.info(f"🔄 Recommendation retry attempt {attempt + 1}/{max_retries}")
+                        await asyncio.sleep(retry_delay * attempt)
+                    
+                    response = await self.openrouter.process_message(
+                        prompt,
+                        model_name=self.config.model,
+                    )
+                    
+                    # Parse recommendation response
+                    recommendation_data = self._parse_recommendation_response(response)
+                    logger.info(f"✅ Recommendation succeeded on attempt {attempt + 1}")
+                    break
+                    
+                except Exception as e:
+                    logger.warning(f"⚠️ Recommendation attempt {attempt + 1}/{max_retries} failed: {str(e)}")
+                    if attempt == max_retries - 1:
+                        logger.error(f"❌ Recommendation FAILED after {max_retries} attempts")
+                        raise ValueError(f"Station 4.5 recommendation failed after {max_retries} retries: {str(e)}")
             
             logger.info(f"Recommendation generated: {recommendation_data['recommendation']}")
             return recommendation_data
@@ -652,15 +687,9 @@ Quality_Control: [Testing requirements]
             )
             
         except Exception as e:
-            logger.warning(f"Failed to parse complexity response: {str(e)}")
-            # Return fallback complexity score
-            return ComplexityScore(
-                complexity_factors={"fallback": 3},
-                audio_clarity_factors={"fallback": 3},
-                stylistic_factors={"fallback": 3},
-                total_score=45,
-                recommendation_tier="Could work either way"
-            )
+            logger.error(f"Failed to parse complexity response: {str(e)}")
+            logger.error("CRITICAL: Complexity analysis failed")
+            raise ValueError(f"Station 4.5 complexity analysis failed - cannot proceed with invalid data: {str(e)}")
 
     def _parse_scene_response(self, response: str) -> SampleScene:
         """Parse sample scene response"""

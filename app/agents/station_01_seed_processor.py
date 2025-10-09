@@ -9,6 +9,7 @@ Outputs: Scale options with justification and initial expansion
 Human Gate: CRITICAL - Scale decision affects entire pipeline
 """
 
+import asyncio
 import json
 import re
 import logging
@@ -110,14 +111,34 @@ class Station01SeedProcessor:
             # Format prompt with input
             formatted_prompt = self.prompt_template.format(seed_input=seed_input)
             
-            # Get LLM response - using optimal settings for structured output from config
-            response = await self.openrouter.process_message(
-                formatted_prompt,
-                model_name=self.config.model
-            )
+            # Get LLM response with retry logic - keep trying until success
+            max_retries = 5
+            retry_delay = 3  # seconds
             
-            # Parse the response into structured data
-            parsed_output = self._parse_llm_response(response, seed_input, session_id)
+            for attempt in range(max_retries):
+                try:
+                    if attempt > 0:
+                        logger.info(f"Retry attempt {attempt + 1}/{max_retries} for Station 1")
+                        await asyncio.sleep(retry_delay * attempt)
+                    
+                    response = await self.openrouter.process_message(
+                        formatted_prompt,
+                        model_name=self.config.model
+                    )
+                    
+                    # Parse the response into structured data
+                    parsed_output = self._parse_llm_response(response, seed_input, session_id)
+                    
+                    # Success - break out of retry loop
+                    logger.info(f"✅ Station 1 succeeded on attempt {attempt + 1}")
+                    break
+                    
+                except Exception as e:
+                    logger.warning(f"⚠️ Station 1 attempt {attempt + 1}/{max_retries} failed: {str(e)}")
+                    if attempt == max_retries - 1:
+                        logger.error(f"❌ Station 1 FAILED after {max_retries} attempts")
+                        raise ValueError(f"Station 1 failed after {max_retries} retries: {str(e)}")
+                    # Continue to next retry attempt
             
             # Store in Redis for next station
             await self._store_output(session_id, parsed_output)
@@ -138,6 +159,12 @@ class Station01SeedProcessor:
         This method handles the new structured text-formatted response from the enhanced prompt.
         """
         try:
+            # Save raw response for debugging
+            debug_file = f"debug_response_{datetime.now().strftime('%H%M%S')}.txt"
+            with open(debug_file, 'w') as f:
+                f.write(response)
+            logger.info(f"Saved raw LLM response to {debug_file}")
+            
             # Use enhanced parsing for the new structured format
             scale_options = self._extract_enhanced_scale_options(response)
             
@@ -158,19 +185,19 @@ class Station01SeedProcessor:
             
         except Exception as e:
             logger.error(f"Failed to parse enhanced response: {str(e)}")
-            logger.warning("Falling back to legacy parsing methods...")
-            # Fallback to old parsing methods
-            return self._fallback_parse_response(response, original_seed, session_id)
+            logger.error(f"Response preview (first 500 chars): {response[:500]}")
+            logger.error("CRITICAL: Cannot proceed without valid data from LLM response")
+            raise ValueError(f"Station 1 parsing failed - cannot proceed with invalid data: {str(e)}")
 
     def _extract_enhanced_scale_options(self, response: str) -> List[ScaleOption]:
         """Extract scale options from enhanced structured format"""
         scale_options = []
         
-        # Enhanced patterns for the new format
+        # Enhanced patterns for the new format - more flexible
         option_patterns = [
-            (r"Option A: MINI SERIES.*?(?=Option B:|$)", "MINI", "A"),
-            (r"Option B: STANDARD SERIES.*?(?=Option C:|$)", "STANDARD", "B"),
-            (r"Option C: EXTENDED SERIES.*?(?=RECOMMENDATION:|$)", "EXTENDED", "C")
+            (r"Option A:?\s*(?:MINI SERIES|Mini Series).*?(?=Option B:|TASK 2|$)", "MINI", "A"),
+            (r"Option B:?\s*(?:STANDARD SERIES|Standard Series).*?(?=Option C:|TASK 2|$)", "STANDARD", "B"),
+            (r"Option C:?\s*(?:EXTENDED SERIES|Extended Series).*?(?=RECOMMENDATION:|TASK 2|$)", "EXTENDED", "C")
         ]
         
         for pattern, option_type, letter in option_patterns:
@@ -178,10 +205,24 @@ class Station01SeedProcessor:
             if match:
                 option_text = match.group(0)
                 
-                # Extract specific fields using enhanced parsing
-                strengths = self._extract_field_with_prefix(option_text, "STRENGTHS:")
-                limitations = self._extract_field_with_prefix(option_text, "LIMITATIONS:")
-                justification = self._extract_field_with_prefix(option_text, "JUSTIFICATION:")
+                # Extract specific fields using enhanced parsing - MUST succeed
+                try:
+                    strengths = self._extract_field_with_prefix(option_text, "STRENGTHS:")
+                except ValueError as e:
+                    logger.error(f"CRITICAL: Could not extract STRENGTHS for Option {letter}: {e}")
+                    raise ValueError(f"Failed to extract STRENGTHS for Option {letter} - LLM must provide this field")
+                
+                try:
+                    limitations = self._extract_field_with_prefix(option_text, "LIMITATIONS:")
+                except ValueError as e:
+                    logger.error(f"CRITICAL: Could not extract LIMITATIONS for Option {letter}: {e}")
+                    raise ValueError(f"Failed to extract LIMITATIONS for Option {letter} - LLM must provide this field")
+                
+                try:
+                    justification = self._extract_field_with_prefix(option_text, "JUSTIFICATION:")
+                except ValueError as e:
+                    logger.error(f"CRITICAL: Could not extract JUSTIFICATION for Option {letter}: {e}")
+                    raise ValueError(f"Failed to extract JUSTIFICATION for Option {letter} - LLM must provide this field")
                 
                 # Build comprehensive justification
                 full_justification = f"**Strengths:** {strengths}. **Limitations:** {limitations}. {justification}"
@@ -217,31 +258,67 @@ class Station01SeedProcessor:
                 
                 scale_options.append(scale_option)
         
-        return scale_options if len(scale_options) == 3 else self._get_default_scale_options()
+        if len(scale_options) != 3:
+            logger.error(f"Only extracted {len(scale_options)} scale options, expected 3")
+            raise ValueError(f"Failed to extract all 3 scale options from LLM response. Only found {len(scale_options)}")
+        
+        return scale_options
 
     def _extract_enhanced_initial_expansion(self, response: str) -> InitialExpansion:
         """Extract initial expansion from enhanced structured format"""
-        # Extract working titles
-        titles = self._extract_numbered_list(response, "WORKING TITLES:")
+        # Extract working titles - MUST succeed
+        try:
+            titles = self._extract_numbered_list(response, "WORKING TITLES:")
+            if not titles or len(titles) < 3:
+                raise ValueError(f"Found {len(titles)} titles, need at least 3")
+        except Exception as e:
+            logger.error(f"CRITICAL: Could not extract WORKING TITLES: {e}")
+            raise ValueError("Failed to extract working titles from LLM response - CRITICAL field missing")
         
-        # Extract main characters
-        main_characters = self._extract_bullet_list(response, "MAIN CHARACTERS:")
+        # Extract main characters - MUST succeed
+        try:
+            main_characters = self._extract_bullet_list(response, "MAIN CHARACTERS:")
+            if not main_characters or len(main_characters) < 2:
+                raise ValueError(f"Found {len(main_characters)} characters, need at least 2")
+        except Exception as e:
+            logger.error(f"CRITICAL: Could not extract MAIN CHARACTERS: {e}")
+            raise ValueError("Failed to extract main characters from LLM response - CRITICAL field missing")
         
-        # Extract other fields
-        core_premise = self._extract_field_with_prefix(response, "CORE PREMISE:")
-        central_conflict = self._extract_field_with_prefix(response, "CENTRAL CONFLICT:")
-        episode_rationale = self._extract_field_with_prefix(response, "EPISODE RATIONALE:")
+        # Extract core fields - MUST succeed
+        try:
+            core_premise = self._extract_field_with_prefix(response, "CORE PREMISE:")
+        except Exception as e:
+            logger.error(f"CRITICAL: Could not extract CORE PREMISE: {e}")
+            raise ValueError("Failed to extract core premise from LLM response - CRITICAL field missing")
         
-        # Extract breaking points
-        breaking_points = self._extract_bullet_list(response, "AUDIO BREAKING POINTS:")
+        try:
+            central_conflict = self._extract_field_with_prefix(response, "CENTRAL CONFLICT:")
+        except Exception as e:
+            logger.error(f"CRITICAL: Could not extract CENTRAL CONFLICT: {e}")
+            raise ValueError("Failed to extract central conflict from LLM response - CRITICAL field missing")
         
+        try:
+            episode_rationale = self._extract_field_with_prefix(response, "EPISODE RATIONALE:")
+        except Exception as e:
+            logger.error(f"CRITICAL: Could not extract EPISODE RATIONALE: {e}")
+            raise ValueError("Failed to extract episode rationale from LLM response - CRITICAL field missing")
+        
+        # Extract breaking points - MUST succeed
+        try:
+            breaking_points = self._extract_bullet_list(response, "AUDIO BREAKING POINTS:")
+            if not breaking_points or len(breaking_points) < 2:
+                raise ValueError(f"Found {len(breaking_points)} breaking points, need at least 2")
+        except Exception as e:
+            logger.error(f"CRITICAL: Could not extract AUDIO BREAKING POINTS: {e}")
+            raise ValueError("Failed to extract audio breaking points from LLM response - CRITICAL field missing")
+            
         return InitialExpansion(
-            working_titles=titles if titles else ["The Accidental Connection", "Messages in the Dark", "Wrong Number, Right Person"],
-            core_premise=core_premise if core_premise else "Core premise not found in response",
-            central_conflict=central_conflict if central_conflict else "Central conflict not found in response",
-            episode_rationale=episode_rationale if episode_rationale else "Episode rationale not found in response",
-            breaking_points=breaking_points if breaking_points else ["Act 1: Setup", "Act 2: Complication", "Act 3: Resolution"],
-            main_characters=main_characters if main_characters else ["Main Character", "Supporting Character", "Additional Character", "Background Character"]
+            working_titles=titles,
+            core_premise=core_premise,
+            central_conflict=central_conflict,
+            episode_rationale=episode_rationale,
+            breaking_points=breaking_points,
+            main_characters=main_characters
         )
 
     def _determine_enhanced_recommendation(self, response: str) -> str:
@@ -259,35 +336,109 @@ class Station01SeedProcessor:
             return "B"  # Default to Standard
 
     def _extract_field_with_prefix(self, text: str, prefix: str) -> str:
-        """Extract field content after a specific prefix"""
-        pattern = rf"{re.escape(prefix)}\s*(.*?)(?=\n\n|\n[A-Z]+:|\n-|$)"
+        """Extract field content after a specific prefix - with flexible matching"""
+        
+        # Try exact prefix first (case-insensitive)
+        pattern = rf"{re.escape(prefix)}\s*(.*?)(?=\n\n|\n[A-Z][A-Z\s]+:|\n-\s|$)"
         match = re.search(pattern, text, re.IGNORECASE | re.DOTALL)
         if match:
             content = match.group(1).strip()
             # Clean up common formatting artifacts
             content = re.sub(r'^\[.*?\]\s*', '', content)  # Remove [brackets]
             content = re.sub(r'\s+', ' ', content)  # Normalize whitespace
-            return content
-        return "Not found in response"
+            if content and len(content) > 3:
+                return content
+        
+        # Try alternative patterns based on field type
+        if "CORE PREMISE" in prefix:
+            alt_patterns = [
+                r"(?:core\s+premise|premise)[:\s]*(.*?)(?=\n\n|\n[A-Z][A-Z\s]+:|\n-\s|$)",
+                r"(?:story\s+concept|concept)[:\s]*(.*?)(?=\n\n|\n[A-Z][A-Z\s]+:|\n-\s|$)",
+                r"(?:main\s+story|story)[:\s]*(.*?)(?=\n\n|\n[A-Z][A-Z\s]+:|\n-\s|$)"
+            ]
+        elif "STRENGTHS" in prefix:
+            alt_patterns = [
+                r"(?:strengths?|advantages?)[:\s]*(.*?)(?=\n\n|\n[A-Z][A-Z\s]+:|\n-\s|$)",
+                r"(?:pros?|benefits?)[:\s]*(.*?)(?=\n\n|\n[A-Z][A-Z\s]+:|\n-\s|$)"
+            ]
+        elif "LIMITATIONS" in prefix:
+            alt_patterns = [
+                r"(?:limitations?|constraints?|drawbacks?)[:\s]*(.*?)(?=\n\n|\n[A-Z][A-Z\s]+:|\n-\s|$)",
+                r"(?:cons?|weaknesses?)[:\s]*(.*?)(?=\n\n|\n[A-Z][A-Z\s]+:|\n-\s|$)"
+            ]
+        elif "JUSTIFICATION" in prefix:
+            alt_patterns = [
+                r"(?:justification|reasoning|rationale)[:\s]*(.*?)(?=\n\n|\n[A-Z][A-Z\s]+:|\n-\s|$)",
+                r"(?:explanation|why)[:\s]*(.*?)(?=\n\n|\n[A-Z][A-Z\s]+:|\n-\s|$)"
+            ]
+        elif "CENTRAL CONFLICT" in prefix:
+            alt_patterns = [
+                r"(?:central\s+conflict|conflict|main\s+conflict)[:\s]*(.*?)(?=\n\n|\n[A-Z][A-Z\s]+:|\n-\s|$)",
+                r"(?:tension|drama|problem)[:\s]*(.*?)(?=\n\n|\n[A-Z][A-Z\s]+:|\n-\s|$)"
+            ]
+        elif "EPISODE RATIONALE" in prefix:
+            alt_patterns = [
+                r"(?:episode\s+rationale|rationale|why\s+episodes?)[:\s]*(.*?)(?=\n\n|\n[A-Z][A-Z\s]+:|\n-\s|$)",
+                r"(?:episode\s+reasoning|reasoning)[:\s]*(.*?)(?=\n\n|\n[A-Z][A-Z\s]+:|\n-\s|$)"
+            ]
+        else:
+            alt_patterns = []
+        
+        # Try alternative patterns
+        for alt_pattern in alt_patterns:
+            match = re.search(alt_pattern, text, re.IGNORECASE | re.DOTALL)
+            if match:
+                content = match.group(1).strip()
+                content = re.sub(r'^\[.*?\]\s*', '', content)  # Remove [brackets]
+                content = re.sub(r'\s+', ' ', content)  # Normalize whitespace
+                if content and len(content) > 3:
+                    return content
+        
+        # Last resort: look for any meaningful text after similar words
+        base_word = prefix.split()[0] if prefix else "content"
+        loose_pattern = rf"(?:{re.escape(base_word.lower())})[:\s]*(.*?)(?=\n\n|\n[A-Z][A-Z\s]+:|\n-\s|$)"
+        match = re.search(loose_pattern, text, re.IGNORECASE | re.DOTALL)
+        if match:
+            content = match.group(1).strip()
+            content = re.sub(r'^\[.*?\]\s*', '', content)  # Remove [brackets]
+            content = re.sub(r'\s+', ' ', content)  # Normalize whitespace
+            if content and len(content) > 3:
+                return content
+        
+        raise ValueError(f"Failed to find field with prefix '{prefix}' in LLM response")
 
     def _extract_numbered_list(self, text: str, prefix: str) -> List[str]:
         """Extract numbered list items after a prefix"""
-        pattern = rf"{re.escape(prefix)}(.*?)(?=\n\n|\n[A-Z]+:)"
+        # Try with exact prefix first
+        pattern = rf"{re.escape(prefix)}\s*(.*?)(?=\n\n|\n[A-Z][A-Z\s]+:|\n\n\n|$)"
         match = re.search(pattern, text, re.IGNORECASE | re.DOTALL)
         if match:
             list_content = match.group(1)
-            items = re.findall(r'^\d+\.\s*(.+)$', list_content, re.MULTILINE)
-            return [item.strip() for item in items if item.strip()]
+            # Try different numbering formats
+            items = re.findall(r'^\d+[.):]\s*(.+)$', list_content, re.MULTILINE)
+            if items:
+                return [item.strip() for item in items if item.strip()]
+            # Try without anchoring to line start (more flexible)
+            items = re.findall(r'\d+[.):]\s*(.+?)(?=\d+[.):|\n\n|$)', list_content, re.DOTALL)
+            if items:
+                return [item.strip() for item in items if item.strip()]
         return []
 
     def _extract_bullet_list(self, text: str, prefix: str) -> List[str]:
         """Extract bullet list items after a prefix"""
-        pattern = rf"{re.escape(prefix)}(.*?)(?=\n\n|\n[A-Z]+:)"
+        # Try with exact prefix first
+        pattern = rf"{re.escape(prefix)}\s*(.*?)(?=\n\n|\n[A-Z][A-Z\s]+:|\n\n\n|$)"
         match = re.search(pattern, text, re.IGNORECASE | re.DOTALL)
         if match:
             list_content = match.group(1)
-            items = re.findall(r'^-\s*(.+)$', list_content, re.MULTILINE)
-            return [item.strip() for item in items if item.strip()]
+            # Try different bullet formats
+            items = re.findall(r'^[-•*]\s*(.+)$', list_content, re.MULTILINE)
+            if items:
+                return [item.strip() for item in items if item.strip()]
+            # Try without anchoring to line start (more flexible)
+            items = re.findall(r'[-•*]\s*(.+?)(?=[-•*]|\n\n|$)', list_content, re.DOTALL)
+            if items:
+                return [item.strip() for item in items if item.strip()]
         return []
 
     def _extract_scale_options_from_json(self, scale_options_data: dict) -> List[ScaleOption]:
@@ -349,8 +500,8 @@ class Station01SeedProcessor:
                 session_id=session_id
             )
         except Exception as e:
-            logger.error(f"Fallback parsing also failed: {str(e)}")
-            return self._create_fallback_output(original_seed, session_id)
+            logger.error(f"Legacy parsing also failed: {str(e)}")
+            raise ValueError(f"All parsing methods failed for Station 1: {str(e)}")
 
     def _extract_scale_options(self, response: str) -> List[ScaleOption]:
         """Extract the three scale options from LLM response"""
@@ -401,10 +552,10 @@ class Station01SeedProcessor:
                 
                 scale_options.append(scale_option)
         
-        # Ensure we have all 3 options (fallback if parsing fails)
+        # Must have all 3 options - fail if not found
         if len(scale_options) < 3:
-            logger.warning("Failed to extract all scale options, using defaults")
-            scale_options = self._get_default_scale_options()
+            logger.error(f"CRITICAL: Only extracted {len(scale_options)} scale options, expected 3")
+            raise ValueError(f"Failed to extract all 3 scale options from LLM response. Only found {len(scale_options)}")
             
         return scale_options
 
@@ -414,8 +565,8 @@ class Station01SeedProcessor:
         # Look for TASK 2 section
         task2_match = re.search(r"TASK 2[:\s]*(.*?)$", response, re.DOTALL | re.IGNORECASE)
         if not task2_match:
-            logger.warning("Could not find TASK 2 section in response")
-            return self._get_default_initial_expansion()
+            logger.error("CRITICAL: Could not find TASK 2 section in LLM response")
+            raise ValueError("Failed to find TASK 2 section in LLM response - response format invalid")
         
         task2_text = task2_match.group(1)
         

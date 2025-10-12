@@ -67,3 +67,10 @@ prompts:
     Provide comprehensive outline ready for final scriptwriting phase.
 
 
+
+dependencies:
+  - station: 14
+    name: "Episode Blueprint"
+# Enable/disable this station in the pipeline
+enabled: true
+

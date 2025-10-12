@@ -27,6 +27,12 @@ from app.agents.station_12_hook_cliffhanger import Station12HookCliffhanger
 from app.agents.station_13_multiworld_timeline import Station13MultiworldTimeline
 from app.agents.station_14_episode_blueprint import Station14EpisodeBlueprint
 from app.agents.station_15_detailed_episode_outlining import Station15DetailedEpisodeOutlining
+from app.agents.station_16_canon_check import Station16CanonCheck
+from app.agents.station_17_dialect_planning import Station17DialectPlanning
+from app.agents.station_18_evergreen_check import Station18EvergreenCheck
+from app.agents.station_19_procedure_check import Station19ProcedureCheck
+from app.agents.station_20_geography_transit import Station20GeographyTransit
+from app.agents.station_registry import get_station_registry
 
 async def check_existing_sessions():
     """Check for existing sessions in Redis"""
@@ -228,7 +234,35 @@ async def run_station(station_num: int, session_id: str):
             await station.initialize()
             result = await station.run()
             print(f"✅ Station 20 completed: Geography & Transit Check")
-            print("🎉 ALL 20 STATIONS COMPLETED!")
+            
+        # Handle custom stations (21+) created with station_creator_wizard
+        elif station_num > 20:
+            registry = get_station_registry()
+            metadata = registry.get_station_metadata(station_num)
+            
+            if not metadata:
+                print(f"❌ Station {station_num} not found")
+                return False
+            
+            if not metadata.enabled:
+                print(f"⏭️  Station {station_num} is disabled, skipping...")
+                return True
+            
+            print(f"🔄 Running custom Station {station_num}: {metadata.name}")
+            
+            try:
+                # Dynamically load the station class
+                StationClass = registry.load_station_class(station_num)
+                station = StationClass()
+                await station.initialize()
+                result = await station.process(session_id)
+                print(f"✅ Station {station_num} completed: {metadata.name}")
+                return True
+            except Exception as e:
+                print(f"❌ Custom station {station_num} failed: {str(e)}")
+                import traceback
+                traceback.print_exc()
+                return False
             
         else:
             print(f"❌ Station {station_num} not supported")
@@ -306,9 +340,22 @@ async def main():
     print(f"▶️ Starting from: Station {resume_station}")
     print()
     
+    # Auto-discover all available stations (including custom ones)
+    registry = get_station_registry()
+    all_stations = registry.get_all_stations()
+    valid_stations = sorted([num for num in all_stations.keys() if all_stations[num].enabled])
+    
+    # Show custom stations if any exist
+    custom_stations = [num for num in valid_stations if num > 20]
+    if custom_stations:
+        print(f"\n📦 CUSTOM STATIONS AVAILABLE:")
+        for num in custom_stations:
+            meta = all_stations[num]
+            print(f"   • Station {num}: {meta.name}")
+        print()
+    
     # Ask which station to run
-    valid_stations = [1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-    station_choice = input(f"🎯 Run Station {resume_station} or specific station? (Enter station number {valid_stations} or press Enter for {resume_station}): ").strip()
+    station_choice = input(f"🎯 Run Station {resume_station} or specific station? (Enter station number or press Enter for {resume_station}): ").strip()
     
     if station_choice:
         try:
@@ -321,21 +368,22 @@ async def main():
             print("❌ Invalid station number")
             return
     
-    print(f"\n🚀 RUNNING STATION {resume_station}")
+    print(f"\n🚀 RUNNING STATIONS FROM {resume_station}")
     print("=" * 40)
     
-    # Run all stations from resume_station to the end
-    valid_stations = [1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    # Use the auto-discovered valid_stations (already set above, includes custom stations)
+    # Find remaining stations to run
+    remaining_stations = [s for s in valid_stations if s >= resume_station]
     
-    try:
-        current_index = valid_stations.index(resume_station)
-    except ValueError:
-        print(f"❌ Invalid starting station: {resume_station}")
+    if not remaining_stations:
+        print(f"❌ No stations to run from {resume_station}")
         return
     
+    print(f"📊 Will run {len(remaining_stations)} station(s): {remaining_stations}")
+    print()
+    
     # Run all remaining stations
-    for i in range(current_index, len(valid_stations)):
-        current_station = valid_stations[i]
+    for current_station in remaining_stations:
         print(f"\n🚀 Running Station {current_station}...")
         print("=" * 40)
         
@@ -344,9 +392,17 @@ async def main():
         if success:
             print(f"\n🎉 Station {current_station} completed successfully!")
             
-            if current_station == 15:
-                print("\n🎉 ALL STATIONS COMPLETED!")
-                print("🎬 Production-ready episode outlines completed")
+            # Check if this is the last station
+            if current_station == remaining_stations[-1]:
+                total_stations = len(valid_stations)
+                built_in = len([s for s in valid_stations if s <= 20])
+                custom = len([s for s in valid_stations if s > 20])
+                
+                print(f"\n🎉 ALL STATIONS COMPLETED!")
+                print(f"✅ Built-in stations: {built_in}")
+                if custom > 0:
+                    print(f"✅ Custom stations: {custom}")
+                print("🎬 Production pipeline complete!")
         else:
             print(f"\n💥 Station {current_station} failed!")
             print(f"❌ Stopping automation at Station {current_station}")

@@ -116,3 +116,12 @@ prompts:
     Create dynamic tension curve with peaks and valleys.
 
 
+
+dependencies:
+  - station: 5
+    name: "Season Architecture"
+  - station: 8
+    name: "Character Architecture"
+# Enable/disable this station in the pipeline
+enabled: true
+

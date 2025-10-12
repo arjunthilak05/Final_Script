@@ -48,3 +48,14 @@ prompts:
     Focus on audio-specific pacing and engagement strategies.
 
 
+
+dependencies:
+  - station: 2
+    name: "Project DNA Builder"
+  - station: 3
+    name: "Age Genre Optimizer"
+  - station: 4
+    name: "Reference Miner"
+# Enable/disable this station in the pipeline
+enabled: true
+

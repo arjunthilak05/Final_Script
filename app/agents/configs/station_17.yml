@@ -52,3 +52,12 @@ prompts:
 
 
 
+
+dependencies:
+  - station: 8
+    name: "Character Architecture"
+  - station: 15
+    name: "Detailed Episode Outlining"
+# Enable/disable this station in the pipeline
+enabled: true
+

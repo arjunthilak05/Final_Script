@@ -149,3 +149,10 @@ prompts:
     Focus on AUDIO-ONLY techniques. How do you convey tone without visuals?
 
 
+
+dependencies:
+  - station: 2
+    name: "Project DNA Builder"
+# Enable/disable this station in the pipeline
+enabled: true
+

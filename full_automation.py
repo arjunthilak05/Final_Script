@@ -49,6 +49,7 @@ from app.agents.station_18_evergreen_check import Station18EvergreenCheck
 from app.agents.station_19_procedure_check import Station19ProcedureCheck
 from app.agents.station_20_geography_transit import Station20GeographyTransit
 from app.redis_client import RedisClient
+from app.agents.station_registry import get_station_registry
 from typing import Tuple
 
 
@@ -281,6 +282,9 @@ class FullAutomationRunner:
             state = await self._run_station_20(state)
             if self.checkpoint_enabled:
                 await self._save_checkpoint(state)
+
+            # Auto-discover and run custom stations (21+)
+            state = await self._run_custom_stations(state)
 
             # Final Quality Check
             print("\n🔍 RUNNING FINAL QUALITY CHECK...")
@@ -1658,6 +1662,87 @@ class FullAutomationRunner:
         except Exception as e:
             raise Exception(f"Station 20 failed: {str(e)}")
 
+    async def _run_custom_stations(self, state: AudiobookProductionState) -> AudiobookProductionState:
+        """Auto-discover and run custom stations (21+) created with station_creator_wizard"""
+        
+        print("\n" + "="*70)
+        print("🔍 DISCOVERING CUSTOM STATIONS...")
+        print("="*70)
+        
+        # Get station registry
+        registry = get_station_registry()
+        all_stations = registry.get_all_stations()
+        
+        # Find custom stations (number > 20)
+        custom_stations = [num for num in sorted(all_stations.keys()) if num > 20 and all_stations[num].enabled]
+        
+        if not custom_stations:
+            print("📭 No custom stations found. Continuing with built-in stations only.")
+            print("="*70)
+            return state
+        
+        print(f"✅ Found {len(custom_stations)} custom station(s):")
+        for num in custom_stations:
+            meta = all_stations[num]
+            print(f"   • Station {num}: {meta.name}")
+        print("="*70)
+        
+        # Run each custom station
+        for station_num in custom_stations:
+            meta = all_stations[station_num]
+            
+            print(f"\n{'─'*70}")
+            print(f"🚀 STATION {station_num}: {meta.name}")
+            print(f"{'─'*70}")
+            
+            self.emit_progress(f"Station {station_num}", 0, f"Initializing {meta.name}...")
+            
+            try:
+                # Dynamically load the station class
+                StationClass = registry.load_station_class(station_num)
+                
+                # Initialize station (try without args first, stations 21+ should work this way)
+                station = StationClass()
+                await station.initialize()
+                
+                self.emit_progress(f"Station {station_num}", 30, "Processing...")
+                
+                # Run the station
+                result = await station.process(state.session_id)
+                
+                self.emit_progress(f"Station {station_num}", 90, "Storing output...")
+                
+                # Store result
+                if hasattr(result, '__dict__'):
+                    result_dict = asdict(result) if hasattr(result, '__dataclass_fields__') else vars(result)
+                else:
+                    result_dict = {'result': str(result)}
+                
+                station_key = f"station_{int(station_num)}" if station_num == int(station_num) else f"station_{station_num}"
+                state.station_outputs[station_key] = result_dict
+                
+                # Save to Redis
+                await self._save_station_output_to_redis(state.session_id, str(int(station_num)), result_dict)
+                
+                self.emit_progress(f"Station {station_num}", 100, "Complete!")
+                
+                print(f"\n✅ Station {station_num} completed successfully!")
+                
+                if self.checkpoint_enabled:
+                    await self._save_checkpoint(state)
+                
+            except Exception as e:
+                logger.error(f"❌ Custom station {station_num} failed: {str(e)}")
+                print(f"\n⚠️  Station {station_num} failed: {str(e)}")
+                print("   Continuing with remaining stations...")
+                # Don't fail the entire pipeline for a custom station
+                continue
+        
+        print("\n" + "="*70)
+        print(f"✅ CUSTOM STATIONS COMPLETE: {len(custom_stations)} station(s) processed")
+        print("="*70)
+        
+        return state
 
     async def _generate_final_summary(self, state: AudiobookProductionState):
         """Generate final automation summary"""

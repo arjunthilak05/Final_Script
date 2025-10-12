@@ -104,3 +104,16 @@ prompts:
     - Chemistry considerations
 
 
+
+dependencies:
+  - station: 2
+    name: "Project DNA Builder"
+  - station: 3
+    name: "Age Genre Optimizer"
+  - station: 4
+    name: "Reference Miner"
+  - station: 5
+    name: "Season Architecture"
+# Enable/disable this station in the pipeline
+enabled: true
+

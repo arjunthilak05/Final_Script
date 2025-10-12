@@ -59,3 +59,10 @@ prompts:
     Provide detailed runtime planning grid ready for production use.
 
 
+
+dependencies:
+  - station: 5
+    name: "Season Architecture"
+# Enable/disable this station in the pipeline
+enabled: true
+

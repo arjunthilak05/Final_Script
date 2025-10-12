@@ -75,4 +75,8 @@ prompts:
 
     IMPORTANT: Keep responses concise but complete. You MUST complete ALL sections above, especially TASK 2. Be brief in TASK 1 so you have space to complete TASK 2 fully.
 
+dependencies:
+  none: true
+# Enable/disable this station in the pipeline
+enabled: true
 

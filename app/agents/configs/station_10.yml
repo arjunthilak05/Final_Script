@@ -72,3 +72,16 @@ prompts:
     Focus on audio-specific reveal techniques and clue delivery.
 
 
+
+dependencies:
+  - station: 2
+    name: "Project DNA Builder"
+  - station: 3
+    name: "Age Genre Optimizer"
+  - station: 8
+    name: "Character Architecture"
+  - station: 9
+    name: "World Building"
+# Enable/disable this station in the pipeline
+enabled: true
+

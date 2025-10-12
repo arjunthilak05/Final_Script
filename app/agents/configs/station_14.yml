@@ -72,3 +72,18 @@ prompts:
     Provide production-ready episode blueprints.
 
 
+
+dependencies:
+  - station: 5
+    name: "Season Architecture"
+  - station: 8
+    name: "Character Architecture"
+  - station: 9
+    name: "World Building"
+  - station: 10
+    name: "Narrative Reveal Strategy"
+  - station: 11
+    name: "Runtime Planning"
+# Enable/disable this station in the pipeline
+enabled: true
+

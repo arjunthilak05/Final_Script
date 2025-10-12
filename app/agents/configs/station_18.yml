@@ -50,3 +50,12 @@ prompts:
 
 
 
+
+dependencies:
+  - station: 2
+    name: "Project DNA Builder"
+  - station: 15
+    name: "Detailed Episode Outlining"
+# Enable/disable this station in the pipeline
+enabled: true
+

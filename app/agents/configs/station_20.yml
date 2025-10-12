@@ -54,3 +54,12 @@ prompts:
 
 
 
+
+dependencies:
+  - station: 9
+    name: "World Building"
+  - station: 15
+    name: "Detailed Episode Outlining"
+# Enable/disable this station in the pipeline
+enabled: true
+

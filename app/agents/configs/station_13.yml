@@ -55,3 +55,14 @@ prompts:
     Focus on audio-specific techniques for timeline clarity.
 
 
+
+dependencies:
+  - station: 5
+    name: "Season Architecture"
+  - station: 8
+    name: "Character Architecture"
+  - station: 9
+    name: "World Building"
+# Enable/disable this station in the pipeline
+enabled: true
+

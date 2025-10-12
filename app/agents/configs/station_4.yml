@@ -155,3 +155,14 @@ prompts:
     IMPORTANT: The markers ==MICRO_MOMENTS_START==, ==MICRO_MOMENTS_END==, etc. MUST appear in your response EXACTLY as shown.
 
 
+
+dependencies:
+  - station: 1
+    name: "Seed Processor"
+  - station: 2
+    name: "Project DNA Builder"
+  - station: 3
+    name: "Age Genre Optimizer"
+# Enable/disable this station in the pipeline
+enabled: true
+

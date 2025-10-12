@@ -100,3 +100,12 @@ prompts:
        - Quality control checkpoints
 
 
+
+dependencies:
+  - station: 2
+    name: "Project DNA Builder"
+  - station: 3
+    name: "Age Genre Optimizer"
+# Enable/disable this station in the pipeline
+enabled: true
+

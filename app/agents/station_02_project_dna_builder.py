@@ -354,11 +354,21 @@ Provide integration analysis and title recommendation.
         try:
             logger.info(f"Station 2 processing started for session {session_id}")
             
+            # Load and validate story lock
+            story_lock_key = f"audiobook:{session_id}:story_lock"
+            story_lock_raw = await self.redis.get(story_lock_key)
+            if not story_lock_raw:
+                logger.warning("Story lock missing - cannot fully preserve story concept")
+                story_lock = {'main_characters': [], 'core_mechanism': '', 'key_plot_points': []}
+            else:
+                story_lock = json.loads(story_lock_raw)
+                logger.info(f"Story lock loaded: {[c['name'] for c in story_lock.get('main_characters', [])]}")
+            
             # Use provided Station 1 data
             if not station1_data:
                 raise ValueError(f"No Station 1 data provided")
             
-            # Prepare context for AI agents
+            # Prepare context for AI agents (story lock already loaded and logged)
             context = self._prepare_context(station1_data)
             
             # Generate each bible section

@@ -27,6 +27,13 @@ from app.openrouter_agent import OpenRouterAgent
 from app.agents.config_loader import load_station_config
 from app.redis_client import RedisClient
 from app.config import Settings
+from app.agents.retry_validator import (
+    ContentValidator,
+    RetryConfig,
+    retry_with_validation,
+    ValidationResult,
+    validate_and_raise
+)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -156,8 +163,19 @@ class Station09WorldBuilding:
         logger.info(f"🌍 Station 9: Starting World Building for session {session_id}")
         
         try:
+            # Load and validate story lock
+            story_lock_key = f"audiobook:{session_id}:story_lock"
+            story_lock_raw = await self.redis_client.get(story_lock_key)
+            if not story_lock_raw:
+                logger.warning("Story lock missing")
+                story_lock = {'main_characters': [], 'core_mechanism': '', 'key_plot_points': []}
+            else:
+                story_lock = json.loads(story_lock_raw)
+                logger.info(f"Story lock loaded: {len(story_lock.get('key_plot_points', []))} plot points preserved")
+            
             # Load dependencies from previous stations
             dependencies = await self._load_dependencies(session_id)
+            dependencies['story_lock'] = story_lock
             
             logger.info("📚 Loaded project dependencies from previous stations")
             
@@ -295,89 +313,204 @@ class Station09WorldBuilding:
                 protagonist_names = [char.get('full_name', '') for char in tier1_data if isinstance(char, dict)]
             # If it's an int or not a list, keep protagonist_names empty
         
+        # Load story lock for context
+        story_lock = dependencies.get('story_lock', {})
+        core_mechanism = story_lock.get('core_mechanism', '')[:200]
+        
         geography_prompt = f"""
-        Create 5-10 KEY LOCATIONS for the audiobook "{working_title}".
+        Create 6-8 KEY LOCATIONS for the audiobook "{working_title}".
 
         PROJECT CONTEXT:
         Genre: {genre_tone.get('primary_genre', 'Drama')}
         Setting: {world_setting.get('time_period', 'Contemporary')} - {world_setting.get('primary_location', 'Urban')}
         Main Characters: {', '.join(protagonist_names[:3]) if protagonist_names else 'Character-driven story'}
+        Story Context: {core_mechanism}
 
-        For EACH location, provide these exact sections:
+        ⚠️ CRITICAL FORMATTING REQUIREMENTS ⚠️
+        - Each location MUST have a SPECIFIC, DESCRIPTIVE name (NOT "Location 1" or "Location 2")
+        - Each location MUST have a detailed physical description (minimum 3-4 sentences)
+        - Follow the EXACT format shown below
+        
+        ✅ GOOD location names: "St. Mary's Hospital Emergency Room", "Marcus's Downtown Coaching Office", 
+        "Julia's Apartment on 5th Street", "Central Park Jogging Path", "The Riverside Cafe"
+        
+        ❌ BAD location names: "Location 1", "Location 2", "System 1", "Place A", "The Office", "The House"
 
-        **LOCATION [NUMBER]:**
+        FORMAT (follow this EXACTLY for each location):
+
+        **LOCATION 1:**
         
         **Name & Type:**
-        - Location name
-        - Type (residential/commercial/natural/institutional/other)
+        - Location name: Detective Sarah Chen's Precinct Office
+        - Type: institutional
         
         **Physical Description:**
-        - Size and layout
-        - Materials and surfaces
-        - Lighting and atmosphere
+        A cramped downtown police precinct office with fluorescent lighting that hums constantly. Gray metal desks crowd the space, topped with stacks of case files and aging computer monitors. The walls are painted institutional beige, covered with wanted posters, duty rosters, and city maps marked with colored pins. Large windows overlook the bustling street below, though venetian blinds keep most of the natural light out. The air conditioning rattles in summer, and the heating pipes clang in winter.
         
         **SONIC SIGNATURE:**
-        - Primary ambient sound (constant background)
-        - Secondary sounds (frequent but not constant)
-        - Unique audio marker (signature sound only here)
-        - Acoustic properties (reverb/echo/deadness)
+        - Primary ambient sound: Low hum of fluorescent lights, distant street traffic through windows
+        - Secondary sounds: Phone rings, keyboard typing, footsteps on linoleum, radio chatter
+        - Unique audio marker: The distinctive buzz of the old fax machine in the corner
+        - Acoustic properties: Hard surfaces create slight echo, sounds carry between desks
         
         **Travel & Weather:**
-        - Travel time to other key locations
-        - How weather sounds here
-        - Seasonal audio variations
+        - Travel time to other key locations: 5 minutes to courthouse, 15 minutes to crime scenes in various districts
+        - How weather sounds here: Rain drums on windows, wind whistles through old window frames, thunder rumbles
+        - Seasonal audio variations: Summer brings louder AC, winter brings clanging radiators and more muffled outdoor sounds
         
         **Emotional & Story Context:**
-        - Emotional association (feeling this place evokes)
-        - Story significance (why important to plot)
-        - Time-of-day sound variations
-        
-        Generate 6-8 locations that are:
-        - AUDIO-DISTINCTIVE (each sounds completely different)
-        - STORY-RELEVANT (important to plot and characters)
-        - PRODUCTION-READY (clear sound design guidance)
-        
-        Make each location immediately recognizable by sound alone in an audio drama.
+        - Emotional association: Tension, bureaucracy, determination, exhaustion
+        - Story significance: Sarah's base of operations where she coordinates investigations and confronts suspects
+        - Time-of-day sound variations: Morning bustle with shift change, afternoon quieter, evening skeleton crew
+
+        Now generate 6-8 MORE locations following this EXACT format with the SAME level of detail.
+        Each location must have:
+        - A specific, unique name (NOT "Location 2" or "The Office")
+        - A detailed Physical Description paragraph (minimum 4 sentences, 200+ characters)
+        - Complete sonic signature details
+        - All other sections filled out completely
         """
         
-        try:
+        # Define validator for location names
+        def validate_geography(locations: List[LocationProfile]) -> ValidationResult:
+            errors = []
+            warnings = []
+
+            if not locations or len(locations) < 3:
+                errors.append(f"Too few locations generated: {len(locations) if locations else 0}. Need at least 3.")
+                return ValidationResult(is_valid=False, errors=errors, warnings=warnings)
+
+            # Validate location names are not generic
+            location_names = [loc.name for loc in locations]
+            name_validation = ContentValidator.validate_location_names(location_names)
+            errors.extend(name_validation.errors)
+
+            # Validate each location has meaningful content
+            for i, loc in enumerate(locations):
+                # Check description length
+                if len(loc.physical_description) < 30:
+                    errors.append(f"Location {i+1} description too short: {len(loc.physical_description)} chars")
+
+                # Check sonic signature is not generic
+                if 'location' in loc.sonic_signature.get('primary_ambient', '').lower() and \
+                   str(i+1) in loc.sonic_signature.get('primary_ambient', ''):
+                    errors.append(f"Location {i+1} has generic sonic signature")
+
+            return ValidationResult(is_valid=len(errors) == 0, errors=errors, warnings=warnings)
+
+        # Retry with validation - NO FALLBACKS
+        async def generate_and_parse():
             response = await self.openrouter_agent.process_message(
                 geography_prompt,
                 model_name=self.config.model
             )
-            
-            locations = await self._parse_geography_response(response)
-            
+            # Save response for debugging if parsing fails
             if self.debug_mode:
-                logger.info(f"Generated {len(locations)} locations from LLM response")
-                
-            return locations
-            
-        except Exception as e:
-            logger.error(f"Failed to generate geography: {e}")
-            # Return fallback locations to avoid pipeline failure
-            return await self._create_fallback_geography(dependencies)
+                debug_file = f"outputs/debug_station9_geography_{datetime.now().strftime('%H%M%S')}.txt"
+                os.makedirs("outputs", exist_ok=True)
+                with open(debug_file, 'w', encoding='utf-8') as f:
+                    f.write(response)
+                logger.info(f"Saved geography LLM response to {debug_file}")
+            return await self._parse_geography_response(response)
+
+        retry_config = RetryConfig(max_attempts=5, initial_delay=1.0)
+        locations = await retry_with_validation(
+            generate_and_parse,
+            validate_geography,
+            retry_config,
+            "Geography Generation"
+        )
+
+        if self.debug_mode:
+            logger.info(f"Generated {len(locations)} validated locations from LLM")
+
+        return locations
 
     async def _parse_geography_response(self, response: str) -> List[LocationProfile]:
         """Parse LLM response into structured LocationProfile objects"""
         
+        # Validate response
+        if not response or not isinstance(response, str):
+            logger.warning(f"Invalid response from LLM: {type(response).__name__}")
+            return []
+        
         locations = []
         
-        # Split response into location sections
-        location_sections = re.split(r'\*\*LOCATION \d+:\*\*', response)
+        # Try multiple splitting patterns to handle different LLM formats
+        split_patterns = [
+            r'\*\*LOCATION \d+:\*\*',           # **LOCATION 1:**
+            r'LOCATION \d+:',                    # LOCATION 1:
+            r'### Location \d+',                 # ### Location 1
+            r'\d+\.\s+(?:Location|LOCATION)',    # 1. Location
+        ]
+        
+        location_sections = []
+        for pattern in split_patterns:
+            location_sections = re.split(pattern, response)
+            if len(location_sections) > 1:  # Found sections
+                logger.info(f"Split response using pattern: {pattern}")
+                break
+        
+        # If no sections found, treat entire response as one location
+        if len(location_sections) <= 1:
+            logger.warning("Could not split response into sections, treating as single location")
+            location_sections = ['', response]  # Fake first section so loop works
         
         for i, section in enumerate(location_sections[1:], 1):  # Skip first empty section
             try:
-                # Extract location name
-                name_match = re.search(r'Location name[:\s]*([^\n]+)', section, re.IGNORECASE)
-                name = name_match.group(1).strip() if name_match else f"Location {i}"
+                if self.debug_mode:
+                    logger.info(f"Parsing location section {i}:\n{section[:300]}...")
                 
-                # Extract type
-                type_match = re.search(r'Type[:\s]*\(([^)]+)\)', section, re.IGNORECASE)
+                # Extract location name - try multiple patterns
+                name = None
+                name_patterns = [
+                    r'[-•*]\s*Location name[:\s]*([^\n]+)',  # - Location name: ...
+                    r'Location name[:\s]*([^\n]+)',           # Location name: ...
+                    r'Name[:\s]*([^\n]+)',                    # Name: ...
+                    r'\*\*Name[:\s]*\*\*[:\s]*([^\n]+)',     # **Name:** ...
+                ]
+                
+                for pattern in name_patterns:
+                    name_match = re.search(pattern, section, re.IGNORECASE)
+                    if name_match:
+                        name = name_match.group(1).strip()
+                        break
+                
+                # If no name found, raise error to trigger retry
+                if not name:
+                    raise ValueError(f"Could not extract location name from section {i}. LLM must provide 'Location name:' field.")
+                
+                # Clean markdown artifacts from name
+                name = name.replace('**', '').replace('*', '').strip()
+                name = re.sub(r'^[\s\-\*•]+', '', name).strip()
+                
+                # Remove parenthetical type info if present
+                name = re.sub(r'\s*\([^)]*\)\s*$', '', name).strip()
+                
+                # Validate name is not a placeholder - FAIL if it is
+                placeholder_patterns = [r'^\[.*\]$', r'^TBD$', r'^TODO$', r'^N/A$', r'^Location\s*\d+$', r'^Place\s*[A-Z]$']
+                is_placeholder = any(re.match(pattern, name, re.IGNORECASE) for pattern in placeholder_patterns)
+                
+                if is_placeholder:
+                    raise ValueError(f"LLM returned generic/placeholder location name: '{name}'. Must provide specific location name.")
+                
+                if len(name) < 3:
+                    raise ValueError(f"Location name too short: '{name}'. Must provide specific location name with at least 3 characters.")
+                
+                # Extract type - try multiple patterns
+                type_match = re.search(r'[-•*]\s*Type[:\s]*\(?([^)\n]+)', section, re.IGNORECASE)
+                if not type_match:
+                    type_match = re.search(r'Type[:\s]*\(?([^)\n]+)', section, re.IGNORECASE)
                 location_type = type_match.group(1).strip() if type_match else "general"
+                location_type = location_type.replace(')', '').strip()
                 
-                # Extract physical description
-                phys_desc = self._extract_section(section, "Physical Description", "Location description")
+                # Extract physical description - MUST exist
+                try:
+                    phys_desc = self._extract_section(section, "Physical Description", None)
+                    if len(phys_desc) < 30:
+                        raise ValueError(f"Physical description too short ({len(phys_desc)} chars): '{phys_desc}'")
+                except Exception as e:
+                    raise ValueError(f"Failed to extract Physical Description for location {i}: {str(e)}")
                 
                 # Extract sonic signature components
                 primary_ambient = self._extract_section(section, "Primary ambient sound", "Ambient soundscape")
@@ -439,67 +572,74 @@ class Station09WorldBuilding:
                 
             except Exception as e:
                 logger.error(f"Failed to parse location {i}: {e}")
-                # Create minimal location to avoid failure
-                locations.append(await self._create_fallback_location(i))
-        
-        # Ensure we have at least 5 locations
-        while len(locations) < 5:
-            locations.append(await self._create_fallback_location(len(locations) + 1))
-        
+                # DO NOT create fallback - raise error to trigger retry
+                raise ValueError(f"Location {i} parsing failed: {str(e)}")
+
+        # FAIL if not enough locations - NO FALLBACKS
+        if len(locations) < 3:
+            raise ValueError(f"Only {len(locations)} locations parsed. LLM must provide at least 3 locations.")
+
+        logger.info(f"Successfully parsed {len(locations)} locations")
         return locations[:10]  # Max 10 locations
 
-    def _extract_section(self, text: str, keyword: str, fallback: str) -> str:
-        """Extract a section from LLM response"""
-        # Look for the keyword followed by content
-        pattern = rf'{re.escape(keyword)}[:\s]*([^\n]*(?:\n(?![\*\-])[^\n]*)*)'
-        match = re.search(pattern, text, re.IGNORECASE | re.MULTILINE)
-        if match:
-            content = match.group(1).strip()
-            return content if content else fallback
+    def _extract_section(self, text: str, keyword: str, fallback: str = None) -> str:
+        """Extract a section from LLM response with flexible pattern matching"""
+        # Validate input
+        if not text or not isinstance(text, str):
+            if fallback is not None:
+                return fallback
+            raise ValueError(f"Invalid text for extracting '{keyword}'")
+        
+        # Try multiple patterns in order of preference
+        patterns = [
+            # Multi-line block after header with colon INSIDE bold (e.g., **Physical Description:**\n[content...])
+            # This is the most common format LLMs use
+            (rf'\*\*{re.escape(keyword)}[:\s]*\*\*\s*\n\s*(.+?)(?=\n\s*\*\*|$)', re.DOTALL),
+            
+            # Multi-line block after header with colon OUTSIDE bold (e.g., **Physical Description**:\n[content...])
+            (rf'\*\*{re.escape(keyword)}\*\*[:\s]*\n\s*(.+?)(?=\n\s*\*\*|$)', re.DOTALL),
+            
+            # Same line with bullet point (e.g., - Primary ambient sound: [content])
+            (rf'[-•*]\s*{re.escape(keyword)}[:\s]*(.+?)(?=\n|$)', 0),
+            
+            # Header on its own line, content follows (e.g., Physical Description:\n[content])
+            (rf'{re.escape(keyword)}[:\s]*\n\s*(.+?)(?=\n\s*(?:\*\*|[-•*]\s+\w+[:\s])|$)', re.DOTALL),
+            
+            # Same line after keyword (e.g., Physical Description: [content])
+            (rf'{re.escape(keyword)}[:\s]+(.+?)(?=\n\s*(?:\*\*|[-•*])|$)', 0),
+            
+            # Bold keyword same line with colon inside (e.g., **Keyword:** content)
+            (rf'\*\*{re.escape(keyword)}[:\s]*\*\*[:\s]+(.+?)(?=\n|$)', 0),
+        ]
+        
+        for pattern, flags in patterns:
+            try:
+                base_flags = re.IGNORECASE | re.MULTILINE
+                if flags:
+                    base_flags |= flags
+                    
+                match = re.search(pattern, text, base_flags)
+                if match:
+                    captured = match.group(1)
+                    if captured:
+                        # Clean up the captured content
+                        cleaned = captured.strip()
+                        # Remove markdown artifacts
+                        cleaned = re.sub(r'^\*\*|\*\*$', '', cleaned)  # Remove ** at start/end
+                        cleaned = re.sub(r'^\[|\]$', '', cleaned)       # Remove [ ] at start/end
+                        cleaned = cleaned.strip()
+                        
+                        # Only return if we got meaningful content
+                        if cleaned and len(cleaned) > 2:  # More than just punctuation
+                            return cleaned
+            except Exception as e:
+                logger.debug(f"Pattern failed for '{keyword}': {e}")
+                continue
+        
+        if fallback is None:
+            raise ValueError(f"Failed to extract '{keyword}' from LLM response and no fallback allowed.")
         return fallback
 
-    async def _create_fallback_location(self, index: int) -> LocationProfile:
-        """Create fallback location when parsing fails"""
-        
-        return LocationProfile(
-            name=f"Location {index}",
-            location_type="general",
-            physical_description=f"Important location {index} in the story",
-            sonic_signature={
-                "primary_ambient": f"Characteristic ambient sound for location {index}",
-                "secondary_sounds": f"Secondary audio elements for location {index}",
-                "unique_marker": f"Distinctive sound marker for location {index}",
-                "acoustic_properties": f"Acoustic characteristics for location {index}"
-            },
-            travel_times={"other_locations": "Variable travel time"},
-            weather_patterns={
-                "rain": f"Rain sounds at location {index}",
-                "wind": f"Wind patterns at location {index}",
-                "clear": f"Clear weather at location {index}"
-            },
-            acoustic_properties={
-                "reverb": "Natural reverb",
-                "echo": "Echo characteristics",
-                "absorption": "Sound absorption"
-            },
-            emotional_association=f"Emotional context for location {index}",
-            story_significance=f"Narrative importance of location {index}",
-            time_variations={
-                "morning": f"Morning audio at location {index}",
-                "afternoon": f"Afternoon sounds at location {index}",
-                "evening": f"Evening atmosphere at location {index}",
-                "night": f"Night audio at location {index}"
-            }
-        )
-
-    async def _create_fallback_geography(self, dependencies: Dict[str, Any]) -> List[LocationProfile]:
-        """Create fallback geography when LLM generation fails"""
-        
-        locations = []
-        for i in range(6):  # Create 6 fallback locations
-            locations.append(await self._create_fallback_location(i + 1))
-        
-        return locations
 
     async def _generate_social_systems(self, dependencies: Dict[str, Any], geography: List[LocationProfile]) -> SocialSystem:
         """Generate government, economy, hierarchies with audio manifestations"""
@@ -567,7 +707,7 @@ class Station09WorldBuilding:
             
         except Exception as e:
             logger.error(f"Failed to generate social systems: {e}")
-            return await self._create_fallback_social_system()
+            raise ValueError(f"Social system generation failed. LLM must provide complete social system data: {str(e)}")
 
     async def _parse_social_systems_response(self, response: str) -> SocialSystem:
         """Parse social systems response into structured data"""
@@ -627,11 +767,15 @@ class Station09WorldBuilding:
             
         except Exception as e:
             logger.error(f"Failed to parse social systems: {e}")
-            return await self._create_fallback_social_system()
+            raise ValueError(f"Social system parsing failed. LLM must provide complete social system data: {str(e)}")
 
-    def _extract_list(self, text: str, keyword: str, fallback: List[str]) -> List[str]:
-        """Extract a list from LLM response"""
-        section = self._extract_section(text, keyword, "")
+    def _extract_list(self, text: str, keyword: str, fallback: List[str] = None) -> List[str]:
+        """Extract a list from LLM response - FAIL if not found and no fallback"""
+        try:
+            section = self._extract_section(text, keyword, "")
+        except:
+            section = ""
+        
         if section:
             # Look for bullet points or numbered items
             items = re.findall(r'[-•*]\s*([^\n]+)', section)
@@ -640,39 +784,13 @@ class Station09WorldBuilding:
             if not items:
                 # Split by commas or semicolons
                 items = [item.strip() for item in re.split(r'[,;]', section) if item.strip()]
-            return items[:10] if items else fallback
+            if items:
+                return items[:10]
+        
+        if fallback is None:
+            raise ValueError(f"Failed to extract list for '{keyword}' from LLM response and no fallback allowed.")
         return fallback
 
-    async def _create_fallback_social_system(self) -> SocialSystem:
-        """Create fallback social system"""
-        
-        return SocialSystem(
-            government_structure="Social governance system",
-            authority_sounds=["Authority speech patterns", "Official language"],
-            economic_system="Economic structure and trade",
-            class_divisions=[
-                {"level": "Upper", "description": "Upper class characteristics"},
-                {"level": "Middle", "description": "Middle class characteristics"},
-                {"level": "Lower", "description": "Lower class characteristics"}
-            ],
-            social_hierarchies={
-                "formal_hierarchy": "Official social structure",
-                "informal_power": "Unofficial networks",
-                "address_patterns": "Speech patterns by rank"
-            },
-            cultural_norms=["Social customs", "Cultural practices"],
-            audio_manifestations={
-                "class_accents": ["Upper speech", "Middle speech", "Lower speech"],
-                "formality_markers": ["Formal patterns", "Informal speech"],
-                "status_indicators": ["Authority cues", "Deference markers"]
-            },
-            dialogue_formality={
-                "superior_to_subordinate": "Formal, direct",
-                "subordinate_to_superior": "Respectful, deferential",
-                "peer_to_peer": "Casual, familiar",
-                "stranger_to_stranger": "Polite, reserved"
-            }
-        )
 
     async def _generate_tech_magic_systems(self, dependencies: Dict[str, Any]) -> List[TechMagicSystem]:
         """Generate technology/magic systems with signature sounds"""
@@ -730,6 +848,14 @@ class Station09WorldBuilding:
                 model_name="qwen-72b"
             )
             
+            # Save response for debugging if parsing fails
+            if self.debug_mode:
+                debug_file = f"outputs/debug_station9_techmagic_{datetime.now().strftime('%H%M%S')}.txt"
+                os.makedirs("outputs", exist_ok=True)
+                with open(debug_file, 'w', encoding='utf-8') as f:
+                    f.write(response)
+                logger.info(f"Saved tech/magic LLM response to {debug_file}")
+            
             systems = await self._parse_tech_magic_response(response)
             
             if self.debug_mode:
@@ -739,28 +865,91 @@ class Station09WorldBuilding:
             
         except Exception as e:
             logger.error(f"Failed to generate tech/magic systems: {e}")
-            return await self._create_fallback_tech_magic()
+            raise ValueError(f"Tech/magic system generation failed. LLM must provide complete tech/magic data: {str(e)}")
 
     async def _parse_tech_magic_response(self, response: str) -> List[TechMagicSystem]:
         """Parse tech/magic response into structured systems"""
         
         systems = []
         
-        # Split response into system sections
-        system_sections = re.split(r'\*\*SYSTEM \d+:\*\*', response)
+        # Try multiple splitting patterns to handle different LLM formats
+        split_patterns = [
+            r'###\s*SYSTEM \d+:',         # ### SYSTEM 1:
+            r'\*\*SYSTEM \d+:\*\*',       # **SYSTEM 1:**
+            r'SYSTEM \d+:',                # SYSTEM 1:
+        ]
+        
+        system_sections = []
+        for pattern in split_patterns:
+            system_sections = re.split(pattern, response)
+            if len(system_sections) > 1:
+                if self.debug_mode:
+                    logger.info(f"Split tech/magic response using pattern: {pattern} into {len(system_sections)} sections")
+                break
+        
+        if len(system_sections) <= 1:
+            if self.debug_mode:
+                logger.warning(f"No SYSTEM sections found. Response preview: {response[:500]}...")
+            # Return empty list to trigger retry
+            raise ValueError("No SYSTEM sections found in LLM response")
         
         for i, section in enumerate(system_sections[1:], 1):  # Skip first empty section
             try:
-                # Extract system name
-                name_match = re.search(r'System name[:\s]*([^\n]+)', section, re.IGNORECASE)
-                name = name_match.group(1).strip() if name_match else f"System {i}"
+                if self.debug_mode:
+                    logger.info(f"Parsing tech/magic system section {i}:\n{section[:300]}...")
                 
-                # Extract description
-                description = self._extract_section(section, "What it does", f"Technology/magic system {i}")
+                # Extract system name - try multiple patterns
+                name = None
+                name_patterns = [
+                    r'[-•*]\s*\*\*System [Nn]ame[:\s]*\*\*[:\s]*(.+?)(?=\n|$)',  # - **System name:** EchoCast
+                    r'\*\*System [Nn]ame[:\s]*\*\*[:\s]*(.+?)(?=\n|$)',          # **System name:** EchoCast
+                    r'[-•*]\s*System [Nn]ame[:\s]*(.+?)(?=\n|$)',                # - System name: EchoCast
+                    r'System [Nn]ame[:\s]*(.+?)(?=\n|$)',                        # System name: EchoCast
+                    r'^\s*\*\*(.+?)\*\*\s*$',                                    # **ECHOCAST** (on first line)
+                ]
                 
-                # Extract access level
-                access_match = re.search(r'Access level[:\s]*\(([^)]+)\)', section, re.IGNORECASE)
-                access_level = access_match.group(1).strip() if access_match else "common"
+                for pattern in name_patterns:
+                    name_match = re.search(pattern, section, re.IGNORECASE | re.MULTILINE)
+                    if name_match:
+                        name = name_match.group(1).strip()
+                        # Clean up markdown
+                        name = name.replace('**', '').replace('*', '').strip()
+                        if len(name) > 2:
+                            break
+                
+                if not name:
+                    name = f"System {i}"
+                
+                # Extract description - try multiple keywords
+                description = None
+                desc_keywords = ["Description", "What it does"]
+                for keyword in desc_keywords:
+                    try:
+                        description = self._extract_section(section, keyword, None)
+                        if description:
+                            break
+                    except:
+                        continue
+                
+                if not description:
+                    description = f"Technology/magic system {i}"
+                
+                # Extract access level - try multiple patterns
+                access_patterns = [
+                    r'[-•*]\s*\*\*Access [Ll]evel[:\s]*\*\*[:\s]*(.+?)(?=\n|$)',  # - **Access Level:** Common
+                    r'\*\*Access [Ll]evel[:\s]*\*\*[:\s]*(.+?)(?=\n|$)',          # **Access Level:** Common
+                    r'[-•*]\s*Access [Ll]evel[:\s]*\(([^)]+)\)',                   # - Access level: (Common)
+                    r'Access [Ll]evel[:\s]*\(([^)]+)\)',                           # Access level: (Common)
+                    r'[-•*]\s*Access [Ll]evel[:\s]*(.+?)(?=\n|$)',                # - Access level: Common
+                    r'Access [Ll]evel[:\s]*(.+?)(?=\n|$)',                        # Access level: Common
+                ]
+                
+                access_level = "common"
+                for pattern in access_patterns:
+                    access_match = re.search(pattern, section, re.IGNORECASE)
+                    if access_match:
+                        access_level = access_match.group(1).strip().lower()
+                        break
                 
                 # Extract signature sounds
                 activation_sound = self._extract_section(section, "Activation sound", "Startup audio")
@@ -796,41 +985,14 @@ class Station09WorldBuilding:
                 
             except Exception as e:
                 logger.error(f"Failed to parse tech/magic system {i}: {e}")
-                systems.append(await self._create_fallback_tech_magic_system(i))
+                raise ValueError(f"Tech/magic system {i} parsing failed. LLM must provide complete tech/magic system data: {str(e)}")
         
-        # Ensure we have at least 3 systems
-        while len(systems) < 3:
-            systems.append(await self._create_fallback_tech_magic_system(len(systems) + 1))
+        # FAIL if not enough systems - no fallbacks
+        if len(systems) < 2:
+            raise ValueError(f"Only {len(systems)} tech/magic systems parsed. LLM must provide at least 2 systems.")
         
         return systems[:8]  # Max 8 systems
 
-    async def _create_fallback_tech_magic_system(self, index: int) -> TechMagicSystem:
-        """Create fallback tech/magic system"""
-        
-        return TechMagicSystem(
-            name=f"System {index}",
-            description=f"Technology or magic system {index}",
-            mechanics=f"Mechanics for system {index}",
-            access_level="common",
-            signature_sounds={
-                "activation": f"Activation sound for system {index}",
-                "operation": f"Operation sound for system {index}",
-                "completion": f"Completion sound for system {index}",
-                "malfunction": f"Malfunction sound for system {index}"
-            },
-            limitations=[f"Limitation for system {index}"],
-            narrative_function=f"Narrative purpose of system {index}",
-            audio_distinctiveness=f"Unique audio signature for system {index}"
-        )
-
-    async def _create_fallback_tech_magic(self) -> List[TechMagicSystem]:
-        """Create fallback tech/magic systems"""
-        
-        systems = []
-        for i in range(4):  # Create 4 fallback systems
-            systems.append(await self._create_fallback_tech_magic_system(i + 1))
-        
-        return systems
 
     async def _generate_history_lore(self, dependencies: Dict[str, Any], geography: List[LocationProfile]) -> tuple[List[HistoricalEvent], List[Dict[str, str]]]:
         """Generate historical timeline and mythology"""
@@ -881,6 +1043,14 @@ class Station09WorldBuilding:
                 model_name="qwen-72b"
             )
             
+            # Save response for debugging if parsing fails
+            if self.debug_mode:
+                debug_file = f"outputs/debug_station9_history_{datetime.now().strftime('%H%M%S')}.txt"
+                os.makedirs("outputs", exist_ok=True)
+                with open(debug_file, 'w', encoding='utf-8') as f:
+                    f.write(response)
+                logger.info(f"Saved history/lore LLM response to {debug_file}")
+            
             events, mythology = await self._parse_history_lore_response(response)
             
             if self.debug_mode:
@@ -890,7 +1060,7 @@ class Station09WorldBuilding:
             
         except Exception as e:
             logger.error(f"Failed to generate history/lore: {e}")
-            return await self._create_fallback_history_lore()
+            raise ValueError(f"History/lore generation failed. LLM must provide complete history/lore data: {str(e)}")
 
     async def _parse_history_lore_response(self, response: str) -> tuple[List[HistoricalEvent], List[Dict[str, str]]]:
         """Parse history/lore response into structured data"""
@@ -899,9 +1069,15 @@ class Station09WorldBuilding:
         mythology = []
         
         try:
+            if self.debug_mode:
+                logger.info(f"Parsing history/lore response of length {len(response)}")
+            
             # Extract historical events
             # Look for patterns like "Event name:"
             event_patterns = re.findall(r'[-•*]\s*([^:\n]+):\s*([^\n]+)', response)
+            
+            if self.debug_mode:
+                logger.info(f"Found {len(event_patterns)} event patterns")
             
             for i, (name, description) in enumerate(event_patterns[:6]):  # Max 6 events
                 event = HistoricalEvent(
@@ -915,70 +1091,77 @@ class Station09WorldBuilding:
                 )
                 events.append(event)
             
-            # Extract mythology
-            mythology_section = self._extract_section(response, "MYTHOLOGY", "")
+            # Extract mythology - try to find the MYTHOLOGY & FOLKLORE section
+            mythology_section = ""
+            
+            # Try multiple patterns to find the mythology section
+            myth_section_patterns = [
+                r'####\s*\*\*MYTHOLOGY\s*&\s*FOLKLORE[:\s]*\*\*(.*?)(?=####|###|$)',  # #### **MYTHOLOGY & FOLKLORE:**
+                r'###\s*\*\*MYTHOLOGY\s*&\s*FOLKLORE[:\s]*\*\*(.*?)(?=####|###|$)',   # ### **MYTHOLOGY & FOLKLORE:**
+                r'###\s*MYTHOLOGY\s*&\s*FOLKLORE[:\s]*(.*?)(?=###|$)',                 # ### MYTHOLOGY & FOLKLORE:
+                r'\*\*MYTHOLOGY\s*&\s*FOLKLORE[:\s]*\*\*(.*?)(?=###|\*\*[A-Z]|$)',   # **MYTHOLOGY & FOLKLORE:**
+            ]
+            
+            for pattern in myth_section_patterns:
+                match = re.search(pattern, response, re.DOTALL | re.IGNORECASE)
+                if match:
+                    mythology_section = match.group(1)
+                    if self.debug_mode:
+                        logger.info(f"Found mythology section using pattern: {pattern}")
+                        logger.info(f"Mythology section content (first 500 chars): {mythology_section[:500]}")
+                    break
+            
             if mythology_section:
-                myth_patterns = re.findall(r'[-•*]\s*([^:\n]+)', mythology_section)
-                for myth_name in myth_patterns[:4]:  # Max 4 myths
+                # Look for numbered legends/myths with summary
+                # Pattern: 1. **The Legend of X**\n   - **Legend Name:**...\n   - **Summary:** ...
+                # Or simpler: 1. **The Legend of X**\n   ... - **Summary:** ...
+                myth_patterns = re.findall(
+                    r'\d+\.\s*\*\*(.+?)\*\*.*?-\s*\*\*Summary[:\s]*\*\*[:\s]*(.+?)(?=\n\s*-\s*\*\*[A-Z]|\n\s*\d+\.|\Z)',
+                    mythology_section,
+                    re.DOTALL
+                )
+                
+                if self.debug_mode:
+                    logger.info(f"Found {len(myth_patterns)} mythology entries")
+                
+                for myth_name, summary in myth_patterns[:4]:  # Max 4 myths
                     mythology.append({
                         "name": myth_name.strip(),
-                        "summary": f"Folklore about {myth_name}",
-                        "significance": f"Cultural importance of {myth_name}",
-                        "audio_manifestation": f"Audio ritual related to {myth_name}"
+                        "summary": summary.strip()[:200],  # Limit summary length
+                        "significance": f"Cultural significance of {myth_name}",
+                        "audio_manifestation": f"Audio manifestation related to {myth_name}"
                     })
             
-            # Ensure minimum content
+            # Ensure minimum content - FAIL if not enough events
+            # Mythology is optional since LLMs don't always include it
             if len(events) < 3:
-                events.extend(await self._create_fallback_events(3 - len(events)))
+                raise ValueError(f"Only {len(events)} historical events parsed. LLM must provide at least 3 events.")
             
-            if len(mythology) < 2:
-                mythology.extend(await self._create_fallback_mythology(2 - len(mythology)))
+            # If no mythology found, create minimal entries to avoid failures
+            if len(mythology) == 0:
+                if self.debug_mode:
+                    logger.warning("No mythology entries found, creating fallback entries")
+                mythology = [
+                    {
+                        "name": "Local Folklore",
+                        "summary": "Traditional stories passed down through generations",
+                        "significance": "Cultural heritage of the community",
+                        "audio_manifestation": "Phrases and sayings in dialogue"
+                    },
+                    {
+                        "name": "Urban Legends",
+                        "summary": "Modern myths about the city and its locations",
+                        "significance": "Shared community narratives",
+                        "audio_manifestation": "References in casual conversation"
+                    }
+                ]
                 
             return events, mythology
             
         except Exception as e:
             logger.error(f"Failed to parse history/lore: {e}")
-            return await self._create_fallback_history_lore()
+            raise ValueError(f"History/lore parsing failed. LLM must provide properly formatted history/lore data: {str(e)}")
 
-    async def _create_fallback_events(self, count: int) -> List[HistoricalEvent]:
-        """Create fallback historical events"""
-        
-        events = []
-        for i in range(count):
-            event = HistoricalEvent(
-                name=f"Historical Event {i + 1}",
-                timeframe=f"Past era {i + 1}",
-                description=f"Important historical event {i + 1}",
-                consequences=f"Consequences of event {i + 1}",
-                public_knowledge=f"Public knowledge of event {i + 1}",
-                hidden_truth=f"Hidden truth about event {i + 1}",
-                audio_echoes=[f"Audio echo of event {i + 1}"]
-            )
-            events.append(event)
-        
-        return events
-
-    async def _create_fallback_mythology(self, count: int) -> List[Dict[str, str]]:
-        """Create fallback mythology"""
-        
-        mythology = []
-        for i in range(count):
-            mythology.append({
-                "name": f"Legend {i + 1}",
-                "summary": f"Folklore story {i + 1}",
-                "significance": f"Cultural importance {i + 1}",
-                "audio_manifestation": f"Audio ritual {i + 1}"
-            })
-        
-        return mythology
-
-    async def _create_fallback_history_lore(self) -> tuple[List[HistoricalEvent], List[Dict[str, str]]]:
-        """Create fallback history and lore"""
-        
-        events = await self._create_fallback_events(4)
-        mythology = await self._create_fallback_mythology(3)
-        
-        return events, mythology
 
     async def _generate_sensory_palettes(self, geography: List[LocationProfile], dependencies: Dict[str, Any]) -> List[SensoryPalette]:
         """Generate comprehensive audio cue library for all locations"""
@@ -1045,7 +1228,7 @@ class Station09WorldBuilding:
                 
             except Exception as e:
                 logger.error(f"Failed to generate sensory palette for {location.name}: {e}")
-                palettes.append(await self._create_fallback_sensory_palette(location.name))
+                raise ValueError(f"Sensory palette generation failed for '{location.name}'. LLM must provide complete sensory palette: {str(e)}")
         
         return palettes
 
@@ -1124,40 +1307,8 @@ class Station09WorldBuilding:
             
         except Exception as e:
             logger.error(f"Failed to parse sensory palette: {e}")
-            return await self._create_fallback_sensory_palette(location_name)
+            raise ValueError(f"Sensory palette parsing failed for '{location_name}'. LLM must provide complete sensory data: {str(e)}")
 
-    async def _create_fallback_sensory_palette(self, location_name: str) -> SensoryPalette:
-        """Create fallback sensory palette"""
-        
-        return SensoryPalette(
-            location_name=location_name,
-            ambient_soundscape={
-                "base_layer": [f"Base ambience for {location_name}"],
-                "mid_layer": [f"Environmental sounds at {location_name}"],
-                "top_layer": [f"Occasional sounds at {location_name}"],
-                "silence_points": [f"Quiet moments at {location_name}"]
-            },
-            distinctive_markers=[f"Signature sound of {location_name}"],
-            acoustic_properties={
-                "reverb": f"Reverb characteristics of {location_name}",
-                "echo": f"Echo patterns at {location_name}",
-                "absorption": f"Sound absorption at {location_name}"
-            },
-            time_variations={
-                "morning": [f"Morning sounds at {location_name}"],
-                "afternoon": [f"Afternoon audio at {location_name}"],
-                "evening": [f"Evening atmosphere at {location_name}"],
-                "night": [f"Night sounds at {location_name}"]
-            },
-            emotional_palette={
-                "calm": [f"Peaceful sounds of {location_name}"],
-                "tense": [f"Tension audio at {location_name}"],
-                "mysterious": [f"Mystery elements of {location_name}"],
-                "comforting": [f"Comforting sounds at {location_name}"]
-            },
-            recurring_motifs=[f"Audio leitmotif for {location_name}"],
-            production_notes=[f"Production guidance for {location_name}"]
-        )
 
     async def _generate_audio_glossary(self, world_components: Dict[str, Any]) -> Dict[str, str]:
         """Generate comprehensive audio glossary"""
@@ -1204,49 +1355,67 @@ class Station09WorldBuilding:
             
         except Exception as e:
             logger.error(f"Failed to generate audio glossary: {e}")
-            return await self._create_fallback_glossary()
+            raise ValueError(f"Audio glossary generation failed. LLM must provide complete glossary data: {str(e)}")
 
     async def _parse_audio_glossary_response(self, response: str) -> Dict[str, str]:
-        """Parse audio glossary response"""
+        """Parse audio glossary response - handles multiple format variations"""
         
         glossary = {}
         
         try:
-            # Look for entries in format "**Sound Name**: Description"
-            entries = re.findall(r'\*\*([^:]+)\*\*:\s*([^\n]+(?:\n(?!\*\*)[^\n]*)*)', response)
+            # Try multiple parsing patterns to handle different LLM output formats
             
+            # Pattern 1: **Sound Name**: Description
+            entries = re.findall(r'\*\*([^:*\n]+)\*\*:\s*([^\n]+(?:\n(?!\*\*)[^\n]*)*)', response)
             for sound_name, description in entries:
                 clean_name = sound_name.strip()
                 clean_description = description.strip()
-                if clean_name and clean_description:
+                if clean_name and clean_description and len(clean_name) > 2:
                     glossary[clean_name] = clean_description
             
-            # If not enough entries, add some fallback ones
-            if len(glossary) < 10:
-                fallback_entries = await self._create_fallback_glossary()
-                glossary.update(fallback_entries)
+            # Pattern 2: - **Sound Name**: Description (bullet points)
+            if len(glossary) < 5:
+                entries = re.findall(r'[-•*]\s*\*\*([^:*\n]+)\*\*:\s*([^\n]+)', response)
+                for sound_name, description in entries:
+                    clean_name = sound_name.strip()
+                    clean_description = description.strip()
+                    if clean_name and clean_description and len(clean_name) > 2:
+                        if clean_name not in glossary:
+                            glossary[clean_name] = clean_description
+            
+            # Pattern 3: "Sound Name" - Description or "Sound Name": Description
+            if len(glossary) < 5:
+                entries = re.findall(r'[""""]([^""""\n]+)[""""]\s*[:-]\s*([^\n]+)', response)
+                for sound_name, description in entries:
+                    clean_name = sound_name.strip()
+                    clean_description = description.strip()
+                    if clean_name and clean_description and len(clean_name) > 2:
+                        if clean_name not in glossary:
+                            glossary[clean_name] = clean_description
+            
+            # Pattern 4: Numbered list: 1. Sound Name: Description
+            if len(glossary) < 5:
+                entries = re.findall(r'\d+\.\s*([^:\n]+):\s*([^\n]+)', response)
+                for sound_name, description in entries:
+                    clean_name = sound_name.strip()
+                    clean_description = description.strip()
+                    if clean_name and clean_description and len(clean_name) > 2:
+                        if clean_name not in glossary:
+                            glossary[clean_name] = clean_description
+            
+            logger.info(f"Audio glossary parsed: {len(glossary)} entries found")
+            
+            # FAIL if not enough entries
+            if len(glossary) < 5:
+                logger.error(f"Response preview (first 500 chars): {response[:500]}")
+                raise ValueError(f"Only {len(glossary)} glossary entries parsed from LLM response. Need at least 5 entries. Check response format.")
                 
             return glossary
             
         except Exception as e:
             logger.error(f"Failed to parse audio glossary: {e}")
-            return await self._create_fallback_glossary()
+            raise ValueError(f"Audio glossary parsing failed: {str(e)}")
 
-    async def _create_fallback_glossary(self) -> Dict[str, str]:
-        """Create fallback audio glossary"""
-        
-        return {
-            "Ambient Base": "Constant background audio layer that establishes location",
-            "Signature Sound": "Unique audio marker that identifies specific location",
-            "Authority Voice": "Formal speech pattern indicating rank or status",
-            "System Activation": "Audio cue when technology or magic engages",
-            "Historical Echo": "Sound that references past events",
-            "Cultural Marker": "Audio element indicating social customs",
-            "Emotional Cue": "Sound that conveys character emotional state",
-            "Transition Audio": "Sound indicating movement between locations",
-            "Status Indicator": "Audio marker of social or economic position",
-            "Mystery Element": "Ambiguous sound that creates intrigue"
-        }
 
     def export_to_text(self, world_bible: WorldBible) -> str:
         """Export world bible to text format"""

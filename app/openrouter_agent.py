@@ -82,62 +82,81 @@ class OpenRouterAgent:
     
     async def generate(self, prompt: str, model: str = "qwen-72b", 
                       max_tokens: int = 3000, temperature: float = 0.7) -> str:
-        """Generate response using specified model (for Station agents)"""
-        try:
-            # Use the full model ID if provided, otherwise map from friendly names
-            if "/" not in model:
-                model_id = self.available_models.get(model, model)
-            else:
-                model_id = model
-            
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json",
-                "HTTP-Referer": "https://github.com/your-repo",  # Optional
-                "X-Title": "Audiobook Production System"  # Optional
-            }
-            
-            data = {
-                "model": model_id,
-                "messages": [{"role": "user", "content": prompt}],
-                "temperature": temperature,
-                "max_tokens": max_tokens
-            }
-            
-            async with httpx.AsyncClient() as client:
-                response = await client.post(
-                    f"{self.base_url}/chat/completions",
-                    headers=headers,
-                    json=data,
-                    timeout=60.0
-                )
-                response.raise_for_status()
-                result = response.json()
-                return result["choices"][0]["message"]["content"]
-            
-        except Exception as e:
-            error_msg = str(e)
-            if "402 Payment Required" in error_msg:
-                # Try with a free model as fallback
-                print("⚠️ Payment required for selected model, switching to free model...")
-                free_model_id = "qwen/qwen-2.5-72b-instruct:free"
-                data["model"] = free_model_id
+        """Generate response using specified model (for Station agents) with rate limiting"""
+        import asyncio
+        
+        max_retries = 5
+        base_delay = 2  # Start with 2 seconds
+        
+        for attempt in range(max_retries):
+            try:
+                # Use the full model ID if provided, otherwise map from friendly names
+                if "/" not in model:
+                    model_id = self.available_models.get(model, model)
+                else:
+                    model_id = model
                 
-                try:
-                    async with httpx.AsyncClient() as client:
-                        response = await client.post(
-                            f"{self.base_url}/chat/completions",
-                            headers=headers,
-                            json=data,
-                            timeout=60.0
-                        )
-                        response.raise_for_status()
-                        result = response.json()
-                        return result["choices"][0]["message"]["content"]
-                except Exception as fallback_error:
-                    raise Exception(f"OpenRouter API error (free model also failed): {str(fallback_error)}")
-            else:
-                raise Exception(f"OpenRouter API error: {str(e)}")
+                headers = {
+                    "Authorization": f"Bearer {self.api_key}",
+                    "Content-Type": "application/json",
+                    "HTTP-Referer": "https://github.com/your-repo",  # Optional
+                    "X-Title": "Audiobook Production System"  # Optional
+                }
+                
+                data = {
+                    "model": model_id,
+                    "messages": [{"role": "user", "content": prompt}],
+                    "temperature": temperature,
+                    "max_tokens": max_tokens
+                }
+                
+                async with httpx.AsyncClient() as client:
+                    response = await client.post(
+                        f"{self.base_url}/chat/completions",
+                        headers=headers,
+                        json=data,
+                        timeout=60.0
+                    )
+                    response.raise_for_status()
+                    result = response.json()
+                    return result["choices"][0]["message"]["content"]
+                
+            except httpx.HTTPStatusError as e:
+                if e.response.status_code == 429:
+                    # Rate limit hit - exponential backoff
+                    if attempt < max_retries - 1:
+                        delay = base_delay * (2 ** attempt)  # Exponential backoff: 2, 4, 8, 16, 32 seconds
+                        print(f"⚠️  Rate limit hit. Waiting {delay}s before retry {attempt + 1}/{max_retries}...")
+                        await asyncio.sleep(delay)
+                        continue
+                    else:
+                        raise Exception(f"OpenRouter rate limit exceeded after {max_retries} retries. Please wait before continuing.")
+                else:
+                    # Other HTTP error
+                    raise Exception(f"OpenRouter API error: {str(e)}")
+            except Exception as e:
+                error_msg = str(e)
+                if "402 Payment Required" in error_msg:
+                    # Try with a free model as fallback
+                    print("⚠️ Payment required for selected model, switching to free model...")
+                    free_model_id = "qwen/qwen-2.5-72b-instruct:free"
+                    data["model"] = free_model_id
+                    
+                    try:
+                        async with httpx.AsyncClient() as client:
+                            response = await client.post(
+                                f"{self.base_url}/chat/completions",
+                                headers=headers,
+                                json=data,
+                                timeout=60.0
+                            )
+                            response.raise_for_status()
+                            result = response.json()
+                            return result["choices"][0]["message"]["content"]
+                    except Exception as fallback_error:
+                        raise Exception(f"OpenRouter API error (free model also failed): {str(fallback_error)}")
+                else:
+                    raise Exception(f"OpenRouter API error: {str(e)}")
     
     def get_available_models(self) -> Dict[str, str]:
         """Get list of available models"""

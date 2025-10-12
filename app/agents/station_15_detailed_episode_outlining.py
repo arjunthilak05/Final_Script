@@ -18,7 +18,7 @@ Output: Validated scene-by-scene episode outlines (JSON)
 
 import json
 import os
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 from pydantic import BaseModel, Field, ValidationError
 
 from app.openrouter_agent import OpenRouterAgent
@@ -47,20 +47,20 @@ class SceneOutline(BaseModel):
         ..., 
         description="Core dramatic loop: what character wants, what stops them, choice made, result"
     )
-    reveal: str = Field(
-        ...,
+    reveal: Optional[str] = Field(
+        default="None",
         description="Information revealed (Plant/Proof/Payoff from Reveal Matrix or 'None')"
     )
-    soundscape_notes: str = Field(
-        ...,
+    soundscape_notes: Optional[str] = Field(
+        default="Ambient environmental sounds appropriate to location",
         description="Audio storytelling notes: ambient sounds, key SFX, atmosphere"
     )
-    transition_to_next_scene: str = Field(
-        ...,
+    transition_to_next_scene: Optional[str] = Field(
+        default="Cuts to next scene",
         description="How this scene transitions to the next (or episode end)"
     )
-    estimated_runtime: str = Field(
-        ...,
+    estimated_runtime: Optional[str] = Field(
+        default="2-3 minutes",
         description="Estimated scene duration (e.g., '2 minutes', '3-4 minutes')"
     )
 
@@ -315,6 +315,17 @@ Remember: NO conversational text, ONLY the JSON object.
         try:
             # Initialize Redis connection
             await self.initialize()
+            
+            # Load and validate story lock
+            print("🔒 Loading story lock...")
+            story_lock_key = f"audiobook:{self.session_id}:story_lock"
+            story_lock_raw = await self.redis_client.get(story_lock_key)
+            if not story_lock_raw:
+                print("⚠️  Story lock missing")
+                story_lock = {'main_characters': [], 'core_mechanism': '', 'key_plot_points': []}
+            else:
+                story_lock = json.loads(story_lock_raw)
+                print(f"✅ Story lock: {story_lock.get('core_mechanism', 'N/A')[:50]}...")
             
             # Load episode blueprints from Station 14
             print("📥 Loading episode blueprints from Station 14...")

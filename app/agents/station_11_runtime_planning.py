@@ -341,6 +341,49 @@ class Station11RuntimePlanning:
                 if not isinstance(segments_data, list):
                     logger.warning(f"Segments data is not a list: {type(segments_data)} = {segments_data}")
                     segments_data = []
+                
+                # If no segments provided, create standard episode structure based on type
+                if not segments_data:
+                    logger.warning(f"Episode {idx} has no segments from LLM. Creating standard structure.")
+                    # Create standard 3-act structure with appropriate timing
+                    target_runtime = ep_data.get('total_runtime_minutes', 40.0)
+                    segments_data = [
+                        {
+                            'segment_type': 'Teaser/Cold Open',
+                            'duration_minutes': min(5.0, target_runtime * 0.1),
+                            'word_count': int(155 * min(5.0, target_runtime * 0.1)),
+                            'purpose': 'Hook audience attention',
+                            'pacing_notes': 'Fast-paced opening'
+                        },
+                        {
+                            'segment_type': 'Act 1',
+                            'duration_minutes': target_runtime * 0.3,
+                            'word_count': int(155 * target_runtime * 0.3),
+                            'purpose': 'Setup and inciting incident',
+                            'pacing_notes': 'Establish story context'
+                        },
+                        {
+                            'segment_type': 'Act 2',
+                            'duration_minutes': target_runtime * 0.4,
+                            'word_count': int(155 * target_runtime * 0.4),
+                            'purpose': 'Rising action and complications',
+                            'pacing_notes': 'Build tension'
+                        },
+                        {
+                            'segment_type': 'Act 3',
+                            'duration_minutes': target_runtime * 0.15,
+                            'word_count': int(155 * target_runtime * 0.15),
+                            'purpose': 'Climax and resolution',
+                            'pacing_notes': 'Satisfying conclusion'
+                        },
+                        {
+                            'segment_type': 'Tag/Credits',
+                            'duration_minutes': min(3.0, target_runtime * 0.05),
+                            'word_count': int(155 * min(3.0, target_runtime * 0.05)),
+                            'purpose': 'Wrap up and tease next episode',
+                            'pacing_notes': 'Clean ending'
+                        }
+                    ]
 
                 for seg_data in segments_data:
                     # Ensure seg_data is a dictionary
@@ -539,11 +582,28 @@ class Station11RuntimePlanning:
         )
     
     async def _build_production_guidelines(self, chosen_style: str, total_episodes: int) -> Dict[str, str]:
-        """Build production guidelines for runtime planning"""
+        """Build production guidelines with realistic production estimates"""
+        
+        # Calculate production estimates
+        avg_runtime = 45.0  # minutes per episode
+        total_hours = (total_episodes * avg_runtime) / 60
+        
+        # Estimate timeline
+        weeks_recording = total_episodes * 0.5  # 0.5 weeks per episode
+        weeks_editing = total_episodes * 0.3
+        weeks_qa = 2
+        total_weeks = weeks_recording + weeks_editing + weeks_qa
+        
+        # Estimate budget range (rough industry standard)
+        budget_low = total_hours * 5000
+        budget_high = total_hours * 8000
         
         guidelines = {
             "overall_approach": f"Audio-first production optimized for {chosen_style} style",
+            "production_timeline": f"{int(total_weeks)} weeks ({int(total_weeks/4)} months)",
+            "budget_estimate": f"${budget_low:.0f} - ${budget_high:.0f}",
             "recording_schedule": f"Plan for {total_episodes} episodes with flexible pacing",
+            "resource_requirements": f"Voice actors: 3-5, Recording: {int(total_hours * 2)} hours, Editing: {int(total_hours * 3)} hours",
             "word_count_management": "Monitor word counts per segment to maintain pacing",
             "silence_utilization": "Strategic use of silence and SFX for pacing control",
             "quality_control": "Regular runtime checks during production",

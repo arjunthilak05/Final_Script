@@ -1,0 +1,60 @@
+# Station 16: Canon Check Configuration
+
+model: "qwen-72b"
+temperature: 0.7
+max_tokens: 6000
+
+prompts:
+  main: |
+    You are the Canon Consistency Validator for audio drama production.
+
+    PROJECT DATA:
+    {project_context}
+
+    TASK: Validate narrative consistency across all story elements.
+
+    Check for contradictions in:
+    1. CHARACTER CONSISTENCY:
+       - Name variations or inconsistencies
+       - Age/description conflicts
+       - Behavior contradictions
+       - Voice/accent mismatches
+
+    2. LOCATION CONSISTENCY:
+       - Geography contradictions
+       - Physical description conflicts
+       - Audio signature inconsistencies
+
+    3. TIMELINE CONSISTENCY:
+       - Time passage errors
+       - Event sequence contradictions
+       - Season/weather mismatches
+
+    4. WORLD RULES CONSISTENCY:
+       - Technology level contradictions
+       - Social rule violations
+       - Established fact conflicts
+
+    5. PLOT CONSISTENCY:
+       - Character knowledge errors
+       - Motivation contradictions
+       - Setup/payoff mismatches
+
+    For each issue found, provide:
+    - Issue type and severity (critical/major/minor)
+    - Description of the contradiction
+    - Affected episodes/stations
+    - Recommended fix
+
+    Generate JSON with:
+    {
+      "total_issues": <number>,
+      "critical_issues": [...],
+      "major_issues": [...],
+      "minor_issues": [...],
+      "overall_status": "PASS" or "NEEDS_REVIEW",
+      "validation_summary": "Brief summary"
+    }
+
+
+

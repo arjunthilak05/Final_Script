@@ -121,9 +121,11 @@ class Station01SeedProcessor:
                         logger.info(f"Retry attempt {attempt + 1}/{max_retries} for Station 1")
                         await asyncio.sleep(retry_delay * attempt)
                     
-                    response = await self.openrouter.process_message(
+                    response = await self.openrouter.generate(
                         formatted_prompt,
-                        model_name=self.config.model
+                        model=self.config.model,
+                        max_tokens=self.config.max_tokens,
+                        temperature=self.config.temperature
                     )
                     
                     # Parse the response into structured data
@@ -142,6 +144,19 @@ class Station01SeedProcessor:
             
             # Store in Redis for next station
             await self._store_output(session_id, parsed_output)
+            
+            # Extract and lock story concept to preserve across stations
+            story_lock = {
+                'main_characters': self._extract_characters(seed_input),
+                'core_mechanism': self._extract_core_mechanism(seed_input),
+                'key_plot_points': self._extract_plot_points(seed_input)
+            }
+            await self.redis.set(
+                f"audiobook:{session_id}:story_lock",
+                json.dumps(story_lock),
+                expire=86400
+            )
+            logger.info(f"Story lock created: {len(story_lock['main_characters'])} characters preserved")
             
             # Log successful processing
             logger.info(f"Station 1 completed successfully for session {session_id}")
@@ -339,14 +354,15 @@ class Station01SeedProcessor:
         """Extract field content after a specific prefix - with flexible matching"""
         
         # Try exact prefix first (case-insensitive)
-        pattern = rf"{re.escape(prefix)}\s*(.*?)(?=\n\n|\n[A-Z][A-Z\s]+:|\n-\s|$)"
+        # Updated pattern to properly capture content including bullet lists
+        pattern = rf"{re.escape(prefix)}\s*((?:.*?\n)?(?:[-•*]\s+.*?\n?)*.*?)(?=\n\n[A-Z]|\n[A-Z][A-Z\s]+:(?:\s|$)|$)"
         match = re.search(pattern, text, re.IGNORECASE | re.DOTALL)
         if match:
             content = match.group(1).strip()
             # Clean up common formatting artifacts
             content = re.sub(r'^\[.*?\]\s*', '', content)  # Remove [brackets]
             content = re.sub(r'\s+', ' ', content)  # Normalize whitespace
-            if content and len(content) > 3:
+            if content and len(content) > 10:  # Require more substantial content
                 return content
         
         # Try alternative patterns based on field type
@@ -803,6 +819,61 @@ class Station01SeedProcessor:
             logger.error(f"Failed to retrieve Station 1 output: {str(e)}")
             return None
 
+    def _extract_characters(self, seed: str) -> List[Dict[str, str]]:
+        """Extract character names and professions from seed"""
+        characters = []
+        
+        # Pattern 1: "Name is/was a [profession]"
+        matches = re.findall(r'(\w+)\s+(?:is|was)\s+(?:a|an|the)\s+([\w\s]+?)(?:,|\.|;|\s+who|\s+has)', seed)
+        for match in matches:
+            if len(match[0]) > 2:
+                characters.append({'name': match[0], 'profession': match[1].strip()})
+        
+        # Pattern 2: "Name, a [profession]"
+        matches = re.findall(r'(\w+),\s+(?:a|an|the)\s+([\w\s]+?)(?:,|\.|;)', seed)
+        for match in matches:
+            if len(match[0]) > 2 and not any(c['name'] == match[0] for c in characters):
+                characters.append({'name': match[0], 'profession': match[1].strip()})
+        
+        # Pattern 3: Simple capitalized names (likely proper nouns)
+        words = seed.split()
+        for i, word in enumerate(words):
+            if word and word[0].isupper() and len(word) > 2 and word.isalpha():
+                # Check if it's not at sentence start and not a common word
+                if i > 0 or (i == 0 and not seed[0].isupper()):
+                    if not any(c['name'] == word for c in characters):
+                        # Try to find profession nearby
+                        profession = "character"
+                        if i + 2 < len(words) and words[i + 1] in ['is', 'was']:
+                            profession = ' '.join(words[i + 2:i + 5]).strip(',.')
+                        characters.append({'name': word, 'profession': profession})
+        
+        return characters[:5]  # Limit to 5 main characters
+    
+    def _extract_core_mechanism(self, seed: str) -> str:
+        """Extract the core story mechanism"""
+        # Return the first sentence or main action
+        sentences = seed.split('.')
+        if sentences and len(sentences[0].strip()) > 10:
+            return sentences[0].strip()
+        
+        # Fallback: return first 100 characters
+        return seed[:100].strip()
+    
+    def _extract_plot_points(self, seed: str) -> List[str]:
+        """Extract key plot points"""
+        plot_points = []
+        
+        # Split by sentence
+        sentences = [s.strip() for s in seed.split('.') if len(s.strip()) > 20]
+        
+        # Take meaningful sentences
+        for sentence in sentences[:5]:
+            if sentence and len(sentence) > 20:
+                plot_points.append(sentence)
+        
+        return plot_points
+    
     def format_for_human_review(self, output: SeedProcessorOutput) -> Dict:
         """Format output for human review/approval interface"""
         return {

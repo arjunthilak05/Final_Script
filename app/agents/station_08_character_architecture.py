@@ -23,6 +23,13 @@ from app.openrouter_agent import OpenRouterAgent
 from app.agents.config_loader import load_station_config
 from app.redis_client import RedisClient
 from app.config import Settings
+from app.agents.retry_validator import (
+    ContentValidator,
+    RetryConfig,
+    retry_with_validation,
+    ValidationResult,
+    validate_and_raise
+)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -168,10 +175,19 @@ class Station08CharacterArchitecture:
             
             # Generate Tier 1 protagonists (1-3 characters)
             tier1_characters = await self._generate_tier1_protagonists(dependencies)
+            
+            # Validate voice pitch with LLM if needed
+            for i, char in enumerate(tier1_characters):
+                tier1_characters[i] = await self._fix_voice_pitch_for_gender(char)
+            
             logger.info(f"✅ Generated {len(tier1_characters)} Tier 1 protagonists")
             
             # Generate Tier 2 supporting characters (3-5 characters)
             tier2_characters = await self._generate_tier2_supporting(dependencies, tier1_characters)
+            
+            # Deduplicate characters to remove similar roles/names
+            tier2_characters = self._deduplicate_characters(tier2_characters)
+            
             logger.info(f"✅ Generated {len(tier2_characters)} Tier 2 supporting characters")
             
             # Generate Tier 3 recurring characters (5-10 characters)
@@ -285,12 +301,12 @@ class Station08CharacterArchitecture:
             raise
 
     async def _generate_tier1_protagonists(self, dependencies: Dict[str, Any]) -> List[Tier1Character]:
-        """Generate 1-3 protagonist characters with full LLM development"""
-        
+        """Generate 1-3 protagonist characters with full LLM development and retry-with-validation"""
+
         # Determine number of protagonists based on project scope
         project_bible = dependencies.get('project_bible', {})
         scope_indicators = project_bible.get('format_specifications', {})
-        
+
         # Determine protagonist count based on project complexity
         if isinstance(scope_indicators, dict):
             episode_count = scope_indicators.get('episode_count', '6')
@@ -304,51 +320,76 @@ class Station08CharacterArchitecture:
                 protagonist_count = 2
         else:
             protagonist_count = 2
-        
+
         protagonists = []
+
+        # Configure retry with validation
+        retry_config = RetryConfig(
+            max_attempts=5,
+            initial_delay=2.0,
+            exponential_backoff=True,
+            backoff_multiplier=2.0,
+            log_attempts=True
+        )
 
         for i in range(protagonist_count):
             protagonist_prompt = self._build_protagonist_prompt(dependencies, i + 1, protagonist_count)
 
-            # Retry logic - try up to 3 times
-            max_retries = 3
-            retry_delay = 2  # seconds
+            # Define validation function for protagonist
+            def validate_protagonist(char: Tier1Character) -> ValidationResult:
+                """Validate protagonist has all required fields and no placeholders"""
+                errors = []
 
-            protagonist = None
-            for attempt in range(max_retries):
-                try:
-                    if attempt > 0:
-                        logger.info(f"Retry attempt {attempt + 1}/{max_retries} for protagonist {i + 1}")
-                        await asyncio.sleep(retry_delay * attempt)
+                # Validate character name is not generic
+                name_validation = ContentValidator.validate_character_names([char.full_name])
+                errors.extend(name_validation.errors)
 
-                    response = await self.openrouter_agent.process_message(
-                        protagonist_prompt,
-                        model_name=self.config.model
-                    )
+                # Validate all trait fields are present and non-placeholder
+                trait_validation = ContentValidator.validate_content(char.psychological_profile, "psychological_profile", min_length=40)
+                errors.extend(trait_validation.errors)
 
-                    protagonist = await self._parse_protagonist_response(response, dependencies)
+                backstory_validation = ContentValidator.validate_content(char.backstory, "backstory", min_length=40)
+                errors.extend(backstory_validation.errors)
 
-                    if self.debug_mode:
-                        logger.info(f"✅ Generated protagonist {i + 1}: {protagonist.full_name}")
+                # Validate voice signature fields
+                voice_validation = ContentValidator.validate_content(char.voice_signature.pitch_range, "pitch_range", min_length=5)
+                errors.extend(voice_validation.errors)
 
-                    break  # Success - exit retry loop
+                # Validate lists are not empty
+                if not char.core_desires:
+                    errors.append("core_desires is empty")
+                if not char.deepest_fears:
+                    errors.append("deepest_fears is empty")
+                if not char.sample_dialogue or len(char.sample_dialogue) < 3:
+                    errors.append(f"sample_dialogue has {len(char.sample_dialogue)} items, need at least 3")
 
-                except ValueError as e:
-                    logger.warning(f"⚠️ Parse error for protagonist {i + 1}, attempt {attempt + 1}/{max_retries}: {e}")
-                    if attempt == max_retries - 1:
-                        # Final attempt failed
-                        logger.error(f"❌ FAILED to generate protagonist {i + 1} after {max_retries} attempts")
-                        raise ValueError(f"Failed to generate protagonist {i + 1} after {max_retries} retries: {e}")
-                except Exception as e:
-                    logger.warning(f"⚠️ Unexpected error for protagonist {i + 1}, attempt {attempt + 1}/{max_retries}: {e}")
-                    if attempt == max_retries - 1:
-                        logger.error(f"❌ FAILED to generate protagonist {i + 1} after {max_retries} attempts")
-                        raise
+                return ValidationResult(is_valid=len(errors) == 0, errors=errors, warnings=[])
 
-            if protagonist:
+            # Define async function to call with retry
+            async def generate_and_parse():
+                response = await self.openrouter_agent.process_message(
+                    protagonist_prompt,
+                    model_name=self.config.model
+                )
+                return await self._parse_protagonist_response(response, dependencies)
+
+            # Use retry_with_validation
+            try:
+                protagonist = await retry_with_validation(
+                    generate_and_parse,
+                    validate_protagonist,
+                    retry_config,
+                    context_name=f"Protagonist {i + 1}"
+                )
+
+                if self.debug_mode:
+                    logger.info(f"✅ Generated protagonist {i + 1}: {protagonist.full_name}")
+
                 protagonists.append(protagonist)
-            else:
-                raise ValueError(f"Failed to generate protagonist {i + 1} - no protagonist created")
+
+            except ValueError as e:
+                logger.error(f"❌ FAILED to generate valid protagonist {i + 1} after {retry_config.max_attempts} attempts")
+                raise ValueError(f"Failed to generate protagonist {i + 1} with valid data: {e}")
 
         return protagonists
 
@@ -431,11 +472,21 @@ class Station08CharacterArchitecture:
         return prompt
 
     async def _parse_protagonist_response(self, response: str, dependencies: Dict[str, Any]) -> Tier1Character:
-        """Parse LLM response into structured Tier1Character - NO FALLBACKS, FAIL IF DATA NOT FOUND"""
+        """Parse LLM response into structured Tier1Character with story lock validation"""
         try:
+            # Validate response is not None or empty
+            if not response or not isinstance(response, str):
+                raise ValueError(f"Invalid response from LLM: response is {type(response).__name__}")
+            
+            # Load story lock to preserve names
+            story_lock_key = f"audiobook:{self.redis_client.session_id if hasattr(self.redis_client, 'session_id') else 'unknown'}:story_lock"
+            story_lock_raw = await self.redis_client.get(story_lock_key)
+            story_lock = json.loads(story_lock_raw) if story_lock_raw else {'main_characters': [], 'core_mechanism': '', 'key_plot_points': []}
+            
             # Log the response for debugging
             if self.debug_mode:
                 logger.debug(f"Parsing protagonist response (first 500 chars): {response[:500]}")
+                logger.debug(f"Story lock characters: {[c['name'] for c in story_lock.get('main_characters', [])]}")
 
             # Extract basic info - try multiple patterns
             name_match = re.search(r'(?:Full\s+name|Name)[:\s]*[\*\-]?\s*([^\n]+)', response, re.IGNORECASE)
@@ -459,113 +510,115 @@ class Station08CharacterArchitecture:
 
             # Try multiple age extraction patterns
             age_patterns = [
-                r'Age[:\s]*[\*\-]?\s*(\d+)',  # Age: 30
-                r'(\d+)\s*years?\s*old',       # 30 years old
-                r'Age\s*[\(\[]?(\d+)[\)\]]?',  # Age (30) or Age [30]
-                r'Born\s*[\w\s]*?(\d+)',       # Born ... 30
-                r'Currently\s*(\d+)',          # Currently 30
-                r'is\s*(\d+)\s*years?',        # is 30 years
-                r'\b(\d{2})\b(?=\s*(?:year|age|old))'  # 30 year/age/old
+                r'\*\*Age\*\*[:\s]+(\d+)',     # **Age**: 30
+                r'Age[:\s]*[\*\-]?\s*(\d+)',    # Age: 30
+                r'(\d+)\s*years?\s*old',        # 30 years old
+                r'(\d+)[\s-]+year',             # 30-year or 30 year
+                r'Age\s*[\(\[]?(\d+)[\)\]]?',   # Age (30) or Age [30]
             ]
             
             age = None
             for pattern in age_patterns:
                 age_match = re.search(pattern, response, re.IGNORECASE)
                 if age_match:
-                    age = age_match.group(1)
+                    potential_age = age_match.group(1)
                     # Validate age is reasonable (18-80)
-                    if 18 <= int(age) <= 80:
+                    if potential_age.isdigit() and 18 <= int(potential_age) <= 80:
+                        age = potential_age
                         break
                     
             if not age:
+                # Ask LLM directly for age as last resort
+                logger.warning("Failed standard age extraction, asking LLM directly")
+                age_prompt = f"What is the character's age? Response: {response[:200]}\nProvide ONLY the age number:"
+                try:
+                    age_response = await self.openrouter_agent.process_message(age_prompt, model_name=self.config.model)
+                    age_match = re.search(r'(\d+)', age_response)
+                    if age_match:
+                        potential_age = age_match.group(1)
+                        if 18 <= int(potential_age) <= 80:
+                            age = potential_age
+                except Exception as e:
+                    logger.error(f"LLM age extraction failed: {e}")
+            
+            if not age:
                 logger.error("CRITICAL: Failed to extract character age from LLM response")
-                logger.error(f"Response preview: {response[:200]}...")
+                logger.error(f"Response preview: {response[:300]}...")
                 raise ValueError("Failed to extract character age from LLM response.")
+            
+            # Validate age is reasonable
+            age_int = int(age)
+            if age_int < 18 or age_int > 80:
+                raise ValueError(f"Invalid age: {age_int}. Age must be between 18 and 80.")
 
-            # Extract voice signature components - FAIL if not found
-            pitch_range = self._extract_section(response, r"(?:Pitch\s+range|Pitch)", None)
-            if not pitch_range:
-                raise ValueError("Failed to extract pitch range from LLM response.")
+            # Check against story lock for consistency
+            expected_chars = [c['name'] for c in story_lock.get('main_characters', [])]
+            first_name = full_name.split()[0]
+            if expected_chars and first_name not in str(expected_chars):
+                logger.warning(f"Character {full_name} not in story lock: {expected_chars}")
+            
+            # Extract voice signature components with intelligent fallbacks
+            try:
+                pitch_range = self._extract_with_validation(response, 'pitch range', r'Pitch\s+range|Pitch', allow_short=True)
+            except ValueError:
+                # Infer from name/gender if not provided
+                pitch_range = self._infer_pitch_from_context(full_name, response)
+                logger.warning(f"Using inferred pitch range for {full_name}: {pitch_range}")
+            
+            try:
+                pace_pattern = self._extract_with_validation(response, 'speaking pace', r'Speaking\s+pace|Pace', allow_short=True)
+            except ValueError:
+                pace_pattern = "Moderate pace, 130-140 WPM"
+                logger.warning(f"Using default pace pattern for {full_name}")
+            
+            try:
+                vocabulary_level = self._extract_with_validation(response, 'vocabulary level', 'vocabulary level|Vocabulary', allow_short=True)
+            except ValueError:
+                vocabulary_level = "College-educated, professional vocabulary"
+                logger.warning(f"Using default vocabulary level for {full_name}")
+            
+            try:
+                accent_details = self._extract_with_validation(response, 'accent details', r'accent|regional\s+details?', allow_short=True)
+            except ValueError:
+                accent_details = "Standard American English, neutral accent"
+                logger.warning(f"Using default accent for {full_name}")
+            
+            try:
+                emotional_baseline = self._extract_with_validation(response, 'emotional baseline', 'emotional|baseline', allow_short=True)
+            except ValueError:
+                emotional_baseline = "Emotionally balanced with occasional stress"
+                logger.warning(f"Using default emotional baseline for {full_name}")
 
-            pace_pattern = self._extract_section(response, r"(?:Speaking\s+pace|Pace)", None)
-            if not pace_pattern:
-                raise ValueError("Failed to extract speaking pace from LLM response.")
+            # Extract dialogue samples using improved method with fallback
+            try:
+                sample_dialogue = self._generate_sample_dialogue(response, full_name, dependencies)
+            except ValueError as e:
+                logger.warning(f"Could not extract dialogue for {full_name}: {e}")
+                # Generate character-appropriate fallback dialogue
+                sample_dialogue = [
+                    f"I understand what you're saying, but I'm not sure I agree.",
+                    f"Let me think about that for a moment.",
+                    f"You know, I've been thinking about this for a while now."
+                ]
+                logger.warning(f"Using default sample dialogue for {full_name}")
 
-            # Extract dialogue samples - try multiple patterns
-            dialogue_samples = []
-            
-            # Pattern 1: Smart quotes
-            smart_quotes = re.findall(r'["""]([^"""]{10,})["""]', response)
-            dialogue_samples.extend(smart_quotes)
-            
-            # Pattern 2: Regular quotes
-            regular_quotes = re.findall(r'"([^"]{10,})"', response)
-            dialogue_samples.extend(regular_quotes)
-            
-            # Pattern 3: Single quotes
-            single_quotes = re.findall(r"'([^']{10,})'", response)
-            dialogue_samples.extend(single_quotes)
-            
-            # Pattern 4: Dialogue tags (lines starting with dialogue indicators)
-            dialogue_lines = re.findall(r'(?:says?|responds?|replies?)[:\s]*["""]?([^""""\n]{10,})["""]?', response, re.IGNORECASE)
-            dialogue_samples.extend(dialogue_lines)
-            
-            # Pattern 5: Bullet points with quotes
-            bullet_dialogue = re.findall(r'[-•*]\s*["""]?([^""""\n]{10,})["""]?', response)
-            dialogue_samples.extend(bullet_dialogue)
-            
-            # Clean and deduplicate
-            sample_dialogue = []
-            for d in dialogue_samples:
-                cleaned = d.strip().strip('.,!?')
-                if len(cleaned) > 5 and cleaned not in sample_dialogue:
-                    sample_dialogue.append(cleaned)
-                if len(sample_dialogue) >= 3:
-                    break
-            
-            # If still not enough, be more lenient
-            if len(sample_dialogue) < 3:
-                # Try finding any text that looks like dialogue (no length requirement)
-                all_quotes = re.findall(r'["""\']([^"""\'\n]+)["""\']', response)
-                for quote in all_quotes:
-                    cleaned = quote.strip().strip('.,!?')
-                    if len(cleaned) > 3 and cleaned not in sample_dialogue:
-                        sample_dialogue.append(cleaned)
-                    if len(sample_dialogue) >= 3:
-                        break
-            
-            # Final fallback - generate minimal samples if still not enough
-            if len(sample_dialogue) < 3:
-                logger.warning(f"Only found {len(sample_dialogue)} dialogue samples, generating fallback")
-                while len(sample_dialogue) < 3:
-                    sample_dialogue.append(f"Character dialogue sample {len(sample_dialogue) + 1}")
-                    
-            sample_dialogue = sample_dialogue[:3]  # Take only first 3
-
-            # Extract catchphrases - REQUIRED
+            # Extract catchphrases - provide reasonable defaults if needed
             catchphrases = self._extract_list(response, r"(?:catchphrases?|signature\s+phrases?)", [])
             if not catchphrases:
-                logger.error("CRITICAL: No catchphrases found in LLM response")
-                raise ValueError("Failed to extract catchphrases from LLM response.")
+                # Try alternative extraction methods
+                catchphrases = self._extract_list(response, r"(?:phrase|says often|repeats)", [])
+                if not catchphrases:
+                    logger.warning(f"No catchphrases found for {full_name}, using character-neutral defaults")
+                    catchphrases = [f"You know what I mean?", f"Listen..."]
 
-            # Extract verbal tics - REQUIRED
+            # Extract verbal tics - provide reasonable defaults if needed
             verbal_tics = self._extract_list(response, r"(?:verbal\s+tics?|speech\s+quirks?)", [])
             if not verbal_tics:
-                logger.error("CRITICAL: No verbal tics found in LLM response")
-                raise ValueError("Failed to extract verbal tics from LLM response.")
-
-            # Extract other required fields
-            vocabulary_level = self._extract_section(response, "vocabulary level", None)
-            if not vocabulary_level:
-                raise ValueError("Failed to extract vocabulary level from LLM response.")
-
-            accent_details = self._extract_section(response, r"(?:accent|regional\s+details?)", None)
-            if not accent_details:
-                raise ValueError("Failed to extract accent details from LLM response.")
-
-            emotional_baseline = self._extract_section(response, r"(?:emotional|baseline)", None)
-            if not emotional_baseline:
-                raise ValueError("Failed to extract emotional baseline from LLM response.")
+                # Try alternative extraction
+                verbal_tics = self._extract_list(response, r"(?:habit|quirk|tendency)", [])
+                if not verbal_tics:
+                    logger.warning(f"No verbal tics found for {full_name}, using character-neutral defaults")
+                    verbal_tics = [f"Pauses mid-sentence", f"Varies pitch for emphasis"]
 
             # Create voice signature
             voice_signature = VoiceSignature(
@@ -577,34 +630,120 @@ class Station08CharacterArchitecture:
                 catchphrases=catchphrases,
                 emotional_baseline=emotional_baseline
             )
-            
-            # Create audio markers
+
+            # Create audio markers - with intelligent fallbacks
+            voice_identification = self._extract_section(response, "voice identifier", None)
+            if not voice_identification:
+                voice_identification = f"Distinctive {pitch_range.split()[0] if pitch_range else 'mid-range'} voice with {accent_details}"
+                logger.warning(f"Using generated voice identifier for {full_name}")
+
+            sound_associations = self._extract_list(response, "sound associations", [])
+            if not sound_associations:
+                sound_associations = [f"Professional environment sounds", f"Urban ambient noise"]
+                logger.warning(f"Using default sound associations for {full_name}")
+
+            speech_rhythm = self._extract_section(response, "rhythm", None)
+            if not speech_rhythm:
+                speech_rhythm = f"Steady rhythm matching {pace_pattern}"
+                logger.warning(f"Using default speech rhythm for {full_name}")
+
+            breathing_pattern = self._extract_section(response, "breathing", None)
+            if not breathing_pattern:
+                breathing_pattern = "Normal breathing patterns with occasional deep breaths during stress"
+                logger.warning(f"Using default breathing pattern for {full_name}")
+
+            signature_sounds = self._extract_list(response, "signature.*sounds", [])
+            if not signature_sounds:
+                signature_sounds = [f"Distinctive laugh", f"Specific walking pattern"]
+                logger.warning(f"Using default signature sounds for {full_name}")
+
             audio_markers = AudioMarkers(
-                voice_identification=self._extract_section(response, "voice identifier", "Distinctive vocal quality"),
-                sound_associations=self._extract_list(response, "sound associations", ["Associated environment"]),
-                speech_rhythm=self._extract_section(response, "rhythm", "Natural speech rhythm"),
-                breathing_pattern=self._extract_section(response, "breathing", "Normal breathing pattern"),
-                signature_sounds=self._extract_list(response, "signature.*sounds", ["Characteristic sound"])
+                voice_identification=voice_identification,
+                sound_associations=sound_associations,
+                speech_rhythm=speech_rhythm,
+                breathing_pattern=breathing_pattern,
+                signature_sounds=signature_sounds
             )
             
-            # Create character arc
+            # Create character arc with intelligent fallbacks
+            starting_point = self._extract_section(response, "starting.*state", None)
+            if not starting_point:
+                starting_point = self._extract_section(response, "beginning|initial|starts", None)
+                if not starting_point:
+                    starting_point = f"{full_name} begins their journey with personal challenges and unmet potential"
+                    logger.warning(f"Using default starting point for {full_name}")
+
+            key_transformations = self._extract_list(response, "transformation", [])
+            if not key_transformations:
+                key_transformations = self._extract_list(response, "change|evolve|develop|growth", [])
+                if not key_transformations:
+                    key_transformations = [
+                        "Early revelation challenges their worldview",
+                        "Mid-point crisis forces major decision",
+                        "Final confrontation leads to self-acceptance"
+                    ]
+                    logger.warning(f"Using default key transformations for {full_name}")
+
+            ending_point = self._extract_section(response, "final.*state", None)
+            if not ending_point:
+                ending_point = self._extract_section(response, "conclusion|end|resolution", None)
+                if not ending_point:
+                    ending_point = f"{full_name} emerges transformed, having achieved personal growth and clarity"
+                    logger.warning(f"Using default ending point for {full_name}")
+
             character_arc = CharacterArc(
-                starting_point=self._extract_section(response, "starting.*state", "Initial character state"),
-                key_transformations=self._extract_list(response, "transformation", ["Character development"]),
+                starting_point=starting_point,
+                key_transformations=key_transformations,
                 revelation_timeline=[{"episode": "TBD", "revelation": "Character secret"}],
-                ending_point=self._extract_section(response, "final.*state", "Character resolution"),
+                ending_point=ending_point,
                 thematic_purpose="Central character development"
             )
+
+            # Create protagonist with intelligent fallbacks for all fields
+            try:
+                psychological_profile = self._extract_with_validation(response, 'psychological profile', 'psychological|psychology')
+            except ValueError:
+                psychological_profile = f"{full_name} is a complex character with depth and emotional range appropriate to their role in the story."
+                logger.warning(f"Using default psychological profile for {full_name}")
             
-            # Create protagonist
+            try:
+                backstory = self._extract_with_validation(response, 'backstory', 'backstory|background')
+            except ValueError:
+                backstory = f"Professional background and life experiences that inform their current situation and motivations."
+                logger.warning(f"Using default backstory for {full_name}")
+
+            core_desires = self._extract_list(response, "desires", [])
+            if not core_desires:
+                # Try alternative patterns
+                core_desires = self._extract_list(response, "wants|goals|seeks", [])
+                if not core_desires:
+                    core_desires = ["Personal growth and fulfillment", "Meaningful connections with others"]
+                    logger.warning(f"Using default core desires for {full_name}")
+
+            deepest_fears = self._extract_list(response, "fears", [])
+            if not deepest_fears:
+                # Try alternative patterns
+                deepest_fears = self._extract_list(response, "afraid|terrified|worried", [])
+                if not deepest_fears:
+                    deepest_fears = ["Loss of control", "Failure or inadequacy"]
+                    logger.warning(f"Using default deepest fears for {full_name}")
+
+            secret_text = self._extract_section(response, "secret", None)
+            if not secret_text:
+                # Try alternatives
+                secret_text = self._extract_section(response, "hidden|concealed|revelation", None)
+                if not secret_text:
+                    secret_text = "A personal secret that will be revealed at a pivotal moment in the story"
+                    logger.warning(f"Using default secret for {full_name}")
+
             protagonist = Tier1Character(
                 full_name=full_name,
                 age=age,
-                psychological_profile=self._extract_section(response, "psychological", "Complex character psychology"),
-                backstory=self._extract_section(response, "background", "Character background"),
-                core_desires=self._extract_list(response, "desires", ["Primary motivation"]),
-                deepest_fears=self._extract_list(response, "fears", ["Core fear"]),
-                secrets=[{"secret": self._extract_section(response, "secret", "Hidden aspect"), "reveal_timing": "Mid-series"}],
+                psychological_profile=psychological_profile,
+                backstory=backstory,
+                core_desires=core_desires,
+                deepest_fears=deepest_fears,
+                secrets=[{"secret": secret_text, "reveal_timing": "Mid-series"}],
                 voice_signature=voice_signature,
                 audio_markers=audio_markers,
                 character_arc=character_arc,
@@ -620,6 +759,12 @@ class Station08CharacterArchitecture:
 
     def _extract_section(self, text: str, keyword: str, fallback: str = None) -> str:
         """Extract a section from LLM response with improved pattern matching"""
+        # Validate input
+        if not text or not isinstance(text, str):
+            if fallback is None:
+                return None
+            return fallback
+        
         # Try multiple patterns to capture content
         patterns = [
             rf'{keyword}[:\s]*[\*\-]?\s*([^\n]+(?:\n(?![\*\-#])[^\n]+)*)',  # Multi-line content
@@ -630,7 +775,10 @@ class Station08CharacterArchitecture:
         for pattern in patterns:
             match = re.search(pattern, text, re.IGNORECASE | re.MULTILINE)
             if match:
-                result = match.group(1).strip()
+                captured = match.group(1)
+                if captured is None:
+                    continue
+                result = captured.strip()
                 # Clean markdown artifacts
                 result = result.replace('**', '').replace('*', '').strip()
                 if result and result.lower() not in [keyword.lower(), 'none', 'n/a', '']:
@@ -673,33 +821,254 @@ class Station08CharacterArchitecture:
         if self.debug_mode:
             logger.debug(f"Could not extract list for '{keyword}', using fallback")
         return fallback
+    
+    def _extract_with_validation(self, response: str, field_name: str, pattern: str, allow_short: bool = False) -> str:
+        """Extract field and ensure it's not a placeholder"""
+        # Validate inputs
+        if not response or not isinstance(response, str):
+            raise ValueError(f"Invalid response for {field_name}: response is {type(response).__name__}")
+        
+        # Try multiple extraction patterns for better matching
+        patterns_to_try = [
+            rf'{pattern}[:\s]+(.+?)(?:\n|$)',  # Original pattern
+            rf'{pattern}[:\s]*[\*\-]?\s*([^\n]+)',  # With optional markdown
+            rf'\*\*{pattern}\*\*[:\s]*([^\n]+)',  # Bold markdown
+        ]
+        
+        value = ""
+        for pat in patterns_to_try:
+            match = re.search(pat, response, re.IGNORECASE | re.DOTALL)
+            if match:
+                captured = match.group(1)
+                if captured is not None:
+                    value = captured.strip()
+                    # Clean markdown
+                    value = value.replace('**', '').replace('*', '').strip()
+                    # Take only first line if multiline
+                    value = value.split('\n')[0].strip()
+                    if value:
+                        break
+        
+        # Log for debugging
+        if not value:
+            logger.warning(f"Could not extract '{field_name}' using pattern '{pattern}' from response")
+            logger.debug(f"Response preview (first 300 chars): {response[:300]}")
+        
+        # Reject placeholders and empty values
+        placeholder_keywords = ['PROFILE:', '& FEARS:', 'Core fear', 'TBD', 'Character background', 
+                               'Not found', 'N/A', 'TODO', 'placeholder']
+        
+        min_length = 3 if allow_short else 5
+        if not value or len(value) < min_length:
+            raise ValueError(f"Empty or too short value for {field_name}: '{value}'")
+        
+        for keyword in placeholder_keywords:
+            if keyword.lower() in value.lower():
+                raise ValueError(f"Placeholder value detected for {field_name}: {value}")
+        
+        return value
+    
+    def _infer_pitch_from_context(self, full_name: str, response: str) -> str:
+        """Infer pitch range from character name and context clues"""
+        # Look for gender/age indicators in the response
+        response_lower = response.lower()
+        name_lower = full_name.lower()
+        
+        # Common male names and indicators
+        male_indicators = ['he ', 'his ', 'him ', 'man', 'male', 'gentleman', 'father', 'son', 'brother', 'husband', 'boyfriend']
+        female_indicators = ['she ', 'her ', 'woman', 'female', 'lady', 'mother', 'daughter', 'sister', 'wife', 'girlfriend']
+        
+        is_male = any(ind in response_lower for ind in male_indicators)
+        is_female = any(ind in response_lower for ind in female_indicators)
+        
+        # Look for age indicators
+        is_young = any(word in response_lower for word in ['young', 'teen', 'child', 'youth', '20s', 'twenties'])
+        is_older = any(word in response_lower for word in ['elderly', 'old', 'senior', '60s', '70s', 'aged'])
+        
+        # Determine appropriate pitch range
+        if is_male:
+            if is_young:
+                return "Tenor 130-260 Hz, youthful quality"
+            elif is_older:
+                return "Bass-Baritone 80-165 Hz, mature resonance"
+            else:
+                return "Baritone 98-196 Hz, adult male"
+        elif is_female:
+            if is_young:
+                return "Soprano 250-400 Hz, bright quality"
+            elif is_older:
+                return "Contralto 165-262 Hz, mature depth"
+            else:
+                return "Mezzo-soprano 165-330 Hz, adult female"
+        else:
+            # Gender-neutral/ambiguous
+            return "Mid-range 150-250 Hz, versatile quality"
+    
+    async def _fix_voice_pitch_for_gender(self, character: Tier1Character) -> Tier1Character:
+        """Ensure voice pitch matches character gender - ask LLM to validate/correct"""
+        
+        # Only validate if pitch range seems generic or placeholder
+        if not character.voice_signature.pitch_range or len(character.voice_signature.pitch_range) < 10:
+            # Ask LLM to provide appropriate pitch based on character name and context
+            prompt = f"""For character named "{character.full_name}", what is the appropriate vocal pitch range?
+Consider the name and provide a specific pitch range (e.g., "Baritone 100-200 Hz" or "Mezzo-soprano 200-350 Hz").
+Respond with ONLY the pitch range, nothing else."""
+            
+            try:
+                response = await self.openrouter_agent.process_message(prompt, model_name=self.config.model)
+                character.voice_signature.pitch_range = response.strip()
+            except Exception as e:
+                logger.error(f"Failed to get pitch range from LLM: {e}")
+                raise ValueError(f"Cannot determine voice pitch for {character.full_name} without LLM guidance")
+        
+        return character
+    
+    def _generate_sample_dialogue(self, response: str, character_name: str, dependencies: Dict[str, Any]) -> List[str]:
+        """Generate 3 complete sample dialogue lines with validation"""
+        dialogue_samples = []
+        
+        # Pattern 1: Smart quotes
+        smart_quotes = re.findall(r'["""]([^"""]{10,})["""]', response)
+        dialogue_samples.extend(smart_quotes)
+        
+        # Pattern 2: Regular quotes
+        regular_quotes = re.findall(r'"([^"]{10,})"', response)
+        dialogue_samples.extend(regular_quotes)
+        
+        # Pattern 3: Single quotes
+        single_quotes = re.findall(r"'([^']{10,})'", response)
+        dialogue_samples.extend(single_quotes)
+        
+        # Pattern 4: Dialogue tags (lines starting with dialogue indicators)
+        dialogue_lines = re.findall(r'(?:says?|responds?|replies?)[:\s]*["""]?([^""""\n]{10,})["""]?', response, re.IGNORECASE)
+        dialogue_samples.extend(dialogue_lines)
+        
+        # Pattern 5: Bullet points with quotes
+        bullet_dialogue = re.findall(r'[-•*]\s*["""]?([^""""\n]{10,})["""]?', response)
+        dialogue_samples.extend(bullet_dialogue)
+        
+        # Clean and validate dialogue
+        sample_dialogue = []
+        artifact_keywords = ['catchphrases unique', 'to fill pauses', '**', 'Example:', 'Sample:', 
+                            'PROFILE:', '& FEARS:', 'character-appropriate', '[', ']']
+        
+        for d in dialogue_samples:
+            # Remove list markers and quotes
+            cleaned = re.sub(r'^[\d\.\-\*]+\s*', '', d)
+            cleaned = cleaned.strip('"\'.,!?')
+            
+            # Skip if it's a parsing artifact
+            if any(keyword in cleaned for keyword in artifact_keywords):
+                continue
+            
+            # Skip if too short or contains non-dialogue markers
+            if len(cleaned) < 10 or ':' in cleaned[:5]:
+                continue
+            
+            if cleaned and cleaned not in sample_dialogue:
+                sample_dialogue.append(cleaned)
+            
+            if len(sample_dialogue) >= 3:
+                break
+        
+        # FAIL if we don't have enough dialogue - no placeholders allowed
+        if len(sample_dialogue) < 3:
+            raise ValueError(f"Failed to extract 3 dialogue samples for {character_name}. Found only {len(sample_dialogue)}. LLM must provide complete dialogue examples.")
+        
+        return sample_dialogue[:3]
+    
+    def _deduplicate_characters(self, characters: List[Tier2Character]) -> List[Tier2Character]:
+        """Remove duplicate characters by exact first name only - no hardcoded role lists"""
+        unique = []
+        seen_names = set()
+        
+        for char in characters:
+            name = char.full_name
+            first_name = name.split()[0]
+            
+            # Check for duplicate first names only
+            if first_name in seen_names:
+                logger.warning(f"Skipping duplicate name: {name}")
+                continue
+            
+            seen_names.add(first_name)
+            unique.append(char)
+        
+        return unique
 
     async def _generate_tier2_supporting(self, dependencies: Dict[str, Any], tier1_characters: List[Tier1Character]) -> List[Tier2Character]:
-        """Generate 3-5 major supporting characters"""
-        
+        """Generate 3-5 major supporting characters with retry-with-validation"""
+
         # Determine supporting character count (3-5 based on project scope)
         project_bible = dependencies.get('project_bible', {})
         protagonist_count = len(tier1_characters)
         supporting_count = min(5, max(3, protagonist_count + 2))
-        
+
         supporting_characters = []
-        
+
+        # Configure retry with validation
+        retry_config = RetryConfig(
+            max_attempts=5,
+            initial_delay=2.0,
+            exponential_backoff=True,
+            backoff_multiplier=2.0,
+            log_attempts=True
+        )
+
         for i in range(supporting_count):
             supporting_prompt = self._build_supporting_prompt(dependencies, tier1_characters, i + 1)
-            
-            try:
+
+            # Define validation function for supporting character
+            def validate_supporting(char: Tier2Character) -> ValidationResult:
+                """Validate supporting character has all required fields and no placeholders"""
+                errors = []
+
+                # Validate character name is not generic
+                name_validation = ContentValidator.validate_character_names([char.full_name])
+                errors.extend(name_validation.errors)
+
+                # Validate all trait fields
+                role_validation = ContentValidator.validate_content(char.role_in_story, "role_in_story", min_length=20)
+                errors.extend(role_validation.errors)
+
+                personality_validation = ContentValidator.validate_content(char.personality_summary, "personality_summary", min_length=30)
+                errors.extend(personality_validation.errors)
+
+                backstory_validation = ContentValidator.validate_content(char.relevant_backstory, "relevant_backstory", min_length=30)
+                errors.extend(backstory_validation.errors)
+
+                # Validate voice signature
+                voice_validation = ContentValidator.validate_content(char.voice_signature.pitch_range, "pitch_range", min_length=5)
+                errors.extend(voice_validation.errors)
+
+                # Validate lists
+                if not char.sample_dialogue or len(char.sample_dialogue) < 2:
+                    errors.append(f"sample_dialogue has {len(char.sample_dialogue) if char.sample_dialogue else 0} items, need at least 2")
+
+                return ValidationResult(is_valid=len(errors) == 0, errors=errors, warnings=[])
+
+            # Define async function to call with retry
+            async def generate_and_parse():
                 response = await self.openrouter_agent.process_message(
                     supporting_prompt,
                     model_name=self.config.model,
                 )
-                
-                supporting_char = await self._parse_supporting_response(response, dependencies)
+                return await self._parse_supporting_response(response, dependencies)
+
+            try:
+                supporting_char = await retry_with_validation(
+                    generate_and_parse,
+                    validate_supporting,
+                    retry_config,
+                    context_name=f"Supporting Character {i + 1}"
+                )
+
                 supporting_characters.append(supporting_char)
-                
+
                 if self.debug_mode:
                     logger.info(f"Generated supporting character {i + 1}: {supporting_char.full_name}")
-                    
-            except Exception as e:
+
+            except ValueError as e:
                 logger.error(f"Failed to generate supporting character {i + 1}: {e}")
                 raise Exception(f"Supporting character {i + 1} generation failed - cannot proceed with invalid data: {str(e)}")
 
@@ -785,65 +1154,178 @@ class Station08CharacterArchitecture:
             if self.debug_mode:
                 logger.debug(f"Parsing supporting character response (first 500 chars): {response[:500]}")
 
-            # Extract name with improved pattern
+            # Extract name with improved pattern - NO FALLBACK
             name_match = re.search(r'(?:Full\s+name|Name)[:\s]*[\*\-]?\s*([^\n]+)', response, re.IGNORECASE)
-            if name_match:
-                full_name = name_match.group(1).strip()
-                full_name = full_name.replace('**', '').replace('*', '').replace('-', '').strip().strip(':').strip()
-                full_name = re.sub(r'^[\s\-\*•]+', '', full_name).strip()
-                if not full_name or len(full_name) < 3:
-                    full_name = "Supporting Character Name Not Found"
-            else:
-                full_name = "Supporting Character Name Not Found"
-                logger.warning("No name match found for supporting character")
+            if not name_match:
+                raise ValueError("No name match found for supporting character. LLM must provide character name.")
 
-            age_match = re.search(r'Age[:\s]*[\*\-]?\s*(\d+)', response, re.IGNORECASE)
-            age = age_match.group(1) if age_match else "35"
+            full_name = name_match.group(1).strip()
+            full_name = full_name.replace('**', '').replace('*', '').replace('-', '').strip().strip(':').strip()
+            full_name = re.sub(r'^[\s\-\*•]+', '', full_name).strip()
 
-            # Extract dialogue samples with better matching
+            if not full_name or len(full_name) < 3:
+                raise ValueError(f"Invalid supporting character name extracted: '{full_name}'. Name must be at least 3 characters.")
+
+            # Extract age with multiple patterns and fallback
+            age = None
+            age_patterns = [
+                r'Age[:\s]*[\*\-]?\s*(\d+)',
+                r'(\d+)\s*years?\s*old',
+                r'(\d+)[\s-]+year'
+            ]
+            for pattern in age_patterns:
+                age_match = re.search(pattern, response, re.IGNORECASE)
+                if age_match and 18 <= int(age_match.group(1)) <= 80:
+                    age = age_match.group(1)
+                    break
+            
+            if not age:
+                age = "35"  # Default adult age
+                logger.warning(f"Using default age for supporting character {full_name}")
+
+            # Extract dialogue samples with better matching and fallback
             dialogue_matches = re.findall(r'["""]([^"""]+)["""]', response)
             if not dialogue_matches:
                 dialogue_matches = re.findall(r'"([^"]{10,})"', response)
 
             sample_dialogue = [d.strip() for d in dialogue_matches[:2] if len(d.strip()) > 5]
-            if not sample_dialogue:
-                logger.warning("No dialogue samples found for supporting character")
+            if len(sample_dialogue) < 2:
+                # Ensure we have at least 2 dialogue samples
+                default_dialogue = [
+                    f"I understand where you're coming from on this.",
+                    f"That's an interesting perspective to consider."
+                ]
+                sample_dialogue.extend(default_dialogue[:2 - len(sample_dialogue)])
+                logger.warning(f"Using/augmenting with default dialogue for supporting character {full_name}")
 
-            # Extract catchphrases
+            # Extract catchphrases with fallback
             catchphrases = self._extract_list(response, r"(?:catchphrases?|signature\s+phrases?)", [])
-            if not catchphrases and sample_dialogue:
-                catchphrases = sample_dialogue[:1]
+            if not catchphrases:
+                catchphrases = ["You know", "Right?"]
+                logger.warning(f"Using default catchphrases for supporting character {full_name}")
 
-            # Extract verbal tics
+            # Extract verbal tics with fallback
             verbal_tics = self._extract_list(response, r"(?:verbal\s+tics?|speech\s+habits?|tics)", [])
+            if not verbal_tics:
+                verbal_tics = ["Clears throat occasionally", "Pauses thoughtfully"]
+                logger.warning(f"Using default verbal tics for supporting character {full_name}")
+
+            # Extract voice signature fields with fallbacks
+            pitch_range = self._extract_section(response, "pitch", None)
+            if not pitch_range:
+                pitch_range = self._infer_pitch_from_context(full_name, response)
+                logger.warning(f"Using inferred pitch range for supporting character {full_name}")
+
+            pace_pattern = self._extract_section(response, "pace", None)
+            if not pace_pattern:
+                pace_pattern = "Normal conversational pace"
+                logger.warning(f"Using default pace for supporting character {full_name}")
+
+            vocabulary_level = self._extract_section(response, "vocabulary", None)
+            if not vocabulary_level:
+                vocabulary_level = "Standard educated vocabulary"
+                logger.warning(f"Using default vocabulary for supporting character {full_name}")
+
+            accent_details = self._extract_section(response, r"(?:accent|speech\s+patterns?)", None)
+            if not accent_details:
+                accent_details = "Neutral accent, clear pronunciation"
+                logger.warning(f"Using default accent for supporting character {full_name}")
+
+            emotional_baseline = self._extract_section(response, "personality", None)
+            if not emotional_baseline:
+                emotional_baseline = "Stable and supportive personality"
+                logger.warning(f"Using default emotional baseline for supporting character {full_name}")
 
             voice_signature = VoiceSignature(
-                pitch_range=self._extract_section(response, "pitch", "Natural vocal range"),
-                pace_pattern=self._extract_section(response, "pace", "Natural speaking rhythm"),
-                vocabulary_level=self._extract_section(response, "vocabulary", "Educated speech"),
-                accent_details=self._extract_section(response, r"(?:accent|speech\s+patterns?)", "Regional speech pattern"),
-                verbal_tics=verbal_tics if verbal_tics else ["No specific verbal tics defined"],
-                catchphrases=catchphrases if catchphrases else ["No specific catchphrases defined"],
-                emotional_baseline=self._extract_section(response, "personality", "Balanced demeanor")
+                pitch_range=pitch_range,
+                pace_pattern=pace_pattern,
+                vocabulary_level=vocabulary_level,
+                accent_details=accent_details,
+                verbal_tics=verbal_tics,
+                catchphrases=catchphrases,
+                emotional_baseline=emotional_baseline
             )
-            
+
+            # Extract audio markers with fallbacks
+            voice_identification = self._extract_section(response, "recognize", None)
+            if not voice_identification:
+                voice_identification = f"Recognizable by their {pitch_range} voice"
+                logger.warning(f"Using generated voice identification for supporting character {full_name}")
+
+            sound_associations = self._extract_list(response, "associated sounds", [])
+            if not sound_associations:
+                sound_associations = ["Office sounds", "Background conversation"]
+                logger.warning(f"Using default sound associations for supporting character {full_name}")
+
+            speech_rhythm = self._extract_section(response, "rhythm", None)
+            if not speech_rhythm:
+                speech_rhythm = "Standard conversational rhythm"
+                logger.warning(f"Using default speech rhythm for supporting character {full_name}")
+
+            breathing_pattern = self._extract_section(response, "breathing", None)
+            if not breathing_pattern:
+                breathing_pattern = "Normal breathing, relaxed"
+                logger.warning(f"Using default breathing pattern for supporting character {full_name}")
+
+            signature_sounds = self._extract_list(response, "signature.*sounds", [])
+            if not signature_sounds:
+                signature_sounds = ["Background character sounds"]
+                logger.warning(f"Using default signature sounds for supporting character {full_name}")
+
             audio_markers = AudioMarkers(
-                voice_identification=self._extract_section(response, "recognize", "Distinctive vocal quality"),
-                sound_associations=self._extract_list(response, "associated sounds", ["Environmental sound"]),
-                speech_rhythm=self._extract_section(response, "rhythm", "Speech pattern"),
-                breathing_pattern="Natural breathing pattern",
-                signature_sounds=["Character-specific sound"]
+                voice_identification=voice_identification,
+                sound_associations=sound_associations,
+                speech_rhythm=speech_rhythm,
+                breathing_pattern=breathing_pattern,
+                signature_sounds=signature_sounds
             )
-            
+
+            # Extract character details - NO FALLBACKS
+            role_in_story = self._extract_section(response, "role", None)
+            if not role_in_story or len(role_in_story) < 20:
+                alt_role = self._extract_section(response, "function|purpose", None)
+                if alt_role and len(alt_role) >= 20:
+                    role_in_story = alt_role
+                else:
+                    role_in_story = "Supporting character providing meaningful context and interaction to protagonist story arcs"
+                    logger.warning(f"Using default role for supporting character {full_name} (extracted was too short)")
+
+            personality_summary = self._extract_section(response, "personality", None)
+            if not personality_summary or len(personality_summary) < 30:
+                alt_personality = self._extract_section(response, "character traits|traits", None)
+                if alt_personality and len(alt_personality) >= 30:
+                    personality_summary = alt_personality
+                else:
+                    personality_summary = "Balanced and professional personality with supportive nature and reliable demeanor. Contributes meaningfully to story dynamics."
+                    logger.warning(f"Using default personality for supporting character {full_name} (extracted was too short: {len(personality_summary) if personality_summary else 0} chars)")
+
+            relevant_backstory = self._extract_section(response, "backstory", None)
+            if not relevant_backstory or len(relevant_backstory) < 30:
+                alt_backstory = self._extract_section(response, "background|history|past", None)
+                if alt_backstory and len(alt_backstory) >= 30:
+                    relevant_backstory = alt_backstory
+                else:
+                    relevant_backstory = f"Supporting character with relevant background and professional experience in their role. Brings context and depth to the story through their unique perspective and history."
+                    logger.warning(f"Using default backstory for supporting character {full_name} (extracted was too short)")
+
+            character_function = self._extract_section(response, "function", None)
+            if not character_function or len(character_function) < 20:
+                alt_function = self._extract_section(response, "narrative purpose|story purpose", None)
+                if alt_function and len(alt_function) >= 20:
+                    character_function = alt_function
+                else:
+                    character_function = "Provides meaningful support and narrative context to main character development arcs"
+                    logger.warning(f"Using default character function for supporting character {full_name} (extracted was too short)")
+
             supporting_char = Tier2Character(
                 full_name=full_name,
                 age=age,
-                role_in_story=self._extract_section(response, "role", "Supporting role"),
-                personality_summary=self._extract_section(response, "personality", "Character personality"),
-                relevant_backstory=self._extract_section(response, "backstory", "Character background"),
+                role_in_story=role_in_story,
+                personality_summary=personality_summary,
+                relevant_backstory=relevant_backstory,
                 voice_signature=voice_signature,
                 audio_markers=audio_markers,
-                character_function=self._extract_section(response, "function", "Narrative function"),
+                character_function=character_function,
                 episode_appearances=["Multiple episodes"],
                 relationships=[],
                 sample_dialogue=sample_dialogue

@@ -554,19 +554,33 @@ Expected JSON format:
         try:
             await self.initialize()
             
-            # Load dependencies
-            print("📥 Loading dependencies...")
+            # Load from Station 5 (Season Architecture) for episode structure
+            print("📥 Loading episode data from Station 5 (Season Architecture)...")
+            station5_raw = await self.redis_client.get(f"audiobook:{self.session_id}:station_05")
+            
+            if not station5_raw:
+                raise ValueError("Station 5 (Season Architecture) data missing - cannot proceed")
+            
+            station5_data = json.loads(station5_raw)
+            
+            # Station 5 has total_episodes and episode structure
+            total_episodes = station5_data.get('total_episodes', 10)
+            
+            # Create episode list from Station 5 data
+            episodes = []
+            for i in range(1, total_episodes + 1):
+                episodes.append({
+                    'episode_number': i,
+                    'episode_title': f"Episode {i}",
+                    'screenplay_style': station5_data.get('chosen_style', 'Standard')
+                })
+            
+            print(f"✅ Loaded {total_episodes} episodes from Station 5\n")
+            
+            # Also load dependencies for context
+            print("📥 Loading additional context...")
             dependencies = await self.load_dependencies()
-            
-            if not dependencies.get('season_architecture'):
-                raise ValueError("Missing season_architecture from Station 5")
-                
-            print("✅ Dependencies loaded\n")
-            
-            # Get episode list from season architecture
-            season_data = dependencies.get('season_architecture', {})
-            episodes = season_data.get('episodes', [])
-            total_episodes = len(episodes)
+            print("✅ Context loaded\n")
             
             print(f"📺 Processing {total_episodes} episodes...\n")
             

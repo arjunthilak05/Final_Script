@@ -592,9 +592,21 @@ Expected JSON format:
         try:
             await self.initialize()
             
+            # Load and validate story lock
+            print("🔒 Loading story lock...")
+            story_lock_key = f"audiobook:{self.session_id}:story_lock"
+            story_lock_raw = await self.redis_client.get(story_lock_key)
+            if not story_lock_raw:
+                print("⚠️  Story lock missing")
+                story_lock = {'main_characters': [], 'core_mechanism': '', 'key_plot_points': []}
+            else:
+                story_lock = json.loads(story_lock_raw)
+                print(f"✅ Story lock loaded: {[c['name'] for c in story_lock.get('main_characters', [])]}")
+            
             # Load dependencies
             print("📥 Loading dependencies from all previous stations...")
             dependencies = await self.load_dependencies()
+            dependencies['story_lock'] = story_lock
             
             if not dependencies.get('season_architecture'):
                 raise ValueError("Missing season_architecture from Station 5")

@@ -49,6 +49,59 @@ from app.agents.station_18_evergreen_check import Station18EvergreenCheck
 from app.agents.station_19_procedure_check import Station19ProcedureCheck
 from app.agents.station_20_geography_transit import Station20GeographyTransit
 from app.redis_client import RedisClient
+from typing import Tuple
+
+
+def final_quality_check(redis_client: RedisClient, session_id: str) -> Tuple[bool, List[str]]:
+    """Comprehensive quality check before completion"""
+    issues = []
+    
+    try:
+        # Check story fidelity
+        story_lock_raw = redis_client.load_from_redis(f"audiobook:{session_id}:story_lock")
+        if story_lock_raw:
+            story_lock = json.loads(story_lock_raw) if isinstance(story_lock_raw, str) else story_lock_raw
+        else:
+            issues.append("Story lock not found")
+            story_lock = {}
+        
+        station8_raw = redis_client.load_from_redis(f"audiobook:{session_id}:station_08")
+        if station8_raw:
+            station8 = json.loads(station8_raw) if isinstance(station8_raw, str) else station8_raw
+            station8_str = str(station8)
+            
+            # Check main characters preserved
+            for char in story_lock.get('main_characters', []):
+                if char.get('name') and char['name'] not in station8_str:
+                    issues.append(f"Main character missing: {char['name']}")
+            
+            # Check no placeholders in character data
+            for placeholder in ['Location 1', 'System 1', 'PROFILE:', '& FEARS:', 'TBD']:
+                if placeholder in station8_str:
+                    issues.append(f"Placeholder found in Station 8: {placeholder}")
+        else:
+            issues.append("Station 8 data not found")
+        
+        # Check episode count in Station 12
+        station12_raw = redis_client.load_from_redis(f"audiobook:{session_id}:station_12")
+        if station12_raw:
+            station12 = json.loads(station12_raw) if isinstance(station12_raw, str) else station12_raw
+            if station12.get('total_episodes', 0) == 0:
+                issues.append("Station 12 processed 0 episodes")
+        else:
+            issues.append("Station 12 data not found")
+        
+        # Check location count in Station 20
+        station20_raw = redis_client.load_from_redis(f"audiobook:{session_id}:station_20")
+        if station20_raw:
+            station20 = json.loads(station20_raw) if isinstance(station20_raw, str) else station20_raw
+            if station20.get('location_network', {}).get('total_locations', 0) == 0:
+                issues.append("Station 20 found 0 locations")
+        
+    except Exception as e:
+        issues.append(f"Quality check error: {str(e)}")
+    
+    return len(issues) == 0, issues
 
 
 class AudiobookProductionState:
@@ -229,18 +282,44 @@ class FullAutomationRunner:
             if self.checkpoint_enabled:
                 await self._save_checkpoint(state)
 
+            # Final Quality Check
+            print("\n🔍 RUNNING FINAL QUALITY CHECK...")
+            print("=" * 70)
+            
+            if not self.redis:
+                self.redis = RedisClient()
+                await self.redis.initialize()
+            
+            is_valid, issues = final_quality_check(self.redis, state.session_id)
+            
+            if not is_valid:
+                print("⚠️  QUALITY CHECK WARNINGS:")
+                for issue in issues:
+                    print(f"   • {issue}")
+                print()
+                logger.warning(f"Quality check found {len(issues)} issues")
+            else:
+                print("✅ Quality check passed - all validation criteria met")
+                print()
+
             # Generate final summary
             await self._generate_final_summary(state)
             
             print("\n🎉 FULL AUTOMATION COMPLETED SUCCESSFULLY!")
             print("=" * 70)
             
+            quality_status = " (with warnings)" if not is_valid else ""
+            
             return {
                 "success": True,
                 "session_id": state.session_id,
                 "outputs": state.station_outputs,
                 "files": state.generated_files,
-                "summary": "All 20 stations completed successfully (including validation suite)"
+                "summary": f"All 20 stations completed successfully{quality_status}",
+                "quality_check": {
+                    "passed": is_valid,
+                    "issues": issues
+                }
             }
             
         except Exception as e:
@@ -1301,7 +1380,6 @@ class FullAutomationRunner:
             print(f"📄 Production Document (TXT): {result['outputs']['txt']}")
             print(f"📄 Production Document (JSON): {result['outputs']['json']}")
             print("🎭 Detailed scene-by-scene outlines ready for voice actors")
-            print("✅ Complete audiobook production pipeline finished!")
             print("="*70)
             
             state.current_station = 15
@@ -2003,7 +2081,7 @@ async def main():
 
     print("🎬 FULL AUDIOBOOK PRODUCTION AUTOMATION")
     print("=" * 60)
-    print("🤖 Complete Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6 → 7 → 8 → 9 → 10 → 11 → 12 → 13 → 14 → 15")
+    print("🤖 Complete Pipeline: Station 1 → 2 → 3 → 4 → 4.5 → 5 → 6 → 7 → 8 → 9 → 10 → 11 → 12 → 13 → 14 → 15 → 16 → 17 → 18 → 19 → 20")
     print()
 
     # Initialize runner

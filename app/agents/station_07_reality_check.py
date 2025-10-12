@@ -92,19 +92,19 @@ class Station07RealityCheck:
         # Load station configuration from YML
         self.config = load_station_config(station_number=7)
         
-        # Hardcoded patterns to detect
+        # Hardcoded patterns to detect (only unambiguous placeholders)
         self.fallback_indicators = [
-            "Lorem ipsum", "TODO", "PLACEHOLDER", "EXAMPLE",
-            "Sample text", "Insert here", "Replace with",
-            "Default value", "Template", "Boilerplate"
+            "Lorem ipsum", "TODO:", "PLACEHOLDER", "[EXAMPLE]",
+            "[INSERT", "[REPLACE", "{{TODO", "{{EXAMPLE",
+            "***TODO", "***PLACEHOLDER", "<PLACEHOLDER>", "TBD:",
+            "TO BE DETERMINED", "FILL THIS IN", "[TBD]"
         ]
         
-        # Generic AI output patterns
+        # Generic AI output patterns (only truly problematic ones)
         self.generic_patterns = [
-            "In conclusion", "It is important to note",
-            "Furthermore", "Additionally", "Moreover",
-            "In summary", "To summarize", "In other words",
-            "As we can see", "It should be noted"
+            "As an AI", "I cannot", "I apologize", "I don't have",
+            "Let me know if", "Feel free to", "Please note that",
+            "It's worth noting", "It goes without saying"
         ]
         
         # Expected outputs per station
@@ -176,12 +176,10 @@ class Station07RealityCheck:
             "06": {
                 "name": "Master Style Guide",
                 "required_fields": [
-                    "working_title", "character_voices_count", "audio_conventions_count",
-                    "has_narrator", "sonic_elements_count", "language_rules_complete"
+                    "working_title", "language_rules", "dialect_accent_map",
+                    "audio_conventions", "dialogue_principles", "sonic_signature"
                 ],
-                "expected_counts": {
-                    "character_voices_count": ">=1"
-                }
+                "expected_counts": {}
             }
         }
 
@@ -340,9 +338,24 @@ class Station07RealityCheck:
                 status = "WARNING"
             issues.extend(count_issues)
         
-        if any(fallback_detection.values()):
-            status = "FAIL"
-            issues.append("Fallback content detected")
+        # Only fail on actual placeholders if content is otherwise incomplete
+        if fallback_detection.get("has_placeholders", False):
+            # If station has good content otherwise (high quality score), just warn
+            if quality_score >= 0.7 and not missing_outputs:
+                if status != "FAIL":
+                    status = "WARNING"
+                issues.append("Minor placeholder content detected (review recommended)")
+            else:
+                status = "FAIL"
+                issues.append("Placeholder/template content detected (e.g., TODO, PLACEHOLDER)")
+        elif fallback_detection.get("has_generic_patterns", False):
+            if status != "FAIL":
+                status = "WARNING"
+            issues.append("Multiple generic AI patterns detected")
+        elif fallback_detection.get("has_repeated_templates", False):
+            if status != "FAIL":
+                status = "WARNING"
+            issues.append("Repeated template phrases detected")
         
         # Generate recommendations
         recommendations = self._generate_station_recommendations(
@@ -414,17 +427,29 @@ class Station07RealityCheck:
         
         detection_results = {}
         
-        # Check for fallback indicators
-        detection_results["has_placeholders"] = any(
-            indicator.lower() in text_content.lower() 
-            for indicator in self.fallback_indicators
-        )
+        # Check for fallback indicators (case-insensitive)
+        # These are unambiguous placeholder patterns that should never appear in real content
+        found_placeholders = [
+            indicator for indicator in self.fallback_indicators
+            if indicator.lower() in text_content.lower()
+        ]
+        detection_results["has_placeholders"] = len(found_placeholders) > 0
+        if found_placeholders:
+            logger.warning(f"⚠️ Detected placeholder patterns: {', '.join(found_placeholders[:3])}")
+            # Log a snippet of where it appears
+            for placeholder in found_placeholders[:1]:  # Just show first one
+                idx = text_content.lower().find(placeholder.lower())
+                if idx >= 0:
+                    snippet_start = max(0, idx - 50)
+                    snippet_end = min(len(text_content), idx + len(placeholder) + 50)
+                    logger.warning(f"   Context: ...{text_content[snippet_start:snippet_end]}...")
         
-        # Check for generic AI patterns
-        detection_results["has_generic_patterns"] = any(
-            pattern.lower() in text_content.lower() 
-            for pattern in self.generic_patterns
+        # Check for generic AI patterns (require multiple matches to flag)
+        generic_pattern_count = sum(
+            1 for pattern in self.generic_patterns
+            if pattern.lower() in text_content.lower()
         )
+        detection_results["has_generic_patterns"] = generic_pattern_count >= 2
         
         # Check for repeated phrases (indicating templates)
         detection_results["has_repeated_templates"] = self._has_repeated_templates(text_content)

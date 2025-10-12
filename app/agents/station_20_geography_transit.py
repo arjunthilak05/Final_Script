@@ -11,11 +11,15 @@ Human Gate: None - validation gate before script writing
 
 import json
 import os
+import logging
 from datetime import datetime
 from typing import Dict, Any, List, Optional
 
 from app.openrouter_agent import OpenRouterAgent
 from app.redis_client import RedisClient
+
+# Configure logging
+logger = logging.getLogger(__name__)
 
 
 class Station20GeographyTransit:
@@ -55,23 +59,35 @@ class Station20GeographyTransit:
         episode_blueprints = dependencies.get('episode_blueprints', {})
         detailed_outlines = dependencies.get('detailed_outlines', {})
 
-        # Safely extract geography
-        geography = world_bible.get('geography', [])
-        if isinstance(geography, list):
-            geography_sample = geography
+        # Actually load locations from Station 9
+        locations = world_bible.get('locations', []) if world_bible else []
+        geography = world_bible.get('geography', {})
+        
+        if not locations and isinstance(geography, dict):
+            # Try to get locations from geography dict
+            locations = geography.get('locations', [])
+        
+        if not locations:
+            logger.warning("No locations found in Station 9")
+            return {
+                'total_locations': 0,
+                'location_pairs_analyzed': 0,
+                'location_pairs': [],
+                'geographic_consistency_score': 0
+            }
+
+        # Extract location information
+        if isinstance(locations, list):
+            location_names = [loc.get('name', 'Unknown') if isinstance(loc, dict) else str(loc) for loc in locations]
+            geography_sample = locations[:10]  # Sample first 10 locations
         else:
+            location_names = []
             geography_sample = []
 
-        location_names = world_bible.get('location_names', [])
-        if isinstance(location_names, list):
-            location_names_sample = location_names
-        else:
-            location_names_sample = []
-
         locations_summary = json.dumps({
-            'geography': geography_sample,
-            'location_names': location_names_sample,
-            'total_locations': world_bible.get('total_locations', 0)
+            'locations': geography_sample,
+            'location_names': location_names,
+            'total_locations': len(locations)
         }, indent=2)[:3000]
 
         # Safely extract episodes

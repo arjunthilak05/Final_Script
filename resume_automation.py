@@ -194,6 +194,42 @@ async def run_station(station_num: int, session_id: str):
             print(f"📄 Production Document (JSON): {result['outputs']['json']}")
             print("🎬 PRODUCTION-READY: Detailed scene-by-scene outlines ready for voice actors")
             
+        elif station_num == 16:
+            from app.agents.station_16_canon_check import Station16CanonCheck
+            station = Station16CanonCheck(session_id)
+            await station.initialize()
+            result = await station.run()
+            print(f"✅ Station 16 completed: Canon Check")
+            
+        elif station_num == 17:
+            from app.agents.station_17_dialect_planning import Station17DialectPlanning
+            station = Station17DialectPlanning(session_id)
+            await station.initialize()
+            result = await station.run()
+            print(f"✅ Station 17 completed: Dialect Planning")
+            
+        elif station_num == 18:
+            from app.agents.station_18_evergreen_check import Station18EvergreenCheck
+            station = Station18EvergreenCheck(session_id)
+            await station.initialize()
+            result = await station.run()
+            print(f"✅ Station 18 completed: Evergreen Check")
+            
+        elif station_num == 19:
+            from app.agents.station_19_procedure_check import Station19ProcedureCheck
+            station = Station19ProcedureCheck(session_id)
+            await station.initialize()
+            result = await station.run()
+            print(f"✅ Station 19 completed: Procedure Check")
+            
+        elif station_num == 20:
+            from app.agents.station_20_geography_transit import Station20GeographyTransit
+            station = Station20GeographyTransit(session_id)
+            await station.initialize()
+            result = await station.run()
+            print(f"✅ Station 20 completed: Geography & Transit Check")
+            print("🎉 ALL 20 STATIONS COMPLETED!")
+            
         else:
             print(f"❌ Station {station_num} not supported")
             return False
@@ -227,8 +263,8 @@ async def main():
     resumable_sessions = []
     for session_id, stations in sorted(existing_sessions.items()):
         stations.sort()
-        expected_stations = ["station_01", "station_02", "station_03", "station_04", "station_04_5", "station_05", "station_06", "station_07", "station_08", "station_09", "station_10", "station_11", "station_12", "station_13", "station_14", "station_15"]
-        station_numbers = [1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        expected_stations = ["station_01", "station_02", "station_03", "station_04", "station_04_5", "station_05", "station_06", "station_07", "station_08", "station_09", "station_10", "station_11", "station_12", "station_13", "station_14", "station_15", "station_16", "station_17", "station_18", "station_19", "station_20"]
+        station_numbers = [1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
         
         # Find next station to resume from
         next_station = None
@@ -271,7 +307,7 @@ async def main():
     print()
     
     # Ask which station to run
-    valid_stations = [1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    valid_stations = [1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     station_choice = input(f"🎯 Run Station {resume_station} or specific station? (Enter station number {valid_stations} or press Enter for {resume_station}): ").strip()
     
     if station_choice:
@@ -289,7 +325,7 @@ async def main():
     print("=" * 40)
     
     # Run all stations from resume_station to the end
-    valid_stations = [1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    valid_stations = [1, 2, 3, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     
     try:
         current_index = valid_stations.index(resume_station)

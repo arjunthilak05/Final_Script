@@ -421,8 +421,19 @@ class Station05SeasonArchitect:
         self.session_id = session_id
         logger.info(f"Starting Station 5: Season Architecture for session {session_id}")
         
+        # Load and validate story lock
+        story_lock_key = f"audiobook:{session_id}:story_lock"
+        story_lock_raw = await self.redis.get(story_lock_key)
+        if not story_lock_raw:
+            logger.warning("Story lock missing - cannot preserve story concept")
+            story_lock = {'main_characters': [], 'core_mechanism': '', 'key_plot_points': []}
+        else:
+            story_lock = json.loads(story_lock_raw)
+            logger.info(f"Story lock loaded: {story_lock.get('core_mechanism', 'N/A')[:50]}")
+        
         # Gather comprehensive inputs from Stations 1-4.5
         project_inputs = await self._gather_comprehensive_inputs(session_id)
+        project_inputs['story_lock'] = story_lock
         
         # TASK 1: STYLE SELECTION - Review 48 styles, recommend TOP 3
         style_recommendations = await self._analyze_48_styles(project_inputs)

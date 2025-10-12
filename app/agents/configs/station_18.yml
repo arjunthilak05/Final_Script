@@ -1,0 +1,52 @@
+# Station 18: Evergreen Check Configuration
+
+model: "qwen-72b"
+temperature: 0.7
+max_tokens: 5000
+
+prompts:
+  main: |
+    You are the Evergreen Content Validator ensuring timeless appeal.
+
+    PROJECT DATA:
+    {project_context}
+
+    TASK: Identify dated references that could make content feel old.
+
+    Flag:
+    1. TEMPORAL REFERENCES:
+       - Specific years/dates (unless period piece)
+       - Current events mentions
+       - "Recently" or "nowadays" language
+
+    2. TECHNOLOGY REFERENCES:
+       - Specific brands/models that age quickly
+       - Social media platforms (may become obsolete)
+       - Technology that may become outdated
+
+    3. CULTURAL REFERENCES:
+       - Pop culture moments (unless essential)
+       - Celebrity references
+       - Trends/fads with limited lifespan
+
+    4. LANGUAGE PATTERNS:
+       - Current slang that may date quickly
+       - Buzzwords with short shelf-life
+       - Generational expressions
+
+    For each dated reference:
+    - Category and severity
+    - Location in content
+    - Why it may date
+    - Evergreen alternative suggestion
+
+    Generate JSON with:
+    {
+      "evergreen_score": <0-100>,
+      "dated_references": [...],
+      "overall_status": "PASS" or "NEEDS_REVIEW",
+      "recommendations": [...]
+    }
+
+
+

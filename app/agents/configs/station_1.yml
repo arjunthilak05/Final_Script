@@ -1,6 +1,6 @@
 # Station 1: Seed Processor & Scale Evaluator Configuration
 
-model: "qwen-72b"
+model: "z-ai/glm-4.5"
 temperature: 0.7
 max_tokens: 10000
 

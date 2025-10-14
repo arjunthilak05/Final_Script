@@ -259,10 +259,19 @@ DETAILED INSTRUCTIONS
    - Build to episode climax and ending
 
 5. OUTPUT FORMAT:
-   CRITICAL: Your ENTIRE response must be a single, valid JSON object that validates 
-   against this exact structure. NO conversational text. NO markdown formatting. 
-   ONLY raw JSON.
-
+   CRITICAL: Your ENTIRE response must be a single, valid, COMPLETE JSON object.
+   
+   REQUIREMENTS:
+   - Start with {{ and end with }}
+   - All strings must be properly quoted and escaped
+   - All arrays must be properly closed with ]
+   - All objects must be properly closed with }}
+   - NO conversational text before or after the JSON
+   - NO markdown formatting (no ``` blocks)
+   - ONLY raw, valid, complete JSON
+   - Ensure the JSON is COMPLETE - don't cut off mid-string or mid-object
+   
+   EXACT STRUCTURE REQUIRED:
    {{
      "episode_number": {input_data.episode_number},
      "scenes": [
@@ -277,16 +286,22 @@ DETAILED INSTRUCTIONS
          "transition_to_next_scene": "How scene flows to next",
          "estimated_runtime": "2 minutes"
        }},
-       ... (more scenes)
+       {{
+         "scene_number": 2,
+         ...
+       }}
      ]
    }}
+   
+   IMPORTANT: Ensure all strings are complete and properly closed with quotes.
+   The JSON must be valid and parseable. Double-check that all braces and brackets match.
 
 ========================================
 BEGIN GENERATION
 ========================================
 
-Generate the complete scene-by-scene outline now as a single JSON object.
-Remember: NO conversational text, ONLY the JSON object.
+Generate the complete scene-by-scene outline now as a single, valid, COMPLETE JSON object.
+Start your response with {{ and end with }}. Include nothing else.
 """
         return prompt
         
@@ -441,6 +456,70 @@ Remember: NO conversational text, ONLY the JSON object.
         finally:
             await self.redis_client.disconnect()
     
+    def _extract_json_from_response(self, response: str) -> Optional[str]:
+        """
+        Extract JSON from LLM response using multiple strategies
+        
+        Args:
+            response: Raw LLM response text
+            
+        Returns:
+            Extracted JSON string or None if extraction fails
+        """
+        import re
+        
+        try:
+            # Strategy 1: Look for complete JSON objects with balanced braces
+            json_pattern = r'\{(?:[^{}]|(?:\{(?:[^{}]|(?:\{[^{}]*\})*)*\}))*\}'
+            matches = re.findall(json_pattern, response, re.DOTALL)
+            
+            if matches:
+                # Try to find the most complete match (largest one)
+                for match in sorted(matches, key=len, reverse=True):
+                    try:
+                        json.loads(match)  # Validate JSON
+                        return match
+                    except json.JSONDecodeError:
+                        continue
+            
+            # Strategy 2: Look for JSON code blocks
+            code_block_match = re.search(r'```json\s*(\{.*?\})\s*```', response, re.DOTALL)
+            if code_block_match:
+                return code_block_match.group(1)
+            
+            # Strategy 3: Look for the first { and find its matching }
+            first_brace = response.find('{')
+            if first_brace != -1:
+                brace_count = 0
+                in_string = False
+                escape_next = False
+                
+                for i, char in enumerate(response[first_brace:], first_brace):
+                    if escape_next:
+                        escape_next = False
+                        continue
+                    
+                    if char == '\\':
+                        escape_next = True
+                        continue
+                    
+                    if char == '"' and not escape_next:
+                        in_string = not in_string
+                    
+                    if not in_string:
+                        if char == '{':
+                            brace_count += 1
+                        elif char == '}':
+                            brace_count -= 1
+                            if brace_count == 0:
+                                return response[first_brace:i+1]
+            
+            return None
+            
+        except Exception as e:
+            print(f"⚠️ JSON extraction failed: {e}")
+            return None
+    
     async def _process_single_episode(self, data: Station15Input) -> Station15Output:
         """
         Process a single episode outline
@@ -476,24 +555,31 @@ Remember: NO conversational text, ONLY the JSON object.
         llm_response = await self.openrouter.generate(
             prompt=prompt,
             model=self.model_name,
-            max_tokens=4000,  # Increased for detailed outline
+            max_tokens=8000,  # Increased for detailed outline with proper JSON completion
             temperature=0.7
         )
         
         # Parse and validate response
         try:
-            # Clean response (remove markdown code blocks if present)
-            cleaned_response = llm_response.strip()
-            if cleaned_response.startswith("```json"):
-                cleaned_response = cleaned_response[7:]
-            if cleaned_response.startswith("```"):
-                cleaned_response = cleaned_response[3:]
-            if cleaned_response.endswith("```"):
-                cleaned_response = cleaned_response[:-3]
-            cleaned_response = cleaned_response.strip()
+            # Try to extract JSON using robust extraction
+            extracted_json = self._extract_json_from_response(llm_response)
             
-            # Parse JSON
-            parsed_json = json.loads(cleaned_response)
+            if extracted_json:
+                # Parse the extracted JSON
+                parsed_json = json.loads(extracted_json)
+            else:
+                # Fallback to basic cleaning
+                cleaned_response = llm_response.strip()
+                if cleaned_response.startswith("```json"):
+                    cleaned_response = cleaned_response[7:]
+                if cleaned_response.startswith("```"):
+                    cleaned_response = cleaned_response[3:]
+                if cleaned_response.endswith("```"):
+                    cleaned_response = cleaned_response[:-3]
+                cleaned_response = cleaned_response.strip()
+                
+                # Parse JSON
+                parsed_json = json.loads(cleaned_response)
             
             # Validate against Pydantic model
             validated_output = Station15Output(**parsed_json)

@@ -1,6 +1,6 @@
 # Station 4.5: Narrator Strategy Designer Configuration
 
-model: "qwen-72b"
+model: "z-ai/glm-4.5"
 temperature: 0.7
 max_tokens: 3000
 

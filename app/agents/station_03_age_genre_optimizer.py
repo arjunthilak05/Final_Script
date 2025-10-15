@@ -22,6 +22,7 @@ from app.openrouter_agent import OpenRouterAgent
 from app.redis_client import RedisClient
 from app.config import Settings
 from app.agents.config_loader import load_station_config
+from app.agents.json_extractor import extract_json
 
 logger = logging.getLogger(__name__)
 
@@ -90,49 +91,10 @@ class AgeGenreStyleGuide:
 
 class AgeAgent:
     """Specialized agent for age-appropriate content guidelines"""
-    
+
     def __init__(self, openrouter_agent: OpenRouterAgent, config):
         self.agent = openrouter_agent
         self.config = config
-    
-    def _extract_json_from_response(self, response: str) -> Optional[str]:
-        """Extract JSON from AI response using multiple strategies"""
-        try:
-            # Strategy 1: Look for complete JSON objects
-            json_pattern = r'\{(?:[^{}]|(?:\{(?:[^{}]|(?:\{[^{}]*\})*)*\}))*\}'
-            matches = re.findall(json_pattern, response, re.DOTALL)
-            
-            if matches:
-                # Try to find the most complete match
-                for match in sorted(matches, key=len, reverse=True):
-                    try:
-                        json.loads(match)  # Validate JSON
-                        return match
-                    except json.JSONDecodeError:
-                        continue
-            
-            # Strategy 2: Look for JSON code blocks
-            code_block_match = re.search(r'```json\s*(\{.*?\})\s*```', response, re.DOTALL)
-            if code_block_match:
-                return code_block_match.group(1)
-            
-            # Strategy 3: Look for the first { and find its matching }
-            first_brace = response.find('{')
-            if first_brace != -1:
-                brace_count = 0
-                for i, char in enumerate(response[first_brace:], first_brace):
-                    if char == '{':
-                        brace_count += 1
-                    elif char == '}':
-                        brace_count -= 1
-                        if brace_count == 0:
-                            return response[first_brace:i+1]
-            
-            return None
-            
-        except Exception as e:
-            logger.warning(f"JSON extraction failed: {e}")
-            return None
     
     def _parse_violence_level(self, value: str) -> ViolenceLevel:
         """Parse violence level from AI response"""
@@ -140,8 +102,8 @@ class AgeAgent:
         for level in ViolenceLevel:
             if level.name in value_upper:
                 return level
-        # Default fallback
-        return ViolenceLevel.NONE
+        # No fallback - raise error if parsing fails
+        raise ValueError(f"Failed to parse violence level: '{value}' - no fallback allowed")
     
     def _parse_emotional_intensity(self, value: str) -> EmotionalIntensity:
         """Parse emotional intensity from AI response"""
@@ -149,8 +111,8 @@ class AgeAgent:
         for intensity in EmotionalIntensity:
             if intensity.name in value_upper:
                 return intensity
-        # Default fallback
-        return EmotionalIntensity.LIGHT
+        # No fallback - raise error if parsing fails
+        raise ValueError(f"Failed to parse emotional intensity: '{value}' - no fallback allowed")
     
     async def analyze_age_requirements(self, project_bible: Dict[str, Any]) -> AgeGuidelines:
         """Create age-appropriate content guidelines"""
@@ -209,29 +171,20 @@ class AgeAgent:
         try:
             response = await self.agent.process_message(
                 age_prompt,
-                model_name=self.config.model
+                model_name=self.config.model,
+                max_tokens=self.config.max_tokens
             )
             
-            # Extract JSON from response with improved parsing
-            json_text = self._extract_json_from_response(response)
-            if not json_text:
-                logger.warning(f"No JSON found in age analysis response: {response[:200]}...")
-                raise ValueError("No JSON found in age analysis response")
-            
+            # Extract and parse JSON using shared utility
             try:
-                data = json.loads(json_text)
+                data = extract_json(response)
+            except ValueError as e:
+                logger.warning(f"No JSON found in age analysis response: {response[:200]}...")
+                raise ValueError(f"No JSON found in age analysis response: {e}")
             except json.JSONDecodeError as e:
                 logger.error(f"JSON parsing failed: {str(e)}")
-                logger.error(f"Problematic JSON text: {json_text}")
-                # Try to clean up common JSON issues
-                json_text_cleaned = json_text.replace('\n', ' ').replace('\r', '')
-                json_text_cleaned = re.sub(r',\s*}', '}', json_text_cleaned)  # Remove trailing commas
-                json_text_cleaned = re.sub(r',\s*]', ']', json_text_cleaned)
-                try:
-                    data = json.loads(json_text_cleaned)
-                except json.JSONDecodeError as e2:
-                    logger.error(f"Cleaned JSON parsing also failed: {str(e2)}")
-                    raise ValueError("Invalid JSON in age analysis response")
+                logger.error(f"Problematic response: {response[:200]}...")
+                raise ValueError("Invalid JSON in age analysis response")
             
             return AgeGuidelines(
                 target_age_range=data.get('target_age_range', 'Unknown'),
@@ -248,73 +201,14 @@ class AgeAgent:
             
         except Exception as e:
             logger.error(f"Age analysis failed: {str(e)}")
-            # Fallback safe defaults
-            return AgeGuidelines(
-                target_age_range=audience_profile.get('primary_age_range', 'General audience'),
-                content_rating="G - Safe for all ages",
-                action_scene_limits=["No graphic violence", "Keep action brief", "Focus on problem-solving"],
-                emotional_boundaries=["Light emotional content", "Avoid traumatic themes", "Positive resolution required"],
-                language_guidelines={
-                    "vocabulary_level": "Age-appropriate vocabulary",
-                    "forbidden_topics": "Adult themes, explicit content",
-                    "complexity_cap": "Simple sentence structures"
-                },
-                sound_restrictions=["No jarring sounds", "No explicit violence sounds", "No frightening audio"],
-                theme_complexity="Simple, clear themes with positive messages",
-                violence_level=ViolenceLevel.NONE,
-                emotional_intensity=EmotionalIntensity.LIGHT,
-                duration_caps={
-                    "action_scenes": "Under 2 minutes",
-                    "emotional_scenes": "Under 3 minutes", 
-                    "suspense_buildup": "Under 1 minute"
-                }
-            )
+            raise ValueError(f"Station 3 age analysis failed - no fallback allowed: {str(e)}")
 
 class GenreAgent:
     """Specialized agent for genre blending and optimization"""
-    
+
     def __init__(self, openrouter_agent: OpenRouterAgent, config):
         self.agent = openrouter_agent
         self.config = config
-    
-    def _extract_json_from_response(self, response: str) -> Optional[str]:
-        """Extract JSON from AI response using multiple strategies"""
-        try:
-            # Strategy 1: Look for complete JSON objects
-            json_pattern = r'\{(?:[^{}]|(?:\{(?:[^{}]|(?:\{[^{}]*\})*)*\}))*\}'
-            matches = re.findall(json_pattern, response, re.DOTALL)
-            
-            if matches:
-                # Try to find the most complete match
-                for match in sorted(matches, key=len, reverse=True):
-                    try:
-                        json.loads(match)  # Validate JSON
-                        return match
-                    except json.JSONDecodeError:
-                        continue
-            
-            # Strategy 2: Look for JSON code blocks
-            code_block_match = re.search(r'```json\s*(\{.*?\})\s*```', response, re.DOTALL)
-            if code_block_match:
-                return code_block_match.group(1)
-            
-            # Strategy 3: Look for the first { and find its matching }
-            first_brace = response.find('{')
-            if first_brace != -1:
-                brace_count = 0
-                for i, char in enumerate(response[first_brace:], first_brace):
-                    if char == '{':
-                        brace_count += 1
-                    elif char == '}':
-                        brace_count -= 1
-                        if brace_count == 0:
-                            return response[first_brace:i+1]
-            
-            return None
-            
-        except Exception as e:
-            logger.warning(f"JSON extraction failed: {e}")
-            return None
     
     async def create_genre_blends(self, project_bible: Dict[str, Any]) -> List[GenreBlend]:
         """Create 3 optimized genre blend options"""
@@ -405,29 +299,17 @@ class GenreAgent:
         try:
             response = await self.agent.process_message(
                 genre_prompt,
-                model_name=self.config.model
+                model_name=self.config.model,
+                max_tokens=self.config.max_tokens
             )
             
-            # Extract JSON from response with improved parsing
-            json_text = self._extract_json_from_response(response)
-            if not json_text:
-                logger.warning(f"No JSON found in genre blend response: {response[:200]}...")
-                raise ValueError("No JSON found in genre blend response")
-            
+            # Extract and parse JSON using shared utility
             try:
-                data = json.loads(json_text)
+                data = extract_json(response)
             except json.JSONDecodeError as e:
                 logger.error(f"JSON parsing failed: {str(e)}")
-                logger.error(f"Problematic JSON text: {json_text}")
-                # Try to clean up common JSON issues
-                json_text_cleaned = json_text.replace('\n', ' ').replace('\r', '')
-                json_text_cleaned = re.sub(r',\s*}', '}', json_text_cleaned)  # Remove trailing commas
-                json_text_cleaned = re.sub(r',\s*]', ']', json_text_cleaned)
-                try:
-                    data = json.loads(json_text_cleaned)
-                except json.JSONDecodeError as e2:
-                    logger.error(f"Cleaned JSON parsing also failed: {str(e2)}")
-                    raise ValueError("Invalid JSON in genre blend response")
+                logger.error(f"Problematic response: {response[:200]}...")
+                raise ValueError("Invalid JSON in genre blend response")
             
             blends = []
             for option_key in ['option_a', 'option_b', 'option_c']:
@@ -448,86 +330,14 @@ class GenreAgent:
             
         except Exception as e:
             logger.error(f"Genre blend creation failed: {str(e)}")
-            # Fallback default blends
-            primary = genre_tone.get('primary_genre', 'Drama')
-            return [
-                GenreBlend(
-                    primary_genre=primary,
-                    complementary_genre="Thriller",
-                    enhancement_analysis="Thriller elements add tension and pacing to core drama",
-                    audio_elements=["Suspenseful music", "Strategic silence", "Tension-building sound design"],
-                    pacing_implications="Alternating calm and suspenseful moments",
-                    audience_expectations="Engaging tension with emotional depth",
-                    signature_sounds=["Heartbeat rhythms", "Environmental tension"],
-                    mood_transitions=["Gradual tension buildup", "Quick emotional releases"]
-                ),
-                GenreBlend(
-                    primary_genre=primary,
-                    complementary_genre="Mystery",
-                    enhancement_analysis="Mystery elements add intrigue and discovery to storytelling",
-                    audio_elements=["Investigative music", "Clue revelation sounds", "Atmospheric mystery"],
-                    pacing_implications="Deliberate pacing with revelation moments",
-                    audience_expectations="Puzzle-solving satisfaction with emotional payoff",
-                    signature_sounds=["Discovery chimes", "Thinking space silence"],
-                    mood_transitions=["Contemplative to revelatory", "Confusion to clarity"]
-                ),
-                GenreBlend(
-                    primary_genre=primary,
-                    complementary_genre="Adventure",
-                    enhancement_analysis="Adventure elements add energy and forward momentum",
-                    audio_elements=["Dynamic music", "Movement sounds", "Energy-building sequences"],
-                    pacing_implications="Varied pacing with energetic peaks",
-                    audience_expectations="Excitement balanced with character development",
-                    signature_sounds=["Movement rhythms", "Achievement fanfares"],
-                    mood_transitions=["Calm to exciting", "Restful to energetic"]
-                )
-            ]
+            raise ValueError(f"Station 3 genre blend creation failed - no fallback allowed: {str(e)}")
 
 class ToneAgent:
     """Specialized agent for tone calibration and audio conveyance"""
-    
+
     def __init__(self, openrouter_agent: OpenRouterAgent, config):
         self.agent = openrouter_agent
         self.config = config
-    
-    def _extract_json_from_response(self, response: str) -> Optional[str]:
-        """Extract JSON from AI response using multiple strategies"""
-        try:
-            # Strategy 1: Look for complete JSON objects
-            json_pattern = r'\{(?:[^{}]|(?:\{(?:[^{}]|(?:\{[^{}]*\})*)*\}))*\}'
-            matches = re.findall(json_pattern, response, re.DOTALL)
-            
-            if matches:
-                # Try to find the most complete match
-                for match in sorted(matches, key=len, reverse=True):
-                    try:
-                        json.loads(match)  # Validate JSON
-                        return match
-                    except json.JSONDecodeError:
-                        continue
-            
-            # Strategy 2: Look for JSON code blocks
-            code_block_match = re.search(r'```json\s*(\{.*?\})\s*```', response, re.DOTALL)
-            if code_block_match:
-                return code_block_match.group(1)
-            
-            # Strategy 3: Look for the first { and find its matching }
-            first_brace = response.find('{')
-            if first_brace != -1:
-                brace_count = 0
-                for i, char in enumerate(response[first_brace:], first_brace):
-                    if char == '{':
-                        brace_count += 1
-                    elif char == '}':
-                        brace_count -= 1
-                        if brace_count == 0:
-                            return response[first_brace:i+1]
-            
-            return None
-            
-        except Exception as e:
-            logger.warning(f"JSON extraction failed: {e}")
-            return None
     
     async def calibrate_tone(self, project_bible: Dict[str, Any], chosen_blend: GenreBlend) -> ToneCalibration:
         """Create tone progression and audio conveyance strategy"""
@@ -588,73 +398,16 @@ class ToneAgent:
         try:
             response = await self.agent.process_message(
                 tone_prompt,
-                model_name=self.config.model
+                model_name=self.config.model,
+                max_tokens=self.config.max_tokens
             )
             
-            # Extract JSON from response with improved parsing
-            json_text = self._extract_json_from_response(response)
-            if not json_text:
-                logger.error(f"❌ CRITICAL: No JSON found in tone calibration response")
-                logger.error(f"Full response: {response}")
-                # Try one more time with a simpler, more explicit prompt
-                retry_prompt = f"""
-                Return ONLY valid JSON (no other text) for tone calibration:
-                {{
-                    "chosen_blend": "{chosen_blend.primary_genre} + {chosen_blend.complementary_genre}",
-                    "episode_progression": [
-                        "Episodes 1-2: Initial tone",
-                        "Episodes 3-4: Development",
-                        "Episodes 5-6: Intensification",
-                        "Final episodes: Resolution"
-                    ],
-                    "tonal_shift_moments": [
-                        "Key moment 1 description",
-                        "Key moment 2 description",
-                        "Key moment 3 description"
-                    ],
-                    "audio_tone_techniques": [
-                        "Music technique",
-                        "Voice technique",
-                        "Sound design technique",
-                        "Pacing technique",
-                        "Silence technique"
-                    ],
-                    "light_dark_balance": "Description of balance",
-                    "tension_curves": [
-                        "Episode arc description",
-                        "Season arc description",
-                        "Character arc description"
-                    ],
-                    "audio_cues": {{
-                        "rising_tension": "Technique",
-                        "emotional_peak": "Technique",
-                        "comic_relief": "Technique",
-                        "resolution": "Technique"
-                    }}
-                }}
-                """
-                retry_response = await self.agent.process_message(retry_prompt, model_name=self.config.model)
-                json_text = self._extract_json_from_response(retry_response)
-                if not json_text:
-                    logger.error("❌ RETRY FAILED: Still no JSON in tone calibration")
-                    logger.error(f"Retry response: {retry_response}")
-                    raise ValueError("CRITICAL: Unable to get valid JSON from tone calibration after retry")
-            
+            # Extract and parse JSON using shared utility
             try:
-                data = json.loads(json_text)
-            except json.JSONDecodeError as e:
-                logger.error(f"JSON parsing failed: {str(e)}")
-                logger.error(f"Problematic JSON text: {json_text}")
-                # Try to clean up common JSON issues
-                json_text_cleaned = json_text.replace('\n', ' ').replace('\r', '')
-                json_text_cleaned = re.sub(r',\s*}', '}', json_text_cleaned)  # Remove trailing commas
-                json_text_cleaned = re.sub(r',\s*]', ']', json_text_cleaned)
-                try:
-                    data = json.loads(json_text_cleaned)
-                except json.JSONDecodeError as e2:
-                    logger.error(f"Cleaned JSON parsing also failed: {str(e2)}")
-                    logger.error("❌ CRITICAL: Cannot proceed without valid JSON from tone calibration")
-                    raise ValueError("CRITICAL: Invalid JSON in tone calibration response - cannot use fallback")
+                data = extract_json(response)
+            except (ValueError, json.JSONDecodeError) as e:
+                logger.error(f"Failed to parse JSON from tone calibration: {e}")
+                raise ValueError(f"Unable to get valid JSON from tone calibration: {e}")
             
             return ToneCalibration(
                 chosen_blend=data.get('chosen_blend', f"{chosen_blend.primary_genre} + {chosen_blend.complementary_genre}"),
@@ -764,41 +517,8 @@ class Station03AgeGenreOptimizer:
             
             # Validate that we have genre options
             if not genre_options or len(genre_options) == 0:
-                logger.error("No genre options generated, using fallback defaults")
-                # Create fallback genre options
-                primary = project_bible_data.get('genre_tone', {}).get('primary_genre', 'Drama')
-                genre_options = [
-                    GenreBlend(
-                        primary_genre=primary,
-                        complementary_genre="Thriller",
-                        enhancement_analysis="Thriller elements add tension and pacing to core drama",
-                        audio_elements=["Suspenseful music", "Strategic silence", "Tension-building sound design"],
-                        pacing_implications="Alternating calm and suspenseful moments",
-                        audience_expectations="Engaging tension with emotional depth",
-                        signature_sounds=["Heartbeat rhythms", "Environmental tension"],
-                        mood_transitions=["Gradual tension buildup", "Quick emotional releases"]
-                    ),
-                    GenreBlend(
-                        primary_genre=primary,
-                        complementary_genre="Mystery",
-                        enhancement_analysis="Mystery elements add intrigue and discovery to storytelling",
-                        audio_elements=["Investigative music", "Clue revelation sounds", "Atmospheric mystery"],
-                        pacing_implications="Deliberate pacing with revelation moments",
-                        audience_expectations="Puzzle-solving satisfaction with emotional payoff",
-                        signature_sounds=["Discovery chimes", "Thinking space silence"],
-                        mood_transitions=["Contemplative to revelatory", "Confusion to clarity"]
-                    ),
-                    GenreBlend(
-                        primary_genre=primary,
-                        complementary_genre="Adventure",
-                        enhancement_analysis="Adventure elements add energy and forward momentum",
-                        audio_elements=["Dynamic music", "Movement sounds", "Energy-building sequences"],
-                        pacing_implications="Varied pacing with energetic peaks",
-                        audience_expectations="Excitement balanced with character development",
-                        signature_sounds=["Movement rhythms", "Achievement fanfares"],
-                        mood_transitions=["Calm to exciting", "Restful to energetic"]
-                    )
-                ]
+                logger.error("No genre options generated by LLM")
+                raise ValueError("Station 3 failed to generate genre options - no fallback allowed")
             
             # Display genre options for user choice
             print(f"\n🎭 GENRE BLEND OPTIONS:")

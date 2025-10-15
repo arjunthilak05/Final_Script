@@ -21,6 +21,7 @@ from app.openrouter_agent import OpenRouterAgent
 from app.redis_client import RedisClient
 from app.config import Settings
 from app.agents.config_loader import load_station_config
+from app.agents.json_extractor import extract_json
 
 logger = logging.getLogger(__name__)
 
@@ -494,82 +495,83 @@ INITIAL EXPANSION FROM STATION 1:
             raise
 
     def _parse_sections_to_bible(self, sections: Dict[str, str], integration: str, station_1_output: Dict, session_id: str) -> ProjectBible:
-        """Parse unstructured sections into structured ProjectBible"""
-        
-        # Extract working title from integration or Station 1
-        working_title = self._extract_working_title(integration, station_1_output)
-        
-        # Parse world setting
-        key_locations = self._extract_list(sections["world"], ["location", "key location"], ["Main Location", "Secondary Location"])
-        primary_location = key_locations[0] if key_locations else "Urban Setting"
-        # Clean up primary location (remove colons, etc.)
-        primary_location = primary_location.strip(':').strip()
-        
+        """Parse JSON sections into structured ProjectBible"""
+
+        # Extract working title from Station 1
+        titles = station_1_output.get("initial_expansion", {}).get("working_titles", [])
+        working_title = titles[0] if titles and titles[0] else "Untitled Project"
+
+        # Parse world setting from JSON
+        world_data = extract_json(sections["world"])
         world_setting = WorldSetting(
-            time_period=self._extract_field(sections["world"], ["time period", "when", "year"], "Contemporary"),
-            primary_location=primary_location,
-            setting_type=self._extract_field(sections["world"], ["setting type", "environment"], "Realistic Contemporary"),
-            atmosphere=self._extract_field(sections["world"], ["atmosphere", "mood", "tone"], "Neutral atmosphere"),
-            key_locations=[loc.strip(':').strip() for loc in key_locations],  # Clean up all locations
-            historical_context=self._extract_field(sections["world"], ["historical", "context"], "Present day context"),
-            cultural_elements=self._extract_list(sections["world"], ["cultural", "culture"], ["Modern Western culture"])
+            time_period=world_data["time_period"],
+            primary_location=world_data["primary_location"],
+            setting_type=world_data["setting_type"],
+            atmosphere=world_data["atmosphere"],
+            key_locations=world_data["key_locations"],
+            historical_context=world_data["historical_context"],
+            cultural_elements=world_data["cultural_elements"]
         )
-        
-        # Parse format specifications
-        chosen_scale = self._get_chosen_scale(station_1_output)
+
+        # Parse format specifications from JSON
+        format_data = extract_json(sections["format"])
         format_specs = FormatSpecifications(
-            series_type=chosen_scale.get("option_type", "Standard Series"),
-            episode_count=chosen_scale.get("episode_count", "8-12"),
-            episode_length=chosen_scale.get("episode_length", "35-45 min each"),
-            season_structure=self._extract_field(sections["format"], ["season", "structure", "arc"], "Single season arc"),
-            pacing_strategy=self._extract_field(sections["format"], ["pacing", "pace"], "Steady build with climactic moments"),
-            narrative_structure=self._extract_field(sections["format"], ["narrative", "structure"], "Three-act structure per episode")
+            series_type=format_data["series_type"],
+            episode_count=format_data["episode_count"],
+            episode_length=format_data["episode_length"],
+            season_structure=format_data["season_structure"],
+            pacing_strategy=format_data["pacing_strategy"],
+            narrative_structure=format_data["narrative_structure"]
         )
-        
-        # Parse genre and tone
+
+        # Parse genre and tone from JSON
+        genre_data = extract_json(sections["genre"])
         genre_tone = GenreTone(
-            primary_genre=self._extract_field(sections["genre"], ["primary genre", "main genre"], "Drama"),
-            secondary_genres=self._extract_list(sections["genre"], ["secondary", "supporting", "element"], ["Contemporary", "Character-driven"]),
-            tone_descriptors=self._extract_list(sections["genre"], ["tone", "mood", "feel"], ["Emotional", "Uplifting", "Engaging"]),
-            mood_profile=self._extract_field(sections["genre"], ["mood profile", "overall mood"], "Thoughtful and engaging"),
-            genre_conventions=self._extract_list(sections["genre"], ["convention", "element", "typical"], ["Character development", "Story progression"])
+            primary_genre=genre_data["primary_genre"],
+            secondary_genres=genre_data["secondary_genres"],
+            tone_descriptors=genre_data["tone_descriptors"],
+            mood_profile=genre_data["mood_profile"],
+            genre_conventions=genre_data["genre_conventions"]
         )
-        
-        # Parse creative promises
-        creative_promises = CreativePromises(
-            core_hooks=self._extract_list(sections.get("creative", ""), ["hook", "compelling", "draw"], ["Character development", "Compelling story"]),
-            unique_elements=self._extract_list(sections.get("creative", ""), ["unique", "special", "distinctive"], ["Unique premise", "Audio-optimized storytelling"]),
-            emotional_journey=self._extract_field(sections.get("creative", ""), ["emotional", "journey", "arc"], "Character growth and resolution"),
-            story_pillars=self._extract_list(sections.get("creative", ""), ["pillar", "foundation", "core"], ["Strong characters", "Engaging plot"])
-        )
-        
-        # Parse audience profile
+
+        # Parse audience profile from JSON
+        audience_data = extract_json(sections["audience"])
         audience_profile = AudienceProfile(
-            primary_age_range=self._extract_field(sections["audience"], ["age", "range"], "25-45"),
-            target_demographics=self._extract_list(sections["audience"], ["demographic", "target"], ["Adults", "Working professionals"]),
-            core_interests=self._extract_list(sections["audience"], ["interest", "hobby"], ["Entertainment", "Character development"]),
-            listening_context=self._extract_field(sections["audience"], ["context", "listening", "when"], "Commuting and relaxing"),
-            content_preferences=self._extract_list(sections["audience"], ["preference", "like"], ["Character-driven stories", "Engaging narratives"])
+            primary_age_range=audience_data["primary_age_range"],
+            target_demographics=audience_data["target_demographics"],
+            core_interests=audience_data["core_interests"],
+            listening_context=audience_data["listening_context"],
+            content_preferences=audience_data["content_preferences"]
         )
-        
-        # Parse production constraints
+
+        # Parse production constraints from JSON
+        production_data = extract_json(sections["production"])
         production_constraints = ProductionConstraints(
-            content_rating=self._extract_content_rating(sections["production"]),
-            budget_tier=self._extract_budget_tier(sections["production"]),
-            technical_requirements=self._extract_list(sections["production"], ["technical", "requirement"], ["Audio production", "Post-production"]),
-            content_restrictions=self._extract_list(sections["production"], ["restriction", "limit"], ["Age-appropriate content"]),
-            distribution_channels=self._extract_list(sections["production"], ["distribution", "platform"], ["Podcast platforms", "Streaming services"])
+            content_rating=ContentRating(production_data["content_rating"]),
+            budget_tier=BudgetTier(production_data["budget_tier"]),
+            technical_requirements=production_data["technical_requirements"],
+            content_restrictions=production_data["content_restrictions"],
+            distribution_channels=production_data["distribution_channels"]
         )
-        
-        # Parse creative team
+
+        # Parse creative team from JSON
+        creative_data = extract_json(sections["creative"])
         creative_team = CreativeTeam(
-            required_roles=self._extract_list(sections["creative"], ["role", "required", "team"], ["Writer", "Director", "Producer"]),
-            specialized_skills=self._extract_list(sections["creative"], ["skill", "expertise"], ["Audio production", "Script writing"]),
-            team_structure=self._extract_field(sections["creative"], ["structure", "organization"], "Collaborative team approach"),
-            collaboration_style=self._extract_field(sections["creative"], ["collaboration", "style"], "Open communication and feedback"),
-            key_partnerships=self._extract_list(sections["creative"], ["partnership", "collaboration"], ["Production partners", "Distribution partners"])
+            required_roles=creative_data["required_roles"],
+            specialized_skills=creative_data["specialized_skills"],
+            team_structure=creative_data["team_structure"],
+            collaboration_style=creative_data["collaboration_style"],
+            key_partnerships=creative_data["key_partnerships"]
         )
-        
+
+        # Creative promises from creative section
+        creative_promises = CreativePromises(
+            core_hooks=creative_data.get("core_hooks", ["Story engagement", "Character development"]),
+            unique_elements=creative_data.get("unique_elements", ["Audio-optimized storytelling"]),
+            emotional_journey=creative_data.get("emotional_journey", "Character growth"),
+            story_pillars=creative_data.get("story_pillars", ["Strong narrative", "Engaging characters"])
+        )
+
         return ProjectBible(
             working_title=working_title,
             world_setting=world_setting,
@@ -584,249 +586,7 @@ INITIAL EXPANSION FROM STATION 1:
             station_1_reference=station_1_output
         )
 
-    def _get_chosen_scale(self, station_1_output: Dict) -> Dict:
-        """Get the chosen scale option from Station 1"""
-        chosen_option = station_1_output.get("chosen_scale", station_1_output.get("recommended_option", "B"))
-        
-        # Define default scale options based on choice
-        scale_defaults = {
-            "A": {"option_type": "Mini Series", "episode_count": "3-6", "episode_length": "15-25 min each"},
-            "B": {"option_type": "Standard Series", "episode_count": "8-12", "episode_length": "35-45 min each"}, 
-            "C": {"option_type": "Extended Series", "episode_count": "15-20", "episode_length": "35-45 min each"}
-        }
-        
-        return scale_defaults.get(chosen_option, scale_defaults["B"])
-
-    def _extract_working_title(self, integration: str, station_1_output: Dict) -> str:
-        """Extract working title from integration feedback or Station 1"""
-        
-        # First, try to get from Station 1 titles (most reliable)
-        titles = station_1_output.get("initial_expansion", {}).get("working_titles", [])
-        if titles and titles[0] and len(titles[0].strip()) > 3:
-            return titles[0].strip()
-        
-        # Look for title in integration feedback only if Station 1 titles are empty
-        title_patterns = [
-            r"(?:working title|title)[:\s]*[\"']([^\"'\n]+)[\"']",  # Quoted titles
-            r"(?:working title|title)[:\s]*([A-Z][A-Za-z\s]{3,50})",  # Unquoted proper titles
-            r"(?:recommend|suggest)[^:]*title[:\s]*[\"']([^\"'\n]+)[\"']"
-        ]
-        
-        for pattern in title_patterns:
-            match = re.search(pattern, integration, re.IGNORECASE)
-            if match:
-                title = match.group(1).strip().strip('"\'')
-                # Validate title - should be reasonable length and not contain weird characters
-                if 3 < len(title) < 80 and not any(char in title for char in ['*', '(', ')', ':', '**']):
-                    return title
-        
-        # Final fallback
-        return "Digital Connection Series"
-
-    def _extract_field(self, text: str, keywords: List[str], default: str) -> str:
-        """Extract a single field value from text with robust fallbacks"""
-        if not text or not text.strip():
-            return default
-            
-        # Special handling for different content patterns
-        for keyword in keywords:
-            # Try exact pattern matches first
-            if keyword.lower() == "time period":
-                # Look for "TIME PERIOD/YEAR:" section
-                section_match = re.search(r"TIME PERIOD/YEAR:\s*(.*?)(?=\n[A-Z]|$)", text, re.DOTALL | re.IGNORECASE)
-                if section_match:
-                    content = section_match.group(1).strip()
-                    # Extract first meaningful sentence
-                    sentences = re.split(r'[.!?]+', content)
-                    for sentence in sentences:
-                        sentence = sentence.strip()
-                        if len(sentence) > 10 and len(sentence) < 200:
-                            return sentence
-                            
-            elif keyword.lower() in ["primary location", "location"]:
-                # Look for PRIMARY LOCATIONS section - handle different formats
-                patterns = [
-                    r"PRIMARY LOCATIONS.*?:(.*?)(?=\n[0-9]\.|TIME PERIOD|$)",
-                    r"1\. PRIMARY LOCATIONS.*?:(.*?)(?=\n[0-9]\.|TIME PERIOD|$)",
-                    r"(?i)primary locations.*?:(.*?)(?=\n[0-9]\.|time period|$)"
-                ]
-                
-                for pattern in patterns:
-                    section_match = re.search(pattern, text, re.DOTALL | re.IGNORECASE)
-                    if section_match:
-                        content = section_match.group(1).strip()
-                        # Try to extract first location from various formats
-                        location_patterns = [
-                            r"[A-E]\.\s*([^\n-]+)",  # Letter format (A. Location)
-                            r"\d+\.\s*([^\n-]+)",    # Number format (1. Location)
-                            r"-\s*([^\n]+)",         # Dash format (- Location)
-                            r"•\s*([^\n]+)"          # Bullet format (• Location)
-                        ]
-                        
-                        for loc_pattern in location_patterns:
-                            location_match = re.search(loc_pattern, content)
-                            if location_match:
-                                location = location_match.group(1).strip()
-                                if len(location) > 3:
-                                    return location
-                        
-            elif keyword.lower() in ["atmosphere", "mood", "tone"]:
-                # Look for ATMOSPHERE/MOOD section
-                section_match = re.search(r"ATMOSPHERE/MOOD:\s*(.*?)(?=\n[A-Z]|CULTURAL|$)", text, re.DOTALL | re.IGNORECASE)
-                if section_match:
-                    content = section_match.group(1).strip()
-                    # Extract first meaningful sentence
-                    sentences = re.split(r'[.!?]+', content)
-                    for sentence in sentences:
-                        sentence = sentence.strip()
-                        if len(sentence) > 10 and len(sentence) < 200:
-                            return sentence
-                            
-            elif keyword.lower() in ["setting type", "environment"]:
-                # Look for setting context in time period or atmosphere sections
-                for section_name in ["TIME PERIOD", "ATMOSPHERE"]:
-                    section_match = re.search(rf"{section_name}.*?:(.*?)(?=\n[A-Z]|$)", text, re.DOTALL | re.IGNORECASE)
-                    if section_match:
-                        content = section_match.group(1)
-                        if "future" in content.lower():
-                            return "Near-future setting"
-                        elif "contemporary" in content.lower() or "present" in content.lower():
-                            return "Contemporary setting"
-                        elif "past" in content.lower() or "historical" in content.lower():
-                            return "Historical setting"
-        
-        # Fallback: try basic keyword search
-        for keyword in keywords:
-            simple_patterns = [
-                rf"{re.escape(keyword)}[:\s]*([^\n]+)",
-                rf"(?i){re.escape(keyword)}.*?:\s*([^\n.]+)"
-            ]
-            
-            for pattern in simple_patterns:
-                match = re.search(pattern, text, re.IGNORECASE | re.MULTILINE)
-                if match:
-                    result = match.group(1).strip().strip('"\'').strip('-').strip()
-                    if len(result) > 5 and not result.lower().startswith(('not found', 'unknown', 'n/a')):
-                        return result
-                
-        return default
-
-    def _extract_list(self, text: str, keywords: List[str], default: List[str]) -> List[str]:
-        """Extract a list of items from text with improved parsing"""
-        if not text or not text.strip():
-            return default
-            
-        for keyword in keywords:
-            # Special handling for location lists
-            if keyword.lower() in ["location", "key location"]:
-                # Look for PRIMARY LOCATIONS section with numbered items
-                section_match = re.search(r"PRIMARY LOCATIONS.*?:(.*?)(?=\n[A-Z]|TIME PERIOD|$)", text, re.DOTALL | re.IGNORECASE)
-                if section_match:
-                    content = section_match.group(1)
-                    # Extract numbered locations
-                    locations = re.findall(r"\d+\.\s*([^\n]+)", content)
-                    if locations:
-                        return [loc.strip() for loc in locations[:5]]
-            
-            # General list extraction patterns
-            patterns = [
-                rf"{re.escape(keyword)}.*?:(.*?)(?=\n[A-Z][A-Z\s]+:|\n\n|$)",  # Section until next major heading
-                rf"(?i){re.escape(keyword)}[^:]*:\s*\n((?:\s*[-•\d\.][^\n]+\n?)+)",  # Bulleted list
-                rf"(?i){re.escape(keyword)}[:\s]*(.*?)(?=\n\n|\n[A-Z]|$)"  # Simple content
-            ]
-            
-            for pattern in patterns:
-                match = re.search(pattern, text, re.IGNORECASE | re.MULTILINE | re.DOTALL)
-                if match:
-                    content = match.group(1).strip()
-                    items = []
-                    
-                    # Try numbered list format first
-                    numbered_items = re.findall(r"\d+\.\s*([^\n]+)", content)
-                    if numbered_items:
-                        items.extend(numbered_items)
-                    
-                    # Try bulleted list format
-                    if not items:
-                        bullet_items = re.findall(r"[-•\*]\s*([^\n]+)", content)
-                        if bullet_items:
-                            items.extend(bullet_items)
-                    
-                    # Try comma-separated format
-                    if not items and ',' in content:
-                        comma_items = [item.strip() for item in content.split(',')]
-                        items.extend(comma_items)
-                    
-                    # Try line-separated format
-                    if not items:
-                        line_items = [line.strip() for line in content.split('\n') if line.strip()]
-                        items.extend(line_items)
-                    
-                    # Clean and filter items
-                    cleaned_items = []
-                    for item in items:
-                        item = item.strip().strip('"\'').strip('-').strip(':').strip()
-                        if (len(item) > 3 and len(item) < 200 and 
-                            not item.lower().startswith(('not found', 'unknown', 'n/a'))):
-                            cleaned_items.append(item)
-                    
-                    if cleaned_items:
-                        return cleaned_items[:5]  # Limit to 5 items
-        
-        return default
-
-    def _extract_episode_count(self, episode_range: str) -> int:
-        """Extract numeric episode count from range string"""
-        numbers = re.findall(r'\d+', episode_range)
-        if len(numbers) >= 2:
-            return int(numbers[1])  # Use upper bound
-        elif len(numbers) == 1:
-            return int(numbers[0])
-        return 10  # Default
-
-    def _extract_content_rating(self, text: str) -> ContentRating:
-        """Extract content rating from text"""
-        text_lower = text.lower()
-        if "pg-13" in text_lower:
-            return ContentRating.PG13
-        elif "pg" in text_lower and "13" not in text_lower:
-            return ContentRating.PG
-        elif " r " in text_lower or "r-rated" in text_lower:
-            return ContentRating.R
-        elif " g " in text_lower or "general" in text_lower:
-            return ContentRating.G
-        else:
-            return ContentRating.PG
-    
-    def _extract_budget_tier(self, text: str) -> BudgetTier:
-        """Extract budget tier from text"""
-        text_lower = text.lower()
-        if "premium" in text_lower or "high-end" in text_lower:
-            return BudgetTier.PREMIUM
-        elif "high" in text_lower:
-            return BudgetTier.HIGH
-        elif "low" in text_lower or "budget" in text_lower and "high" not in text_lower:
-            return BudgetTier.LOW
-        else:
-            return BudgetTier.MEDIUM
-
-    def _extract_cast_size(self, text: str) -> int:
-        """Extract maximum cast size from text"""
-        # Look for numbers near "cast" or "actor"
-        patterns = [
-            r"(?:cast|actor)[s]?[^0-9]*(\d+)",
-            r"(\d+)[^a-z]*(?:cast|actor)",
-            r"maximum[^0-9]*(\d+)"
-        ]
-        
-        for pattern in patterns:
-            match = re.search(pattern, text, re.IGNORECASE)
-            if match:
-                size = int(match.group(1))
-                if 1 <= size <= 20:  # Reasonable range
-                    return size
-        
-        return 6  # Default reasonable cast size
+    # Removed all extraction methods - using JSON directly from high-quality LLMs
 
     async def _store_output(self, session_id: str, bible: ProjectBible) -> None:
         """Store Project Bible in Redis"""

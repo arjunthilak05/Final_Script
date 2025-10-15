@@ -111,7 +111,9 @@ class RuntimePlanningGrid:
 class Station11RuntimePlanning:
     """Station 11: Runtime Planning Builder"""
 
-    def __init__(self):
+    def __init__(self, session_id: str = None, output_dir: str = "outputs"):
+        self.session_id = session_id
+        self.output_dir = output_dir
         self.openrouter_agent = OpenRouterAgent()
         self.redis_client = RedisClient()
         self.settings = Settings()
@@ -649,7 +651,10 @@ class Station11RuntimePlanning:
         """Generate formatted outputs"""
         
         # Create output directory
-        output_dir = Path(f"outputs")
+        if self.output_dir:
+            output_dir = Path(self.output_dir)
+        else:
+            output_dir = Path(f"outputs")
         output_dir.mkdir(parents=True, exist_ok=True)
         
         # Generate TXT output

@@ -56,8 +56,9 @@ class AudioDifferentiation:
     recognition_cue: str
 
 class Station13MultiworldTimeline:
-    def __init__(self, session_id: str):
+    def __init__(self, session_id: str, output_dir: str = "outputs"):
         self.session_id = session_id
+        self.output_dir = output_dir
         self.redis_client = RedisClient()
         self.openrouter = OpenRouterAgent()
         self.station_name = "station_13_multiworld_timeline"
@@ -808,7 +809,7 @@ Expected JSON format:
                 print("ℹ️  Single world/timeline detected - minimal processing\n")
                 
                 # Still export files but with minimal content
-                output_dir = "outputs"
+                output_dir = self.output_dir
                 os.makedirs(output_dir, exist_ok=True)
                 
                 base_filename = f"station13_multiworld_{self.session_id}"
@@ -874,7 +875,7 @@ Expected JSON format:
                 
                 # Export outputs
                 print("💾 Exporting outputs...")
-                output_dir = "outputs"
+                output_dir = self.output_dir
                 os.makedirs(output_dir, exist_ok=True)
                 
                 base_filename = f"station13_multiworld_{self.session_id}"

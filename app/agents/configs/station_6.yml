@@ -2,7 +2,7 @@
 
 model: "z-ai/glm-4.5"
 temperature: 0.7
-max_tokens: 3000
+max_tokens: 4000
 
 prompts:
   main: |
@@ -11,59 +11,91 @@ prompts:
     PROJECT CONTEXT:
     {project_context}
 
-    Create a comprehensive Master Style Guide with these sections:
+    Return this exact JSON structure with complete Master Style Guide:
 
-    1. LANGUAGE RULES SYSTEM:
-       - Vocabulary ceiling and forbidden words
-       - Preferred alternatives dictionary
-       - Max sentence length
-       - Complexity ratios
-       - Technical term protocols
-       - Narrator voice traits
-       - Tense consistency rules
-       - Transition phrases
+    ```json
+    {{
+      "language_rules": {{
+        "vocabulary_ceiling": "Age-appropriate vocabulary level description",
+        "forbidden_words": ["word1", "word2"],
+        "preferred_alternatives": {{"avoid_word": "use_instead"}},
+        "max_sentence_length": 25,
+        "complexity_ratios": {{"simple": 0.6, "medium": 0.3, "complex": 0.1}},
+        "technical_term_protocols": ["protocol1", "protocol2"],
+        "narrator_voice_traits": ["trait1", "trait2"],
+        "tense_consistency_rules": ["rule1", "rule2"],
+        "transition_phrases": ["phrase1", "phrase2"]
+      }},
+      "dialect_accent_map": {{
+        "character_voices": [
+          {{
+            "character_name": "Character Name",
+            "voice_signature": "Voice description",
+            "accent_traits": ["trait1", "trait2"],
+            "vocabulary_level": "Level description",
+            "speech_patterns": ["pattern1", "pattern2"],
+            "emotional_range": "Range description",
+            "code_switching_triggers": ["trigger1", "trigger2"]
+          }}
+        ],
+        "regional_markers": {{"region": ["marker1", "marker2"]}},
+        "pronunciation_guide": {{"word": "pronunciation"}},
+        "voice_evolution_rules": ["rule1", "rule2"],
+        "cultural_speech_patterns": {{"culture": ["pattern1", "pattern2"]}}
+      }},
+      "audio_conventions": {{
+        "scene_transitions": [
+          {{
+            "convention_type": "Type",
+            "audio_signature": "Signature description",
+            "usage_rules": ["rule1", "rule2"],
+            "timing_guidelines": "Guidelines",
+            "integration_notes": "Notes"
+          }}
+        ],
+        "temporal_markers": [
+          {{
+            "convention_type": "Time marker type",
+            "audio_signature": "Signature",
+            "usage_rules": ["rule1"],
+            "timing_guidelines": "Guidelines",
+            "integration_notes": "Notes"
+          }}
+        ],
+        "environmental_signatures": {{"location": "audio signature"}},
+        "silence_protocols": ["protocol1", "protocol2"],
+        "perspective_shift_cues": ["cue1", "cue2"]
+      }},
+      "dialogue_principles": {{
+        "naturalism_balance": "Balance description",
+        "character_id_frequency": "Frequency guidelines",
+        "subtext_conversion_ratio": "Ratio description",
+        "interruption_protocols": ["protocol1", "protocol2"],
+        "exposition_integration_methods": ["method1", "method2"],
+        "emotional_expression_guidelines": ["guideline1", "guideline2"],
+        "multi_character_management": ["technique1", "technique2"]
+      }},
+      "narration_style": {{
+        "narrator_personality": "Personality description",
+        "activation_triggers": ["trigger1", "trigger2"],
+        "knowledge_scope": "Scope description",
+        "emotional_involvement_level": "Level description",
+        "reliability_level": "Reliability description",
+        "voice_characteristics": ["characteristic1", "characteristic2"],
+        "screenplay_integration": ["integration1", "integration2"]
+      }},
+      "sonic_signature": {{
+        "main_theme_variations": ["variation1", "variation2"],
+        "character_musical_signatures": {{"character": "signature"}},
+        "emotional_audio_palette": {{"emotion": "audio description"}},
+        "environmental_soundscapes": {{"environment": "soundscape"}},
+        "recurring_audio_elements": ["element1", "element2"],
+        "motif_applications": ["application1", "application2"]
+      }}
+    }}
+    ```
 
-    2. DIALECT & ACCENT MAP:
-       - Character voice specifications
-       - Regional markers
-       - Pronunciation guide
-       - Voice evolution rules
-       - Cultural speech patterns
-
-    3. AUDIO CONVENTIONS FRAMEWORK:
-       - Scene transitions audio signatures
-       - Temporal markers
-       - Environmental signatures
-       - Silence protocols
-       - Perspective shift cues
-
-    4. DIALOGUE PRINCIPLES:
-       - Naturalism balance
-       - Character ID frequency
-       - Subtext conversion ratio
-       - Interruption protocols
-       - Exposition integration methods
-       - Emotional expression guidelines
-       - Multi-character management
-
-    5. NARRATION STYLE (if applicable):
-       - Narrator personality
-       - Activation triggers
-       - Knowledge scope
-       - Emotional involvement level
-       - Reliability level
-       - Voice characteristics
-       - Screenplay integration
-
-    6. SONIC SIGNATURE:
-       - Main theme variations
-       - Character musical signatures
-       - Emotional audio palette
-       - Environmental soundscapes
-       - Recurring audio elements
-       - Motif applications
-
-    Provide detailed, production-ready guidelines for each section.
+    CRITICAL: Return ONLY valid JSON. No explanatory text before or after.
 
 
 

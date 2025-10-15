@@ -153,11 +153,13 @@ class RevealMatrix:
 
 class Station10NarrativeRevealStrategy:
     """Station 10: Narrative Reveal Strategy Builder"""
-    
-    def __init__(self):
+
+    def __init__(self, session_id: str = None, output_dir: str = "outputs"):
         self.openrouter_agent = OpenRouterAgent()
         self.redis_client = RedisClient()
         self.settings = Settings()
+        self.session_id = session_id
+        self.output_dir = output_dir
     
     async def initialize(self):
         """Initialize the station - MUST be called before process()"""
@@ -844,19 +846,22 @@ class Station10NarrativeRevealStrategy:
     async def _generate_outputs(self, reveal_matrix: RevealMatrix, session_id: str) -> Dict[str, Any]:
         """Generate formatted outputs"""
         
-        # Create output directory
-        output_dir = Path(f"outputs/{session_id}/station_10")
+        # Use output_dir from instance or create default
+        if self.output_dir:
+            output_dir = Path(self.output_dir)
+        else:
+            output_dir = Path(f"outputs/{session_id}")
         output_dir.mkdir(parents=True, exist_ok=True)
-        
+
         # Generate TXT output
         txt_output = self._format_txt_output(reveal_matrix)
-        txt_path = output_dir / "reveal_matrix.txt"
+        txt_path = output_dir / f"station10_reveal_matrix_{session_id}.txt"
         with open(txt_path, 'w', encoding='utf-8') as f:
             f.write(txt_output)
-        
+
         # Generate JSON output
         json_output = self._format_json_output(reveal_matrix)
-        json_path = output_dir / "reveal_matrix.json"
+        json_path = output_dir / f"station10_reveal_matrix_{session_id}.json"
         with open(json_path, 'w', encoding='utf-8') as f:
             # Custom JSON encoder to handle enums
             class EnumEncoder(json.JSONEncoder):

@@ -1,5 +1,6 @@
 import httpx
 import json
+import asyncio
 from typing import Dict, Any, List
 from app.config import settings
 
@@ -29,45 +30,72 @@ class OpenRouterAgent:
             "claude-3-haiku": "anthropic/claude-3-haiku"
         }
     
-    async def process_message(self, user_input: str, model_name: str = "qwen-72b") -> str:
-        """Process a user message using OpenRouter"""
-        try:
-            # Get the actual model ID
-            model_id = self.available_models.get(model_name, self.available_models["qwen-72b"])
-            
-            # Create system message based on model
-            system_message = self._get_system_message(model_name)
-            
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json",
-                "HTTP-Referer": "https://github.com/your-repo",
-                "X-Title": "Audiobook Production System"
-            }
-            
-            data = {
-                "model": model_id,
-                "messages": [
-                    {"role": "system", "content": system_message},
-                    {"role": "user", "content": user_input}
-                ],
-                "temperature": 0.7,
-                "max_tokens": 1000
-            }
-            
-            async with httpx.AsyncClient() as client:
-                response = await client.post(
-                    f"{self.base_url}/chat/completions",
-                    headers=headers,
-                    json=data,
-                    timeout=60.0
-                )
-                response.raise_for_status()
-                result = response.json()
-                return result["choices"][0]["message"]["content"]
-            
-        except Exception as e:
-            return f"I'm sorry, I encountered an error: {str(e)}"
+    async def process_message(self, user_input: str, model_name: str = "qwen-72b", max_tokens: int = 3000) -> str:
+        """Process a user message using OpenRouter with rate limiting and retry logic"""
+        max_retries = 3
+        base_delay = 2.0  # Base delay in seconds
+        
+        for attempt in range(max_retries):
+            try:
+                # Add delay between requests to avoid rate limiting
+                if attempt > 0:
+                    delay = base_delay * (2 ** attempt)  # Exponential backoff
+                    await asyncio.sleep(delay)
+                
+                # Get the actual model ID
+                model_id = self.available_models.get(model_name, self.available_models["qwen-72b"])
+                
+                # Create system message based on model
+                system_message = self._get_system_message(model_name)
+                
+                headers = {
+                    "Authorization": f"Bearer {self.api_key}",
+                    "Content-Type": "application/json",
+                    "HTTP-Referer": "https://github.com/your-repo",
+                    "X-Title": "Audiobook Production System"
+                }
+                
+                data = {
+                    "model": model_id,
+                    "messages": [
+                        {"role": "system", "content": system_message},
+                        {"role": "user", "content": user_input}
+                    ],
+                    "temperature": 0.7,
+                    "max_tokens": max_tokens
+                }
+                
+                async with httpx.AsyncClient() as client:
+                    response = await client.post(
+                        f"{self.base_url}/chat/completions",
+                        headers=headers,
+                        json=data,
+                        timeout=60.0
+                    )
+                    
+                    # Handle rate limiting specifically
+                    if response.status_code == 429:
+                        if attempt < max_retries - 1:
+                            continue  # Retry with exponential backoff
+                        else:
+                            raise Exception(f"Rate limited after {max_retries} attempts")
+                    
+                    response.raise_for_status()
+                    result = response.json()
+                    return result["choices"][0]["message"]["content"]
+                
+            except httpx.HTTPStatusError as e:
+                if e.response.status_code == 429 and attempt < max_retries - 1:
+                    continue  # Retry on rate limit
+                else:
+                    return f"I'm sorry, I encountered an error: {str(e)}"
+            except Exception as e:
+                if attempt < max_retries - 1:
+                    continue  # Retry on other errors
+                else:
+                    return f"I'm sorry, I encountered an error: {str(e)}"
+        
+        return f"I'm sorry, I encountered an error after {max_retries} attempts"
     
     def _get_system_message(self, model_name: str) -> str:
         """Get appropriate system message for each model"""

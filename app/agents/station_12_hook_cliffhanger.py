@@ -72,12 +72,13 @@ class TensionPoint:
     audio_intensity: str  # recommended audio approach
 
 class Station12HookCliffhanger:
-    def __init__(self, session_id: str):
+    def __init__(self, session_id: str, output_dir: str = "outputs"):
         self.session_id = session_id
+        self.output_dir = output_dir
         self.redis_client = RedisClient()
         self.openrouter = OpenRouterAgent()
         self.station_name = "station_12_hook_cliffhanger"
-        
+
         # Cliffhanger types catalog
         self.cliffhanger_types = [
             "Question", "Danger", "Revelation", "Choice", "Arrival",
@@ -641,13 +642,12 @@ Expected JSON format:
             
             # Export outputs
             print("💾 Exporting outputs...")
-            output_dir = "outputs"
-            os.makedirs(output_dir, exist_ok=True)
-            
+            os.makedirs(self.output_dir, exist_ok=True)
+
             base_filename = f"station12_hook_cliffhanger_{self.session_id}"
-            
-            txt_path = os.path.join(output_dir, f"{base_filename}.txt")
-            json_path = os.path.join(output_dir, f"{base_filename}.json")
+
+            txt_path = os.path.join(self.output_dir, f"{base_filename}.txt")
+            json_path = os.path.join(self.output_dir, f"{base_filename}.json")
             # PDF export removed
             # pdf_path = os.path.join(output_dir, f"{base_filename}.pdf")
 

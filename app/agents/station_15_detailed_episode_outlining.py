@@ -83,7 +83,7 @@ class Station15DetailedEpisodeOutlining:
     with strict Pydantic validation for consistent data structure.
     """
     
-    def __init__(self, session_id: str):
+    def __init__(self, session_id: str, output_dir: str = "outputs"):
         """
         Initialize Station 15 Agent
         
@@ -91,6 +91,7 @@ class Station15DetailedEpisodeOutlining:
             session_id: Unique session identifier
         """
         self.session_id = session_id
+        self.output_dir = output_dir
         self.openrouter = OpenRouterAgent()
         self.redis_client = RedisClient()
         self.debug_mode = False
@@ -394,7 +395,7 @@ Start your response with {{ and end with }}. Include nothing else.
             
             # Export outputs
             print("💾 Exporting detailed outlines...")
-            output_dir = "outputs"
+            output_dir = self.output_dir
             os.makedirs(output_dir, exist_ok=True)
             
             base_filename = f"station15_episode_1_{self.session_id}"

@@ -20,8 +20,9 @@ from app.redis_client import RedisClient
 
 
 class Station18EvergreenCheck:
-    def __init__(self, session_id: str):
+    def __init__(self, session_id: str, output_dir: str = "outputs"):
         self.session_id = session_id
+        self.output_dir = output_dir
         self.redis_client = RedisClient()
         self.openrouter = OpenRouterAgent()
         self.station_name = "station_18_evergreen_check"
@@ -619,7 +620,7 @@ Expected JSON format:
 
             # Export outputs
             print("💾 Exporting evergreen validation report...")
-            output_dir = "outputs"
+            output_dir = self.output_dir
             os.makedirs(output_dir, exist_ok=True)
 
             base_filename = f"station18_evergreen_check_{self.session_id}"

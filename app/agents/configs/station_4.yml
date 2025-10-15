@@ -2,11 +2,11 @@
 
 model: "z-ai/glm-4.5"
 temperature: 0.7
-max_tokens: 3000
+max_tokens: 16000
 
 prompts:
   reference_gathering: |
-    You are the Reference Curator and Seed Extractor for an audio drama development system.
+    You are the Reference Curator for audio drama development.
 
     PROJECT CONTEXT:
     Title: {working_title}
@@ -14,145 +14,81 @@ prompts:
     Secondary Genres: {secondary_genres}
     Target Age Range: {target_age_range}
     Content Rating: {content_rating}
-    Tone Profile: {tone_profile}
-    World Setting: {world_setting}
-    Series Scale: {series_scale}
 
-    TASK 1: REFERENCE GATHERING
+    Identify 20-25 cross-media references. Return ONLY valid JSON:
 
-    Based on the project requirements above, identify 20-25 cross-media references that could provide valuable storytelling techniques. Your selections must be:
+    ```json
+    {{
+      "references": [
+        {{
+          "title": "Exact title",
+          "medium": "Audio Drama or Film or TV or Literature or Podcast or Interactive",
+          "release_year": "2020",
+          "creator": "Creator name",
+          "genre_relevance": "How it matches our genre",
+          "age_appropriateness": "Why it fits our rating",
+          "why_selected": "2-3 sentences on storytelling value"
+        }}
+      ]
+    }}
+    ```
 
-    1. **GENRE-APPROPRIATE**: Match or complement the primary/secondary genres
-    2. **AGE-APPROPRIATE**: Suitable for the target age range and content rating
-    3. **AUDIO-RELEVANT**: Have elements that translate well to audio-only format
-    4. **TACTICALLY RICH**: Contain specific techniques we can extract and adapt
-
-    REQUIRED DISTRIBUTION:
-    - 5-7 Successful Audio Dramas (podcasts, radio plays, audio series)
-    - 6-8 Film/TV with Relevant Narrative Elements
-    - 4-6 Literature with Audio Potential (especially dialogue-heavy works)
-    - 3-4 Podcasts with Strong Storytelling Techniques
-    - 2-3 Interactive Media/Games (for narrative structure ideas)
-
-    For each reference, provide:
-
-    **TITLE**: [Exact title]
-    **MEDIUM**: [Audio Drama/Film/TV/Literature/Podcast/Interactive]
-    **RELEASE YEAR**: [Year if known]
-    **CREATOR**: [Key creator if known]
-    **GENRE RELEVANCE**: [How it matches our genre blend - be specific]
-    **AGE APPROPRIATENESS**: [Why it fits our content rating and target age]
-    **WHY SELECTED**: [2-3 sentences explaining what specific storytelling elements make this valuable for our audio drama project]
-
-    SELECTION CRITERIA PRIORITIES:
-    1. **Audio Storytelling Excellence**: References with masterful use of dialogue, voice acting, sound design
-    2. **Character Development Techniques**: Strong character arcs that work in audio format
-    3. **Tension/Pacing Mastery**: References that build and maintain audience engagement
-    4. **Genre Innovation**: Creative approaches to blending genres similar to our project
-    5. **Structural Sophistication**: Interesting narrative structures (non-linear, multiple perspectives, etc.)
-
-    Focus on references that are:
-    - Critically acclaimed or audience favorites
-    - Known for specific storytelling innovations
-    - Rich in techniques transferable to audio drama
-    - Appropriate for professional development team analysis
-
-    Provide exactly 20-25 references with full details for each.
+    CRITICAL: Return array of 20-25 references as valid JSON only.
 
   tactical_extraction: |
-    You are extracting specific storytelling tactics from references for audio drama development.
+    Extract storytelling tactics from this reference for audio drama.
 
-    PROJECT CONTEXT: {project_context}
+    PROJECT: {project_context}
+    REFERENCE: {reference_details}
 
-    REFERENCE TO ANALYZE: {reference_details}
+    Return ONLY valid JSON:
 
-    TASK 2: TACTICAL EXTRACTION
+    ```json
+    {{
+      "storytelling_tactic": "Technique name and description",
+      "pitfall_to_avoid": "What to avoid and why",
+      "audio_technique": "Audio-specific technique",
+      "applicability_score": 0.85,
+      "implementation_notes": "How to apply this"
+    }}
+    ```
 
-    For this reference, extract exactly THREE elements:
-
-    **1. STORYTELLING TACTIC THAT WORKS**
-    Identify one specific technique, approach, or method that made this reference successful. Focus on:
-    - Concrete, actionable storytelling choices
-    - Techniques that contributed to audience engagement
-    - Methods that could be adapted to different contexts
-    - Specific structural or character development approaches
-
-    **2. PITFALL TO AVOID**  
-    Identify one common failure mode, mistake, or weakness either:
-    - Present in this reference that we should avoid
-    - Common in this genre/medium that this reference successfully avoided
-    - Known challenge in adapting this type of content to audio format
-
-    **3. AUDIO-SPECIFIC TECHNIQUE**
-    Identify one technique that specifically leverages sound, voice, or audio-only storytelling:
-    - How dialogue carries narrative weight
-    - Use of sound effects or ambient audio
-    - Voice acting techniques that convey emotion/information
-    - Audio pacing or rhythm strategies
-    - Ways to convey visual information through sound
-
-    For each extraction, provide:
-    - **TECHNIQUE NAME**: [Brief, memorable name]
-    - **DESCRIPTION**: [2-3 sentences explaining the technique]
-    - **WHY IT WORKS**: [1-2 sentences on effectiveness]
-    - **AUDIO ADAPTATION**: [How to adapt this for audio-only format]
-    - **APPLICABILITY SCORE**: [Rate 0.0-1.0 how well this applies to our specific project]
-
-    Focus on techniques that are:
-    - Specific and actionable
-    - Transferable to our genre/tone combination
-    - Suitable for our target age range
-    - Practical for audio drama production
+    CRITICAL: Return valid JSON only.
 
   seed_generation: |
-    You are generating story seeds for an audio drama production.
+    Generate 65 story seeds for audio drama production.
 
-    PROJECT CONTEXT:
-    {project_context}
+    PROJECT: {project_context}
+    TACTICS: {available_tactics}
+    CHARACTERS: {main_characters}
 
-    AVAILABLE TACTICS:
-    {available_tactics}
+    IMPORTANT: Use ONLY the actual character names provided in CHARACTERS. Do not invent new character names.
 
-    CRITICAL INSTRUCTIONS:
-    1. You MUST use the EXACT markers shown below
-    2. You MUST generate exactly 65 total seeds (30+20+10+5)
-    3. Each seed MUST use the SEED_START and SEED_END markers
-    4. DO NOT modify or skip the category markers
+    Return ONLY valid JSON with exactly 30+20+10+5 seeds:
 
-    REQUIRED FORMAT FOR EACH SEED:
+    ```json
+    {{
+      "micro_moments": [
+        {{
+          "title": "Seed title",
+          "description": "2-3 sentences",
+          "audio_considerations": "Audio-specific notes",
+          "difficulty": "Easy or Medium or Hard",
+          "characters": ["Character 1", "Character 2"],
+          "setting": "Setting description",
+          "runtime": "30-90 seconds",
+          "tags": ["Genre tag 1", "Genre tag 2"],
+          "source_reference": "Reference title",
+          "adaptation_notes": "How to adapt for audio"
+        }}
+      ],
+      "episode_beats": [ /* 20 seeds with same structure */ ],
+      "season_arcs": [ /* 10 seeds with same structure */ ],
+      "series_defining": [ /* 5 seeds with same structure */ ]
+    }}
+    ```
 
-    SEED_START
-    TITLE: [Title Here]
-    DESCRIPTION: [2-3 sentences]
-    AUDIO_CONSIDERATIONS: [Audio notes]
-    DIFFICULTY: [Easy/Medium/Hard]
-    CHARACTERS: [Character list]
-    SETTING: [Setting description]
-    RUNTIME: [Duration]
-    TAGS: [Genre tags]
-    SOURCE: [Reference title]
-    ADAPTATION: [Audio adaptation notes]
-    SEED_END
-
-    OUTPUT STRUCTURE (USE THESE EXACT MARKERS):
-
-    ==MICRO_MOMENTS_START==
-    [Generate exactly 30 seeds here using SEED_START/SEED_END format]
-    ==MICRO_MOMENTS_END==
-
-    ==EPISODE_BEATS_START==
-    [Generate exactly 20 seeds here using SEED_START/SEED_END format] 
-    ==EPISODE_BEATS_END==
-
-    ==SEASON_ARCS_START==
-    [Generate exactly 10 seeds here using SEED_START/SEED_END format]
-    ==SEASON_ARCS_END==
-
-    ==SERIES_DEFINING_START==
-    [Generate exactly 5 seeds here using SEED_START/SEED_END format]
-    ==SERIES_DEFINING_END==
-
-    IMPORTANT: The markers ==MICRO_MOMENTS_START==, ==MICRO_MOMENTS_END==, etc. MUST appear in your response EXACTLY as shown.
+    CRITICAL: Generate exactly 30 micro_moments, 20 episode_beats, 10 season_arcs, 5 series_defining. JSON only.
 
 
 

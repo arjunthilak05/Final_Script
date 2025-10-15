@@ -9,6 +9,7 @@ Outputs: Seed Bank Document (65 story elements across 4 categories)
 Human Gate: IMPORTANT - Seed bank affects all creative development moving forward
 """
 
+import asyncio
 import json
 import re
 import logging
@@ -21,6 +22,7 @@ from app.openrouter_agent import OpenRouterAgent
 from app.redis_client import RedisClient
 from app.config import Settings
 from app.agents.config_loader import load_station_config
+from app.agents.json_extractor import extract_json
 # from app.pdf_exporter import Station4PDFExporter  # Not implemented
 
 logger = logging.getLogger(__name__)
@@ -390,7 +392,8 @@ IMPORTANT: The markers ==MICRO_MOMENTS_START==, ==MICRO_MOMENTS_END==, etc. MUST
                 # From Station 1
                 "original_seed": station1.get("original_seed", ""),
                 "scale_choice": station1.get("recommended_option", "B"),
-                "initial_expansion": station1.get("initial_expansion", {})
+                "initial_expansion": station1.get("initial_expansion", {}),
+                "main_characters": station1.get("initial_expansion", {}).get("main_characters", [])
             }
             
             return project_data
@@ -406,10 +409,12 @@ IMPORTANT: The markers ==MICRO_MOMENTS_START==, ==MICRO_MOMENTS_END==, etc. MUST
             context = self._format_project_context(project_data)
             prompt = self.reference_prompt.format(**context)
             
-            # Get LLM response
+            # Get LLM response with small delay to avoid rate limiting
+            await asyncio.sleep(1.0)  # 1 second delay between API calls
             response = await self.openrouter.process_message(
                 prompt,
                 model_name=self.config.model,
+                max_tokens=self.config.max_tokens
             )
             
             # Parse references from response
@@ -436,9 +441,11 @@ IMPORTANT: The markers ==MICRO_MOMENTS_START==, ==MICRO_MOMENTS_END==, etc. MUST
                 Generate {25 - len(references)} MORE references now to reach the minimum of 20.
                 """
                 
+                await asyncio.sleep(1.0)  # 1 second delay between API calls
                 retry_response = await self.openrouter.process_message(
                     retry_prompt,
-                    model_name="qwen-72b",
+                    model_name=self.config.model,
+                    max_tokens=self.config.max_tokens
                 )
                 
                 additional_refs = self._parse_references_response(retry_response)
@@ -485,9 +492,11 @@ WHY SELECTED: {reference.why_selected}
                     )
                     
                     # Get LLM response
+                    await asyncio.sleep(1.0)  # 1 second delay between API calls
                     response = await self.openrouter.process_message(
                         prompt,
-                        model_name="qwen-72b",
+                        model_name=self.config.model,
+                        max_tokens=self.config.max_tokens
                     )
                     
                     # Parse extraction from response
@@ -504,7 +513,7 @@ WHY SELECTED: {reference.why_selected}
             
         except Exception as e:
             logger.error(f"Failed to extract tactics: {str(e)}")
-            return self._get_fallback_extractions(references)
+            raise ValueError(f"Station 4 tactical extraction failed - no fallback allowed: {str(e)}")
 
 
     def _format_project_context(self, project_data: Dict[str, Any]) -> Dict[str, Any]:
@@ -528,166 +537,61 @@ WHY SELECTED: {reference.why_selected}
         }
 
     def _parse_references_response(self, response: str) -> List[MediaReference]:
-        """Parse references from LLM response"""
-        references = []
-        
+        """Parse references from JSON response"""
         try:
-            # Split response into reference blocks
-            reference_blocks = re.split(r'\n\n(?=\*\*TITLE\*\*|\d+\.|TITLE:)', response)
-            
-            for block in reference_blocks:
-                if not block.strip():
-                    continue
-                    
-                reference = self._parse_single_reference(block)
-                if reference:
-                    references.append(reference)
-            
+            data = extract_json(response)
+            references = []
+
+            for ref_data in data.get("references", []):
+                medium_str = ref_data.get("medium", "Audio Drama")
+
+                # Map medium string to enum
+                if "Audio Drama" in medium_str:
+                    medium = MediaType.AUDIO_DRAMA
+                elif "Film" in medium_str or "TV" in medium_str:
+                    medium = MediaType.FILM_TV
+                elif "Literature" in medium_str:
+                    medium = MediaType.LITERATURE
+                elif "Podcast" in medium_str:
+                    medium = MediaType.PODCAST
+                elif "Interactive" in medium_str:
+                    medium = MediaType.INTERACTIVE
+                else:
+                    medium = MediaType.AUDIO_DRAMA
+
+                references.append(MediaReference(
+                    title=ref_data["title"],
+                    medium=medium,
+                    genre_relevance=ref_data.get("genre_relevance", "Relevant"),
+                    age_appropriateness=ref_data.get("age_appropriateness", "Appropriate"),
+                    why_selected=ref_data.get("why_selected", "Selected for techniques"),
+                    release_year=ref_data.get("release_year"),
+                    creator=ref_data.get("creator")
+                ))
+
             return references
-            
+
         except Exception as e:
-            logger.error(f"Failed to parse references: {str(e)}")
+            logger.error(f"Failed to parse references JSON: {str(e)}")
             return []
 
-    def _parse_single_reference(self, block: str) -> Optional[MediaReference]:
-        """Parse a single reference from text block"""
-        try:
-            # Extract fields using regex patterns
-            title = self._extract_field(block, ["TITLE", "Title"])
-            medium_str = self._extract_field(block, ["MEDIUM", "Medium"])
-            release_year = self._extract_field(block, ["RELEASE YEAR", "Year"])
-            creator = self._extract_field(block, ["CREATOR", "Creator"])
-            genre_relevance = self._extract_field(block, ["GENRE RELEVANCE", "Genre"])
-            age_appropriateness = self._extract_field(block, ["AGE APPROPRIATENESS", "Age"])
-            why_selected = self._extract_field(block, ["WHY SELECTED", "Why"])
-            
-            if not title or not medium_str:
-                return None
-            
-            # Map medium string to enum
-            medium = self._parse_medium_type(medium_str)
-            
-            return MediaReference(
-                title=title,
-                medium=medium,
-                genre_relevance=genre_relevance or "Not specified",
-                age_appropriateness=age_appropriateness or "Appropriate",
-                why_selected=why_selected or "Selected for storytelling techniques",
-                release_year=release_year,
-                creator=creator
-            )
-            
-        except Exception as e:
-            logger.warning(f"Failed to parse reference block: {str(e)}")
-            return None
-
-    def _parse_medium_type(self, medium_str: str) -> MediaType:
-        """Parse medium string to MediaType enum"""
-        medium_lower = medium_str.lower()
-        
-        if any(term in medium_lower for term in ["audio", "drama", "radio"]):
-            return MediaType.AUDIO_DRAMA
-        elif any(term in medium_lower for term in ["film", "tv", "television", "movie"]):
-            return MediaType.FILM_TV
-        elif any(term in medium_lower for term in ["book", "novel", "literature"]):
-            return MediaType.LITERATURE
-        elif "podcast" in medium_lower:
-            return MediaType.PODCAST
-        elif any(term in medium_lower for term in ["game", "interactive"]):
-            return MediaType.INTERACTIVE
-        else:
-            return MediaType.FILM_TV  # Default fallback
-
-    def _extract_field(self, text: str, field_names: List[str]) -> Optional[str]:
-        """Extract field content from text using multiple possible field names"""
-        for field_name in field_names:
-            patterns = [
-                rf"\*\*{field_name}\*\*[:\s]*([^\n]*)",
-                rf"{field_name}[:\s]*([^\n]*)",
-                rf"\*{field_name}\*[:\s]*([^\n]*)"
-            ]
-            
-            for pattern in patterns:
-                match = re.search(pattern, text, re.IGNORECASE)
-                if match:
-                    content = match.group(1).strip()
-                    # Clean up formatting
-                    content = re.sub(r'^\[|\]$', '', content)  # Remove brackets
-                    if content and content != "Unknown" and content != "N/A":
-                        return content
-        
-        return None
-
     def _parse_extraction_response(self, response: str, reference_title: str) -> Optional[TacticalExtraction]:
-        """Parse tactical extraction from LLM response"""
+        """Parse tactical extraction from JSON response"""
         try:
-            # Extract the three main components
-            storytelling_tactic = self._extract_technique_section(response, ["STORYTELLING TACTIC", "TACTIC THAT WORKS"])
-            pitfall_to_avoid = self._extract_technique_section(response, ["PITFALL TO AVOID", "PITFALL"])
-            audio_technique = self._extract_technique_section(response, ["AUDIO-SPECIFIC TECHNIQUE", "AUDIO TECHNIQUE"])
-            
-            # Extract applicability score
-            score_match = re.search(r"APPLICABILITY SCORE[:\s]*([0-9.]+)", response, re.IGNORECASE)
-            applicability_score = float(score_match.group(1)) if score_match else 0.7
-            
-            # Extract implementation notes
-            impl_notes = self._extract_field(response, ["IMPLEMENTATION NOTES", "NOTES"]) or "Standard implementation"
-            
-            if not all([storytelling_tactic, pitfall_to_avoid, audio_technique]):
-                logger.warning(f"Incomplete extraction for {reference_title}")
-                # Create fallback extraction instead of returning None
-                return TacticalExtraction(
-                    reference_title=reference_title,
-                    storytelling_tactic=storytelling_tactic or "Character-driven narrative development",
-                    pitfall_to_avoid=pitfall_to_avoid or "Avoid over-exposition without character development", 
-                    audio_technique=audio_technique or "Strategic use of dialogue and sound design",
-                    applicability_score=0.5,  # Default score
-                    implementation_notes="Fallback extraction - requires further development"
-                )
-            
+            data = extract_json(response)
+
             return TacticalExtraction(
                 reference_title=reference_title,
-                storytelling_tactic=storytelling_tactic,
-                pitfall_to_avoid=pitfall_to_avoid,
-                audio_technique=audio_technique,
-                applicability_score=min(max(applicability_score, 0.0), 1.0),  # Clamp to 0.0-1.0
-                implementation_notes=impl_notes
+                storytelling_tactic=data.get("storytelling_tactic", "Narrative technique"),
+                pitfall_to_avoid=data.get("pitfall_to_avoid", "Common pitfall"),
+                audio_technique=data.get("audio_technique", "Audio-specific technique"),
+                applicability_score=float(data.get("applicability_score", 0.7)),
+                implementation_notes=data.get("implementation_notes", "Standard implementation")
             )
-            
-        except Exception as e:
-            logger.warning(f"Failed to parse extraction for {reference_title}: {str(e)}")
-            return None
 
-    def _extract_technique_section(self, text: str, section_names: List[str]) -> Optional[str]:
-        """Extract a complete technique section with all its details"""
-        for section_name in section_names:
-            # Try multiple patterns for section extraction
-            patterns = [
-                rf"\*\*{section_name}\*\*[:\s]*(.*?)(?=\n\n|\n\*\*|\*\*\d+\.|$)",  # Standard pattern
-                rf"{section_name}[:\s]*(.*?)(?=\n\n|\n\*\*|\*\*\d+\.|$)",  # Without bold
-                rf"\*\*{section_name}\*\*.*?DESCRIPTION[:\s]*(.*?)(?=\n\n|\n\*\*|$)",  # With description
-                rf"{section_name}.*?[:\s](.*?)(?=\n\n|\n[A-Z\s]+:|$)"  # More flexible
-            ]
-            
-            for pattern in patterns:
-                match = re.search(pattern, text, re.IGNORECASE | re.DOTALL)
-                if match:
-                    content = match.group(1).strip()
-                    if content and len(content) > 10:  # Must be substantial
-                        # Clean up the content
-                        content = re.sub(r'^\s*[-•]\s*', '', content)  # Remove bullet points
-                        content = re.sub(r'\s+', ' ', content)  # Normalize whitespace
-                        return content
-            
-            # Fallback: look for the section anywhere in the text
-            fallback_pattern = rf"{re.escape(section_name)}.*?([^.\n]*(?:\.[^.\n]*)*)"
-            fallback_match = re.search(fallback_pattern, text, re.IGNORECASE)
-            if fallback_match:
-                content = fallback_match.group(1).strip()
-                if content and len(content) > 10:
-                    return content
-        
-        return None
+        except Exception as e:
+            logger.warning(f"Failed to parse extraction JSON for {reference_title}: {str(e)}")
+            return None
 
     def _format_available_tactics(self, tactical_extractions: List[TacticalExtraction]) -> str:
         """Format tactical extractions for seed generation prompt"""
@@ -703,134 +607,47 @@ TACTIC {i} (from {extraction.reference_title}):
         return tactics_text
 
     def _parse_seeds_response(self, response: str) -> SeedCollection:
-        """Parse seeds using simplified marker-based approach"""
+        """Parse seeds from JSON response"""
         try:
-            # Extract each category using markers
-            micro_moments = self._extract_seeds_by_markers(
-                response, "==MICRO_MOMENTS_START==", "==MICRO_MOMENTS_END=="
-            )
-            episode_beats = self._extract_seeds_by_markers(
-                response, "==EPISODE_BEATS_START==", "==EPISODE_BEATS_END=="
-            )
-            season_arcs = self._extract_seeds_by_markers(
-                response, "==SEASON_ARCS_START==", "==SEASON_ARCS_END=="
-            )
-            series_defining = self._extract_seeds_by_markers(
-                response, "==SERIES_DEFINING_START==", "==SERIES_DEFINING_END=="
-            )
-            
+            data = extract_json(response)
+
+            def parse_seed_list(seeds_data: List[Dict]) -> List[StoryElement]:
+                """Helper to parse list of seed dictionaries"""
+                seeds = []
+                for seed_data in seeds_data:
+                    # Map difficulty string to enum
+                    diff_str = seed_data.get("difficulty", "Medium")
+                    if "Easy" in diff_str:
+                        difficulty = ImplementationDifficulty.EASY
+                    elif "Hard" in diff_str:
+                        difficulty = ImplementationDifficulty.HARD
+                    else:
+                        difficulty = ImplementationDifficulty.MEDIUM
+
+                    seeds.append(StoryElement(
+                        title=seed_data.get("title", "Untitled"),
+                        description=seed_data.get("description", "No description"),
+                        audio_considerations=seed_data.get("audio_considerations", "Standard audio"),
+                        implementation_difficulty=difficulty,
+                        character_requirements=seed_data.get("characters", []),
+                        setting_requirements=seed_data.get("setting", "Standard setting"),
+                        estimated_runtime=seed_data.get("runtime", "2-3 minutes"),
+                        genre_tags=seed_data.get("tags", []),
+                        source_reference=seed_data.get("source_reference", "General"),
+                        adaptation_notes=seed_data.get("adaptation_notes", "Standard adaptation")
+                    ))
+                return seeds
+
             return SeedCollection(
-                micro_moments=micro_moments[:30],  # Limit to expected count
-                episode_beats=episode_beats[:20],
-                season_arcs=season_arcs[:10],
-                series_defining=series_defining[:5]
+                micro_moments=parse_seed_list(data.get("micro_moments", []))[:30],
+                episode_beats=parse_seed_list(data.get("episode_beats", []))[:20],
+                season_arcs=parse_seed_list(data.get("season_arcs", []))[:10],
+                series_defining=parse_seed_list(data.get("series_defining", []))[:5]
             )
-            
+
         except Exception as e:
             logger.error(f"Seed parsing failed: {str(e)}")
             return SeedCollection([], [], [], [])
-
-    def _extract_seeds_by_markers(self, text: str, start_marker: str, end_marker: str) -> List[StoryElement]:
-        """Extract seeds between markers - with lenient end marker handling"""
-        seeds = []
-        
-        # Find content between markers
-        start_idx = text.find(start_marker)
-        end_idx = text.find(end_marker)
-        
-        if start_idx == -1:
-            logger.error(f"❌ CRITICAL: Start marker not found: {start_marker}")
-            logger.error(f"Response preview: {text[:500]}...")
-            raise ValueError(f"CRITICAL: Required start marker {start_marker} not found in LLM response")
-        
-        if end_idx == -1:
-            logger.warning(f"⚠️  End marker not found: {end_marker}")
-            logger.warning(f"Attempting to extract content until end of section or next marker")
-            # Try to find the next category marker as end point
-            next_markers = [
-                "==MICRO_MOMENTS_START==", "==MICRO_MOMENTS_END==",
-                "==EPISODE_BEATS_START==", "==EPISODE_BEATS_END==",
-                "==SEASON_ARCS_START==", "==SEASON_ARCS_END==",
-                "==SERIES_DEFINING_START==", "==SERIES_DEFINING_END=="
-            ]
-            # Find next marker after start
-            potential_ends = []
-            for marker in next_markers:
-                if marker == start_marker or marker == end_marker:
-                    continue
-                idx = text.find(marker, start_idx + len(start_marker))
-                if idx != -1:
-                    potential_ends.append(idx)
-            
-            if potential_ends:
-                end_idx = min(potential_ends)
-                logger.warning(f"Using next marker position as end: {end_idx}")
-            else:
-                # Use end of text
-                end_idx = len(text)
-                logger.warning(f"Using end of text as end marker")
-        
-        content = text[start_idx + len(start_marker):end_idx]
-        
-        # Split by SEED_START/SEED_END markers
-        seed_blocks = re.findall(r'SEED_START(.*?)SEED_END', content, re.DOTALL)
-        
-        for block in seed_blocks:
-            seed = self._parse_single_seed_new(block.strip())
-            if seed:
-                seeds.append(seed)
-        
-        return seeds
-
-    def _parse_single_seed_new(self, block: str) -> Optional[StoryElement]:
-        """Parse a single seed from text block"""
-        try:
-            # Extract fields using simple patterns
-            title = self._extract_field_new(block, "TITLE")
-            description = self._extract_field_new(block, "DESCRIPTION") 
-            audio_considerations = self._extract_field_new(block, "AUDIO_CONSIDERATIONS")
-            difficulty_str = self._extract_field_new(block, "DIFFICULTY")
-            characters = self._extract_field_new(block, "CHARACTERS")
-            setting = self._extract_field_new(block, "SETTING")
-            runtime = self._extract_field_new(block, "RUNTIME")
-            tags_str = self._extract_field_new(block, "TAGS")
-            source = self._extract_field_new(block, "SOURCE")
-            adaptation = self._extract_field_new(block, "ADAPTATION")
-            
-            # Convert difficulty to enum
-            difficulty = ImplementationDifficulty.MEDIUM  # Default
-            if difficulty_str:
-                try:
-                    difficulty = ImplementationDifficulty(difficulty_str.title())
-                except ValueError:
-                    pass
-            
-            # Parse tags list
-            tags = []
-            if tags_str:
-                tags = [tag.strip() for tag in tags_str.split(",")]
-            
-            # Parse characters list  
-            char_list = []
-            if characters:
-                char_list = [char.strip() for char in characters.split(",")]
-            
-            return StoryElement(
-                title=title or "Untitled Seed",
-                description=description or "Description not provided",
-                audio_considerations=audio_considerations or "Standard audio production",
-                implementation_difficulty=difficulty,
-                character_requirements=char_list,
-                setting_requirements=setting or "Standard setting",
-                estimated_runtime=runtime or "2-3 minutes",
-                genre_tags=tags,
-                source_reference=source or "Unknown reference",
-                adaptation_notes=adaptation or "Standard adaptation"
-            )
-            
-        except Exception as e:
-            logger.warning(f"Failed to parse seed: {str(e)}")
-            return None
 
     def _extract_field_new(self, text: str, field_name: str) -> str:
         """Extract a field value from text"""
@@ -918,7 +735,7 @@ TACTIC {i} (from {extraction.reference_title}):
             
             logger.info(f"Successfully parsed {len(seeds)} seeds from {category_name}")
             
-            # Don't pad with fallbacks - let retry mechanism handle insufficient seeds
+            # No fallbacks - retry mechanism must generate sufficient seeds
             logger.info(f"Parsed {len(seeds)} seeds from {category_name} (target: {expected_count})")
             
             return seeds[:expected_count]  # Trim to exact count
@@ -1299,36 +1116,7 @@ TACTIC {i} (from {extraction.reference_title}):
             if actual != expected:
                 logger.warning(f"Seed count mismatch in {category}: expected {expected}, got {actual}")
 
-    # Fallback methods for error recovery
-    
-    def _get_fallback_references(self, project_data: Dict[str, Any]) -> List[MediaReference]:
-        """Fallback references if LLM processing fails"""
-        return [
-            MediaReference("The Magnus Archives", MediaType.AUDIO_DRAMA, "Horror anthology with excellent audio design", "Adult-appropriate", "Masterful use of found audio and first-person narration"),
-            MediaReference("Serial", MediaType.PODCAST, "True crime investigative storytelling", "Teen and adult appropriate", "Compelling episodic structure and narrative hooks"),
-            MediaReference("The Left Right Game", MediaType.AUDIO_DRAMA, "Horror mystery with strong character development", "Adult-appropriate", "Excellent pacing and atmospheric sound design"),
-            MediaReference("Limetown", MediaType.AUDIO_DRAMA, "Investigative mystery podcast", "Teen and adult appropriate", "Documentary-style audio storytelling"),
-            MediaReference("Alice Isn't Dead", MediaType.AUDIO_DRAMA, "Surreal road trip horror", "Adult-appropriate", "First-person narration and atmospheric storytelling"),
-        ]
-
-    def _get_fallback_extractions(self, references: List[MediaReference]) -> List[TacticalExtraction]:
-        """Fallback tactical extractions if LLM processing fails"""
-        fallback_extractions = []
-        
-        for ref in references[:5]:  # Create extractions for first 5 references
-            extraction = TacticalExtraction(
-                reference_title=ref.title,
-                storytelling_tactic="Character-driven narrative progression",
-                pitfall_to_avoid="Over-reliance on exposition without character development",
-                audio_technique="Strategic use of ambient sound to establish mood",
-                applicability_score=0.7,
-                implementation_notes="Adapt dialogue-heavy scenes for audio format"
-            )
-            fallback_extractions.append(extraction)
-        
-        return fallback_extractions
-
-    # Removed hardcoded fallback methods - using LLM retry mechanism instead
+    # No fallback methods - all content must be LLM-generated
 
     async def _generate_seeds_with_retry(self, tactical_extractions: List[TacticalExtraction], project_data: Dict[str, Any], max_retries: int = 3) -> SeedCollection:
         """Generate seeds with progressive approach"""
@@ -1346,42 +1134,26 @@ TACTIC {i} (from {extraction.reference_title}):
             except Exception as e:
                 logger.warning(f"Batch generation attempt {attempt + 1} failed: {e}")
         
-        # Fall back to progressive generation
-        logger.info("Falling back to progressive seed generation")
-        return await self._generate_seeds_progressively(tactical_extractions, project_data)
+        # No fallback - raise error if all attempts fail
+        raise ValueError(f"Station 4 seed generation failed after {max_retries} attempts - no fallback allowed")
 
     async def _generate_all_seeds(self, tactical_extractions: List[TacticalExtraction], project_data: Dict[str, Any]) -> SeedCollection:
-        """Generate all seeds with debug logging"""
+        """Generate all seeds in batches to avoid token limit issues"""
         try:
-            # Prepare context and tactics for prompt
-            project_context = self._format_project_context(project_data)
-            available_tactics = self._format_available_tactics(tactical_extractions)
+            logger.info("Generating seeds in batches to avoid token truncation...")
             
-            # Format seed generation prompt
-            prompt = self.seed_generation_prompt.format(
-                project_context=json.dumps(project_context, indent=2),
-                available_tactics=available_tactics,
-                world_setting=project_context.get("world_setting", "Contemporary setting"),
-                content_rating=project_context.get("content_rating", "PG"),
-                genre_blend=project_context.get("genre_blend", "Multi-genre"),
-                series_scale=project_context.get("series_scale", "Standard")
+            # Generate each category separately to avoid token limits
+            micro_moments = await self._generate_category_seeds("micro_moments", 30, tactical_extractions, project_data)
+            episode_beats = await self._generate_category_seeds("episode_beats", 20, tactical_extractions, project_data)
+            season_arcs = await self._generate_category_seeds("season_arcs", 10, tactical_extractions, project_data)
+            series_defining = await self._generate_category_seeds("series_defining", 5, tactical_extractions, project_data)
+            
+            return SeedCollection(
+                micro_moments=micro_moments,
+                episode_beats=episode_beats,
+                season_arcs=season_arcs,
+                series_defining=series_defining
             )
-            
-            # Get LLM response
-            response = await self.openrouter.process_message(
-                prompt,
-                model_name=self.config.model,
-            )
-            
-            # Debug mode logging if enabled
-            if hasattr(self, 'debug_mode') and self.debug_mode:
-                debug_filename = f"debug_response_{datetime.now().strftime('%H%M%S')}.txt"
-                with open(debug_filename, "w", encoding='utf-8') as f:
-                    f.write(response)
-                logger.info(f"Debug response saved to {debug_filename}")
-            
-            # Parse seeds from response
-            return self._parse_seeds_response(response)
             
         except Exception as e:
             logger.error(f"Failed to generate all seeds: {str(e)}")
@@ -1436,9 +1208,11 @@ SEED_END
 Generate {count} seeds now:
 """
         
+        await asyncio.sleep(1.0)  # 1 second delay between API calls
         response = await self.openrouter.process_message(
             prompt,
-            model_name="qwen-72b",
+            model_name=self.config.model,
+            max_tokens=self.config.max_tokens
         )
         
         return self._extract_seeds_from_simple_response(response)
@@ -1446,16 +1220,54 @@ Generate {count} seeds now:
     def _extract_seeds_from_simple_response(self, response: str) -> List[StoryElement]:
         """Extract seeds from a simple response format"""
         seeds = []
-        
+
         # Split by SEED_START/SEED_END markers
         seed_blocks = re.findall(r'SEED_START(.*?)SEED_END', response, re.DOTALL)
-        
+
         for block in seed_blocks:
             seed = self._parse_single_seed_new(block.strip())
             if seed:
                 seeds.append(seed)
-        
+
         return seeds
+
+    def _parse_single_seed_new(self, seed_text: str) -> Optional[StoryElement]:
+        """Parse a single seed from text format"""
+        try:
+            # Extract fields using simple patterns
+            title_match = re.search(r'Title:\s*(.+?)(?:\n|$)', seed_text)
+            desc_match = re.search(r'Description:\s*(.+?)(?:\n|$)', seed_text, re.DOTALL)
+            audio_match = re.search(r'Audio:\s*(.+?)(?:\n|$)', seed_text)
+
+            if not title_match or not desc_match:
+                return None
+
+            title = title_match.group(1).strip()
+            description = desc_match.group(1).strip()
+            audio_considerations = audio_match.group(1).strip() if audio_match else "Standard audio treatment"
+
+            # Determine difficulty
+            difficulty = ImplementationDifficulty.MEDIUM
+            if "easy" in seed_text.lower():
+                difficulty = ImplementationDifficulty.EASY
+            elif "hard" in seed_text.lower():
+                difficulty = ImplementationDifficulty.HARD
+
+            return StoryElement(
+                title=title,
+                description=description,
+                audio_considerations=audio_considerations,
+                implementation_difficulty=difficulty,
+                character_requirements=[],
+                setting_requirements="TBD",
+                estimated_runtime="2-3 minutes",
+                genre_tags=[],
+                source_reference="Generated",
+                adaptation_notes=""
+            )
+        except Exception as e:
+            logger.warning(f"Failed to parse seed: {e}")
+            return None
 
     async def _generate_seeds_with_prompt_variation(self, tactical_extractions: List[TacticalExtraction], project_data: Dict[str, Any], variation: str) -> SeedCollection:
         """Generate seeds using different prompt variations"""
@@ -1478,11 +1290,13 @@ Generate {count} seeds now:
                 series_scale=project_context.get("series_scale", "Standard")
             )
         
-        # Get LLM response
-        response = await self.openrouter.process_message(
-            prompt,
-            model_name="qwen-72b",
-        )
+            # Get LLM response
+            await asyncio.sleep(1.0)  # 1 second delay between API calls
+            response = await self.openrouter.process_message(
+                prompt,
+                model_name=self.config.model,
+                max_tokens=self.config.max_tokens
+            )
         
         # Parse seeds from response
         seed_collection = self._parse_seeds_response(response)
@@ -1555,22 +1369,7 @@ PROJECT: {project_context.get('working_title', 'Audio Drama')}
 GENRE: {project_context.get('primary_genre', 'Drama')}
 """
 
-    def _create_fallback_seed(self, category: str, index: int) -> StoryElement:
-        """Create a single fallback seed (basic version)"""
-        return StoryElement(
-            title=f"{category} Element {index}",
-            description=f"Audio-focused story element for {category.lower()} category.",
-            audio_considerations="Standard audio production with emphasis on dialogue clarity",
-            implementation_difficulty=ImplementationDifficulty.MEDIUM,
-            character_requirements=["Primary character"],
-            setting_requirements="Standard setting appropriate for audio",
-            estimated_runtime="2-3 minutes",
-            genre_tags=["drama", "audio"],
-            source_reference="Fallback generation",
-            adaptation_notes="Created as fallback - requires further development"
-        )
-
-    # Removed - using LLM retry mechanism instead of hardcoded fallbacks
+    # No fallback seed creation - all seeds must be LLM-generated
 
     async def _store_output(self, session_id: str, seed_bank_document: SeedBankDocument) -> None:
         """Store output in Redis for next station"""

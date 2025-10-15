@@ -32,8 +32,9 @@ class CanonIssue:
 
 
 class Station16CanonCheck:
-    def __init__(self, session_id: str):
+    def __init__(self, session_id: str, output_dir: str = "outputs"):
         self.session_id = session_id
+        self.output_dir = output_dir
         self.redis_client = RedisClient()
         self.openrouter = OpenRouterAgent()
         self.station_name = "station_16_canon_check"
@@ -643,7 +644,7 @@ Expected JSON format:
 
             # Export outputs
             print("💾 Exporting canon validation report...")
-            output_dir = "outputs"
+            output_dir = self.output_dir
             os.makedirs(output_dir, exist_ok=True)
 
             base_filename = f"station16_canon_check_{self.session_id}"

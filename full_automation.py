@@ -50,6 +50,7 @@ from app.agents.station_19_procedure_check import Station19ProcedureCheck
 from app.agents.station_20_geography_transit import Station20GeographyTransit
 from app.redis_client import RedisClient
 from app.agents.station_registry import get_station_registry
+from app.output_manager import OutputManager
 from typing import Tuple
 
 
@@ -143,6 +144,7 @@ class FullAutomationRunner:
         self.checkpoint_enabled = True
         self.redis = None
         self.current_session_id = None  # Track current session for resume
+        self.output_manager = None  # Will be initialized with session_id
         
     def set_progress_callback(self, callback):
         """Set callback function for progress updates"""
@@ -176,6 +178,10 @@ class FullAutomationRunner:
         # Initialize state
         state = AudiobookProductionState(story_concept)
         self.current_session_id = state.session_id  # Track for interruption handling
+
+        # Initialize output manager for organized file structure
+        self.output_manager = OutputManager(state.session_id)
+        print(f"📁 Session folder created: {self.output_manager.get_session_folder()}")
 
         try:
             # Station 1: Seed Processing & Scale Evaluation
@@ -374,12 +380,61 @@ class FullAutomationRunner:
             else:
                 state.chosen_scale = await self._get_user_scale_choice(result)
                 
+            # Export to text file
+            try:
+                text_filename = self.output_manager.get_txt_path("01", "seed_processor")
+                with open(text_filename, 'w', encoding='utf-8') as f:
+                    f.write("STATION 1: SEED PROCESSING & SCALE EVALUATION\n")
+                    f.write("=" * 60 + "\n\n")
+                    f.write(f"Session: {state.session_id}\n")
+                    f.write(f"Timestamp: {result.processing_timestamp.strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+
+                    f.write("ORIGINAL STORY CONCEPT:\n")
+                    f.write("-" * 60 + "\n")
+                    f.write(f"{result.original_seed}\n\n")
+
+                    f.write("SCALE OPTIONS ANALYSIS:\n")
+                    f.write("-" * 60 + "\n")
+                    for i, opt in enumerate(result.scale_options, 1):
+                        f.write(f"\nOption {chr(64+i)}: {opt.option_type}\n")
+                        f.write(f"Episodes: {opt.episode_count}\n")
+                        f.write(f"Runtime: {opt.episode_length}\n")
+                        f.write(f"Word Count: {opt.word_count}\n")
+                        f.write(f"Best For: {opt.best_for}\n")
+                        f.write(f"Justification: {opt.justification}\n")
+
+                    f.write(f"\n\nRECOMMENDED OPTION: {result.recommended_option}\n\n")
+
+                    f.write("INITIAL STORY EXPANSION:\n")
+                    f.write("-" * 60 + "\n")
+                    
+                    f.write("Working Titles:\n")
+                    for title in result.initial_expansion.working_titles:
+                        f.write(f"  • {title}\n")
+                    
+                    f.write(f"\nCore Premise: {result.initial_expansion.core_premise}\n")
+                    f.write(f"Central Conflict: {result.initial_expansion.central_conflict}\n")
+                    f.write(f"Episode Rationale: {result.initial_expansion.episode_rationale}\n\n")
+
+                    f.write("Main Characters:\n")
+                    for char in result.initial_expansion.main_characters:
+                        f.write(f"  • {char}\n")
+
+                    f.write("\nBreaking Points:\n")
+                    for point in result.initial_expansion.breaking_points:
+                        f.write(f"  • {point}\n")
+
+                state.generated_files.append(text_filename)
+                self.emit_progress("Station 1", 95, f"Exported to {text_filename}")
+            except Exception as e:
+                logger.warning(f"Station 1 text export failed: {e}")
+
             self.emit_progress("Station 1", 100, "Station 1 completed successfully!")
             state.current_station = 1
-            
+
             # Save to Redis for next stations
             await self._save_station_output_to_redis(state.session_id, "01", state.station_outputs["station_1"])
-            
+
             return state
             
         except Exception as e:
@@ -415,12 +470,110 @@ class FullAutomationRunner:
                 "created_timestamp": result.created_timestamp.isoformat()
             }
             
+            # Export to text file
+            try:
+                text_filename = self.output_manager.get_txt_path("02", "project_dna")
+                with open(text_filename, 'w', encoding='utf-8') as f:
+                    f.write("STATION 2: PROJECT DNA BUILDER\n")
+                    f.write("=" * 60 + "\n\n")
+                    f.write(f"Working Title: {result.working_title}\n")
+                    f.write(f"Session: {state.session_id}\n")
+                    f.write(f"Created: {result.created_timestamp.strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+
+                    f.write("WORLD SETTING:\n")
+                    f.write("-" * 60 + "\n")
+                    f.write(f"Time Period: {result.world_setting.time_period}\n")
+                    f.write(f"Primary Location: {result.world_setting.primary_location}\n")
+                    f.write(f"Setting Type: {result.world_setting.setting_type}\n")
+                    f.write(f"Atmosphere: {result.world_setting.atmosphere}\n")
+                    f.write(f"Historical Context: {result.world_setting.historical_context}\n")
+                    f.write("Key Locations:\n")
+                    for loc in result.world_setting.key_locations:
+                        f.write(f"  • {loc}\n")
+                    f.write("Cultural Elements:\n")
+                    for elem in result.world_setting.cultural_elements:
+                        f.write(f"  • {elem}\n")
+                    f.write("\n")
+
+                    f.write("FORMAT SPECIFICATIONS:\n")
+                    f.write("-" * 60 + "\n")
+                    f.write(f"Series Type: {result.format_specifications.series_type}\n")
+                    f.write(f"Episode Count: {result.format_specifications.episode_count}\n")
+                    f.write(f"Episode Length: {result.format_specifications.episode_length}\n")
+                    f.write(f"Season Structure: {result.format_specifications.season_structure}\n")
+                    f.write(f"Pacing Strategy: {result.format_specifications.pacing_strategy}\n")
+                    f.write(f"Narrative Structure: {result.format_specifications.narrative_structure}\n\n")
+
+                    f.write("GENRE & TONE:\n")
+                    f.write("-" * 60 + "\n")
+                    f.write(f"Primary Genre: {result.genre_tone.primary_genre}\n")
+                    f.write(f"Secondary Genres: {', '.join(result.genre_tone.secondary_genres)}\n")
+                    f.write(f"Tone Descriptors: {', '.join(result.genre_tone.tone_descriptors)}\n")
+                    f.write(f"Mood Profile: {result.genre_tone.mood_profile}\n")
+                    f.write("Genre Conventions:\n")
+                    for conv in result.genre_tone.genre_conventions:
+                        f.write(f"  • {conv}\n")
+                    f.write("\n")
+
+                    f.write("AUDIENCE PROFILE:\n")
+                    f.write("-" * 60 + "\n")
+                    f.write(f"Primary Age Range: {result.audience_profile.primary_age_range}\n")
+                    f.write(f"Target Demographics: {', '.join(result.audience_profile.target_demographics)}\n")
+                    f.write(f"Core Interests: {', '.join(result.audience_profile.core_interests)}\n")
+                    f.write(f"Listening Context: {result.audience_profile.listening_context}\n")
+                    f.write("Content Preferences:\n")
+                    for pref in result.audience_profile.content_preferences:
+                        f.write(f"  • {pref}\n")
+                    f.write("\n")
+
+                    f.write("PRODUCTION CONSTRAINTS:\n")
+                    f.write("-" * 60 + "\n")
+                    f.write(f"Content Rating: {result.production_constraints.content_rating.value if hasattr(result.production_constraints.content_rating, 'value') else result.production_constraints.content_rating}\n")
+                    f.write(f"Budget Tier: {result.production_constraints.budget_tier.value if hasattr(result.production_constraints.budget_tier, 'value') else result.production_constraints.budget_tier}\n")
+                    f.write("Technical Requirements:\n")
+                    for req in result.production_constraints.technical_requirements:
+                        f.write(f"  • {req}\n")
+                    f.write("Content Restrictions:\n")
+                    for rest in result.production_constraints.content_restrictions:
+                        f.write(f"  • {rest}\n")
+                    f.write("\n")
+
+                    f.write("CREATIVE PROMISES:\n")
+                    f.write("-" * 60 + "\n")
+                    f.write("Core Hooks:\n")
+                    for hook in result.creative_promises.core_hooks:
+                        f.write(f"  • {hook}\n")
+                    f.write("Unique Elements:\n")
+                    for elem in result.creative_promises.unique_elements:
+                        f.write(f"  • {elem}\n")
+                    f.write(f"Emotional Journey: {result.creative_promises.emotional_journey}\n")
+                    f.write("Story Pillars:\n")
+                    for pillar in result.creative_promises.story_pillars:
+                        f.write(f"  • {pillar}\n")
+                    f.write("\n")
+
+                    f.write("CREATIVE TEAM:\n")
+                    f.write("-" * 60 + "\n")
+                    f.write("Required Roles:\n")
+                    for role in result.creative_team.required_roles:
+                        f.write(f"  • {role}\n")
+                    f.write("Specialized Skills:\n")
+                    for skill in result.creative_team.specialized_skills:
+                        f.write(f"  • {skill}\n")
+                    f.write(f"Team Structure: {result.creative_team.team_structure}\n")
+                    f.write(f"Collaboration Style: {result.creative_team.collaboration_style}\n")
+
+                state.generated_files.append(text_filename)
+                self.emit_progress("Station 2", 95, f"Exported to {text_filename}")
+            except Exception as e:
+                logger.warning(f"Station 2 text export failed: {e}")
+
             self.emit_progress("Station 2", 100, "Station 2 completed successfully!")
             state.current_station = 2
-            
+
             # Save to Redis for next stations
             await self._save_station_output_to_redis(state.session_id, "02", state.station_outputs["station_2"])
-            
+
             return state
             
         except Exception as e:
@@ -460,12 +613,81 @@ class FullAutomationRunner:
             else:
                 state.chosen_genre_blend = await self._get_user_genre_choice(result)
                 
+            # Export to text file
+            try:
+                text_filename = self.output_manager.get_txt_path("03", "age_genre_optimizer")
+                with open(text_filename, 'w', encoding='utf-8') as f:
+                    f.write("STATION 3: AGE & GENRE OPTIMIZATION\n")
+                    f.write("=" * 60 + "\n\n")
+                    f.write(f"Working Title: {result.working_title}\n")
+                    f.write(f"Session: {state.session_id}\n")
+                    f.write(f"Created: {result.created_timestamp.strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+
+                    f.write("AGE GUIDELINES:\n")
+                    f.write("-" * 60 + "\n")
+                    f.write(f"Target Age Range: {result.age_guidelines.target_age_range}\n")
+                    f.write(f"Content Rating: {result.age_guidelines.content_rating}\n")
+                    f.write(f"Theme Complexity: {result.age_guidelines.theme_complexity}\n")
+                    f.write(f"Violence Level: {result.age_guidelines.violence_level.value if hasattr(result.age_guidelines.violence_level, 'value') else result.age_guidelines.violence_level}\n")
+                    f.write(f"Emotional Intensity: {result.age_guidelines.emotional_intensity.value if hasattr(result.age_guidelines.emotional_intensity, 'value') else result.age_guidelines.emotional_intensity}\n\n")
+
+                    f.write("Action Scene Limits:\n")
+                    for limit in result.age_guidelines.action_scene_limits:
+                        f.write(f"  • {limit}\n")
+
+                    f.write("\nEmotional Boundaries:\n")
+                    for boundary in result.age_guidelines.emotional_boundaries:
+                        f.write(f"  • {boundary}\n")
+
+                    f.write("\nSound Restrictions:\n")
+                    for restriction in result.age_guidelines.sound_restrictions:
+                        f.write(f"  • {restriction}\n")
+                    f.write("\n")
+
+                    f.write("GENRE OPTIONS:\n")
+                    f.write("-" * 60 + "\n")
+                    for i, opt in enumerate(result.genre_options, 1):
+                        f.write(f"\nOption {i}: {opt.primary_genre} + {opt.complementary_genre}\n")
+                        f.write(f"  Enhancement Analysis: {opt.enhancement_analysis}\n")
+                        f.write(f"  Pacing Implications: {opt.pacing_implications}\n")
+                        f.write(f"  Audience Expectations: {opt.audience_expectations}\n")
+                        f.write("  Audio Elements:\n")
+                        for elem in opt.audio_elements:
+                            f.write(f"    • {elem}\n")
+                        f.write("  Signature Sounds:\n")
+                        for sound in opt.signature_sounds:
+                            f.write(f"    • {sound}\n")
+                        f.write("  Mood Transitions:\n")
+                        for trans in opt.mood_transitions:
+                            f.write(f"    • {trans}\n")
+
+                    f.write(f"\n\nCHOSEN GENRE BLEND: {result.chosen_genre_blend}\n\n")
+
+                    f.write("TONE CALIBRATION:\n")
+                    f.write("-" * 60 + "\n")
+                    f.write(f"Chosen Blend: {result.tone_calibration.chosen_blend}\n")
+                    f.write("Episode Progression:\n")
+                    for ep in result.tone_calibration.episode_progression:
+                        f.write(f"  • {ep}\n")
+                    f.write("Tonal Shift Moments:\n")
+                    for moment in result.tone_calibration.tonal_shift_moments:
+                        f.write(f"  • {moment}\n")
+                    f.write("Audio Tone Techniques:\n")
+                    for tech in result.tone_calibration.audio_tone_techniques:
+                        f.write(f"  • {tech}\n")
+                    f.write(f"Light-Dark Balance: {result.tone_calibration.light_dark_balance}\n")
+
+                state.generated_files.append(text_filename)
+                self.emit_progress("Station 3", 95, f"Exported to {text_filename}")
+            except Exception as e:
+                logger.warning(f"Station 3 text export failed: {e}")
+
             self.emit_progress("Station 3", 100, "Station 3 completed successfully!")
             state.current_station = 3
-            
+
             # Save to Redis for next stations
             await self._save_station_output_to_redis(state.session_id, "03", state.station_outputs["station_3"])
-            
+
             return state
             
         except Exception as e:
@@ -509,13 +731,63 @@ class FullAutomationRunner:
                 "created_timestamp": result.created_timestamp.isoformat()
             }
             
-            
+            # Export to text file
+            try:
+                text_filename = self.output_manager.get_txt_path("04", "reference_miner")
+                with open(text_filename, 'w', encoding='utf-8') as f:
+                    f.write("STATION 4: REFERENCE MINING & SEED EXTRACTION\n")
+                    f.write("=" * 60 + "\n\n")
+                    f.write(f"Working Title: {result.working_title}\n")
+                    f.write(f"Session: {state.session_id}\n")
+                    f.write(f"Created: {result.created_timestamp.strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+
+                    f.write("SEED BANK SUMMARY:\n")
+                    f.write("-" * 60 + "\n")
+                    f.write(f"Total Seeds Generated: {total_seeds}\n")
+                    f.write(f"  • Micro Moments: {len(result.seed_collection.micro_moments)}\n")
+                    f.write(f"  • Episode Beats: {len(result.seed_collection.episode_beats)}\n")
+                    f.write(f"  • Season Arcs: {len(result.seed_collection.season_arcs)}\n")
+                    f.write(f"  • Series-Defining: {len(result.seed_collection.series_defining)}\n\n")
+
+                    f.write("CROSS-MEDIA REFERENCES:\n")
+                    f.write("-" * 60 + "\n")
+                    f.write(f"Total References Analyzed: {len(result.references)}\n")
+                    for ref in result.references[:5]:  # Show first 5
+                        f.write(f"\n{ref.title} ({ref.medium}):\n")
+                        f.write(f"  Why Referenced: {ref.why_referenced}\n")
+                        f.write(f"  Key Elements: {', '.join(ref.key_elements[:3])}\n")
+                    if len(result.references) > 5:
+                        f.write(f"\n... and {len(result.references) - 5} more references\n")
+                    f.write("\n")
+
+                    f.write("TACTICAL EXTRACTIONS:\n")
+                    f.write("-" * 60 + "\n")
+                    f.write(f"Total Tactics Extracted: {len(result.tactical_extractions)}\n")
+                    for extraction in result.tactical_extractions[:5]:  # Show first 5
+                        f.write(f"\n{extraction.tactic_name}:\n")
+                        f.write(f"  Source: {extraction.source_title}\n")
+                        f.write(f"  Adaptation: {extraction.audio_adaptation}\n")
+                    if len(result.tactical_extractions) > 5:
+                        f.write(f"\n... and {len(result.tactical_extractions) - 5} more tactics\n")
+                    f.write("\n")
+
+                    f.write("QUALITY METRICS:\n")
+                    f.write("-" * 60 + "\n")
+                    f.write(f"Diversity Score: {result.quality_metrics.get('diversity_score', 'N/A')}\n")
+                    f.write(f"Uniqueness Rating: {result.quality_metrics.get('uniqueness_rating', 'N/A')}\n")
+                    f.write(f"Audio Adaptability: {result.quality_metrics.get('audio_adaptability', 'N/A')}\n")
+
+                state.generated_files.append(text_filename)
+                self.emit_progress("Station 4", 95, f"Exported to {text_filename}")
+            except Exception as e:
+                logger.warning(f"Station 4 text export failed: {e}")
+
             self.emit_progress("Station 4", 100, f"Station 4 completed! Generated {total_seeds} seeds")
             state.current_station = 4
-            
+
             # Save to Redis for next stations
             await self._save_station_output_to_redis(state.session_id, "04", state.station_outputs["station_4"])
-            
+
             return state
             
         except Exception as e:
@@ -559,8 +831,8 @@ class FullAutomationRunner:
                 
             # Export strategy document as text backup
             try:
-                export_filename = f"outputs/station45_narrator_strategy_{state.session_id}.txt"
-                
+                export_filename = self.output_manager.get_txt_path("45", "narrator_strategy")
+
                 with open(export_filename, 'w', encoding='utf-8') as f:
                     f.write("STATION 4.5: NARRATOR STRATEGY RECOMMENDATION\n")
                     f.write("=" * 60 + "\n\n")
@@ -649,20 +921,18 @@ class FullAutomationRunner:
             # Export to text file
             try:
                 text_content = processor.export_to_text(result)
-                text_filename = f"outputs/station5_season_architecture_{state.session_id}.txt"
-                os.makedirs(os.path.dirname(text_filename), exist_ok=True)
+                text_filename = self.output_manager.get_txt_path("05", "season_architecture")
                 with open(text_filename, 'w', encoding='utf-8') as f:
                     f.write(text_content)
                 state.generated_files.append(text_filename)
                 self.emit_progress("Station 5", 90, f"Exported season structure to {text_filename}")
             except Exception as e:
                 logger.warning(f"Text export failed: {e}")
-                
+
             # Export JSON data
             try:
                 json_data = processor.export_to_json(result)
-                json_filename = f"outputs/station5_season_data_{state.session_id}.json"
-                os.makedirs(os.path.dirname(json_filename), exist_ok=True)
+                json_filename = self.output_manager.get_json_path("05", "season_data")
                 with open(json_filename, 'w', encoding='utf-8') as f:
                     json.dump(json_data, f, indent=2, default=str)
                 state.generated_files.append(json_filename)
@@ -720,20 +990,18 @@ class FullAutomationRunner:
             # Export to text file
             try:
                 text_content = processor.export_to_text(result)
-                text_filename = f"outputs/station6_master_style_guide_{state.session_id}.txt"
-                os.makedirs(os.path.dirname(text_filename), exist_ok=True)
+                text_filename = self.output_manager.get_txt_path("06", "master_style_guide")
                 with open(text_filename, 'w', encoding='utf-8') as f:
                     f.write(text_content)
                 state.generated_files.append(text_filename)
                 self.emit_progress("Station 6", 90, f"Exported master style guide to {text_filename}")
             except Exception as e:
                 logger.warning(f"Text export failed: {e}")
-                
+
             # Export JSON data
             try:
                 json_data = processor.export_to_json(result)
-                json_filename = f"outputs/station6_master_style_guide_{state.session_id}.json"
-                os.makedirs(os.path.dirname(json_filename), exist_ok=True)
+                json_filename = self.output_manager.get_json_path("06", "master_style_guide")
                 with open(json_filename, 'w', encoding='utf-8') as f:
                     json.dump(json_data, f, indent=2, default=str)
                 state.generated_files.append(json_filename)
@@ -794,20 +1062,18 @@ class FullAutomationRunner:
             try:
                 # Text report
                 text_content = processor.export_to_text(result)
-                text_filename = f"outputs/station7_reality_check_{state.session_id}.txt"
-                os.makedirs(os.path.dirname(text_filename), exist_ok=True)
+                text_filename = self.output_manager.get_txt_path("07", "reality_check")
                 with open(text_filename, 'w', encoding='utf-8') as f:
                     f.write(text_content)
                 state.generated_files.append(text_filename)
                 self.emit_progress("Station 7", 90, f"Exported reality check report to {text_filename}")
             except Exception as e:
                 logger.warning(f"Text export failed: {e}")
-                
+
             # JSON data export
             try:
                 json_data = processor.export_to_json(result)
-                json_filename = f"outputs/station7_reality_check_{state.session_id}.json"
-                os.makedirs(os.path.dirname(json_filename), exist_ok=True)
+                json_filename = self.output_manager.get_json_path("07", "reality_check")
                 with open(json_filename, 'w', encoding='utf-8') as f:
                     json.dump(json_data, f, indent=2, default=str)
                 state.generated_files.append(json_filename)
@@ -879,20 +1145,18 @@ class FullAutomationRunner:
             try:
                 # Text export
                 text_content = processor.export_to_text(result)
-                text_filename = f"outputs/station8_character_bible_{state.session_id}.txt"
-                os.makedirs(os.path.dirname(text_filename), exist_ok=True)
+                text_filename = self.output_manager.get_txt_path("08", "character_bible")
                 with open(text_filename, 'w', encoding='utf-8') as f:
                     f.write(text_content)
                 state.generated_files.append(text_filename)
                 self.emit_progress("Station 8", 90, f"Exported character bible to {text_filename}")
             except Exception as e:
                 logger.warning(f"Text export failed: {e}")
-                
+
             # JSON data export
             try:
                 json_data = processor.export_to_json(result)
-                json_filename = f"outputs/station8_character_bible_{state.session_id}.json"
-                os.makedirs(os.path.dirname(json_filename), exist_ok=True)
+                json_filename = self.output_manager.get_json_path("08", "character_bible")
                 with open(json_filename, 'w', encoding='utf-8') as f:
                     json.dump(json_data, f, indent=2, default=str)
                 state.generated_files.append(json_filename)
@@ -970,20 +1234,18 @@ class FullAutomationRunner:
             try:
                 # Text export
                 text_content = processor.export_to_text(result)
-                text_filename = f"outputs/station9_world_bible_{state.session_id}.txt"
-                os.makedirs(os.path.dirname(text_filename), exist_ok=True)
+                text_filename = self.output_manager.get_txt_path("09", "world_bible")
                 with open(text_filename, 'w', encoding='utf-8') as f:
                     f.write(text_content)
                 state.generated_files.append(text_filename)
                 self.emit_progress("Station 9", 90, f"Exported world bible to {text_filename}")
             except Exception as e:
                 logger.warning(f"Text export failed: {e}")
-                
+
             # JSON data export
             try:
                 json_data = processor.export_to_json(result)
-                json_filename = f"outputs/station9_world_bible_{state.session_id}.json"
-                os.makedirs(os.path.dirname(json_filename), exist_ok=True)
+                json_filename = self.output_manager.get_json_path("09", "world_bible")
                 with open(json_filename, 'w', encoding='utf-8') as f:
                     json.dump(json_data, f, indent=2, default=str)
                 state.generated_files.append(json_filename)
@@ -1025,14 +1287,17 @@ class FullAutomationRunner:
         self.emit_progress("Station 10", 0, "Initializing Narrative Reveal Strategy...")
         
         try:
-            processor = Station10NarrativeRevealStrategy()
+            processor = Station10NarrativeRevealStrategy(
+                session_id=state.session_id,
+                output_dir=self.output_manager.get_session_folder()
+            )
             await processor.initialize()
-            
+
             if self.debug_mode:
                 logger.info("Debug mode enabled for Station 10")
-                
+
             self.emit_progress("Station 10", 10, "Loading project dependencies...")
-            
+
             # Process narrative reveal strategy
             result = await processor.process(state.session_id)
             
@@ -1096,14 +1361,17 @@ class FullAutomationRunner:
         self.emit_progress("Station 11", 0, "Initializing Runtime Planning...")
         
         try:
-            processor = Station11RuntimePlanning()
+            processor = Station11RuntimePlanning(
+                session_id=state.session_id,
+                output_dir=self.output_manager.get_session_folder()
+            )
             await processor.initialize()
-            
+
             if self.debug_mode:
                 processor.enable_debug_mode()
-                
+
             self.emit_progress("Station 11", 10, "Loading project dependencies...")
-            
+
             # Process runtime planning
             result = await processor.process(state.session_id)
             
@@ -1166,7 +1434,7 @@ class FullAutomationRunner:
         self.emit_progress("Station 12", 0, "Initializing Hook & Cliffhanger Designer...")
         
         try:
-            processor = Station12HookCliffhanger(state.session_id)
+            processor = Station12HookCliffhanger(state.session_id, self.output_manager.get_session_folder())
             await processor.initialize()
             
             self.emit_progress("Station 12", 10, "Loading episode and character dependencies...")
@@ -1218,7 +1486,7 @@ class FullAutomationRunner:
         self.emit_progress("Station 13", 0, "Initializing Multi-World/Timeline Manager...")
         
         try:
-            processor = Station13MultiworldTimeline(state.session_id)
+            processor = Station13MultiworldTimeline(state.session_id, self.output_manager.get_session_folder())
             await processor.initialize()
             
             self.emit_progress("Station 13", 10, "Analyzing world/timeline structure...")
@@ -1271,7 +1539,7 @@ class FullAutomationRunner:
         self.emit_progress("Station 14", 0, "Initializing Episode Blueprint Generator...")
         
         try:
-            processor = Station14EpisodeBlueprint(state.session_id)
+            processor = Station14EpisodeBlueprint(state.session_id, self.output_manager.get_session_folder())
             await processor.initialize()
             
             self.emit_progress("Station 14", 10, "Loading all station dependencies...")
@@ -1333,7 +1601,7 @@ class FullAutomationRunner:
         self.emit_progress("Station 15", 0, "Initializing Detailed Episode Outlining...")
         
         try:
-            processor = Station15DetailedEpisodeOutlining(state.session_id)
+            processor = Station15DetailedEpisodeOutlining(state.session_id, self.output_manager.get_session_folder())
             await processor.initialize()
             
             if self.debug_mode:
@@ -1399,7 +1667,7 @@ class FullAutomationRunner:
         self.emit_progress("Station 16", 0, "Initializing Canon Check...")
 
         try:
-            processor = Station16CanonCheck(state.session_id)
+            processor = Station16CanonCheck(state.session_id, self.output_manager.get_session_folder())
             await processor.initialize()
 
             self.emit_progress("Station 16", 20, "Validating character consistency...")
@@ -1451,7 +1719,7 @@ class FullAutomationRunner:
         self.emit_progress("Station 17", 0, "Initializing Dialect Planning...")
 
         try:
-            processor = Station17DialectPlanning(state.session_id)
+            processor = Station17DialectPlanning(state.session_id, self.output_manager.get_session_folder())
             await processor.initialize()
 
             self.emit_progress("Station 17", 20, "Validating character voices...")
@@ -1502,7 +1770,7 @@ class FullAutomationRunner:
         self.emit_progress("Station 18", 0, "Initializing Evergreen Check...")
 
         try:
-            processor = Station18EvergreenCheck(state.session_id)
+            processor = Station18EvergreenCheck(state.session_id, self.output_manager.get_session_folder())
             await processor.initialize()
 
             self.emit_progress("Station 18", 20, "Detecting dated references...")
@@ -1553,7 +1821,7 @@ class FullAutomationRunner:
         self.emit_progress("Station 19", 0, "Initializing Procedure Check...")
 
         try:
-            processor = Station19ProcedureCheck(state.session_id)
+            processor = Station19ProcedureCheck(state.session_id, self.output_manager.get_session_folder())
             await processor.initialize()
 
             self.emit_progress("Station 19", 20, "Validating professional procedures...")
@@ -1604,7 +1872,7 @@ class FullAutomationRunner:
         self.emit_progress("Station 20", 0, "Initializing Geography Check...")
 
         try:
-            processor = Station20GeographyTransit(state.session_id)
+            processor = Station20GeographyTransit(state.session_id, self.output_manager.get_session_folder())
             await processor.initialize()
 
             self.emit_progress("Station 20", 20, "Validating location network...")
@@ -1746,9 +2014,8 @@ class FullAutomationRunner:
 
     async def _generate_final_summary(self, state: AudiobookProductionState):
         """Generate final automation summary"""
-        
-        summary_path = f"outputs/automation_summary_{state.session_id}.json"
-        os.makedirs("outputs", exist_ok=True)
+
+        summary_path = self.output_manager.get_session_summary_path()
         
         # Convert enums to strings in station outputs before serialization
         processed_outputs = state.station_outputs.copy()
@@ -1805,9 +2072,8 @@ class FullAutomationRunner:
     
     async def _save_checkpoint(self, state: AudiobookProductionState):
         """Save automation checkpoint for recovery"""
-        
-        checkpoint_path = f"outputs/checkpoint_{state.session_id}.json"
-        os.makedirs("outputs", exist_ok=True)
+
+        checkpoint_path = self.output_manager.get_checkpoint_path()
         
         # Convert enums to strings in station outputs before serialization
         processed_state = state.to_dict()
@@ -1941,10 +2207,17 @@ class FullAutomationRunner:
 
     async def load_checkpoint(self, session_id: str) -> Optional[AudiobookProductionState]:
         """Load automation checkpoint for recovery"""
-        
-        checkpoint_path = f"outputs/checkpoint_{session_id}.json"
-        
-        if not os.path.exists(checkpoint_path):
+
+        # Try new location first (inside session folder)
+        new_checkpoint_path = f"outputs/{session_id}/checkpoint_{session_id}.json"
+        # Fall back to legacy location
+        legacy_checkpoint_path = f"outputs/checkpoint_{session_id}.json"
+
+        if os.path.exists(new_checkpoint_path):
+            checkpoint_path = new_checkpoint_path
+        elif os.path.exists(legacy_checkpoint_path):
+            checkpoint_path = legacy_checkpoint_path
+        else:
             return None
             
         try:
@@ -1986,6 +2259,10 @@ class FullAutomationRunner:
 
         print(f"✅ Checkpoint loaded - resuming from Station {state.current_station + 1}")
         self.current_session_id = state.session_id  # Track for interruption handling
+
+        # Initialize output manager for this session
+        self.output_manager = OutputManager(state.session_id)
+        print(f"📁 Session folder: {self.output_manager.get_session_folder()}")
 
         # Restore Redis data from checkpoint
         print(f"🔄 Restoring station outputs to Redis...")

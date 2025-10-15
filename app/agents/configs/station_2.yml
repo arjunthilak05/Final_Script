@@ -8,173 +8,127 @@ prompts:
   world: |
     You are the World Building Specialist for audiobook production.
 
-    Based on the story concept and scale choice, create detailed world and setting information:
-
-    REQUIREMENTS:
-    1. PRIMARY LOCATIONS (3-5 key places):
-       - Where most scenes take place
-       - Consider audio storytelling needs
-       - Each location needs distinct acoustic signature
-       - Think about how each place SOUNDS different
-
-    2. TIME PERIOD/YEAR:
-       - When story takes place
-       - Historical context if relevant
-       - Technology level considerations
-
-    3. ATMOSPHERE/MOOD:
-       - Overall emotional tone of the world
-       - How environment affects characters
-       - Audio mood descriptors
-
-    4. CULTURAL CONTEXT:
-       - Social environment
-       - Rules and norms that matter to the story
-       - Background that affects character behavior
-
-    Focus on audio-specific considerations. How will each location SOUND different?
-    Keep practical for audio-only production.
-
     STORY CONTEXT: {context}
 
-    Provide detailed world building analysis.
+    Return ONLY valid JSON with this structure:
+
+    ```json
+    {{
+      "time_period": "When story takes place with historical context",
+      "primary_location": "Main setting location",
+      "setting_type": "Realistic Contemporary/Historical/Future etc",
+      "atmosphere": "Overall emotional tone and mood",
+      "key_locations": [
+        "Location 1 with acoustic signature",
+        "Location 2 with acoustic signature",
+        "Location 3 with acoustic signature"
+      ],
+      "historical_context": "Relevant background that affects the story",
+      "cultural_elements": [
+        "Cultural aspect 1",
+        "Cultural aspect 2",
+        "Cultural aspect 3"
+      ]
+    }}
+    ```
+
+    CRITICAL: Return ONLY valid JSON. Focus on audio-specific considerations.
 
   format: |
     You are the Format Specification Expert for audiobook production.
 
-    Based on the scale choice from Station 1, define technical format specifications:
-
-    REQUIREMENTS:
-    1. AUDIO-ONLY CONSTRAINTS:
-       - What visual elements must be converted to audio
-       - Dialogue vs narration balance
-       - Sound effect requirements
-
-    2. EPISODE COUNT: Use exact count from Station 1 scale choice
-    3. EPISODE LENGTH TARGET: Use exact length from Station 1
-    4. RELEASE CADENCE: 
-       - Weekly, bi-weekly, or all-at-once
-       - Consider audience engagement patterns
-
-    5. SEASON STRUCTURE:
-       - How episodes group together
-       - Natural story arcs within season
-       - Cliffhanger and pacing strategy
-
-    Be specific and practical for production planning.
-
     STORY CONTEXT: {context}
 
-    Provide detailed format specifications.
+    Return ONLY valid JSON with this structure:
+
+    ```json
+    {{
+      "series_type": "Mini/Standard/Extended Series from context",
+      "episode_count": "Extract from context (e.g., '8-12')",
+      "episode_length": "Extract from context (e.g., '35-45 min each')",
+      "season_structure": "How episodes group together",
+      "pacing_strategy": "Overall pacing and rhythm approach",
+      "narrative_structure": "Story structure approach"
+    }}
+    ```
+
+    CRITICAL: Return ONLY valid JSON. Use exact values from context.
 
   genre: |
     You are the Genre and Tone Expert for audiobook production.
 
-    Analyze the story concept and define genre/tone framework:
-
-    REQUIREMENTS:
-    1. PRIMARY GENRE: Single main genre that best fits the story
-    2. SECONDARY GENRE ELEMENTS (2-3):
-       - Supporting genres that add complexity
-       - How they blend with primary genre
-
-    3. TONE DESCRIPTORS (3-5 adjectives):
-       - Emotional tone words
-       - How story should FEEL to listeners
-       - Audio-specific tone considerations
-
-    4. SIMILAR SUCCESSFUL SHOWS (3-5 references):
-       - Existing audio content for comparison
-       - What elements to emulate
-       - What to differentiate from
-
-    Consider audio storytelling conventions for each genre.
-
     STORY CONTEXT: {context}
 
-    Provide detailed genre and tone analysis.
+    Return ONLY valid JSON with this structure:
+
+    ```json
+    {{
+      "primary_genre": "Main genre",
+      "secondary_genres": ["Genre 2", "Genre 3"],
+      "tone_descriptors": ["Adjective 1", "Adjective 2", "Adjective 3"],
+      "mood_profile": "Overall mood description",
+      "genre_conventions": ["Convention 1", "Convention 2"]
+    }}
+    ```
+
+    CRITICAL: Return ONLY valid JSON.
 
   audience: |
     You are the Audience Profiling Expert for audiobook production.
 
-    Define the target audience based on story content and genre:
-
-    REQUIREMENTS:
-    1. PRIMARY AGE RANGE: Be specific (e.g., "25-45", "18-35")
-    2. CONTENT RATING: Choose appropriate rating:
-       - G: General audiences, no mature content
-       - PG: Mild language/themes, suitable for most
-       - PG-13: Some mature themes, strong language occasional
-       - R: Mature themes, strong language, adult situations
-
-    3. EMOTIONAL GOALS FOR LISTENERS (3-4):
-       - What emotions should audience feel?
-       - What experience are we creating?
-       - Why will they keep listening?
-
-    4. EXPECTED LISTENING CONTEXT:
-       - Commuting, exercising, relaxing?
-       - Attention level required
-       - Binge vs episodic listening preference
-
-    Be realistic about audience expectations and market positioning.
-
     STORY CONTEXT: {context}
 
-    Provide detailed audience profile analysis.
+    Return ONLY valid JSON with this structure:
+
+    ```json
+    {{
+      "primary_age_range": "Age range (e.g., '25-45')",
+      "target_demographics": ["Demographic 1", "Demographic 2"],
+      "core_interests": ["Interest 1", "Interest 2", "Interest 3"],
+      "listening_context": "Primary listening situation",
+      "content_preferences": ["Preference 1", "Preference 2"]
+    }}
+    ```
+
+    CRITICAL: Return ONLY valid JSON.
 
   production: |
     You are the Production Constraints Expert for audiobook production.
 
-    Set realistic production parameters:
-
-    REQUIREMENTS:
-    1. MAXIMUM CAST SIZE:
-       - How many voice actors needed?
-       - Main characters vs supporting roles
-       - Budget-conscious recommendations
-
-    2. SFX COMPLEXITY LEVEL:
-       - Minimal: Basic sound effects only
-       - Moderate: Enhanced ambience and effects
-       - Rich: Complex soundscapes and production
-
-    3. MUSIC REQUIREMENTS:
-       - Theme music, transitions, emotional scoring
-       - Production complexity level
-       - Budget considerations
-
-    4. LANGUAGES: Primary language, any secondary needs
-    5. LOCALIZATION NEEDS: International distribution plans
-
-    Balance creative vision with production realities.
-
     STORY CONTEXT: {context}
 
-    Provide detailed production constraint analysis.
+    Return ONLY valid JSON with this structure:
+
+    ```json
+    {{
+      "content_rating": "G or PG or PG-13 or R",
+      "budget_tier": "Low Budget or Medium Budget or High Budget or Premium Budget",
+      "technical_requirements": ["Requirement 1", "Requirement 2"],
+      "content_restrictions": ["Restriction 1", "Restriction 2"],
+      "distribution_channels": ["Channel 1", "Channel 2"]
+    }}
+    ```
+
+    CRITICAL: Return ONLY valid JSON.
 
   creative: |
     You are the Creative Team Structure Expert.
 
-    Define the creative decision-making structure:
-
-    REQUIREMENTS:
-    1. SHOWRUNNER/CREATOR: Who has final creative authority?
-    2. KEY DECISION MAKERS (2-4 roles):
-       - Who approves major creative choices?
-       - Writing, directing, production roles
-       - Clear hierarchy
-
-    3. APPROVAL GATES:
-       - What decisions need approval?
-       - Script approval, casting, music choices
-       - Quality control checkpoints
-
-    Keep structure simple but clear for decision-making.
-
     STORY CONTEXT: {context}
 
-    Provide detailed creative team structure.
+    Return ONLY valid JSON with this structure:
+
+    ```json
+    {{
+      "required_roles": ["Role 1", "Role 2", "Role 3"],
+      "specialized_skills": ["Skill 1", "Skill 2"],
+      "team_structure": "Team organization description",
+      "collaboration_style": "How team works together",
+      "key_partnerships": ["Partnership 1", "Partnership 2"]
+    }}
+    ```
+
+    CRITICAL: Return ONLY valid JSON.
 
   integration: |
     You are the Project Bible Integration Expert.

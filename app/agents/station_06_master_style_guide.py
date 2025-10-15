@@ -15,6 +15,7 @@ from dataclasses import dataclass, asdict
 from io import BytesIO
 
 from app.redis_client import RedisClient
+from app.agents.json_extractor import extract_json
 from app.agents.retry_validator import (
     ContentValidator,
     RetryConfig,
@@ -153,7 +154,7 @@ class Station06MasterStyleGuideBuilder:
     async def process(self, session_id: str) -> MasterStyleGuide:
         """
         Main processing method: Complete Master Style Guide Creation
-        Follows your exact specification for Station 6
+        Now uses unified JSON approach for simplicity and reliability
         """
         self.session_id = session_id
         logger.info(f"Starting Station 6: Master Style Guide for session {session_id}")
@@ -161,29 +162,18 @@ class Station06MasterStyleGuideBuilder:
         # Gather comprehensive inputs from ALL previous stations (1-5)
         project_inputs = await self._gather_comprehensive_inputs(session_id)
 
-        # SECTION 1: Language Rules System
-        language_rules = await self._create_language_rules_system(project_inputs)
+        # Build unified context for single LLM call
+        project_context = self._build_project_context(project_inputs)
 
-        # SECTION 2: Dialect & Accent Map
-        dialect_accent_map = await self._create_dialect_accent_map(project_inputs)
-
-        # SECTION 3: Audio Conventions Framework
-        audio_conventions = await self._create_audio_conventions_framework(project_inputs)
-
-        # SECTION 4: Dialogue Principles System
-        dialogue_principles = await self._create_dialogue_principles_system(project_inputs)
-
-        # SECTION 5: Narration Style System (if applicable)
-        narration_style = await self._create_narration_style_system(project_inputs)
-
-        # SECTION 6: Sonic Signature System
-        sonic_signature = await self._create_sonic_signature_system(project_inputs)
-
-        # Package complete Master Style Guide
-        style_guide = self._create_complete_style_guide(
-            project_inputs, language_rules, dialect_accent_map, audio_conventions,
-            dialogue_principles, narration_style, sonic_signature, session_id
+        # Single unified LLM call using YML config
+        logger.info("Requesting complete Master Style Guide from LLM...")
+        response = await self.openrouter.process_message(
+            project_context,
+            model_name="glm-4.5"
         )
+
+        # Parse comprehensive JSON response
+        style_guide = await self._parse_complete_response(response, project_inputs, session_id)
 
         # Save to Redis before returning
         try:
@@ -380,653 +370,147 @@ class Station06MasterStyleGuideBuilder:
         logger.info(f"Comprehensive inputs gathered for '{inputs['working_title']}' - {inputs['comprehensive_profile']['genre_blend']}")
         return inputs
 
-    def _extract_json_from_response(self, response: str) -> str:
-        """
-        Extract JSON from LLM response that might include markdown formatting.
-        Handles cases like:
-        - Plain JSON
-        - ```json ... ```
-        - Text before/after JSON
-        """
-        import re
-        
-        # Try to find JSON in markdown code fences
-        json_match = re.search(r'```(?:json)?\s*(\{.*?\})\s*```', response, re.DOTALL)
-        if json_match:
-            return json_match.group(1)
-        
-        # Try to find JSON object directly
-        json_match = re.search(r'(\{.*\})', response, re.DOTALL)
-        if json_match:
-            return json_match.group(1)
-        
-        # Return as-is if no patterns match
-        return response.strip()
-    
-    def _extract_character_names(self, character_descriptions: List[str]) -> List[str]:
-        """
-        Extract clean character names from bullet point descriptions.
-        
-        Handles formats like:
-        - "**Tom:** The morning motivation coach..."
-        - "**Julia:** The depressed ER doctor..."
-        - "Tom: description"
-        - "Tom - description"
-        
-        Returns just the names: ["Tom", "Julia"]
-        """
-        import re
-        clean_names = []
-        
-        for desc in character_descriptions:
-            if not desc or not desc.strip():
-                continue
-            
-            # Remove leading/trailing whitespace
-            desc = desc.strip()
-            
-            # Try to extract name from various formats
-            # Pattern 1: **Name:** or **Name** or Name:
-            match = re.match(r'^\*\*([^*:]+)\*\*:?', desc)
-            if match:
-                clean_names.append(match.group(1).strip())
-                continue
-            
-            # Pattern 2: Name: description or Name - description
-            match = re.match(r'^([^:*\-]+)[:\-]', desc)
-            if match:
-                name = match.group(1).strip()
-                # Make sure it's not empty and doesn't contain markdown or bullet characters
-                if name and len(name) >= 2 and not any(c in name for c in ['*', '-', '•']):
-                    clean_names.append(name)
-                    continue
-            
-            # Pattern 3: Just take the first word if it looks like a name (starts with capital)
-            words = desc.split()
-            if words and words[0] and words[0][0].isupper() and words[0].isalpha():
-                clean_names.append(words[0])
-        
-        return clean_names
-
-    async def _create_language_rules_system(self, project_inputs: Dict[str, Any]) -> LanguageRules:
-        """
-        SECTION 1: LANGUAGE RULES SYSTEM
-        Create authoritative language framework integrating age rating and narrator strategy
-        NO FALLBACKS - Retry with validation until success
-        """
-        logger.info("Creating comprehensive language rules system")
-
-        # Create validator for language rules
-        def validate_language_rules(result: Dict[str, Any]) -> ValidationResult:
-            validation = ContentValidator.validate_required_fields(result, [
-                'vocabulary_ceiling', 'forbidden_words', 'max_sentence_length',
-                'technical_term_protocols', 'narrator_voice_traits'
-            ])
-            return validation
-
-        # Build prompt for LLM
-        prompt = self._build_language_rules_prompt(project_inputs)
-
-        # Use retry mechanism
-        async def generate_with_retry():
-            response = await self.openrouter.generate(
-                prompt=prompt,
-                max_tokens=4000
-            )
-            # Extract JSON from response (handles markdown formatting)
-            json_str = self._extract_json_from_response(response)
-            return json.loads(json_str)
-
-        try:
-            result = await retry_with_validation(
-                generate_with_retry,
-                validate_language_rules,
-                RetryConfig(max_attempts=5),
-                context_name="Language Rules Generation"
-            )
-
-            # Convert to LanguageRules dataclass
-            return LanguageRules(
-                vocabulary_ceiling=result['vocabulary_ceiling'],
-                forbidden_words=result['forbidden_words'],
-                preferred_alternatives=result.get('preferred_alternatives', {}),
-                max_sentence_length=result['max_sentence_length'],
-                complexity_ratios=result.get('complexity_ratios', {"simple": 0.5, "compound": 0.3, "complex": 0.2}),
-                technical_term_protocols=result['technical_term_protocols'],
-                narrator_voice_traits=result['narrator_voice_traits'],
-                tense_consistency_rules=result.get('tense_consistency_rules', []),
-                transition_phrases=result.get('transition_phrases', [])
-            )
-
-        except ValueError as e:
-            logger.error(f"Failed to generate valid language rules after retries: {e}")
-            raise ValueError(
-                f"Station 6 cannot proceed: LLM failed to generate valid language rules.\n"
-                f"Error: {e}\n"
-                f"NO FALLBACK CONTENT AVAILABLE. Check previous station outputs and retry."
-            )
-
-    def _build_language_rules_prompt(self, project_inputs: Dict[str, Any]) -> str:
-        """Build detailed prompt for language rules generation"""
+    def _build_project_context(self, project_inputs: Dict[str, Any]) -> str:
+        """Build unified project context string for LLM prompt"""
+        characters = ", ".join(project_inputs.get('main_characters', [])[:5])
         return f"""
-Create comprehensive language rules for the audio drama "{project_inputs['working_title']}".
-
-PROJECT CONTEXT:
-- Genre: {project_inputs['primary_genre']}
-- Target Age: {project_inputs['target_age_range']}
-- Content Rating: {project_inputs['content_rating']}
-- Premise: {project_inputs['core_premise']}
-
-CRITICAL: Return ONLY a valid JSON object with no additional text, explanations, or markdown formatting.
-
-Required JSON structure:
-{{
-  "vocabulary_ceiling": "Detailed description of appropriate vocabulary level for this age group",
-  "forbidden_words": ["word1", "word2", "word3"],
-  "preferred_alternatives": {{"avoid_this": "use_this_instead"}},
-  "max_sentence_length": 25,
-  "complexity_ratios": {{"simple": 0.6, "compound": 0.3, "complex": 0.1}},
-  "technical_term_protocols": ["Rule 1", "Rule 2", "Rule 3"],
-  "narrator_voice_traits": ["Trait 1", "Trait 2", "Trait 3"],
-  "tense_consistency_rules": ["Rule 1", "Rule 2", "Rule 3"],
-  "transition_phrases": ["Phrase 1", "Phrase 2", "Phrase 3"]
-}}
-
-Be specific to this story's genre, age group, and themes. No generic placeholders.
-Return ONLY the JSON object.
+PROJECT: {project_inputs.get('working_title', 'Untitled')}
+GENRE: {project_inputs.get('primary_genre', 'Drama')} + {', '.join(project_inputs.get('secondary_genres', []))}
+EPISODES: {project_inputs.get('episode_count', '10')} x {project_inputs.get('episode_length', '45 min')}
+TARGET AGE: {project_inputs.get('target_age_range', '25-45')}
+CONTENT RATING: {project_inputs.get('content_rating', 'PG-13')}
+PREMISE: {project_inputs.get('core_premise', project_inputs.get('original_seed', 'Story premise'))}
+MAIN CHARACTERS: {characters if characters else 'TBD'}
+NARRATOR: {project_inputs.get('narrator_strategy', 'Limited')} ({project_inputs.get('narrator_presence_level', 'Moderate')})
+SCREENPLAY STYLE: {project_inputs.get('chosen_screenplay_style', 'TBD')}
 """
 
-    async def _create_dialect_accent_map(self, project_inputs: Dict[str, Any]) -> DialectAccentMap:
-        """
-        SECTION 2: DIALECT & ACCENT MAP
-        Develop complete character voice distinction framework
-        NO FALLBACKS - Retry with validation until success
-        """
-        logger.info("Creating comprehensive dialect and accent mapping")
-
-        # Create validator for dialect map
-        def validate_dialect_map(result: Dict[str, Any]) -> ValidationResult:
-            # Validate required fields
-            validation = ContentValidator.validate_required_fields(result, [
-                'character_voices', 'regional_markers', 'voice_evolution_rules'
-            ])
-            if not validation.is_valid:
-                return validation
-
-            # Validate character names are not generic
-            character_names = [cv['character_name'] for cv in result['character_voices']]
-            name_validation = ContentValidator.validate_character_names(character_names)
-            return name_validation
-
-        # Build prompt for LLM
-        prompt = self._build_dialect_map_prompt(project_inputs)
-
-        # Use retry mechanism
-        async def generate_with_retry():
-            response = await self.openrouter.generate(
-                prompt=prompt,
-                max_tokens=4000
-            )
-            # Extract JSON from response (handles markdown formatting)
-            json_str = self._extract_json_from_response(response)
-            return json.loads(json_str)
-
+    async def _parse_complete_response(self, response: str, project_inputs: Dict[str, Any], session_id: str) -> MasterStyleGuide:
+        """Parse comprehensive JSON response into MasterStyleGuide"""
         try:
-            result = await retry_with_validation(
-                generate_with_retry,
-                validate_dialect_map,
-                RetryConfig(max_attempts=5),
-                context_name="Dialect & Accent Map Generation"
+            data = extract_json(response)
+
+            # Parse language rules
+            lr_data = data.get("language_rules", {})
+            language_rules = LanguageRules(
+                vocabulary_ceiling=lr_data.get("vocabulary_ceiling", "Age-appropriate vocabulary"),
+                forbidden_words=lr_data.get("forbidden_words", []),
+                preferred_alternatives=lr_data.get("preferred_alternatives", {}),
+                max_sentence_length=int(lr_data.get("max_sentence_length", 25)),
+                complexity_ratios=lr_data.get("complexity_ratios", {"simple": 0.6, "medium": 0.3, "complex": 0.1}),
+                technical_term_protocols=lr_data.get("technical_term_protocols", []),
+                narrator_voice_traits=lr_data.get("narrator_voice_traits", []),
+                tense_consistency_rules=lr_data.get("tense_consistency_rules", []),
+                transition_phrases=lr_data.get("transition_phrases", [])
             )
 
-            # Convert to DialectAccentMap dataclass
-            character_voices = [
-                CharacterVoice(
-                    character_name=cv['character_name'],
-                    voice_signature=cv['voice_signature'],
-                    accent_traits=cv['accent_traits'],
-                    vocabulary_level=cv['vocabulary_level'],
-                    speech_patterns=cv['speech_patterns'],
-                    emotional_range=cv['emotional_range'],
-                    code_switching_triggers=cv.get('code_switching_triggers', [])
-                )
-                for cv in result['character_voices']
-            ]
+            # Parse dialect & accent map
+            dam_data = data.get("dialect_accent_map", {})
+            character_voices = []
+            for cv_data in dam_data.get("character_voices", []):
+                character_voices.append(CharacterVoice(
+                    character_name=cv_data.get("character_name", "Character"),
+                    voice_signature=cv_data.get("voice_signature", "Standard voice"),
+                    accent_traits=cv_data.get("accent_traits", []),
+                    vocabulary_level=cv_data.get("vocabulary_level", "Standard"),
+                    speech_patterns=cv_data.get("speech_patterns", []),
+                    emotional_range=cv_data.get("emotional_range", "Moderate"),
+                    code_switching_triggers=cv_data.get("code_switching_triggers", [])
+                ))
 
-            return DialectAccentMap(
+            dialect_accent_map = DialectAccentMap(
                 character_voices=character_voices,
-                regional_markers=result['regional_markers'],
-                pronunciation_guide=result.get('pronunciation_guide', {}),
-                voice_evolution_rules=result['voice_evolution_rules'],
-                cultural_speech_patterns=result.get('cultural_speech_patterns', {})
+                regional_markers=dam_data.get("regional_markers", {}),
+                pronunciation_guide=dam_data.get("pronunciation_guide", {}),
+                voice_evolution_rules=dam_data.get("voice_evolution_rules", []),
+                cultural_speech_patterns=dam_data.get("cultural_speech_patterns", {})
             )
 
-        except ValueError as e:
-            logger.error(f"Failed to generate valid dialect map after retries: {e}")
-            raise ValueError(
-                f"Station 6 cannot proceed: LLM failed to generate valid dialect/accent map.\n"
-                f"Error: {e}\n"
-                f"NO FALLBACK CONTENT AVAILABLE. Check character data from Station 1 and retry."
-            )
+            # Parse audio conventions
+            ac_data = data.get("audio_conventions", {})
+            scene_transitions = []
+            for st_data in ac_data.get("scene_transitions", []):
+                scene_transitions.append(AudioConvention(
+                    convention_type=st_data.get("convention_type", "Standard transition"),
+                    audio_signature=st_data.get("audio_signature", "Fade"),
+                    usage_rules=st_data.get("usage_rules", []),
+                    timing_guidelines=st_data.get("timing_guidelines", "Standard timing"),
+                    integration_notes=st_data.get("integration_notes", "")
+                ))
 
-    def _build_dialect_map_prompt(self, project_inputs: Dict[str, Any]) -> str:
-        """Build detailed prompt for dialect map generation"""
-        characters = project_inputs.get('main_characters', [])
-        return f"""
-Create dialect and accent mapping for the audio drama "{project_inputs['working_title']}".
+            temporal_markers = []
+            for tm_data in ac_data.get("temporal_markers", []):
+                temporal_markers.append(AudioConvention(
+                    convention_type=tm_data.get("convention_type", "Time marker"),
+                    audio_signature=tm_data.get("audio_signature", "Time cue"),
+                    usage_rules=tm_data.get("usage_rules", []),
+                    timing_guidelines=tm_data.get("timing_guidelines", "As needed"),
+                    integration_notes=tm_data.get("integration_notes", "")
+                ))
 
-PROJECT CONTEXT:
-- Genre: {project_inputs['primary_genre']}
-- Main Characters: {', '.join(characters)}
-- Premise: {project_inputs['core_premise']}
-
-Generate a JSON object with:
-- character_voices: Array of character voice objects with fields:
-  - character_name: MUST use actual character names from the story, NOT generic names
-  - voice_signature: Distinctive voice description
-  - accent_traits: List of accent characteristics
-  - vocabulary_level: Education/background level
-  - speech_patterns: List of speaking patterns
-  - emotional_range: Emotional expression style
-  - code_switching_triggers: When character changes speech style
-- regional_markers: Dictionary of location-specific speech patterns
-- pronunciation_guide: Dictionary of term pronunciations
-- voice_evolution_rules: List of how voices change through story
-- cultural_speech_patterns: Dictionary of cultural/professional speech patterns
-
-Use actual character names: {', '.join(characters)}
-NO generic names like "Main Character" or "Character 1".
-"""
-
-    async def _create_audio_conventions_framework(self, project_inputs: Dict[str, Any]) -> AudioConventionsFramework:
-        """
-        SECTION 3: AUDIO CONVENTIONS FRAMEWORK
-        Establish complete sonic storytelling language
-        NO FALLBACKS - Retry with validation until success
-        """
-        logger.info("Creating comprehensive audio conventions framework")
-
-        # Create validator
-        def validate_audio_conventions(result: Dict[str, Any]) -> ValidationResult:
-            validation = ContentValidator.validate_required_fields(result, [
-                'scene_transitions', 'temporal_markers', 'silence_protocols'
-            ])
-            return validation
-
-        # Build prompt
-        prompt = self._build_audio_conventions_prompt(project_inputs)
-
-        # Use retry mechanism
-        async def generate_with_retry():
-            response = await self.openrouter.generate(
-                prompt=prompt,
-                max_tokens=4000
-            )
-            # Extract JSON from response (handles markdown formatting)
-            json_str = self._extract_json_from_response(response)
-            return json.loads(json_str)
-
-        try:
-            result = await retry_with_validation(
-                generate_with_retry,
-                validate_audio_conventions,
-                RetryConfig(max_attempts=5),
-                context_name="Audio Conventions Framework Generation"
-            )
-
-            # Convert to AudioConventionsFramework dataclass
-            scene_transitions = [
-                AudioConvention(
-                    convention_type=st['convention_type'],
-                    audio_signature=st['audio_signature'],
-                    usage_rules=st['usage_rules'],
-                    timing_guidelines=st['timing_guidelines'],
-                    integration_notes=st['integration_notes']
-                )
-                for st in result['scene_transitions']
-            ]
-
-            temporal_markers = [
-                AudioConvention(
-                    convention_type=tm['convention_type'],
-                    audio_signature=tm['audio_signature'],
-                    usage_rules=tm['usage_rules'],
-                    timing_guidelines=tm['timing_guidelines'],
-                    integration_notes=tm['integration_notes']
-                )
-                for tm in result['temporal_markers']
-            ]
-
-            return AudioConventionsFramework(
+            audio_conventions = AudioConventionsFramework(
                 scene_transitions=scene_transitions,
                 temporal_markers=temporal_markers,
-                environmental_signatures=result.get('environmental_signatures', {}),
-                silence_protocols=result['silence_protocols'],
-                perspective_shift_cues=result.get('perspective_shift_cues', [])
+                environmental_signatures=ac_data.get("environmental_signatures", {}),
+                silence_protocols=ac_data.get("silence_protocols", []),
+                perspective_shift_cues=ac_data.get("perspective_shift_cues", [])
             )
 
-        except ValueError as e:
-            logger.error(f"Failed to generate valid audio conventions after retries: {e}")
-            raise ValueError(
-                f"Station 6 cannot proceed: LLM failed to generate valid audio conventions.\n"
-                f"Error: {e}\n"
-                f"NO FALLBACK CONTENT AVAILABLE. Check project context and retry."
+            # Parse dialogue principles
+            dp_data = data.get("dialogue_principles", {})
+            dialogue_principles = DialoguePrinciples(
+                naturalism_balance=dp_data.get("naturalism_balance", "Balanced naturalism"),
+                character_id_frequency=dp_data.get("character_id_frequency", "As needed"),
+                subtext_conversion_ratio=dp_data.get("subtext_conversion_ratio", "Moderate subtext"),
+                interruption_protocols=dp_data.get("interruption_protocols", []),
+                exposition_integration_methods=dp_data.get("exposition_integration_methods", []),
+                emotional_expression_guidelines=dp_data.get("emotional_expression_guidelines", []),
+                multi_character_management=dp_data.get("multi_character_management", [])
             )
 
-    def _build_audio_conventions_prompt(self, project_inputs: Dict[str, Any]) -> str:
-        """Build detailed prompt for audio conventions generation"""
-        return f"""
-Create audio conventions framework for "{project_inputs['working_title']}".
+            # Parse narration style
+            ns_data = data.get("narration_style", {})
+            narration_style = None
+            if ns_data and project_inputs.get('narrator_strategy'):
+                narration_style = NarrationStyle(
+                    narrator_personality=ns_data.get("narrator_personality", "Professional"),
+                    activation_triggers=ns_data.get("activation_triggers", []),
+                    knowledge_scope=ns_data.get("knowledge_scope", "Limited"),
+                    emotional_involvement_level=ns_data.get("emotional_involvement_level", "Moderate"),
+                    reliability_level=ns_data.get("reliability_level", "Reliable"),
+                    voice_characteristics=ns_data.get("voice_characteristics", []),
+                    screenplay_integration=ns_data.get("screenplay_integration", [])
+                )
 
-PROJECT CONTEXT:
-- Genre: {project_inputs['primary_genre']}
-- Screenplay Style: {project_inputs.get('chosen_screenplay_style', 'TBD')}
-- Premise: {project_inputs['core_premise']}
-
-Generate JSON with:
-- scene_transitions: Array of transition objects (convention_type, audio_signature, usage_rules, timing_guidelines, integration_notes)
-- temporal_markers: Array of temporal marker objects (same fields)
-- environmental_signatures: Dictionary of location audio signatures
-- silence_protocols: List of silence usage rules
-- perspective_shift_cues: List of POV shift indicators
-
-Be story-specific. No generic content.
-"""
-
-    async def _create_dialogue_principles_system(self, project_inputs: Dict[str, Any]) -> DialoguePrinciples:
-        """
-        SECTION 4: DIALOGUE PRINCIPLES SYSTEM
-        Create natural conversation framework for audio
-        NO FALLBACKS - Retry with validation until success
-        """
-        logger.info("Creating comprehensive dialogue principles system")
-
-        # Create validator
-        def validate_dialogue_principles(result: Dict[str, Any]) -> ValidationResult:
-            validation = ContentValidator.validate_required_fields(result, [
-                'naturalism_balance', 'interruption_protocols', 'exposition_integration_methods'
-            ])
-            return validation
-
-        # Build prompt
-        prompt = self._build_dialogue_principles_prompt(project_inputs)
-
-        # Use retry mechanism
-        async def generate_with_retry():
-            response = await self.openrouter.generate(
-                prompt=prompt,
-                max_tokens=4000
-            )
-            # Extract JSON from response (handles markdown formatting)
-            json_str = self._extract_json_from_response(response)
-            return json.loads(json_str)
-
-        try:
-            result = await retry_with_validation(
-                generate_with_retry,
-                validate_dialogue_principles,
-                RetryConfig(max_attempts=5),
-                context_name="Dialogue Principles Generation"
+            # Parse sonic signature
+            ss_data = data.get("sonic_signature", {})
+            sonic_signature = SonicSignature(
+                main_theme_variations=ss_data.get("main_theme_variations", []),
+                character_musical_signatures=ss_data.get("character_musical_signatures", {}),
+                emotional_audio_palette=ss_data.get("emotional_audio_palette", {}),
+                environmental_soundscapes=ss_data.get("environmental_soundscapes", {}),
+                recurring_audio_elements=ss_data.get("recurring_audio_elements", []),
+                motif_applications=ss_data.get("motif_applications", [])
             )
 
-            return DialoguePrinciples(
-                naturalism_balance=result['naturalism_balance'],
-                character_id_frequency=result.get('character_id_frequency', ''),
-                subtext_conversion_ratio=result.get('subtext_conversion_ratio', ''),
-                interruption_protocols=result['interruption_protocols'],
-                exposition_integration_methods=result['exposition_integration_methods'],
-                emotional_expression_guidelines=result.get('emotional_expression_guidelines', []),
-                multi_character_management=result.get('multi_character_management', [])
+            # Create complete style guide
+            return MasterStyleGuide(
+                working_title=project_inputs.get('working_title', 'Untitled'),
+                session_id=session_id,
+                created_timestamp=datetime.utcnow(),
+                language_rules=language_rules,
+                dialect_accent_map=dialect_accent_map,
+                audio_conventions=audio_conventions,
+                dialogue_principles=dialogue_principles,
+                narration_style=narration_style,
+                sonic_signature=sonic_signature,
+                project_context=project_inputs,
+                comprehensive_profile=project_inputs.get('comprehensive_profile', {})
             )
 
-        except ValueError as e:
-            logger.error(f"Failed to generate valid dialogue principles after retries: {e}")
-            raise ValueError(
-                f"Station 6 cannot proceed: LLM failed to generate valid dialogue principles.\n"
-                f"Error: {e}\n"
-                f"NO FALLBACK CONTENT AVAILABLE. Check project context and retry."
-            )
-
-    def _build_dialogue_principles_prompt(self, project_inputs: Dict[str, Any]) -> str:
-        """Build detailed prompt for dialogue principles generation"""
-        return f"""
-Create dialogue principles for "{project_inputs['working_title']}".
-
-PROJECT CONTEXT:
-- Genre: {project_inputs['primary_genre']}
-- Target Age: {project_inputs['target_age_range']}
-- Premise: {project_inputs['core_premise']}
-
-Generate JSON with:
-- naturalism_balance: Balance between realistic and enhanced dialogue
-- character_id_frequency: How often to use character names
-- subtext_conversion_ratio: How much subtext to make explicit for audio
-- interruption_protocols: List of rules for dialogue interruptions
-- exposition_integration_methods: List of natural exposition techniques
-- emotional_expression_guidelines: List of emotional delivery rules
-- multi_character_management: List of group scene rules
-
-Be story-specific. Consider the genre and age rating.
-"""
-
-    async def _create_narration_style_system(self, project_inputs: Dict[str, Any]) -> Optional[NarrationStyle]:
-        """
-        SECTION 5: NARRATION STYLE SYSTEM (if applicable)
-        Based on narrator_strategy from Station 4.5, define complete narration framework
-        NO FALLBACKS - Retry with validation until success
-        """
-        logger.info("Creating comprehensive narration style system")
-
-        narrator_strategy = project_inputs.get("narrator_strategy")
-
-        if not narrator_strategy or narrator_strategy == "Without Narrator":
-            logger.info("No narrator strategy selected - skipping narration style")
-            return None
-
-        # Create validator
-        def validate_narration_style(result: Dict[str, Any]) -> ValidationResult:
-            validation = ContentValidator.validate_required_fields(result, [
-                'narrator_personality', 'activation_triggers', 'knowledge_scope'
-            ])
-            return validation
-
-        # Build prompt
-        prompt = self._build_narration_style_prompt(project_inputs)
-
-        # Use retry mechanism
-        async def generate_with_retry():
-            response = await self.openrouter.generate(
-                prompt=prompt,
-                max_tokens=4000
-            )
-            # Extract JSON from response (handles markdown formatting)
-            json_str = self._extract_json_from_response(response)
-            return json.loads(json_str)
-
-        try:
-            result = await retry_with_validation(
-                generate_with_retry,
-                validate_narration_style,
-                RetryConfig(max_attempts=5),
-                context_name="Narration Style Generation"
-            )
-
-            return NarrationStyle(
-                narrator_personality=result['narrator_personality'],
-                activation_triggers=result['activation_triggers'],
-                knowledge_scope=result['knowledge_scope'],
-                emotional_involvement_level=result.get('emotional_involvement_level', ''),
-                reliability_level=result.get('reliability_level', ''),
-                voice_characteristics=result.get('voice_characteristics', []),
-                screenplay_integration=result.get('screenplay_integration', [])
-            )
-
-        except ValueError as e:
-            logger.error(f"Failed to generate valid narration style after retries: {e}")
-            raise ValueError(
-                f"Station 6 cannot proceed: LLM failed to generate valid narration style.\n"
-                f"Error: {e}\n"
-                f"NO FALLBACK CONTENT AVAILABLE. Check narrator strategy from Station 4.5 and retry."
-            )
-
-    def _build_narration_style_prompt(self, project_inputs: Dict[str, Any]) -> str:
-        """Build detailed prompt for narration style generation"""
-        return f"""
-Create narration style for "{project_inputs['working_title']}".
-
-PROJECT CONTEXT:
-- Genre: {project_inputs['primary_genre']}
-- Narrator Strategy: {project_inputs['narrator_strategy']}
-- Narrator Presence: {project_inputs.get('narrator_presence_level', 'Moderate')}
-- Premise: {project_inputs['core_premise']}
-
-Generate JSON with:
-- narrator_personality: Detailed personality description
-- activation_triggers: List of when narrator speaks
-- knowledge_scope: What narrator knows/doesn't know
-- emotional_involvement_level: Narrator's emotional engagement
-- reliability_level: How reliable/trustworthy the narrator is
-- voice_characteristics: List of vocal delivery traits
-- screenplay_integration: How narrator supports story structure
-
-Be story-specific. Match the narrator strategy from Station 4.5.
-"""
-
-    async def _create_sonic_signature_system(self, project_inputs: Dict[str, Any]) -> SonicSignature:
-        """
-        SECTION 6: SONIC SIGNATURE SYSTEM
-        Create unique audio identity integrating all story elements
-        NO FALLBACKS - Retry with validation until success
-        """
-        logger.info("Creating comprehensive sonic signature system")
-
-        # Create validator
-        def validate_sonic_signature(result: Dict[str, Any]) -> ValidationResult:
-            validation = ContentValidator.validate_required_fields(result, [
-                'main_theme_variations', 'character_musical_signatures', 'emotional_audio_palette'
-            ])
-            if not validation.is_valid:
-                return validation
-
-            # Validate character names in musical signatures
-            character_names = list(result['character_musical_signatures'].keys())
-            name_validation = ContentValidator.validate_character_names(character_names)
-            return name_validation
-
-        # Build prompt
-        prompt = self._build_sonic_signature_prompt(project_inputs)
-
-        # Use retry mechanism
-        async def generate_with_retry():
-            response = await self.openrouter.generate(
-                prompt=prompt,
-                max_tokens=4000
-            )
-            # Extract JSON from response (handles markdown formatting)
-            json_str = self._extract_json_from_response(response)
-            return json.loads(json_str)
-
-        try:
-            result = await retry_with_validation(
-                generate_with_retry,
-                validate_sonic_signature,
-                RetryConfig(max_attempts=5),
-                context_name="Sonic Signature Generation"
-            )
-
-            return SonicSignature(
-                main_theme_variations=result['main_theme_variations'],
-                character_musical_signatures=result['character_musical_signatures'],
-                emotional_audio_palette=result['emotional_audio_palette'],
-                environmental_soundscapes=result.get('environmental_soundscapes', {}),
-                recurring_audio_elements=result.get('recurring_audio_elements', []),
-                motif_applications=result.get('motif_applications', [])
-            )
-
-        except ValueError as e:
-            logger.error(f"Failed to generate valid sonic signature after retries: {e}")
-            raise ValueError(
-                f"Station 6 cannot proceed: LLM failed to generate valid sonic signature.\n"
-                f"Error: {e}\n"
-                f"NO FALLBACK CONTENT AVAILABLE. Check character and story data and retry."
-            )
-
-    def _build_sonic_signature_prompt(self, project_inputs: Dict[str, Any]) -> str:
-        """Build detailed prompt for sonic signature generation"""
-        characters = project_inputs.get('main_characters', [])
-        return f"""
-Create sonic signature for "{project_inputs['working_title']}".
-
-PROJECT CONTEXT:
-- Genre: {project_inputs['primary_genre']}
-- Main Characters: {', '.join(characters)}
-- Premise: {project_inputs['core_premise']}
-
-Generate JSON with:
-- main_theme_variations: List of theme variations
-- character_musical_signatures: Dictionary mapping character names to musical descriptions
-  - Use actual character names: {', '.join(characters)}
-  - NO generic names like "Main Character"
-- emotional_audio_palette: Dictionary of emotion-to-audio mappings
-- environmental_soundscapes: Dictionary of location soundscapes
-- recurring_audio_elements: List of recurring audio motifs
-- motif_applications: List of how motifs are used
-
-Be story-specific. Use actual character names from the story.
-"""
-
-    def _create_complete_style_guide(self, project_inputs: Dict[str, Any], language_rules: LanguageRules,
-                                   dialect_accent_map: DialectAccentMap, audio_conventions: AudioConventionsFramework,
-                                   dialogue_principles: DialoguePrinciples, narration_style: Optional[NarrationStyle],
-                                   sonic_signature: SonicSignature, session_id: str) -> MasterStyleGuide:
-        """Package complete Master Style Guide document"""
-
-        # Create executive summary
-        narrator_desc = f"{project_inputs.get('narrator_strategy', 'No')} narration" if project_inputs.get('narrator_strategy') else "No narration"
-        executive_summary = f"""
-        The Master Style Guide for '{project_inputs.get('working_title', 'this audio drama')}' establishes a comprehensive creative framework for audio-only drama production targeting {project_inputs.get('target_age_range', 'adult')} audiences with {project_inputs.get('content_rating', 'TBD')} content rating.
-
-        This {project_inputs.get('primary_genre', 'drama')} series employs {narrator_desc} within a {project_inputs.get('chosen_screenplay_style', 'TBD')} structure across {project_inputs.get('total_episodes', 'TBD')} episodes. The style guide integrates sophisticated language rules appropriate for the target audience, distinct character voice signatures for audio-only identification, comprehensive audio conventions for temporal and spatial navigation, natural dialogue principles optimized for audio comprehension, and a unique sonic signature that supports both the story's themes and emotional depth.
-
-        All elements work together to create an immersive audio experience that respects audience intelligence while ensuring accessibility and emotional engagement throughout the {project_inputs.get('episode_count', 'TBD')} × {project_inputs.get('episode_length', 'TBD')} season structure.
-        """
-
-        return MasterStyleGuide(
-            working_title=project_inputs.get("working_title", "Untitled Audio Drama"),
-            session_id=session_id,
-            created_timestamp=datetime.now(),
-            project_context=project_inputs,
-            comprehensive_profile=project_inputs.get("comprehensive_profile", {}),
-            language_rules=language_rules,
-            dialect_accent_map=dialect_accent_map,
-            audio_conventions=audio_conventions,
-            dialogue_principles=dialogue_principles,
-            narration_style=narration_style,
-            sonic_signature=sonic_signature,
-            implementation_guidelines=[
-                "Review character voice signatures before script development to ensure consistency",
-                "Apply audio conventions systematically across all episodes for audience orientation",
-                "Balance naturalistic dialogue with audio-only comprehension requirements",
-                "Integrate sonic signature elements throughout production for unified audio identity",
-                "Maintain age-appropriate language while respecting audience sophistication",
-                "Use narrator activation triggers consistently to support pacing and comprehension",
-                "Test all audio conventions in early episodes to establish audience expectations",
-                "Coordinate music and sound design with dialogue pacing for optimal audio experience"
-            ],
-            quality_control_checklist=[
-                "Verify all dialogue follows age-appropriate vocabulary guidelines",
-                "Confirm character voice distinctions are clear in audio-only format",
-                "Check that technical terms are properly introduced and explained",
-                "Ensure audio transitions serve narrative function and maintain clarity",
-                "Validate that exposition integration feels natural within dialogue",
-                "Test narrator voice consistency across episodes and scenes",
-                "Confirm sonic signature elements support rather than distract from story",
-                "Verify emotional expression is sufficient for audio-only comprehension",
-                "Check that silence protocols are applied consistently for dramatic effect",
-                "Ensure all pronunciation guides are followed for character and technical terms"
-            ],
-            executive_summary=executive_summary.strip()
-        )
+        except Exception as e:
+            logger.error(f"Failed to parse complete response: {str(e)}")
+            raise ValueError(f"Station 6 JSON parsing failed: {str(e)}")
 
     def export_to_text(self, style_guide: MasterStyleGuide) -> str:
         """

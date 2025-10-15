@@ -10,70 +10,63 @@ prompts:
 
     INPUT SEED: {seed_input}
 
-    TASK 1: EVALUATE GROWTH POTENTIAL
-    Analyze the seed and present 3 development options. Keep each option brief (2-3 sentences per section).
+    Analyze this seed and provide your analysis as VALID JSON ONLY (no explanatory text before or after).
 
-    Option A: MINI SERIES (3-6 episodes, 15-25 min each)
-    - Core story arc focused on single emotional journey
-    - Estimated word count: 15,000-30,000 total
-    - Best for: contained stories, single mystery, limited cast
-    - Audio focus: Intimate character moments, minimal locations
-    STRENGTHS: [List 3 specific strengths - keep brief]
-    LIMITATIONS: [List 2 specific limitations - keep brief]
-    JUSTIFICATION: [1-2 sentences why this scale fits]
+    Return this exact JSON structure:
 
-    Option B: STANDARD SERIES (8-12 episodes, 35-45 min each)
-    - Main arc with 2-3 subplots and character development
-    - Estimated word count: 60,000-100,000 total
-    - Best for: character journeys, mystery with layers, relationship dynamics
-    - Audio focus: Multiple perspectives, rich soundscapes, evolving relationships
-    STRENGTHS: [List 3 specific strengths - keep brief]
-    LIMITATIONS: [List 2 specific limitations - keep brief]
-    JUSTIFICATION: [1-2 sentences why this scale fits]
+    ```json
+    {{
+      "option_a": {{
+        "type": "MINI",
+        "episode_count": "3-6 episodes",
+        "episode_length": "15-25 min each",
+        "word_count": "15,000-30,000 total",
+        "best_for": "contained stories, single mystery, limited cast",
+        "justification": "2-3 sentences explaining why this scale fits the story"
+      }},
+      "option_b": {{
+        "type": "STANDARD",
+        "episode_count": "8-12 episodes",
+        "episode_length": "35-45 min each",
+        "word_count": "60,000-100,000 total",
+        "best_for": "character journeys, mystery with layers",
+        "justification": "2-3 sentences explaining why this scale fits the story"
+      }},
+      "option_c": {{
+        "type": "EXTENDED",
+        "episode_count": "20-40 episodes",
+        "episode_length": "35-45 min each",
+        "word_count": "150,000-300,000 total",
+        "best_for": "world-building, ensemble casts, epic scope",
+        "justification": "2-3 sentences explaining why this scale fits the story"
+      }},
+      "recommended_option": "A or B or C",
+      "initial_expansion": {{
+        "working_titles": [
+          "Audio-friendly title 1",
+          "Audio-friendly title 2",
+          "Audio-friendly title 3"
+        ],
+        "main_characters": [
+          "Character name 1 (extract actual name from story)",
+          "Character name 2 (extract actual name from story)",
+          "Character name 3",
+          "Character name 4"
+        ],
+        "core_premise": "2-3 sentences describing core story for audio drama",
+        "central_conflict": "Main dramatic tension - 2-3 sentences",
+        "episode_rationale": "Why this episode count works - 2-3 sentences",
+        "breaking_points": [
+          "Episode 1 ending cliffhanger",
+          "Episode 2 ending cliffhanger",
+          "Episode 3 ending cliffhanger",
+          "Episode 4 ending cliffhanger"
+        ]
+      }}
+    }}
+    ```
 
-    Option C: EXTENDED SERIES (20-40 episodes, 35-45 min each)
-    - Complex multi-arc structure with ensemble cast
-    - Estimated word count: 150,000-300,000 total
-    - Best for: world-building, ensemble casts, epic scope
-    - Audio focus: Complex sound design, multiple storylines, deep character exploration
-    STRENGTHS: [List 3 specific strengths - keep brief]
-    LIMITATIONS: [List 2 specific limitations - keep brief]
-    JUSTIFICATION: [1-2 sentences why this scale fits]
-
-    RECOMMENDATION: Choose Option A, B, or C and explain why in 1-2 sentences.
-
-    TASK 2: INITIAL EXPANSION
-    For the recommended option, create:
-
-    WORKING TITLES:
-    1. [Audio-friendly title option 1]
-    2. [Audio-friendly title option 2]
-    3. [Audio-friendly title option 3]
-
-    CORE PREMISE: [2-3 sentences describing the core story for audio drama]
-
-    MAIN CHARACTERS:
-    - [Primary character name 1 - extract actual name from story]
-    - [Primary character name 2 - extract actual name from story]
-    - [Supporting character name 3 - extract actual name from story]
-    - [Supporting character name 4 - extract actual name from story]
-
-    CENTRAL CONFLICT: [The main dramatic tension that drives the audio drama - 2-3 sentences]
-
-    EPISODE RATIONALE: [Why the recommended episode count is perfect for this story - 2-3 sentences]
-
-    AUDIO BREAKING POINTS:
-    - Episode 1 ending: [Natural episode division/cliffhanger]
-    - Episode 2 ending: [Natural episode division/cliffhanger]
-    - Episode 3 ending: [Natural episode division/cliffhanger]
-    - Episode 4 ending: [Natural episode division/cliffhanger]
-
-    SIGNATURE SOUNDS:
-    - [Key audio element 1 that defines this story]
-    - [Key audio element 2 that defines this story]
-    - [Key audio element 3 that defines this story]
-
-    IMPORTANT: Keep responses concise but complete. You MUST complete ALL sections above, especially TASK 2. Be brief in TASK 1 so you have space to complete TASK 2 fully.
+    CRITICAL: Return ONLY valid JSON. No explanatory text, no markdown except the json code block.
 
 dependencies:
   none: true

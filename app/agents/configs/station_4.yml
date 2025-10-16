@@ -55,30 +55,30 @@ prompts:
     - Content Rating: {content_rating}
     - Episode Count: {episode_count}
 
-    Extract 5-8 specific tactics from this reference that can be applied to audio production.
+    Extract 3-4 specific tactics from this reference that can be applied to audio production.
 
     IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
     {{
         "reference_title": "{title}",
         "tactics": [
             {{
-                "tactic_name": "specific, concise name",
+                "tactic_name": "specific, concise name (max 8 words)",
                 "category": "pacing|sound_design|narrative_structure|character_voice|emotional_beats|world_building|tension_management|audio_transitions",
-                "description": "detailed explanation of the tactic",
-                "audio_application": "how to apply this in audio-only format",
-                "adaptation_notes": "how to adapt this for target age {target_age} and {content_rating} rating"
+                "description": "detailed explanation of the tactic (1-2 sentences max)",
+                "audio_application": "how to apply this in audio-only format (1-2 sentences max)",
+                "adaptation_notes": "how to adapt this for target age {target_age} and {content_rating} rating (1 sentence max)"
             }}
         ]
     }}
 
     Requirements:
-    - Extract 5-8 tactics per reference
+    - Extract EXACTLY 3-4 tactics per reference (no more!)
     - Each tactic MUST be audio-applicable
     - Categories must be diverse (don't repeat same category)
     - Descriptions must be actionable, not theoretical
     - Adaptation notes must account for age rating and episode constraints
 
-  seed_generation_micro: |
+  seed_generation_micro_15: |
     You are a Micro-Moment Seed Generator for audiobook production.
 
     Based on this project data:
@@ -94,7 +94,8 @@ prompts:
     Tactics available:
     {tactics_summary}
 
-    Generate 30 MICRO-MOMENT SEEDS (30-90 seconds each).
+    Generate 15 MICRO-MOMENT SEEDS (30-90 seconds each).
+    Start numbering from MM_{start_id:03d} if provided, otherwise start from MM_001.
 
     IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
     {{
@@ -114,11 +115,12 @@ prompts:
     }}
 
     Requirements:
-    - Generate EXACTLY 30 micro-moments
+    - Generate EXACTLY 15 micro-moments
     - Each 30-90 seconds (verify duration field)
     - Spread across all episodes
     - Every moment must have clear audio hook
     - Age-appropriate content for {content_rating}
+    - CRITICAL: Ensure all JSON strings are properly closed with quotes
 
   seed_generation_beats: |
     You are an Episode Beat Seed Generator for audiobook production.

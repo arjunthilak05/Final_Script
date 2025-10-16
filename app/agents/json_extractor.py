@@ -81,6 +81,7 @@ class JSONExtractor:
         - Trailing commas in arrays and objects
         - Missing commas between array elements
         - Unclosed strings (attempts basic repair)
+        - Truncated JSON arrays (auto-closes)
 
         Args:
             json_string: Potentially malformed JSON string
@@ -97,6 +98,33 @@ class JSONExtractor:
         # Fix missing commas between objects in arrays (common LLM error)
         # Pattern: }\n    { -> },\n    {
         json_string = re.sub(r'}\s*\n\s*{', '},\n    {', json_string)
+
+        # FIX TRUNCATED JSON: If JSON ends abruptly, try to close it
+        json_string = json_string.strip()
+
+        # Count opening and closing braces/brackets
+        open_braces = json_string.count('{')
+        close_braces = json_string.count('}')
+        open_brackets = json_string.count('[')
+        close_brackets = json_string.count(']')
+
+        # If truncated (more opens than closes), try to close gracefully
+        if open_braces > close_braces or open_brackets > close_brackets:
+            logger.warning("Detected truncated JSON, attempting to auto-close...")
+
+            # Close any unclosed strings (basic attempt)
+            if json_string.count('"') % 2 != 0:
+                json_string += '"'
+
+            # Close unclosed objects
+            while open_braces > close_braces:
+                json_string += '\n}'
+                close_braces += 1
+
+            # Close unclosed arrays
+            while open_brackets > close_brackets:
+                json_string += '\n]'
+                close_brackets += 1
 
         # Fix missing commas between string values
         # Pattern: "value"\n    " -> "value",\n    "

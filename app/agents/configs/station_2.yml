@@ -1,6 +1,6 @@
 # Station 2: Project DNA Builder Configuration
 
-model: "z-ai/glm-4.5"
+model: "glm-4.5"
 temperature: 0.7
 max_tokens: 3000
 

@@ -27,7 +27,8 @@ class OpenRouterAgent:
             "grok-4": "x-ai/grok-4-fast:free",
             "llama-3b": "meta-llama/llama-3.2-3b-instruct:free",
             "gpt-4o": "openai/gpt-4o-2024-08-06",
-            "claude-3-haiku": "anthropic/claude-3-haiku"
+            "claude-3-haiku": "anthropic/claude-3-haiku",
+            "glm-4.5": "z-ai/glm-4.5"
         }
     
     async def process_message(self, user_input: str, model_name: str = "qwen-72b", max_tokens: int = 3000) -> str:
@@ -104,7 +105,8 @@ class OpenRouterAgent:
             "grok-4": "You are Grok-4, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses.",
             "llama-3b": "You are Llama 3.2 3B, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses.",
             "gpt-4o": "You are GPT-4o, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses.",
-            "claude-3-haiku": "You are Claude 3 Haiku, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses."
+            "claude-3-haiku": "You are Claude 3 Haiku, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses.",
+            "glm-4.5": "You are GLM-4.5, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses."
         }
         return system_messages.get(model_name, system_messages["qwen-72b"])
     

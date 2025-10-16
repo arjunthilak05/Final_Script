@@ -1,0 +1,150 @@
+# Station 5: Season Architect Configuration
+
+station_name: "Station 5: Season Architect"
+description: "Designs the complete season structure for an audiobook based on the provided project foundation. Analyzes screenplay styles, recommends top 3 styles, creates season skeleton, and maps rhythm patterns."
+model: "glm-4.5"
+temperature: 0.7
+max_tokens: 4096
+
+prompts:
+  season_architecture_analysis: |
+    **Role:** You are the Season Architect. Your task is to design the complete season structure for an audiobook based on the provided project foundation.
+
+    **Project Data:**
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - Target Age: {target_age}
+    - Episode Count: {episode_count}
+    - Episode Length: {episode_length}
+    - Story Complexity: {story_complexity}
+    - Tone: {tone}
+    - Narrator Strategy: {narrator_strategy}
+    - Core Premise: {core_premise}
+
+    **Instructions:**
+
+    1. **Style Selection:**
+       * Analyze the 48 styles in the `SCREENPLAY_STYLE_LIBRARY` below.
+       * Recommend the top 3 styles for this project.
+       * For each recommendation, provide: `justification`, `audio_application`, `structure_implications`, and a 500-700 word `demo_script`.
+
+    2. **Season Skeleton (for your #1 recommended style):**
+       * **Macro Structure:** Define the season's four acts using episode percentage markers (e.g., Episodes 1-6 are Act 1).
+       * **Micro Structure (Episode Grid):** Create an array of objects, one for each episode. Each episode object must include: `episode_number`, `primary_function` (e.g., "Setup"), `energy_level` (1-10), `subplot_focus`, and `cliffhanger_type` (e.g., "Revelation").
+
+    3. **Rhythm Mapping:**
+       * Provide lists of episode numbers for `tension_peaks`, `breathing_room`, `format_breaks`, and the `revelation_cascade`.
+
+    **Output Format:** Your entire response MUST be a single, valid JSON object. The root key should be `season_structure_document`.
+
+    **SCREENPLAY_STYLE_LIBRARY:**
+
+    1. **3-Act Micro:** Classic setup/confrontation/resolution compressed for episodes. Audio markers: Clear act breaks via music/silence.
+    2. **5-Act Micro (Freytag Pyramid):** Exposition→Rising Action→Climax→Falling Action→Denouement. Audio markers: Sound density increases toward climax.
+    3. **8-Sequence Structure:** Story divided into 8 mini-movements. Audio markers: Motif returns at each quarter-mark.
+    4. **Kishōtenketsu:** Introduction→Development→Twist→Reconciliation. Audio markers: Ambient shift at twist.
+    5. **Bottle Episode Structure:** Single location, real-time pressure cooker. Audio markers: Room tone evolves.
+    6. **Real-Time Structure:** Story time equals listening time. Audio markers: Clock ticking, real-world time references.
+    7. **Investigation Duel:** Two perspectives investigating the same truth. Audio markers: Overlapping VO, alternating POV.
+    8. **Classic Whodunit:** Closed-circle mystery. Audio markers: Fair clues embedded as sound hints.
+    9. **Howcatchem (Inverted Mystery):** Audience knows the culprit; interest is in the capture. Audio markers: Step-by-step procedural sounds.
+    10. **Heist Structure:** Assemble team→Plan→Execute→Twist→Escape. Audio markers: Planning beats mirrored in execution SFX.
+    11. **Wrong-Man Thriller:** Innocent person accused, must prove innocence. Audio markers: Pursuit rhythms, paranoid soundscape.
+    12. **Chase Engine:** Continuous pursuit drives the narrative. Audio markers: Evolving chase sounds, location shifts.
+    13. **Survival/Siege Structure:** Attrition cycles as resources dwindle. Audio markers: Resource inventory sounds, depleting supplies.
+    14. **Hyperlink Structure:** Multiple parallel stories echo a common theme. Audio markers: Distinct ambience per storyline.
+    15. **Nonlinear Time Structure:** Time jumps reframe information. Audio markers: Temporal cue sounds, narrator timestamps.
+    16. **Frame Narrative:** Story within a story. Audio markers: Narrator voice shifts between frame and inner story.
+    17. **Anthology/Mosaic:** Thematically connected but separate stories. Audio markers: Reset motif between segments.
+    18. **Mockumentary Structure:** Fake documentary format. Audio markers: Interview acoustics, lav mic rustle.
+    19. **Found Footage/Diegetic:** All audio from in-world devices. Audio markers: Device limitations, recording beeps.
+    20. **Musical Anchors Structure:** Songs drive act breaks. Audio markers: Leitmotif progression.
+    21. **Courtroom/Procedure:** Truth emerges through a formal process. Audio markers: Gavel sounds, formal speaking patterns.
+    22. **Heist-Gone-Wrong:** Plan fails, cascading complications. Audio markers: Plan motif breaking down, chaos sounds.
+    23. **Mystery-Box Structure:** Central questions spawn more questions. Audio markers: Curiosity cadence, question-mark intonation.
+    24. **Road/Journey Structure:** Physical journey mirrors internal growth. Audio markers: Transit ambience, changing location acoustics.
+    25. **Competition Ladder:** Elimination rounds build to a final confrontation. Audio markers: Crowd reactions, score announcements.
+    26. **Coming-of-Age Micro:** Growth through accumulated small choices. Audio markers: Voice maturation, personal motif evolution.
+    27. **Rise→Fall→Redemption Arc:** Success, hubris-driven failure, earned comeback. Audio markers: Motif brightens→darkens→transforms.
+    28. **Tragic Downfall Structure:** Fatal flaw leads to destruction. Audio markers: Motif gradually corrupts.
+    29. **Creature Feature/Attack Cycles:** Monster approach→strike→aftermath→regroup. Audio markers: Creature signature sounds.
+    30. **Disaster/Countdown Structure:** Ticking clock toward catastrophe. Audio markers: Alarm sounds, countdown beeps.
+    31. **Time Loop Structure:** Repetition with variation teaches a lesson. Audio markers: Loop reset chime.
+    32. **Time Travel/Predestination:** Cause-effect paradoxes. Audio markers: Temporal transition sounds.
+    33. **Multiverse/Parallel Structure:** Alternate realities show different choices. Audio markers: Dimensional shift sounds.
+    34. **Social Parable/Satire:** Each story level exposes systemic issues. Audio markers: Public space ambience.
+    35. **Poetic/Elliptical Structure:** Mood and atmosphere over linear plot. Audio markers: Sensory details, abstract soundscapes.
+    36. **Romance Engine:** Meet→Fun→Fall Apart→Grand Gesture→Resolution. Audio markers: Intimate acoustics, breathing patterns.
+    37. **Action Drip Structure:** Brief action bursts punctuate character moments. Audio markers: Short intense sequences, then breathing space.
+    38. **Bottle Interrogation:** Confined space Q&A drives all reveals. Audio markers: Chair creaks, pen clicks.
+    39. **Tech-Thriller Pulse:** Digital puzzles mixed with physical chase. Audio markers: UI sounds, keyboard clicks.
+    40. **Cyber-Noir Structure:** Digital-age noir with tech replacing shadows. Audio markers: Electronic hum, rain, modem sounds.
+    41. **Ethical Dilemma Framework:** Each choice has a moral cost. Audio markers: Heartbeat, decision pause.
+    42. **Memory Puzzle Structure:** Scenes unlock through recovered memories. Audio markers: Memory trigger sounds.
+    43. **Network Dive Structure:** Story unfolds inside a digital space. Audio markers: Digital texture layers, data stream sounds.
+    44. **Blind-Spot City:** A hidden world exists alongside the normal one. Audio markers: Phasing ambience when crossing boundaries.
+    45. **Family Thread Structure:** Domestic stakes drive quiet drama. Audio markers: Household sounds, kitchen ambience.
+    46. **Rashomon Structure:** Same events from multiple contradicting perspectives. Audio markers: POV-specific acoustic treatment.
+    47. **Fibonacci Structure:** Segments grow in length/intensity based on the Fibonacci sequence. Audio markers: Mathematical progression in scene lengths.
+    48. **Ring Composition:** The story ends where it began but with a transformed meaning. Audio markers: Opening motif returns, transformed, at the end.
+
+    **Requirements:**
+    - Choose styles that best fit the project's genre, tone, and target age
+    - Consider the narrator strategy when selecting styles
+    - Provide detailed justifications for each recommendation
+    - Create realistic episode counts and structure
+    - Ensure all audio markers are practical for audiobook production
+    - Return ONLY valid JSON - no explanatory text before or after
+
+    **Expected JSON Structure:**
+    {{
+        "season_structure_document": {{
+            "style_recommendations": [
+                {{
+                    "style_name": "Style Name",
+                    "justification": "Why this style fits the project",
+                    "audio_application": "How to apply this style in audio",
+                    "structure_implications": "How this affects the overall structure",
+                    "demo_script": "500-700 word demonstration script"
+                }}
+            ],
+            "season_skeleton": {{
+                "macro_structure": {{
+                    "act_1": "Episodes 1-X",
+                    "act_2": "Episodes X-Y", 
+                    "act_3": "Episodes Y-Z",
+                    "act_4": "Episodes Z-Final"
+                }},
+                "episode_grid": [
+                    {{
+                        "episode_number": 1,
+                        "primary_function": "Setup",
+                        "energy_level": 7,
+                        "subplot_focus": "Character Introduction",
+                        "cliffhanger_type": "Revelation"
+                    }}
+                ]
+            }},
+            "rhythm_mapping": {{
+                "tension_peaks": [3, 8, 15, 22],
+                "breathing_room": [5, 12, 18],
+                "format_breaks": [7, 14, 21],
+                "revelation_cascade": [6, 11, 16, 20, 24]
+            }}
+        }}
+    }}
+
+dependencies:
+  - station: 1
+    name: "Seed Processor"
+  - station: 2
+    name: "Project DNA Builder"
+  - station: 3
+    name: "Age Genre Optimizer"
+  - station: 4
+    name: "Reference Mining & Seed Extraction"
+  - station: 4.5
+    name: "Narrator Strategy Designer"
+
+# Enable/disable this station in the pipeline
+enabled: true

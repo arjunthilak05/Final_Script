@@ -1,6 +1,6 @@
 # Station 4: Reference Mining & Seed Extraction Configuration
 
-model: "z-ai/glm-4.5"
+model: "glm-4.5"
 temperature: 0.8
 max_tokens: 4000
 

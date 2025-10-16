@@ -1,95 +1,264 @@
 # Station 4: Reference Mining & Seed Extraction Configuration
 
 model: "z-ai/glm-4.5"
-temperature: 0.7
-max_tokens: 16000
+temperature: 0.8
+max_tokens: 4000
 
 prompts:
   reference_gathering: |
-    You are the Reference Curator for audio drama development.
+    You are a Cross-Media Reference Specialist for audiobook production.
 
-    PROJECT CONTEXT:
-    Title: {working_title}
-    Primary Genre: {primary_genre}
-    Secondary Genres: {secondary_genres}
-    Target Age Range: {target_age_range}
-    Content Rating: {content_rating}
+    Based on this Project Bible:
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - Secondary Genres: {secondary_genres}
+    - Target Age Range: {target_age_range}
+    - Content Rating: {content_rating}
 
-    Identify 20-25 cross-media references. Return ONLY valid JSON:
+    Generate 20-25 cross-media references (films, TV shows, podcasts, audiobooks, radio dramas) that share DNA with this project.
 
-    ```json
+    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
     {{
-      "references": [
-        {{
-          "title": "Exact title",
-          "medium": "Audio Drama or Film or TV or Literature or Podcast or Interactive",
-          "release_year": "2020",
-          "creator": "Creator name",
-          "genre_relevance": "How it matches our genre",
-          "age_appropriateness": "Why it fits our rating",
-          "why_selected": "2-3 sentences on storytelling value"
-        }}
-      ]
+        "references": [
+            {{
+                "title": "exact title",
+                "medium": "film|tv_show|podcast|audiobook|radio_drama",
+                "release_year": "release year",
+                "creator": "creator name",
+                "genre_relevance": "how it matches our genre blend",
+                "age_appropriateness": "why it fits our age rating",
+                "why_selected": "2-3 sentences on what storytelling techniques this reference offers for audio production"
+            }}
+        ]
     }}
-    ```
 
-    CRITICAL: Return array of 20-25 references as valid JSON only.
+    Requirements:
+    - Generate EXACTLY 20-25 references (no more, no less)
+    - Mix of media types (not all films or all podcasts)
+    - Focus on WHY each reference matters for audio storytelling
+    - Include both classics and modern examples
+    - Each reference must be age-appropriate for {content_rating} rating
 
   tactical_extraction: |
-    Extract storytelling tactics from this reference for audio drama.
+    You are a Tactical Extraction Specialist for audiobook production.
 
-    PROJECT: {project_context}
-    REFERENCE: {reference_details}
+    Based on this reference:
+    - Title: {title}
+    - Type: {type}
+    - Year: {year}
+    - Primary Genre: {primary_genre}
+    - Why Relevant: {why_relevant}
 
-    Return ONLY valid JSON:
+    And this project context:
+    - Working Title: {working_title}
+    - Target Age: {target_age}
+    - Content Rating: {content_rating}
+    - Episode Count: {episode_count}
 
-    ```json
+    Extract 5-8 specific tactics from this reference that can be applied to audio production.
+
+    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
     {{
-      "storytelling_tactic": "Technique name and description",
-      "pitfall_to_avoid": "What to avoid and why",
-      "audio_technique": "Audio-specific technique",
-      "applicability_score": 0.85,
-      "implementation_notes": "How to apply this"
+        "reference_title": "{title}",
+        "tactics": [
+            {{
+                "tactic_name": "specific, concise name",
+                "category": "pacing|sound_design|narrative_structure|character_voice|emotional_beats|world_building|tension_management|audio_transitions",
+                "description": "detailed explanation of the tactic",
+                "audio_application": "how to apply this in audio-only format",
+                "adaptation_notes": "how to adapt this for target age {target_age} and {content_rating} rating"
+            }}
+        ]
     }}
-    ```
 
-    CRITICAL: Return valid JSON only.
+    Requirements:
+    - Extract 5-8 tactics per reference
+    - Each tactic MUST be audio-applicable
+    - Categories must be diverse (don't repeat same category)
+    - Descriptions must be actionable, not theoretical
+    - Adaptation notes must account for age rating and episode constraints
 
-  seed_generation: |
-    Generate 65 story seeds for audio drama production.
+  seed_generation_micro: |
+    You are a Micro-Moment Seed Generator for audiobook production.
 
-    PROJECT: {project_context}
-    TACTICS: {available_tactics}
-    CHARACTERS: {main_characters}
+    Based on this project data:
+    - Working Title: {working_title}
+    - Core Premise: {core_premise}
+    - Central Conflict: {central_conflict}
+    - Main Characters: {main_characters}
+    - Primary Genre: {primary_genre}
+    - Target Age: {target_age}
+    - Content Rating: {content_rating}
+    - Episode Count: {episode_count}
 
-    IMPORTANT: Use ONLY the actual character names provided in CHARACTERS. Do not invent new character names.
+    Tactics available:
+    {tactics_summary}
 
-    Return ONLY valid JSON with exactly 30+20+10+5 seeds:
+    Generate 30 MICRO-MOMENT SEEDS (30-90 seconds each).
 
-    ```json
+    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
     {{
-      "micro_moments": [
-        {{
-          "title": "Seed title",
-          "description": "2-3 sentences",
-          "audio_considerations": "Audio-specific notes",
-          "difficulty": "Easy or Medium or Hard",
-          "characters": ["Character 1", "Character 2"],
-          "setting": "Setting description",
-          "runtime": "30-90 seconds",
-          "tags": ["Genre tag 1", "Genre tag 2"],
-          "source_reference": "Reference title",
-          "adaptation_notes": "How to adapt for audio"
-        }}
-      ],
-      "episode_beats": [ /* 20 seeds with same structure */ ],
-      "season_arcs": [ /* 10 seeds with same structure */ ],
-      "series_defining": [ /* 5 seeds with same structure */ ]
+        "micro_moments": [
+            {{
+                "seed_id": "MM_001",
+                "title": "evocative 3-5 word title",
+                "duration": "30-90 sec",
+                "placement": "Episode X, timestamp/context",
+                "core_idea": "one sentence description",
+                "audio_hook": "what sound/voice/music element grabs attention",
+                "emotional_beat": "what emotion this moment delivers",
+                "inspired_by_tactic": "which reference tactic inspired this",
+                "production_notes": "brief guidance for audio team"
+            }}
+        ]
     }}
-    ```
 
-    CRITICAL: Generate exactly 30 micro_moments, 20 episode_beats, 10 season_arcs, 5 series_defining. JSON only.
+    Requirements:
+    - Generate EXACTLY 30 micro-moments
+    - Each 30-90 seconds (verify duration field)
+    - Spread across all episodes
+    - Every moment must have clear audio hook
+    - Age-appropriate content for {content_rating}
 
+  seed_generation_beats: |
+    You are an Episode Beat Seed Generator for audiobook production.
+
+    Based on this project data:
+    - Working Title: {working_title}
+    - Core Premise: {core_premise}
+    - Central Conflict: {central_conflict}
+    - Breaking Points: {breaking_points}
+    - Primary Genre: {primary_genre}
+    - Target Age: {target_age}
+    - Content Rating: {content_rating}
+    - Episode Count: {episode_count}
+    - Episode Length: {episode_length}
+
+    Tactics available:
+    {tactics_summary}
+
+    Generate 20 EPISODE BEAT SEEDS (3-8 minutes each).
+
+    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
+    {{
+        "episode_beats": [
+            {{
+                "seed_id": "EB_001",
+                "title": "compelling 4-7 word title",
+                "duration": "3-8 min",
+                "episode_placement": "Episode X, early/mid/late",
+                "beat_type": "revelation|confrontation|decision|discovery|loss|victory|twist|connection",
+                "core_idea": "2-3 sentence description",
+                "character_focus": "which character(s) this beat centers on",
+                "audio_structure": "how this beat unfolds in audio",
+                "emotional_arc": "emotional journey from start to end",
+                "inspired_by_tactic": "which reference tactic inspired this",
+                "production_notes": "guidance for pacing, sound design, voice direction"
+            }}
+        ]
+    }}
+
+    Requirements:
+    - Generate EXACTLY 20 episode beats
+    - Each 3-8 minutes
+    - Beat types must be diverse
+    - Age-appropriate content for {content_rating}
+
+  seed_generation_arcs: |
+    You are a Season Arc Seed Generator for audiobook production.
+
+    Based on this project data:
+    - Working Title: {working_title}
+    - Core Premise: {core_premise}
+    - Central Conflict: {central_conflict}
+    - Episode Count: {episode_count}
+    - Episode Length: {episode_length}
+    - Main Characters: {main_characters}
+    - Primary Genre: {primary_genre}
+    - Target Age: {target_age}
+    - Content Rating: {content_rating}
+    - Tonal Shift Moments: {tonal_shift_moments}
+
+    Tactics available:
+    {tactics_summary}
+
+    Generate 10 SEASON ARC SEEDS (multi-episode storylines).
+
+    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
+    {{
+        "season_arcs": [
+            {{
+                "seed_id": "SA_001",
+                "title": "memorable 4-8 word title",
+                "arc_type": "character_development|relationship_evolution|mystery_unraveling|threat_escalation|world_revelation|moral_journey|transformation",
+                "episode_span": "Episodes X-Y",
+                "total_runtime": "estimated total minutes across episodes",
+                "core_idea": "3-4 sentence description of full arc",
+                "progression_beats": [
+                    "Episode X: what happens",
+                    "Episode Y: what develops",
+                    "Episode Z: how it resolves"
+                ],
+                "character_focus": "which character(s) this arc centers on",
+                "audio_continuity": "recurring sounds/themes/motifs",
+                "emotional_journey": "how emotions evolve across the arc",
+                "inspired_by_tactic": "which reference tactic inspired this",
+                "production_notes": "guidance for maintaining arc coherence"
+            }}
+        ]
+    }}
+
+    Requirements:
+    - Generate EXACTLY 10 season arcs
+    - Episode spans must fit within {episode_count}
+    - Age-appropriate content for {content_rating}
+
+  seed_generation_defining: |
+    You are a Series-Defining Moment Generator for audiobook production.
+
+    Based on this project data:
+    - Working Title: {working_title}
+    - Core Premise: {core_premise}
+    - Central Conflict: {central_conflict}
+    - Breaking Points: {breaking_points}
+    - Episode Count: {episode_count}
+    - Main Characters: {main_characters}
+    - Primary Genre: {primary_genre}
+    - Target Age: {target_age}
+    - Content Rating: {content_rating}
+    - Creative Promises: {creative_promises}
+
+    Tactics available:
+    {tactics_summary}
+
+    Generate 5 SERIES-DEFINING MOMENTS (iconic scenes).
+
+    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
+    {{
+        "defining_moments": [
+            {{
+                "seed_id": "SDM_001",
+                "title": "unforgettable 5-10 word title",
+                "moment_type": "opening_hook|midpoint_shift|climactic_confrontation|emotional_peak|final_revelation|character_transformation",
+                "episode_placement": "Episode X, specific context",
+                "duration": "estimated runtime",
+                "core_idea": "4-5 sentence description",
+                "why_defining": "why this epitomizes the series",
+                "audio_signature": "the signature sound/voice/music",
+                "character_impact": "how this changes characters",
+                "audience_impact": "emotional/intellectual impact",
+                "memorability_factor": "what makes this stick in memory",
+                "inspired_by_tactic": "which reference tactic inspired this",
+                "production_notes": "detailed guidance for execution"
+            }}
+        ]
+    }}
+
+    Requirements:
+    - Generate EXACTLY 5 series-defining moments
+    - These should be the MOST MEMORABLE scenes
+    - Age-appropriate content for {content_rating}
+    - Strategic placement across series
 
 
 dependencies:

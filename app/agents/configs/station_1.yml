@@ -55,16 +55,21 @@ prompts:
         ],
         "core_premise": "2-3 sentences describing core story for audio drama",
         "central_conflict": "Main dramatic tension - 2-3 sentences",
-        "episode_rationale": "Why this episode count works - 2-3 sentences",
+        "episode_rationale": "Why the RECOMMENDED OPTION's episode count works - 2-3 sentences. MUST match the recommended option.",
         "breaking_points": [
           "Episode 1 ending cliffhanger",
           "Episode 2 ending cliffhanger",
           "Episode 3 ending cliffhanger",
-          "Episode 4 ending cliffhanger"
+          "Episode 4 ending cliffhanger (adjust count based on recommended option)"
         ]
       }}
     }}
     ```
+
+    CRITICAL INSTRUCTION: The "episode_rationale" and "breaking_points" in initial_expansion MUST be based on your RECOMMENDED OPTION's episode count, not a different scale.
+    - If you recommend Option A (MINI: 3-6 episodes), write rationale for 3-6 episodes
+    - If you recommend Option B (STANDARD: 8-12 episodes), write rationale for 8-12 episodes
+    - If you recommend Option C (EXTENDED: 20-40 episodes), write rationale for 20-40 episodes
 
     CRITICAL: Return ONLY valid JSON. No explanatory text, no markdown except the json code block.
 

@@ -1,705 +1,527 @@
 """
-Station 2: Project DNA Builder Agent
+Station 2: Project DNA Builder Agent - SIMPLIFIED VERSION
 
-This agent takes the scale choice from Station 1 and creates a comprehensive 
-Project Bible that establishes the core identity of the audiobook series.
-
-Dependencies: Station 1 output (scale choice and initial expansion)
-Outputs: Complete Project Bible (8 sections)
-Human Gate: CRITICAL - Bible approval affects entire production pipeline
+Takes Station 1 output and creates comprehensive Project Bible with 7 sections:
+1. World & Setting
+2. Format Specifications
+3. Genre & Tone
+4. Creative Promises
+5. Audience Profile
+6. Production Constraints
+7. Creative Team
 """
 
+import asyncio
 import json
-import re
 import logging
-from typing import Dict, List, Optional, Any
-from dataclasses import dataclass, asdict
+from typing import Dict
+from dataclasses import dataclass
 from datetime import datetime
-from enum import Enum
+from pathlib import Path
 
 from app.openrouter_agent import OpenRouterAgent
 from app.redis_client import RedisClient
-from app.config import Settings
 from app.agents.config_loader import load_station_config
 from app.agents.json_extractor import extract_json
 
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-class ContentRating(Enum):
-    G = "G"
-    PG = "PG" 
-    PG13 = "PG-13"
-    R = "R"
-
-class BudgetTier(Enum):
-    LOW = "Low Budget"
-    MEDIUM = "Medium Budget"
-    HIGH = "High Budget"
-    PREMIUM = "Premium Budget"
-
-@dataclass
-class WorldSetting:
-    """World and setting information"""
-    time_period: str
-    primary_location: str
-    setting_type: str
-    atmosphere: str
-    key_locations: List[str]
-    historical_context: str
-    cultural_elements: List[str]
-
-@dataclass
-class FormatSpecifications:
-    """Technical format specifications"""
-    series_type: str
-    episode_count: str
-    episode_length: str
-    season_structure: str
-    pacing_strategy: str
-    narrative_structure: str
-
-@dataclass
-class GenreTone:
-    """Genre and tone definition"""
-    primary_genre: str
-    secondary_genres: List[str]
-    tone_descriptors: List[str]
-    mood_profile: str
-    genre_conventions: List[str]
-
-@dataclass
-class CreativePromises:
-    """Creative commitments for the series"""
-    core_hooks: List[str]
-    unique_elements: List[str]
-    emotional_journey: str
-    story_pillars: List[str]
-
-@dataclass
-class AudienceProfile:
-    """Target audience definition"""
-    primary_age_range: str
-    target_demographics: List[str]
-    core_interests: List[str]
-    listening_context: str
-    content_preferences: List[str]
-
-@dataclass
-class ProductionConstraints:
-    """Production and technical constraints"""
-    content_rating: ContentRating
-    budget_tier: BudgetTier
-    technical_requirements: List[str]
-    content_restrictions: List[str]
-    distribution_channels: List[str]
-
-@dataclass
-class CreativeTeam:
-    """Team and decision-making structure"""
-    required_roles: List[str]
-    specialized_skills: List[str]
-    team_structure: str
-    collaboration_style: str
-    key_partnerships: List[str]
 
 @dataclass
 class ProjectBible:
-    """Complete Project Bible output from Station 2"""
+    """Complete Project Bible from Station 2"""
+    # From Station 1
     working_title: str
-    world_setting: WorldSetting
-    format_specifications: FormatSpecifications
-    genre_tone: GenreTone
-    creative_promises: CreativePromises
-    audience_profile: AudienceProfile
-    production_constraints: ProductionConstraints
-    creative_team: CreativeTeam
+    original_seed: str
+    seed_type: str
+    scale_type: str
+    episode_count: str
+    episode_length: str
+
+    # Generated in Station 2
+    world_setting: Dict
+    format_specifications: Dict
+    genre_tone: Dict
+    creative_promises: Dict
+    audience_profile: Dict
+    production_constraints: Dict
+    creative_team: Dict
+
     session_id: str
-    created_timestamp: datetime
-    station_1_reference: Dict[str, Any]
+    timestamp: str
+
 
 class Station02ProjectDNABuilder:
-    """
-    Station 2: Project DNA Builder
-    
-    Creates comprehensive Project Bible using multi-step AI analysis.
-    Each section is generated with specialized prompts for consistent quality.
-    """
-    
+    """Simplified Station 2: Project DNA Builder"""
+
     def __init__(self):
-        self.settings = Settings()
         self.openrouter = OpenRouterAgent()
         self.redis = RedisClient()
-        self.station_id = "station_02"
-        
-        # Load station configuration from YML
         self.config = load_station_config(station_number=2)
-        
-        # Section-specific prompts (loaded from config)
-        self.section_prompts = self.config.get_all_prompts()
-        
+        self.output_dir = Path("output/station_02")
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+
     async def initialize(self):
-        """Initialize Station 2 processor"""
+        """Initialize connections"""
         await self.redis.initialize()
-        
-    def _load_section_prompts(self) -> Dict[str, str]:
-        """Load specialized prompts for each bible section"""
-        # This method is deprecated - prompts are now loaded from YML config
-        # Keeping for backwards compatibility
-        return self.section_prompts if hasattr(self, 'section_prompts') else {
-            "world": """
-You are the World Building Specialist for audiobook production.
+        logger.info("✅ Station 2 initialized")
 
-Based on the story concept and scale choice, create detailed world and setting information:
+    async def load_station1_data(self, session_id: str) -> Dict:
+        """Load Station 1 output from Redis"""
+        print(f"\n📥 Loading Station 1 data for session: {session_id}")
 
-REQUIREMENTS:
-1. PRIMARY LOCATIONS (3-5 key places):
-   - Where most scenes take place
-   - Consider audio storytelling needs
-   - Each location needs distinct acoustic signature
-   - Think about how each place SOUNDS different
+        key = f"audiobook:{session_id}:station_01"
+        data_str = await self.redis.get(key)
 
-2. TIME PERIOD/YEAR:
-   - When story takes place
-   - Historical context if relevant
-   - Technology level considerations
+        if not data_str:
+            raise ValueError(f"❌ No Station 1 data found for session {session_id}")
 
-3. ATMOSPHERE/MOOD:
-   - Overall emotional tone of the world
-   - How environment affects characters
-   - Audio mood descriptors
+        data = json.loads(data_str)
+        print(f"✅ Loaded Station 1 data: {data.get('chosen_title', 'Unknown')}")
+        return data
 
-4. CULTURAL CONTEXT:
-   - Social environment
-   - Rules and norms that matter to the story
-   - Background that affects character behavior
+    def display_station1_summary(self, station1_data: Dict):
+        """Display Station 1 data summary"""
+        print("\n" + "="*60)
+        print("📋 STATION 1 OUTPUT SUMMARY")
+        print("="*60)
+        print(f"\nTitle: {station1_data['chosen_title']}")
+        print(f"Scale: {station1_data['option_details']['type']}")
+        print(f"Episodes: {station1_data['option_details']['episode_count']}")
+        print(f"Length: {station1_data['option_details']['episode_length']}")
+        print(f"\nCore Premise: {station1_data['core_premise'][:100]}...")
+        print("\n" + "-"*60)
 
-Focus on audio-specific considerations. How will each location SOUND different?
-Keep practical for audio-only production.
+    def _build_context(self, station1_data: Dict) -> str:
+        """Build context string for prompts"""
+        return f"""
+TITLE: {station1_data['chosen_title']}
+ORIGINAL SEED: {station1_data['original_seed']}
 
-STORY CONTEXT: {context}
+SCALE: {station1_data['option_details']['type']}
+EPISODES: {station1_data['option_details']['episode_count']}
+LENGTH: {station1_data['option_details']['episode_length']}
+WORD COUNT: {station1_data['option_details']['word_count']}
 
-Provide detailed world building analysis.
-""",
+CORE PREMISE: {station1_data['core_premise']}
+CENTRAL CONFLICT: {station1_data['central_conflict']}
+EPISODE RATIONALE: {station1_data['episode_rationale']}
 
-            "format": """
-You are the Format Specification Expert for audiobook production.
-
-Based on the scale choice from Station 1, define technical format specifications:
-
-REQUIREMENTS:
-1. AUDIO-ONLY CONSTRAINTS:
-   - What visual elements must be converted to audio
-   - Dialogue vs narration balance
-   - Sound effect requirements
-
-2. EPISODE COUNT: Use exact count from Station 1 scale choice
-3. EPISODE LENGTH TARGET: Use exact length from Station 1
-4. RELEASE CADENCE: 
-   - Weekly, bi-weekly, or all-at-once
-   - Consider audience engagement patterns
-
-5. SEASON STRUCTURE:
-   - How episodes group together
-   - Natural story arcs within season
-   - Cliffhanger and pacing strategy
-
-Be specific and practical for production planning.
-
-STORY CONTEXT: {context}
-
-Provide detailed format specifications.
-""",
-
-            "genre": """
-You are the Genre and Tone Expert for audiobook production.
-
-Analyze the story concept and define genre/tone framework:
-
-REQUIREMENTS:
-1. PRIMARY GENRE: Single main genre that best fits the story
-2. SECONDARY GENRE ELEMENTS (2-3):
-   - Supporting genres that add complexity
-   - How they blend with primary genre
-
-3. TONE DESCRIPTORS (3-5 adjectives):
-   - Emotional tone words
-   - How story should FEEL to listeners
-   - Audio-specific tone considerations
-
-4. SIMILAR SUCCESSFUL SHOWS (3-5 references):
-   - Existing audio content for comparison
-   - What elements to emulate
-   - What to differentiate from
-
-Consider audio storytelling conventions for each genre.
-
-STORY CONTEXT: {context}
-
-Provide detailed genre and tone analysis.
-""",
-
-            "audience": """
-You are the Audience Profiling Expert for audiobook production.
-
-Define the target audience based on story content and genre:
-
-REQUIREMENTS:
-1. PRIMARY AGE RANGE: Be specific (e.g., "25-45", "18-35")
-2. CONTENT RATING: Choose appropriate rating:
-   - G: General audiences, no mature content
-   - PG: Mild language/themes, suitable for most
-   - PG-13: Some mature themes, strong language occasional
-   - R: Mature themes, strong language, adult situations
-
-3. EMOTIONAL GOALS FOR LISTENERS (3-4):
-   - What emotions should audience feel?
-   - What experience are we creating?
-   - Why will they keep listening?
-
-4. EXPECTED LISTENING CONTEXT:
-   - Commuting, exercising, relaxing?
-   - Attention level required
-   - Binge vs episodic listening preference
-
-Be realistic about audience expectations and market positioning.
-
-STORY CONTEXT: {context}
-
-Provide detailed audience profile analysis.
-""",
-
-            "production": """
-You are the Production Constraints Expert for audiobook production.
-
-Set realistic production parameters:
-
-REQUIREMENTS:
-1. MAXIMUM CAST SIZE:
-   - How many voice actors needed?
-   - Main characters vs supporting roles
-   - Budget-conscious recommendations
-
-2. SFX COMPLEXITY LEVEL:
-   - Minimal: Basic sound effects only
-   - Moderate: Enhanced ambience and effects
-   - Rich: Complex soundscapes and production
-
-3. MUSIC REQUIREMENTS:
-   - Theme music, transitions, emotional scoring
-   - Production complexity level
-   - Budget considerations
-
-4. LANGUAGES: Primary language, any secondary needs
-5. LOCALIZATION NEEDS: International distribution plans
-
-Balance creative vision with production realities.
-
-STORY CONTEXT: {context}
-
-Provide detailed production constraint analysis.
-""",
-
-            "creative": """
-You are the Creative Team Structure Expert.
-
-Define the creative decision-making structure:
-
-REQUIREMENTS:
-1. SHOWRUNNER/CREATOR: Who has final creative authority?
-2. KEY DECISION MAKERS (2-4 roles):
-   - Who approves major creative choices?
-   - Writing, directing, production roles
-   - Clear hierarchy
-
-3. APPROVAL GATES:
-   - What decisions need approval?
-   - Script approval, casting, music choices
-   - Quality control checkpoints
-
-Keep structure simple but clear for decision-making.
-
-STORY CONTEXT: {context}
-
-Provide detailed creative team structure.
-""",
-
-            "integration": """
-You are the Project Bible Integration Expert.
-
-Review all sections and ensure:
-1. CONSISTENCY: All sections align and support each other
-2. COMPLETENESS: No missing information or contradictions  
-3. FEASIBILITY: Everything is realistic for production
-4. COHERENCE: The bible tells a unified story about the project
-
-Suggest a compelling working title that captures the essence.
-Flag any inconsistencies or gaps.
-
-ALL SECTIONS: {all_sections}
-
-Provide integration analysis and title recommendation.
+MAIN CHARACTERS: {', '.join(station1_data['main_characters'])}
 """
-        }
 
-    async def process(self, station1_data: Dict[str, Any], session_id: str) -> ProjectBible:
-        """
-        Main processing method for Station 2
-        
-        Args:
-            station1_data: Station 1 output data dictionary
-            session_id: Session ID for tracking
-            
-        Returns:
-            ProjectBible: Complete project bible
-        """
+    async def generate_world_setting(self, station1_data: Dict) -> Dict:
+        """Generate world & setting section"""
+        print("\n🌍 Generating World & Setting...")
+
+        context = self._build_context(station1_data)
+
+        prompt = self.config.get_prompt('world').format(context=context)
+
+        response = await self.openrouter.process_message(
+            prompt,
+            model_name=self.config.model
+        )
+
+        result = extract_json(response)
+        print("   ✅ World & Setting complete")
+        return result
+
+    async def generate_format_specifications(self, station1_data: Dict) -> Dict:
+        """Generate format specifications section"""
+        print("📐 Generating Format Specifications...")
+
+        context = self._build_context(station1_data)
+
+        prompt = self.config.get_prompt('format').format(context=context)
+
+        response = await self.openrouter.process_message(
+            prompt,
+            model_name=self.config.model
+        )
+
+        result = extract_json(response)
+        print("   ✅ Format Specifications complete")
+        return result
+
+    async def generate_genre_tone(self, station1_data: Dict) -> Dict:
+        """Generate genre & tone section"""
+        print("🎭 Generating Genre & Tone...")
+
+        context = self._build_context(station1_data)
+
+        prompt = self.config.get_prompt('genre').format(context=context)
+
+        response = await self.openrouter.process_message(
+            prompt,
+            model_name=self.config.model
+        )
+
+        result = extract_json(response)
+        print("   ✅ Genre & Tone complete")
+        return result
+
+    async def generate_creative_promises(self, station1_data: Dict) -> Dict:
+        """Generate creative promises section"""
+        print("✨ Generating Creative Promises...")
+
+        context = self._build_context(station1_data)
+
+        prompt = f"""Generate creative promises for this audio drama.
+
+PROJECT CONTEXT:
+{context}
+
+Return ONLY valid JSON:
+
+```json
+{{
+  "must_have_elements": [
+    "Element 1",
+    "Element 2",
+    "Element 3"
+  ],
+  "must_avoid_elements": [
+    "Avoid 1",
+    "Avoid 2",
+    "Avoid 3"
+  ],
+  "unique_selling_points": [
+    "USP 1",
+    "USP 2",
+    "USP 3"
+  ]
+}}
+```"""
+
+        response = await self.openrouter.process_message(
+            prompt,
+            model_name=self.config.model
+        )
+
+        result = extract_json(response)
+        print("   ✅ Creative Promises complete")
+        return result
+
+    async def generate_audience_profile(self, station1_data: Dict) -> Dict:
+        """Generate audience profile section"""
+        print("👥 Generating Audience Profile...")
+
+        context = self._build_context(station1_data)
+
+        prompt = self.config.get_prompt('audience').format(context=context)
+
+        response = await self.openrouter.process_message(
+            prompt,
+            model_name=self.config.model
+        )
+
+        result = extract_json(response)
+        print("   ✅ Audience Profile complete")
+        return result
+
+    async def generate_production_constraints(self, station1_data: Dict) -> Dict:
+        """Generate production constraints section"""
+        print("🎬 Generating Production Constraints...")
+
+        context = self._build_context(station1_data)
+
+        prompt = self.config.get_prompt('production').format(context=context)
+
+        response = await self.openrouter.process_message(
+            prompt,
+            model_name=self.config.model
+        )
+
+        result = extract_json(response)
+        print("   ✅ Production Constraints complete")
+        return result
+
+    async def generate_creative_team(self, station1_data: Dict) -> Dict:
+        """Generate creative team section"""
+        print("🎯 Generating Creative Team Structure...")
+
+        context = self._build_context(station1_data)
+
+        prompt = self.config.get_prompt('creative').format(context=context)
+
+        response = await self.openrouter.process_message(
+            prompt,
+            model_name=self.config.model
+        )
+
+        result = extract_json(response)
+        print("   ✅ Creative Team complete")
+        return result
+
+    def save_output(self, bible: ProjectBible):
+        """Save Project Bible to JSON and text files"""
+        session_id = bible.session_id
+
+        # Save as JSON
+        json_path = self.output_dir / f"{session_id}_bible.json"
+        with open(json_path, 'w', encoding='utf-8') as f:
+            json.dump({
+                'working_title': bible.working_title,
+                'original_seed': bible.original_seed,
+                'seed_type': bible.seed_type,
+                'scale_type': bible.scale_type,
+                'episode_count': bible.episode_count,
+                'episode_length': bible.episode_length,
+                'world_setting': bible.world_setting,
+                'format_specifications': bible.format_specifications,
+                'genre_tone': bible.genre_tone,
+                'creative_promises': bible.creative_promises,
+                'audience_profile': bible.audience_profile,
+                'production_constraints': bible.production_constraints,
+                'creative_team': bible.creative_team,
+                'session_id': bible.session_id,
+                'timestamp': bible.timestamp
+            }, f, indent=2, ensure_ascii=False)
+
+        # Save as readable text
+        txt_path = self.output_dir / f"{session_id}_bible.txt"
+        with open(txt_path, 'w', encoding='utf-8') as f:
+            f.write("="*60 + "\n")
+            f.write("PROJECT BIBLE\n")
+            f.write("="*60 + "\n\n")
+
+            f.write(f"PROJECT TITLE: {bible.working_title}\n")
+            f.write(f"Session ID: {bible.session_id}\n")
+            f.write(f"Created: {bible.timestamp}\n")
+            f.write(f"Input Type: {bible.seed_type}\n\n")
+
+            f.write(f"Scale: {bible.scale_type}\n")
+            f.write(f"Episodes: {bible.episode_count}\n")
+            f.write(f"Length: {bible.episode_length}\n\n")
+
+            f.write("-"*60 + "\n")
+            f.write("ORIGINAL SEED:\n")
+            f.write("-"*60 + "\n")
+            f.write(f"{bible.original_seed}\n\n")
+
+            f.write("-"*60 + "\n")
+            f.write("1. WORLD & SETTING\n")
+            f.write("-"*60 + "\n")
+            ws = bible.world_setting
+            f.write(f"Time Period: {ws['time_period']}\n")
+            f.write(f"Primary Location: {ws['primary_location']}\n")
+            f.write(f"Setting Type: {ws['setting_type']}\n")
+            f.write(f"Atmosphere: {ws['atmosphere']}\n")
+            f.write(f"Historical Context: {ws['historical_context']}\n\n")
+            f.write("Key Locations:\n")
+            for loc in ws['key_locations']:
+                f.write(f"  • {loc}\n")
+            f.write("\nCultural Elements:\n")
+            for elem in ws['cultural_elements']:
+                f.write(f"  • {elem}\n")
+            f.write("\n")
+
+            f.write("-"*60 + "\n")
+            f.write("2. FORMAT SPECIFICATIONS\n")
+            f.write("-"*60 + "\n")
+            fs = bible.format_specifications
+            f.write(f"Series Type: {fs['series_type']}\n")
+            f.write(f"Episode Count: {fs['episode_count']}\n")
+            f.write(f"Episode Length: {fs['episode_length']}\n")
+            f.write(f"Season Structure: {fs['season_structure']}\n")
+            f.write(f"Pacing Strategy: {fs['pacing_strategy']}\n")
+            f.write(f"Narrative Structure: {fs['narrative_structure']}\n\n")
+
+            f.write("-"*60 + "\n")
+            f.write("3. GENRE & TONE\n")
+            f.write("-"*60 + "\n")
+            gt = bible.genre_tone
+            f.write(f"Primary Genre: {gt['primary_genre']}\n")
+            f.write(f"Secondary Genres: {', '.join(gt['secondary_genres'])}\n")
+            f.write(f"Tone: {', '.join(gt['tone_descriptors'])}\n")
+            f.write(f"Mood Profile: {gt['mood_profile']}\n")
+            f.write("\nGenre Conventions:\n")
+            for conv in gt['genre_conventions']:
+                f.write(f"  • {conv}\n")
+            f.write("\n")
+
+            f.write("-"*60 + "\n")
+            f.write("4. CREATIVE PROMISES\n")
+            f.write("-"*60 + "\n")
+            cp = bible.creative_promises
+            f.write("Must-Have Elements:\n")
+            for elem in cp['must_have_elements']:
+                f.write(f"  ✓ {elem}\n")
+            f.write("\nMust-Avoid Elements:\n")
+            for elem in cp['must_avoid_elements']:
+                f.write(f"  ✗ {elem}\n")
+            f.write("\nUnique Selling Points:\n")
+            for usp in cp['unique_selling_points']:
+                f.write(f"  ★ {usp}\n")
+            f.write("\n")
+
+            f.write("-"*60 + "\n")
+            f.write("5. AUDIENCE PROFILE\n")
+            f.write("-"*60 + "\n")
+            ap = bible.audience_profile
+            f.write(f"Age Range: {ap['primary_age_range']}\n")
+            f.write(f"Demographics: {', '.join(ap['target_demographics'])}\n")
+            f.write(f"Listening Context: {ap['listening_context']}\n")
+            f.write("\nCore Interests:\n")
+            for interest in ap['core_interests']:
+                f.write(f"  • {interest}\n")
+            f.write("\nContent Preferences:\n")
+            for pref in ap['content_preferences']:
+                f.write(f"  • {pref}\n")
+            if 'emotional_goals' in ap:
+                f.write("\nEmotional Goals:\n")
+                for goal in ap['emotional_goals']:
+                    f.write(f"  • {goal}\n")
+            f.write("\n")
+
+            f.write("-"*60 + "\n")
+            f.write("6. PRODUCTION CONSTRAINTS\n")
+            f.write("-"*60 + "\n")
+            pc = bible.production_constraints
+            f.write(f"Content Rating: {pc['content_rating']}\n")
+            f.write(f"Budget Tier: {pc['budget_tier']}\n")
+            f.write("\nTechnical Requirements:\n")
+            for req in pc['technical_requirements']:
+                f.write(f"  • {req}\n")
+            f.write("\nContent Restrictions:\n")
+            for rest in pc['content_restrictions']:
+                f.write(f"  • {rest}\n")
+            if 'distribution_channels' in pc:
+                f.write("\nDistribution Channels:\n")
+                for chan in pc['distribution_channels']:
+                    f.write(f"  • {chan}\n")
+            f.write("\n")
+
+            f.write("-"*60 + "\n")
+            f.write("7. CREATIVE TEAM\n")
+            f.write("-"*60 + "\n")
+            ct = bible.creative_team
+            f.write(f"Team Structure: {ct['team_structure']}\n")
+            f.write(f"Collaboration Style: {ct['collaboration_style']}\n")
+            f.write("\nRequired Roles:\n")
+            for role in ct['required_roles']:
+                f.write(f"  • {role}\n")
+            f.write("\nSpecialized Skills:\n")
+            for skill in ct['specialized_skills']:
+                f.write(f"  • {skill}\n")
+            if 'key_decision_makers' in ct:
+                f.write("\nKey Decision Makers:\n")
+                for dm in ct['key_decision_makers']:
+                    f.write(f"  • {dm}\n")
+            if 'key_partnerships' in ct:
+                f.write("\nKey Partnerships:\n")
+                for kp in ct['key_partnerships']:
+                    f.write(f"  • {kp}\n")
+            f.write("\n")
+
+        print(f"\n✅ Project Bible saved to:")
+        print(f"   📄 {json_path}")
+        print(f"   📄 {txt_path}")
+
+    async def process(self, session_id: str) -> ProjectBible:
+        """Main processing method"""
         try:
-            logger.info(f"Station 2 processing started for session {session_id}")
-            
-            # Load and validate story lock
-            story_lock_key = f"audiobook:{session_id}:story_lock"
-            story_lock_raw = await self.redis.get(story_lock_key)
-            if not story_lock_raw:
-                logger.warning("Story lock missing - cannot fully preserve story concept")
-                story_lock = {'main_characters': [], 'core_mechanism': '', 'key_plot_points': []}
-            else:
-                story_lock = json.loads(story_lock_raw)
-                logger.info(f"Story lock loaded: {[c['name'] for c in story_lock.get('main_characters', [])]}")
-            
-            # Use provided Station 1 data
-            if not station1_data:
-                raise ValueError(f"No Station 1 data provided")
-            
-            # Prepare context for AI agents (story lock already loaded and logged)
-            context = self._prepare_context(station1_data)
-            
-            # Generate each bible section
-            bible_sections = await self._generate_bible_sections(context)
-            
-            # Integrate all sections into final bible
-            final_bible = await self._integrate_bible_sections(bible_sections, station1_data, session_id)
-            
-            # Store output for next station
-            await self._store_output(session_id, final_bible)
-            
-            logger.info(f"Station 2 completed successfully for session {session_id}")
-            return final_bible
-            
-        except Exception as e:
-            logger.error(f"Station 2 processing failed for session {session_id}: {str(e)}")
-            raise
+            print("\n" + "="*60)
+            print("🎬 STATION 2: PROJECT DNA BUILDER")
+            print("="*60)
 
-    async def _get_station_1_output(self, session_id: str) -> Optional[Dict]:
-        """Retrieve Station 1 output from Redis"""
-        try:
-            key = f"audiobook:{session_id}:station_01"
-            stored_data = await self.redis.get(key)
-            
-            if not stored_data:
-                logger.warning(f"No Station 1 data found for session {session_id}")
-                return None
-                
-            return json.loads(stored_data)
-            
-        except Exception as e:
-            logger.error(f"Failed to retrieve Station 1 output: {str(e)}")
-            return None
+            # Load Station 1 data
+            station1_data = await self.load_station1_data(session_id)
+            self.display_station1_summary(station1_data)
 
-    def _prepare_context(self, station_1_output: Dict) -> str:
-        """Prepare context string for AI agents"""
-        # Extract chosen scale option
-        chosen_option = station_1_output.get("recommended_option", "B")
-        scale_options = station_1_output.get("scale_options", [])
-        
-        # Find the chosen scale details
-        chosen_scale = None
-        option_index = ord(chosen_option) - ord('A')
-        if 0 <= option_index < len(scale_options):
-            chosen_scale = scale_options[option_index]
-        else:
-            chosen_scale = scale_options[1] if len(scale_options) > 1 else {}
-        
-        # Extract main characters from Station 1
-        main_characters = station_1_output.get("initial_expansion", {}).get("main_characters", [])
-        characters_text = ', '.join(main_characters) if main_characters else "Character names to be determined"
-        
-        context = f"""
-ORIGINAL STORY CONCEPT: {station_1_output.get("original_seed", "")}
+            # Generate all sections
+            print("\n🤖 Generating Project Bible sections...")
+            print("⏳ This will take a few moments...\n")
 
-CHOSEN SCALE: {chosen_scale.get('option_type', 'STANDARD')} SERIES
-- Episodes: {chosen_scale.get('episode_count', '8-12')}
-- Length: {chosen_scale.get('episode_length', '35-45 min each')}
-- Word Count: {chosen_scale.get('word_count', '60,000-100,000 total')}
-- Best For: {chosen_scale.get('best_for', 'character journeys, mystery with layers')}
+            world_setting = await self.generate_world_setting(station1_data)
+            format_specs = await self.generate_format_specifications(station1_data)
+            genre_tone = await self.generate_genre_tone(station1_data)
+            creative_promises = await self.generate_creative_promises(station1_data)
+            audience_profile = await self.generate_audience_profile(station1_data)
+            production_constraints = await self.generate_production_constraints(station1_data)
+            creative_team = await self.generate_creative_team(station1_data)
 
-INITIAL EXPANSION FROM STATION 1:
-- Working Titles: {', '.join(station_1_output.get("initial_expansion", {}).get("working_titles", []))}
-- Main Characters: {characters_text}
-- Core Premise: {station_1_output.get("initial_expansion", {}).get("core_premise", "")}
-- Central Conflict: {station_1_output.get("initial_expansion", {}).get("central_conflict", "")}
-- Episode Rationale: {station_1_output.get("initial_expansion", {}).get("episode_rationale", "")}
-- Breaking Points: {', '.join(station_1_output.get("initial_expansion", {}).get("breaking_points", []))}
-"""
-        return context
-
-    async def _generate_bible_sections(self, context: str) -> Dict[str, str]:
-        """Generate each section of the Project Bible"""
-        sections = {}
-        
-        # Generate each section using specialized prompts
-        section_order = ["world", "format", "genre", "audience", "production", "creative"]
-        
-        for section_name in section_order:
-            try:
-                logger.info(f"Generating {section_name} section")
-                
-                # Format prompt with context
-                prompt = self.section_prompts[section_name].format(context=context)
-                
-                # Generate section with AI using config model
-                response = await self.openrouter.process_message(
-                    prompt,
-                    model_name=self.config.model
-                )
-                
-                sections[section_name] = response.strip()
-                logger.info(f"Generated {section_name} section ({len(response)} chars)")
-                
-            except Exception as e:
-                logger.error(f"Failed to generate {section_name} section: {str(e)}")
-                sections[section_name] = f"Error generating {section_name} section: {str(e)}"
-        
-        return sections
-
-    async def _integrate_bible_sections(self, sections: Dict[str, str], station_1_output: Dict, session_id: str) -> ProjectBible:
-        """Integrate all bible sections into final structured output"""
-        try:
-            # Use integration prompt to review consistency
-            all_sections_text = "\n\n".join([f"{key.upper()} SECTION:\n{content}" for key, content in sections.items()])
-            
-            integration_prompt = self.section_prompts["integration"].format(all_sections=all_sections_text)
-            
-            integration_response = await self.openrouter.process_message(
-                integration_prompt,
-                model_name=self.config.model
-            )
-            
-            logger.info("Integration analysis completed")
-            
-            # Parse sections into structured data
-            bible = self._parse_sections_to_bible(sections, integration_response, station_1_output, session_id)
-            
-            return bible
-            
-        except Exception as e:
-            logger.error(f"Failed to integrate bible sections: {str(e)}")
-            raise
-
-    def _parse_sections_to_bible(self, sections: Dict[str, str], integration: str, station_1_output: Dict, session_id: str) -> ProjectBible:
-        """Parse JSON sections into structured ProjectBible"""
-
-        # Extract working title from Station 1
-        titles = station_1_output.get("initial_expansion", {}).get("working_titles", [])
-        working_title = titles[0] if titles and titles[0] else "Untitled Project"
-
-        # Parse world setting from JSON
-        world_data = extract_json(sections["world"])
-        world_setting = WorldSetting(
-            time_period=world_data["time_period"],
-            primary_location=world_data["primary_location"],
-            setting_type=world_data["setting_type"],
-            atmosphere=world_data["atmosphere"],
-            key_locations=world_data["key_locations"],
-            historical_context=world_data["historical_context"],
-            cultural_elements=world_data["cultural_elements"]
-        )
-
-        # Parse format specifications from JSON
-        format_data = extract_json(sections["format"])
-        format_specs = FormatSpecifications(
-            series_type=format_data["series_type"],
-            episode_count=format_data["episode_count"],
-            episode_length=format_data["episode_length"],
-            season_structure=format_data["season_structure"],
-            pacing_strategy=format_data["pacing_strategy"],
-            narrative_structure=format_data["narrative_structure"]
-        )
-
-        # Parse genre and tone from JSON
-        genre_data = extract_json(sections["genre"])
-        genre_tone = GenreTone(
-            primary_genre=genre_data["primary_genre"],
-            secondary_genres=genre_data["secondary_genres"],
-            tone_descriptors=genre_data["tone_descriptors"],
-            mood_profile=genre_data["mood_profile"],
-            genre_conventions=genre_data["genre_conventions"]
-        )
-
-        # Parse audience profile from JSON
-        audience_data = extract_json(sections["audience"])
-        audience_profile = AudienceProfile(
-            primary_age_range=audience_data["primary_age_range"],
-            target_demographics=audience_data["target_demographics"],
-            core_interests=audience_data["core_interests"],
-            listening_context=audience_data["listening_context"],
-            content_preferences=audience_data["content_preferences"]
-        )
-
-        # Parse production constraints from JSON
-        production_data = extract_json(sections["production"])
-        production_constraints = ProductionConstraints(
-            content_rating=ContentRating(production_data["content_rating"]),
-            budget_tier=BudgetTier(production_data["budget_tier"]),
-            technical_requirements=production_data["technical_requirements"],
-            content_restrictions=production_data["content_restrictions"],
-            distribution_channels=production_data["distribution_channels"]
-        )
-
-        # Parse creative team from JSON
-        creative_data = extract_json(sections["creative"])
-        creative_team = CreativeTeam(
-            required_roles=creative_data["required_roles"],
-            specialized_skills=creative_data["specialized_skills"],
-            team_structure=creative_data["team_structure"],
-            collaboration_style=creative_data["collaboration_style"],
-            key_partnerships=creative_data["key_partnerships"]
-        )
-
-        # Creative promises from creative section
-        creative_promises = CreativePromises(
-            core_hooks=creative_data.get("core_hooks", ["Story engagement", "Character development"]),
-            unique_elements=creative_data.get("unique_elements", ["Audio-optimized storytelling"]),
-            emotional_journey=creative_data.get("emotional_journey", "Character growth"),
-            story_pillars=creative_data.get("story_pillars", ["Strong narrative", "Engaging characters"])
-        )
-
-        return ProjectBible(
-            working_title=working_title,
-            world_setting=world_setting,
-            format_specifications=format_specs,
-            genre_tone=genre_tone,
-            creative_promises=creative_promises,
-            audience_profile=audience_profile,
-            production_constraints=production_constraints,
-            creative_team=creative_team,
-            session_id=session_id,
-            created_timestamp=datetime.utcnow(),
-            station_1_reference=station_1_output
-        )
-
-    # Removed all extraction methods - using JSON directly from high-quality LLMs
-
-    async def _store_output(self, session_id: str, bible: ProjectBible) -> None:
-        """Store Project Bible in Redis"""
-        try:
-            # Convert to dictionary for JSON serialization
-            bible_dict = asdict(bible)
-            bible_dict["created_timestamp"] = bible.created_timestamp.isoformat()
-            bible_dict["production_constraints"]["content_rating"] = bible.production_constraints.content_rating.value
-            bible_dict["production_constraints"]["budget_tier"] = bible.production_constraints.budget_tier.value
-            
-            # Store in Redis
-            key = f"audiobook:{session_id}:station_02"
-            await self.redis.set(key, json.dumps(bible_dict), expire=86400)  # 24 hour expiry
-            
-            logger.info(f"Station 2 output stored successfully for session {session_id}")
-            
-        except Exception as e:
-            logger.error(f"Failed to store Station 2 output: {str(e)}")
-            raise
-
-    async def get_stored_output(self, session_id: str) -> Optional[ProjectBible]:
-        """Retrieve stored Project Bible for a session"""
-        try:
-            key = f"audiobook:{session_id}:station_02"
-            stored_data = await self.redis.get(key)
-            
-            if not stored_data:
-                return None
-                
-            data = json.loads(stored_data)
-            
-            # Reconstruct the dataclass objects
-            world_setting = WorldSetting(**data["world_setting"])
-            format_specifications = FormatSpecifications(**data["format_specifications"])
-            genre_tone = GenreTone(**data["genre_tone"])
-            creative_promises = CreativePromises(**data["creative_promises"])
-            
-            # Handle content rating enum
-            content_rating = ContentRating(data["audience_profile"]["content_rating"])
-            audience_data = data["audience_profile"].copy()
-            audience_data["content_rating"] = content_rating
-            audience_profile = AudienceProfile(**audience_data)
-            
-            production_constraints = ProductionConstraints(**data["production_constraints"])
-            creative_team = CreativeTeam(**data["creative_team"])
-            
-            return ProjectBible(
-                working_title=data["working_title"],
+            # Create Project Bible
+            bible = ProjectBible(
+                working_title=station1_data['chosen_title'],
+                original_seed=station1_data['original_seed'],
+                seed_type=station1_data['seed_type'],
+                scale_type=station1_data['option_details']['type'],
+                episode_count=station1_data['option_details']['episode_count'],
+                episode_length=station1_data['option_details']['episode_length'],
                 world_setting=world_setting,
-                format_specifications=format_specifications,
+                format_specifications=format_specs,
                 genre_tone=genre_tone,
                 creative_promises=creative_promises,
                 audience_profile=audience_profile,
                 production_constraints=production_constraints,
                 creative_team=creative_team,
-                session_id=data["session_id"],
-                created_timestamp=datetime.fromisoformat(data["created_timestamp"]),
-                station_1_reference=data["station_1_reference"]
+                session_id=session_id,
+                timestamp=datetime.now().isoformat()
             )
-            
-        except Exception as e:
-            logger.error(f"Failed to retrieve Station 2 output: {str(e)}")
-            return None
 
-    def format_for_human_review(self, bible: ProjectBible) -> Dict:
-        """Format Project Bible for human review/approval"""
-        return {
-            "station": "Station 2: Project DNA Builder",
-            "status": "awaiting_human_approval",
-            "working_title": bible.working_title,
-            "project_bible": {
-                "world_setting": {
-                    "primary_locations": bible.world_setting.primary_locations,
-                    "time_period": bible.world_setting.time_period,
-                    "atmosphere": bible.world_setting.atmosphere_mood,
-                    "cultural_context": bible.world_setting.cultural_context
-                },
-                "format_specifications": {
-                    "episode_count": bible.format_specifications.episode_count,
-                    "episode_length": bible.format_specifications.episode_length_target,
-                    "release_cadence": bible.format_specifications.release_cadence,
-                    "audio_constraints": bible.format_specifications.audio_only_constraints,
-                    "season_structure": bible.format_specifications.season_structure
-                },
-                "genre_tone": {
-                    "primary_genre": bible.genre_tone.primary_genre,
-                    "secondary_elements": bible.genre_tone.secondary_genre_elements,
-                    "tone": bible.genre_tone.tone_descriptors,
-                    "similar_shows": bible.genre_tone.similar_successful_shows
-                },
-                "audience_profile": {
-                    "age_range": bible.audience_profile.primary_age_range,
-                    "content_rating": bible.audience_profile.content_rating.value,
-                    "emotional_goals": bible.audience_profile.emotional_goals,
-                    "listening_context": bible.audience_profile.expected_listening_context
-                },
-                "production_constraints": {
-                    "max_cast_size": bible.production_constraints.maximum_cast_size,
-                    "sfx_complexity": bible.production_constraints.sfx_complexity_level,
-                    "music_needs": bible.production_constraints.music_requirements,
-                    "languages": bible.production_constraints.languages,
-                    "localization": bible.production_constraints.localization_needs
-                },
-                "creative_promises": {
-                    "must_have": bible.creative_promises.must_have_elements,
-                    "must_avoid": bible.creative_promises.must_avoid_elements,
-                    "unique_points": bible.creative_promises.unique_selling_points
-                },
-                "creative_team": {
-                    "showrunner": bible.creative_team.showrunner_creator,
-                    "key_decision_makers": bible.creative_team.key_decision_makers,
-                    "approval_gates": bible.creative_team.approval_gates
-                }
-            },
-            "next_step": "Please review and approve the Project Bible to proceed to Station 3: Age & Genre Optimizer"
-        }
+            # Save output
+            self.save_output(bible)
+
+            # Store in Redis for Station 3
+            await self.redis.set(
+                f"audiobook:{session_id}:station_02",
+                json.dumps({
+                    'working_title': bible.working_title,
+                    'original_seed': bible.original_seed,
+                    'seed_type': bible.seed_type,
+                    'scale_type': bible.scale_type,
+                    'episode_count': bible.episode_count,
+                    'episode_length': bible.episode_length,
+                    'world_setting': bible.world_setting,
+                    'format_specifications': bible.format_specifications,
+                    'genre_tone': bible.genre_tone,
+                    'creative_promises': bible.creative_promises,
+                    'audience_profile': bible.audience_profile,
+                    'production_constraints': bible.production_constraints,
+                    'creative_team': bible.creative_team
+                }),
+                expire=86400
+            )
+
+            print("\n" + "="*60)
+            print("✅ STATION 2 COMPLETE!")
+            print("="*60)
+            print(f"\nProject Bible created for: {bible.working_title}")
+            print(f"Session ID: {session_id}")
+            print("\n📌 Ready to proceed to Station 3: Age & Genre Optimizer")
+
+            return bible
+
+        except Exception as e:
+            logger.error(f"❌ Station 2 failed: {str(e)}")
+            raise
+
+
+# CLI Entry Point
+async def main():
+    """Run Station 2 standalone"""
+    builder = Station02ProjectDNABuilder()
+    await builder.initialize()
+
+    session_id = input("\n👉 Enter Session ID from Station 1: ").strip()
+
+    if not session_id:
+        print("❌ Session ID required")
+        return
+
+    try:
+        bible = await builder.process(session_id)
+        print(f"\n✅ Success! Project Bible created for: {bible.working_title}")
+    except KeyboardInterrupt:
+        print("\n\n❌ Cancelled by user")
+    except Exception as e:
+        print(f"\n❌ Error: {str(e)}")
+        import traceback
+        traceback.print_exc()
+
+
+if __name__ == "__main__":
+    asyncio.run(main())

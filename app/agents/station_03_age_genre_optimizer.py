@@ -1,671 +1,675 @@
 """
-Station 3: Age & Genre Optimizer Agent
+Station 3: Age & Genre Optimizer Agent - SIMPLIFIED VERSION
 
-This agent takes the Project Bible from Station 2 and creates age-appropriate 
-content guidelines and optimized genre blending strategies using multi-agent Swarm coordination.
-
-Dependencies: Station 2 Project Bible output
-Outputs: Age/Genre Style Guide (3 sections)
-Human Gate: IMPORTANT - Style guide affects content production across all episodes
+This agent:
+1. Loads Station 2 Project Bible
+2. Auto-generates age-appropriate guidelines
+3. Auto-generates 3 genre blend options
+4. User chooses genre blend (A/B/C)
+5. Auto-generates tone calibration for chosen blend
+6. Saves complete style guide to JSON + TXT files
 """
 
 import asyncio
 import json
-import re
 import logging
-from typing import Dict, List, Optional, Any
-from dataclasses import dataclass, asdict
+from typing import Dict, List
+from dataclasses import dataclass
 from datetime import datetime
-from enum import Enum
+from pathlib import Path
 
 from app.openrouter_agent import OpenRouterAgent
 from app.redis_client import RedisClient
-from app.config import Settings
 from app.agents.config_loader import load_station_config
 from app.agents.json_extractor import extract_json
 
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-class ViolenceLevel(Enum):
-    NONE = "No violence"
-    MINIMAL = "Minimal implied violence"
-    MILD = "Mild violence without graphic details"
-    MODERATE = "Moderate violence with some details"
-    STRONG = "Strong violence with graphic elements"
-
-class EmotionalIntensity(Enum):
-    LIGHT = "Light emotional content"
-    MILD = "Mild emotional situations"
-    MODERATE = "Moderate emotional intensity"
-    STRONG = "Strong emotional situations"
-    INTENSE = "Intense emotional content"
 
 @dataclass
-class AgeGuidelines:
-    """Age-appropriate content guidelines"""
+class StyleGuide:
+    """Complete Style Guide from Station 3"""
+    # From Station 2
+    working_title: str
+    original_seed: str
+    seed_type: str
+    scale_type: str
+    episode_count: str
+    episode_length: str
+    primary_genre: str
     target_age_range: str
     content_rating: str
-    action_scene_limits: List[str]
-    emotional_boundaries: List[str] 
-    language_guidelines: Dict[str, str]
-    sound_restrictions: List[str]
-    theme_complexity: str
-    violence_level: ViolenceLevel
-    emotional_intensity: EmotionalIntensity
-    duration_caps: Dict[str, str]
 
-@dataclass  
-class GenreBlend:
-    """Genre blending option with audio-specific considerations"""
-    primary_genre: str
-    complementary_genre: str
-    enhancement_analysis: str
-    audio_elements: List[str]
-    pacing_implications: str
-    audience_expectations: str
-    signature_sounds: List[str]
-    mood_transitions: List[str]
+    # Generated in Station 3
+    age_guidelines: Dict
+    genre_options: Dict
+    chosen_blend: str  # "A", "B", or "C"
+    chosen_blend_details: Dict
+    tone_calibration: Dict
 
-@dataclass
-class ToneCalibration:
-    """Tone progression and audio conveyance strategies"""
-    chosen_blend: str
-    episode_progression: List[str]
-    tonal_shift_moments: List[str]
-    audio_tone_techniques: List[str]
-    light_dark_balance: str
-    tension_curves: List[str]
-    audio_cues: Dict[str, str]
-
-@dataclass
-class AgeGenreStyleGuide:
-    """Complete Age/Genre Style Guide output"""
-    working_title: str
-    age_guidelines: AgeGuidelines
-    genre_options: List[GenreBlend] 
-    tone_calibration: ToneCalibration
-    chosen_genre_blend: Optional[str]
-    production_notes: List[str]
     session_id: str
-    created_timestamp: datetime
+    timestamp: str
 
-class AgeAgent:
-    """Specialized agent for age-appropriate content guidelines"""
-
-    def __init__(self, openrouter_agent: OpenRouterAgent, config):
-        self.agent = openrouter_agent
-        self.config = config
-    
-    def _parse_violence_level(self, value: str) -> ViolenceLevel:
-        """Parse violence level from AI response"""
-        value_upper = value.upper().strip()
-        for level in ViolenceLevel:
-            if level.name in value_upper:
-                return level
-        # No fallback - raise error if parsing fails
-        raise ValueError(f"Failed to parse violence level: '{value}' - no fallback allowed")
-    
-    def _parse_emotional_intensity(self, value: str) -> EmotionalIntensity:
-        """Parse emotional intensity from AI response"""
-        value_upper = value.upper().strip()
-        for intensity in EmotionalIntensity:
-            if intensity.name in value_upper:
-                return intensity
-        # No fallback - raise error if parsing fails
-        raise ValueError(f"Failed to parse emotional intensity: '{value}' - no fallback allowed")
-    
-    async def analyze_age_requirements(self, project_bible: Dict[str, Any]) -> AgeGuidelines:
-        """Create age-appropriate content guidelines"""
-        
-        audience_profile = project_bible.get('audience_profile', {})
-        production_constraints = project_bible.get('production_constraints', {})
-        genre_tone = project_bible.get('genre_tone', {})
-        
-        age_prompt = f"""
-        You are an Age-Appropriate Content Specialist for audiobook production.
-        
-        Based on this Project Bible data:
-        - Target Age Range: {audience_profile.get('primary_age_range', 'Unknown')}
-        - Content Rating: {production_constraints.get('content_rating', 'Unknown')}
-        - Primary Genre: {genre_tone.get('primary_genre', 'Unknown')}
-        - Mood Profile: {genre_tone.get('mood_profile', 'Unknown')}
-        
-        Create comprehensive age-appropriate guidelines in this EXACT JSON format. 
-        IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
-        {{
-            "target_age_range": "specific age range",
-            "content_rating": "rating with justification",
-            "action_scene_limits": [
-                "specific limit 1",
-                "specific limit 2", 
-                "specific limit 3"
-            ],
-            "emotional_boundaries": [
-                "boundary 1 with reasoning",
-                "boundary 2 with reasoning",
-                "boundary 3 with reasoning"
-            ],
-            "language_guidelines": {{
-                "vocabulary_level": "age-appropriate description",
-                "forbidden_topics": "topics to avoid",
-                "complexity_cap": "sentence/concept complexity limits"
-            }},
-            "sound_restrictions": [
-                "sound type 1 to avoid/limit",
-                "sound type 2 to avoid/limit",
-                "sound type 3 to avoid/limit"
-            ],
-            "theme_complexity": "detailed description of appropriate theme depth",
-            "violence_level": "NONE/MINIMAL/MILD/MODERATE/STRONG",
-            "emotional_intensity": "LIGHT/MILD/MODERATE/STRONG/INTENSE",
-            "duration_caps": {{
-                "action_scenes": "max duration and reasoning",
-                "emotional_scenes": "max duration and reasoning",
-                "suspense_buildup": "max duration and reasoning"
-            }}
-        }}
-        
-        Focus on AUDIO-SPECIFIC considerations. What sounds, pacing, and content work for this age group?
-        """
-        
-        try:
-            response = await self.agent.process_message(
-                age_prompt,
-                model_name=self.config.model,
-                max_tokens=self.config.max_tokens
-            )
-            
-            # Extract and parse JSON using shared utility
-            try:
-                data = extract_json(response)
-            except ValueError as e:
-                logger.warning(f"No JSON found in age analysis response: {response[:200]}...")
-                raise ValueError(f"No JSON found in age analysis response: {e}")
-            except json.JSONDecodeError as e:
-                logger.error(f"JSON parsing failed: {str(e)}")
-                logger.error(f"Problematic response: {response[:200]}...")
-                raise ValueError("Invalid JSON in age analysis response")
-            
-            return AgeGuidelines(
-                target_age_range=data.get('target_age_range', 'Unknown'),
-                content_rating=data.get('content_rating', 'Not specified'),
-                action_scene_limits=data.get('action_scene_limits', []),
-                emotional_boundaries=data.get('emotional_boundaries', []),
-                language_guidelines=data.get('language_guidelines', {}),
-                sound_restrictions=data.get('sound_restrictions', []),
-                theme_complexity=data.get('theme_complexity', 'Not specified'),
-                violence_level=self._parse_violence_level(data.get('violence_level', 'NONE')),
-                emotional_intensity=self._parse_emotional_intensity(data.get('emotional_intensity', 'LIGHT')),
-                duration_caps=data.get('duration_caps', {})
-            )
-            
-        except Exception as e:
-            logger.error(f"Age analysis failed: {str(e)}")
-            raise ValueError(f"Station 3 age analysis failed - no fallback allowed: {str(e)}")
-
-class GenreAgent:
-    """Specialized agent for genre blending and optimization"""
-
-    def __init__(self, openrouter_agent: OpenRouterAgent, config):
-        self.agent = openrouter_agent
-        self.config = config
-    
-    async def create_genre_blends(self, project_bible: Dict[str, Any]) -> List[GenreBlend]:
-        """Create 3 optimized genre blend options"""
-        
-        genre_tone = project_bible.get('genre_tone', {})
-        format_specs = project_bible.get('format_specifications', {})
-        audience_profile = project_bible.get('audience_profile', {})
-        
-        genre_prompt = f"""
-        You are a Genre Blending Specialist for audiobook production.
-        
-        Based on this Project Bible data:
-        - Primary Genre: {genre_tone.get('primary_genre', 'Unknown')}
-        - Secondary Genres: {genre_tone.get('secondary_genres', [])}
-        - Tone Descriptors: {genre_tone.get('tone_descriptors', [])}
-        - Episode Length: {format_specs.get('episode_length', 'Unknown')}
-        - Target Age: {audience_profile.get('primary_age_range', 'Unknown')}
-        - Listening Context: {audience_profile.get('listening_context', 'Unknown')}
-        
-        Create 3 distinct genre blend options in this EXACT JSON format.
-        IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
-        {{
-            "option_a": {{
-                "primary_genre": "main genre",
-                "complementary_genre": "supporting genre that enhances main",
-                "enhancement_analysis": "detailed explanation of how genres work together",
-                "audio_elements": [
-                    "specific audio element 1",
-                    "specific audio element 2",
-                    "specific audio element 3"
-                ],
-                "pacing_implications": "how blend affects episode pacing and rhythm",
-                "audience_expectations": "what audiences expect from this combination",
-                "signature_sounds": [
-                    "unique sound 1 for this blend",
-                    "unique sound 2 for this blend"
-                ],
-                "mood_transitions": [
-                    "how mood shifts work in this blend",
-                    "transition techniques specific to audio"
-                ]
-            }},
-            "option_b": {{
-                "primary_genre": "different main genre approach",
-                "complementary_genre": "different supporting genre",
-                "enhancement_analysis": "different enhancement strategy",
-                "audio_elements": [
-                    "different audio element 1",
-                    "different audio element 2", 
-                    "different audio element 3"
-                ],
-                "pacing_implications": "different pacing approach",
-                "audience_expectations": "different audience appeal",
-                "signature_sounds": [
-                    "different unique sound 1",
-                    "different unique sound 2"
-                ],
-                "mood_transitions": [
-                    "different mood shift approach",
-                    "different transition techniques"
-                ]
-            }},
-            "option_c": {{
-                "primary_genre": "third main genre approach",
-                "complementary_genre": "third supporting genre",
-                "enhancement_analysis": "third enhancement strategy",
-                "audio_elements": [
-                    "third set audio element 1",
-                    "third set audio element 2",
-                    "third set audio element 3"
-                ],
-                "pacing_implications": "third pacing strategy",
-                "audience_expectations": "third audience approach",
-                "signature_sounds": [
-                    "third set unique sound 1",
-                    "third set unique sound 2"
-                ],
-                "mood_transitions": [
-                    "third mood shift approach",
-                    "third transition techniques"
-                ]
-            }}
-        }}
-        
-        Make each option DISTINCTLY different. Focus on AUDIO-SPECIFIC elements that work without visuals.
-        """
-        
-        try:
-            response = await self.agent.process_message(
-                genre_prompt,
-                model_name=self.config.model,
-                max_tokens=self.config.max_tokens
-            )
-            
-            # Extract and parse JSON using shared utility
-            try:
-                data = extract_json(response)
-            except json.JSONDecodeError as e:
-                logger.error(f"JSON parsing failed: {str(e)}")
-                logger.error(f"Problematic response: {response[:200]}...")
-                raise ValueError("Invalid JSON in genre blend response")
-            
-            blends = []
-            for option_key in ['option_a', 'option_b', 'option_c']:
-                if option_key in data:
-                    option = data[option_key]
-                    blends.append(GenreBlend(
-                        primary_genre=option.get('primary_genre', 'Unknown'),
-                        complementary_genre=option.get('complementary_genre', 'Unknown'),
-                        enhancement_analysis=option.get('enhancement_analysis', 'Not specified'),
-                        audio_elements=option.get('audio_elements', []),
-                        pacing_implications=option.get('pacing_implications', 'Not specified'),
-                        audience_expectations=option.get('audience_expectations', 'Not specified'),
-                        signature_sounds=option.get('signature_sounds', []),
-                        mood_transitions=option.get('mood_transitions', [])
-                    ))
-            
-            return blends
-            
-        except Exception as e:
-            logger.error(f"Genre blend creation failed: {str(e)}")
-            raise ValueError(f"Station 3 genre blend creation failed - no fallback allowed: {str(e)}")
-
-class ToneAgent:
-    """Specialized agent for tone calibration and audio conveyance"""
-
-    def __init__(self, openrouter_agent: OpenRouterAgent, config):
-        self.agent = openrouter_agent
-        self.config = config
-    
-    async def calibrate_tone(self, project_bible: Dict[str, Any], chosen_blend: GenreBlend) -> ToneCalibration:
-        """Create tone progression and audio conveyance strategy"""
-        
-        format_specs = project_bible.get('format_specifications', {})
-        genre_tone = project_bible.get('genre_tone', {})
-        
-        tone_prompt = f"""
-        You are a Tone Calibration Specialist for audiobook production.
-        
-        Based on this Project Bible and chosen genre blend:
-        - Episode Count: {format_specs.get('episode_count', 'Unknown')}
-        - Episode Length: {format_specs.get('episode_length', 'Unknown')}
-        - Mood Profile: {genre_tone.get('mood_profile', 'Unknown')}
-        - Chosen Blend: {chosen_blend.primary_genre} + {chosen_blend.complementary_genre}
-        - Enhancement Analysis: {chosen_blend.enhancement_analysis}
-        
-        Create comprehensive tone calibration in this EXACT JSON format.
-        IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
-        {{
-            "chosen_blend": "{chosen_blend.primary_genre} + {chosen_blend.complementary_genre}",
-            "episode_progression": [
-                "Episode 1-3: tone description and purpose",
-                "Episode 4-6: tone evolution and changes",
-                "Episode 7-9: tone development and intensification",
-                "Final episodes: tone resolution and conclusion"
-            ],
-            "tonal_shift_moments": [
-                "Key moment 1: when and how tone shifts",
-                "Key moment 2: when and how tone shifts",
-                "Key moment 3: when and how tone shifts",
-                "Key moment 4: when and how tone shifts"
-            ],
-            "audio_tone_techniques": [
-                "Music technique: how music conveys tone",
-                "Voice technique: how narration conveys tone", 
-                "Sound design technique: how effects convey tone",
-                "Pacing technique: how timing conveys tone",
-                "Silence technique: how pauses convey tone"
-            ],
-            "light_dark_balance": "detailed description of how light and dark moments are balanced throughout",
-            "tension_curves": [
-                "Episode arc: how tension builds and releases within episodes",
-                "Season arc: how tension builds across multiple episodes",
-                "Character arc: how emotional tension follows character development"
-            ],
-            "audio_cues": {{
-                "rising_tension": "specific audio technique for building tension",
-                "emotional_peak": "specific audio technique for emotional climax",
-                "comic_relief": "specific audio technique for lightening mood",
-                "resolution": "specific audio technique for satisfying conclusion"
-            }}
-        }}
-        
-        Focus on AUDIO-ONLY techniques. How do you convey tone without visuals?
-        """
-        
-        try:
-            response = await self.agent.process_message(
-                tone_prompt,
-                model_name=self.config.model,
-                max_tokens=self.config.max_tokens
-            )
-            
-            # Extract and parse JSON using shared utility
-            try:
-                data = extract_json(response)
-            except (ValueError, json.JSONDecodeError) as e:
-                logger.error(f"Failed to parse JSON from tone calibration: {e}")
-                raise ValueError(f"Unable to get valid JSON from tone calibration: {e}")
-            
-            return ToneCalibration(
-                chosen_blend=data.get('chosen_blend', f"{chosen_blend.primary_genre} + {chosen_blend.complementary_genre}"),
-                episode_progression=data.get('episode_progression', []),
-                tonal_shift_moments=data.get('tonal_shift_moments', []),
-                audio_tone_techniques=data.get('audio_tone_techniques', []),
-                light_dark_balance=data.get('light_dark_balance', 'Not specified'),
-                tension_curves=data.get('tension_curves', []),
-                audio_cues=data.get('audio_cues', {})
-            )
-            
-        except Exception as e:
-            logger.error(f"❌ CRITICAL: Tone calibration failed: {str(e)}")
-            logger.error("Station 3 cannot proceed without valid tone calibration data")
-            raise RuntimeError(f"CRITICAL FAILURE in Station 3 tone calibration: {str(e)}")
 
 class Station03AgeGenreOptimizer:
-    """Station 3: Age & Genre Optimizer using multi-agent Swarm coordination"""
-    
+    """Simplified Station 3: Age & Genre Optimizer"""
+
     def __init__(self):
-        self.settings = Settings()
-        self.openrouter_agent = None
-        self.redis_client = None
-        
-        # Load station configuration from YML
+        self.openrouter = OpenRouterAgent()
+        self.redis = RedisClient()
         self.config = load_station_config(station_number=3)
-        
-        # Initialize specialized agents
-        self.age_agent = None
-        self.genre_agent = None
-        self.tone_agent = None
-    
+        self.output_dir = Path("output/station_03")
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+
     async def initialize(self):
-        """Initialize all agents and connections"""
-        self.openrouter_agent = OpenRouterAgent()
-        self.redis_client = RedisClient()
-        await self.redis_client.initialize()
-        
-        # Initialize specialized Swarm agents with config
-        self.age_agent = AgeAgent(self.openrouter_agent, self.config)
-        self.genre_agent = GenreAgent(self.openrouter_agent, self.config)
-        self.tone_agent = ToneAgent(self.openrouter_agent, self.config)
-        
-        logger.info("Station 3: Age & Genre Optimizer initialized with Swarm agents")
-    
-    async def process(self, project_bible_data: Dict[str, Any], session_id: str) -> AgeGenreStyleGuide:
-        """
-        Process Station 2 Project Bible and create Age/Genre Style Guide
-        using coordinated multi-agent approach
-        """
+        """Initialize connections"""
+        await self.redis.initialize()
+        logger.info("✅ Station 3 initialized")
+
+    async def load_station2_data(self, session_id: str) -> Dict:
+        """Load Station 2 output from Redis"""
+        print(f"\n📥 Loading Project Bible from Station 2...")
+        print(f"   Session ID: {session_id}")
+
+        key = f"audiobook:{session_id}:station_02"
+        data_str = await self.redis.get(key)
+
+        if not data_str:
+            raise ValueError(f"❌ No Project Bible found for session {session_id}\n   Please run Station 2 first")
+
+        data = json.loads(data_str)
+
+        # Get title and genre info
+        title = data.get('working_title', 'Unknown')
+        primary_genre = data.get('genre_tone', {}).get('primary_genre', 'Unknown')
+        content_rating = data.get('production_constraints', {}).get('content_rating', 'Unknown')
+
+        print(f'✅ Loaded: "{title}" ({content_rating}, {primary_genre})')
+        return data
+
+    def display_project_summary(self, station2_data: Dict):
+        """Display project summary from Station 2"""
+        print("\n" + "="*60)
+        print("📋 PROJECT SUMMARY FROM STATION 2")
+        print("="*60)
+
+        title = station2_data.get('working_title', 'Unknown')
+        scale_type = station2_data.get('scale_type', 'Unknown')
+        episode_count = station2_data.get('episode_count', 'Unknown')
+        episode_length = station2_data.get('episode_length', 'Unknown')
+
+        genre_tone = station2_data.get('genre_tone', {})
+        primary_genre = genre_tone.get('primary_genre', 'Unknown')
+
+        audience = station2_data.get('audience_profile', {})
+        target_age = audience.get('primary_age_range', 'Unknown')
+
+        production = station2_data.get('production_constraints', {})
+        content_rating = production.get('content_rating', 'Unknown')
+
+        # Try to get original seed
+        original_seed = station2_data.get('original_seed', 'N/A')
+        if original_seed and original_seed != 'N/A':
+            if len(original_seed) > 80:
+                original_seed = original_seed[:80] + "..."
+            print(f"\nTitle: {title}")
+            print(f"Scale: {scale_type} ({episode_count}, {episode_length})")
+            print(f"Primary Genre: {primary_genre}")
+            print(f"Target Age: {target_age}")
+            print(f"Content Rating: {content_rating}")
+            print(f"\nCore Premise: {original_seed}")
+        else:
+            print(f"\nTitle: {title}")
+            print(f"Scale: {scale_type} ({episode_count}, {episode_length})")
+            print(f"Primary Genre: {primary_genre}")
+            print(f"Target Age: {target_age}")
+            print(f"Content Rating: {content_rating}")
+
+        print("-"*60)
+
+    async def generate_age_guidelines(self, station2_data: Dict) -> Dict:
+        """Generate age-appropriate content guidelines"""
+        print("\n🤖 Analyzing age-appropriate content guidelines...")
+
+        # Extract data for prompt - NO DEFAULTS, must come from Station 2
         try:
-            logger.info(f"Station 3 processing started for session {session_id}")
-            
-            # Extract working title
-            working_title = project_bible_data.get('working_title', 'Untitled Project')
-            
-            print(f"🧬 Station 3: Processing Age & Genre Optimization...")
-            print(f"📋 Working Title: {working_title}")
-            
-            # SWARM COORDINATION: All agents work in parallel on their specialties
-            print("🤖 Coordinating multi-agent Swarm analysis...")
-            
-            # Agent 1: Age-appropriate content guidelines with retry logic
-            print("   👶 Age Agent: Analyzing age-appropriate content guidelines...")
-            max_retries = 5
-            retry_delay = 3
-            
-            for attempt in range(max_retries):
-                try:
-                    if attempt > 0:
-                        print(f"   🔄 Age Agent retry attempt {attempt + 1}/{max_retries}")
-                        await asyncio.sleep(retry_delay * attempt)
-                    
-                    age_guidelines = await self.age_agent.analyze_age_requirements(project_bible_data)
-                    print(f"   ✅ Age Agent succeeded on attempt {attempt + 1}")
-                    break
-                    
-                except Exception as e:
-                    print(f"   ⚠️ Age Agent attempt {attempt + 1}/{max_retries} failed: {str(e)}")
-                    if attempt == max_retries - 1:
-                        print("   ❌ CRITICAL: Age Agent FAILED after all retries")
-                        raise ValueError(f"Station 3 age analysis failed after {max_retries} retries: {str(e)}")
-            
-            # Agent 2: Genre blending options with retry logic
-            print("   🎭 Genre Agent: Creating optimized genre blend options...")
-            
-            for attempt in range(max_retries):
-                try:
-                    if attempt > 0:
-                        print(f"   🔄 Genre Agent retry attempt {attempt + 1}/{max_retries}")
-                        await asyncio.sleep(retry_delay * attempt)
-                    
-                    genre_options = await self.genre_agent.create_genre_blends(project_bible_data)
-                    
-                    # Validate that we have genre options
-                    if not genre_options or len(genre_options) == 0:
-                        raise ValueError("No genre options generated by LLM")
-                    
-                    print(f"   ✅ Genre Agent succeeded on attempt {attempt + 1}")
-                    break
-                    
-                except Exception as e:
-                    print(f"   ⚠️ Genre Agent attempt {attempt + 1}/{max_retries} failed: {str(e)}")
-                    if attempt == max_retries - 1:
-                        print("   ❌ CRITICAL: Genre Agent FAILED after all retries")
-                        raise ValueError(f"Station 3 genre analysis failed after {max_retries} retries: {str(e)}")
-            
-            # Validate that we have genre options
-            if not genre_options or len(genre_options) == 0:
-                logger.error("No genre options generated by LLM")
-                raise ValueError("Station 3 failed to generate genre options - no fallback allowed")
-            
-            # Display genre options for user choice
-            print(f"\n🎭 GENRE BLEND OPTIONS:")
-            print("-" * 40)
-            
-            for i, option in enumerate(genre_options):
-                option_letter = chr(ord('A') + i)
-                print(f"\n🔸 OPTION {option_letter}: {option.primary_genre} + {option.complementary_genre}")
-                print(f"   Enhancement: {option.enhancement_analysis}")
-                print(f"   Audio Elements: {', '.join(option.audio_elements[:2])}...")
-                print(f"   Pacing: {option.pacing_implications}")
-            
-            # Get user's genre choice
-            print(f"\n🎯 Choose your preferred genre blend:")
-            print("Select Option A, B, or C (or press Enter for Option A):")
-            
-            chosen_index = 0  # Default to Option A
-            while True:
-                try:
-                    choice = input("> ").strip().upper()
-                    if choice == "":
-                        choice = "A"
-                        print(f"✅ Using default: Option {choice}")
-                        break
-                    elif choice in ['A', 'B', 'C']:
-                        print(f"✅ Selected Option {choice}")
-                        chosen_index = ord(choice) - ord('A')
-                        break
-                    else:
-                        print("❌ Please enter A, B, C, or press Enter for default")
-                except (EOFError, KeyboardInterrupt):
-                    print(f"\n✅ Using default: Option A")
-                    choice = "A"
-                    break
-            
-            # Validate chosen_index is within bounds
-            if chosen_index >= len(genre_options):
-                logger.warning(f"chosen_index {chosen_index} out of bounds for {len(genre_options)} options, using first option")
-                chosen_index = 0
-            
-            chosen_blend = genre_options[chosen_index]
-            
-            # Agent 3: Tone calibration based on chosen blend with retry logic
-            print(f"   🎵 Tone Agent: Calibrating tone for {chosen_blend.primary_genre} + {chosen_blend.complementary_genre}...")
-            
-            for attempt in range(max_retries):
-                try:
-                    if attempt > 0:
-                        print(f"   🔄 Tone Agent retry attempt {attempt + 1}/{max_retries}")
-                        await asyncio.sleep(retry_delay * attempt)
-                    
-                    tone_calibration = await self.tone_agent.calibrate_tone(project_bible_data, chosen_blend)
-                    print(f"   ✅ Tone Agent succeeded on attempt {attempt + 1}")
-                    break
-                    
-                except Exception as e:
-                    print(f"   ⚠️ Tone Agent attempt {attempt + 1}/{max_retries} failed: {str(e)}")
-                    if attempt == max_retries - 1:
-                        print("   ❌ CRITICAL: Tone Agent FAILED after all retries")
-                        raise ValueError(f"Station 3 tone calibration failed after {max_retries} retries: {str(e)}")
-            
-            # Create comprehensive style guide
-            style_guide = AgeGenreStyleGuide(
-                working_title=working_title,
+            audience = station2_data['audience_profile']
+            target_age_range = audience['primary_age_range']
+
+            production = station2_data['production_constraints']
+            content_rating = production['content_rating']
+
+            genre_tone = station2_data['genre_tone']
+            primary_genre = genre_tone['primary_genre']
+            mood_profile = genre_tone['mood_profile']
+        except KeyError as e:
+            raise ValueError(f"Station 2 did not provide required field: {e}. Cannot proceed with Station 3.")
+
+        print(f"   Target: {target_age_range} years, {content_rating} rating")
+        print("   Generating restrictions for:")
+        print("   - Violence levels ✓")
+        print("   - Emotional intensity ✓")
+        print("   - Language guidelines ✓")
+        print("   - Sound restrictions ✓")
+        print("   - Theme complexity ✓")
+
+        # Build prompt
+        prompt = self.config.get_prompt('age_analysis').format(
+            target_age_range=target_age_range,
+            content_rating=content_rating,
+            primary_genre=primary_genre,
+            mood_profile=mood_profile
+        )
+
+        # Generate with retry
+        for attempt in range(3):
+            try:
+                response = await self.openrouter.process_message(
+                    prompt,
+                    model_name=self.config.model
+                )
+
+                result = extract_json(response)
+                print("\n✅ Age guidelines generated")
+                return result
+
+            except Exception as e:
+                if attempt < 2:
+                    logger.warning(f"⚠️ Attempt {attempt + 1} failed: {e}. Retrying...")
+                    await asyncio.sleep(2)
+                else:
+                    logger.error(f"❌ Failed after 3 attempts: {e}")
+                    raise
+
+    def display_age_guidelines(self, guidelines: Dict):
+        """Display age guidelines summary"""
+        print("\n" + "-"*60)
+        print("📋 AGE-APPROPRIATE CONTENT GUIDELINES")
+        print("-"*60)
+        print(f"Target Age: {guidelines.get('target_age_range', 'N/A')}")
+        print(f"Content Rating: {guidelines.get('content_rating', 'N/A')}")
+
+        violence = guidelines.get('violence_level', 'MODERATE')
+        print(f"\nViolence Level: {violence}")
+
+        if 'action_scene_limits' in guidelines:
+            for limit in guidelines['action_scene_limits'][:3]:
+                print(f"  • {limit}")
+
+        emotional = guidelines.get('emotional_intensity', 'MODERATE')
+        print(f"\nEmotional Intensity: {emotional}")
+
+        if 'emotional_boundaries' in guidelines:
+            for boundary in guidelines['emotional_boundaries'][:3]:
+                print(f"  • {boundary}")
+
+        if 'language_guidelines' in guidelines:
+            lang = guidelines['language_guidelines']
+            print(f"\nLanguage:")
+            if isinstance(lang, dict):
+                print(f"  • Vocabulary: {lang.get('vocabulary_level', 'N/A')}")
+                print(f"  • Forbidden: {lang.get('forbidden_topics', 'N/A')}")
+            else:
+                print(f"  • {lang}")
+
+        if 'sound_restrictions' in guidelines:
+            print(f"\nSound Design:")
+            for restriction in guidelines['sound_restrictions'][:3]:
+                print(f"  • {restriction}")
+
+        if 'theme_complexity' in guidelines:
+            theme = guidelines['theme_complexity']
+            if len(theme) > 80:
+                theme = theme[:80] + "..."
+            print(f"\nTheme Complexity: {theme}")
+
+        print("-"*60)
+
+    async def generate_genre_blends(self, station2_data: Dict) -> Dict:
+        """Generate 3 genre blend options"""
+        print("\n🤖 Generating genre blend options...")
+        print("   Analyzing: Primary + (complementary genres)")
+        print("   Creating 3 distinct audio-optimized blends...")
+
+        # Extract data for prompt - NO DEFAULTS, must come from Station 2
+        try:
+            genre_tone = station2_data['genre_tone']
+            primary_genre = genre_tone['primary_genre']
+            secondary_genres = genre_tone['secondary_genres']
+            tone_descriptors = genre_tone['tone_descriptors']
+
+            episode_length = station2_data['episode_length']
+
+            audience = station2_data['audience_profile']
+            target_age = audience['primary_age_range']
+            listening_context = audience['listening_context']
+        except KeyError as e:
+            raise ValueError(f"Station 2 did not provide required field: {e}. Cannot proceed with Station 3.")
+
+        # Build prompt
+        prompt = self.config.get_prompt('genre_blending').format(
+            primary_genre=primary_genre,
+            secondary_genres=', '.join(secondary_genres) if secondary_genres else 'None specified',
+            tone_descriptors=', '.join(tone_descriptors) if tone_descriptors else 'Moderate',
+            episode_length=episode_length,
+            target_age=target_age,
+            listening_context=listening_context
+        )
+
+        # Generate with retry
+        for attempt in range(3):
+            try:
+                response = await self.openrouter.process_message(
+                    prompt,
+                    model_name=self.config.model
+                )
+
+                result = extract_json(response)
+                print("\n✅ Genre blends generated")
+                return result
+
+            except Exception as e:
+                if attempt < 2:
+                    logger.warning(f"⚠️ Attempt {attempt + 1} failed: {e}. Retrying...")
+                    await asyncio.sleep(2)
+                else:
+                    logger.error(f"❌ Failed after 3 attempts: {e}")
+                    raise
+
+    def display_genre_options(self, options: Dict) -> tuple[str, Dict]:
+        """Display genre blend options and get user choice"""
+        print("\n" + "="*60)
+        print("🎭 GENRE BLEND OPTIONS")
+        print("="*60)
+
+        option_map = {
+            'option_a': 'A',
+            'option_b': 'B',
+            'option_c': 'C'
+        }
+
+        for opt_key, letter in option_map.items():
+            if opt_key not in options:
+                continue
+
+            opt = options[opt_key]
+
+            print(f"\n🔸 OPTION {letter}: {opt.get('primary_genre', 'N/A')} + {opt.get('complementary_genre', 'N/A')}")
+            print(f"   Primary: {opt.get('primary_genre', 'N/A')}")
+            print(f"   Complementary: {opt.get('complementary_genre', 'N/A')}")
+
+            enhancement = opt.get('enhancement_analysis', 'N/A')
+            if len(enhancement) > 200:
+                enhancement = enhancement[:200] + "..."
+            print(f"\n   Enhancement:")
+            print(f"   {enhancement}")
+
+            print(f"\n   Audio Elements:")
+            for elem in opt.get('audio_elements', [])[:3]:
+                print(f"   • {elem}")
+
+            pacing = opt.get('pacing_implications', 'N/A')
+            if len(pacing) > 100:
+                pacing = pacing[:100] + "..."
+            print(f"\n   Pacing: {pacing}")
+
+            expectations = opt.get('audience_expectations', 'N/A')
+            if len(expectations) > 100:
+                expectations = expectations[:100] + "..."
+            print(f"   Audience Expects: {expectations}")
+
+            print("\n" + "-"*60)
+
+        print("\n" + "="*60)
+
+        # Get user choice
+        while True:
+            choice = input("\n🎯 Which genre blend best fits your vision?\n   Enter A, B, or C (or press Enter for Option A): ").strip().upper()
+
+            if choice == "":
+                choice = "A"
+                print("✅ Using default: Option A")
+                break
+            elif choice in ['A', 'B', 'C']:
+                break
+            else:
+                print("❌ Please enter A, B, or C (or press Enter for default)")
+
+        # Map choice to option key
+        choice_to_key = {'A': 'option_a', 'B': 'option_b', 'C': 'option_c'}
+        chosen_details = options[choice_to_key[choice]]
+
+        print(f"\n✅ You selected: OPTION {choice} ({chosen_details.get('primary_genre', 'N/A')} + {chosen_details.get('complementary_genre', 'N/A')})")
+        return choice, chosen_details
+
+    async def generate_tone_calibration(self, station2_data: Dict, chosen_blend: Dict) -> Dict:
+        """Generate tone calibration for chosen blend"""
+        print("\n🤖 Calibrating tone progression for chosen blend...")
+        print("   - Episode-by-episode tone mapping")
+        print("   - Identifying tonal shift moments")
+        print("   - Audio conveyance strategies")
+        print("   - Light/dark balance")
+
+        # Extract data for prompt - NO DEFAULTS, must come from Station 2 and chosen blend
+        try:
+            episode_count = station2_data['episode_count']
+            episode_length = station2_data['episode_length']
+
+            genre_tone = station2_data['genre_tone']
+            mood_profile = genre_tone['mood_profile']
+
+            chosen_blend_primary = chosen_blend['primary_genre']
+            chosen_blend_complementary = chosen_blend['complementary_genre']
+            enhancement_analysis = chosen_blend['enhancement_analysis']
+        except KeyError as e:
+            raise ValueError(f"Required field missing: {e}. Cannot proceed with tone calibration.")
+
+        # Build prompt
+        prompt = self.config.get_prompt('tone_calibration').format(
+            episode_count=episode_count,
+            episode_length=episode_length,
+            mood_profile=mood_profile,
+            chosen_blend_primary=chosen_blend_primary,
+            chosen_blend_complementary=chosen_blend_complementary,
+            enhancement_analysis=enhancement_analysis
+        )
+
+        # Generate with retry
+        for attempt in range(3):
+            try:
+                response = await self.openrouter.process_message(
+                    prompt,
+                    model_name=self.config.model
+                )
+
+                result = extract_json(response)
+                print("\n✅ Tone calibration complete")
+                return result
+
+            except Exception as e:
+                if attempt < 2:
+                    logger.warning(f"⚠️ Attempt {attempt + 1} failed: {e}. Retrying...")
+                    await asyncio.sleep(2)
+                else:
+                    logger.error(f"❌ Failed after 3 attempts: {e}")
+                    raise
+
+    def display_style_guide_summary(self, tone_cal: Dict, chosen_blend: Dict):
+        """Display complete style guide summary"""
+        print("\n" + "="*60)
+        print("📖 AGE/GENRE STYLE GUIDE COMPLETE")
+        print("="*60)
+
+        blend_name = f"{chosen_blend.get('primary_genre', 'N/A')} + {chosen_blend.get('complementary_genre', 'N/A')}"
+        print(f"\nChosen Blend: {blend_name}")
+
+        print("\nTONE PROGRESSION:")
+        print("-"*60)
+        for progression in tone_cal.get('episode_progression', []):
+            print(f"{progression}")
+
+        print("\nTONAL SHIFT MOMENTS:")
+        for i, moment in enumerate(tone_cal.get('tonal_shift_moments', []), 1):
+            print(f"  {i}. {moment}")
+
+        print("\nAUDIO TONE TECHNIQUES:")
+        for technique in tone_cal.get('audio_tone_techniques', [])[:5]:
+            print(f"  • {technique}")
+
+        light_dark = tone_cal.get('light_dark_balance', 'Balanced approach')
+        if len(light_dark) > 200:
+            light_dark = light_dark[:200] + "..."
+        print(f"\nLIGHT/DARK BALANCE:")
+        print(f"  {light_dark}")
+
+        print("\n" + "-"*60)
+        print("✅ Style Guide Complete")
+        print("="*60)
+
+    def save_output(self, style_guide: StyleGuide):
+        """Save style guide to JSON and text files"""
+        session_id = style_guide.session_id
+
+        # Save as JSON
+        json_path = self.output_dir / f"{session_id}_style_guide.json"
+        with open(json_path, 'w', encoding='utf-8') as f:
+            json.dump({
+                'working_title': style_guide.working_title,
+                'original_seed': style_guide.original_seed,
+                'seed_type': style_guide.seed_type,
+                'scale_type': style_guide.scale_type,
+                'episode_count': style_guide.episode_count,
+                'episode_length': style_guide.episode_length,
+                'primary_genre': style_guide.primary_genre,
+                'target_age_range': style_guide.target_age_range,
+                'content_rating': style_guide.content_rating,
+                'age_guidelines': style_guide.age_guidelines,
+                'genre_options': style_guide.genre_options,
+                'chosen_blend': style_guide.chosen_blend,
+                'chosen_blend_details': style_guide.chosen_blend_details,
+                'tone_calibration': style_guide.tone_calibration,
+                'session_id': style_guide.session_id,
+                'timestamp': style_guide.timestamp
+            }, f, indent=2, ensure_ascii=False)
+
+        # Save as readable text
+        txt_path = self.output_dir / f"{session_id}_style_guide.txt"
+        with open(txt_path, 'w', encoding='utf-8') as f:
+            f.write("="*60 + "\n")
+            f.write("AGE/GENRE STYLE GUIDE\n")
+            f.write("="*60 + "\n\n")
+
+            f.write(f"PROJECT TITLE: {style_guide.working_title}\n")
+            f.write(f"Session ID: {style_guide.session_id}\n")
+            f.write(f"Created: {style_guide.timestamp}\n")
+            f.write(f"Input Type: {style_guide.seed_type}\n\n")
+
+            f.write(f"Scale: {style_guide.scale_type}\n")
+            f.write(f"Episodes: {style_guide.episode_count}\n")
+            f.write(f"Length: {style_guide.episode_length}\n")
+            f.write(f"Primary Genre: {style_guide.primary_genre}\n")
+            f.write(f"Target Age: {style_guide.target_age_range}\n")
+            f.write(f"Content Rating: {style_guide.content_rating}\n\n")
+
+            f.write("-"*60 + "\n")
+            f.write("ORIGINAL SEED:\n")
+            f.write("-"*60 + "\n")
+            f.write(f"{style_guide.original_seed}\n\n")
+
+            f.write("-"*60 + "\n")
+            f.write("1. AGE-APPROPRIATE GUIDELINES\n")
+            f.write("-"*60 + "\n")
+            ag = style_guide.age_guidelines
+            f.write(f"Target Age: {ag.get('target_age_range', 'N/A')}\n")
+            f.write(f"Content Rating: {ag.get('content_rating', 'N/A')}\n")
+            f.write(f"Violence Level: {ag.get('violence_level', 'N/A')}\n")
+            f.write(f"Emotional Intensity: {ag.get('emotional_intensity', 'N/A')}\n\n")
+
+            if 'action_scene_limits' in ag:
+                f.write("Action Scene Limits:\n")
+                for limit in ag['action_scene_limits']:
+                    f.write(f"  • {limit}\n")
+                f.write("\n")
+
+            if 'emotional_boundaries' in ag:
+                f.write("Emotional Boundaries:\n")
+                for boundary in ag['emotional_boundaries']:
+                    f.write(f"  • {boundary}\n")
+                f.write("\n")
+
+            if 'sound_restrictions' in ag:
+                f.write("Sound Restrictions:\n")
+                for restriction in ag['sound_restrictions']:
+                    f.write(f"  • {restriction}\n")
+                f.write("\n")
+
+            f.write("-"*60 + "\n")
+            f.write("2. GENRE BLEND OPTIONS\n")
+            f.write("-"*60 + "\n")
+            for opt_key in ['option_a', 'option_b', 'option_c']:
+                if opt_key in style_guide.genre_options:
+                    opt = style_guide.genre_options[opt_key]
+                    letter = opt_key.split('_')[1].upper()
+                    marker = "✓" if letter == style_guide.chosen_blend else " "
+                    f.write(f"\n[{marker}] OPTION {letter}: {opt.get('primary_genre', 'N/A')} + {opt.get('complementary_genre', 'N/A')}\n")
+                    f.write(f"    Enhancement: {opt.get('enhancement_analysis', 'N/A')}\n")
+
+            f.write(f"\nCHOSEN: Option {style_guide.chosen_blend}\n\n")
+
+            f.write("-"*60 + "\n")
+            f.write("3. TONE CALIBRATION\n")
+            f.write("-"*60 + "\n")
+            tc = style_guide.tone_calibration
+
+            blend_name = f"{style_guide.chosen_blend_details.get('primary_genre', 'N/A')} + {style_guide.chosen_blend_details.get('complementary_genre', 'N/A')}"
+            f.write(f"Chosen Blend: {blend_name}\n\n")
+
+            if 'episode_progression' in tc:
+                f.write("Episode Progression:\n")
+                for prog in tc['episode_progression']:
+                    f.write(f"  • {prog}\n")
+                f.write("\n")
+
+            if 'tonal_shift_moments' in tc:
+                f.write("Tonal Shift Moments:\n")
+                for i, moment in enumerate(tc['tonal_shift_moments'], 1):
+                    f.write(f"  {i}. {moment}\n")
+                f.write("\n")
+
+            if 'audio_tone_techniques' in tc:
+                f.write("Audio Tone Techniques:\n")
+                for technique in tc['audio_tone_techniques']:
+                    f.write(f"  • {technique}\n")
+                f.write("\n")
+
+            if 'light_dark_balance' in tc:
+                f.write(f"Light/Dark Balance:\n  {tc['light_dark_balance']}\n\n")
+
+        print(f"\n💾 Saving Age/Genre Style Guide...\n")
+        print(f"✅ Saved to:")
+        print(f"   📄 {json_path}")
+        print(f"   📄 {txt_path}")
+        print(f"\n✅ Stored in Redis for Station 4")
+
+    async def process(self, session_id: str) -> StyleGuide:
+        """Main processing method"""
+        try:
+            print("\n" + "="*60)
+            print("🎬 STATION 3: AGE & GENRE OPTIMIZER")
+            print("="*60)
+
+            # Load Station 2 data
+            station2_data = await self.load_station2_data(session_id)
+            self.display_project_summary(station2_data)
+
+            # Step 1: Generate age guidelines (auto)
+            age_guidelines = await self.generate_age_guidelines(station2_data)
+            self.display_age_guidelines(age_guidelines)
+
+            # Step 2: Generate genre blends (auto)
+            genre_options = await self.generate_genre_blends(station2_data)
+
+            # Step 3: User chooses blend (HUMAN INTERACTION)
+            chosen_blend_letter, chosen_blend_details = self.display_genre_options(genre_options)
+
+            # Step 4: Generate tone calibration (auto)
+            tone_calibration = await self.generate_tone_calibration(station2_data, chosen_blend_details)
+
+            # Step 5: Display complete style guide
+            self.display_style_guide_summary(tone_calibration, chosen_blend_details)
+
+            # Create style guide object
+            audience = station2_data.get('audience_profile', {})
+            production = station2_data.get('production_constraints', {})
+            genre_tone = station2_data.get('genre_tone', {})
+
+            style_guide = StyleGuide(
+                working_title=station2_data.get('working_title', 'Unknown'),
+                original_seed=station2_data.get('original_seed', 'N/A'),
+                seed_type=station2_data.get('seed_type', 'N/A'),
+                scale_type=station2_data.get('scale_type', 'Unknown'),
+                episode_count=station2_data.get('episode_count', 'Unknown'),
+                episode_length=station2_data.get('episode_length', 'Unknown'),
+                primary_genre=genre_tone.get('primary_genre', 'Unknown'),
+                target_age_range=audience.get('primary_age_range', 'Unknown'),
+                content_rating=production.get('content_rating', 'Unknown'),
                 age_guidelines=age_guidelines,
                 genre_options=genre_options,
+                chosen_blend=chosen_blend_letter,
+                chosen_blend_details=chosen_blend_details,
                 tone_calibration=tone_calibration,
-                chosen_genre_blend=f"Option {choice}: {chosen_blend.primary_genre} + {chosen_blend.complementary_genre}",
-                production_notes=[
-                    "Age guidelines ensure content appropriateness for target demographic",
-                    "Genre blend optimizes audio engagement and audience expectations", 
-                    "Tone calibration provides episode-by-episode guidance for consistent mood",
-                    "All recommendations are optimized for audio-only production",
-                    f"User selected {chosen_blend.primary_genre} + {chosen_blend.complementary_genre} blend"
-                ],
                 session_id=session_id,
-                created_timestamp=datetime.now()
+                timestamp=datetime.now().isoformat()
             )
-            
+
+            # Save output
+            self.save_output(style_guide)
+
             # Store in Redis for Station 4
-            await self._store_style_guide(style_guide)
-            
-            logger.info(f"Station 3 processing completed for session {session_id}")
+            await self.redis.set(
+                f"audiobook:{session_id}:station_03",
+                json.dumps({
+                    'working_title': style_guide.working_title,
+                    'seed_type': style_guide.seed_type,
+                    'scale_type': style_guide.scale_type,
+                    'episode_count': style_guide.episode_count,
+                    'chosen_blend': style_guide.chosen_blend,
+                    'chosen_blend_details': style_guide.chosen_blend_details,
+                    'age_guidelines': style_guide.age_guidelines,
+                    'tone_calibration': style_guide.tone_calibration
+                }),
+                expire=86400
+            )
+
+            print("\n" + "="*60)
+            print("✅ STATION 3 COMPLETE!")
+            print("="*60)
+            print(f"\nProject: {style_guide.working_title}")
+            blend_name = f"{chosen_blend_details.get('primary_genre', 'N/A')} + {chosen_blend_details.get('complementary_genre', 'N/A')}"
+            print(f"Genre Blend: {blend_name}")
+            print(f"Age Guidelines: {style_guide.content_rating} ({style_guide.target_age_range} years)")
+            print(f"Session ID: {session_id}")
+
+            print("\n📋 Style Guide includes:")
+            print("   ✓ Age-appropriate content guidelines")
+            print(f"   ✓ Genre blend strategy ({blend_name})")
+            print(f"   ✓ Tone calibration for {style_guide.episode_count}")
+            print("   ✓ Audio-specific techniques")
+            print("   ✓ Light/dark balance strategy")
+
+            print("\n📌 Ready to proceed to Station 4: Reference Mining & Seed Extraction")
+            print("\n" + "="*60)
+
             return style_guide
-            
+
         except Exception as e:
-            logger.error(f"Station 3 processing failed: {str(e)}")
+            logger.error(f"❌ Station 3 failed: {str(e)}")
             raise
 
-    async def _store_style_guide(self, style_guide: AgeGenreStyleGuide):
-        """Store style guide in Redis for next station"""
-        try:
-            style_guide_data = {
-                'working_title': style_guide.working_title,
-                'age_guidelines': asdict(style_guide.age_guidelines),
-                'genre_options': [asdict(option) for option in style_guide.genre_options],
-                'tone_calibration': asdict(style_guide.tone_calibration),
-                'chosen_genre_blend': style_guide.chosen_genre_blend,
-                'production_notes': style_guide.production_notes,
-                'session_id': style_guide.session_id,
-                'created_timestamp': style_guide.created_timestamp.isoformat()
-            }
-            
-            # Convert enums to strings for JSON storage
-            age_data = style_guide_data['age_guidelines']
-            age_data['violence_level'] = age_data['violence_level'].value
-            age_data['emotional_intensity'] = age_data['emotional_intensity'].value
-            
-            await self.redis_client.set(
-                f"audiobook:{style_guide.session_id}:station_03", 
-                json.dumps(style_guide_data),
-                expire=86400  # 24 hours
-            )
-            
-            logger.info(f"Style guide stored in Redis for session {style_guide.session_id}")
-            
-        except Exception as e:
-            logger.error(f"Failed to store style guide in Redis: {str(e)}")
-            # Non-critical error, continue processing
 
-    # PDF export removed - use JSON and TXT formats instead
-    # def export_style_guide_to_pdf(self, style_guide: AgeGenreStyleGuide, filename: str = None) -> str:
-    #     """Export style guide to PDF format - REMOVED"""
-    #     pass
+# CLI Entry Point
+async def main():
+    """Run Station 3 standalone"""
+    optimizer = Station03AgeGenreOptimizer()
+    await optimizer.initialize()
 
-    def display_style_guide_summary(self, style_guide: AgeGenreStyleGuide):
-        """Display a formatted summary of the style guide"""
-        print(f"\n🎯 AGE & GENRE STYLE GUIDE SUMMARY")
-        print("=" * 60)
-        print(f"📋 Working Title: {style_guide.working_title}")
-        print(f"🎂 Target Age: {style_guide.age_guidelines.target_age_range}")
-        print(f"🏷️  Content Rating: {style_guide.age_guidelines.content_rating}")
-        print(f"🎭 Chosen Blend: {style_guide.chosen_genre_blend}")
-        
-        print(f"\n📍 AGE GUIDELINES:")
-        print(f"   Violence Level: {style_guide.age_guidelines.violence_level.value}")
-        print(f"   Emotional Intensity: {style_guide.age_guidelines.emotional_intensity.value}")
-        print(f"   Theme Complexity: {style_guide.age_guidelines.theme_complexity}")
-        
-        print(f"\n🎵 TONE CALIBRATION:")
-        print(f"   Light/Dark Balance: {style_guide.tone_calibration.light_dark_balance}")
-        print(f"   Audio Techniques: {len(style_guide.tone_calibration.audio_tone_techniques)} defined")
-        print(f"   Tension Curves: {len(style_guide.tone_calibration.tension_curves)} mapped")
-        
-        print(f"\n📝 PRODUCTION NOTES:")
-        for note in style_guide.production_notes:
-            print(f"   • {note}")
-        
-        print(f"\n🔗 Session: {style_guide.session_id}")
-        print(f"⏰ Created: {style_guide.created_timestamp.strftime('%Y-%m-%d %H:%M:%S')}")
+    session_id = input("\n👉 Enter Session ID from Station 2: ").strip()
+
+    if not session_id:
+        print("❌ Session ID required")
+        return
+
+    try:
+        style_guide = await optimizer.process(session_id)
+        print(f"\n✅ Success! Style Guide created for: {style_guide.working_title}")
+    except KeyboardInterrupt:
+        print("\n\n❌ Cancelled by user")
+    except Exception as e:
+        print(f"\n❌ Error: {str(e)}")
+        import traceback
+        traceback.print_exc()
+
+
+if __name__ == "__main__":
+    asyncio.run(main())

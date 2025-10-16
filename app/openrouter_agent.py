@@ -23,6 +23,7 @@ class OpenRouterAgent:
         
         # Available models on OpenRouter
         self.available_models = {
+            "z-ai/glm-4.5": "z-ai/glm-4.5",
             "qwen-72b": "qwen/qwen-2.5-72b-instruct:free",
             "grok-4": "x-ai/grok-4-fast:free",
             "llama-3b": "meta-llama/llama-3.2-3b-instruct:free",
@@ -100,13 +101,14 @@ class OpenRouterAgent:
     def _get_system_message(self, model_name: str) -> str:
         """Get appropriate system message for each model"""
         system_messages = {
+            "z-ai/glm-4.5": "You are GLM-4.5, a professional AI assistant specialized in structured output generation. Return ONLY valid JSON as requested, with no additional text before or after.",
             "qwen-72b": "You are Qwen2.5 72B, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses.",
             "grok-4": "You are Grok-4, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses.",
             "llama-3b": "You are Llama 3.2 3B, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses.",
             "gpt-4o": "You are GPT-4o, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses.",
             "claude-3-haiku": "You are Claude 3 Haiku, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses."
         }
-        return system_messages.get(model_name, system_messages["qwen-72b"])
+        return system_messages.get(model_name, "You are a helpful AI assistant. Return ONLY valid JSON as requested.")
     
     async def generate(self, prompt: str, model: str = "qwen-72b", 
                       max_tokens: int = 3000, temperature: float = 0.7) -> str:

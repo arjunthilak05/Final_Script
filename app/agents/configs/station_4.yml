@@ -160,6 +160,8 @@ prompts:
         ]
     }}
 
+    CRITICAL: Generate EXACTLY 20 episode beats. Use concise but complete descriptions. Ensure JSON is complete and valid.
+
     Requirements:
     - Generate EXACTLY 20 episode beats
     - Each 3-8 minutes

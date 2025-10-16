@@ -622,8 +622,17 @@ class Station04ReferenceMining:
 
     async def generate_seed_batch(self, prompt_name: str, context: Dict) -> Dict:
         """Generate a batch of seeds using specified prompt - NO FALLBACKS"""
-        # Micro-moments need more tokens (30 seeds is large)
-        max_tokens = 6000 if 'micro' in prompt_name else self.config.max_tokens
+        # Set appropriate token limits based on complexity
+        if 'micro' in prompt_name:
+            max_tokens = 6000  # 30 micro-moments
+        elif 'beats' in prompt_name:
+            max_tokens = 8000  # 20 episode beats with 10+ fields each
+        elif 'arcs' in prompt_name:
+            max_tokens = 6000  # 10 season arcs
+        elif 'defining' in prompt_name:
+            max_tokens = 4000  # 5 series-defining moments
+        else:
+            max_tokens = self.config.max_tokens
 
         prompt = self.config.get_prompt(prompt_name).format(**context)
 
@@ -632,6 +641,14 @@ class Station04ReferenceMining:
             model_name=self.config.model,
             max_tokens=max_tokens
         )
+
+        # Validate response before JSON extraction
+        if not response or len(response.strip()) < 100:
+            raise ValueError(f"LLM response too short or empty: {len(response) if response else 0} characters")
+        
+        # Check for obvious truncation indicators
+        if not response.strip().endswith(('}', ']', '"')):
+            raise ValueError(f"LLM response appears truncated - doesn't end properly. Length: {len(response)}")
 
         data = extract_json(response)
 

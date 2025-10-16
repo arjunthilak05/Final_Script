@@ -46,7 +46,7 @@ prompts:
     - Title: {title}
     - Type: {type}
     - Year: {year}
-    - Primary Genre: {primary_genre}
+    - Primary Genre: {ref_primary_genre}
     - Why Relevant: {why_relevant}
 
     And this project context:

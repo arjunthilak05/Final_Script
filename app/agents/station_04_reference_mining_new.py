@@ -303,7 +303,7 @@ class Station04ReferenceMining:
             # Extract JSON
             data = extract_json(response)
             references = data.get('references', [])
-
+            
             # Validate count
             if len(references) < 20:
                 print(f"⚠️  Only got {len(references)} references (target: 20-25)")
@@ -382,15 +382,37 @@ class Station04ReferenceMining:
         total = len(references)
 
         for i, ref in enumerate(references, 1):
+            # Handle case where ref might be a string instead of dict
+            if isinstance(ref, str):
+                try:
+                    ref = json.loads(ref)
+                except json.JSONDecodeError:
+                    print(f"   ⚠️  Failed: Invalid JSON in reference {i}")
+                    continue
+            
             print(f"⚙️  Extracting from reference {i}/{total}: {ref.get('title', 'Unknown')[:40]}...")
 
             try:
-                # Prepare context
+                # Prepare context with safe nested access
+                chosen_blend = station3_data.get('chosen_blend', {})
+                if isinstance(chosen_blend, str):
+                    try:
+                        chosen_blend = json.loads(chosen_blend)
+                    except:
+                        chosen_blend = {}
+                
+                age_guidelines = station3_data.get('age_guidelines', {})
+                if isinstance(age_guidelines, str):
+                    try:
+                        age_guidelines = json.loads(age_guidelines)
+                    except:
+                        age_guidelines = {}
+                
                 project_context = {
                     'working_title': station2_data.get('working_title', 'Untitled'),
-                    'primary_genre': station3_data.get('chosen_blend', {}).get('primary_genre', 'Drama'),
-                    'target_age': station3_data.get('age_guidelines', {}).get('target_age_range', 'General'),
-                    'content_rating': station3_data.get('age_guidelines', {}).get('content_rating', 'PG'),
+                    'primary_genre': chosen_blend.get('primary_genre', 'Drama'),
+                    'target_age': age_guidelines.get('target_age_range', 'General'),
+                    'content_rating': age_guidelines.get('content_rating', 'PG'),
                     'episode_count': station2_data.get('episode_count', '8-12'),
                     'episode_length': station2_data.get('episode_length', '35-45 min')
                 }
@@ -399,7 +421,7 @@ class Station04ReferenceMining:
                     'title': ref.get('title', 'Unknown'),
                     'type': ref.get('medium', 'Unknown'),
                     'year': ref.get('release_year', 'Unknown'),
-                    'primary_genre': ref.get('genre_relevance', 'Unknown'),
+                    'ref_primary_genre': ref.get('genre_relevance', 'Unknown'),
                     'secondary_genre': ref.get('genre_relevance', 'Unknown'),
                     'why_relevant': ref.get('why_selected', 'Unknown'),
                     'tactical_value': ref.get('why_selected', 'Unknown'),
@@ -438,15 +460,29 @@ class Station04ReferenceMining:
                                  tactics: List[Dict]) -> Dict[str, List[Dict]]:
         """Generate all 65 seeds in 4 batches"""
 
-        # Prepare context for all batches
+        # Prepare context for all batches with safe nested access
+        chosen_blend = station3_data.get('chosen_blend', {})
+        if isinstance(chosen_blend, str):
+            try:
+                chosen_blend = json.loads(chosen_blend)
+            except:
+                chosen_blend = {}
+        
+        age_guidelines = station3_data.get('age_guidelines', {})
+        if isinstance(age_guidelines, str):
+            try:
+                age_guidelines = json.loads(age_guidelines)
+            except:
+                age_guidelines = {}
+        
         project_context = {
             'working_title': station2_data.get('working_title', 'Untitled'),
             'core_premise': station2_data.get('world_setting', {}).get('core_premise', 'N/A'),
             'central_conflict': station2_data.get('creative_promises', {}).get('premise', 'N/A'),
-            'main_characters': station3_data.get('age_guidelines', {}).get('theme_complexity', 'Characters TBD'),
-            'primary_genre': station3_data.get('chosen_blend', {}).get('primary_genre', 'Drama'),
-            'target_age': station3_data.get('age_guidelines', {}).get('target_age_range', 'General'),
-            'content_rating': station3_data.get('age_guidelines', {}).get('content_rating', 'PG'),
+            'main_characters': age_guidelines.get('theme_complexity', 'Characters TBD'),
+            'primary_genre': chosen_blend.get('primary_genre', 'Drama'),
+            'target_age': age_guidelines.get('target_age_range', 'General'),
+            'content_rating': age_guidelines.get('content_rating', 'PG'),
             'episode_count': station2_data.get('episode_count', '8-12'),
             'episode_length': station2_data.get('episode_length', '35-45 min'),
             'breaking_points': str(station2_data.get('format_specifications', {}).get('episode_structure', 'Standard breaks')),

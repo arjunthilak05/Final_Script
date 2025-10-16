@@ -24,7 +24,8 @@ class RedisClient:
     async def get(self, key: str):
         """Get value from Redis"""
         if self.redis:
-            return await self.redis.get(key)
+            result = await self.redis.get(key)
+            return result.decode('utf-8') if result else None
         return None
     
     async def set(self, key: str, value: str, expire: Optional[int] = None):

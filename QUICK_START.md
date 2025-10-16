@@ -62,6 +62,35 @@ python -m app.agents.station_02_project_dna_builder
 
 ---
 
+## ⚡ RUN STATION 4.5 (NARRATOR STRATEGY)
+
+```bash
+python -m app.agents.station_045_narrator_strategy_designer
+```
+
+### What happens:
+
+1. **Enter session ID** → Paste the session_id from Station 4
+
+2. **View project summary** → Quick recap of your project details
+
+3. **Wait for analysis** → 5-task analysis sequence (~60-90 seconds)
+   - 📊 Quantitative Analysis of Narrator Necessity
+   - 🎬 Generate Comparative Sample Scenes  
+   - ⚙️ Define Narrator Strategy Options
+   - 🎯 Formulate Definitive Recommendation
+   - 📈 Assess Pipeline Impact
+
+4. **Get narrator strategy** → Complete strategy recommendation saved!
+
+### Output files:
+- `output/station_045/{session_id}_output.json`
+- `output/station_045/{session_id}_readable.txt`
+
+**Note**: This is a Critical Decision Agent - output requires Human Gate review before proceeding to Station 5.
+
+---
+
 ## 📝 EXAMPLE SESSION
 
 ```

@@ -1,0 +1,320 @@
+# Station 4.5: Narrator Strategy Designer Configuration
+
+station_name: "Station 4.5: Narrator Strategy Designer"
+description: "Analyzes narrator requirements, generates with/without narrator sample scenes, and provides a final strategy recommendation for human review."
+model: "z-ai/glm-4.5"
+temperature: 0.7
+max_tokens: 4000
+
+prompts:
+  quantitative_analysis: |
+    You are a Narrator Necessity Analyst for audiobook production.
+
+    Based on this project data:
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - Target Age: {target_age}
+    - Episode Count: {episode_count}
+    - Episode Length: {episode_length}
+    - Story Complexity: {story_complexity}
+    - Tone: {tone}
+
+    Analyze the story against three factor groups. For each sub-point, assign a score from 0 (not applicable) to 5 (highly applicable).
+
+    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
+    {{
+        "quantitative_analysis": {{
+            "complexity_factors": {{
+                "multiple_timelines_locations": 0-5,
+                "large_cast": 0-5,
+                "crucial_internal_thoughts": 0-5,
+                "exposition_cant_be_shown_via_dialogue": 0-5,
+                "world_building_requirements": 0-5,
+                "historical_technical_context": 0-5,
+                "time_jumps_between_scenes": 0-5
+            }},
+            "audio_clarity_factors": {{
+                "scene_transition_clarity": 0-5,
+                "character_identification_challenges": 0-5,
+                "action_sequence_comprehension": 0-5,
+                "emotional_subtext_needing_voice": 0-5,
+                "pacing_control_requirements": 0-5
+            }},
+            "stylistic_factors": {{
+                "genre_conventions_expectation": 0-5,
+                "intimate_vs_distant_tone_desired": 0-5,
+                "literary_vs_cinematic_approach": 0-5,
+                "poetic_thematic_commentary_value": 0-5,
+                "humor_delivery_opportunities": 0-5
+            }},
+            "total_score": "calculated_total",
+            "classification": "0-30: Strong candidate for no narrator | 31-50: Could work either way | 51-75: Narrator recommended"
+        }}
+    }}
+
+    Requirements:
+    - Score each factor honestly based on the story characteristics
+    - Calculate total score (sum of all individual scores)
+    - Provide classification based on exact thresholds
+    - Consider the target age and genre conventions
+
+  sample_scenes_generation: |
+    You are a Sample Scene Generator for audiobook production.
+
+    Based on this project data:
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - Target Age: {target_age}
+    - Story Complexity: {story_complexity}
+    - Tone: {tone}
+    - Core Premise: {core_premise}
+
+    Generate two distinct sample scenes (approximately 500 words each) of the same pivotal story moment.
+
+    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
+    {{
+        "sample_scenes": {{
+            "scene_context": "Brief description of the pivotal moment being demonstrated",
+            "version_a_with_narrator": {{
+                "title": "Scene title with narrator",
+                "content": "Complete scene text demonstrating narrator usage for scene setting, context, character thoughts, and transitions. Approximately 500 words.",
+                "narrator_functions": ["scene setting", "character thoughts", "transitions", "context"]
+            }},
+            "version_b_without_narrator": {{
+                "title": "Scene title without narrator", 
+                "content": "Complete scene text conveying all information through character dialogue, explicit sound effect cues [SFX: description], and character vocal reactions. Approximately 500 words.",
+                "alternative_strategies": ["dialogue exposition", "sound effects", "character reactions"]
+            }}
+        }}
+    }}
+
+    Requirements:
+    - Both scenes must be the exact same story moment
+    - Version A must demonstrate effective narrator usage
+    - Version B must convey all information without narrator
+    - Include explicit sound effect cues in Version B
+    - Both scenes must be age-appropriate for {target_age}
+    - Maintain genre consistency
+
+  narrator_strategy_options: |
+    You are a Narrator Strategy Options Designer for audiobook production.
+
+    Based on this project data:
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - Target Age: {target_age}
+    - Story Complexity: {story_complexity}
+    - Tone: {tone}
+    - Analysis Score: {analysis_score}
+
+    Define detailed analysis of all potential narrator approaches. This section is required if the score is above 30.
+
+    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
+    {{
+        "narrator_strategy_options": {{
+            "narrator_identity_options": [
+                {{
+                    "option": "A: Omniscient third-person",
+                    "description": "Knows all, professional, neutral voice",
+                    "pros": ["advantages"],
+                    "cons": ["disadvantages"],
+                    "best_for": "when this works best"
+                }},
+                {{
+                    "option": "B: Character narrator (retrospective)",
+                    "description": "A character tells the story later; biased, emotional",
+                    "pros": ["advantages"],
+                    "cons": ["disadvantages"],
+                    "best_for": "when this works best"
+                }},
+                {{
+                    "option": "C: Character narrator (real-time)",
+                    "description": "Internal monologue style; present tense, intimate",
+                    "pros": ["advantages"],
+                    "cons": ["disadvantages"],
+                    "best_for": "when this works best"
+                }},
+                {{
+                    "option": "D: Witness narrator",
+                    "description": "Secondary character observing; limited knowledge",
+                    "pros": ["advantages"],
+                    "cons": ["disadvantages"],
+                    "best_for": "when this works best"
+                }},
+                {{
+                    "option": "E: Themed narrator",
+                    "description": "A conceptual entity (e.g., Death, Time, The City); unique perspective, affected voice",
+                    "pros": ["advantages"],
+                    "cons": ["disadvantages"],
+                    "best_for": "when this works best"
+                }}
+            ],
+            "presence_level_options": [
+                {{
+                    "level": "Heavy",
+                    "percentage": "40-50% of runtime",
+                    "description": "Narrator guides most scenes",
+                    "use_case": "when to use this level"
+                }},
+                {{
+                    "level": "Moderate", 
+                    "percentage": "20-30% of runtime",
+                    "description": "Narrator appears regularly",
+                    "use_case": "when to use this level"
+                }},
+                {{
+                    "level": "Light",
+                    "percentage": "10-15% of runtime", 
+                    "description": "Narrator appears occasionally",
+                    "use_case": "when to use this level"
+                }},
+                {{
+                    "level": "Minimal",
+                    "percentage": "<5% (transitions only)",
+                    "description": "Narrator only for transitions",
+                    "use_case": "when to use this level"
+                }}
+            ],
+            "narrator_functions": [
+                "Scene setting",
+                "Time transitions", 
+                "Character identification",
+                "Internal thoughts",
+                "Thematic commentary",
+                "Humor delivery",
+                "Emotional guidance",
+                "Plot clarification",
+                "World-building",
+                "Tension control"
+            ]
+        }}
+    }}
+
+    Requirements:
+    - Provide all 5 identity options with detailed analysis
+    - Provide all 4 presence level options
+    - List all 10 narrator functions
+    - Consider the specific story characteristics and target audience
+
+  definitive_recommendation: |
+    You are a Narrator Strategy Recommendation Specialist for audiobook production.
+
+    Based on this project data:
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - Target Age: {target_age}
+    - Analysis Score: {analysis_score}
+    - Story Complexity: {story_complexity}
+    - Tone: {tone}
+
+    And the analysis results:
+    - Quantitative Analysis: {quantitative_analysis}
+    - Sample Scenes: {sample_scenes}
+    - Strategy Options: {strategy_options}
+
+    Provide a single, clearly justified recommendation: "With Narrator", "Without Narrator", or "Hybrid Approach".
+
+    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
+    {{
+        "definitive_recommendation": {{
+            "recommendation": "With Narrator|Without Narrator|Hybrid Approach",
+            "justification": "Detailed explanation of why this recommendation was chosen",
+            "implementation_details": {{
+                "if_with_narrator": {{
+                    "narrator_type": "chosen identity option",
+                    "presence_level": "chosen presence level",
+                    "voice_casting_notes": {{
+                        "gender": "male|female|non-binary|any",
+                        "age_range": "age range",
+                        "voice_quality": "voice characteristics"
+                    }},
+                    "key_functions": ["top 3-5 functions"],
+                    "example_narrator_lines": [
+                        "5 distinct example narrator lines"
+                    ]
+                }},
+                "if_without_narrator": {{
+                    "character_identification_strategy": "how to identify characters",
+                    "scene_transition_strategy": "how to handle transitions",
+                    "exposition_delivery_strategy": "how to deliver exposition",
+                    "internal_thought_alternatives": "how to show internal thoughts",
+                    "timeline_clarification_strategy": "how to clarify timeline"
+                }},
+                "if_hybrid": {{
+                    "when_narrator_appears": "specific episodes or contexts",
+                    "presence_triggers": "what triggers narrator presence",
+                    "absence_justification": "how absence/presence is justified",
+                    "implementation_guidelines": "how to execute hybrid approach"
+                }}
+            }}
+        }}
+    }}
+
+    Requirements:
+    - Choose ONE recommendation based on analysis
+    - Provide detailed justification
+    - Include complete implementation details for chosen approach
+    - Consider target age and genre conventions
+    - Ensure recommendation aligns with quantitative analysis
+
+  pipeline_impact_assessment: |
+    You are a Pipeline Impact Assessor for audiobook production.
+
+    Based on this project data:
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - Target Age: {target_age}
+    - Episode Count: {episode_count}
+    - Episode Length: {episode_length}
+    - Chosen Strategy: {chosen_strategy}
+
+    Assess how the chosen narrator strategy affects downstream processes.
+
+    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
+    {{
+        "pipeline_impact_assessment": {{
+            "episode_structure_impact": {{
+                "openings": "how narrator strategy affects episode openings",
+                "scene_transitions": "impact on scene transitions",
+                "cliffhanger_delivery": "how cliffhangers are handled",
+                "runtime_allocation": "how runtime is distributed"
+            }},
+            "writing_style_impact": {{
+                "dialogue_naturalism": "how dialogue must be written",
+                "sound_design_complexity": "impact on sound design needs",
+                "character_voice_burden": "burden on character voices",
+                "pacing_control": "how pacing is managed"
+            }},
+            "production_impact": {{
+                "additional_casting": "casting requirements",
+                "recording_logistics": "recording complexity",
+                "edit_complexity": "editing requirements",
+                "budget_implications": "cost considerations"
+            }},
+            "audience_experience_impact": {{
+                "intimacy_vs_distance": "emotional distance from story",
+                "clarity_vs_discovery": "balance of clarity and discovery",
+                "guided_vs_independent": "level of audience guidance",
+                "cognitive_load": "mental effort required from listeners"
+            }}
+        }}
+    }}
+
+    Requirements:
+    - Assess impact across all four categories
+    - Be specific about how the chosen strategy changes each aspect
+    - Consider the target age and episode constraints
+    - Provide actionable insights for production team
+
+dependencies:
+  - station: 1
+    name: "Seed Processor"
+  - station: 2
+    name: "Project DNA Builder"
+  - station: 3
+    name: "Age Genre Optimizer"
+  - station: 4
+    name: "Reference Mining & Seed Extraction"
+
+# Enable/disable this station in the pipeline
+enabled: true

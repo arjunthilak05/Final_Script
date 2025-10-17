@@ -28,6 +28,7 @@ from app.openrouter_agent import OpenRouterAgent
 from app.redis_client import RedisClient
 from app.agents.config_loader import load_station_config
 from app.agents.json_extractor import extract_json
+from app.agents.title_validator import TitleValidator
 
 
 class Station05SeasonArchitect:
@@ -137,7 +138,8 @@ class Station05SeasonArchitect:
             print("=" * 60)
             print()
             print(f"Session ID: {self.session_id}")
-            print(f"Working Title: {extracted_inputs.get('working_title', 'N/A')}")
+            title = extracted_inputs.get('working_title', 'N/A')
+            print(TitleValidator.format_title_for_display(title, "Station 5"))
             print()
             print("📄 Output files:")
             print(f"   - output/station_05/{self.session_id}_output.json")
@@ -205,8 +207,8 @@ class Station05SeasonArchitect:
             extracted['episode_count'] = station1_options.get('episode_count', 'Unknown')
             extracted['episode_length'] = station1_options.get('episode_length', 'Unknown')
             
-            # From Station 2
-            extracted['working_title'] = station2_data.get('working_title', 'Unknown')
+            # Use bulletproof title extraction
+            extracted['working_title'] = TitleValidator.extract_bulletproof_title(station1_data, station2_data)
             extracted['core_premise'] = station2_data.get('world_setting', {}).get('core_premise', 'Unknown')
             
             # From Station 3

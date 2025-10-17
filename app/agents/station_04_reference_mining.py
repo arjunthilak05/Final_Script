@@ -28,6 +28,7 @@ from app.openrouter_agent import OpenRouterAgent
 from app.redis_client import RedisClient
 from app.agents.config_loader import load_station_config
 from app.agents.json_extractor import extract_json
+from app.agents.title_validator import TitleValidator
 
 
 class Station04ReferenceMining:
@@ -59,21 +60,22 @@ class Station04ReferenceMining:
 
         print()
 
-        # Step 2: Load Station 2 and Station 3 data
+        # Step 2: Load Station 1, Station 2 and Station 3 data
         print("📥 Loading previous station data...")
-        station2_data, station3_data = await self.load_previous_data(session_id)
+        station1_data, station2_data, station3_data = await self.load_previous_data(session_id)
 
-        if not station2_data or not station3_data:
+        if not station1_data or not station2_data or not station3_data:
             print("❌ Could not load required data from previous stations")
-            print("   Make sure you've run Station 2 and Station 3 first")
+            print("   Make sure you've run Station 1, Station 2 and Station 3 first")
             return
 
+        print("   ✓ Station 1: Seed Processor loaded")
         print("   ✓ Station 2: Project Bible loaded")
         print("   ✓ Station 3: Style Guide loaded")
         print()
 
-        # Show summary
-        self.display_project_summary(station2_data, station3_data, session_id)
+        # Show summary with bulletproof title
+        self.display_project_summary(station1_data, station2_data, station3_data, session_id)
 
         # Step 3: Generate references
         print("\n" + "=" * 70)
@@ -89,7 +91,7 @@ class Station04ReferenceMining:
         print("⏳ Generating references... (this takes 30-60 seconds)")
         print()
 
-        references = await self.generate_references(station2_data, station3_data)
+        references = await self.generate_references(station1_data, station2_data, station3_data)
 
         if not references or len(references) < 15:
             print(f"❌ Failed to generate sufficient references (got {len(references) if references else 0}, need 15+)")
@@ -104,7 +106,7 @@ class Station04ReferenceMining:
         if approval == "R":
             print("\n🔄 Regenerating references...")
             print("⏳ This may take 30-60 seconds...")
-            references = await self.generate_references(station2_data, station3_data)
+            references = await self.generate_references(station1_data, station2_data, station3_data)
             if not references:
                 print("❌ Failed to regenerate references")
                 return
@@ -125,7 +127,7 @@ class Station04ReferenceMining:
             print(f"⚠️  Processing top 20 references for efficiency (from {len(references)} total)")
         print()
 
-        tactics = await self.extract_tactics_with_progress(references, station2_data, station3_data)
+        tactics = await self.extract_tactics_with_progress(references, station1_data, station2_data, station3_data)
 
         if not tactics:
             print("❌ Failed to extract tactics")
@@ -148,7 +150,7 @@ class Station04ReferenceMining:
               f"{station3_data['age_guidelines']['content_rating']}")
         print()
 
-        all_seeds = await self.generate_all_seeds(station2_data, station3_data, tactics)
+        all_seeds = await self.generate_all_seeds(station1_data, station2_data, station3_data, tactics)
 
         if not all_seeds:
             print("❌ Failed to generate seeds")
@@ -205,6 +207,7 @@ class Station04ReferenceMining:
 
         await self.save_output(
             session_id=session_id,
+            station1_data=station1_data,
             station2_data=station2_data,
             station3_data=station3_data,
             references=references,
@@ -237,11 +240,20 @@ class Station04ReferenceMining:
         print("Ready to proceed to Station 5: Season Architecture")
         print()
 
-    async def load_previous_data(self, session_id: str) -> tuple[Optional[Dict], Optional[Dict]]:
-        """Load Station 2 and Station 3 data from Redis - NO FALLBACKS"""
+    async def load_previous_data(self, session_id: str) -> tuple[Optional[Dict], Optional[Dict], Optional[Dict]]:
+        """Load Station 1, Station 2 and Station 3 data from Redis - NO FALLBACKS"""
+        # Load Station 1
+        station1_key = f"audiobook:{session_id}:station_01"
+        station1_raw = await self.redis.get(station1_key)
+        
         # Load Station 2
         station2_key = f"audiobook:{session_id}:station_02"
         station2_raw = await self.redis.get(station2_key)
+
+        if not station1_raw:
+            raise ValueError(f"Station 1 data not found for session {session_id}. Run Station 1 first.")
+        
+        station1_data = json.loads(station1_raw)
 
         if not station2_raw:
             raise ValueError(f"Station 2 data not found for session {session_id}. Run Station 2 first.")
@@ -257,10 +269,10 @@ class Station04ReferenceMining:
 
         station3_data = json.loads(station3_raw)
 
-        return station2_data, station3_data
+        return station1_data, station2_data, station3_data
 
-    def display_project_summary(self, station2_data: Dict, station3_data: Dict, session_id: str):
-        """Display project context summary"""
+    def display_project_summary(self, station1_data: Dict, station2_data: Dict, station3_data: Dict, session_id: str):
+        """Display project context summary with bulletproof title"""
         print("=" * 70)
         print("📋 PROJECT CONTEXT")
         print("=" * 70)
@@ -272,7 +284,9 @@ class Station04ReferenceMining:
 
         # These .get() are OK for display only (not used in LLM calls)
 
-        print(f"Title: {station2_data.get('working_title', 'N/A')}")
+        # Use bulletproof title extraction
+        title = TitleValidator.extract_bulletproof_title(station1_data, station2_data)
+        print(TitleValidator.format_title_for_display(title, "Station 4"))
         print(f"Genre Blend: {chosen_blend_details.get('primary_genre', 'N/A')} + {chosen_blend_details.get('complementary_genre', 'N/A')}")
         print(f"Age Rating: {age_guidelines.get('content_rating', 'N/A')} ({age_guidelines.get('target_age_range', 'N/A')})")
         print(f"Episodes: {station2_data.get('episode_count', 'N/A')}, {station2_data.get('episode_length', 'N/A')} each")
@@ -282,14 +296,14 @@ class Station04ReferenceMining:
         print(f"Session ID: {session_id}")
         print("-" * 70)
 
-    async def generate_references(self, station2_data: Dict, station3_data: Dict) -> List[Dict]:
+    async def generate_references(self, station1_data: Dict, station2_data: Dict, station3_data: Dict) -> List[Dict]:
         """Generate 20-25 cross-media references - NO FALLBACKS"""
         # Prepare context - NO DEFAULTS
         chosen_blend_details = station3_data['chosen_blend_details']
         age_guidelines = station3_data['age_guidelines']
 
         context = {
-            'working_title': station2_data['working_title'],
+            'working_title': TitleValidator.extract_bulletproof_title(station1_data, station2_data),
             'primary_genre': chosen_blend_details['primary_genre'],
             'secondary_genres': ', '.join(station2_data['genre_tone']['secondary_genres']),
             'target_age_range': age_guidelines['target_age_range'],
@@ -385,6 +399,7 @@ class Station04ReferenceMining:
             print()
 
     async def extract_tactics_with_progress(self, references: List[Dict],
+                                           station1_data: Dict,
                                            station2_data: Dict,
                                            station3_data: Dict) -> List[Dict]:
         """Extract tactics from each reference with progress indicators - OPTIMIZED"""
@@ -398,7 +413,7 @@ class Station04ReferenceMining:
         age_guidelines = station3_data['age_guidelines']
 
         project_context = {
-            'working_title': station2_data['working_title'],
+            'working_title': TitleValidator.extract_bulletproof_title(station1_data, station2_data),
             'primary_genre': chosen_blend_details['primary_genre'],
             'target_age': age_guidelines['target_age_range'],
             'content_rating': age_guidelines['content_rating'],
@@ -472,7 +487,7 @@ class Station04ReferenceMining:
 
         print("-" * 70)
 
-    async def generate_all_seeds(self, station2_data: Dict, station3_data: Dict,
+    async def generate_all_seeds(self, station1_data: Dict, station2_data: Dict, station3_data: Dict,
                                  tactics: List[Dict]) -> Dict[str, List[Dict]]:
         """Generate all 65 seeds in 4 batches"""
 
@@ -484,7 +499,7 @@ class Station04ReferenceMining:
         format_specs = station2_data['format_specifications']
 
         project_context = {
-            'working_title': station2_data['working_title'],
+            'working_title': TitleValidator.extract_bulletproof_title(station1_data, station2_data),
             # Use original_seed as core_premise (it contains the full story premise)
             'core_premise': station2_data['original_seed'][:500],  # First 500 chars
             # Use atmosphere as central_conflict placeholder
@@ -798,15 +813,16 @@ class Station04ReferenceMining:
                     if key != 'title' and not key.startswith('_'):
                         print(f"   {key.replace('_', ' ').title()}: {value}")
 
-    async def save_output(self, session_id: str, station2_data: Dict,
+    async def save_output(self, session_id: str, station1_data: Dict, station2_data: Dict,
                          station3_data: Dict, references: List[Dict],
                          tactics: List[Dict], seeds: Dict):
         """Save all output files (JSON + TXT + CSV + Redis)"""
 
-        # Prepare full output
+        # Prepare full output with bulletproof title
+        bulletproof_title = TitleValidator.extract_bulletproof_title(station1_data, station2_data)
         output_data = {
             'session_id': session_id,
-            'working_title': station2_data.get('working_title', 'Untitled'),
+            'working_title': bulletproof_title,
             'original_seed': station2_data.get('original_seed', 'N/A'),
             'timestamp': datetime.now().isoformat(),
             'references': references,

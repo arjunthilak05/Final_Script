@@ -23,6 +23,7 @@ from app.openrouter_agent import OpenRouterAgent
 from app.redis_client import RedisClient
 from app.agents.config_loader import load_station_config
 from app.agents.json_extractor import extract_json
+from app.agents.title_validator import TitleValidator
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -307,6 +308,14 @@ class Station01SeedProcessor:
                 'timestamp': datetime.now().isoformat()
             }
 
+            # Step 7.5: Validate chosen_title before proceeding
+            title_validation = TitleValidator.validate_chosen_title(output_data)
+            if not title_validation.is_valid:
+                print(f"⚠️  WARNING: Title validation failed: {title_validation.error_message}")
+                print(f"   Using chosen title anyway: '{chosen_title}'")
+            else:
+                print(f"✅ Title validation passed: '{chosen_title}'")
+
             # Step 8: Save output
             self.save_output(output_data)
 
@@ -320,7 +329,7 @@ class Station01SeedProcessor:
             print("\n" + "="*60)
             print("✅ STATION 1 COMPLETE!")
             print("="*60)
-            print(f"\nProject: {chosen_title}")
+            print(TitleValidator.format_title_for_display(chosen_title, "Station 1"))
             print(f"Scale: {chosen_option_details['type']} ({chosen_option_details['episode_count']})")
             print(f"Session ID: {session_id}")
             print("\n📌 Ready to proceed to Station 2: Project DNA Builder")

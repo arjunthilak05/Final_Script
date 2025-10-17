@@ -95,32 +95,26 @@ prompts:
     {tactics_summary}
 
     Generate 15 MICRO-MOMENT SEEDS (30-90 seconds each).
-    Start numbering from MM_{start_id:03d} if provided, otherwise start from MM_001.
+    Start numbering from MM_{start_id:03d}.
 
-    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
+    IMPORTANT: Return ONLY valid, complete JSON with SIMPLE structure - no explanatory text before or after:
     {{
         "micro_moments": [
             {{
-                "seed_id": "MM_001",
+                "seed_id": "MM_{start_id:03d}",
                 "title": "evocative 3-5 word title",
                 "duration": "30-90 sec",
-                "placement": "Episode X, timestamp/context",
-                "core_idea": "one sentence description",
-                "audio_hook": "what sound/voice/music element grabs attention",
-                "emotional_beat": "what emotion this moment delivers",
-                "inspired_by_tactic": "which reference tactic inspired this",
-                "production_notes": "brief guidance for audio team"
+                "core_idea": "2-3 sentence description of this micro-moment story beat"
             }}
         ]
     }}
 
     Requirements:
     - Generate EXACTLY 15 micro-moments
-    - Each 30-90 seconds (verify duration field)
-    - Spread across all episodes
-    - Every moment must have clear audio hook
+    - Each 30-90 seconds duration
+    - Start numbering from MM_{start_id:03d}
+    - Keep JSON simple - only 4 fields per seed
     - Age-appropriate content for {content_rating}
-    - CRITICAL: Ensure all JSON strings are properly closed with quotes
 
   seed_generation_beats: |
     You are an Episode Beat Seed Generator for audiobook production.

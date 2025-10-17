@@ -899,9 +899,7 @@ class Station04ReferenceMining:
             for i, seed in enumerate(seeds.get('micro_moments', []), 1):
                 f.write(f"\n{i}. {seed.get('title', 'Untitled')}\n")
                 f.write(f"   Duration: {seed.get('duration', 'N/A')}\n")
-                f.write(f"   Placement: {seed.get('placement', 'N/A')}\n")
                 f.write(f"   Core Idea: {seed.get('core_idea', 'N/A')}\n")
-                f.write(f"   Audio Hook: {seed.get('audio_hook', 'N/A')}\n")
 
             # Episode Beats
             f.write(f"\n\nEPISODE BEATS ({len(seeds.get('episode_beats', []))} total)\n")

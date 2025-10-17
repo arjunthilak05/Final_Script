@@ -37,6 +37,10 @@ class OpenRouterAgent:
         max_retries = 3
         base_delay = 2.0  # Base delay in seconds
         
+        # Check if API key is set
+        if not self.api_key:
+            raise Exception("OpenRouter API key is not set. Please set OPENROUTER_API_KEY environment variable.")
+        
         for attempt in range(max_retries):
             try:
                 # Add delay between requests to avoid rate limiting
@@ -84,20 +88,23 @@ class OpenRouterAgent:
                     
                     response.raise_for_status()
                     result = response.json()
-                    return result["choices"][0]["message"]["content"]
+                    if "choices" in result and result["choices"]:
+                        return result["choices"][0]["message"]["content"]
+                    else:
+                        raise Exception("No choices in API response")
                 
             except httpx.HTTPStatusError as e:
                 if e.response.status_code == 429 and attempt < max_retries - 1:
                     continue  # Retry on rate limit
                 else:
-                    return f"I'm sorry, I encountered an error: {str(e)}"
+                    raise Exception(f"OpenRouter API error: {str(e)}")
             except Exception as e:
                 if attempt < max_retries - 1:
                     continue  # Retry on other errors
                 else:
-                    return f"I'm sorry, I encountered an error: {str(e)}"
+                    raise Exception(f"OpenRouter API error: {str(e)}")
         
-        return f"I'm sorry, I encountered an error after {max_retries} attempts"
+        raise Exception(f"OpenRouter API failed after {max_retries} attempts")
     
     def _get_system_message(self, model_name: str) -> str:
         """Get appropriate system message for each model"""

@@ -59,6 +59,22 @@ class Station05SeasonArchitect:
             # Extract required inputs from previous stations
             extracted_inputs = await self.extract_required_inputs()
             
+            # --- START CRITICAL VALIDATION ---
+            episode_count = extracted_inputs.get('episode_count', 'Unknown')
+            episode_length = extracted_inputs.get('episode_length', 'Unknown')
+
+            if episode_count == 'Unknown' or episode_length == 'Unknown' or not episode_count:
+                error_msg = (
+                    "❌ CRITICAL ERROR: Cannot build season architecture. "
+                    f"Episode Count ('{episode_count}') or Episode Length ('{episode_length}') is undefined. "
+                    "This value is expected from Station 1's 'option_details'."
+                )
+                print(error_msg)
+                raise ValueError(error_msg)
+            
+            print("✅ Critical data validated (Episode Count, Episode Length)")
+            # --- END CRITICAL VALIDATION ---
+            
             print("✅ Data loaded successfully")
             print()
             print("-" * 60)
@@ -184,9 +200,10 @@ class Station05SeasonArchitect:
             extracted = {}
             
             # From Station 1
+            station1_options = station1_data.get('option_details', {})
             extracted['story_complexity'] = station1_data.get('story_complexity', 'Unknown')
-            extracted['episode_count'] = station1_data.get('episode_count', 'Unknown')
-            extracted['episode_length'] = station1_data.get('episode_length', 'Unknown')
+            extracted['episode_count'] = station1_options.get('episode_count', 'Unknown')
+            extracted['episode_length'] = station1_options.get('episode_length', 'Unknown')
             
             # From Station 2
             extracted['working_title'] = station2_data.get('working_title', 'Unknown')

@@ -1,0 +1,58 @@
+======================================================================
+STATION 5: SEASON ARCHITECT
+======================================================================
+
+Working Title: The Accidental Lifeline
+Primary Genre: Drama
+Target Age: 25-45
+Episode Count: 3-6 episodes
+Episode Length: 15-25 min each
+Narrator Strategy: With Narrator
+
+----------------------------------------------------------------------
+STYLE RECOMMENDATIONS
+----------------------------------------------------------------------
+
+1. 3-Act Micro
+   Justification: This classic structure is perfect for a drama with 3-6 episodes, allowing for clear setup of characters and their relationships in Act 1, rising tension and conflict in Act 2, and resolution in Act 3. The balanced tone of light and dark moments can be distributed across these acts, with the narrator helping to define transitions and maintain emotional resonance.
+   Audio Application: Clear act breaks can be marked with distinctive music cues or moments of silence. The narrator can introduce each act and provide transitions, with their tone shifting to match the emotional temperature of each act. Sound design can evolve from lighter, more open textures in Act 1 to more complex, layered sounds in Act 2, then resolving into a balanced, perhaps more reflective soundscape in Act 3.
+   Structure Implications: With 3-6 episodes, this would likely mean 1-2 episodes per act, creating a tight, focused narrative. Each episode would need to advance both character development and plot significantly. The limited episode count works well with this structure, allowing for a complete arc without feeling rushed.
+
+2. Rise→Fall→Redemption Arc
+   Justification: This structure perfectly matches the described tone balance, allowing for hopeful beginnings (rise), darker moments of conflict (fall), and ultimately redemption that brings hope back. It's particularly well-suited for character-driven drama where protagonists face challenges that test them but ultimately lead to growth. The narrator can emphasize the emotional journey and thematic resonance.
+   Audio Application: The audio design can mirror the character's journey, with bright, optimistic motifs in the rise phase that gradually become darker, more dissonant during the fall, then transform into something new yet familiar for redemption. The narrator's tone can shift from supportive to troubled to wise, reflecting the journey. Musical themes can evolve throughout, returning in transformed ways during redemption.
+   Structure Implications: This structure maps naturally to a 3-episode season (one per phase) but can be expanded to 6 episodes (2 per phase). Each episode would need to clearly advance the corresponding phase while developing characters and relationships. The redemption phase would need particular attention to feel earned rather than contrived.
+
+3. Ring Composition
+   Justification: This structure creates a satisfying full-circle narrative that can effectively highlight character transformation. It begins and ends in similar circumstances but with changed understanding, which works well for a drama focused on relationships and personal growth. The narrator can emphasize the cyclical nature and how meaning has transformed.
+   Audio Application: The opening and closing scenes would share sonic elements (location sounds, musical motifs) but with the latter presented in transformed ways, showing how the situation has changed. The narrator can bookend the story with similar phrasing that carries different weight at the end. Sound motifs introduced early would return later with new significance.
+   Structure Implications: For a 3-6 episode season, this structure could have Episode 1 establish the initial situation, middle episodes develop the journey and challenges, and the final episode return to the starting point with transformed meaning. This creates a contained, emotionally resonant arc that works well within the episode constraints.
+
+----------------------------------------------------------------------
+SEASON SKELETON
+----------------------------------------------------------------------
+
+MACRO STRUCTURE:
+  act_1: Episodes 1-2
+  act_2: Episodes 3-4
+  act_3: Episode 5
+
+EPISODE GRID:
+  Episode 1: Setup (Energy: 6, Subplot: Character Introduction, Cliffhanger: Revelation)
+  Episode 2: Complication (Energy: 7, Subplot: Relationship Building, Cliffhanger: Crisis)
+  Episode 3: Confrontation (Energy: 8, Subplot: Secret Revelation, Cliffhanger: Betrayal)
+  Episode 4: Climax (Energy: 9, Subplot: All is Lost, Cliffhanger: Life-or-Death Decision)
+  Episode 5: Resolution (Energy: 7, Subplot: Resolution and Growth, Cliffhanger: None)
+
+----------------------------------------------------------------------
+RHYTHM MAPPING
+----------------------------------------------------------------------
+
+Tension Peaks: Episodes 2, 4
+Breathing Room: Episodes 1, 3
+Format Breaks: Episodes 5
+Revelation Cascade: Episodes 1, 3, 5
+
+======================================================================
+END OF SEASON ARCHITECTURE
+======================================================================

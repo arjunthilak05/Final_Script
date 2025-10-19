@@ -1,0 +1,123 @@
+======================================================================
+STATION 8: WORLD BUILDER
+======================================================================
+
+Working Title: The Accidental Lifeline
+Primary Genre: Drama
+Target Age: 25-45
+Episode Count: 3-6 episodes
+Core Premise: Unknown
+
+----------------------------------------------------------------------
+GEOGRAPHY & SPACES
+----------------------------------------------------------------------
+
+1. Tom's Apartment
+   Sonic Signature: Soft hum of an old refrigerator, occasional creaking of floorboards
+   Ambient Sounds: Distant city noise, soft wind through the window
+
+2. Julia's Office
+   Sonic Signature: Soothing white noise from a sound machine, soft ticking of a wall clock
+   Ambient Sounds: Muffled hospital sounds, occasional page over the intercom
+
+3. Sarah's House
+   Sonic Signature: Warm, inviting sounds of a home, such as the sizzle of a frying pan, children laughing
+   Ambient Sounds: Soft background music, family chatter
+
+4. Hospital Corridors
+   Sonic Signature: Ding of the elevator, rolling of hospital beds, beeping of machines
+   Ambient Sounds: Low murmur of staff and patients, occasional announcement over the PA system
+
+5. Park at Night
+   Sonic Signature: Rustling of leaves, distant traffic, occasional animal calls
+   Ambient Sounds: Crickets chirping, wind in the trees
+
+6. Coffee Shop
+   Sonic Signature: Grinding of coffee beans, clinking of cups, soft background music
+   Ambient Sounds: Hum of conversation, occasional laughter
+
+7. City Street
+   Sonic Signature: Roar of traffic, honking of horns, footsteps of pedestrians
+   Ambient Sounds: Street vendors, distant sirens, occasional music from passing cars
+
+8. Tom's Office
+   Sonic Signature: Soft hum of a computer, occasional typing, phone ringing
+   Ambient Sounds: Muffled city noise, occasional colleague's conversation
+
+9. Julia's Home
+   Sonic Signature: Soft home sounds, such as a ticking clock, the hum of a fan
+   Ambient Sounds: Muffled city noise, occasional pet sounds
+
+10. Hospital Waiting Room
+   Sonic Signature: Low murmur of conversation, occasional coughing, pages over the intercom
+   Ambient Sounds: Background hum of the hospital, occasional crying baby
+
+Travel Times & Sounds: Walking from Tom's apartment to the coffee shop takes about 5 minutes, with the sound of footsteps on pavement and the occasional passing car. Driving from Sarah's house to the hospital takes about 10 minutes, with the sound of the car engine, traffic, and occasional sirens. The bus ride from the city street to the park takes about 15 minutes, with the sound of the bus engine, conversations, and the occasional announcement.
+
+----------------------------------------------------------------------
+SOCIAL SYSTEMS
+----------------------------------------------------------------------
+
+Government: A democratic government with a focus on healthcare and social services
+Associated Sounds: Gavels in courtrooms, official announcements over speakers, the rustle of paper in offices
+
+Economy: A mixed economy with a strong emphasis on healthcare and technology
+Economic Sounds: Currency sounds, market bartering, trade negotiations, the hum of machinery in tech companies
+
+Social Hierarchies: A relatively egalitarian society, but with clear distinctions between healthcare professionals, tech workers, and service industry employees
+Sonic Representation: Healthcare professionals speak with a calm, professional tone, tech workers use technical jargon, and service industry employees have a more casual and friendly tone
+
+----------------------------------------------------------------------
+TECHNOLOGY & MAGIC
+----------------------------------------------------------------------
+
+Overview: Advanced medical technology, including cutting-edge diagnostic tools and telemedicine
+Sound Design: Beeping of monitors, whirring of machines, the soft chirp of a telemedicine device
+Limitations: Cost and accessibility, with some advanced technologies only available in major hospitals
+Prevalence: Common in hospitals and clinics, rare in private homes
+
+----------------------------------------------------------------------
+HISTORY & LORE
+----------------------------------------------------------------------
+
+Key Past Events:
+  1. A major healthcare reform that improved access to medical services
+     Sonic Impact: Increased sounds of hospital activity, more frequent announcements over PA systems
+  2. A devastating natural disaster that led to community rebuilding efforts
+     Sonic Impact: Sounds of construction, community gatherings, and the rebuilding of the city
+
+Myths & Legends:
+  1. A legend of a healer who saved the city during a plague
+     Sonic Themes: Soft, mystical music, the sound of a healing chant, the rustle of herbs
+  2. A myth about a hidden underground river that brings healing waters
+     Sonic Themes: Gentle flowing water, the sound of dripping, a soft, ethereal melody
+
+----------------------------------------------------------------------
+SENSORY PALETTE
+----------------------------------------------------------------------
+
+Audio Cue Library:
+  1. Tom's Apartment
+     Ambient Sounds: Distant city noise, soft wind through the window
+  2. Julia's Office
+     Ambient Sounds: Muffled hospital sounds, occasional page over the intercom
+  3. Sarah's House
+     Ambient Sounds: Soft background music, family chatter
+  4. Hospital Corridors
+     Ambient Sounds: Low murmur of staff and patients, occasional announcement over the PA system
+  5. Park at Night
+     Ambient Sounds: Crickets chirping, wind in the trees
+  6. Coffee Shop
+     Ambient Sounds: Hum of conversation, occasional laughter
+  7. City Street
+     Ambient Sounds: Street vendors, distant sirens, occasional music from passing cars
+  8. Tom's Office
+     Ambient Sounds: Muffled city noise, occasional colleague's conversation
+  9. Julia's Home
+     Ambient Sounds: Muffled city noise, occasional pet sounds
+  10. Hospital Waiting Room
+     Ambient Sounds: Background hum of the hospital, occasional crying baby
+
+======================================================================
+END OF WORLD BIBLE
+======================================================================

@@ -1,0 +1,130 @@
+============================================================
+PROJECT BIBLE
+============================================================
+
+PROJECT TITLE: Royal Blood
+Session ID: session_20251016_230814
+Created: 2025-10-16T23:14:05.904558
+Input Type: one-liner
+
+Scale: MINI
+Episodes: 3-6 episodes
+Length: 15-25 min each
+
+------------------------------------------------------------
+ORIGINAL SEED:
+------------------------------------------------------------
+king is a king
+
+------------------------------------------------------------
+1. WORLD & SETTING
+------------------------------------------------------------
+Time Period: Medieval period, set in a kingdom reminiscent of 14th century Europe, a time of grand castles, feudal systems, and frequent political strife
+Primary Location: The Royal Castle of Eldoria, a grand and imposing structure with stone walls and towering spires
+Setting Type: Realistic Historical
+Atmosphere: A blend of regal solemnity and underlying tension, with moments of personal introspection and political drama
+Historical Context: The kingdom of Eldoria is in a period of relative peace following a long and brutal war. However, old alliances are fraying, and new threats are emerging. The discovery of King Alexander's questionable lineage has reignited old feuds and sparked a brewing rebellion.
+
+Key Locations:
+  • The Great Hall: Echoes of footsteps and the distant murmur of courtiers, punctuated by the sound of heavy wooden doors opening and closing
+  • The King's Study: The soft crackle of a fireplace, the rustle of parchment, and the occasional quill scratching on paper
+  • The Castle Courtyard: The clatter of horses' hooves, the clang of swords during training, and the distant calls of guards on the walls
+
+Cultural Elements:
+  • Feudal System: The kingdom is structured around a feudal system, with lords and vassals owing fealty to the king
+  • Chivalric Code: Knights and nobles adhere to a strict code of honor and chivalry, which often influences their actions and decisions
+  • Courtly Love: Romantic and chivalrous relationships are common among the nobility, adding layers of intrigue and personal drama
+
+------------------------------------------------------------
+2. FORMAT SPECIFICATIONS
+------------------------------------------------------------
+Series Type: Mini
+Episode Count: 3-6 episodes
+Episode Length: 15-25 min each
+Season Structure: Each episode focuses on different aspects of kingship while building toward a satisfying resolution of the central conflict.
+Pacing Strategy: An 8-12 episode structure allows for thorough character development of King Alexander and those around him as he faces challenges to his rule. This length provides enough space to explore political intrigue, personal growth, and kingdom-wide threats without becoming overly complex.
+Narrative Structure: The story explores whether kingship is defined by birthright, character, or the ability to lead through crisis, with each episode delving into specific challenges and character interactions that build toward the central conflict.
+
+------------------------------------------------------------
+3. GENRE & TONE
+------------------------------------------------------------
+Primary Genre: Political Drama
+Secondary Genres: Historical Fiction, Fantasy
+Tone: Intense, Reflective, Suspenseful
+Mood Profile: A somber and tense atmosphere with moments of introspection and high-stakes political maneuvering, set against the backdrop of a kingdom on the brink of crisis.
+
+Genre Conventions:
+  • Courtly intrigue and political machinations
+  • Thematic exploration of power and legitimacy
+
+------------------------------------------------------------
+4. CREATIVE PROMISES
+------------------------------------------------------------
+Must-Have Elements:
+  ✓ A pivotal family secret that challenges King Alexander's legitimacy to the throne.
+  ✓ Political intrigue and a brewing rebellion led by those who question King Alexander's right to rule.
+  ✓ Personal and character growth of King Alexander as he navigates the challenges of leadership and personal identity.
+
+Must-Avoid Elements:
+  ✗ Overly complex subplots that detract from the central conflict and character arcs.
+  ✗ Unnecessary romantic subplots that overshadow the political and personal struggles.
+  ✗ Excessive exposition that slows down the narrative pace.
+
+Unique Selling Points:
+  ★ A deep exploration of the moral and ethical dimensions of leadership, questioning whether kingship is defined by birthright, character, or the ability to lead through crisis.
+  ★ Dynamic and well-developed characters, including King Alexander, Queen Eleanor, Lord Marcus, and Princess Isabella, each with their own motivations and conflicts.
+  ★ A gripping blend of political intrigue, personal drama, and kingdom-wide threats that keep listeners engaged and invested in the outcome of the story.
+
+------------------------------------------------------------
+5. AUDIENCE PROFILE
+------------------------------------------------------------
+Age Range: 25-45
+Demographics: History Enthusiasts, Fantasy Literature Fans
+Listening Context: Commuting and Evening Relaxation
+
+Core Interests:
+  • Medieval History
+  • Political Intrigue
+  • Character Development
+
+Content Preferences:
+  • Dramatic Narration
+  • Engaging Dialogue
+
+------------------------------------------------------------
+6. PRODUCTION CONSTRAINTS
+------------------------------------------------------------
+Content Rating: PG-13
+Budget Tier: Medium Budget
+
+Technical Requirements:
+  • High-quality audio recording equipment
+  • Professional voice actors for main characters
+
+Content Restrictions:
+  • No explicit violence
+  • No adult themes or language
+
+Distribution Channels:
+  • Audible
+  • Spotify
+
+------------------------------------------------------------
+7. CREATIVE TEAM
+------------------------------------------------------------
+Team Structure: The team is organized with a Head Writer overseeing the overall narrative and structure, a Character Development Specialist focusing on the depth and growth of King Alexander and other key characters, and a Political Intrigue Consultant to ensure the political elements are realistic and engaging. Additional writers and researchers support these roles.
+Collaboration Style: The team works in a highly collaborative environment, with regular brainstorming sessions and detailed feedback loops. Each episode is reviewed by the entire team to ensure consistency and depth. The Head Writer facilitates these sessions and makes final decisions on creative direction.
+
+Required Roles:
+  • Head Writer
+  • Character Development Specialist
+  • Political Intrigue Consultant
+
+Specialized Skills:
+  • Scriptwriting for Short Series
+  • Historical Research
+
+Key Partnerships:
+  • Historical Consultant
+  • Cultural Advisor
+

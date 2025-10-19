@@ -1,0 +1,36 @@
+{
+  "original_seed": "For one year, morning motivation coach Tom has been unknowingly texting daily inspirational messages to the wrong number. His words reach Julia, a depressed ER doctor struggling to stay afloat amid the chaos of her life. Each message becomes her silent lifeline—brief moments of calm cutting through the noise of the hospital and her own despair. Tom’s voice echoes in her mind, guiding her through dark days, while she never corrects the mistake, afraid to lose the only thing keeping her grounded. When Tom’s actual client complains about never receiving messages, he discovers the error and tracks down the unknown recipient to apologize. On the worst day of Julia’s life, their paths finally cross, and Tom realizes the profound impact his words have had. In a touching twist, he learns that Julia has been anonymously funding his coaching business all along—hoping to help others find the same strength his accidental messages once gave her.",
+  "seed_type": "one-liner",
+  "chosen_option": "A",
+  "option_details": {
+    "type": "MINI",
+    "episode_count": "3-6 episodes",
+    "episode_length": "15-25 min each",
+    "word_count": "15,000-30,000 total",
+    "best_for": "contained stories, single mystery, limited cast",
+    "justification": "The MINI format would focus tightly on the core relationship between Tom and Julia, keeping the emotional impact concentrated. It would work well for a straightforward telling of this mistaken connection story without extensive subplots."
+  },
+  "working_titles": [
+    "Wrong Number, Right Words",
+    "The Accidental Lifeline",
+    "Messages from a Stranger"
+  ],
+  "chosen_title": "The Accidental Lifeline",
+  "core_premise": "A life coach's motivational texts, meant for someone else, become an unexpected lifeline for a depressed ER doctor. When the mistake is discovered, both lives are forever changed by the power of words that were never meant for her.",
+  "central_conflict": "Julia must decide whether to reveal herself as the unintended recipient of Tom's messages, risking the loss of her emotional support system. Tom grapples with the responsibility of his words while trying to make amends for his technical error.",
+  "episode_rationale": "Eight to twelve episodes allows for gradual character development, building the significance of the messages over time, and creating emotional investment before the pivotal meeting. This format balances intimate character moments with broader story progression without stretching the premise thin.",
+  "breaking_points": [
+    "Julia receives a particularly timely message during a crisis at the hospital, deepening her reliance on the texts.",
+    "Tom's actual client confronts him about never receiving messages, making him realize his mistake.",
+    "Tom discovers Julia's identity but hesitates to contact her, unsure of the impact his revelation will have.",
+    "Julia faces a devastating day at work just as Tom finally reaches out to her."
+  ],
+  "main_characters": [
+    "Tom",
+    "Julia",
+    "Sarah (Tom's actual client)",
+    "Dr. Michaels (Julia's supervisor at the hospital)"
+  ],
+  "session_id": "session_20251016_144915",
+  "timestamp": "2025-10-16T14:51:07.244155"
+}

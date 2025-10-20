@@ -1,0 +1,369 @@
+# Station 25: Audio Optimization Configuration
+
+station_name: "Station 25: Audio Optimization"
+description: "Optimizes scripts for audio production with speaker identification, sound cue integration, strategic silence marking, and complete audio specifications."
+model: "anthropic/claude-3.5-sonnet"
+temperature: 0.7
+max_tokens: 16384
+
+# Input configuration
+input:
+  required_stations:
+    - station: 24
+      name: "Dialogue Polish (polished script)"
+    - station: 9
+      name: "World Building System (audio cue library)"
+    - station: 6
+      name: "Master Style Guide (audio principles)"
+
+# Output configuration
+output:
+  directory: "output/station_25"
+  episode_subdirectory: "episode_{episode_number:02d}"
+  audio_optimized: "episode_{episode_number:02d}_FINAL.json"
+  fountain_script: "episode_{episode_number:02d}_FINAL.fountain"
+  audio_script: "episode_{episode_number:02d}_audio_script.txt"
+  sound_cues_csv: "episode_{episode_number:02d}_sound_cues.csv"
+  timing_sheet: "episode_{episode_number:02d}_timing.csv"
+
+prompts:
+  speaker_identification_check: |
+    **ROLE:** You are analyzing audio clarity for speaker identification.
+
+    **EPISODE:** {episode_number}
+    **POLISHED SCRIPT:** {polished_script}
+
+    **AUDIO CUE LIBRARY (From Station 9):**
+    {audio_cue_library}
+
+    **YOUR TASK:**
+    Identify moments where listeners might not know who's speaking in pure audio format.
+
+    **CLARITY TEST:**
+    If someone is listening without seeing a script, can they always identify the speaker?
+
+    **CHECK FOR:**
+
+    1. **SIMILAR VOICES IN SUCCESSION** - Two same-gender/age characters back-to-back
+       - Need audio identifiers (signature sounds, vocal filters, positioning)
+
+    2. **OFF-SCREEN SPEAKERS** - Someone speaks but hasn't been identified by sound yet
+       - Need audio clue BEFORE they speak (footsteps, door, signature sound)
+
+    3. **MULTIPLE SPEAKERS RAPIDLY** - Fast exchanges without clear audio distinction
+       - Need audio positioning (close/far, left/right, filtered/direct)
+
+    4. **SIMILAR VOICES, SAME LOCATION** - Characters who could sound alike
+       - Need environmental distinction or signature sounds
+
+    **AUDIO IDENTIFICATION TOOLS:**
+    - Signature sounds (Marcus = lighter clicks, Sarah = pen tapping)
+    - Vocal filters (phone = filtered, intercom = echoed)
+    - Acoustic positioning (close mic, distant, behind door)
+    - Environmental sounds (office = typing, car = road noise)
+    - Breathing patterns, footstep weight, movement sounds
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON:
+
+    {{
+      "speaker_identification": {{
+        "confusion_risks": [
+          {{
+            "issue_number": 1,
+            "issue_type": "similar_voices|off_screen|rapid_exchange|same_location",
+            "scene_number": 5,
+            "dialogue_excerpt": "\"I can't do this.\" \"Why not?\" \"It's complicated.\" \"Everything's complicated.\"",
+            "problem": "Two middle-aged male voices (Marcus and Rodriguez?) no speaker tags, no audio distinction",
+            "who_speaking_unclear": "Lines 2 and 4 - can't tell if Sarah or Rodriguez",
+            "current_audio_cues": "None - just dialogue",
+            "fix_needed": "Add audio identifiers for each speaker",
+            "suggested_fix": "Marcus = lighter click before line, Sarah = pen tapping, Rodriguez = heavy exhale",
+            "fix_script": "MARCUS: \"I can't do this.\" [SFX: Sarah's pen tapping starts] SARAH: \"Why not?\" MARCUS: (lighter click) \"It's complicated.\" SARAH: (pen tapping stops) \"Everything's complicated.\""
+          }}
+        ],
+        "clarity_violations": {{
+          "signature_sounds_missing": 6,
+          "offscreen_no_id": 4,
+          "rapid_no_positioning": 2,
+          "similar_no_distinction": 3
+        }},
+        "total_confusion_risks": 15
+      }}
+    }}
+
+  sound_cue_integration: |
+    **ROLE:** You are analyzing sound cue density and integration.
+
+    **SCRIPT:** {polished_script}
+
+    **AUDIO CUE LIBRARY:**
+    {audio_cue_library}
+
+    **YOUR TASK:**
+    Check if sound cues are properly integrated - not too few, not too many, all purposeful.
+
+    **SOUND CUE DENSITY GUIDE:**
+    - Dialogue scenes: 2-4 cues per minute
+    - Action scenes: 5-8 cues per minute
+    - Quiet/tension scenes: 1-2 cues per minute
+    - **NEVER** more than 10 cues per minute (overwhelming)
+
+    **CHECK FOR:**
+
+    1. **MISSING TRANSITION CUES** - Scene changes without audio bridge
+       - Need fade out → fade in, or transitional sound
+
+    2. **MISSING EMOTIONAL BEATS** - Key emotions with no sound enhancement
+       - Character's struggle = breathing, pause, object interaction
+       - Breakthrough = sharp inhale, chair scraping
+
+    3. **MISSING WORLD-BUILDING** - Locations feel empty
+       - Every location needs distinct soundscape
+       - Ambient layers make world feel real
+
+    4. **EXCESSIVE SOUND CUES** - Too busy, distracting
+       - More than 10 cues/minute
+       - Every tiny action described
+
+    **SOUND CUE CATEGORIES:**
+    - Ambient (constant background)
+    - Transition (scene changes)
+    - Action (specific events)
+    - Emotional (character internal state)
+    - Signature (character identification)
+    - World-building (location atmosphere)
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON:
+
+    {{
+      "sound_cue_analysis": {{
+        "current_cue_count": 47,
+        "optimal_range": "65-85 cues for 45-minute drama",
+        "assessment": "Needs 18-38 additional cues",
+        "missing_cues": [
+          {{
+            "category": "transition",
+            "location": "Scene 2 → Scene 3",
+            "problem": "No transition sound, jarring cut",
+            "needed_cue": "[SFX: Traffic fade out → Office ambient fade in]",
+            "purpose": "Smooth location change"
+          }},
+          {{
+            "category": "emotional",
+            "scene_number": 2,
+            "line": "MARCUS: Twenty years.",
+            "problem": "Internal struggle with no sound enhancement",
+            "needed_cue": "[SFX: Shaky exhale, lighter opens but doesn't light]",
+            "purpose": "External manifestation of internal turmoil"
+          }}
+        ],
+        "excessive_cues": [
+          {{
+            "scene_number": 4,
+            "problem": "8 cues in 2 minutes = 4 cues/minute (too busy)",
+            "current_cues": ["Door opens", "Footsteps", "Papers rustling", "Chair scrapes", "Coffee cup clinks", "Computer mouse clicks", "Phone rings", "File cabinet opens"],
+            "fix": "Combine into ambient + 2-3 key sounds",
+            "suggested": "[Ambient: Office sounds - papers, phone, computer] + [SFX: File cabinet opens]"
+          }}
+        ],
+        "cue_density_by_scene": [
+          {{
+            "scene_number": 1,
+            "duration_minutes": 4,
+            "current_cues": 8,
+            "cues_per_minute": 2.0,
+            "status": "optimal",
+            "scene_type": "dialogue"
+          }}
+        ]
+      }}
+    }}
+
+  silence_marking: |
+    **ROLE:** You are marking strategic silences for dramatic effect.
+
+    **SCRIPT:** {polished_script}
+
+    **YOUR TASK:**
+    Identify where silence should be marked for maximum dramatic impact.
+
+    **SILENCE IS NOT DEAD AIR** - It's:
+    - Dramatic tension
+    - Emotional processing
+    - Revelation impact
+    - Scene breathing
+
+    **OPTIMAL SILENCE COUNT:** 12-18 strategic silences per 45-minute episode
+
+    **TYPES OF SILENCE:**
+
+    1. **DRAMATIC PAUSE (2-4 seconds)** - Tension builder
+       - Character refuses to answer question
+       - Loaded glance, decision moment
+
+    2. **EMOTIONAL BEAT (4-6 seconds)** - Processing time
+       - Character absorbs information
+       - Realization dawning
+
+    3. **REVELATION MOMENT (6-10 seconds)** - Maximum impact
+       - Major truth revealed
+       - Audience needs time to process
+
+    4. **TRANSITION (1-3 seconds)** - Scene reset
+       - Complete audio fade between scenes
+       - Breath before new location
+
+    **DANGER:** Silences >10 seconds feel too long (use very sparingly)
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON:
+
+    {{
+      "silence_analysis": {{
+        "current_marked_silences": 3,
+        "optimal_range": "12-18 strategic silences",
+        "status": "NEEDS 9-15 MORE SILENCE BEATS",
+        "silence_opportunities": [
+          {{
+            "silence_number": 1,
+            "type": "dramatic_pause",
+            "scene_number": 4,
+            "context": "Rodriguez refuses to answer question about his involvement",
+            "current_script": "CHEN: 'Were you involved in the original investigation?' RODRIGUEZ: 'That was twenty years ago.'",
+            "silence_placement": "Between question and answer",
+            "duration_seconds": 3,
+            "enhanced_script": "CHEN: 'Were you involved in the original investigation?' [SILENCE: 3 seconds - Rodriguez stares, jaw tightens] RODRIGUEZ: (quietly) 'That was twenty years ago.'",
+            "effect": "Silence = guilt, evasion becomes obvious",
+            "audio_during_silence": "Only ambient office sounds, Rodriguez's breathing slightly heavier"
+          }},
+          {{
+            "silence_number": 2,
+            "type": "emotional_beat",
+            "scene_number": 7,
+            "context": "Marcus realizes he must get involved",
+            "current_script": "SARAH: 'Someone covered this up. Someone with access.' MARCUS: 'I'll help you.'",
+            "silence_placement": "Between Sarah's revelation and Marcus's decision",
+            "duration_seconds": 5,
+            "enhanced_script": "SARAH: 'Someone covered this up. Someone with access.' [SILENCE: 5 seconds - Marcus looks at photo, lighter click, long exhale] MARCUS: 'I'll help you.'",
+            "effect": "Silence shows weight of decision, not impulsive",
+            "audio_during_silence": "Photo rustling, lighter click, Marcus's exhale, distant traffic"
+          }}
+        ],
+        "total_silences_to_add": 15
+      }}
+    }}
+
+  audio_optimization: |
+    **ROLE:** You are creating the final production-ready audio script.
+
+    **POLISHED SCRIPT:** {polished_script}
+
+    **REQUIRED OPTIMIZATIONS:**
+    {optimizations_needed}
+
+    **AUDIO CUE LIBRARY:**
+    {audio_cue_library}
+
+    **YOUR TASK:**
+    Generate complete audio-optimized script with:
+    1. All speaker identification fixes integrated
+    2. All sound cues added/removed as specified
+    3. All silences marked with durations
+    4. Complete acoustic specifications
+    5. Production notes for sound designers
+
+    **AUDIO SCRIPT STRUCTURE:**
+
+    **Scene Header:**
+    - Location with acoustic properties
+    - Ambient sound layers (constant backgrounds)
+
+    **Dialogue:**
+    - Character name
+    - Vocal direction (whispered, shouted, filtered)
+    - Dialogue text
+    - Sound cues integrated
+
+    **Sound Cues:**
+    - [SFX: specific sound description]
+    - [AMBIENT: layered background sounds]
+    - [MUSIC: transition/emotional cues]
+    - [SILENCE: duration + what's heard during silence]
+
+    **Acoustic Notes:**
+    - Reverb characteristics
+    - Distance from mic
+    - Environmental filtering
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON with COMPLETE audio script:
+
+    {{
+      "audio_optimized_script": {{
+        "episode_number": {episode_number},
+        "total_runtime": "45:00",
+        "optimization_stats": {{
+          "speaker_clarity_fixes": 15,
+          "sound_cues_added": 26,
+          "sound_cues_removed": 3,
+          "silences_marked": 15,
+          "production_notes": 42
+        }},
+        "scenes": [
+          {{
+            "scene_number": 1,
+            "heading": "INT. EVIDENCE ROOM - NIGHT",
+            "acoustic_properties": "Hard surfaces, reverb medium, fluorescent buzz constant",
+            "ambient_layers": [
+              "Fluorescent buzz (constant, medium)",
+              "Distant footsteps in hallway (occasional)",
+              "Far-off door slam (rare)"
+            ],
+            "audio_script": "Complete scene with all audio markup integrated...",
+            "sound_cues_in_scene": 8,
+            "silences_in_scene": 1,
+            "estimated_duration": "4:00"
+          }}
+        ],
+        "complete_audio_script": "Full episode with all audio optimization...",
+        "sound_cue_summary": {{
+          "total_cues": 73,
+          "ambient_layers": 9,
+          "action_cues": 31,
+          "signature_cues": 18,
+          "transition_cues": 15,
+          "average_density": "1.6 cues per minute"
+        }},
+        "silence_summary": {{
+          "total_silences": 15,
+          "dramatic_pauses": 5,
+          "emotional_beats": 4,
+          "revelation_moments": 2,
+          "transitions": 4,
+          "total_silence_time": "52 seconds"
+        }},
+        "production_notes": [
+          "Marcus's lighter click should be distinctive - same sound file each time for consistency",
+          "Rain in Scene 2 should gradually intensify from medium to heavy",
+          "Phone filter in Scene 3 - vintage landline quality, slight static"
+        ]
+      }}
+    }}
+
+dependencies:
+  - station: 24
+    name: "Dialogue Polish (polished script required)"
+  - station: 9
+    name: "World Building System (audio cue library required)"
+  - station: 6
+    name: "Master Style Guide (audio principles optional)"
+
+enabled: true
+
+special_features:
+  supports_episode_selection: true
+  validates_speaker_clarity: true
+  optimizes_sound_density: true
+  marks_strategic_silence: true
+  generates_production_formats: true
+  exports_fountain: true
+  exports_sound_cue_csv: true
+  exports_timing_sheet: true

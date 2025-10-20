@@ -1,0 +1,254 @@
+# Station 22: Momentum Check Configuration
+
+station_name: "Station 22: Momentum Check"
+description: "Analyzes and fixes pacing issues, repetitions, and energy flow in first drafts. Uses LLM to detect momentum problems and automatically generate fixes."
+model: "anthropic/claude-3.5-sonnet"
+temperature: 0.7
+max_tokens: 16384
+
+# Input configuration
+input:
+  required_stations:
+    - station: 21
+      name: "First Draft"
+    - station: 11
+      name: "Runtime Planning"
+
+# Output configuration
+output:
+  directory: "output/station_22"
+  episode_subdirectory: "episode_{episode_number:02d}"
+  corrected_script: "episode_{episode_number:02d}_momentum_corrected.json"
+  change_report: "episode_{episode_number:02d}_momentum_changes.txt"
+  plain_text: "episode_{episode_number:02d}_momentum_corrected.txt"
+
+prompts:
+  pacing_analysis: |
+    **ROLE:** You are a script pacing analyst specializing in audio drama momentum.
+
+    **EPISODE CONTEXT:**
+    Episode {episode_number}: "{episode_title}"
+    Runtime Target: {runtime_target}
+    Current Word Count: {current_word_count}
+
+    **FIRST DRAFT SCRIPT:**
+    {first_draft_script}
+
+    **YOUR TASK:**
+    Analyze this first draft for pacing and momentum issues.
+
+    **ANALYZE FOR:**
+
+    1. **SLOW SECTIONS** - Areas where energy flatlines
+       - Extended periods with no conflict escalation
+       - Internal monologue without external stimulus
+       - Repetitive action without progression
+       - Dead air longer than 15 seconds without purpose
+
+    2. **RUSHED TRANSITIONS** - Jarring cuts between scenes
+       - Major location changes without audio bridge
+       - Time jumps with no indication
+       - Abrupt tonal shifts
+       - Missing transition sounds
+
+    3. **DEAD AIR** - Extended silence without dramatic purpose
+       - Pauses longer than 10 seconds
+       - Scenes with minimal dialogue or sound
+       - Waiting for something to happen
+
+    4. **REPETITIVE RHYTHM** - Predictable structural patterns
+       - Multiple scenes with identical structure
+       - Repeated scene endings
+       - Same pacing in every scene
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON:
+
+    {{
+      "pacing_analysis": {{
+        "episode_number": {episode_number},
+        "overall_pacing_score": "6.5/10",
+        "issues_found": [
+          {{
+            "issue_type": "slow_section|rushed_transition|dead_air|repetitive_rhythm",
+            "severity": "high|medium|low",
+            "scene_number": 2,
+            "timestamp_or_lines": "Lines 15-28 or 2:30-5:00",
+            "duration": "2:30 minutes",
+            "problem_description": "Detailed description of the problem",
+            "current_content": "What's currently happening",
+            "impact": "How this affects audience experience",
+            "fix_suggestion": "Specific actionable fix"
+          }}
+        ],
+        "pacing_summary": "Overall assessment of episode momentum"
+      }}
+    }}
+
+  repetition_detection: |
+    **ROLE:** You are analyzing for repetitions and redundancies.
+
+    **FIRST DRAFT:**
+    {first_draft_script}
+
+    **DETECT:**
+
+    1. **DIALOGUE REPETITION**
+       - Same phrases used multiple times
+       - Characters repeating themselves
+       - Cliché phrases overused
+
+    2. **CONCEPT REPETITION**
+       - Same idea stated multiple ways
+       - Theme beaten to death
+       - Character trait mentioned too often
+
+    3. **AUDIO CUE REPETITION**
+       - Sound effects overused
+       - Motifs appearing too frequently
+       - Same ambient sounds every scene
+
+    4. **STRUCTURAL REPETITION**
+       - Scenes ending the same way
+       - Similar scene structures back-to-back
+       - Predictable patterns
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON:
+
+    {{
+      "repetition_analysis": {{
+        "total_redundancies": 7,
+        "issues": [
+          {{
+            "type": "dialogue|concept|audio_cue|structural",
+            "content": "What's being repeated",
+            "frequency": 3,
+            "locations": ["Scene 2, Line 15", "Scene 5, Line 42"],
+            "problem": "Why this is an issue",
+            "fix": "Suggested reduction or variation"
+          }}
+        ]
+      }}
+    }}
+
+  energy_flow_analysis: |
+    **ROLE:** You are mapping dramatic energy flow across the episode.
+
+    **FIRST DRAFT:**
+    {first_draft_script}
+
+    **ANALYZE ENERGY:**
+    Rate each scene's dramatic energy on 1-10 scale:
+    - 1-3: Flat, boring, low stakes
+    - 4-6: Moderate, building, some tension
+    - 7-9: High stakes, conflict, engaging
+    - 10: Peak moment, revelation, climax
+
+    **IDEAL PATTERN:**
+    - Cold Open: 7-9 (strong hook)
+    - Act 1: 5-7 (build gradually)
+    - Act 2: 7-9 (escalate)
+    - Act 3: 6-10 (climax)
+    - Tag: 8-10 (payoff)
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON:
+
+    {{
+      "energy_flow": {{
+        "scene_energy_ratings": [
+          {{
+            "scene_number": 1,
+            "scene_name": "Cold Open",
+            "energy_rating": 8,
+            "reason": "Discovery creates tension",
+            "status": "good|needs_boost|too_high"
+          }}
+        ],
+        "energy_map_visual": "Text representation of energy curve",
+        "problem_areas": [
+          "Scene 2 drops too low (3/10) after strong open",
+          "Scene 7 sags critically (2/10) in Act 3"
+        ],
+        "recommendations": [
+          "Boost Scene 2 from 3→5 with external conflict",
+          "Raise Scene 7 from 2→6 with urgency injection"
+        ]
+      }}
+    }}
+
+  auto_fix_momentum: |
+    **ROLE:** You are rewriting sections to fix momentum issues.
+
+    **ORIGINAL SCRIPT:**
+    {original_script}
+
+    **ISSUES TO FIX:**
+    {issues_to_fix}
+
+    **YOUR TASK:**
+    Rewrite the problematic sections to improve momentum while maintaining:
+    - Character voices (don't change how they speak)
+    - Plot points (don't change what happens)
+    - Audio-first formatting
+    - Word count (can add 5-10% if needed for fixes)
+
+    **FIXING TECHNIQUES:**
+
+    **For SLOW SECTIONS:**
+    - Add external interruption (phone, knock, arrival)
+    - Inject conflict or obstacle
+    - Add ticking clock element
+    - Break up monologue with action
+
+    **For RUSHED TRANSITIONS:**
+    - Add audio bridge (car sounds, footsteps, doors)
+    - Add brief transitional dialogue
+    - Add time/location establishing sound
+
+    **For DEAD AIR:**
+    - Fill with purposeful sound (breathing, ambient, action)
+    - Cut duration to max 10-15 seconds
+    - Add character physical action
+
+    **For REPETITIVE RHYTHM:**
+    - Vary scene endings (cut mid-sentence, on action)
+    - Change scene structures
+    - Vary dialogue/silence ratio
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON:
+
+    {{
+      "momentum_fixes": {{
+        "total_changes": 12,
+        "word_count_change": "+247 words",
+        "fixes": [
+          {{
+            "change_number": 1,
+            "scene_number": 2,
+            "change_type": "energy_boost|transition|timing|rhythm",
+            "original_content": "Current problematic content",
+            "fixed_content": "Improved version with better momentum",
+            "energy_before": "3/10",
+            "energy_after": "5/10",
+            "technique_used": "Added external conflict",
+            "explanation": "Why this fixes the issue"
+          }}
+        ],
+        "full_corrected_script": "Complete script with all fixes integrated",
+        "pacing_score_before": "6.8/10",
+        "pacing_score_after": "8.2/10"
+      }}
+    }}
+
+dependencies:
+  - station: 21
+    name: "First Draft (required)"
+  - station: 11
+    name: "Runtime Planning (for targets)"
+
+enabled: true
+
+special_features:
+  supports_episode_selection: true
+  auto_fixes_issues: true
+  generates_change_report: true
+  can_undo_changes: true

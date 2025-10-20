@@ -1,0 +1,164 @@
+{
+  "session_id": "session_20251016_235335",
+  "episode_number": 1,
+  "episode_title": "The Static",
+  "generated_at": "2025-10-19T23:18:23.166757",
+  "draft_data": {
+    "first_draft_script": {
+      "episode_number": 1,
+      "episode_title": "The Static",
+      "total_word_count": 2170,
+      "scenes": [
+        {
+          "scene_number": 1,
+          "heading": "INT. ALEX'S APARTMENT - LATE EVENING",
+          "estimated_runtime": "2 minutes",
+          "script_content": "[SFX: ambient_home_evening, faint_typing, occasional_distant_traffic]\n\n[ALEX is sitting at his desk, surrounded by sound equipment. His apartment is cozy, with a few personal items scattered around.]\n\nALEX\n(whispering to himself)\nCome on, just a few more tweaks...\n\n[SFX: sound_mixer_beeps, keyboard_taps]\n\n[ALEX adjusts a few settings on his sound mixer, listening intently to the audio playing through his headphones.]\n\nALEX\n(muttering)\nAlmost there... Perfect.\n\n[SFX: typing_stops, satisfied_sigh]\n\nALEX\n(to himself)\nTime to send it off.\n\n[SFX: computer_click, email_notification]\n\nALEX\n(satisfied)\nDone. That should do it.\n\n[SFX: ambient_home_evening_fades_out]",
+          "word_count": 170,
+          "characters_present": [
+            "ALEX"
+          ],
+          "audio_cues_used": [
+            "ambient_home_evening",
+            "faint_typing",
+            "occasional_distant_traffic",
+            "sound_mixer_beeps",
+            "keyboard_taps",
+            "typing_stops",
+            "satisfied_sigh",
+            "computer_click",
+            "email_notification"
+          ],
+          "p3_plants_included": [],
+          "reveals": [
+            "Alex finishes a sound mixing project for a client"
+          ],
+          "emotional_beats": [
+            "Alex's satisfaction with his work"
+          ]
+        },
+        {
+          "scene_number": 2,
+          "heading": "EXT. CITY STREETS - NIGHT",
+          "estimated_runtime": "3 minutes",
+          "script_content": "[SFX: city_night, distant_car_horns, footsteps]\n\n[ALEX walks down the city streets, his headphones around his neck. The night is cool, and the city is bustling with activity.]\n\nALEX\n(thoughtfully)\nWhat was that? It sounded so familiar...\n\n[SFX: faint_static, footsteps]\n\n[ALEX stops, pulling out his phone and fiddling with the settings.]\n\nALEX\n(muttering)\nMust have picked up some interference...\n\n[SFX: static_increases, distant_sirens]\n\nALEX\n(alarmed)\nWait, is that...?\n\n[SFX: static_peaks, sudden_silence]\n\nALEX\n(confused)\nWhat the...?\n\n[SFX: city_night_fades_out, footsteps_resume]",
+          "word_count": 185,
+          "characters_present": [
+            "ALEX",
+            "PASSERSBY (heard only)"
+          ],
+          "audio_cues_used": [
+            "city_night",
+            "distant_car_horns",
+            "footsteps",
+            "faint_static",
+            "distant_sirens",
+            "static_increases",
+            "sudden_silence"
+          ],
+          "p3_plants_included": [],
+          "reveals": [
+            "Alex hears a strange audio phenomenon while walking"
+          ],
+          "emotional_beats": [
+            "Alex's confusion and alarm"
+          ]
+        },
+        {
+          "scene_number": 3,
+          "heading": "INT. ALEX'S APARTMENT - LATE NIGHT/EARLY MORNING",
+          "estimated_runtime": "6 minutes",
+          "script_content": "[SFX: ambient_home_night, faint_static]\n\n[ALEX returns to his apartment, looking puzzled. He sits down at his desk and starts reviewing the audio files on his computer.]\n\nALEX\n(to himself)\nIt couldn't have been... No, it was just static, right?\n\n[SFX: computer_clicks, file_opening]\n\nALEX\n(whispering)\nBut what if it wasn't?\n\n[ALEX plays back the audio file, listening closely.]\n\nALEX\n(alarmed)\nThat's not static... That's a voice!\n\n[SFX: faint_static, voice_distorted (filtered)]\n\nDISTORTED VOICE\n(whispering, distant)\n...need help...\n\nALEX\n(shocked)\nWho is that?!\n\n[SFX: file_stop, rapid_keyboard_taps]\n\nALEX\n(determined)\nI need to figure this out.\n\n[SFX: ambient_home_night_fades_out, faint_static_continues]",
+          "word_count": 220,
+          "characters_present": [
+            "ALEX",
+            "DISTORTED VOICE (filtered)"
+          ],
+          "audio_cues_used": [
+            "ambient_home_night",
+            "faint_static",
+            "computer_clicks",
+            "file_opening",
+            "voice_distorted",
+            "file_stop",
+            "rapid_keyboard_taps"
+          ],
+          "p3_plants_included": [],
+          "reveals": [
+            "Alex discovers a voice in the static"
+          ],
+          "emotional_beats": [
+            "Alex's determination to understand the strange audio"
+          ]
+        },
+        {
+          "scene_number": 4,
+          "heading": "INT. ALEX'S APARTMENT - EARLY MORNING",
+          "estimated_runtime": "7 minutes",
+          "script_content": "[SFX: ambient_home_morning, faint_static, coffee_machine_hissing]\n\n[ALEX is now pacing around his apartment, a cup of coffee in hand. He looks stressed and deep in thought.]\n\nALEX\n(to himself)\nWhat if it's real? What if someone really needs help?\n\n[SFX: coffee_sip, pacing_footsteps]\n\nALEX\n(determined)\nI can't just ignore it. I need to find out more.\n\n[SFX: computer_turns_on, file_opening]\n\nALEX\n(resolute)\nI'll trace the source, and if it's real, I'll do whatever it takes to help.\n\n[SFX: ambient_home_morning_fades_out, computer_hum]",
+          "word_count": 175,
+          "characters_present": [
+            "ALEX"
+          ],
+          "audio_cues_used": [
+            "ambient_home_morning",
+            "faint_static",
+            "coffee_machine_hissing",
+            "coffee_sip",
+            "pacing_footsteps",
+            "computer_turns_on",
+            "file_opening",
+            "computer_hum"
+          ],
+          "p3_plants_included": [],
+          "reveals": [
+            "Alex decides to act on the disturbing thought heard"
+          ],
+          "emotional_beats": [
+            "Alex's resolve to help"
+          ]
+        }
+      ],
+      "structural_elements": {
+        "cold_open": "1",
+        "act_1": "1, 2",
+        "act_2": "3",
+        "act_3": "4",
+        "tag": "4"
+      },
+      "audio_summary": {
+        "total_audio_cues": 27,
+        "recurring_motifs": [
+          "faint_static"
+        ],
+        "location_signatures": [
+          "ambient_home_evening",
+          "ambient_home_night",
+          "ambient_home_morning",
+          "city_night"
+        ]
+      },
+      "character_summary": {
+        "ALEX": {
+          "lines_of_dialogue": 15,
+          "key_moments": [
+            "Finishes sound mixing project",
+            "Hears strange audio phenomenon",
+            "Discovers voice in static",
+            "Decides to act on disturbing thought"
+          ]
+        }
+      },
+      "hook_and_cliffhanger": {
+        "opening_hook_effectiveness": "Mystery established in 60 seconds",
+        "cliffhanger_setup": "Alex decides to trace the source of the strange audio and help if necessary"
+      }
+    },
+    "generation_time": 21.088856,
+    "generated_at": "2025-10-19T23:18:23.166475"
+  },
+  "context": {
+    "word_budget": 3100,
+    "runtime": "18 minutes"
+  }
+}

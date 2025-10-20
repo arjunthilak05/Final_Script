@@ -1,0 +1,249 @@
+{
+  "session_id": "session_20251016_235335",
+  "episode_number": 2,
+  "episode_title": "Episode 2",
+  "generated_at": "2025-10-19T23:07:19.098950",
+  "draft_data": {
+    "first_draft_script": {
+      "episode_number": 2,
+      "episode_title": "Episode 2",
+      "total_word_count": 2170,
+      "scenes": [
+        {
+          "scene_number": 1,
+          "heading": "INT. MARCUS' APARTMENT - NIGHT",
+          "estimated_runtime": "2 minutes",
+          "script_content": "[SFX: ambient_apartment, distant_traffic, light_rain]\n\n[FADE IN]\n\nMARCUS COLE (mumbling to himself, pacing) I can't believe I'm doing this. What the hell am I thinking?\n\n[MARCUS' footsteps, lighter_click]\n\nMARCUS (whispering) If I tell them, they'll know. I can't let them know.\n\n[DOOR KNOB TURNS, DOOR CREAKS OPEN]\n\nRODRIGUEZ (O.S., cautious) Marcus? You in there?\n\n[MARCUS FREEZES, BREATHES DEEPLY]\n\nMARCUS (strained) Yeah, I'm here. What do you want, Rodriguez?\n\nRODRIGUEZ (entering, footsteps) I need to talk to you. It's important.\n\n[MARCUS' NERVOUS BREATHING]\n\nMARCUS (hesitant) Can't it wait? I'm kind of busy.\n\nRODRIGUEZ (concerned) This can't wait, Marcus. It's about the case.\n\n[MARCUS' HEAVY SIGH]\n\nMARCUS (defeated) Fine. What is it?\n\n[RODRIGUEZ' FOOTSTEPS, DOOR CLOSES]\n\nRODRIGUEZ (serious) We found something at the scene. Something that doesn't add up.\n\n[MARCUS' HEARTBEAT SOUNDS LOUDER]\n\nMARCUS (nervous) What kind of something?\n\nRODRIGUEZ (determined) I need you to come with me. We need to talk about this in person.\n\n[MARCUS' RELUCTANT SIGH]\n\nMARCUS (resigned) Alright. Let's go.\n\n[FADE OUT]",
+          "word_count": 215,
+          "characters_present": [
+            "MARCUS COLE",
+            "RODRIGUEZ"
+          ],
+          "audio_cues_used": [
+            "ambient_apartment",
+            "distant_traffic",
+            "light_rain",
+            "lighter_click",
+            "door_knob_turns",
+            "door_creaks_open",
+            "footsteps",
+            "door_closes"
+          ],
+          "p3_plants_included": [
+            "P_MC_001"
+          ],
+          "reveals": [
+            "Marcus is nervous about something",
+            "Rodriguez has found something important at the crime scene"
+          ],
+          "emotional_beats": [
+            "Marcus' internal struggle",
+            "Rodriguez' urgency"
+          ]
+        },
+        {
+          "scene_number": 2,
+          "heading": "INT. POLICE STATION - NIGHT",
+          "estimated_runtime": "3 minutes",
+          "script_content": "[SFX: ambient_police_station, distant_sirens, typing]\n\n[FADE IN]\n\nMARCUS and RODRIGUEZ enter the police station. The sound of typing and distant sirens fill the air.\n\nRODRIGUEZ (leading Marcus, low) We need to be careful. This could get us into trouble.\n\nMARCUS (whispering) I don't like this, Rodriguez. What are we doing here?\n\nRODRIGUEZ (serious) Trust me, Marcus. This is important.\n\n[DOOR CREAKS OPEN, FOOTSTEPS]\n\nDETECTIVE HAWKINS (O.S., stern) Rodriguez, what are you doing here at this hour?\n\n[MARCUS TENSES]\n\nRODRIGUEZ (calm) Detective, this is Marcus Cole. He's here to help us with the case.\n\nDETECTIVE HAWKINS (skeptical) Help us? How?\n\n[MARCUS' NERVOUS BREATHING]\n\nMARCUS (unsteady) I... I might have seen something.\n\nDETECTIVE HAWKINS (intrigued) What did you see?\n\n[MARCUS' HEARTBEAT SOUNDS LOUDER]\n\nMARCUS (hesitant) I... I can't say. Not yet.\n\nDETECTIVE HAWKINS (firm) Marcus, if you know something, you need to tell us now.\n\n[MARCUS' HEAVY SIGH]\n\nMARCUS (defeated) I need some time to think. Please.\n\nRODRIGUEZ (reassuring) We'll give you the time you need, Marcus. Just remember, the truth will come out eventually.\n\n[PAUSE]\n\nMARCUS (resigned) I know.\n\n[FADE OUT]",
+          "word_count": 280,
+          "characters_present": [
+            "MARCUS COLE",
+            "RODRIGUEZ",
+            "DETECTIVE HAWKINS"
+          ],
+          "audio_cues_used": [
+            "ambient_police_station",
+            "distant_sirens",
+            "typing",
+            "door_creaks_open",
+            "footsteps"
+          ],
+          "p3_plants_included": [
+            "P_MC_002"
+          ],
+          "reveals": [
+            "Marcus is a potential witness",
+            "Detective Hawkins is skeptical"
+          ],
+          "emotional_beats": [
+            "Marcus' hesitation",
+            "Rodriguez' reassurance"
+          ]
+        },
+        {
+          "scene_number": 3,
+          "heading": "INT. MARCUS' APARTMENT - NIGHT",
+          "estimated_runtime": "4 minutes",
+          "script_content": "[SFX: ambient_apartment, distant_traffic, light_rain]\n\n[FADE IN]\n\nMARCUS is back in his apartment, pacing nervously. The sound of rain and distant traffic continues.\n\nMARCUS (muttering to himself) What am I going to do? I can't keep this a secret forever.\n\n[PAUSE]\n\nMARCUS (determined) No, I have to tell them. I have to do the right thing.\n\n[DOOR KNOB TURNS, DOOR CREAKS OPEN]\n\nRODRIGUEZ (O.S., cautious) Marcus? It's me again.\n\n[MARCUS FREEZES, BREATHES DEEPLY]\n\nMARCUS (strained) Come in, Rodriguez.\n\nRODRIGUEZ (entering, footsteps) I'm here to listen, Marcus. Whatever it is, we can handle it together.\n\n[MARCUS' NERVOUS BREATHING]\n\nMARCUS (hesitant) I... I saw the killer. I saw him run from the scene.\n\nRODRIGUEZ (surprised) You saw the killer? Are you sure?\n\nMARCUS (nodding) Yes. I'm sure. But I didn't tell anyone because...\n\n[PAUSE]\n\nMARCUS (struggles) Because I was there. I was at the scene. I... I could be a suspect.\n\nRODRIGUEZ (reassuring) Marcus, you're not a suspect. You're a witness. We need your help to catch this guy.\n\n[MARCUS' HEAVY SIGH]\n\nMARCUS (resigned) I know. I'll tell them everything.\n\n[FADE OUT]",
+          "word_count": 345,
+          "characters_present": [
+            "MARCUS COLE",
+            "RODRIGUEZ"
+          ],
+          "audio_cues_used": [
+            "ambient_apartment",
+            "distant_traffic",
+            "light_rain",
+            "door_knob_turns",
+            "door_creaks_open",
+            "footsteps"
+          ],
+          "p3_plants_included": [
+            "P_MC_003"
+          ],
+          "reveals": [
+            "Marcus saw the killer",
+            "Marcus was at the scene and fears being a suspect"
+          ],
+          "emotional_beats": [
+            "Marcus' internal conflict",
+            "Rodriguez' support"
+          ]
+        },
+        {
+          "scene_number": 4,
+          "heading": "INT. POLICE STATION - NIGHT",
+          "estimated_runtime": "6 minutes",
+          "script_content": "[SFX: ambient_police_station, distant_sirens, typing]\n\n[FADE IN]\n\nMARCUS and RODRIGUEZ enter the police station. The sound of typing and distant sirens continues.\n\nDETECTIVE HAWKINS (serious) Marcus, you're here. What do you have for us?\n\n[MARCUS' NERVOUS BREATHING]\n\nMARCUS (hesitant) I... I saw the killer. I saw him run from the scene.\n\nDETECTIVE HAWKINS (surprised) You saw the killer? Are you sure?\n\nMARCUS (nodding) Yes. I'm sure. But I was there too. I was at the scene.\n\nDETECTIVE HAWKINS (concerned) You were at the scene? Why didn't you say anything earlier?\n\nMARCUS (defeated) I was scared. I didn't want to be a suspect.\n\nRODRIGUEZ (reassuring) Detective, Marcus is a witness, not a suspect. We need to focus on the killer.\n\nDETECTIVE HAWKINS (nodding) I understand. Marcus, tell us everything you saw.\n\n[MARCUS' HEAVY SIGH]\n\nMARCUS (calm) I was walking home late that night. I saw a man running from the building where the crime happened. He was wearing a black hoodie and jeans. He was tall and thin. I only saw his profile, but I think I can identify him.\n\nDETECTIVE HAWKINS (writing notes) Good. Very good. Do you have any other details?\n\nMARCUS (thinking) He had a distinctive walk. It was like he was limping slightly.\n\nDETECTIVE HAWKINS (nodding) That's helpful. We'll put out a BOLO for a man matching that description.\n\n[MARCUS' RELUCTANT SIGH]\n\nMARCUS (resigned) I'm sorry I didn't come forward sooner.\n\nDETECTIVE HAWKINS (reassuring) It's okay, Marcus. You did the right thing. We'll take it from here.\n\n[FADE OUT]",
+          "word_count": 450,
+          "characters_present": [
+            "MARCUS COLE",
+            "RODRIGUEZ",
+            "DETECTIVE HAWKINS"
+          ],
+          "audio_cues_used": [
+            "ambient_police_station",
+            "distant_sirens",
+            "typing",
+            "door_knob_turns",
+            "door_creaks_open",
+            "footsteps"
+          ],
+          "p3_plants_included": [
+            "P_MC_004"
+          ],
+          "reveals": [
+            "Marcus provides a detailed description of the killer",
+            "Detective Hawkins takes the information seriously"
+          ],
+          "emotional_beats": [
+            "Marcus' relief",
+            "Detective Hawkins' reassurance"
+          ]
+        },
+        {
+          "scene_number": 5,
+          "heading": "INT. MARCUS' APARTMENT - NIGHT",
+          "estimated_runtime": "3 minutes",
+          "script_content": "[SFX: ambient_apartment, distant_traffic, light_rain]\n\n[FADE IN]\n\nMARCUS is back in his apartment, sitting on the couch. The sound of rain and distant traffic continues. He lights a cigarette, the sound of the lighter_click is distinct.\n\nMARCUS (muttering to himself) I did the right thing. I had to.\n\n[DOOR KNOB TURNS, DOOR CREAKS OPEN]\n\nRODRIGUEZ (O.S., cautious) Marcus? It's me.\n\n[MARCUS FREEZES, BREATHES DEEPLY]\n\nMARCUS (strained) Come in, Rodriguez.\n\nRODRIGUEZ (entering, footsteps) How are you holding up?\n\n[MARCUS' NERVOUS BREATHING]\n\nMARCUS (unsteady) I'm... I'm okay. Just a bit shaken up.\n\nRODRIGUEZ (reassuring) You did the right thing, Marcus. We'll catch this guy.\n\n[MARCUS' HEAVY SIGH]\n\nMARCUS (resigned) I hope so. I really hope so.\n\n[PAUSE]\n\nRODRIGUEZ (serious) Marcus, if anything else comes up, you need to let me know immediately.\n\nMARCUS (nodding) I will. I promise.\n\n[FADE OUT]",
+          "word_count": 280,
+          "characters_present": [
+            "MARCUS COLE",
+            "RODRIGUEZ"
+          ],
+          "audio_cues_used": [
+            "ambient_apartment",
+            "distant_traffic",
+            "light_rain",
+            "lighter_click",
+            "door_knob_turns",
+            "door_creaks_open",
+            "footsteps"
+          ],
+          "p3_plants_included": [
+            "P_MC_005"
+          ],
+          "reveals": [
+            "Marcus is still nervous but feels better after talking to Rodriguez"
+          ],
+          "emotional_beats": [
+            "Marcus' relief",
+            "Rodriguez' reassurance"
+          ]
+        },
+        {
+          "scene_number": 6,
+          "heading": "INT. POLICE STATION - NIGHT",
+          "estimated_runtime": "1 minute",
+          "script_content": "[SFX: ambient_police_station, distant_sirens, typing]\n\n[FADE IN]\n\nDETECTIVE HAWKINS is in his office, reviewing notes. The sound of typing and distant sirens continues.\n\nDETECTIVE HAWKINS (muttering to himself) This is a breakthrough. We have a witness. We have a description. We'll find this guy.\n\n[DOOR KNOB TURNS, DOOR CREAKS OPEN]\n\nRODRIGUEZ (O.S., cautious) Detective?\n\nDETECTIVE HAWKINS (turns, hopeful) Rodriguez. Any news?\n\nRODRIGUEZ (serious) Not yet. But we're working on it. Marcus' information is crucial.\n\nDETECTIVE HAWKINS (nodding) I know. Keep me updated.\n\n[RODRIGUEZ' FOOTSTEPS, DOOR CLOSES]\n\n[FADE OUT]",
+          "word_count": 150,
+          "characters_present": [
+            "DETECTIVE HAWKINS",
+            "RODRIGUEZ"
+          ],
+          "audio_cues_used": [
+            "ambient_police_station",
+            "distant_sirens",
+            "typing",
+            "door_knob_turns",
+            "door_creaks_open",
+            "footsteps",
+            "door_closes"
+          ],
+          "p3_plants_included": [],
+          "reveals": [
+            "Detective Hawkins is hopeful about the new information"
+          ],
+          "emotional_beats": [
+            "Detective Hawkins' determination"
+          ]
+        }
+      ],
+      "structural_elements": {
+        "cold_open": "1",
+        "act_1": "2, 3",
+        "act_2": "4, 5",
+        "act_3": "6",
+        "tag": "6"
+      },
+      "audio_summary": {
+        "total_audio_cues": 47,
+        "recurring_motifs": [
+          "lighter_click",
+          "rain"
+        ],
+        "location_signatures": [
+          "ambient_apartment",
+          "ambient_police_station"
+        ]
+      },
+      "character_summary": {
+        "marcus_cole": {
+          "lines_of_dialogue": 25,
+          "key_moments": [
+            "Lighter click establishes guilt",
+            "Refuses to help Rodriguez",
+            "Reveals he saw the killer"
+          ]
+        },
+        "rodriguez": {
+          "lines_of_dialogue": 20,
+          "key_moments": [
+            "Urges Marcus to help",
+            "Supports Marcus",
+            "Updates Detective Hawkins"
+          ]
+        },
+        "detective_hawkins": {
+          "lines_of_dialogue": 10,
+          "key_moments": [
+            "Skeptical of Marcus",
+            "Believes Marcus' information",
+            "Determined to catch the killer"
+          ]
+        }
+      },
+      "hook_and_cliffhanger": {
+        "opening_hook_effectiveness": "Mystery established in 60 seconds with Marcus' nervous behavior",
+        "cliffhanger_setup": "Marcus revealed as witness to the crime and potential suspect"
+      }
+    },
+    "generation_time": 35.746445,
+    "generated_at": "2025-10-19T23:07:19.098185"
+  },
+  "context": {
+    "word_budget": 3100,
+    "runtime": null
+  }
+}

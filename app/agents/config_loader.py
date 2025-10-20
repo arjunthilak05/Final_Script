@@ -16,12 +16,16 @@ from pathlib import Path
 
 class StationConfig:
     """Configuration for a single station"""
-    
+
     def __init__(self, config_data: Dict[str, Any]):
         self.model = config_data.get('model', 'qwen-72b')
         self.temperature = config_data.get('temperature', 0.7)
         self.max_tokens = config_data.get('max_tokens', 3000)
         self.prompts = config_data.get('prompts', {})
+        self.dependencies = config_data.get('dependencies', [])
+        self.enabled = config_data.get('enabled', True)
+        self.station_name = config_data.get('station_name', 'Unknown Station')
+        self.description = config_data.get('description', '')
         
     def get_prompt(self, prompt_name: str = 'main') -> str:
         """Get a specific prompt by name"""

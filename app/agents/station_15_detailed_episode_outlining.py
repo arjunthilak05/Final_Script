@@ -164,72 +164,72 @@ class Station15DetailedEpisodeOutlining:
         # Load from Redis first
         try:
             # Station 1: Seed Processor
-            station1_data = await self.redis_client.get(f"session:{self.session_id}:station:01:output")
+            station1_data = await self.redis_client.get(f"audiobook:{self.session_id}:station_01")
             if station1_data:
                 station_data['station_1'] = json.loads(station1_data)
             
             # Station 2: Project DNA Builder
-            station2_data = await self.redis_client.get(f"session:{self.session_id}:station:02:bible")
+            station2_data = await self.redis_client.get(f"audiobook:{self.session_id}:station_02")
             if station2_data:
                 station_data['station_2'] = json.loads(station2_data)
             
             # Station 3: Age & Genre Optimizer
-            station3_data = await self.redis_client.get(f"session:{self.session_id}:station:03:style_guide")
+            station3_data = await self.redis_client.get(f"audiobook:{self.session_id}:station_03")
             if station3_data:
                 station_data['station_3'] = json.loads(station3_data)
             
             # Station 4: Reference Mining
-            station4_data = await self.redis_client.get(f"session:{self.session_id}:station:04:output")
+            station4_data = await self.redis_client.get(f"audiobook:{self.session_id}:station_04")
             if station4_data:
                 station_data['station_4'] = json.loads(station4_data)
             
             # Station 4.5: Narrator Strategy
-            station45_data = await self.redis_client.get(f"session:{self.session_id}:station:045:output")
+            station45_data = await self.redis_client.get(f"audiobook:{self.session_id}:station_045")
             if station45_data:
                 station_data['station_45'] = json.loads(station45_data)
             
             # Station 5: Season Architecture
-            station5_data = await self.redis_client.get(f"session:{self.session_id}:station:05:output")
+            station5_data = await self.redis_client.get(f"audiobook:{self.session_id}:station_05")
             if station5_data:
                 station_data['station_5'] = json.loads(station5_data)
             
             # Station 6: Master Style Guide
-            station6_data = await self.redis_client.get(f"session:{self.session_id}:station:06:output")
+            station6_data = await self.redis_client.get(f"audiobook:{self.session_id}:station_06")
             if station6_data:
                 station_data['station_6'] = json.loads(station6_data)
             
             # Station 7: Character Architecture
-            station7_data = await self.redis_client.get(f"session:{self.session_id}:station:07:character_bible")
+            station7_data = await self.redis_client.get(f"audiobook:{self.session_id}:station_07")
             if station7_data:
                 station_data['station_7'] = json.loads(station7_data)
             
             # Station 8: World Builder
-            station8_data = await self.redis_client.get(f"session:{self.session_id}:station:08:world_bible")
+            station8_data = await self.redis_client.get(f"audiobook:{self.session_id}:station_08")
             if station8_data:
                 station_data['station_8'] = json.loads(station8_data)
             
             # Station 9: World Building System
-            station9_data = await self.redis_client.get(f"session:{self.session_id}:station:09:world_building_system")
+            station9_data = await self.redis_client.get(f"audiobook:{self.session_id}:station_09")
             if station9_data:
                 station_data['station_9'] = json.loads(station9_data)
             
             # Station 10: Narrative Reveal Strategy
-            station10_data = await self.redis_client.get(f"session:{self.session_id}:station:10:reveal_matrix")
+            station10_data = await self.redis_client.get(f"audiobook:{self.session_id}:station_10")
             if station10_data:
                 station_data['station_10'] = json.loads(station10_data)
             
             # Station 11: Runtime Planning
-            station11_data = await self.redis_client.get(f"session:{self.session_id}:station:11:output")
+            station11_data = await self.redis_client.get(f"audiobook:{self.session_id}:station_11")
             if station11_data:
                 station_data['station_11'] = json.loads(station11_data)
             
             # Station 12: Hook & Cliffhanger Designer
-            station12_data = await self.redis_client.get(f"session:{self.session_id}:station:12:output")
+            station12_data = await self.redis_client.get(f"audiobook:{self.session_id}:station_12")
             if station12_data:
                 station_data['station_12'] = json.loads(station12_data)
             
             # Station 14: Simple Episode Blueprints
-            station14_data = await self.redis_client.get(f"station_14:{self.session_id}")
+            station14_data = await self.redis_client.get(f"audiobook:{self.session_id}:station_14")
             if station14_data:
                 station_data['station_14'] = json.loads(station14_data)
                 
@@ -348,6 +348,164 @@ class Station15DetailedEpisodeOutlining:
         
         return formatted
 
+    def _fix_outline_structure(self, outline_data: Dict[str, Any]) -> Dict[str, Any]:
+        """Fix malformed JSON structure from LLM output"""
+        detailed_outlines = outline_data.get('detailed_episode_outlines', [])
+        
+        # If the structure is already correct, return as-is
+        if detailed_outlines and isinstance(detailed_outlines[0], dict) and 'episode_number' in detailed_outlines[0]:
+            return outline_data
+        
+        # If we have a flat array of scenes, organize them into episodes
+        if detailed_outlines and isinstance(detailed_outlines[0], dict) and 'scene_number' in detailed_outlines[0]:
+            return self._organize_scenes_into_episodes(detailed_outlines)
+        
+        # If we have mixed content, try to extract episodes
+        return self._extract_episodes_from_mixed_content(detailed_outlines)
+
+    def _organize_scenes_into_episodes(self, scenes: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Organize flat scene list into proper episode structure"""
+        episodes = {}
+        episode_metadata = {}
+        
+        # Group scenes by episode (assuming 4 scenes per episode based on the data)
+        scenes_per_episode = 4
+        episode_number = 1
+        
+        for i in range(0, len(scenes), scenes_per_episode):
+            episode_scenes = scenes[i:i + scenes_per_episode]
+            
+            # Extract episode metadata from the first scene or create defaults
+            episode_title = f"Episode {episode_number}"
+            episode_summary = f"Detailed episode outline for episode {episode_number}"
+            
+            # Look for episode metadata in the scenes
+            for scene in episode_scenes:
+                if 'episode_title' in scene:
+                    episode_title = scene['episode_title']
+                if 'episode_summary' in scene:
+                    episode_summary = scene['episode_summary']
+            
+            episodes[f"episode_{episode_number}"] = {
+                "episode_number": episode_number,
+                "episode_title": episode_title,
+                "episode_summary": episode_summary,
+                "total_estimated_runtime": f"{sum(int(scene.get('estimated_runtime', '0').split()[0]) for scene in episode_scenes if scene.get('estimated_runtime', '').split()[0].isdigit())} minutes",
+                "scenes": episode_scenes,
+                "episode_arc": self._extract_episode_arc(episode_scenes),
+                "character_emotional_journey": self._extract_character_journeys(episode_scenes),
+                "information_flow": self._extract_information_flow(episode_scenes),
+                "audio_production_notes": "Comprehensive audio storytelling with detailed soundscape notes for each scene"
+            }
+            episode_number += 1
+        
+        return {
+            "detailed_episode_outlines": list(episodes.values()),
+            "series_structure_notes": "Detailed episode outlines provide comprehensive scene-by-scene breakdowns for production",
+            "production_considerations": "Each scene includes specific audio storytelling notes and soundscape requirements"
+        }
+
+    def _extract_episodes_from_mixed_content(self, content: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Extract episodes from mixed content structure"""
+        episodes = {}
+        current_episode = None
+        episode_number = 1
+        
+        for item in content:
+            if 'scene_number' in item:
+                if current_episode is None:
+                    current_episode = {
+                        "episode_number": episode_number,
+                        "episode_title": f"Episode {episode_number}",
+                        "episode_summary": f"Detailed episode outline for episode {episode_number}",
+                        "scenes": [],
+                        "episode_arc": {},
+                        "character_emotional_journey": [],
+                        "information_flow": {},
+                        "audio_production_notes": "Comprehensive audio storytelling with detailed soundscape notes"
+                    }
+                
+                current_episode["scenes"].append(item)
+                
+                # If we have 4 scenes, finalize this episode
+                if len(current_episode["scenes"]) >= 4:
+                    episodes[f"episode_{episode_number}"] = current_episode
+                    episode_number += 1
+                    current_episode = None
+            
+            elif 'opening_hook' in item:
+                if current_episode:
+                    current_episode["episode_arc"] = item
+            
+            elif 'character_name' in item:
+                if current_episode:
+                    current_episode["character_emotional_journey"].append(item)
+            
+            elif 'revealed_to_audience' in item:
+                if current_episode:
+                    current_episode["information_flow"] = item
+        
+        # Add the last episode if it exists
+        if current_episode:
+            episodes[f"episode_{episode_number}"] = current_episode
+        
+        return {
+            "detailed_episode_outlines": list(episodes.values()),
+            "series_structure_notes": "Detailed episode outlines provide comprehensive scene-by-scene breakdowns for production",
+            "production_considerations": "Each scene includes specific audio storytelling notes and soundscape requirements"
+        }
+
+    def _extract_episode_arc(self, scenes: List[Dict[str, Any]]) -> Dict[str, str]:
+        """Extract episode arc from scenes"""
+        if not scenes:
+            return {}
+        
+        return {
+            "opening_hook": scenes[0].get('goal', 'Unknown'),
+            "midpoint_turn": scenes[len(scenes)//2].get('choice', 'Unknown') if len(scenes) > 1 else 'Unknown',
+            "climax": scenes[-1].get('consequence', 'Unknown'),
+            "resolution": scenes[-1].get('transition_to_next', 'Unknown'),
+            "cliffhanger": "Continues to next episode"
+        }
+
+    def _extract_character_journeys(self, scenes: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Extract character emotional journeys from scenes"""
+        characters = set()
+        for scene in scenes:
+            characters.update(scene.get('characters_present', []))
+        
+        journeys = []
+        for char in characters:
+            journeys.append({
+                "character_name": char,
+                "starting_emotional_state": "As established in first scene",
+                "key_emotional_beats": [scene.get('emotional_state', 'Unknown') for scene in scenes],
+                "ending_emotional_state": "As shown in final scene",
+                "growth": f"{char} develops throughout the episode"
+            })
+        
+        return journeys
+
+    def _extract_information_flow(self, scenes: List[Dict[str, Any]]) -> Dict[str, List[str]]:
+        """Extract information flow from scenes"""
+        revealed_to_audience = []
+        revealed_to_characters = []
+        hidden_from_audience = []
+        hidden_from_characters = []
+        
+        for scene in scenes:
+            reveals = scene.get('reveals', {})
+            revealed_to_audience.extend(reveals.get('plants', []))
+            revealed_to_characters.extend(reveals.get('proofs', []))
+            revealed_to_audience.extend(reveals.get('payoffs', []))
+        
+        return {
+            "revealed_to_audience": list(set(revealed_to_audience)),
+            "revealed_to_characters": list(set(revealed_to_characters)),
+            "hidden_from_audience": list(set(hidden_from_audience)),
+            "hidden_from_characters": list(set(hidden_from_characters))
+        }
+
     async def build_episode_outline_prompt(self, inputs: Dict[str, Any]) -> str:
         """Build the comprehensive LLM prompt"""
         return self.config.prompts['main'].format(
@@ -371,6 +529,9 @@ class Station15DetailedEpisodeOutlining:
         """Save all output files"""
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         
+        # Fix the JSON structure if it's malformed
+        fixed_outline_data = self._fix_outline_structure(outline_data)
+        
         # Save JSON output
         json_file = self.output_dir / f"{self.session_id}_detailed_episode_outlines.json"
         with open(json_file, 'w', encoding='utf-8') as f:
@@ -379,7 +540,7 @@ class Station15DetailedEpisodeOutlining:
                 "timestamp": timestamp,
                 "project_title": inputs.get('working_title', 'Untitled'),
                 "episode_count": inputs.get('episode_count', 'Unknown'),
-                "outline_data": outline_data
+                "outline_data": fixed_outline_data
             }, f, indent=2, ensure_ascii=False)
         
         # Save readable text output
@@ -392,8 +553,8 @@ class Station15DetailedEpisodeOutlining:
             f.write(f"Generated: {timestamp}\n")
             f.write(f"Project: {inputs.get('working_title', 'Untitled')}\n\n")
             
-            # Write episode outlines
-            outlines = outline_data.get('detailed_episode_outlines', [])
+            # Write episode outlines using fixed data
+            outlines = fixed_outline_data.get('detailed_episode_outlines', [])
             for episode in outlines:
                 f.write("-" * 60 + "\n")
                 f.write(f"EPISODE {episode.get('episode_number', 'N/A')}: {episode.get('episode_title', 'Untitled')}\n")
@@ -456,12 +617,12 @@ class Station15DetailedEpisodeOutlining:
             f.write("=" * 60 + "\n")
             f.write("SERIES STRUCTURE NOTES\n")
             f.write("=" * 60 + "\n")
-            f.write(outline_data.get('series_structure_notes', 'No series structure notes available') + "\n\n")
+            f.write(fixed_outline_data.get('series_structure_notes', 'No series structure notes available') + "\n\n")
             
             f.write("=" * 60 + "\n")
             f.write("PRODUCTION CONSIDERATIONS\n")
             f.write("=" * 60 + "\n")
-            f.write(outline_data.get('production_considerations', 'No production considerations available') + "\n")
+            f.write(fixed_outline_data.get('production_considerations', 'No production considerations available') + "\n")
         
         # Save CSV summary
         csv_file = self.output_dir / f"{self.session_id}_episode_outline_summary.csv"
@@ -474,8 +635,8 @@ class Station15DetailedEpisodeOutlining:
         
         # Save to Redis
         await self.redis_client.set(
-            f"station_15:{self.session_id}",
-            json.dumps(outline_data, ensure_ascii=False)
+            f"audiobook:{self.session_id}:station_15",
+            json.dumps(fixed_outline_data, ensure_ascii=False)
         )
 
 

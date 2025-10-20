@@ -28,7 +28,7 @@ A sophisticated multi-agent AI system for automated audiobook production. This s
 12. **Runtime Planning** - Production timeline and resource planning
 13. **Hook & Cliffhanger Designer** - Episode engagement strategies
 14. **Multi-World Manager** - Multi-world/timeline management (conditional)
-15. **Simple Episode Blueprint** - Simple episode summaries for stakeholder approval
+15. **Episode Blueprint** - Simple episode summaries for stakeholder approval
 16. **Detailed Episode Outlining** - Production-ready detailed outlines
 
 ### Quality Check Stations (16-20)

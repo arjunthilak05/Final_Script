@@ -1,0 +1,260 @@
+# Station 21: First Draft (Scene-by-Scene) Configuration
+
+station_name: "Station 21: First Draft (Scene-by-Scene)"
+description: "Generates scene-by-scene first drafts with dialogue, audio cues, and stage directions. Integrates all 20 previous stations to create production-ready scripts in multiple formats (Fountain, PDF, JSON, TXT)."
+model: "anthropic/claude-3.5-sonnet"
+temperature: 0.75
+max_tokens: 16384
+
+# Input configuration
+input:
+  required_stations:
+    - station: 1-9
+      name: "Foundation (Seed through World Building)"
+    - station: 10
+      name: "Narrative Reveal Strategy"
+    - station: 11
+      name: "Runtime Planning"
+    - station: 12
+      name: "Hook & Cliffhanger Design"
+    - station: 13
+      name: "Timeline Manager"
+    - station: 14
+      name: "Simple Episode Blueprints"
+    - station: 15
+      name: "Detailed Episode Outlines"
+    - station: 16-20
+      name: "Validation Suite"
+
+# Output configuration
+output:
+  directory: "output/station_21"
+  episode_subdirectory: "episode_{episode_number:02d}"
+  fountain_script: "episode_{episode_number:02d}_first_draft.fountain"
+  json_data: "episode_{episode_number:02d}_draft_data.json"
+  plain_text: "episode_{episode_number:02d}_first_draft.txt"
+  stats_report: "episode_{episode_number:02d}_draft_stats.txt"
+  pdf_script: "episode_{episode_number:02d}_first_draft.pdf"  # Generated from Fountain
+
+prompts:
+  scene_by_scene_draft: |
+    **ROLE:** You are a professional audio drama script writer creating a scene-by-scene first draft.
+
+    **PROJECT CONTEXT:**
+    Working Title: {working_title}
+    Primary Genre: {primary_genre}
+    Episode Number: {episode_number}
+    Episode Title: {episode_title}
+    Total Runtime Target: {total_runtime}
+    Word Budget: {word_budget} words
+
+    **EPISODE BLUEPRINT (From Station 14):**
+    {episode_blueprint}
+
+    **DETAILED OUTLINE (From Station 15):**
+    {detailed_outline}
+
+    **RUNTIME ALLOCATION (From Station 11):**
+    {runtime_allocation}
+
+    **REVEAL STRATEGY (From Station 10):**
+    Plants to include: {p3_plants}
+    Information to reveal: {reveals_this_episode}
+
+    **HOOK STRATEGY (From Station 12):**
+    Opening Hook: {opening_hook}
+    Cliffhanger Strategy: {cliffhanger_strategy}
+
+    **CHARACTER VOICES (From Station 6 Style Guide):**
+    {character_voice_guidelines}
+
+    **AUDIO CUE LIBRARY (From Station 9):**
+    {audio_cue_library}
+
+    **WORLD CONTEXT (From Stations 7-9):**
+    {world_context}
+
+    **VALIDATION NOTES (From Stations 16-20):**
+    {validation_notes}
+
+    **YOUR TASK:**
+    Write a complete scene-by-scene first draft following the detailed outline structure.
+
+    **CRITICAL REQUIREMENTS:**
+
+    1. **AUDIO-FIRST STORYTELLING:**
+       - Every scene MUST establish location through sound
+       - Use [SFX: description] notation for all sound effects
+       - Include ambient layers from Station 9 audio cue library
+       - No visual-only storytelling (this is audio-only)
+       - Silence is a storytelling tool (mark intentional pauses)
+
+    2. **SCENE STRUCTURE:**
+       For each scene from the detailed outline, write:
+       - Scene heading: INT/EXT. LOCATION - TIME
+       - Opening soundscape [SFX: ...]
+       - Character introductions (CAPS first appearance)
+       - Dialogue with audio direction (filtered, distant, whispered)
+       - Stage directions in present tense
+       - Transition sound to next scene
+
+    3. **CHARACTER VOICES:**
+       - Each character must have distinct speech patterns
+       - Follow voice guidelines from Station 6
+       - Include vocal tics, pauses, hesitations
+       - Subtext in dialogue (say one thing, mean another)
+       - Character sound signatures (lighter clicks, pen taps, etc.)
+
+    4. **P3 PLANT INTEGRATION:**
+       - Seamlessly integrate all required plants
+       - Make plants feel organic, not forced
+       - Audio plants (recurring sounds, music motifs)
+       - Dialogue plants (seemingly casual mentions)
+       - Character behavior plants (establishing patterns)
+
+    5. **INFORMATION FLOW:**
+       - Reveal information per Station 10 strategy
+       - Control audience vs character knowledge
+       - Use audio for dramatic irony (audience hears what character doesn't)
+       - Fair play for mysteries (clues must be audio-detectable)
+
+    6. **PACING & RHYTHM:**
+       - Match word count targets from runtime allocation
+       - Vary scene lengths for pacing
+       - Fast dialogue for tension, slower for emotional beats
+       - Use sound/silence for breathing room
+
+    7. **FORMAT REQUIREMENTS:**
+       - Write in screenplay format
+       - Character names in CAPS when speaking
+       - Sound effects in [SFX: ...] notation
+       - Voice filters in parentheticals: (filtered), (V.O.), (O.S.)
+       - Stage directions describe what we HEAR, not see
+
+    **OUTPUT FORMAT:**
+    Return the complete script as VALID JSON with this structure:
+
+    {{
+      "first_draft_script": {{
+        "episode_number": {episode_number},
+        "episode_title": "{episode_title}",
+        "total_word_count": 2000,
+        "scenes": [
+          {{
+            "scene_number": 1,
+            "heading": "INT. LOCATION - TIME",
+            "estimated_runtime": "4 minutes",
+            "script_content": "Complete formatted script for this scene with dialogue, SFX, and stage directions",
+            "word_count": 385,
+            "characters_present": ["CHARACTER 1", "CHARACTER 2"],
+            "audio_cues_used": ["ambient_hospital", "heart_monitor", "footsteps"],
+            "p3_plants_included": ["P_MC_001"],
+            "reveals": ["Information revealed in this scene"],
+            "emotional_beats": ["Key emotional moments"]
+          }}
+        ],
+        "structural_elements": {{
+          "cold_open": "Scene numbers that form cold open",
+          "act_1": "Scene numbers in Act 1",
+          "act_2": "Scene numbers in Act 2",
+          "act_3": "Scene numbers in Act 3",
+          "tag": "Scene number for tag"
+        }},
+        "audio_summary": {{
+          "total_audio_cues": 47,
+          "recurring_motifs": ["lighter_click", "rain"],
+          "location_signatures": ["marcus_apartment", "police_station"]
+        }},
+        "character_summary": {{
+          "marcus_cole": {{
+            "lines_of_dialogue": 15,
+            "key_moments": ["Lighter click establishes guilt", "Refuses to help Rodriguez"]
+          }}
+        }},
+        "hook_and_cliffhanger": {{
+          "opening_hook_effectiveness": "Mystery established in 60 seconds",
+          "cliffhanger_setup": "Marcus revealed as witness to crime"
+        }}
+      }}
+    }}
+
+    **SCRIPT WRITING BEST PRACTICES:**
+    - Write dialogue that sounds natural when spoken aloud
+    - Use contractions (don't, won't, can't) for natural speech
+    - Vary sentence length for rhythm
+    - Include interrupted dialogue (em dash —)
+    - Show character through voice (not description)
+    - Every sound effect advances story or character
+    - Subtext > text (imply more than you state)
+    - Read dialogue aloud mentally to check flow
+    - Audio cues create atmosphere AND information
+    - Silence/pauses are punctuation
+
+    **AUDIO DRAMA SPECIFIC:**
+    - Location changes MUST be audio-clear
+    - Time passage shown through sound (clock, bells, fading/rising ambience)
+    - Character entrances/exits have audio (footsteps, doors)
+    - Phone calls: one side filtered, other side room tone
+    - Flashbacks: different acoustic space or audio treatment
+    - Montages: music/sound bridge with sparse dialogue
+    - Action scenes: precise sound choreography
+
+    **QUALITY TARGETS:**
+    - Target 2000-3500 words for first draft (67-75% of final word budget)
+    - This is intentionally UNDER target (polish pass will expand)
+    - Focus on structure, voice, and key beats
+    - Leave room for Station 22 to deepen and expand
+    - Prioritize getting story beats right over perfect prose
+
+    **WHAT TO AVOID:**
+    - ❌ Visual-only descriptions ("we see")
+    - ❌ Unfilmable action (complex simultaneous events)
+    - ❌ On-the-nose dialogue (characters stating obvious)
+    - ❌ Info dumps (exposition disguised as dialogue)
+    - ❌ Unmotivated sound effects (sounds with no purpose)
+    - ❌ Inconsistent character voices
+    - ❌ Forgetting to plant required P3 elements
+    - ❌ Revealing information too early/late per strategy
+
+    **REMEMBER:**
+    - This is a FIRST DRAFT - prioritize structure over perfection
+    - Station 22 will polish and expand
+    - Station 23 will refine dialogue
+    - Station 24 will optimize audio cues
+    - Get the bones right, flesh comes later
+
+    Write the complete first draft now. Return ONLY valid JSON.
+
+dependencies:
+  - station: 1-9
+    name: "Complete foundation"
+  - station: 10
+    name: "Reveal Strategy (P3 Grid)"
+  - station: 11
+    name: "Runtime Planning (Word Budgets)"
+  - station: 12
+    name: "Hook & Cliffhanger Design"
+  - station: 13
+    name: "Timeline Manager"
+  - station: 14
+    name: "Simple Blueprints"
+  - station: 15
+    name: "Detailed Outlines"
+  - station: 16-20
+    name: "Validation Suite"
+
+# Enable/disable this station in the pipeline
+enabled: true
+
+# Special configuration for Station 21
+special_features:
+  supports_episode_selection: true
+  supports_regeneration: true
+  supports_scene_editing: true
+  output_formats:
+    - fountain
+    - json
+    - txt
+    - pdf
+  can_loop_episodes: true
+  auto_draft_mode: true

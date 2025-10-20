@@ -859,8 +859,14 @@ class Station04ReferenceMining:
 
         # Save to Redis
         redis_key = f"audiobook:{session_id}:station_04"
-        await self.redis.set(redis_key, json.dumps(output_data), expire=86400)
-        print(f"✅ Saved to Redis for Station 5")
+        try:
+            await self.redis.set(redis_key, json.dumps(output_data), expire=86400)
+            print(f"✅ Saved to Redis for Station 5")
+        except Exception as e:
+            print(f"❌ Failed to save to Redis: {str(e)}")
+            print(f"⚠️  Station 4.5 will not be able to load this session")
+            print(f"   Data is still saved to JSON/TXT/CSV files")
+            raise ValueError(f"Redis save failed: {str(e)}")
 
     def save_readable_txt(self, path: Path, data: Dict):
         """Save human-readable TXT file"""

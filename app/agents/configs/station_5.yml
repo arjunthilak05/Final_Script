@@ -4,7 +4,7 @@ station_name: "Station 5: Season Architect"
 description: "Designs the complete season structure for an audiobook based on the provided project foundation. Analyzes screenplay styles, recommends top 3 styles, creates season skeleton, and maps rhythm patterns."
 model: "glm-4.5"
 temperature: 0.7
-max_tokens: 4096
+max_tokens: 12000
 
 prompts:
   season_architecture_analysis: |

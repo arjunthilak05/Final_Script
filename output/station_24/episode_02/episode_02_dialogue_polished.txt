@@ -1,13 +1,13 @@
 === SCENE 1: INT. TOM'S APARTMENT - EARLY MORNING ===
 [SFX: Ambient apartment sounds - light morning traffic, distant birds chirping, soft ticking of a clock]
 
-[We hear the gentle hum of a coffee machine brewing. TOM, in his mid-30s, is in his living room, dressed in casual clothes. He walks to his desk, where a laptop and a smartphone are set up.]
+[SFX: Gentle hum of a coffee machine brewing. TOM, in his mid-30s, is in his living room, dressed in casual clothes. He walks to his desk, where a laptop and a smartphone are set up.]
 
 TOM: (muttering to himself) Alright, let's get this show on the road. (pauses, clicks his pen) One message at a time. (glances at a photo on his desk showing him in medical scrubs)
 
 [SFX: Keyboard typing, light clicks of the pen]
 
-TOM: (into phone) Good morning, Sarah. I know you're having a tough time, but remember, you're stronger than you think. (pauses) Keep pushing forward. (pauses) I believe in you. (types on laptop, satisfied) After what we went through, I know you can handle anything.
+TOM: (into phone) Good morning, Sarah. (pauses) I remember when I was in your shoes. (pauses) You've got this. (pauses) Keep pushing forward. (pauses) I believe in you. (types on laptop, satisfied) After what we went through, I know you can handle anything.
 
 [SFX: Notification sound, phone screen lights up]
 
@@ -22,7 +22,7 @@ TOM: (softly) I hope these words make a difference. (pauses, sighs) Just a few m
 
 [JULIA, a 32-year-old doctor, is in her bedroom. She jolts awake as her alarm blares. She quickly silences it, then reaches for her phone and unlocks it.]
 
-JULIA: (rubbing her eyes) Another day. (phone buzzes with new message, she reads it) 'You've got this, Julia. You're a hero to your patients.' (sits up, intrigued) Who... who are you? (pauses, looks at a hospital ID badge on her nightstand) How do you know my name? (pauses, types a response) Thank you.
+JULIA: (rubbing her eyes) Another day. (phone buzzes with new message, she reads it) 'You've got this, Julia. You're a hero to your patients.' (sits up, intrigued) Who... who are you? (pauses, looks at a hospital ID badge on her nightstand) How do you know my name? (pauses, types a response) Thanks.
 
 [SFX: Phone screen dims, quick rustling of sheets as Julia throws off covers]
 
@@ -39,11 +39,11 @@ DR. MARTINEZ: (urgent) We've got incoming trauma cases. Julia, you take the firs
 
 [SFX: Stretchers being wheeled in, urgent voices, beeping monitors]
 
-JULIA: (determined) Got it, Dr. Martinez. (to MIKE) Let's go. (they move quickly)
+JULIA: (determined) Got it. (to MIKE) Move, Mike. (they move quickly)
 
-MIKE: (nervously tapping his phone in his pocket) Yes, Doctor. (pauses) Never seen this many cases at once. (stutters) What do we do?
+MIKE: (nervously tapping his phone in his pocket) Yeah, Doctor. I've never... never seen this many cases at once. (stutters) What do we do?
 
-JULIA: (calm) One step at a time. (to a nurse) Full assessment. Vitals. And start an IV. (pauses) Mike, assist with the IV. (pauses) We will do this.
+JULIA: (calm) One step at a time. (to a nurse) We need a full assessment, vitals, and start an IV. (pauses) Mike, help with the IV. (pauses) We can do this.
 
 [SFX: IV being set up, rapid breathing, beeping monitors]
 
@@ -58,11 +58,11 @@ JULIA: (focused) Increase the IV rate and prep for a blood transfusion. (pauses)
 
 [DR. MARTINEZ and JULIA are in a small staff room. DR. MARTINEZ is sitting at a table, looking tired. JULIA stands by the window, looking out.]
 
-DR. MARTINEZ: (sighing) You did well out there, Julia. (pauses) It's not easy, but you handled it with grace.
+DR. MARTINEZ: (sighing) You handled it. (pauses) Not easy, but you managed.
 
-JULIA: (softly) Thank you, Dr. Martinez. (looks out the window, then back at him) It's just... (intercom buzzes loudly) Some days are harder than others. (rises to answer intercom) I keep thinking about the patients and their families. (pauses) It's a lot.
+JULIA: (softly) Thank you, Dr. Martinez. (looks out the window, then back at him) It's just... some days are... harder than others. I keep thinking about the patients and their families. It's a lot.
 
-DR. MARTINEZ: (encouraging) You're making a difference, you know? One patient at a time. Just remember that.
+DR. MARTINEZ: (encouraging) You're making a difference. One patient at a time. Remember that.
 
 JULIA: (nodding, starts pacing) I will. I just... (stops pacing, looks at him intently) I feel like I need more. Those messages I've been getting... (intercom buzzes again) They're helping somehow. I'll figure it out. Thanks for believing in me.
 
@@ -75,7 +75,7 @@ DR. MARTINEZ: (smiling) Always. (pauses) Take a moment to breathe. You've earned
 
 [TOM is in his office, sitting at his desk. He startles as his office phone rings, then checks his personal phone with concern.]
 
-TOM: (muttering, ignores ringing office phone) Where are you? (quickly types a message, glances at ringing phone) Just wanted to see how your day is going. Hope work isn't too stressful. (sighs, answers office phone briefly) Mr. Henderson... I'll call you right back. (returns to personal phone) Remember to take breaks when you can. (pauses, puts the phone down)
+TOM: (muttering, ignores ringing office phone) Where are you? (quickly types a message, glances at ringing phone) I hope you're doing okay. (sighs, answers office phone briefly) Mr. Henderson, I'll call you right back. (returns to personal phone) Remember to take breaks when you can. (pauses, puts the phone down)
 
 [SFX: Phone screen dims, office phone rings again]
 
@@ -88,7 +88,7 @@ TOM: (to himself, stands up) I hope you're doing alright. (grabs jacket, looks a
 
 [JULIA enters her living room, drops her bag, and flops on the couch with her phone. She scrolls through messages, stopping at the motivational ones.]
 
-JULIA: (whispering, touches screen) 'You're a hero to your patients.' (types quickly) Thank you. (continues scrolling, stops) 'You've got this.' (sits up straighter) Who are you? (pauses, types more) Means a lot. Your messages. (pauses, hits send)
+JULIA: (whispering, touches screen) 'You're a hero to your patients.' (types quickly) Thanks. (continues scrolling, stops) 'You've got this.' (sits up straighter) Who are you, really? (pauses, types more) Your messages mean a lot. (pauses, hits send)
 
 [SFX: Phone screen lights up, notification sound]
 
@@ -101,7 +101,7 @@ JULIA: (to herself, standing up) I need to know. (paces room, phone in hand) May
 
 [TOM enters his apartment, tosses keys on table. He's sitting on the couch with a book when his phone vibrates. He quickly grabs it.]
 
-TOM: (excited) A message? (pauses, unlocks the phone) 'Your messages mean a lot.' (pauses, types a response) I'm glad they help. (pauses) I've been... well, I've been in your shoes before. (pauses, hits send) (pauses, sighs) I hope this helps. (pauses, puts the phone down) (to himself) Maybe this is the start of something new. (pauses, turns off the lamp)
+TOM: (excited) A message? (pauses, unlocks the phone) 'Your messages mean a lot.' (pauses, types a response) I'm glad they help. (pauses) I've been in your shoes before. (pauses, hits send) (pauses, sighs) I hope this helps. (pauses, puts the phone down) (to himself) Maybe this is the start of something new. (pauses, turns off the lamp)
 
 [SFX: Lamp turns off, soft ambient sounds]
 

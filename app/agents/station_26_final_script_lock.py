@@ -139,11 +139,19 @@ class Station26FinalScriptLock:
 
                     if data_raw:
                         episode_data = json.loads(data_raw)
-                        optimized_script = episode_data.get('audio_optimized_script', {})
-                        complete_script = optimized_script.get('complete_audio_script', '')
 
-                        # If complete_audio_script is empty, reconstruct from scenes
-                        if not complete_script or (isinstance(complete_script, list) and len(complete_script) == 0):
+                        # Get the expanded script from word count expansion section
+                        word_expansion = episode_data.get('word_count_expansion', {})
+                        complete_script = word_expansion.get('expanded_full_script', '')
+
+                        # Fallback: try audio_markup section
+                        if not complete_script:
+                            audio_markup = episode_data.get('audio_markup', {})
+                            complete_script = audio_markup.get('complete_audio_script', '')
+
+                        # Final fallback: reconstruct from optimized script
+                        if not complete_script:
+                            optimized_script = episode_data.get('audio_optimized_script', {})
                             complete_script = self._reconstruct_script_from_scenes(optimized_script)
 
                         # Handle if it's a list
@@ -153,7 +161,7 @@ class Station26FinalScriptLock:
                         self.script_episodes[episode_num] = {
                             'source': 'station_25',
                             'script': complete_script,
-                            'optimized_data': optimized_script,
+                            'optimized_data': episode_data,
                             'episode_number': episode_num
                         }
                         print(f"   ✓ Episode {episode_num} (from Station 25 - audio optimized)")

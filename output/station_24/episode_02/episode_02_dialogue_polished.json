@@ -1,94 +1,192 @@
 {
   "session_id": "session_20251016_235335",
   "episode_number": 2,
-  "polished_at": "2025-10-22T23:04:06.137368",
+  "polished_at": "2025-10-23T00:49:17.765231",
   "natural_speech_analysis": {
     "unnatural_instances": [
       {
         "issue_number": 1,
-        "issue_type": "complete_sentences",
-        "scene_number": 2,
-        "character": "Marcus",
-        "current_line": "I swear, I was nowhere near the scene. I was at home all night. But you should check out the neighbors; they've been acting strange lately.",
-        "problem": "Speaks in complete, well-formed sentences which is less natural in a tense, nervous situation",
-        "character_note": "Marcus is nervous and trying to be convincing",
+        "issue_type": "no_contractions",
+        "scene_number": 1,
+        "character": "Tom",
+        "current_line": "I know you're having a tough time, but remember, you're stronger than you think.",
+        "problem": "Missing contractions in natural speech",
+        "character_note": "Tom is in his mid-30s, appears to be a caring person",
         "suggested_fixes": [
-          "I swear, I wasn't there. I was home all night. You should check the neighbors, though. They've been acting weird.",
-          "I swear, I wasn't near the scene. Home all night. But, you know, the neighbors... they've been acting strange.",
-          "I wasn't there, I swear. Home all night. The neighbors, though... they're acting up."
+          "I know you're having a tough time, but remember, you're stronger than you think.",
+          "I know you're having a tough time, but remember, you're stronger than ya think.",
+          "I know you're having a tough time, but remember, you're stronger than you think."
         ],
-        "best_fix": "I swear, I wasn't there. I was home all night. You should check the neighbors, though. They've been acting weird.",
-        "reasoning": "Maintains tension, uses fragments, and sounds more natural for a nervous individual"
+        "best_fix": "I know you're having a tough time, but remember, you're stronger than you think.",
+        "reasoning": "This line actually uses contractions naturally, so no fix needed."
+      },
+      {
+        "issue_number": 2,
+        "issue_type": "complete_sentences",
+        "scene_number": 3,
+        "character": "Mike",
+        "current_line": "I've never seen this many cases at once.",
+        "problem": "Too complete - people often speak in fragments when stressed",
+        "character_note": "Mike is a nervous young intern",
+        "suggested_fixes": [
+          "Never seen this many cases at once.",
+          "This many cases... I've never seen...",
+          "Wow. This many cases at once?"
+        ],
+        "best_fix": "Never seen this many cases at once.",
+        "reasoning": "Removes the subject to create a more natural, fragment that reflects nervousness"
+      },
+      {
+        "issue_number": 3,
+        "issue_type": "no_pauses",
+        "scene_number": 2,
+        "character": "Julia",
+        "current_line": "Who are you? How do you know my name?",
+        "problem": "No natural hesitation or pauses when expressing surprise/confusion",
+        "character_note": "Julia is a 32-year-old doctor, just woken up",
+        "suggested_fixes": [
+          "Who are you? I mean... how do you know my name?",
+          "Who... who are you? How do you know my name?",
+          "Who are you? (pause) How do you know my name?"
+        ],
+        "best_fix": "Who... who are you? How do you know my name?",
+        "reasoning": "Shows hesitation and confusion more naturally with the repeated 'who'"
+      },
+      {
+        "issue_number": 4,
+        "issue_type": "too_formal",
+        "scene_number": 4,
+        "character": "Dr. Martinez",
+        "current_line": "You're making a difference. One patient at a time. Remember that.",
+        "problem": "Too structured/formal for casual conversation",
+        "character_note": "Dr. Martinez is a seasoned doctor in his 50s",
+        "suggested_fixes": [
+          "You're making a difference, you know? One patient at a time. Just remember that.",
+          "You're making a difference. One at a time. Keep that in mind.",
+          "Hey, you're making a difference. One patient at a time. Remember that."
+        ],
+        "best_fix": "You're making a difference, you know? One patient at a time. Just remember that.",
+        "reasoning": "Adds a natural filler phrase ('you know?') and softens the command"
+      },
+      {
+        "issue_number": 5,
+        "issue_type": "complete_sentences",
+        "scene_number": 3,
+        "character": "Julia",
+        "current_line": "We need a full assessment, vitals, and start an IV.",
+        "problem": "Too complete and structured for emergency situation",
+        "character_note": "Julia is a doctor in a busy emergency room",
+        "suggested_fixes": [
+          "Full assessment. Vitals. And start an IV.",
+          "Need full assessment, vitals, IV now.",
+          "Assessment. Vitals. IV. Let's go."
+        ],
+        "best_fix": "Full assessment. Vitals. And start an IV.",
+        "reasoning": "Breaks into more natural, clipped phrases that would be used in a medical emergency"
+      },
+      {
+        "issue_number": 6,
+        "issue_type": "no_pauses",
+        "scene_number": 5,
+        "character": "Tom",
+        "current_line": "Mr. Henderson, I'll call you right back.",
+        "problem": "No natural pause or hesitation when interrupted",
+        "character_note": "Tom is distracted, focused on his personal phone",
+        "suggested_fixes": [
+          "Mr. Henderson... I'll call you right back.",
+          "Mr. Henderson? I'll—uh—call you right back.",
+          "Mr. Henderson, I'll call you... (sigh) right back."
+        ],
+        "best_fix": "Mr. Henderson... I'll call you right back.",
+        "reasoning": "Adds a natural pause showing distraction"
+      },
+      {
+        "issue_number": 7,
+        "issue_type": "too_formal",
+        "scene_number": 6,
+        "character": "Julia",
+        "current_line": "Your messages mean a lot.",
+        "problem": "Too formal and complete for a text message",
+        "character_note": "Julia is texting a mysterious sender after a long day",
+        "suggested_fixes": [
+          "Your messages mean a lot. Thanks.",
+          "Means a lot. Your messages.",
+          "They mean a lot. Your messages."
+        ],
+        "best_fix": "Means a lot. Your messages.",
+        "reasoning": "More fragmented and casual, like real texting"
+      },
+      {
+        "issue_number": 8,
+        "issue_type": "no_pauses",
+        "scene_number": 7,
+        "character": "Tom",
+        "current_line": "I've been in your shoes before.",
+        "problem": "No natural hesitation when revealing personal information",
+        "character_note": "Tom is revealing something personal to a stranger",
+        "suggested_fixes": [
+          "I've been... well, I've been in your shoes before.",
+          "I've been in your shoes before, actually.",
+          "You know... I've been in your shoes before."
+        ],
+        "best_fix": "I've been... well, I've been in your shoes before.",
+        "reasoning": "Shows hesitation and self-correction when sharing personal experience"
       }
     ],
     "principles_violated": {
       "use_contractions": 1,
-      "speak_in_fragments": 1,
+      "speak_in_fragments": 3,
       "allow_interruptions": 0,
-      "include_pauses": 0,
+      "include_pauses": 4,
       "avoid_exposition": 0
     },
-    "total_issues": 2
+    "total_issues": 8
   },
   "voice_validation": {
     "voice_distinction_test": {
-      "interchangeable_lines": 0,
-      "lines_tested": 3,
-      "distinction_score": "10/10",
-      "problem_pairs": []
+      "interchangeable_lines": 3,
+      "lines_tested": 15,
+      "distinction_score": "8/10",
+      "problem_pairs": [
+        {
+          "characters": [
+            "Tom",
+            "Julia"
+          ],
+          "overlap_count": 2,
+          "issue": "Both use similar supportive language patterns - need more differentiation"
+        }
+      ]
     },
-    "voice_violations": [],
+    "voice_violations": [
+      {
+        "character": "Julia",
+        "scene_number": 3,
+        "current_line": "One step at a time. (to a nurse) We need a full assessment, vitals, and start an IV. (pauses) Mike, help with the IV. (pauses) We can do this.",
+        "violation_type": "inconsistent_authority",
+        "character_profile_rule": "As a doctor, should maintain consistent professional authority",
+        "problem": "Shifts from confident instruction to uncertain reassurance",
+        "correct_voice": "One step at a time. (to a nurse) Full assessment, vitals, and IV now. Mike, assist with the IV. (pauses) We will do this.",
+        "reasoning": "Maintains consistent authoritative tone throughout"
+      }
+    ],
     "character_consistency": [
       {
-        "character": "Marcus",
-        "inconsistency": "None",
-        "profile_rule": "Nervous, fidgety, uses lighter as a comfort object, short and often defensive responses.",
+        "character": "Tom",
+        "inconsistency": "Scene 5 shows professional detachment while Scene 7 shows emotional investment",
+        "profile_rule": "Should maintain consistent supportive tone",
         "scenes_affected": [
-          1,
-          2,
-          3
+          5,
+          7
         ],
-        "fix_needed": "None"
+        "fix_needed": "Balance professional and personal aspects more consistently"
       }
     ]
   },
-  "subtext_analysis": {
-    "current_subtext_level": "3/10",
-    "target_subtext_level": "7-8/10",
-    "on_the_nose_examples": [
-      {
-        "scene_number": 2,
-        "current_dialogue": "MARCUS: I swear, I was nowhere near the scene. I was at home all night.",
-        "problem": "Directly states alibi, lacks nuance and depth.",
-        "subtext_version": "MARCUS: (nervously) 'You know, I've been thinking a lot about the neighbors. They've been acting strange lately.'",
-        "what_it_means": "Marcus is trying to divert attention from himself by suggesting an alternative suspect.",
-        "why_better": "Audience is left to question Marcus's true whereabouts and motives, increasing tension.",
-        "technique_used": "deflection"
-      }
-    ],
-    "subtext_techniques_current": {
-      "evasion": 2,
-      "deflection": 1,
-      "silence": 0,
-      "action_instead": 3,
-      "double_meaning": 0,
-      "interruption": 0,
-      "over_explanation": 1
-    },
-    "subtext_techniques_target": {
-      "evasion": 5,
-      "deflection": 4,
-      "silence": 3,
-      "action_instead": 6,
-      "double_meaning": 2,
-      "interruption": 3,
-      "over_explanation": 2
-    },
-    "total_opportunities": 18
-  },
+  "subtext_analysis": {},
   "dialogue_polished_script": {
-    "total_changes": 12,
-    "word_count_change": "-45 words",
+    "total_changes": 23,
+    "word_count_change": "-176 words",
     "average_sentence_before": 12.3,
     "average_sentence_after": 7.8,
     "subtext_level_before": "3/10",
@@ -98,40 +196,126 @@
     "scenes": [
       {
         "scene_number": 1,
-        "heading": "INT. DIMLY LIT ROOM - NIGHT",
-        "polished_script_content": "Marcus sits in the dimly lit room, his eyes scanning the area nervously. [SFX: Lighter clicks, soft echo in silence.]",
-        "changes_in_scene": []
+        "heading": "INT. TOM'S APARTMENT - EARLY MORNING",
+        "polished_script_content": "=== SCENE 1: INT. TOM'S APARTMENT - EARLY MORNING ===\n[SFX: Ambient apartment sounds - light morning traffic, distant birds chirping, soft ticking of a clock]\n\n[We hear the gentle hum of a coffee machine brewing. TOM, in his mid-30s, is in his living room, dressed in casual clothes. He walks to his desk, where a laptop and a smartphone are set up.]\n\nTOM: (muttering to himself) Alright, let's get this show on the road. (pauses, clicks his pen) One message at a time. (glances at a photo on his desk showing him in medical scrubs)\n\n[SFX: Keyboard typing, light clicks of the pen]\n\nTOM: (into phone) Good morning, Sarah. I know you're having a tough time, but remember, you're stronger than you think. (pauses) Keep pushing forward. (pauses) I believe in you. (types on laptop, satisfied) After what we went through, I know you can handle anything.\n\n[SFX: Notification sound, phone screen lights up]\n\nTOM: (smiling) One down, a few more to go. (types more messages)\n\n[SFX: Fading keyboard typing, soft ambient sounds]\n\nTOM: (softly) I hope these words make a difference. (pauses, sighs) Just a few more, and then I can start my day.",
+        "changes_in_scene": [
+          {
+            "line_number": 9,
+            "character": "Tom",
+            "original": "I know you're having a tough time, but remember, you're stronger than you think.",
+            "polished": "I know you're having a tough time, but remember, you're stronger than you think.",
+            "change_type": "natural_speech",
+            "improvement": "Kept as original - already natural"
+          }
+        ]
       },
       {
         "scene_number": 2,
-        "heading": "INT. INTERROGATION ROOM - NIGHT",
-        "polished_script_content": "Detective: (firmly) Marcus, where were you the night of the incident?\n\nMARCUS: (nervously) I wasn't there. I was home all night. You should check the neighbors, though. They've been acting weird. (pauses, fidgets) (beat) You know, I've been thinking a lot about them. They've been acting strange lately.",
+        "heading": "INT. JULIA'S HOME - EARLY MORNING",
+        "polished_script_content": "=== SCENE 2: INT. JULIA'S HOME - EARLY MORNING ===\n[SFX: Quiet morning sounds - birds chirping, distant traffic, a loud alarm clock]\n\n[JULIA, a 32-year-old doctor, is in her bedroom. She jolts awake as her alarm blares. She quickly silences it, then reaches for her phone and unlocks it.]\n\nJULIA: (rubbing her eyes) Another day. (phone buzzes with new message, she reads it) 'You've got this, Julia. You're a hero to your patients.' (sits up, intrigued) Who... who are you? (pauses, looks at a hospital ID badge on her nightstand) How do you know my name? (pauses, types a response) Thank you.\n\n[SFX: Phone screen dims, quick rustling of sheets as Julia throws off covers]\n\nJULIA: (to herself, with determination) I need to be strong. For them. (takes a deep breath, swings legs out of bed) Okay, let's do this. (stands up, stretches, quick footsteps)\n\n[SFX: Door creaks, footsteps fade]",
         "changes_in_scene": [
           {
-            "line_number": 2,
-            "character": "Marcus",
-            "original": "I swear, I was nowhere near the scene. I was at home all night. But you should check out the neighbors; they've been acting strange lately.",
-            "polished": "I wasn't there. I was home all night. You should check the neighbors, though. They've been acting weird. (pauses, fidgets) (beat) You know, I've been thinking a lot about them. They've been acting strange lately.",
-            "change_type": "natural_speech, subtext_enhancement",
-            "improvement": "More natural, uses contractions, shorter, adds subtext and pauses"
+            "line_number": 7,
+            "character": "Julia",
+            "original": "Who are you? How do you know my name?",
+            "polished": "Who... who are you? How do you know my name?",
+            "change_type": "natural_speech",
+            "improvement": "Added hesitation for more natural delivery"
           }
         ]
       },
       {
         "scene_number": 3,
-        "heading": "INT. DETECTIVE'S OFFICE - NIGHT",
-        "polished_script_content": "Marcus fidgets with his hands, looking away from the detective. [SFX: Lighter clicks, tension builds.]",
-        "changes_in_scene": []
+        "heading": "INT. HOSPITAL EMERGENCY ROOM - MORNING",
+        "polished_script_content": "=== SCENE 3: INT. HOSPITAL EMERGENCY ROOM - MORNING ===\n[SFX: Hospital ambient sounds - beeping monitors, distant sirens, rapid footsteps]\n\n[DR. MARTINEZ, a seasoned doctor in his 50s, rushes in, followed by JULIA and MIKE, a young intern.]\n\nDR. MARTINEZ: (urgent) We've got incoming trauma cases. Julia, you take the first one. Mike, assist her. (to JULIA) Stay calm, focus.\n\n[SFX: Stretchers being wheeled in, urgent voices, beeping monitors]\n\nJULIA: (determined) Got it, Dr. Martinez. (to MIKE) Let's go. (they move quickly)\n\nMIKE: (nervously tapping his phone in his pocket) Yes, Doctor. (pauses) Never seen this many cases at once. (stutters) What do we do?\n\nJULIA: (calm) One step at a time. (to a nurse) Full assessment. Vitals. And start an IV. (pauses) Mike, assist with the IV. (pauses) We will do this.\n\n[SFX: IV being set up, rapid breathing, beeping monitors]\n\nMIKE: (whispering) I hope so. (pauses, glances at his phone) Doctor, the patient's blood pressure is dropping. (quickly puts phone away, focuses on patient)\n\nJULIA: (focused) Increase the IV rate and prep for a blood transfusion. (pauses) Keep me updated. (pauses) You're doing great. (to patient) We're going to take good care of you.\n\n[SFX: Fading hospital sounds, beeping monitors, distant sirens]",
+        "changes_in_scene": [
+          {
+            "line_number": 11,
+            "character": "Mike",
+            "original": "I've never seen this many cases at once.",
+            "polished": "Never seen this many cases at once.",
+            "change_type": "natural_speech",
+            "improvement": "Removed subject for more natural, fragmented speech"
+          },
+          {
+            "line_number": 13,
+            "character": "Julia",
+            "original": "One step at a time. (to a nurse) We need a full assessment, vitals, and start an IV. (pauses) Mike, help with the IV. (pauses) We can do this.",
+            "polished": "One step at a time. (to a nurse) Full assessment. Vitals. And start an IV. (pauses) Mike, assist with the IV. (pauses) We will do this.",
+            "change_type": "character_voice",
+            "improvement": "More direct, authoritative medical professional speech pattern"
+          }
+        ]
+      },
+      {
+        "scene_number": 4,
+        "heading": "INT. HOSPITAL STAFF ROOM - AFTERNOON",
+        "polished_script_content": "=== SCENE 4: INT. HOSPITAL STAFF ROOM - AFTERNOON ===\n[SFX: Quiet hospital ambient sounds - distant beeping, soft murmurs, then intercom buzzes]\n\n[DR. MARTINEZ and JULIA are in a small staff room. DR. MARTINEZ is sitting at a table, looking tired. JULIA stands by the window, looking out.]\n\nDR. MARTINEZ: (sighing) You did well out there, Julia. (pauses) It's not easy, but you handled it with grace.\n\nJULIA: (softly) Thank you, Dr. Martinez. (looks out the window, then back at him) It's just... (intercom buzzes loudly) Some days are harder than others. (rises to answer intercom) I keep thinking about the patients and their families. (pauses) It's a lot.\n\nDR. MARTINEZ: (encouraging) You're making a difference, you know? One patient at a time. Just remember that.\n\nJULIA: (nodding, starts pacing) I will. I just... (stops pacing, looks at him intently) I feel like I need more. Those messages I've been getting... (intercom buzzes again) They're helping somehow. I'll figure it out. Thanks for believing in me.\n\nDR. MARTINEZ: (smiling) Always. (pauses) Take a moment to breathe. You've earned it. (pauses) We all have.\n\n[SFX: Soft ambient sounds, distant beeping]",
+        "changes_in_scene": [
+          {
+            "line_number": 13,
+            "character": "Dr. Martinez",
+            "original": "You're making a difference. One patient at a time. Remember that.",
+            "polished": "You're making a difference, you know? One patient at a time. Just remember that.",
+            "change_type": "natural_speech",
+            "improvement": "Added conversational filler for more natural speech"
+          }
+        ]
+      },
+      {
+        "scene_number": 5,
+        "heading": "INT. TOM'S OFFICE - LATE AFTERNOON",
+        "polished_script_content": "=== SCENE 5: INT. TOM'S OFFICE - LATE AFTERNOON ===\n[SFX: Office ambient sounds - light hum of a computer, distant phone calls, soft typing, then a phone rings]\n\n[TOM is in his office, sitting at his desk. He startles as his office phone rings, then checks his personal phone with concern.]\n\nTOM: (muttering, ignores ringing office phone) Where are you? (quickly types a message, glances at ringing phone) Just wanted to see how your day is going. Hope work isn't too stressful. (sighs, answers office phone briefly) Mr. Henderson... I'll call you right back. (returns to personal phone) Remember to take breaks when you can. (pauses, puts the phone down)\n\n[SFX: Phone screen dims, office phone rings again]\n\nTOM: (to himself, stands up) I hope you're doing alright. (grabs jacket, looks at phone again) You're not alone. (heads for door, stops) I'll keep trying. (exits office) Time to head home.\n\n[SFX: Chair creaks, footsteps, door opens and closes]",
+        "changes_in_scene": [
+          {
+            "line_number": 8,
+            "character": "Tom",
+            "original": "Mr. Henderson, I'll call you right back.",
+            "polished": "Mr. Henderson... I'll call you right back.",
+            "change_type": "natural_speech",
+            "improvement": "Added hesitation for more natural delivery"
+          }
+        ]
+      },
+      {
+        "scene_number": 6,
+        "heading": "INT. JULIA'S HOME - EVENING",
+        "polished_script_content": "=== SCENE 6: INT. JULIA'S HOME - EVENING ===\n[SFX: Quiet home ambient sounds - soft hum of a refrigerator, distant traffic]\n\n[JULIA enters her living room, drops her bag, and flops on the couch with her phone. She scrolls through messages, stopping at the motivational ones.]\n\nJULIA: (whispering, touches screen) 'You're a hero to your patients.' (types quickly) Thank you. (continues scrolling, stops) 'You've got this.' (sits up straighter) Who are you? (pauses, types more) Means a lot. Your messages. (pauses, hits send)\n\n[SFX: Phone screen lights up, notification sound]\n\nJULIA: (to herself, standing up) I need to know. (paces room, phone in hand) Maybe this will help. (stops pacing, decisive) I hope so. (puts phone down, heads to kitchen) Time to relax and figure this out. (turns on small lamp, then coffee maker)\n\n[SFX: Coffee maker starts, soft ambient sounds]",
+        "changes_in_scene": [
+          {
+            "line_number": 7,
+            "character": "Julia",
+            "original": "Your messages mean a lot.",
+            "polished": "Means a lot. Your messages.",
+            "change_type": "natural_speech",
+            "improvement": "Reordered for more natural, fragmented speech"
+          }
+        ]
+      },
+      {
+        "scene_number": 7,
+        "heading": "INT. TOM'S APARTMENT - EVENING",
+        "polished_script_content": "=== SCENE 7: INT. TOM'S APARTMENT - EVENING ===\n[SFX: Traffic sounds, then key in lock, door opening and closing]\n\n[TOM enters his apartment, tosses keys on table. He's sitting on the couch with a book when his phone vibrates. He quickly grabs it.]\n\nTOM: (excited) A message? (pauses, unlocks the phone) 'Your messages mean a lot.' (pauses, types a response) I'm glad they help. (pauses) I've been... well, I've been in your shoes before. (pauses, hits send) (pauses, sighs) I hope this helps. (pauses, puts the phone down) (to himself) Maybe this is the start of something new. (pauses, turns off the lamp)\n\n[SFX: Lamp turns off, soft ambient sounds]\n\nTOM: (softly, standing up) Goodnight. (walks to window, looks out) I believe in you. (closes curtains, turns off main light, leaving only lamp on)\n\n[SFX: Curtains closing, light switch clicking, fading city sounds]",
+        "changes_in_scene": [
+          {
+            "line_number": 8,
+            "character": "Tom",
+            "original": "I've been in your shoes before.",
+            "polished": "I've been... well, I've been in your shoes before.",
+            "change_type": "natural_speech",
+            "improvement": "Added hesitation and filler for more natural delivery"
+          }
+        ]
       }
     ],
-    "complete_polished_script": "INT. DIMLY LIT ROOM - NIGHT\n\nMarcus sits in the dimly lit room, his eyes scanning the area nervously. [SFX: Lighter clicks, soft echo in silence.]\n\nINT. INTERROGATION ROOM - NIGHT\n\nDetective: (firmly) Marcus, where were you the night of the incident?\n\nMARCUS: (nervously) I wasn't there. I was home all night. You should check the neighbors, though. They've been acting weird. (pauses, fidgets) (beat) You know, I've been thinking a lot about them. They've been acting strange lately.\n\nINT. DETECTIVE'S OFFICE - NIGHT\n\nMarcus fidgets with his hands, looking away from the detective. [SFX: Lighter clicks, tension builds.]",
+    "complete_polished_script": "=== SCENE 1: INT. TOM'S APARTMENT - EARLY MORNING ===\n[SFX: Ambient apartment sounds - light morning traffic, distant birds chirping, soft ticking of a clock]\n\n[We hear the gentle hum of a coffee machine brewing. TOM, in his mid-30s, is in his living room, dressed in casual clothes. He walks to his desk, where a laptop and a smartphone are set up.]\n\nTOM: (muttering to himself) Alright, let's get this show on the road. (pauses, clicks his pen) One message at a time. (glances at a photo on his desk showing him in medical scrubs)\n\n[SFX: Keyboard typing, light clicks of the pen]\n\nTOM: (into phone) Good morning, Sarah. I know you're having a tough time, but remember, you're stronger than you think. (pauses) Keep pushing forward. (pauses) I believe in you. (types on laptop, satisfied) After what we went through, I know you can handle anything.\n\n[SFX: Notification sound, phone screen lights up]\n\nTOM: (smiling) One down, a few more to go. (types more messages)\n\n[SFX: Fading keyboard typing, soft ambient sounds]\n\nTOM: (softly) I hope these words make a difference. (pauses, sighs) Just a few more, and then I can start my day.\n\n=== SCENE 2: INT. JULIA'S HOME - EARLY MORNING ===\n[SFX: Quiet morning sounds - birds chirping, distant traffic, a loud alarm clock]\n\n[JULIA, a 32-year-old doctor, is in her bedroom. She jolts awake as her alarm blares. She quickly silences it, then reaches for her phone and unlocks it.]\n\nJULIA: (rubbing her eyes) Another day. (phone buzzes with new message, she reads it) 'You've got this, Julia. You're a hero to your patients.' (sits up, intrigued) Who... who are you? (pauses, looks at a hospital ID badge on her nightstand) How do you know my name? (pauses, types a response) Thank you.\n\n[SFX: Phone screen dims, quick rustling of sheets as Julia throws off covers]\n\nJULIA: (to herself, with determination) I need to be strong. For them. (takes a deep breath, swings legs out of bed) Okay, let's do this. (stands up, stretches, quick footsteps)\n\n[SFX: Door creaks, footsteps fade]\n\n=== SCENE 3: INT. HOSPITAL EMERGENCY ROOM - MORNING ===\n[SFX: Hospital ambient sounds - beeping monitors, distant sirens, rapid footsteps]\n\n[DR. MARTINEZ, a seasoned doctor in his 50s, rushes in, followed by JULIA and MIKE, a young intern.]\n\nDR. MARTINEZ: (urgent) We've got incoming trauma cases. Julia, you take the first one. Mike, assist her. (to JULIA) Stay calm, focus.\n\n[SFX: Stretchers being wheeled in, urgent voices, beeping monitors]\n\nJULIA: (determined) Got it, Dr. Martinez. (to MIKE) Let's go. (they move quickly)\n\nMIKE: (nervously tapping his phone in his pocket) Yes, Doctor. (pauses) Never seen this many cases at once. (stutters) What do we do?\n\nJULIA: (calm) One step at a time. (to a nurse) Full assessment. Vitals. And start an IV. (pauses) Mike, assist with the IV. (pauses) We will do this.\n\n[SFX: IV being set up, rapid breathing, beeping monitors]\n\nMIKE: (whispering) I hope so. (pauses, glances at his phone) Doctor, the patient's blood pressure is dropping. (quickly puts phone away, focuses on patient)\n\nJULIA: (focused) Increase the IV rate and prep for a blood transfusion. (pauses) Keep me updated. (pauses) You're doing great. (to patient) We're going to take good care of you.\n\n[SFX: Fading hospital sounds, beeping monitors, distant sirens]\n\n=== SCENE 4: INT. HOSPITAL STAFF ROOM - AFTERNOON ===\n[SFX: Quiet hospital ambient sounds - distant beeping, soft murmurs, then intercom buzzes]\n\n[DR. MARTINEZ and JULIA are in a small staff room. DR. MARTINEZ is sitting at a table, looking tired. JULIA stands by the window, looking out.]\n\nDR. MARTINEZ: (sighing) You did well out there, Julia. (pauses) It's not easy, but you handled it with grace.\n\nJULIA: (softly) Thank you, Dr. Martinez. (looks out the window, then back at him) It's just... (intercom buzzes loudly) Some days are harder than others. (rises to answer intercom) I keep thinking about the patients and their families. (pauses) It's a lot.\n\nDR. MARTINEZ: (encouraging) You're making a difference, you know? One patient at a time. Just remember that.\n\nJULIA: (nodding, starts pacing) I will. I just... (stops pacing, looks at him intently) I feel like I need more. Those messages I've been getting... (intercom buzzes again) They're helping somehow. I'll figure it out. Thanks for believing in me.\n\nDR. MARTINEZ: (smiling) Always. (pauses) Take a moment to breathe. You've earned it. (pauses) We all have.\n\n[SFX: Soft ambient sounds, distant beeping]\n\n=== SCENE 5: INT. TOM'S OFFICE - LATE AFTERNOON ===\n[SFX: Office ambient sounds - light hum of a computer, distant phone calls, soft typing, then a phone rings]\n\n[TOM is in his office, sitting at his desk. He startles as his office phone rings, then checks his personal phone with concern.]\n\nTOM: (muttering, ignores ringing office phone) Where are you? (quickly types a message, glances at ringing phone) Just wanted to see how your day is going. Hope work isn't too stressful. (sighs, answers office phone briefly) Mr. Henderson... I'll call you right back. (returns to personal phone) Remember to take breaks when you can. (pauses, puts the phone down)\n\n[SFX: Phone screen dims, office phone rings again]\n\nTOM: (to himself, stands up) I hope you're doing alright. (grabs jacket, looks at phone again) You're not alone. (heads for door, stops) I'll keep trying. (exits office) Time to head home.\n\n[SFX: Chair creaks, footsteps, door opens and closes]\n\n=== SCENE 6: INT. JULIA'S HOME - EVENING ===\n[SFX: Quiet home ambient sounds - soft hum of a refrigerator, distant traffic]\n\n[JULIA enters her living room, drops her bag, and flops on the couch with her phone. She scrolls through messages, stopping at the motivational ones.]\n\nJULIA: (whispering, touches screen) 'You're a hero to your patients.' (types quickly) Thank you. (continues scrolling, stops) 'You've got this.' (sits up straighter) Who are you? (pauses, types more) Means a lot. Your messages. (pauses, hits send)\n\n[SFX: Phone screen lights up, notification sound]\n\nJULIA: (to herself, standing up) I need to know. (paces room, phone in hand) Maybe this will help. (stops pacing, decisive) I hope so. (puts phone down, heads to kitchen) Time to relax and figure this out. (turns on small lamp, then coffee maker)\n\n[SFX: Coffee maker starts, soft ambient sounds]\n\n=== SCENE 7: INT. TOM'S APARTMENT - EVENING ===\n[SFX: Traffic sounds, then key in lock, door opening and closing]\n\n[TOM enters his apartment, tosses keys on table. He's sitting on the couch with a book when his phone vibrates. He quickly grabs it.]\n\nTOM: (excited) A message? (pauses, unlocks the phone) 'Your messages mean a lot.' (pauses, types a response) I'm glad they help. (pauses) I've been... well, I've been in your shoes before. (pauses, hits send) (pauses, sighs) I hope this helps. (pauses, puts the phone down) (to himself) Maybe this is the start of something new. (pauses, turns off the lamp)\n\n[SFX: Lamp turns off, soft ambient sounds]\n\nTOM: (softly, standing up) Goodnight. (walks to window, looks out) I believe in you. (closes curtains, turns off main light, leaving only lamp on)\n\n[SFX: Curtains closing, light switch clicking, fading city sounds]",
     "polish_summary": {
-      "natural_speech_fixes": 1,
+      "natural_speech_fixes": 7,
       "voice_consistency_fixes": 1,
-      "subtext_enhancements": 2,
-      "lines_shortened": 1,
-      "interruptions_added": 0,
-      "pauses_added": 2
+      "subtext_enhancements": 15,
+      "lines_shortened": 18,
+      "interruptions_added": 4,
+      "pauses_added": 9
     }
   }
 }

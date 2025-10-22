@@ -1,166 +1,384 @@
 {
   "session_id": "session_20251016_235335",
   "episode_number": 1,
-  "checked_at": "2025-10-22T22:53:20.698883",
+  "checked_at": "2025-10-23T00:17:44.643985",
   "pacing_analysis": {
     "episode_number": 1,
-    "overall_pacing_score": "6.5/10",
+    "overall_pacing_score": "6/10",
     "issues_found": [
       {
         "issue_type": "slow_section",
         "severity": "medium",
-        "scene_number": 1,
-        "timestamp_or_lines": "Lines 15-28 or 1:00-2:30",
-        "duration": "1:30 minutes",
-        "problem_description": "Tom's morning routine is too detailed and lacks external conflict or tension.",
-        "current_content": "Tom wakes up, makes coffee, and sits at his desk to work.",
-        "impact": "The audience may lose interest due to the lack of immediate engagement or stakes.",
-        "fix_suggestion": "Consider condensing Tom's morning routine into a brief montage or starting the scene with Tom already at his desk, diving into work."
-      },
-      {
-        "issue_type": "repetitive_rhythm",
-        "severity": "medium",
         "scene_number": 2,
-        "timestamp_or_lines": "Lines 60-75 or 4:30-5:45",
-        "duration": "1:15 minutes",
-        "problem_description": "Julia's interactions with patients and staff follow a repetitive pattern of greeting, checking, and leaving.",
-        "current_content": "Julia checks on a patient, receives instructions from Dr. Martinez, and is reassured by Nurse Linda.",
-        "impact": "The repetitive structure can make the scene feel predictable and less engaging.",
-        "fix_suggestion": "Introduce more variation in Julia's interactions, such as a more urgent or emotional moment with a patient or a more detailed conversation with a colleague."
+        "timestamp_or_lines": "Lines 5-15",
+        "duration": "Approximately 1 minute",
+        "problem_description": "Patient interaction lacks tension and doesn't advance the plot",
+        "current_content": "Julia's routine check-in with a patient where she checks vitals and has a brief, generic conversation",
+        "impact": "Lowers momentum by focusing on routine medical tasks without establishing stakes",
+        "fix_suggestion": "Add more urgency to the patient interaction or include a detail that foreshadows the critical case coming later"
       },
       {
         "issue_type": "rushed_transition",
         "severity": "high",
-        "scene_number": 3,
-        "timestamp_or_lines": "Lines 105-110 or 8:00-8:30",
-        "duration": "30 seconds",
-        "problem_description": "The transition from the hospital staff room to Tom's office is abrupt and lacks a clear audio bridge.",
-        "current_content": "Julia is in the staff room, and the scene cuts to Tom in his office.",
-        "impact": "The audience may feel disoriented or confused about the time and location change.",
-        "fix_suggestion": "Add a transitional sound, such as a car driving, a door closing, or ambient sounds that bridge the two locations, to smooth the transition."
+        "scene_number": 1,
+        "timestamp_or_lines": "Transition to Scene 2",
+        "duration": "N/A",
+        "problem_description": "Abrupt jump from Tom's apartment to hospital setting with minimal audio bridge",
+        "current_content": "Only a door closing and ambient hospital sounds to transition between completely different locations",
+        "impact": "Disorients listeners and breaks narrative flow",
+        "fix_suggestion": "Add a transitional sound like a phone ringing or news report that connects the two settings"
       },
       {
         "issue_type": "dead_air",
-        "severity": "low",
+        "severity": "medium",
+        "scene_number": 3,
+        "timestamp_or_lines": "Lines 1-10",
+        "duration": "Approximately 30 seconds",
+        "problem_description": "Extended period with minimal dialogue and only ambient sounds",
+        "current_content": "Julia sitting alone drinking coffee with only internal monologue",
+        "impact": "Creates a lull in energy that may lose listener attention",
+        "fix_suggestion": "Add background hospital radio announcements or shorten the solo drinking sequence"
+      },
+      {
+        "issue_type": "repetitive_rhythm",
+        "severity": "high",
+        "scene_number": "Multiple",
+        "timestamp_or_lines": "Scene endings throughout",
+        "duration": "N/A",
+        "problem_description": "Multiple scenes end with similar phrasing and structure",
+        "current_content": "Recurring use of 'One step at a time' and similar reflective phrases at scene endings",
+        "impact": "Creates predictable pattern that diminishes emotional impact",
+        "fix_suggestion": "Vary ending lines and structures, with some scenes ending on action or dialogue rather than internal monologue"
+      },
+      {
+        "issue_type": "slow_section",
+        "severity": "medium",
         "scene_number": 4,
-        "timestamp_or_lines": "Lines 150-155 or 12:00-12:30",
-        "duration": "30 seconds",
-        "problem_description": "There is an extended pause after Tom finishes his phone call with Sarah and before his phone beeps with a message.",
-        "current_content": "Tom reflects on the call and looks at his phone.",
-        "impact": "The pause may feel unnecessary and could disrupt the flow of the scene.",
-        "fix_suggestion": "Shorten the pause or add a subtle sound, such as a clock ticking or a distant noise, to maintain the scene's energy."
+        "timestamp_or_lines": "Lines 5-25",
+        "duration": "Approximately 2 minutes",
+        "problem_description": "Extended phone session with Sarah that doesn't advance main plot",
+        "current_content": "Tom guiding Sarah through anxiety techniques with detailed meditation instructions",
+        "impact": "Slows momentum by focusing on subplot without connecting to main narrative",
+        "fix_suggestion": "Shorten the session or include a detail that connects to the main storyline"
+      },
+      {
+        "issue_type": "rushed_transition",
+        "severity": "high",
+        "scene_number": 4,
+        "timestamp_or_lines": "Transition to Scene 5",
+        "duration": "N/A",
+        "problem_description": "Abrupt tonal shift from calm office to emergency room",
+        "current_content": "Only a door closing sound to transition from peaceful office to high-stakes emergency room",
+        "impact": "Jarring shift that doesn't prepare listeners for change in tone",
+        "fix_suggestion": "Add emergency pager sound or urgent phone call to bridge the tonal shift"
       },
       {
         "issue_type": "repetitive_rhythm",
         "severity": "medium",
-        "scene_number": 5,
-        "timestamp_or_lines": "Lines 220-235 or 18:00-19:00",
-        "duration": "1:00 minute",
-        "problem_description": "Julia's self-reflections and determination are repeated in multiple scenes, leading to a predictable pattern.",
-        "current_content": "Julia reflects on her day and her determination to keep going.",
-        "impact": "The repetition can make the character's internal monologue feel less impactful and less varied.",
-        "fix_suggestion": "Vary the content of Julia's self-reflections to include different thoughts or emotions, or show her taking action to support her determination."
+        "scene_number": "Multiple",
+        "timestamp_or_lines": "Message exchanges throughout",
+        "duration": "N/A",
+        "problem_description": "Repeated pattern of characters typing messages with identical internal monologue",
+        "current_content": "Both Tom and Julia type messages while thinking 'Just in case...' multiple times",
+        "impact": "Creates predictable rhythm that diminishes uniqueness of each interaction",
+        "fix_suggestion": "Vary the internal monologue during message exchanges or show different reactions"
+      },
+      {
+        "issue_type": "dead_air",
+        "severity": "low",
+        "scene_number": 6,
+        "timestamp_or_lines": "Lines 1-10",
+        "duration": "Approximately 30 seconds",
+        "problem_description": "Opening with minimal action and only ambient sounds",
+        "current_content": "Julia sitting alone with tea before her phone rings",
+        "impact": "Slow start to final scene reduces momentum for episode conclusion",
+        "fix_suggestion": "Start with the phone ringing or add background sounds that establish her emotional state more quickly"
       }
     ],
-    "pacing_summary": "The episode has a generally steady pace, but there are areas where the energy flatlines, particularly in the opening scenes and during repetitive moments. The transitions between locations and scenes could be smoother, and the repetitive rhythm can be addressed by introducing more variation in character interactions and internal monologues. Overall, the episode could benefit from more dynamic and varied pacing to keep the audience engaged throughout."
+    "pacing_summary": "The episode establishes two parallel storylines but struggles with maintaining consistent momentum. The transitions between scenes are consistently abrupt, using only door closing sounds which creates a jarring experience. Several scenes contain slow sections that don't advance the plot, particularly the medical check-in and therapy session. The most significant issue is the repetitive rhythm throughout, with similar scene endings and message exchanges that create predictability. To improve pacing, the episode would benefit from more varied transitions, shortened routine interactions, and diversification of scene structures and endings."
   },
   "repetition_analysis": {
     "total_redundancies": 7,
     "issues": [
       {
         "type": "dialogue",
-        "content": "One step at a time.",
+        "content": "One step at a time",
         "frequency": 4,
         "locations": [
-          "Scene 1, Line 24",
-          "Scene 2, Line 28",
-          "Scene 3, Line 28",
-          "Scene 6, Line 28"
+          "Scene 1, Line 18",
+          "Scene 2, Line 15",
+          "Scene 5, Line 42",
+          "Scene 6, Line 32"
         ],
-        "problem": "The phrase is overused and becomes repetitive, losing its impact.",
-        "fix": "Vary the phrase or use it more sparingly. For example, in Scene 1, Tom could say, 'One small step today.' In Scene 2, Julia could say, 'I’ll take it one step at a time.'"
+        "problem": "This phrase is overused and loses its impact through repetition.",
+        "fix": "Use this phrase only once, perhaps as a thematic bookend. Replace other instances with different expressions of determination or patience."
       },
       {
         "type": "dialogue",
         "content": "Just in case...",
         "frequency": 3,
         "locations": [
-          "Scene 1, Line 40",
-          "Scene 4, Line 40",
-          "Scene 6, Line 18"
+          "Scene 1, Line 28",
+          "Scene 4, Line 30",
+          "Scene 6, Line 15"
         ],
-        "problem": "The phrase is used too frequently and begins to feel predictable.",
-        "fix": "Replace with different phrases that convey the same idea. For example, in Scene 1, Tom could say, 'Just to be safe...' In Scene 4, Tom could say, 'Just to cover all bases...' In Scene 6, Julia could say, 'Just to be thorough...'"
-      },
-      {
-        "type": "concept",
-        "content": "The theme of perseverance and determination",
-        "frequency": 5,
-        "locations": [
-          "Scene 1, Line 10",
-          "Scene 1, Line 24",
-          "Scene 2, Line 28",
-          "Scene 3, Line 28",
-          "Scene 6, Line 28"
-        ],
-        "problem": "The theme is overly emphasized, making the story feel heavy-handed.",
-        "fix": "Reduce the number of times the theme is directly stated. Instead, show the characters' perseverance through their actions and interactions. For example, in Scene 1, instead of Tom saying, 'One step at a time,' show him working diligently on his tasks."
+        "problem": "Multiple characters using the exact same phrase feels artificial.",
+        "fix": "Have characters express caution in different ways that match their individual personalities."
       },
       {
         "type": "audio_cue",
-        "content": "Footsteps",
-        "frequency": 4,
+        "content": "Phone-related sound effects",
+        "frequency": 18,
         "locations": [
-          "Scene 1, Line 2",
-          "Scene 2, Line 2",
-          "Scene 3, Line 28",
-          "Scene 6, Line 28"
+          "Throughout all scenes"
         ],
-        "problem": "The sound effect is overused, making the scenes feel monotonous.",
-        "fix": "Vary the sound effects or remove some instances. For example, in Scene 3, instead of footsteps, use the sound of a page turning in the medical journal. In Scene 6, use the sound of the kettle boiling."
+        "problem": "Excessive phone sounds become monotonous and distract from the story.",
+        "fix": "Reduce the number of phone sound effects, especially for routine actions like texting. Only include distinctive sounds for important plot moments."
       },
       {
         "type": "audio_cue",
-        "content": "Phone beeping",
-        "frequency": 5,
+        "content": "Door opening/closing sounds",
+        "frequency": 12,
         "locations": [
-          "Scene 1, Line 40",
-          "Scene 4, Line 40",
-          "Scene 6, Line 18",
-          "Scene 6, Line 24",
-          "Scene 6, Line 28"
+          "Throughout all scenes"
         ],
-        "problem": "The phone beeping is overused, making the scenes feel repetitive.",
-        "fix": "Use different sound effects for notifications or reduce the number of times the phone beeps. For example, in Scene 4, use the sound of a message notification tone. In Scene 6, use the sound of a text message alert."
+        "problem": "Too many door sounds make transitions feel repetitive and mechanical.",
+        "fix": "Only include door sounds when they serve a narrative purpose, such as emphasizing a character's entrance or exit."
       },
       {
         "type": "structural",
-        "content": "Characters talking to themselves",
-        "frequency": 5,
+        "content": "Scenes ending with character monologue and exit",
+        "frequency": 6,
         "locations": [
-          "Scene 1, Line 24",
-          "Scene 2, Line 28",
-          "Scene 3, Line 28",
-          "Scene 4, Line 40",
-          "Scene 6, Line 28"
+          "End of all scenes"
         ],
-        "problem": "The structure of characters talking to themselves is overused, making the scenes feel predictable.",
-        "fix": "Vary the structure by having characters interact with their environment or other characters. For example, in Scene 3, instead of Julia talking to herself, she could be discussing her thoughts with Nurse Linda. In Scene 4, Tom could be talking to a colleague."
+        "problem": "Predictable pattern makes the script feel formulaic.",
+        "fix": "Vary scene endings. Some could end with dialogue, others with action, and some with silence or a meaningful sound effect."
+      },
+      {
+        "type": "dialogue",
+        "content": "Time to make a difference",
+        "frequency": 2,
+        "locations": [
+          "Scene 1, Line 34",
+          "Scene 4, Line 37"
+        ],
+        "problem": "Tom repeats this exact phrase, reducing its impact.",
+        "fix": "Have Tom express his motivation in different ways that show his character development."
       },
       {
         "type": "concept",
-        "content": "The idea of making a difference",
-        "frequency": 3,
+        "content": "Characters talking to themselves",
+        "frequency": 15,
         "locations": [
-          "Scene 1, Line 10",
-          "Scene 4, Line 40",
-          "Scene 6, Line 24"
+          "Throughout all scenes"
         ],
-        "problem": "The concept is mentioned too often, making it feel repetitive.",
-        "fix": "Show the concept through actions and interactions rather than stating it directly. For example, in Scene 1, instead of Tom saying, 'Time to make a difference,' show him actively working on a project that helps others. In Scene 6, instead of Julia saying, 'Maybe tomorrow will be different,' show her making a small but meaningful gesture."
+        "problem": "Excessive self-talk feels unnatural and is used as a crutch for exposition.",
+        "fix": "Replace some self-talk with action, visual storytelling, or meaningful interactions with other characters."
       }
     ]
   },
-  "energy_flow_analysis": {},
-  "corrected_script": {}
+  "energy_flow_analysis": {
+    "scene_energy_ratings": [
+      {
+        "scene_number": 1,
+        "scene_name": "Cold Open",
+        "energy_rating": 6,
+        "reason": "Introduction with mild intrigue from wrong number call but lacks strong hook",
+        "status": "needs_boost"
+      },
+      {
+        "scene_number": 2,
+        "scene_name": "Hospital Corridors",
+        "energy_rating": 6,
+        "reason": "Establishes character with some tension from upcoming critical case",
+        "status": "good"
+      },
+      {
+        "scene_number": 3,
+        "scene_name": "Hospital Staff Room",
+        "energy_rating": 4,
+        "reason": "Low-energy conversation scene with minimal tension",
+        "status": "needs_boost"
+      },
+      {
+        "scene_number": 4,
+        "scene_name": "Tom's Office",
+        "energy_rating": 5,
+        "reason": "Emotional but low-stakes counseling session",
+        "status": "needs_boost"
+      },
+      {
+        "scene_number": 5,
+        "scene_name": "Hospital Emergency Room",
+        "energy_rating": 8,
+        "reason": "High-stakes medical emergency with life-or-death tension",
+        "status": "good"
+      },
+      {
+        "scene_number": 6,
+        "scene_name": "Julia's Home",
+        "energy_rating": 6,
+        "reason": "Reflective scene with potential connection but low dramatic tension",
+        "status": "needs_boost"
+      }
+    ],
+    "energy_map_visual": "6→6→4→5→8→6",
+    "problem_areas": [
+      "Scene 1 (Cold Open) starts at 6/10, below ideal 7-9 for strong hook",
+      "Scene 3 drops to 4/10, creating a sag in Act 1",
+      "Scene 4 is only at 5/10, not reaching ideal escalation for Act 2",
+      "Scene 6 (Act 3) is at 6/10, lacking strong climax for the episode"
+    ],
+    "recommendations": [
+      "Boost Scene 1 from 6→8 with a stronger hook - make the wrong number call more mysterious or add urgency to Tom's morning",
+      "Raise Scene 3 from 4→6 by adding tension or conflict in the staff room - perhaps a disagreement or urgent news",
+      "Increase Scene 4 from 5→7 by adding more stakes to Tom's counseling session - maybe Sarah's situation is more critical",
+      "Enhance Scene 6 from 6→8 by adding more emotional weight or revelation to Julia and Tom's connection - perhaps a shared history or deeper meaning to their 'wrong number' encounter"
+    ]
+  },
+  "corrected_script": {
+    "total_word_count": 2170,
+    "total_changes": 12,
+    "changes_made": [
+      {
+        "change_number": 1,
+        "scene_number": 1,
+        "change_type": "rhythm",
+        "original_content": "TOM\n(Murmuring to himself)\nAnother day, another chance to make a difference.",
+        "fixed_content": "TOM\n(Murmuring to himself)\nNew day, new opportunities.",
+        "energy_before": "3/10",
+        "energy_after": "4/10",
+        "technique_used": "Eliminated repetitive phrasing",
+        "explanation": "Changes a cliché phrase to something more unique while maintaining the character's positive attitude"
+      },
+      {
+        "change_number": 2,
+        "scene_number": 1,
+        "change_type": "energy_boost",
+        "original_content": "[SFX: Tom's phone rings, a cheerful ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., muffled)\nHi, Tom. It's Sarah. I was wondering if we could reschedule our session for later today?\n\nTOM\nOf course, Sarah. No problem at all. How about 3 PM?\n\nSARAH (O.S., relieved)\nThat would be perfect. Thank you, Tom.\n\nTOM\nYou got it. Take care, Sarah.\n\n[SFX: Phone hangs up.]",
+        "fixed_content": "[SFX: Tom's phone rings, a cheerful ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious)\nHi, Tom. It's Sarah. I'm so sorry to call this early, but I need to reschedule our session. Something urgent came up.\n\nTOM\n(Calm, reassuring)\nNo worries at all, Sarah. These things happen. How about 3 PM instead?\n\nSARAH (O.S., relieved)\nThat would work perfectly. Thank you for being so understanding.\n\nTOM\nOf course. Remember our breathing techniques if things get overwhelming. Take care.\n\n[SFX: Phone hangs up.]",
+        "energy_before": "4/10",
+        "energy_after": "6/10",
+        "technique_used": "Added emotional tension",
+        "explanation": "Increased the stakes in the conversation by making Sarah sound more anxious, which allows Tom to demonstrate his supportive nature more actively"
+      },
+      {
+        "change_number": 3,
+        "scene_number": 1,
+        "change_type": "rhythm",
+        "original_content": "[SFX: Tom's phone rings again, a different ringtone.]\n\nTOM\n(Answering, curious)\nHello?\n\nJULIA (O.S., distressed)\nHi, is this Tom?\n\nTOM\n(Concerned)\nYes, this is Tom. Who's calling?\n\nJULIA (O.S., hesitating)\nIt's Julia. I... I think I dialed the wrong number.\n\nTOM\n(Kindly)\nNo worries, Julia. Is everything okay?\n\nJULIA (O.S., relieved)\nI'm fine, just having a tough day. Thanks for asking.\n\nTOM\n(Encouraging)\nWell, if you ever need someone to talk to, my number's here. Take care.\n\n[SFX: Phone hangs up.]",
+        "fixed_content": "[SFX: Tom's phone beeps with a text message.]\n\nTOM\n(Reading the message, curious)\nUnknown number. 'Sorry, wrong person.'\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(Typing, to himself)\nNo worries, hope you find who you're looking for.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(To himself, thoughtful)\nI hope they're okay.",
+        "energy_before": "5/10",
+        "energy_after": "6/10",
+        "technique_used": "Changed interaction method",
+        "explanation": "Replaced the phone call with a text message exchange to vary the rhythm and make the scene feel more modern and dynamic"
+      },
+      {
+        "change_number": 4,
+        "scene_number": 1,
+        "change_type": "rhythm",
+        "original_content": "TOM\n(To himself, determined)\nTime to make a difference.",
+        "fixed_content": "TOM\n(To himself, determined)\nLet's help someone today.",
+        "energy_before": "4/10",
+        "energy_after": "5/10",
+        "technique_used": "Eliminated repetitive phrasing",
+        "explanation": "Replaced a repetitive phrase with something more unique while maintaining Tom's motivation"
+      },
+      {
+        "change_number": 5,
+        "scene_number": 2,
+        "change_type": "transition",
+        "original_content": "TRANSITION: [SFX: Door closes, ambient hospital sounds fade in.]",
+        "fixed_content": "TRANSITION: [SFX: Door closes, city traffic sounds fade out, ambulance siren approaches and fades into hospital hallway sounds.]",
+        "energy_before": "3/10",
+        "energy_after": "6/10",
+        "technique_used": "Added audio bridge",
+        "explanation": "Created a more dynamic transition that connects Tom's world to Julia's through sound, establishing the hospital setting more effectively"
+      },
+      {
+        "change_number": 6,
+        "scene_number": 2,
+        "change_type": "rhythm",
+        "original_content": "JULIA\n(To herself, quietly)\nOne step at a time.",
+        "fixed_content": "JULIA\n(To herself, quietly)\nKeep moving forward.",
+        "energy_before": "4/10",
+        "energy_after": "5/10",
+        "technique_used": "Eliminated repetitive phrasing",
+        "explanation": "Replaced a repetitive phrase with something more unique while maintaining Julia's determination"
+      },
+      {
+        "change_number": 7,
+        "scene_number": 2,
+        "change_type": "energy_boost",
+        "original_content": "[SFX: Julia's footsteps as she walks down the corridor.]\n\nDR. MARTINEZ (O.S., professional)\nJulia, a moment?\n\nJULIA\n(Surprised)\nSure, Dr. Martinez. What's up?",
+        "fixed_content": "[SFX: Julia's footsteps as she walks down the corridor, suddenly interrupted by a code blue alarm.]\n\n[SFX: Alarm sounds, urgent voices.]",
+        "energy_before": "4/10",
+        "energy_after": "7/10",
+        "technique_used": "Added external interruption",
+        "explanation": "Added an emergency alarm before Dr. Martinez's approach to increase tension and create a sense of urgency in the hospital environment"
+      },
+      {
+        "change_number": 8,
+        "scene_number": 3,
+        "change_type": "rhythm",
+        "original_content": "JULIA\n(To herself, resolute)\nI can do this.\n\n[SFX: Julia's footsteps as she stands up and walks to the door.]\n\nJULIA\n(To herself, quietly)\nJust a few more hours...",
+        "fixed_content": "JULIA\n(To herself, resolute)\nI can do this.\n\n[SFX: Julia's pager suddenly beeps urgently.]\n\nJULIA\n(Checking pager, determined)\nOr maybe just a few minutes.\n\n[SFX: Julia's quick footsteps as she rushes out of the room.]",
+        "energy_before": "5/10",
+        "energy_after": "7/10",
+        "technique_used": "Added ticking clock element",
+        "explanation": "Added an urgent pager beep to break the repetitive rhythm and create immediate tension, propelling Julia into action"
+      },
+      {
+        "change_number": 9,
+        "scene_number": 4,
+        "change_type": "energy_boost",
+        "original_content": "TOM\n(To himself, satisfied)\nOne step at a time.",
+        "fixed_content": "TOM\n(To himself, satisfied)\nProgress, not perfection.",
+        "energy_before": "4/10",
+        "energy_after": "5/10",
+        "technique_used": "Eliminated repetitive phrasing",
+        "explanation": "Replaced a repetitive phrase with something more unique while maintaining Tom's therapeutic philosophy"
+      },
+      {
+        "change_number": 10,
+        "scene_number": 4,
+        "change_type": "energy_boost",
+        "original_content": "TOM\n(To himself, hopeful)\nMaybe today will be different.\n\n[SFX: Tom's phone vibrates as he stands up and walks to the window.]\n\nTOM\n(To himself, determined)\nTime to make a difference.\n\n[SFX: Tom's footsteps as he walks out of the room.]",
+        "fixed_content": "TOM\n(To himself, hopeful)\nMaybe today will be different.\n\n[SFX: Tom's phone vibrates as he stands up, interrupted by a knock at the door.]\n\nTOM\n(Calling out)\nCome in!\n\n[SFX: Door opens, colleague enters.]\n\nCOLLEAGUE (O.S.)\nTom, we need your input on the new community outreach program.\n\nTOM\n(To himself, determined)\nLet's make an impact.\n\n[SFX: Tom's footsteps as he walks out of the room.]",
+        "energy_before": "5/10",
+        "energy_after": "7/10",
+        "technique_used": "Added external interruption",
+        "explanation": "Added a colleague's interruption to break the repetitive ending pattern and create more forward momentum"
+      },
+      {
+        "change_number": 11,
+        "scene_number": 5,
+        "change_type": "rhythm",
+        "original_content": "JULIA\n(To herself, quietly)\nJust a few more minutes...\n\n[SFX: The sound of the patient being wheeled into the operating room, the door closing.]\n\nDR. LEE\n(Calmer, but still professional)\nGood job, team. We saved a life today.\n\nJULIA\n(Exhausted but relieved)\nThank you, Dr. Lee. I couldn't have done it without you all.\n\nDR. LEE\n(Smiling, encouraging)\nYou're a vital part of this team, Julia. Keep it up.\n\nJULIA\n(Smiling, grateful)\nI will. Thanks.\n\n[SFX: Julia's footsteps as she walks to the staff room.]\n\nJULIA\n(To herself, resolute)\nOne step at a time.",
+        "fixed_content": "JULIA\n(To herself, urgently)\nHang in there, just a little longer...\n\n[SFX: Urgent medical sounds, the patient being wheeled into the operating room, the door closing with a definitive slam.]\n\nDR. LEE\n(Exhaling, calmer but still professional)\nGood job, team. We saved a life today.\n\nJULIA\n(Exhausted but relieved)\nThank you, Dr. Lee. I couldn't have done it without you all.\n\nDR. LEE\n(Smiling, encouraging)\nYou're a vital part of this team, Julia. Keep it up.\n\nJULIA\n(Smiling, grateful)\nI will. Thanks.\n\n[SFX: Julia's footsteps as she walks to the staff room, slowing with exhaustion.]\n\nJULIA\n(To herself, resolute)\nEvery life matters.",
+        "energy_before": "6/10",
+        "energy_after": "7/10",
+        "technique_used": "Eliminated repetitive phrasing",
+        "explanation": "Replaced the repetitive phrase with something more unique to Julia's character as a healthcare professional, while adding more dynamic sound effects"
+      },
+      {
+        "change_number": 12,
+        "scene_number": 6,
+        "change_type": "rhythm",
+        "original_content": "JULIA\n(To herself, determined)\nOne step at a time.\n\n[SFX: Julia takes a sip of her tea, the sound of the liquid.]\n\nJULIA\n(To herself, reflective)\nMaybe tomorrow will be different.\n\n[SFX: Julia's phone vibrates again, a different ringtone.]\n\nJULIA\n(Answering, curious)\nHello?",
+        "fixed_content": "JULIA\n(To herself, determined)\nEvery day brings new challenges.\n\n[SFX: Julia takes a sip of her tea, the sound of the liquid, then sets the cup down with a soft clink.]\n\nJULIA\n(To herself, reflective)\nAnd new opportunities to grow.\n\n[SFX: Julia's phone vibrates again, a different ringtone.]\n\nJULIA\n(Surprised, hopeful)\nHello?",
+        "energy_before": "5/10",
+        "energy_after": "6/10",
+        "technique_used": "Eliminated repetitive phrasing",
+        "explanation": "Replaced repetitive phrases with more unique reflections that maintain Julia's character while showing her growth mindset"
+      }
+    ],
+    "scenes": [
+      {
+        "heading": "CORRECTED SCRIPT",
+        "script_content": "=== SCENE 1: INT. TOM'S APARTMENT - EARLY MORNING ===\n[SFX: Ambient morning sounds, light traffic, birds chirping. A coffee machine hums in the background.]\n\nTOM (30s, calm, steady) stirs in his bed, stretching and yawning. He gets up and walks to the kitchen, the sound of his footsteps muffled by the carpet.\n\n[SFX: Coffee machine brews.]\n\nTOM\n(Murmuring to himself)\nNew day, new opportunities.\n\nHe pours a cup of coffee and takes a sip, the sound of the liquid sloshing in the cup. He walks to his desk, where his laptop and a stack of papers await.\n\n[SFX: Desk chair creaks as Tom sits down.]\n\nTOM\n(To himself, more determined)\nLet's do this.\n\nHe opens his laptop, the sound of the fan and keyboard clicks filling the room. He types quickly, composing an email.\n\nTOM\n(Typing, thinking out loud)\nMotivation... inspiration... positive vibes... got to keep it real, but uplifting.\n\n[SFX: Email notification chime.]\n\nTOM\n(Smiling, to himself)\nSent. One down, a few more to go.\n\n[SFX: Tom's phone rings, a cheerful ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious)\nHi, Tom. It's Sarah. I'm so sorry to call this early, but I need to reschedule our session. Something urgent came up.\n\nTOM\n(Calm, reassuring)\nNo worries at all, Sarah. These things happen. How about 3 PM instead?\n\nSARAH (O.S., relieved)\nThat would work perfectly. Thank you for being so understanding.\n\nTOM\nOf course. Remember our breathing techniques if things get overwhelming. Take care.\n\n[SFX: Phone hangs up.]\n\n[SFX: Tom's phone beeps with a text message.]\n\nTOM\n(Reading the message, curious)\nUnknown number. 'Sorry, wrong person.'\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(Typing, to himself)\nNo worries, hope you find who you're looking for.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(To himself, thoughtful)\nI hope they're okay.\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(Reading the message, smiling)\nA new client? Guess I'll find out.\n\n[SFX: Tom's phone vibrates as he puts it down and stands up.]\n\nTOM\n(To himself, determined)\nLet's help someone today.\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\nTRANSITION: [SFX: Door closes, city traffic sounds fade out, ambulance siren approaches and fades into hospital hallway sounds.]\n\n=== SCENE 2: INT. HOSPITAL CORRIDORS - MORNING ===\n[SFX: Ambient hospital sounds, distant beeping, footsteps echoing.]\n\nJULIA (28s, tired but determined) walks down the hospital corridor, her shoes clicking on the tile floor. She passes several patients and staff, nodding politely.\n\n[SFX: Door opens and closes as Julia enters a patient room.]\n\nPATIENT (O.S., weak)\nHi, Julia. How are you today?\n\nJULIA\n(Smiling, professional)\nI'm doing well, thank you. How about you?\n\nPATIENT (O.S., relieved)\nI'm feeling a bit better. The medication seems to be working.\n\nJULIA\n(Genuinely)\nThat's great to hear. I'll check your vitals and make sure everything's on track.\n\n[SFX: Julia's stethoscope, gentle beeping of medical equipment.]\n\nJULIA\n(To patient, reassuring)\nEverything looks good. I'll let Dr. Martinez know.\n\nPATIENT (O.S., grateful)\nThank you, Julia. You always make me feel better.\n\nJULIA\n(Smiling, warm)\nIt's my job. I'll be back to check on you later.\n\n[SFX: Door opens and closes as Julia exits the room.]\n\nJULIA\n(To herself, quietly)\nKeep moving forward.\n\n[SFX: Julia's footsteps as she walks down the corridor, suddenly interrupted by a code blue alarm.]\n\n[SFX: Alarm sounds, urgent voices.]\n\nDR. MARTINEZ (O.S., professional, urgent)\nJulia, a moment?\n\nJULIA\n(Surprised, alert)\nSure, Dr. Martinez. What's up?\n\nDR. MARTINEZ (O.S., concerned)\nWe have a critical case coming in. I need you to be ready.\n\nJULIA\n(Determined)\nI'm ready. What do you need me to do?\n\nDR. MARTINEZ (O.S., reassured)\nGood. We'll need you to assist in the emergency room. I'll update you as soon as we have more information.\n\nJULIA\n(Professional)\nUnderstood. I'll be there.\n\n[SFX: Julia's footsteps as she walks to the emergency room, quickening pace.]\n\nJULIA\n(To herself, resolute)\nI can do this.\n\n[SFX: Door opens and closes as Julia enters the emergency room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade out, office sounds fade in.]\n\n=== SCENE 3: INT. HOSPITAL STAFF ROOM - MID-MORNING ===\n[SFX: Ambient staff room sounds, gentle hum of a coffee machine, light chatter.]\n\nJULIA sits at a small table, sipping a cup of coffee and flipping through a medical journal. She looks tired but focused.\n\n[SFX: Coffee machine brews.]\n\nJULIA\n(To herself, softly)\nJust a few more hours...\n\n[SFX: Door opens and closes.]\n\nNURSE LINDA (30s, friendly)\nHey, Julia. How's it going?\n\nJULIA\n(Smiling, tired)\nIt's been a long morning. How about you?\n\nNURSE LINDA\n(Chirpy)\nCan't complain. Got a good cup of coffee?\n\nJULIA\n(Nodding)\nYeah, thanks. It's helping.\n\nNURSE LINDA\n(Sympathetic)\nYou look like you could use a break. Want to chat?\n\nJULIA\n(Appreciative)\nI'd like that, but I should probably get back to work. We have a critical case coming in soon.\n\nNURSE LINDA\n(Concerned)\nYou sure you're up for it?\n\nJULIA\n(Determined)\nI have to be. It's part of the job.\n\nNURSE LINDA\n(Encouraging)\nYou're one of the best, Julia. You've got this.\n\nJULIA\n(Smiling, grateful)\nThanks, Linda. I needed to hear that.\n\n[SFX: Door opens and closes as Nurse Linda leaves.]\n\nJULIA\n(To herself, resolute)\nI can do this.\n\n[SFX: Julia's pager suddenly beeps urgently.]\n\nJULIA\n(Checking pager, determined)\nOr maybe just a few minutes.\n\n[SFX: Julia's quick footsteps as she rushes out of the room.]\n\nTRANSITION: [SFX: Door closes, ambient office sounds fade out, office sounds fade in.]\n\n=== SCENE 4: INT. TOM'S OFFICE - LATE MORNING ===\n[SFX: Ambient office sounds, gentle hum of a fan, keyboard clicks.]\n\nTOM sits at his desk, a stack of notes and a laptop in front of him. He looks focused and determined.\n\n[SFX: Phone ring, a professional ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious)\nHi, Tom. It's Sarah. I... I'm really struggling today.\n\nTOM\n(Concerned)\nI'm here for you, Sarah. What's been going on?\n\nSARAH (O.S., hesitant)\nI just can't seem to shake this anxiety. It's been building all day.\n\nTOM\n(Reassuring)\nIt's okay to feel that way. Let's talk through it. What's been triggering you today?\n\nSARAH (O.S., thoughtful)\nI think it's the stress at work. My boss is really pushing me, and I feel overwhelmed.\n\nTOM\n(Encouraging)\nThat's a lot to handle. It's important to set boundaries and take care of yourself. Have you tried any of the techniques we discussed?\n\nSARAH (O.S., hopeful)\nI've been trying the deep breathing, but it's hard to focus.\n\nTOM\n(Kindly)\nThat's totally normal. Let's try a guided meditation. It might help you center yourself.\n\n[SFX: Tom's phone plays a soft, calming meditation audio.]\n\nTOM\n(Gentle, guiding)\nTake a deep breath in... and out... In... and out...\n\n[SFX: Sarah's breathing becomes more relaxed.]\n\nSARAH (O.S., calmer)\nI feel a bit better. Thank you, Tom.\n\nTOM\n(Smiling, reassured)\nYou're welcome, Sarah. Remember, you're not alone. I'm here to support you.\n\nSARAH (O.S., grateful)\nThank you. I'll try to stay positive.\n\nTOM\n(Encouraging)\nThat's the spirit. I'll check in with you later this week. Take care.\n\n[SFX: Phone hangs up.]\n\nTOM\n(To himself, satisfied)\nProgress, not perfection.\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(Reading the message, curious)\nA message from Julia? I wonder...\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(Typing, to himself)\nJust in case...\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(To himself, hopeful)\nMaybe today will be different.\n\n[SFX: Tom's phone vibrates as he stands up, interrupted by a knock at the door.]\n\nTOM\n(Calling out)\nCome in!\n\n[SFX: Door opens, colleague enters.]\n\nCOLLEAGUE (O.S.)\nTom, we need your input on the new community outreach program.\n\nTOM\n(To himself, determined)\nLet's make an impact.\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade in.]\n\n=== SCENE 5: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===\n[SFX: Ambient emergency room sounds, urgent beeping, footsteps, hurried voices.]\n\nJULIA rushes into the emergency room, her footsteps quick and determined. She puts on her gloves and prepares for the critical case.\n\nDR. LEE (40s, authoritative)\n(Jumping in, professional)\nJulia, we need you to assist with the patient in Bay 3. It's a severe trauma case.\n\nJULIA\n(Professional, focused)\nI'm ready. What's the situation?\n\nDR. LEE\n(Concerned)\nMultiple injuries, potential internal bleeding. We need to stabilize the patient before we can transport them to surgery.\n\nJULIA\n(Determined)\nUnderstood. I'll get the IV started and monitor vitals.\n\n[SFX: Julia's quick, efficient movements, the sound of a syringe, the beeping of medical equipment.]\n\nNURSE LINDA (O.S., professional)\nBlood pressure is dropping. We need to act fast.\n\nJULIA\n(Calm, focused)\nI'm on it. Administering fluids.\n\n[SFX: The sound of fluids being administered, the beeping of the heart monitor.]\n\nDR. LEE\n(Encouraging)\nGood work, Julia. Keep it up.\n\nJULIA\n(Professional)\nVitals are stabilizing. We need to get them to surgery now.\n\nDR. LEE\n(Decisive)\nRight. Let's move.\n\n[SFX: The sound of the team moving the patient, urgent commands, the whoosh of a stretcher.]\n\nJULIA\n(To herself, urgently)\nHang in there, just a little longer...\n\n[SFX: Urgent medical sounds, the patient being wheeled into the operating room, the door closing with a definitive slam.]\n\nDR. LEE\n(Exhaling, calmer but still professional)\nGood job, team. We saved a life today.\n\nJULIA\n(Exhausted but relieved)\nThank you, Dr. Lee. I couldn't have done it without you all.\n\nDR. LEE\n(Smiling, encouraging)\nYou're a vital part of this team, Julia. Keep it up.\n\nJULIA\n(Smiling, grateful)\nI will. Thanks.\n\n[SFX: Julia's footsteps as she walks to the staff room, slowing with exhaustion.]\n\nJULIA\n(To herself, resolute)\nEvery life matters.\n\n[SFX: Door opens and closes as Julia enters the staff room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade out, home sounds fade in.]\n\n=== SCENE 6: INT. JULIA'S HOME - EVENING ===\n[SFX: Ambient home sounds, gentle hum of a fan, the sound of a kettle boiling.]\n\nJULIA sits on her couch, a cup of tea in her hands. She looks tired but reflective.\n\n[SFX: Kettle whistling.]\n\nJULIA\n(To herself, quietly)\nAnother day, another challenge.\n\n[SFX: Julia pours herself a cup of tea, the sound of the liquid sloshing.]\n\nJULIA\n(To herself, thoughtful)\nI did my best today. That's all I can do.\n\n[SFX: Julia's phone vibrates on the coffee table.]\n\nJULIA\n(Curious, picking up the phone)\nA message from Tom? I wonder...\n\n[SFX: Julia reads the message, the sound of her phone.]\n\nJULIA\n(To herself, hopeful)\nMaybe there's more to this than just a wrong number.\n\n[SFX: Julia's phone vibrates again as she types a quick reply.]\n\nJULIA\n(Typing, to herself)\nJust in case...\n\n[SFX: Julia's phone beeps, confirming the message was sent.]\n\nJULIA\n(To herself, determined)\nEvery day brings new challenges.\n\n[SFX: Julia takes a sip of her tea, the sound of the liquid, then sets the cup down with a soft clink.]\n\nJULIA\n(To herself, reflective)\nAnd new opportunities to grow.\n\n[SFX: Julia's phone vibrates again, a different ringtone.]\n\nJULIA\n(Surprised, hopeful)\nHello?\n\nTOM (O.S., warm)\nHi, Julia. It's Tom. How are you?\n\nJULIA\n(Surprised, but grateful)\nHi, Tom. I'm doing okay. Thanks for checking in.\n\nTOM (O.S., kind)\nI wanted to make sure you were okay after our call earlier. Is everything alright?\n\nJULIA\n(Smiling, honest)\nIt's been a tough day, but I'm hanging in there. Thank you for asking.\n\nTOM (O.S., encouraging)\nThat's good to hear. If you ever need someone to talk to, I'm here.\n\nJULIA\n(Grateful)\nThank you, Tom. That means a lot.\n\nTOM (O.S., warm)\nAnytime, Julia. Take care.\n\nJULIA\n(Smiling, hopeful)\nYou too, Tom.\n\n[SFX: Phone hangs up.]\n\nJULIA\n(To herself, reflective)\nMaybe there's more to this than just a wrong number.\n\n[SFX: Julia's phone vibrates as she puts it down.]\n\nJULIA\n(To herself, determined)\nEvery day brings new challenges.\n\n[SFX: Julia's footsteps as she stands up and walks to the window.]\n\nJULIA\n(To herself, hopeful)\nAnd new opportunities to grow.\n\nTRANSITION: [SFX: Door closes, ambient home sounds fade out, credits music fades in.]"
+      }
+    ]
+  }
 }

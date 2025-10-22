@@ -1,16 +1,16 @@
 ======================================================================
 EPISODE 3 DIALOGUE POLISH - COMPARISON REPORT
 ======================================================================
-Generated: 2025-10-22 23:05:06
+Generated: 2025-10-23 00:52:03
 Session: session_20251016_235335
 
 NATURAL SPEECH ANALYSIS:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  Unnatural instances found: 4
+  Unnatural instances found: 10
 
 CHARACTER VOICE VALIDATION:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  Voice distinction score: 7/10
+  Voice distinction score: 7.5/10
 
 SUBTEXT ENHANCEMENT:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

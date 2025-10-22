@@ -1,4 +1,112 @@
 EPISODE 3: MOMENTUM-CORRECTED SCRIPT
-Generated: 2025-10-22 22:56:22
+Generated: 2025-10-23 00:24:51
 
 ======================================================================
+
+CORRECTED SCRIPT
+
+=== SCENE 1: INT. TOM'S APARTMENT - EVENING ===
+[SFX: ambient_apartment, distant_traffic, light_rain]
+
+TOM (thinking aloud, pacing) Why isn't she getting the messages? I checked the system, everything's fine. It's like they're vanishing into thin air. (sighs)
+
+[SFX: phone_vibrates urgently, Tom stops pacing]
+
+TOM (answering) Hello? (pauses, concerned) What do you mean she's not responding? (frustrated) I've been sending messages all day! (hangs up, muttering) It has to be a glitch. But what if it's something more? (paces quickly to window) Julia, I swear I'll find out what's happening.
+
+=== SCENE 2: INT. HOSPITAL EMERGENCY ROOM - NIGHT ===
+[SFX: ambient_hospital, heart_monitor, footsteps, urgent_voices]
+
+DR. MARTINEZ (O.S., urgent) Julia, we need to intubate now! Her oxygen levels are dropping.
+
+[SFX: medical_equipment_whirring, Julia's quick movements]
+
+JULIA (strained, focused) I'm in position. Here we go!
+
+MIKE (O.S., calm) Good, good. Keep going, Julia.
+
+[SFX: heart_monitor_beep_accelerates, Julia's breathing, equipment_beeps]
+
+JULIA (strained) Almost... (grunts with effort) Got it! (panting slightly) She's stable?
+
+[SFX: heart_monitor_stabilizes]
+
+DR. MARTINEZ (O.S., relieved) Great work, everyone. Julia, you did well.
+
+JULIA (whispers, to herself) I couldn't save her. (hands trembling, walks away quickly)
+
+[SFX: pager_beeps urgently]
+
+DR. MARTINEZ (O.S., urgent) Julia, we need you in trauma room 2, stat!
+
+=== SCENE 3: INT. HOSPITAL STAFF ROOM - LATE NIGHT ===
+[SFX: ambient_hospital, faint_heart_monitor, soft_crying]
+
+JULIA (whispering, to herself) Why couldn't I save her?
+
+[SFX: clock_ticks loudly, Julia sobs]
+
+JULIA (wipes tears) I should have done more.
+
+[SFX: door_creaks, footsteps approach]
+
+DR. MARTINEZ (soft, concerned) Julia, you did everything you could. (pauses, approaches) Sometimes, it's out of our hands.
+
+JULIA (whispers) I know. (pauses, wipes tears) But it doesn't make it any easier.
+
+DR. MARTINEZ (reassuring) You're one of the best doctors I know. Don't doubt yourself.
+
+JULIA (nods, sighs) Thanks, Dr. Martinez. (pauses, stands up) I'll be okay.
+
+=== SCENE 4: INT. TOM'S OFFICE - NEXT MORNING ===
+[SFX: alarm_clock_rings, traffic_sounds, door_slams, footsteps_approach, phone_ringing]
+
+LENA (O.S., professional) Tom, you're here early.
+
+TOM (serious, determined) Lena, we need to talk. I made a mistake with the messages. (stands abruptly, paces) I didn't realize how critical it was until last night when—
+
+[SFX: phone_rings_intensely]
+
+LENA (concerned) What do you mean?
+
+TOM (explains) The system's been sending messages, but they're not reaching the intended recipient. I don't know why, but I'm going to find out.
+
+LENA (nodding) Okay, let's go through the logs. Maybe we can trace the issue.
+
+TOM (resolute) Thanks, Lena. I owe this to Julia.
+
+=== SCENE 5: INT. TOM'S OFFICE - AFTERNOON ===
+[SFX: ambient_office, keyboard_tapping, paper_rustling]
+
+LENA (O.S., focused) Tom, look at this! I've found a pattern in the logs. (keyboard_tapping_faster) The messages aren't just failing—they're being rerouted to an unknown recipient. (voice drops) Someone's intercepting them.
+
+TOM (shocked, stands up) What? How is that possible? (knocks over coffee cup) Damn it! (grabs jacket) We need to find out who's behind this, now!
+
+[SFX: computer_alerts, rapid_keyboarding]
+
+LENA (nodding) I agree. I'll run a trace on the unknown address. (typing_faster) It might take some—
+
+TOM (interrupting) We don't have time! (leans over desk) Julia's life could be in danger.
+
+[SFX: urgent_phone_rings]
+
+LENA (determined) I'll do whatever it takes. (typing) Let's get to work.
+
+=== SCENE 6: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===
+[SFX: ambulance_sirens_approaching, hospital_doors_burst_open, gurney_wheels, urgent_voices]
+
+DR. MARTINEZ (O.S., urgent) Julia, we have another critical case. Stat!
+
+[SFX: rapid_footsteps_approach]
+
+JULIA (determined, professional) Yes, I can. (rolling_up_sleeves) Let's do this.
+
+[SFX: medical_equipment_whirring, Julia's quick movements, monitor_beeps_rapidly]
+
+DR. MARTINEZ (O.S., calm but urgent) Good. Stay focused, Julia. Pressure's dropping!
+
+[SFX: urgent_equipment_beeps]
+
+JULIA (focused) I'm ready. (commanding) Clamp! Now! Let's save this patient.
+
+----------------------------------------------------------------------

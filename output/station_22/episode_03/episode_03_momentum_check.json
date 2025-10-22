@@ -1,144 +1,367 @@
 {
   "session_id": "session_20251016_235335",
   "episode_number": 3,
-  "checked_at": "2025-10-22T22:56:22.874225",
+  "checked_at": "2025-10-23T00:24:51.435318",
   "pacing_analysis": {
     "episode_number": 3,
-    "overall_pacing_score": "7.0/10",
+    "overall_pacing_score": "6.5/10",
     "issues_found": [
       {
         "issue_type": "slow_section",
         "severity": "medium",
         "scene_number": 1,
-        "timestamp_or_lines": "Lines 4-7 or 0:30-1:00",
-        "duration": "30 seconds",
-        "problem_description": "Tom's internal monologue is repetitive and lacks external stimulus to drive the action forward.",
-        "current_content": "Tom is pacing and muttering to himself about the missing messages.",
-        "impact": "The audience may lose interest due to the lack of immediate conflict or action.",
-        "fix_suggestion": "Introduce an external element, such as a phone call or a knock on the door, to break the monologue and add tension."
+        "timestamp_or_lines": "Lines 1-8",
+        "duration": "Approximately 1 minute",
+        "problem_description": "Opening scene relies heavily on internal monologue without external stimulus, creating a static opening",
+        "current_content": "Tom paces and mutters to himself about messages not reaching Julia",
+        "impact": "Weak opening that may fail to immediately engage listeners and establish momentum",
+        "fix_suggestion": "Add an external stimulus like a failed message notification or phone call that interrupts Tom's thoughts and creates immediate tension"
       },
       {
         "issue_type": "rushed_transition",
         "severity": "high",
-        "scene_number": 2,
-        "timestamp_or_lines": "Transition from Scene 1 to Scene 2 or 1:00-1:10",
-        "duration": "10 seconds",
-        "problem_description": "The transition from Tom's apartment to the hospital emergency room is abrupt and lacks an audio bridge.",
-        "current_content": "Cut from Tom's apartment to the hospital emergency room.",
-        "impact": "The audience may feel disoriented and lose the emotional connection between scenes.",
-        "fix_suggestion": "Add a transitional sound effect, such as a car door closing, siren, or hospital announcement, to smoothly transition between locations."
+        "scene_number": 1,
+        "timestamp_or_lines": "Transition from Scene 1 to Scene 2",
+        "duration": "N/A",
+        "problem_description": "Jarring location change from Tom's apartment to hospital emergency room without audio bridge or clear connection",
+        "current_content": "Scene ends with Tom looking out the window, then abruptly cuts to hospital emergency room",
+        "impact": "Confuses audience and disrupts narrative flow, making it difficult to follow the story",
+        "fix_suggestion": "Add a transitional sound or line that connects the two scenes, such as a siren sound that bridges the locations or Tom's phone ringing with a hospital call"
       },
       {
         "issue_type": "dead_air",
-        "severity": "low",
+        "severity": "medium",
         "scene_number": 3,
-        "timestamp_or_lines": "Lines 12-15 or 2:15-2:30",
-        "duration": "15 seconds",
-        "problem_description": "There is a period of silence while Julia is crying, which may feel too long without dramatic purpose.",
-        "current_content": "Julia is whispering to herself and crying softly.",
-        "impact": "The audience may feel the scene is dragging or become unsure of what is happening.",
-        "fix_suggestion": "Add a subtle background sound, such as a distant heart monitor or a faint beeping, to maintain the atmosphere without breaking the emotional moment."
+        "timestamp_or_lines": "Lines 29-39",
+        "duration": "Approximately 45 seconds",
+        "problem_description": "Scene relies heavily on pauses and emotional moments with minimal dialogue or action",
+        "current_content": "Julia crying and being comforted by Dr. Martinez with extended pauses",
+        "impact": "Risk of losing audience attention due to lack of forward momentum during emotional moment",
+        "fix_suggestion": "Add subtle background sounds (e.g., hospital pager, distant urgent voices) or shorten the emotional moment while maintaining its impact"
+      },
+      {
+        "issue_type": "repetitive_rhythm",
+        "severity": "high",
+        "scene_number": 6,
+        "timestamp_or_lines": "Lines 69-77",
+        "duration": "N/A",
+        "problem_description": "Hospital emergency scene follows the same pattern as Scene 2, creating predictable structure",
+        "current_content": "Dr. Martinez gives Julia an urgent task, she responds with determination, medical procedure sounds follow",
+        "impact": "Reduces tension and makes the narrative feel formulaic, diminishing the stakes",
+        "fix_suggestion": "Vary the structure by starting with the emergency situation or adding a complication that makes this case different from the previous one"
+      },
+      {
+        "issue_type": "rushed_transition",
+        "severity": "medium",
+        "scene_number": 3,
+        "timestamp_or_lines": "Transition from Scene 3 to Scene 4",
+        "duration": "N/A",
+        "problem_description": "Time jump from late night at hospital to next morning at office with minimal indication",
+        "current_content": "Scene ends with Julia saying she'll be okay, then abruptly cuts to Tom's office the next morning",
+        "impact": "Disrupts emotional flow and may confuse timeline for listeners",
+        "fix_suggestion": "Add a transitional sound indicating the passage of time (e.g., clock ticking, morning alarm) or a line that establishes the time change"
       },
       {
         "issue_type": "repetitive_rhythm",
         "severity": "medium",
-        "scene_number": 4,
-        "timestamp_or_lines": "Lines 1-10 or 4:00-4:30",
-        "duration": "30 seconds",
-        "problem_description": "The structure of Tom's office scene is similar to the previous scenes, with a character entering and a problem being discussed.",
-        "current_content": "Lena enters Tom's office, and they discuss the message issue.",
-        "impact": "The repetitive structure may make the episode feel predictable and less engaging.",
-        "fix_suggestion": "Vary the scene structure by starting with a different action or adding a unique element, such as a phone call or an unexpected visitor, to break the pattern."
+        "scene_number": 5,
+        "timestamp_or_lines": "Lines 55-68",
+        "duration": "N/A",
+        "problem_description": "Office scene follows similar pattern to Scene 4 with Tom and Lena discussing the message problem",
+        "current_content": "Problem identification, brief dialogue, and resolution to work on the issue",
+        "impact": "Creates predictable pacing and reduces tension in the technical storyline",
+        "fix_suggestion": "Add a complication or discovery that escalates the tension and differentiates this scene from the previous office scene"
       }
     ],
-    "pacing_summary": "Episode 3 has a generally good momentum, but there are a few areas where the pacing can be improved. The internal monologue in Scene 1 is a bit slow, the transition to Scene 2 is abrupt, there is a brief period of dead air in Scene 3, and the repetitive structure in Scene 4 can make the episode feel predictable. Addressing these issues can enhance the overall flow and keep the audience more engaged."
+    "pacing_summary": "The episode establishes clear stakes through both Tom's message problem and Julia's medical emergencies, but suffers from pacing issues that affect momentum. The opening lacks immediate tension, transitions between scenes are jarring, and the hospital and office scenes follow repetitive patterns that reduce tension. Emotional moments risk creating dead air without careful sound design. To improve momentum, the episode would benefit from stronger scene transitions, varied scene structures, and more immediate external stimuli to drive the narrative forward while maintaining the emotional core of the story."
   },
   "repetition_analysis": {
     "total_redundancies": 7,
     "issues": [
       {
         "type": "dialogue",
-        "content": "I’ll do whatever it takes.",
+        "content": "Julia saying she couldn't save the patient",
         "frequency": 2,
         "locations": [
-          "Scene 4, Line 11",
-          "Scene 5, Line 22"
+          "Scene 2, Line 15",
+          "Scene 3, Line 3"
         ],
-        "problem": "The phrase is overused and lacks impact when repeated.",
-        "fix": "Vary the dialogue to maintain the intensity without repetition. For example, in Scene 5, Lena could say, 'I’ll find out who’s behind this.'"
-      },
-      {
-        "type": "dialogue",
-        "content": "You’ve got this.",
-        "frequency": 2,
-        "locations": [
-          "Scene 2, Line 16",
-          "Scene 6, Line 11"
-        ],
-        "problem": "The phrase is repeated and loses its motivational effect.",
-        "fix": "Change the dialogue in Scene 6 to something like, 'You’ve got the skills for this.'"
+        "problem": "Julia repeats the same sentiment about not being able to save the patient in consecutive scenes, which feels redundant",
+        "fix": "In Scene 3, have Julia express her guilt through action or different dialogue rather than repeating the same sentiment"
       },
       {
         "type": "concept",
-        "content": "Julia’s determination and professionalism",
-        "frequency": 3,
+        "content": "Messages not reaching their destination",
+        "frequency": 4,
         "locations": [
-          "Scene 2, Line 18",
-          "Scene 6, Line 7",
-          "Scene 6, Line 10"
+          "Scene 1, Line 4",
+          "Scene 4, Line 11",
+          "Scene 4, Line 13",
+          "Scene 5, Line 5"
         ],
-        "problem": "The theme of Julia’s determination is overemphasized, making the character feel one-dimensional.",
-        "fix": "Introduce more varied aspects of Julia’s character, such as vulnerability or personal struggles, to make her more relatable and complex."
+        "problem": "The concept of messages not reaching Julia is repeated too many times without adding new information",
+        "fix": "Condense the explanation in Scene 4 and focus more on the discovery of the interception in Scene 5"
       },
       {
         "type": "audio_cue",
-        "content": "heart_monitor_beep_accelerates",
-        "frequency": 2,
-        "locations": [
-          "Scene 2, Line 4",
-          "Scene 6, Line 3"
-        ],
-        "problem": "The sound effect is overused and can become predictable or distracting.",
-        "fix": "Use the sound effect more sparingly and consider alternative sounds to convey tension or urgency, such as the sound of medical equipment being prepared."
-      },
-      {
-        "type": "audio_cue",
-        "content": "ambient_hospital",
+        "content": "Heart monitor sounds",
         "frequency": 3,
         "locations": [
           "Scene 2, Line 1",
           "Scene 3, Line 1",
           "Scene 6, Line 1"
         ],
-        "problem": "The ambient sound is used in every hospital scene, which can become monotonous.",
-        "fix": "Vary the ambient sounds in different hospital scenes to reflect the specific environment, such as the ER, staff room, or a quieter recovery area."
+        "problem": "Heart monitor sounds are used in multiple hospital scenes, creating repetitive audio cues",
+        "fix": "Vary the hospital ambient sounds in Scene 3 (staff room) to distinguish it from the emergency room scenes"
       },
       {
         "type": "structural",
-        "content": "Scenes ending with a character expressing determination or resolve",
-        "frequency": 3,
+        "content": "Hospital scenes starting with ambient sounds and Dr. Martinez speaking",
+        "frequency": 2,
         "locations": [
-          "Scene 2, Line 18",
-          "Scene 4, Line 12",
-          "Scene 6, Line 10"
+          "Scene 2",
+          "Scene 6"
         ],
-        "problem": "The pattern of scenes ending with a declaration of determination can become predictable and reduce the impact of these moments.",
-        "fix": "Vary the endings of scenes to include different emotional tones, such as reflection, doubt, or a moment of silence."
+        "problem": "Both hospital emergency room scenes follow the same structural pattern of starting with ambient sounds and Dr. Martinez speaking urgently",
+        "fix": "Change the opening of Scene 6 to focus on Julia's preparation or a different aspect of the emergency room"
+      },
+      {
+        "type": "dialogue",
+        "content": "Characters pausing in dialogue",
+        "frequency": 15,
+        "locations": [
+          "Throughout all scenes"
+        ],
+        "problem": "The (pauses) direction is used excessively throughout the script, making the dialogue feel stilted and repetitive",
+        "fix": "Reduce the number of explicit pauses and allow actors to interpret natural breaks in the dialogue"
       },
       {
         "type": "concept",
-        "content": "Tom’s urgency and determination to solve the message issue",
+        "content": "Julia's emotional state after the failed procedure",
         "frequency": 3,
         "locations": [
-          "Scene 1, Line 3",
-          "Scene 4, Line 5",
-          "Scene 5, Line 7"
+          "Scene 2, Line 15",
+          "Scene 3, Lines 3-7",
+          "Scene 6, Lines 7-9"
         ],
-        "problem": "The theme of Tom’s urgency is overemphasized, which can make the character feel one-dimensional and the plot predictable.",
-        "fix": "Introduce more varied aspects of Tom’s character, such as moments of doubt or personal reflection, to add depth and complexity."
+        "problem": "Julia's emotional state is revisited multiple times without significant development",
+        "fix": "Show Julia's emotional growth or change between scenes rather than repeatedly highlighting her distress"
+      },
+      {
+        "type": "audio_cue",
+        "content": "Ambient hospital sounds",
+        "frequency": 3,
+        "locations": [
+          "Scene 2, Line 1",
+          "Scene 3, Line 1",
+          "Scene 6, Line 1"
+        ],
+        "problem": "Similar ambient hospital sounds are used in all hospital scenes without variation",
+        "fix": "Create more distinct audio environments for different areas of the hospital (ER vs. staff room)"
       }
     ]
   },
-  "energy_flow_analysis": {},
-  "corrected_script": {}
+  "energy_flow_analysis": {
+    "scene_energy_ratings": [
+      {
+        "scene_number": 1,
+        "scene_name": "Cold Open",
+        "energy_rating": 5,
+        "reason": "Establishes mystery but lacks immediate urgency",
+        "status": "needs_boost"
+      },
+      {
+        "scene_number": 2,
+        "scene_name": "Hospital Emergency",
+        "energy_rating": 7,
+        "reason": "Life-or-death situation with medical tension",
+        "status": "good"
+      },
+      {
+        "scene_number": 3,
+        "scene_name": "Hospital Staff Room",
+        "energy_rating": 4,
+        "reason": "Emotional reflection but low action",
+        "status": "needs_boost"
+      },
+      {
+        "scene_number": 4,
+        "scene_name": "Tom's Office Morning",
+        "energy_rating": 5,
+        "reason": "Problem recognition but still investigative",
+        "status": "needs_boost"
+      },
+      {
+        "scene_number": 5,
+        "scene_name": "Tom's Office Afternoon",
+        "energy_rating": 7,
+        "reason": "Discovery of interception raises stakes",
+        "status": "good"
+      },
+      {
+        "scene_number": 6,
+        "scene_name": "Hospital Emergency Afternoon",
+        "energy_rating": 6,
+        "reason": "Professional determination but lacks new conflict",
+        "status": "needs_boost"
+      }
+    ],
+    "energy_map_visual": "5→7→4→5→7→6 (Energy starts moderate, peaks at Scene 2 and 5, with notable dips at Scenes 3 and 4)",
+    "problem_areas": [
+      "Scene 1 as cold open lacks sufficient hook energy (5/10)",
+      "Scene 3 drops significantly (4/10) after high tension emergency",
+      "Scene 4 maintains low energy (5/10) when it should build Act 2",
+      "Scene 6 ends episode without sufficient escalation (6/10)"
+    ],
+    "recommendations": [
+      "Boost Scene 1 from 5→7 with more urgent stakes and immediate consequences",
+      "Raise Scene 3 from 4→6 by adding external pressure or interruption",
+      "Increase Scene 4 from 5→7 with more conflict or time pressure",
+      "Elevate Scene 6 from 6→8 with a cliffhanger or revelation connecting to Tom's discovery"
+    ]
+  },
+  "corrected_script": {
+    "total_word_count": 2310,
+    "total_changes": 12,
+    "changes_made": [
+      {
+        "change_number": 1,
+        "scene_number": 1,
+        "change_type": "energy_boost",
+        "original_content": "TOM (thinking aloud, pacing) Why isn't she getting the messages? I checked the system, everything's fine. It's like they're vanishing into thin air. (sighs) I need to figure this out before it's too late.\n\n[SFX: lighter_click, Tom's pacing slows]\n\nTOM (muttering) It has to be a glitch. But what if it's something more? (pauses, looks out the window) Julia, I swear I'll find out what's happening.",
+        "fixed_content": "TOM (thinking aloud, pacing) Why isn't she getting the messages? I checked the system, everything's fine. It's like they're vanishing into thin air. (sighs)\n\n[SFX: phone_vibrates urgently, Tom stops pacing]\n\nTOM (answering) Hello? (pauses, concerned) What do you mean she's not responding? (frustrated) I've been sending messages all day! (hangs up, muttering) It has to be a glitch. But what if it's something more? (paces quickly to window) Julia, I swear I'll find out what's happening.",
+        "energy_before": "4/10",
+        "energy_after": "7/10",
+        "technique_used": "Added external interruption",
+        "explanation": "The phone call creates urgency and shows the real-world impact of the message failure, raising the stakes."
+      },
+      {
+        "change_number": 2,
+        "scene_number": 2,
+        "change_type": "rhythm",
+        "original_content": "JULIA (strained, focused) I'm in position. (pauses, deep breath) Here we go.\n\nMIKE (O.S., calm) Good, good. Keep going, Julia.\n\n[SFX: heart_monitor_beep_accelerates, Julia's breathing]\n\nJULIA (strained) Almost... (pauses, tension) Got it! (relief) She's stable.\n\nDR. MARTINEZ (O.S., relieved) Great work, everyone. (pauses, softer) Julia, you did well.",
+        "fixed_content": "JULIA (strained, focused) I'm in position. Here we go!\n\nMIKE (O.S., calm) Good, good. Keep going, Julia.\n\n[SFX: heart_monitor_beep_accelerates, Julia's breathing, equipment_beeps]\n\nJULIA (strained) Almost... (grunts with effort) Got it! (panting slightly) She's stable?\n\n[SFX: heart_monitor_stabilizes]\n\nDR. MARTINEZ (O.S., relieved) Great work, everyone. Julia, you did well.",
+        "energy_before": "6/10",
+        "energy_after": "8/10",
+        "technique_used": "Reduced pauses, added action sounds",
+        "explanation": "Trimming unnecessary pauses and adding physical action sounds creates a more urgent, realistic medical emergency pace."
+      },
+      {
+        "change_number": 3,
+        "scene_number": 2,
+        "change_type": "energy_boost",
+        "original_content": "JULIA (whispers, to herself) I couldn't save her.",
+        "fixed_content": "JULIA (whispers, to herself) I couldn't save her. (hands trembling, walks away quickly)\n\n[SFX: pager_beeps urgently]\n\nDR. MARTINEZ (O.S., urgent) Julia, we need you in trauma room 2, stat!",
+        "energy_before": "3/10",
+        "energy_after": "7/10",
+        "technique_used": "Added external interruption",
+        "explanation": "The pager interruption prevents the scene from ending on a low-energy note and immediately creates forward momentum."
+      },
+      {
+        "change_number": 4,
+        "scene_number": 3,
+        "change_type": "timing",
+        "original_content": "JULIA (whispering, to herself) Why couldn't I save her? (pauses, sobs) I should have done more.\n\n[SFX: door_creaks, footsteps]",
+        "fixed_content": "JULIA (whispering, to herself) Why couldn't I save her?\n\n[SFX: clock_ticks loudly, Julia sobs]\n\nJULIA (wipes tears) I should have done more.\n\n[SFX: door_creaks, footsteps approach]",
+        "energy_before": "3/10",
+        "energy_after": "5/10",
+        "technique_used": "Added ticking clock element",
+        "explanation": "The clock ticking creates a sense of time passing and adds tension to Julia's moment of grief."
+      },
+      {
+        "change_number": 5,
+        "scene_number": 4,
+        "change_type": "transition",
+        "original_content": "=== SCENE 4: INT. TOM'S OFFICE - NEXT MORNING ===\n\n[SFX: ambient_office, phone_ringing, keyboard_tapping]",
+        "fixed_content": "=== SCENE 4: INT. TOM'S OFFICE - NEXT MORNING ===\n\n[SFX: alarm_clock_rings, traffic_sounds, door_slams, footsteps_approach, phone_ringing]",
+        "energy_before": "4/10",
+        "energy_after": "6/10",
+        "technique_used": "Added audio bridge",
+        "explanation": "More detailed establishing sounds create a stronger transition from night to morning and establish the setting more effectively."
+      },
+      {
+        "change_number": 6,
+        "scene_number": 4,
+        "change_type": "energy_boost",
+        "original_content": "TOM (serious, determined) Lena, we need to talk. (pauses, sits down) I made a mistake with the messages. (pauses, looks at Lena) I didn't realize how critical it was.",
+        "fixed_content": "TOM (serious, determined) Lena, we need to talk. I made a mistake with the messages. (stands abruptly, paces) I didn't realize how critical it was until last night when—\n\n[SFX: phone_rings_intensely]",
+        "energy_before": "5/10",
+        "energy_after": "7/10",
+        "technique_used": "Added physical action and interruption",
+        "explanation": "Tom's pacing and the phone interruption create more dynamic energy and prevent the dialogue from becoming too static."
+      },
+      {
+        "change_number": 7,
+        "scene_number": 5,
+        "change_type": "rhythm",
+        "original_content": "LENA (O.S., focused) I've been looking through the logs, and there's a pattern. (pauses, points to screen) The messages are being rerouted to an unknown recipient. (pauses, concerned) It's like someone's intercepting them.",
+        "fixed_content": "LENA (O.S., focused) Tom, look at this! I've found a pattern in the logs. (keyboard_tapping_faster) The messages aren't just failing—they're being rerouted to an unknown recipient. (voice drops) Someone's intercepting them.",
+        "energy_before": "6/10",
+        "energy_after": "8/10",
+        "technique_used": "Reduced pauses, added urgency",
+        "explanation": "Removing unnecessary pauses and adding more urgent delivery creates tension and maintains scene momentum."
+      },
+      {
+        "change_number": 8,
+        "scene_number": 5,
+        "change_type": "energy_boost",
+        "original_content": "TOM (shocked, stands up) What? How is that possible? (pauses, determined) We need to find out who's behind this.",
+        "fixed_content": "TOM (shocked, stands up) What? How is that possible? (knocks over coffee cup) Damn it! (grabs jacket) We need to find out who's behind this, now!\n\n[SFX: computer_alerts, rapid_keyboarding]",
+        "energy_before": "6/10",
+        "energy_after": "8/10",
+        "technique_used": "Added physical action and obstacle",
+        "explanation": "The spilled coffee creates a small obstacle that shows Tom's agitation and raises the physical energy of the scene."
+      },
+      {
+        "change_number": 9,
+        "scene_number": 5,
+        "change_type": "timing",
+        "original_content": "LENA (nodding) I agree. I'll run a trace on the unknown address. (pauses, typing) It might take some time.\n\nTOM (resolute) We don't have time. (pauses, looks at Lena) Julia's life could be in danger.",
+        "fixed_content": "LENA (nodding) I agree. I'll run a trace on the unknown address. (typing_faster) It might take some—\n\nTOM (interrupting) We don't have time! (leans over desk) Julia's life could be in danger.\n\n[SFX: urgent_phone_rings]",
+        "energy_before": "6/10",
+        "energy_after": "8/10",
+        "technique_used": "Added interruption and conflict",
+        "explanation": "Tom's interruption shows urgency and creates conflict between the characters, maintaining scene momentum."
+      },
+      {
+        "change_number": 10,
+        "scene_number": 6,
+        "change_type": "transition",
+        "original_content": "=== SCENE 6: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===\n\n[SFX: ambient_hospital, heart_monitor, urgent_voices]",
+        "fixed_content": "=== SCENE 6: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===\n\n[SFX: ambulance_sirens_approaching, hospital_doors_burst_open, gurney_wheels, urgent_voices]",
+        "energy_before": "5/10",
+        "energy_after": "7/10",
+        "technique_used": "Added audio bridge",
+        "explanation": "More dynamic establishing sounds create a stronger sense of arrival and urgency for the emergency room scene."
+      },
+      {
+        "change_number": 11,
+        "scene_number": 6,
+        "change_type": "rhythm",
+        "original_content": "DR. MARTINEZ (O.S., urgent) Julia, we have another critical case. (pauses, approaches) Can you handle it?\n\nJULIA (determined, professional) Yes, I can. (pauses, takes a deep breath) Let's do this.",
+        "fixed_content": "DR. MARTINEZ (O.S., urgent) Julia, we have another critical case. Stat!\n\n[SFX: rapid_footsteps_approach]\n\nJULIA (determined, professional) Yes, I can. (rolling_up_sleeves) Let's do this.",
+        "energy_before": "6/10",
+        "energy_after": "8/10",
+        "technique_used": "Reduced pauses, added action",
+        "explanation": "Removing unnecessary pauses and adding physical action creates a more urgent, professional medical response."
+      },
+      {
+        "change_number": 12,
+        "scene_number": 6,
+        "change_type": "energy_boost",
+        "original_content": "[SFX: medical_equipment_whirring, Julia's quick movements]\n\nDR. MARTINEZ (O.S., calm) Good. (pauses, softer) Take your time, Julia. (pauses, encouraging) You've got this.\n\nJULIA (focused) I'm ready. (pauses, confident) Let's save this patient.",
+        "fixed_content": "[SFX: medical_equipment_whirring, Julia's quick movements, monitor_beeps_rapidly]\n\nDR. MARTINEZ (O.S., calm but urgent) Good. Stay focused, Julia. Pressure's dropping!\n\n[SFX: urgent_equipment_beeps]\n\nJULIA (focused) I'm ready. (commanding) Clamp! Now! Let's save this patient.",
+        "energy_before": "5/10",
+        "energy_after": "8/10",
+        "technique_used": "Added conflict and physical action",
+        "explanation": "Adding a medical complication (dropping pressure) and specific commands creates more tension and urgency in the scene."
+      }
+    ],
+    "scenes": [
+      {
+        "heading": "CORRECTED SCRIPT",
+        "script_content": "=== SCENE 1: INT. TOM'S APARTMENT - EVENING ===\n[SFX: ambient_apartment, distant_traffic, light_rain]\n\nTOM (thinking aloud, pacing) Why isn't she getting the messages? I checked the system, everything's fine. It's like they're vanishing into thin air. (sighs)\n\n[SFX: phone_vibrates urgently, Tom stops pacing]\n\nTOM (answering) Hello? (pauses, concerned) What do you mean she's not responding? (frustrated) I've been sending messages all day! (hangs up, muttering) It has to be a glitch. But what if it's something more? (paces quickly to window) Julia, I swear I'll find out what's happening.\n\n=== SCENE 2: INT. HOSPITAL EMERGENCY ROOM - NIGHT ===\n[SFX: ambient_hospital, heart_monitor, footsteps, urgent_voices]\n\nDR. MARTINEZ (O.S., urgent) Julia, we need to intubate now! Her oxygen levels are dropping.\n\n[SFX: medical_equipment_whirring, Julia's quick movements]\n\nJULIA (strained, focused) I'm in position. Here we go!\n\nMIKE (O.S., calm) Good, good. Keep going, Julia.\n\n[SFX: heart_monitor_beep_accelerates, Julia's breathing, equipment_beeps]\n\nJULIA (strained) Almost... (grunts with effort) Got it! (panting slightly) She's stable?\n\n[SFX: heart_monitor_stabilizes]\n\nDR. MARTINEZ (O.S., relieved) Great work, everyone. Julia, you did well.\n\nJULIA (whispers, to herself) I couldn't save her. (hands trembling, walks away quickly)\n\n[SFX: pager_beeps urgently]\n\nDR. MARTINEZ (O.S., urgent) Julia, we need you in trauma room 2, stat!\n\n=== SCENE 3: INT. HOSPITAL STAFF ROOM - LATE NIGHT ===\n[SFX: ambient_hospital, faint_heart_monitor, soft_crying]\n\nJULIA (whispering, to herself) Why couldn't I save her?\n\n[SFX: clock_ticks loudly, Julia sobs]\n\nJULIA (wipes tears) I should have done more.\n\n[SFX: door_creaks, footsteps approach]\n\nDR. MARTINEZ (soft, concerned) Julia, you did everything you could. (pauses, approaches) Sometimes, it's out of our hands.\n\nJULIA (whispers) I know. (pauses, wipes tears) But it doesn't make it any easier.\n\nDR. MARTINEZ (reassuring) You're one of the best doctors I know. Don't doubt yourself.\n\nJULIA (nods, sighs) Thanks, Dr. Martinez. (pauses, stands up) I'll be okay.\n\n=== SCENE 4: INT. TOM'S OFFICE - NEXT MORNING ===\n[SFX: alarm_clock_rings, traffic_sounds, door_slams, footsteps_approach, phone_ringing]\n\nLENA (O.S., professional) Tom, you're here early.\n\nTOM (serious, determined) Lena, we need to talk. I made a mistake with the messages. (stands abruptly, paces) I didn't realize how critical it was until last night when—\n\n[SFX: phone_rings_intensely]\n\nLENA (concerned) What do you mean?\n\nTOM (explains) The system's been sending messages, but they're not reaching the intended recipient. I don't know why, but I'm going to find out.\n\nLENA (nodding) Okay, let's go through the logs. Maybe we can trace the issue.\n\nTOM (resolute) Thanks, Lena. I owe this to Julia.\n\n=== SCENE 5: INT. TOM'S OFFICE - AFTERNOON ===\n[SFX: ambient_office, keyboard_tapping, paper_rustling]\n\nLENA (O.S., focused) Tom, look at this! I've found a pattern in the logs. (keyboard_tapping_faster) The messages aren't just failing—they're being rerouted to an unknown recipient. (voice drops) Someone's intercepting them.\n\nTOM (shocked, stands up) What? How is that possible? (knocks over coffee cup) Damn it! (grabs jacket) We need to find out who's behind this, now!\n\n[SFX: computer_alerts, rapid_keyboarding]\n\nLENA (nodding) I agree. I'll run a trace on the unknown address. (typing_faster) It might take some—\n\nTOM (interrupting) We don't have time! (leans over desk) Julia's life could be in danger.\n\n[SFX: urgent_phone_rings]\n\nLENA (determined) I'll do whatever it takes. (typing) Let's get to work.\n\n=== SCENE 6: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===\n[SFX: ambulance_sirens_approaching, hospital_doors_burst_open, gurney_wheels, urgent_voices]\n\nDR. MARTINEZ (O.S., urgent) Julia, we have another critical case. Stat!\n\n[SFX: rapid_footsteps_approach]\n\nJULIA (determined, professional) Yes, I can. (rolling_up_sleeves) Let's do this.\n\n[SFX: medical_equipment_whirring, Julia's quick movements, monitor_beeps_rapidly]\n\nDR. MARTINEZ (O.S., calm but urgent) Good. Stay focused, Julia. Pressure's dropping!\n\n[SFX: urgent_equipment_beeps]\n\nJULIA (focused) I'm ready. (commanding) Clamp! Now! Let's save this patient."
+      }
+    ]
+  }
 }

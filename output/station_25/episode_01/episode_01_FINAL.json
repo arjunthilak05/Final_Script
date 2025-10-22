@@ -1,257 +1,539 @@
 {
   "session_id": "session_20251016_235335",
   "episode_number": 1,
-  "optimized_at": "2025-10-22T23:16:45.874024",
+  "optimized_at": "2025-10-23T01:11:16.679484",
   "speaker_identification": {
     "confusion_risks": [
       {
         "issue_number": 1,
         "issue_type": "off_screen",
         "scene_number": 1,
-        "dialogue_excerpt": "I can't... I can't shake the feeling that someone's watching us. (pause) I thought I saw someone familiar outside.",
-        "problem": "Marcus is introduced in the scene but there are no audio clues before he starts speaking",
-        "who_speaking_unclear": "Initial line of the episode, no audio identifier",
+        "dialogue_excerpt": "Hi, Tom. It's Sarah. I'm so sorry to call this early, but I need to reschedule our session.",
+        "problem": "Sarah is an off-screen speaker and hasn't been introduced with an audio cue.",
+        "who_speaking_unclear": "Line 1 - can't tell who is speaking without context",
         "current_audio_cues": "None - just dialogue",
-        "fix_needed": "Add an audio identifier for Marcus",
-        "suggested_fix": "Add a lighter click before Marcus speaks",
-        "fix_script": "[SFX: Lighter click] MARCUS: (glancing out the window) I can't... I can't shake the feeling that someone's watching us. (pause) I thought I saw someone familiar outside."
+        "fix_needed": "Add an audio clue before Sarah speaks",
+        "suggested_fix": "Add the sound of a phone ringing and a cheerful ringtone before Sarah speaks",
+        "fix_script": "[SFX: Tom's phone rings, a cheerful ringtone.] SARAH (O.S., anxious, slightly rushed): Hi, Tom. It's Sarah. I'm so sorry to call this early, but I need to reschedule our session."
       },
       {
         "issue_number": 2,
+        "issue_type": "off_screen",
+        "scene_number": 2,
+        "dialogue_excerpt": "Hi, Julia. How are you feeling?",
+        "problem": "The patient is an off-screen speaker and hasn't been introduced with an audio cue.",
+        "who_speaking_unclear": "Line 1 - can't tell who is speaking without context",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add an audio clue before the patient speaks",
+        "suggested_fix": "Add the sound of a door opening and closing before the patient speaks",
+        "fix_script": "[SFX: Door opens and closes as Julia enters a patient room.] PATIENT (O.S., weak): Hi, Julia. How are you feeling?"
+      },
+      {
+        "issue_number": 3,
         "issue_type": "similar_voices",
         "scene_number": 2,
-        "dialogue_excerpt": "I've been carrying this weight for too long. (pause) Some things are better left unsaid... for now.",
-        "problem": "Marcus is speaking in a similar tone and setting, no clear distinction from the previous scene",
-        "who_speaking_unclear": "Listener may not recognize it's Marcus if they didn't hear the first scene",
+        "dialogue_excerpt": "I'm feeling a bit better. The medication seems to be working. Thanks, Julia. You always make me feel better.",
+        "problem": "Both Julia and the patient are female and could sound similar, especially in a medical setting.",
+        "who_speaking_unclear": "Line 2 - can't tell if it's the patient or Julia without context",
         "current_audio_cues": "None - just dialogue",
-        "fix_needed": "Add a unique audio identifier for the office setting",
-        "suggested_fix": "Add the sound of a desk drawer opening and closing before Marcus speaks",
-        "fix_script": "[SFX: Desk drawer opens and closes] MARCUS: (sighing heavily) I've been carrying this weight for too long. (pause) Some things are better left unsaid... for now."
+        "fix_needed": "Add environmental or signature sounds to distinguish the speakers",
+        "suggested_fix": "Add the sound of Julia's stethoscope and medical equipment beeping to distinguish her from the patient",
+        "fix_script": "[SFX: Julia's stethoscope, gentle beeping of medical equipment.] PATIENT (O.S., weak): I'm feeling a bit better. The medication seems to be working. [SFX: Julia's stethoscope.] JULIA: (genuinely) That's great to hear. I'll check your vitals and make sure everything's on track. [SFX: Medical equipment beeping.] PATIENT (O.S., grateful): Thanks, Julia. You always make me feel better."
+      },
+      {
+        "issue_number": 4,
+        "issue_type": "off_screen",
+        "scene_number": 3,
+        "dialogue_excerpt": "Hey, Julia. How's it going?",
+        "problem": "Nurse Linda is an off-screen speaker and hasn't been introduced with an audio cue.",
+        "who_speaking_unclear": "Line 1 - can't tell who is speaking without context",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add an audio clue before Nurse Linda speaks",
+        "suggested_fix": "Add the sound of the door opening and closing before Nurse Linda speaks",
+        "fix_script": "[SFX: Door opens and closes.] NURSE LINDA (30s, friendly): Hey, Julia. How's it going?"
+      },
+      {
+        "issue_number": 5,
+        "issue_type": "off_screen",
+        "scene_number": 4,
+        "dialogue_excerpt": "Hi, Tom. It's Sarah. I... I'm really struggling today. I keep checking my phone, waiting for... something.",
+        "problem": "Sarah is an off-screen speaker and hasn't been introduced with an audio cue.",
+        "who_speaking_unclear": "Line 1 - can't tell who is speaking without context",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add an audio clue before Sarah speaks",
+        "suggested_fix": "Add the sound of a phone ringing and a professional ringtone before Sarah speaks",
+        "fix_script": "[SFX: Phone ring, a professional ringtone.] SARAH (O.S., anxious, breathing heavily): Hi, Tom. It's Sarah. I... I'm really struggling today. I keep checking my phone, waiting for... something."
+      },
+      {
+        "issue_number": 6,
+        "issue_type": "off_screen",
+        "scene_number": 5,
+        "dialogue_excerpt": "Julia, a moment? Need to speak with you privately.",
+        "problem": "Dr. Martinez is an off-screen speaker and hasn't been introduced with an audio cue.",
+        "who_speaking_unclear": "Line 1 - can't tell who is speaking without context",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add an audio clue before Dr. Martinez speaks",
+        "suggested_fix": "Add the sound of a door opening and closing before Dr. Martinez speaks",
+        "fix_script": "[SFX: Door opens and closes.] DR. MARTINEZ (O.S., professional, urgent, with a slight hesitation): Julia, a moment? Need to speak with you privately."
+      },
+      {
+        "issue_number": 7,
+        "issue_type": "off_screen",
+        "scene_number": 5,
+        "dialogue_excerpt": "Julia, we need you to assist with the patient in Bay 3. It's a severe trauma case.",
+        "problem": "Dr. Lee is an off-screen speaker and hasn't been introduced with an audio cue.",
+        "who_speaking_unclear": "Line 1 - can't tell who is speaking without context",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add an audio clue before Dr. Lee speaks",
+        "suggested_fix": "Add the sound of a door opening and closing before Dr. Lee speaks",
+        "fix_script": "[SFX: Door opens and closes.] DR. LEE (40s, authoritative): Julia, we need you to assist with the patient in Bay 3. It's a severe trauma case."
+      },
+      {
+        "issue_number": 8,
+        "issue_type": "off_screen",
+        "scene_number": 6,
+        "dialogue_excerpt": "Hi, Julia. It's Tom. How are you?",
+        "problem": "Tom is an off-screen speaker and hasn't been introduced with an audio cue.",
+        "who_speaking_unclear": "Line 1 - can't tell who is speaking without context",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add an audio clue before Tom speaks",
+        "suggested_fix": "Add the sound of a phone ringing and a warm ringtone before Tom speaks",
+        "fix_script": "[SFX: Julia's phone vibrates, a different ringtone.] TOM (O.S., warm): Hi, Julia. It's Tom. How are you?"
       }
     ],
     "clarity_violations": {
-      "signature_sounds_missing": 2,
-      "offscreen_no_id": 1,
+      "signature_sounds_missing": 6,
+      "offscreen_no_id": 8,
       "rapid_no_positioning": 0,
       "similar_no_distinction": 1
     },
-    "total_confusion_risks": 4
+    "total_confusion_risks": 15
   },
   "sound_cue_analysis": {
-    "current_cue_count": 10,
-    "optimal_range": "6-12 cues for 5-minute scenes",
-    "assessment": "Needs 2-8 additional cues",
+    "current_cue_count": 47,
+    "optimal_range": "65-85 cues for 45-minute drama",
+    "assessment": "Needs 18-38 additional cues",
     "missing_cues": [
       {
         "category": "transition",
-        "location": "INT. COFFEE SHOP - DAY → INT. DETECTIVE’S OFFICE - NIGHT",
+        "location": "Scene 2 → Scene 3",
         "problem": "No transition sound, jarring cut",
-        "needed_cue": "[SFX: Coffee shop ambient fades out → Office ambient fades in]",
+        "needed_cue": "[SFX: Traffic fade out → Office ambient fade in]",
         "purpose": "Smooth location change"
       },
       {
         "category": "emotional",
-        "scene_number": 1,
-        "line": "MARCUS: (glancing out the window) I can't... I can't shake the feeling that someone's watching us. (pause) I thought I saw someone familiar outside.",
+        "scene_number": 4,
+        "line": "SARAH (O.S., anxious, breathing heavily): I... I'm really struggling today. I keep checking my phone, waiting for... something.",
         "problem": "Internal struggle with no sound enhancement",
-        "needed_cue": "[SFX: Shaky exhale, light tapping on the table]",
-        "purpose": "External manifestation of internal tension"
+        "needed_cue": "[SFX: Shaky exhale, phone buzzing silently]",
+        "purpose": "External manifestation of internal turmoil"
       },
       {
         "category": "emotional",
-        "scene_number": 2,
-        "line": "MARCUS: (sighing heavily) I've been carrying this weight for too long. (pause) Some things are better left unsaid... for now.",
-        "problem": "Internal struggle with no sound enhancement",
-        "needed_cue": "[SFX: Heavy sigh, slight rustling of papers]",
-        "purpose": "External manifestation of internal relief or resignation"
+        "scene_number": 5,
+        "line": "JULIA (exhausted but relieved, with a slight hesitation): Thank you, Dr. Lee. I couldn't have done it without you all. I should probably check in with Dr. Martinez about those unusual circumstances he mentioned.",
+        "problem": "Lack of emotional depth in the sound",
+        "needed_cue": "[SFX: Deep breath, pause]",
+        "purpose": "Enhance the sense of relief and reflection"
+      },
+      {
+        "category": "world-building",
+        "scene_number": 6,
+        "location": "INT. JULIA'S HOME - EVENING",
+        "problem": "Sparse ambient sounds",
+        "needed_cue": "[SFX: Gentle hum of a fan, distant traffic noise]",
+        "purpose": "Create a more realistic and immersive environment"
       }
     ],
-    "excessive_cues": [],
+    "excessive_cues": [
+      {
+        "scene_number": 1,
+        "problem": "8 cues in 4 minutes = 2 cues/minute (optimal, but could be streamlined)",
+        "current_cues": [
+          "Ambient morning sounds",
+          "Light traffic",
+          "Birds chirping",
+          "Coffee machine hums",
+          "Footsteps muffled by carpet",
+          "Coffee machine brews",
+          "Desk chair creaks",
+          "Email notification chime"
+        ],
+        "fix": "Combine into ambient + 2-3 key sounds",
+        "suggested": "[Ambient: Morning home sounds - light traffic, birds, coffee machine] + [SFX: Footsteps muffled by carpet, Email notification chime]"
+      },
+      {
+        "scene_number": 5,
+        "problem": "5 cues in 2 minutes = 2.5 cues/minute (optimal, but could be streamlined)",
+        "current_cues": [
+          "Julia's quick, efficient movements",
+          "Sound of a syringe",
+          "Beeping of medical equipment",
+          "The sound of fluids being administered",
+          "The beeping of the heart monitor"
+        ],
+        "fix": "Combine into ambient + 2-3 key sounds",
+        "suggested": "[Ambient: Emergency room sounds - beeping, urgent voices] + [SFX: Sound of a syringe, The sound of fluids being administered]"
+      }
+    ],
     "cue_density_by_scene": [
       {
         "scene_number": 1,
-        "duration_minutes": 2,
-        "current_cues": 2,
-        "cues_per_minute": 1.0,
-        "status": "suboptimal",
+        "duration_minutes": 4,
+        "current_cues": 8,
+        "cues_per_minute": 2.0,
+        "status": "optimal",
         "scene_type": "dialogue"
       },
       {
         "scene_number": 2,
         "duration_minutes": 3,
-        "current_cues": 2,
-        "cues_per_minute": 0.67,
-        "status": "suboptimal",
+        "current_cues": 7,
+        "cues_per_minute": 2.33,
+        "status": "optimal",
         "scene_type": "dialogue"
+      },
+      {
+        "scene_number": 3,
+        "duration_minutes": 2,
+        "current_cues": 5,
+        "cues_per_minute": 2.5,
+        "status": "optimal",
+        "scene_type": "dialogue"
+      },
+      {
+        "scene_number": 4,
+        "duration_minutes": 4,
+        "current_cues": 8,
+        "cues_per_minute": 2.0,
+        "status": "optimal",
+        "scene_type": "dialogue"
+      },
+      {
+        "scene_number": 5,
+        "duration_minutes": 2,
+        "current_cues": 5,
+        "cues_per_minute": 2.5,
+        "status": "optimal",
+        "scene_type": "action"
+      },
+      {
+        "scene_number": 6,
+        "duration_minutes": 3,
+        "current_cues": 4,
+        "cues_per_minute": 1.33,
+        "status": "optimal",
+        "scene_type": "quiet/tension"
       }
     ]
   },
   "silence_analysis": {
-    "current_marked_silences": 2,
+    "current_marked_silences": 3,
     "optimal_range": "12-18 strategic silences",
-    "status": "NEEDS 10-16 MORE SILENCE BEATS",
+    "status": "NEEDS 9-15 MORE SILENCE BEATS",
     "silence_opportunities": [
       {
         "silence_number": 1,
         "type": "dramatic_pause",
         "scene_number": 1,
-        "context": "Marcus feels watched, tension builds",
-        "current_script": "MARCUS: (glancing out the window) I can't... I can't shake the feeling that someone's watching us. (pause) I thought I saw someone familiar outside.",
-        "silence_placement": "Between the two statements",
+        "context": "Tom reflects on starting his day",
+        "current_script": "TOM (stirring in bed, eyes half-open) Another one, huh?",
+        "silence_placement": "After Tom's line",
         "duration_seconds": 3,
-        "enhanced_script": "MARCUS: (glancing out the window) I can't... I can't shake the feeling that someone's watching us. [SILENCE: 3 seconds - Marcus turns back, eyes wide, breath held] I thought I saw someone familiar outside.",
-        "effect": "Silence amplifies the sense of unease and suspicion",
-        "audio_during_silence": "Ambient coffee shop sounds, distant conversation, Marcus's shallow breathing"
+        "enhanced_script": "TOM (stirring in bed, eyes half-open) Another one, huh? [SILENCE: 3 seconds - Tom looks around the room, sighs] He gets up and walks to the kitchen.",
+        "effect": "Silence = reflection, setting the tone for the day",
+        "audio_during_silence": "Ambient morning sounds, light traffic, birds chirping, coffee machine hums"
       },
       {
         "silence_number": 2,
         "type": "emotional_beat",
-        "scene_number": 2,
-        "context": "Marcus carries a heavy burden",
-        "current_script": "MARCUS: (sighing heavily) I've been carrying this weight for too long. (pause) Some things are better left unsaid... for now.",
-        "silence_placement": "Before the final statement",
+        "scene_number": 1,
+        "context": "Tom reads an unexpected message",
+        "current_script": "TOM (reading the message, curious) Unknown number. 'Sorry, wrong person. Meet at 3?' [SFX: Tom's phone vibrates as he types a quick reply.]",
+        "silence_placement": "After Tom reads the message",
         "duration_seconds": 4,
-        "enhanced_script": "MARCUS: (sighing heavily) I've been carrying this weight for too long. [SILENCE: 4 seconds - Marcus leans back, eyes closed, deep breath] Some things are better left unsaid... for now.",
-        "effect": "Silence conveys the depth of his emotional struggle",
-        "audio_during_silence": "Heavy sigh, distant office noises, Marcus's deep breathing"
+        "enhanced_script": "TOM (reading the message, curious) Unknown number. 'Sorry, wrong person. Meet at 3?' [SILENCE: 4 seconds - Tom frowns, looks puzzled] [SFX: Tom's phone vibrates as he types a quick reply.]",
+        "effect": "Silence = processing the oddity of the message",
+        "audio_during_silence": "Ambient office sounds, Tom's frown, slight sigh"
+      },
+      {
+        "silence_number": 3,
+        "type": "dramatic_pause",
+        "scene_number": 1,
+        "context": "Tom receives a new client message",
+        "current_script": "TOM (reading the message, smiling) A new client? Guess I'll find out. [SFX: Tom's phone vibrates as he puts it down and stands up.]",
+        "silence_placement": "After Tom reads the message",
+        "duration_seconds": 2,
+        "enhanced_script": "TOM (reading the message, smiling) A new client? Guess I'll find out. [SILENCE: 2 seconds - Tom's smile widens, he looks determined] [SFX: Tom's phone vibrates as he puts it down and stands up.]",
+        "effect": "Silence = anticipation, building excitement",
+        "audio_during_silence": "Ambient office sounds, Tom's smile, slight nod"
+      },
+      {
+        "silence_number": 4,
+        "type": "emotional_beat",
+        "scene_number": 2,
+        "context": "Julia reacts to the code blue alarm",
+        "current_script": "JULIA (walking down the corridor, focused) One step at a time... [SFX: Julia's footsteps as she walks down the corridor, suddenly interrupted by a code blue alarm.]",
+        "silence_placement": "After the code blue alarm",
+        "duration_seconds": 5,
+        "enhanced_script": "JULIA (walking down the corridor, focused) One step at a time... [SFX: Julia's footsteps as she walks down the corridor, suddenly interrupted by a code blue alarm.] [SILENCE: 5 seconds - Julia's footsteps quicken, she looks determined] [SFX: Julia's footsteps as she rushes to the emergency room.]",
+        "effect": "Silence = urgency, tension builds",
+        "audio_during_silence": "Alarm sounds, urgent voices, Julia's quickening footsteps"
+      },
+      {
+        "silence_number": 5,
+        "type": "dramatic_pause",
+        "scene_number": 2,
+        "context": "Dr. Martinez speaks with Julia",
+        "current_script": "DR. MARTINEZ (O.S., professional, urgent, with a slight hesitation) Julia, a moment? Need to speak with you privately. JULIA (surprised, alert) Sure, Dr. Martinez. What's up?",
+        "silence_placement": "After Dr. Martinez's request",
+        "duration_seconds": 3,
+        "enhanced_script": "DR. MARTINEZ (O.S., professional, urgent, with a slight hesitation) Julia, a moment? Need to speak with you privately. [SILENCE: 3 seconds - Julia looks surprised, pauses] JULIA (surprised, alert) Sure, Dr. Martinez. What's up?",
+        "effect": "Silence = anticipation, tension builds",
+        "audio_during_silence": "Ambient hospital sounds, Julia's surprised look, slight hesitation"
+      },
+      {
+        "silence_number": 6,
+        "type": "emotional_beat",
+        "scene_number": 3,
+        "context": "Julia reflects on her day",
+        "current_script": "JULIA (to herself, softly) Just a few more hours. [SFX: Door opens and closes.]",
+        "silence_placement": "After Julia's reflection",
+        "duration_seconds": 4,
+        "enhanced_script": "JULIA (to herself, softly) Just a few more hours. [SILENCE: 4 seconds - Julia takes a deep breath, looks tired but focused] [SFX: Door opens and closes.]",
+        "effect": "Silence = processing the day's challenges",
+        "audio_during_silence": "Ambient staff room sounds, Julia's deep breath, slight sigh"
+      },
+      {
+        "silence_number": 7,
+        "type": "revelation_moment",
+        "scene_number": 4,
+        "context": "Tom receives a second wrong number message",
+        "current_script": "TOM (reading the message, curious) An unknown number? The message mentions a wrong person again. Strange... [SFX: Tom's phone vibrates as he types a quick reply.]",
+        "silence_placement": "After Tom reads the message",
+        "duration_seconds": 6,
+        "enhanced_script": "TOM (reading the message, curious) An unknown number? The message mentions a wrong person again. Strange... [SILENCE: 6 seconds - Tom looks puzzled, frowns deeply] [SFX: Tom's phone vibrates as he types a quick reply.]",
+        "effect": "Silence = processing the repeated oddity of the messages",
+        "audio_during_silence": "Ambient office sounds, Tom's puzzled look, slight frown"
+      },
+      {
+        "silence_number": 8,
+        "type": "emotional_beat",
+        "scene_number": 5,
+        "context": "Julia reflects on the critical case",
+        "current_script": "JULIA (to herself, urgently) Hang in there, just a little longer... [SFX: Urgent medical sounds, the patient being wheeled into the operating room, the door closing with a definitive slam.]",
+        "silence_placement": "After Julia's reflection",
+        "duration_seconds": 5,
+        "enhanced_script": "JULIA (to herself, urgently) Hang in there, just a little longer... [SILENCE: 5 seconds - Julia looks determined, team works urgently] [SFX: Urgent medical sounds, the patient being wheeled into the operating room, the door closing with a definitive slam.]",
+        "effect": "Silence = tension, focus on the patient's condition",
+        "audio_during_silence": "Urgent medical sounds, team's focused movements, Julia's determined look"
+      },
+      {
+        "silence_number": 9,
+        "type": "dramatic_pause",
+        "scene_number": 5,
+        "context": "Julia checks in with Dr. Martinez",
+        "current_script": "JULIA (exhausted but relieved, with a slight hesitation) Thank you, Dr. Lee. I couldn't have done it without you all. I should probably check in with Dr. Martinez about those unusual circumstances he mentioned.",
+        "silence_placement": "After Julia's reflection",
+        "duration_seconds": 3,
+        "enhanced_script": "JULIA (exhausted but relieved, with a slight hesitation) Thank you, Dr. Lee. I couldn't have done it without you all. [SILENCE: 3 seconds - Julia looks thoughtful, takes a deep breath] I should probably check in with Dr. Martinez about those unusual circumstances he mentioned.",
+        "effect": "Silence = anticipation, setting up the next challenge",
+        "audio_during_silence": "Ambient hospital sounds, Julia's deep breath, slight hesitation"
+      },
+      {
+        "silence_number": 10,
+        "type": "emotional_beat",
+        "scene_number": 6,
+        "context": "Julia reflects on her day",
+        "current_script": "JULIA (to herself, quietly) Another day, another challenge. [SFX: Julia pours herself a cup of tea, the sound of the liquid sloshing.]",
+        "silence_placement": "After Julia's reflection",
+        "duration_seconds": 4,
+        "enhanced_script": "JULIA (to herself, quietly) Another day, another challenge. [SILENCE: 4 seconds - Julia looks reflective, takes a deep breath] [SFX: Julia pours herself a cup of tea, the sound of the liquid sloshing.]",
+        "effect": "Silence = processing the day's events",
+        "audio_during_silence": "Ambient home sounds, Julia's reflective look, slight sigh"
+      },
+      {
+        "silence_number": 11,
+        "type": "revelation_moment",
+        "scene_number": 6,
+        "context": "Julia receives Tom's call",
+        "current_script": "JULIA (surprised, hopeful) Hello? TOM (O.S., warm) Hi, Julia. It's Tom. How are you?",
+        "silence_placement": "After Tom's greeting",
+        "duration_seconds": 6,
+        "enhanced_script": "JULIA (surprised, hopeful) Hello? [SILENCE: 6 seconds - Julia looks surprised, smiles] TOM (O.S., warm) Hi, Julia. It's Tom. How are you?",
+        "effect": "Silence = building connection, emotional warmth",
+        "audio_during_silence": "Ambient home sounds, Julia's surprised smile, slight breath"
+      },
+      {
+        "silence_number": 12,
+        "type": "emotional_beat",
+        "scene_number": 6,
+        "context": "Julia reflects on the day's end",
+        "current_script": "JULIA (to herself, reflective) Maybe there's more to this than just a wrong number. [SFX: Julia's phone vibrates as she puts it down.]",
+        "silence_placement": "After Julia's reflection",
+        "duration_seconds": 5,
+        "enhanced_script": "JULIA (to herself, reflective) Maybe there's more to this than just a wrong number. [SILENCE: 5 seconds - Julia looks thoughtful, smiles] [SFX: Julia's phone vibrates as she puts it down.]",
+        "effect": "Silence = processing the day's revelations",
+        "audio_during_silence": "Ambient home sounds, Julia's thoughtful smile, slight nod"
       }
     ],
-    "total_silences_to_add": 10
+    "total_silences_to_add": 15
   },
   "audio_optimized_script": {
     "episode_number": 1,
-    "total_runtime": "04:30",
+    "total_runtime": "30:00",
     "optimization_stats": {
-      "speaker_clarity_fixes": 2,
-      "sound_cues_added": 4,
+      "speaker_clarity_fixes": 4,
+      "sound_cues_added": 12,
       "sound_cues_removed": 0,
-      "silences_marked": 2,
-      "production_notes": 3
+      "silences_marked": 10,
+      "production_notes": 15
     },
     "scenes": [
       {
         "scene_number": 1,
-        "heading": "INT. COFFEE SHOP - DAY",
-        "acoustic_properties": "Soft surfaces, light reverb, ambient coffee shop chatter",
+        "heading": "INT. TOM'S APARTMENT - EARLY MORNING",
+        "acoustic_properties": "Carpeted floors, medium reverb, light ambient sounds",
         "ambient_layers": [
-          "Coffee shop chatter (constant, medium)",
-          "Cup clinking (occasional)",
-          "Background music (soft, distant)"
+          "Ambient morning sounds (constant, light)",
+          "Light traffic (constant, distant)",
+          "Birds chirping (constant, distant)",
+          "Coffee machine hum (constant, medium)"
         ],
-        "audio_script": [
-          {
-            "character": "MARCUS",
-            "vocal_direction": "nervous, glancing out the window",
-            "dialogue": "I can't... I can't shake the feeling that someone's watching us. (pause) I thought I saw someone familiar outside.",
-            "sound_cues": [
-              "[SFX: Lighter click]",
-              "[SILENCE: 3 seconds (background ambient)]"
-            ]
-          }
-        ],
-        "sound_cues_in_scene": 2,
-        "silences_in_scene": 1,
-        "estimated_duration": "2:00"
+        "audio_script": "=== SCENE 1: INT. TOM'S APARTMENT - EARLY MORNING ===\n[SFX: Ambient morning sounds, light traffic, birds chirping. A coffee machine hums in the background.]\n\nTOM (30s, calm, steady) stirs in his bed, stretching and yawning. He gets up and walks to the kitchen, the sound of his footsteps muffled by the carpet.\n\n[SFX: Coffee machine brews.]\n\nTOM\n(stirring in bed, eyes half-open, dramatic_pause 3s)\nAnother one, huh?\n\nHe pours a cup of coffee and takes a sip, the sound of the liquid sloshing in the cup. He walks to his desk, where his laptop and a stack of papers await.\n\n[SFX: Desk chair creaks as Tom sits down.]\n\nTOM\n(sitting down at his desk, typing quickly)\nOne step at a time...\n\nHe opens his laptop, the sound of the fan and keyboard clicks filling the room. He types quickly, composing an email.\n\nTOM\n(typing, thinking out loud)\nMotivation... inspiration... positive vibes... gotta keep it real, but uplifting.\n\n[SFX: Email notification chime.]\n\nTOM\n(smiling, leaning back)\nFirst step...\n\n[SFX: Tom's phone rings, a cheerful ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious, slightly rushed)\nHi, Tom. It's Sarah. I'm so sorry to call this early, but I need to reschedule our session.\n\nTOM\n(calm, reassuring)\nNo worries at all, Sarah. These things happen. How about 3 PM instead?\n\nSARAH (O.S., hesitant)\n3 PM could work. I'll have to check my schedule and confirm later. Things are just... complicated right now.\n\nTOM\n(sympathetic)\nOf course. Remember the breathing techniques if things get overwhelming. Take care.\n\n[SFX: Phone hangs up.]\n\n[SFX: Tom's phone beeps with a text message.]\n\nTOM\n(reading the message, curious)\nUnknown number. 'Sorry, wrong person. Meet at 3?'\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(typing, to himself)\nNo worries, hope you find who you're looking for.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(frowning at his phone, emotional_beat 4s)\nI hope...\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(reading the message, smiling)\nA new client? Guess I'll find out.\n\n[SFX: Tom's phone vibrates as he puts it down and stands up.]\n\nTOM\n(standing up, determined)\nTime to make a difference...\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\nTRANSITION: [SFX: Door closes, city traffic sounds fade out, ambulance siren approaches and fades into hospital hallway sounds.]",
+        "sound_cues_in_scene": 10,
+        "silences_in_scene": 2,
+        "estimated_duration": "4:00"
       },
       {
         "scene_number": 2,
-        "heading": "INT. DETECTIVE’S OFFICE - NIGHT",
-        "acoustic_properties": "Hard surfaces, medium reverb, office ambiance",
+        "heading": "INT. HOSPITAL CORRIDORS - MORNING",
+        "acoustic_properties": "Tile floors, low reverb, clinical environment",
         "ambient_layers": [
-          "Office ambiance (constant, medium)",
-          "Typing on computer (occasional)",
-          "Distant phone ringing (rare)"
+          "Ambient hospital sounds (constant, low)",
+          "Distant beeping (constant, low)",
+          "Footsteps echoing (constant, medium)"
         ],
-        "audio_script": [
-          {
-            "character": "MARCUS",
-            "vocal_direction": "sighing heavily, somber",
-            "dialogue": "I've been carrying this weight for too long. (pause) Some things are better left unsaid... for now.",
-            "sound_cues": [
-              "[SFX: Desk drawer opening and closing]",
-              "[SFX: Heavy sigh]",
-              "[SFX: Slight rustling of papers]",
-              "[SILENCE: 4 seconds (background ambient)]"
-            ]
-          }
-        ],
-        "sound_cues_in_scene": 4,
-        "silences_in_scene": 1,
-        "estimated_duration": "2:30"
-      }
-    ],
-    "complete_audio_script": [
-      {
-        "scene_number": 1,
-        "heading": "INT. COFFEE SHOP - DAY",
-        "acoustic_properties": "Soft surfaces, light reverb, ambient coffee shop chatter",
-        "ambient_layers": [
-          "Coffee shop chatter (constant, medium)",
-          "Cup clinking (occasional)",
-          "Background music (soft, distant)"
-        ],
-        "audio_script": [
-          {
-            "character": "MARCUS",
-            "vocal_direction": "nervous, glancing out the window",
-            "dialogue": "I can't... I can't shake the feeling that someone's watching us. (pause) I thought I saw someone familiar outside.",
-            "sound_cues": [
-              "[SFX: Lighter click]",
-              "[SILENCE: 3 seconds (background ambient)]"
-            ]
-          }
-        ],
-        "sound_cues_in_scene": 2,
-        "silences_in_scene": 1,
-        "estimated_duration": "2:00"
+        "audio_script": "=== SCENE 2: INT. HOSPITAL CORRIDORS - MORNING ===\n[SFX: Ambient hospital sounds, distant beeping, footsteps echoing.]\n\nJULIA (28s, tired but determined) walks down the hospital corridor, her shoes clicking on the tile floor. She passes several patients and staff, nodding politely.\n\n[SFX: Door opens and closes as Julia enters a patient room.]\n\nPATIENT (O.S., weak)\nHi, Julia. How are you feeling?\n\nJULIA\n(smiling, professional)\nI'm doing well, thanks. How about you?\n\nPATIENT (O.S., relieved)\nI'm feeling a bit better. The medication seems to be working.\n\nJULIA\n(genuinely)\nThat's great to hear. I'll check your vitals and make sure everything's on track.\n\n[SFX: Julia's stethoscope, gentle beeping of medical equipment.]\n\nJULIA\n(to patient, reassuring)\nEverything looks good. I'll let Dr. Martinez know.\n\nPATIENT (O.S., grateful)\nThanks, Julia. You always make me feel better.\n\nJULIA\n(smiling, warm)\nThanks, Julia.\n\n[SFX: Door opens and closes as Julia exits the room.]\n\nJULIA\n(walking down the corridor, focused)\nOne step at a time...\n\n[SFX: Julia's footsteps as she walks down the corridor, suddenly interrupted by a code blue alarm.]\n\n[SFX: Alarm sounds, urgent voices.]\n\nDR. MARTINEZ (O.S., professional, urgent, with a slight hesitation)\nJulia, a moment? Need to speak with you privately.\n\nJULIA\n(surprised, alert)\nSure, Dr. Martinez. What's up?\n\nDR. MARTINEZ (O.S., concerned, lowering voice)\nWe have a critical case coming in. Unusual circumstances. I need you to be ready and... discreet.\n\nJULIA\n(determined)\nI'm ready. What do you need me to do?\n\nDR. MARTINEZ (O.S., reassured)\nGood. We'll need you to assist in the emergency room. I'll update you as soon as we have more information.\n\nJULIA\n(professional)\nUnderstood. I'll be there.\n\n[SFX: Julia's footsteps as she walks to the emergency room, quickening pace. She pauses to check her phone.]\n\nJULIA\n(to herself, distracted)\nAlmost forgot to confirm my 3 PM. I can do this.\n\n[SFX: Door opens and closes as Julia enters the emergency room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade out, office sounds fade in.]",
+        "sound_cues_in_scene": 8,
+        "silences_in_scene": 2,
+        "estimated_duration": "5:00"
       },
       {
-        "scene_number": 2,
-        "heading": "INT. DETECTIVE’S OFFICE - NIGHT",
-        "acoustic_properties": "Hard surfaces, medium reverb, office ambiance",
+        "scene_number": 3,
+        "heading": "INT. HOSPITAL STAFF ROOM - MID-MORNING",
+        "acoustic_properties": "Closed space, low reverb, gentle ambient sounds",
         "ambient_layers": [
-          "Office ambiance (constant, medium)",
-          "Typing on computer (occasional)",
-          "Distant phone ringing (rare)"
+          "Ambient staff room sounds (constant, low)",
+          "Gentle hum of a coffee machine (constant, medium)",
+          "Light chatter (occasional, medium)"
         ],
-        "audio_script": [
-          {
-            "character": "MARCUS",
-            "vocal_direction": "sighing heavily, somber",
-            "dialogue": "I've been carrying this weight for too long. (pause) Some things are better left unsaid... for now.",
-            "sound_cues": [
-              "[SFX: Desk drawer opening and closing]",
-              "[SFX: Heavy sigh]",
-              "[SFX: Slight rustling of papers]",
-              "[SILENCE: 4 seconds (background ambient)]"
-            ]
-          }
+        "audio_script": "=== SCENE 3: INT. HOSPITAL STAFF ROOM - MID-MORNING ===\n[SFX: Ambient staff room sounds, gentle hum of a coffee machine, light chatter.]\n\nJULIA sits at a small table, sipping a cup of coffee and flipping through a medical journal. She looks tired but focused.\n\n[SFX: Coffee machine brews.]\n\nJULIA\n(to herself, softly)\nJust a few more hours.\n\n[SFX: Door opens and closes.]\n\nNURSE LINDA (30s, friendly)\nHey, Julia. How's it going?\n\nJULIA\n(smiling, tired)\nIt's been a long morning. How about you?\n\nNURSE LINDA\n(chirpy)\nCan't complain. Got a good cup of coffee?\n\nJULIA\n(nodding)\nYeah, thanks. It's helping.\n\nNURSE LINDA\n(sympathetic)\nYou look like you could use a break. Want to chat?\n\nJULIA\n(appreciative)\nI'd like that, but I should probably get back to work. We have a critical case coming in soon.\n\nNURSE LINDA\n(concerned)\nYou sure you're up for it?\n\nJULIA\n(determined)\nI have to be. It's part of the job.\n\nNURSE LINDA\n(encouraging)\nYou're one of the best, Julia. You've got this.\n\nJULIA\n(smiling, grateful)\nThanks, Linda. I needed to hear that.\n\n[SFX: Door opens and closes as Nurse Linda leaves.]\n\nJULIA\n(sipping coffee, focused)\nStay strong...\n\n[SFX: Julia's pager suddenly beeps urgently.]\n\nJULIA\n(checking pager, determined)\nOr maybe just a few minutes.\n\n[SFX: Julia's quick footsteps as she rushes out of the room.]\n\nTRANSITION: [SFX: Door closes, ambient office sounds fade out, office sounds fade in.]",
+        "sound_cues_in_scene": 6,
+        "silences_in_scene": 2,
+        "estimated_duration": "3:00"
+      },
+      {
+        "scene_number": 4,
+        "heading": "INT. TOM'S OFFICE - LATE MORNING",
+        "acoustic_properties": "Closed office, low reverb, professional environment",
+        "ambient_layers": [
+          "Ambient office sounds (constant, low)",
+          "Gentle hum of a fan (constant, medium)",
+          "Keyboard clicks (constant, medium)"
         ],
-        "sound_cues_in_scene": 4,
-        "silences_in_scene": 1,
-        "estimated_duration": "2:30"
+        "audio_script": "=== SCENE 4: INT. TOM'S OFFICE - LATE MORNING ===\n[SFX: Ambient office sounds, gentle hum of a fan, keyboard clicks.]\n\nTOM sits at his desk, a stack of notes and a laptop in front of him. He looks focused and determined.\n\n[SFX: Phone ring, a professional ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious, breathing heavily)\nHi, Tom. It's Sarah. I... I'm really struggling today. I keep checking my phone, waiting for... something.\n\nTOM\n(concerned)\nI'm here for you, Sarah. What's been going on? Are you expecting an important message?\n\nSARAH (O.S., hesitant)\nI think it's the stress at work. My boss is really pushing me, and I feel overwhelmed.\n\nTOM\n(kindly)\nThat's a lot to handle. It's important to set boundaries and take care of yourself. Have you tried any of the techniques we discussed?\n\nSARAH (O.S., hopeful)\nI've been trying the deep breathing, but it's hard to focus.\n\nTOM\n(gentle, guiding)\nThat's totally normal. Let's try a guided meditation. It might help you center yourself.\n\n[SFX: Tom's phone plays a soft, calming meditation audio.]\n\nTOM\n(gentle, guiding)\nTake a deep breath in... and out... In... and out...\n\n[SFX: Sarah's breathing becomes more relaxed.]\n\nSARAH (O.S., calmer)\nI feel a bit better. Thank you, Tom.\n\nTOM\n(smiling, warm)\nAnytime, Sarah. Remember, you're not alone. I'm here to support you.\n\nSARAH (O.S., grateful)\nThank you. I'll try to stay positive.\n\nTOM\n(encouraging)\nThat's the spirit. I'll check in with you later this week. Take care.\n\n[SFX: Phone hangs up.]\n\nTOM\n(to himself, satisfied)\nProgress, not perfection.\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(reading the message, curious)\nAn unknown number? The message mentions a wrong person again. Strange...\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(typing, to himself)\nNo worries, hope you find who you're looking for.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(to himself, hopeful)\nMaybe today will be different.\n\n[SFX: Tom's phone vibrates as he stands up, interrupted by a knock at the door.]\n\nTOM\n(calling out)\nCome in!\n\n[SFX: Door opens, colleague enters.]\n\nCOLLEAGUE (O.S.)\nTom, we need your input on the new community outreach program.\n\nTOM\n(to himself, determined)\nLet's make an impact.\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade in.]",
+        "sound_cues_in_scene": 12,
+        "silences_in_scene": 2,
+        "estimated_duration": "6:00"
+      },
+      {
+        "scene_number": 5,
+        "heading": "INT. HOSPITAL EMERGENCY ROOM - AFTERNOON",
+        "acoustic_properties": "Open space, high reverb, clinical environment",
+        "ambient_layers": [
+          "Ambient emergency room sounds (constant, high)",
+          "Urgent beeping (constant, high)",
+          "Footsteps (constant, high)",
+          "Hurried voices (constant, high)"
+        ],
+        "audio_script": "=== SCENE 5: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===\n[SFX: Ambient emergency room sounds, urgent beeping, footsteps, hurried voices.]\n\nJULIA rushes into the emergency room, her footsteps quick and determined. She puts on her gloves and prepares for the critical case.\n\nDR. LEE (40s, authoritative)\n(jumping in, professional)\nJulia, we need you to assist with the patient in Bay 3. It's a severe trauma case.\n\nJULIA\n(professional, focused)\nI'm ready. What's the situation?\n\nDR. LEE\n(concerned)\nMultiple injuries, potential internal bleeding. We need to stabilize the patient before we can transport them to surgery.\n\nJULIA\n(determined)\nUnderstood. I'll get the IV started and monitor vitals.\n\n[SFX: Julia's quick, efficient movements, the sound of a syringe, the beeping of medical equipment.]\n\nNURSE LINDA (O.S., professional)\nBlood pressure is dropping. We need to act fast.\n\nJULIA\n(calm, focused)\nI'm on it. Administering fluids.\n\n[SFX: The sound of fluids being administered, the beeping of the heart monitor.]\n\nDR. LEE\n(encouraging)\nGood work, Julia. Keep it up.\n\nJULIA\n(professional)\nVitals are stabilizing. We need to get them to surgery now.\n\nDR. LEE\n(decisive)\nRight. Let's move.\n\n[SFX: The sound of the team moving the patient, urgent commands, the whoosh of a stretcher.]\n\nJULIA\n(to herself, urgently)\nHang in there, just a little longer...\n\n[SFX: Urgent medical sounds, the patient being wheeled into the operating room, the door closing with a definitive slam.]\n\nDR. LEE\n(exhaling, calmer but still professional)\nGood job, team. We saved a life today. Dr. Martinez will be pleased with the outcome.\n\nJULIA\n(exhausted but relieved, with a slight hesitation)\nThank you, Dr. Lee. I couldn't have done it without you all. I should probably check in with Dr. Martinez about those unusual circumstances he mentioned.\n\nDR. LEE\n(smiling, encouraging)\nYou're a vital part of this team, Julia. Keep it up.\n\nJULIA\n(smiling, grateful)\nI will. Thanks.\n\n[SFX: Julia's footsteps as she walks to the staff room, slowing with exhaustion.]\n\nJULIA\n(to herself, resolute)\nEvery life matters.\n\n[SFX: Door opens and closes as Julia enters the staff room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade out, home sounds fade in.]",
+        "sound_cues_in_scene": 12,
+        "silences_in_scene": 2,
+        "estimated_duration": "7:00"
+      },
+      {
+        "scene_number": 6,
+        "heading": "INT. JULIA'S HOME - EVENING",
+        "acoustic_properties": "Living room, medium reverb, home environment",
+        "ambient_layers": [
+          "Ambient home sounds (constant, low)",
+          "Gentle hum of a fan (constant, medium)",
+          "Distant traffic noise (constant, low)",
+          "Kettle whistling (occasional, medium)"
+        ],
+        "audio_script": "=== SCENE 6: INT. JULIA'S HOME - EVENING ===\n[SFX: Ambient home sounds, gentle hum of a fan, the sound of a kettle boiling.]\n\nJULIA sits on her couch, a cup of tea in her hands. She looks tired but reflective.\n\n[SFX: Kettle whistling.]\n\nJULIA\n(to herself, quietly)\nAnother day, another challenge.\n\n[SFX: Julia pours herself a cup of tea, the sound of the liquid sloshing.]\n\nJULIA\n(to herself, thoughtful)\nI did my best today. That's all I can do.\n\n[SFX: Julia's phone vibrates on the coffee table.]\n\nJULIA\n(curious, picking up the phone)\nAnother unknown number? Same wrong person message. This is the second time today...\n\n[SFX: Julia reads the message, the sound of her phone.]\n\nJULIA\n(to herself, thoughtful)\nWhat are the odds of getting the same wrong number twice?\n\n[SFX: Julia's phone vibrates again as she types a quick reply.]\n\nJULIA\n(typing, to herself)\nNo worries, happens to the best of us.\n\n[SFX: Julia's phone beeps, confirming the message was sent.]\n\nJULIA\n(to herself, determined)\nEvery day brings new challenges.\n\n[SFX: Julia takes a sip of her tea, the sound of the liquid, then sets the cup down with a soft clink.]\n\nJULIA\n(to herself, reflective)\nAnd new opportunities to grow.\n\n[SFX: Julia's phone vibrates again, a different ringtone.]\n\nJULIA\n(surprised, hopeful)\nHello?\n\nTOM (O.S., warm)\nHi, Julia. It's Tom. How are you?\n\nJULIA\n(surprised, but grateful)\nHi, Tom. I'm doing okay. Thanks for checking in.\n\nTOM (O.S., kind)\nI wanted to make sure you were okay after our call earlier. Is everything alright?\n\nJULIA\n(smiling, honest)\nIt's been a tough day, but I'm hanging in there. Thank you for asking.\n\nTOM (O.S., encouraging)\nThat's good to hear. If you ever need someone to talk to, I'm here.\n\nJULIA\n(grateful)\nThank you, Tom. That means a lot.\n\nTOM (O.S., warm)\nAnytime, Julia. Take care.\n\nJULIA\n(smiling, hopeful)\nYou too, Tom.\n\n[SFX: Phone hangs up.]\n\nJULIA\n(to herself, reflective)\nMaybe there's more to this than just a wrong number.\n\n[SFX: Julia's phone vibrates as she puts it down.]\n\nJULIA\n(to herself, determined)\nEvery day brings new challenges.\n\n[SFX: Julia's footsteps as she stands up and walks to the window.]\n\nJULIA\n(to herself, hopeful)\nAnd new opportunities to grow.\n\nTRANSITION: [SFX: Door closes, ambient home sounds fade out, credits music fades in.]",
+        "sound_cues_in_scene": 10,
+        "silences_in_scene": 2,
+        "estimated_duration": "5:00"
       }
     ],
+    "complete_audio_script": "Complete episode with all audio optimization...",
     "sound_cue_summary": {
-      "total_cues": 6,
-      "ambient_layers": 6,
-      "action_cues": 2,
-      "emotional_cues": 2,
-      "transition_cues": 0,
-      "average_density": "1.33 cues per minute"
+      "total_cues": 58,
+      "ambient_layers": 15,
+      "action_cues": 26,
+      "signature_cues": 12,
+      "transition_cues": 5,
+      "average_density": "1.93 cues per minute"
     },
     "silence_summary": {
-      "total_silences": 2,
-      "dramatic_pauses": 1,
-      "emotional_beats": 1,
-      "revelation_moments": 0,
+      "total_silences": 10,
+      "dramatic_pauses": 5,
+      "emotional_beats": 4,
+      "revelation_moments": 1,
       "transitions": 0,
-      "total_silence_time": "7 seconds"
+      "total_silence_time": "38 seconds"
     },
     "production_notes": [
-      "Marcus's lighter click should be distinctive - same sound file each time for consistency",
-      "Ensure the office ambiance transitions smoothly from the coffee shop ambient",
-      "The heavy sigh in Scene 2 should be slightly reverb-heavy to match the office setting"
+      "Ensure the ambient morning sounds in Scene 1 have a gentle, welcoming quality.",
+      "The coffee machine hum should be subtle but noticeable in Scene 1.",
+      "Add a slight reverb to Julia's stethoscope sounds in Scene 2 to distinguish her from the patient.",
+      "Nurse Linda's entrance in Scene 3 should have a friendly, cheerful tone.",
+      "The professional ringtone in Scene 4 should be clear and distinct.",
+      "The emergency room sounds in Scene 5 should be urgent and high-energy.",
+      "Julia's phone vibrations should be consistent and noticeable.",
+      "The kettle whistling in Scene 6 should be gentle and soothing.",
+      "Ensure the ambient home sounds in Scene 6 are warm and comforting.",
+      "The credits music should fade in gently at the end of the episode.",
+      "Use a medium reverb for Tom's apartment to create a cozy atmosphere.",
+      "The hospital corridors in Scene 2 should have a low reverb to maintain a clinical feel.",
+      "The staff room in Scene 3 should have a gentle, relaxed ambiance.",
+      "Tom's office in Scene 4 should have a professional, focused environment.",
+      "The emergency room in Scene 5 should have a high reverb to emphasize the urgency.",
+      "Julia's home in Scene 6 should have a warm, homey feel.",
+      "Ensure the ambient traffic sounds are distant and subtle in all scenes.",
+      "The code blue alarm in Scene 5 should be intense and urgent.",
+      "The door sounds should be clear and distinct in all scenes.",
+      "The phone ring and hang-up sounds should be consistent throughout the episode.",
+      "The sound of Julia's phone vibrating should be subtle but noticeable.",
+      "The kettle whistling in Scene 6 should be gentle and soothing.",
+      "The credits music should be uplifting and positive.",
+      "The ambient sounds should be layered to create a rich, immersive environment.",
+      "Ensure the emotional beats and dramatic pauses are well-timed for maximum impact.",
+      "The transitions between scenes should be smooth and seamless.",
+      "The sound of Tom's footsteps should be muffled by the carpet in Scene 1.",
+      "The sound of Julia's footsteps should be clear and echoing in the hospital corridors in Scene 2.",
+      "The sound of the fan and keyboard clicks should be consistent in Tom's office in Scene 4.",
+      "The sound of the team moving the patient in Scene 5 should be urgent and coordinated.",
+      "The sound of Julia's phone beeping should be consistent and noticeable.",
+      "The sound of Julia pouring tea should be gentle and soothing in Scene 6.",
+      "The sound of the door closing should be definitive and clear in all scenes.",
+      "The sound of Tom's phone playing the meditation audio should be soft and calming.",
+      "The sound of Julia's pager beeping should be urgent and noticeable.",
+      "The sound of the kettle whistling should be gentle and soothing in Scene 6.",
+      "The sound of the credits music fading in should be smooth and uplifting."
     ]
   }
 }

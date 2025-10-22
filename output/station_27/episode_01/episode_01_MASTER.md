@@ -1,0 +1,25 @@
+# Episode 1 Master Script
+
+## Scene 1
+
+**INT. COFFEE SHOP - DAY**
+
+*FADE IN:*
+
+**SARA**
+*(sighing)*
+I can't believe we're doing this again.
+
+**JACK**
+*(excited)*
+Come on, Sara, it'll be fun!
+
+```
+SFX: COFFEE MACHINE HUMMING
+```
+
+**SARA**
+*(skeptical)*
+Fun? You call this fun?
+
+*FADE OUT.*

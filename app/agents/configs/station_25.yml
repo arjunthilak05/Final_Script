@@ -2,7 +2,7 @@
 
 station_name: "Station 25: Audio Optimization"
 description: "Optimizes scripts for audio production with speaker identification, sound cue integration, strategic silence marking, and complete audio specifications."
-model: "glm-4.5"
+model: "anthropic/claude-3.5-sonnet"
 temperature: 0.7
 max_tokens: 16384
 

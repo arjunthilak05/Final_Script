@@ -1,25 +1,25 @@
 ======================================================================
 EPISODE 2 DIALOGUE POLISH - COMPARISON REPORT
 ======================================================================
-Generated: 2025-10-22 23:04:06
+Generated: 2025-10-23 00:49:17
 Session: session_20251016_235335
 
 NATURAL SPEECH ANALYSIS:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  Unnatural instances found: 2
+  Unnatural instances found: 8
 
 CHARACTER VOICE VALIDATION:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  Voice distinction score: 10/10
+  Voice distinction score: 8/10
 
 SUBTEXT ENHANCEMENT:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  Current subtext level: 3/10
-  Target subtext level: 7-8/10
+  Current subtext level: Unknown
+  Target subtext level: Unknown
 
 DIALOGUE POLISH RESULTS:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  Total changes: 12
-  Word count change: -45 words
+  Total changes: 23
+  Word count change: -176 words
 
 ======================================================================

@@ -297,45 +297,31 @@ class Station23TwistIntegration:
         # Display script summary
         self.display_script_summary(episode_number, script, source)
 
-        # Step 5: Execute 4 sequential LLM validation tasks
+        # Step 5: Execute 2 sequential coherence validation tasks
         print()
         print("=" * 70)
-        print("🔍 EXECUTING P3 VALIDATION")
+        print("🔍 EXECUTING STORY COHERENCE VALIDATION")
         print("=" * 70)
         print()
 
-        # Task 1: P3 Cross-Reference
-        print("🔍 Task 1/4: P3 Cross-Reference (Plant Detection)...")
-        p3_validation = await self.execute_p3_cross_reference(episode_number, script)
-        print("✅ P3 cross-reference complete")
+        # Task 1: Story Coherence Validation
+        print("✓ Task 1/2: Validating story logic and character consistency...")
+        coherence_check = await self.execute_story_coherence_validation(episode_number, script)
+        print("✅ Coherence validation complete")
         print()
 
-        # Task 2: Payoff Validation
-        print("🎯 Task 2/4: Payoff Validation (Premature Reveal Check)...")
-        payoff_validation = await self.execute_payoff_validation(episode_number, script)
-        print("✅ Payoff validation complete")
-        print()
+        # Display coherence report
+        self.display_coherence_report(coherence_check)
 
-        # Task 3: Misdirection Balance
-        print("🎭 Task 3/4: Misdirection Balance (Red Herring Analysis)...")
-        misdirection_analysis = await self.execute_misdirection_balance(episode_number, script)
-        print("✅ Misdirection analysis complete")
+        # Task 2: Minimal Enhancement
         print()
-
-        # Display P3 validation report
-        self.display_p3_validation_report(p3_validation, payoff_validation, misdirection_analysis)
-
-        # Task 4: Auto-integrate fixes
-        print()
-        print("🔧 Task 4/4: Auto-Integrate P3 Fixes...")
-        enhanced_script = await self.execute_auto_integrate_fixes(
+        print("✓ Task 2/2: Generating minimal coherence enhancements...")
+        enhanced_script = await self.execute_minimal_enhancement(
             episode_number,
             script,
-            p3_validation,
-            payoff_validation,
-            misdirection_analysis
+            coherence_check
         )
-        print("✅ Enhanced script generated with P3 integrations")
+        print("✅ Minimal enhancements generated")
         print()
 
         # Display enhanced script

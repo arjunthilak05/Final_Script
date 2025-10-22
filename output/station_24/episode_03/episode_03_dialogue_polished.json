@@ -1,122 +1,217 @@
 {
   "session_id": "session_20251016_235335",
   "episode_number": 3,
-  "polished_at": "2025-10-22T23:05:06.092333",
+  "polished_at": "2025-10-23T00:52:03.971086",
   "natural_speech_analysis": {
     "unnatural_instances": [
       {
         "issue_number": 1,
-        "issue_type": "complete_sentences",
-        "scene_number": 1,
-        "character": "Sarah",
-        "current_line": "We need to find a lead, this case is getting cold.",
-        "problem": "Speaks in a complete sentence, which is less common in natural speech.",
-        "character_note": "Sarah is a professional, mid-30s, articulate",
+        "issue_type": "no_contractions",
+        "scene_number": 2,
+        "character": "DR. MARTINEZ",
+        "current_line": "Julia, we need to intubate now!",
+        "problem": "No contractions - most people would use contractions in urgent medical situations",
+        "character_note": "Doctor in emergency situation",
         "suggested_fixes": [
-          "We need to find a lead. This case is getting cold.",
-          "We need a lead. This case is getting cold.",
-          "We need a lead. It's getting cold."
+          "Julia, we need to intubate now!",
+          "Julia, we've got to intubate now!",
+          "Julia, we've gotta intubate now!"
         ],
-        "best_fix": "We need to find a lead. This case is getting cold.",
-        "reasoning": "Breaks the sentence into two, which is more natural and maintains clarity."
+        "best_fix": "Julia, we've got to intubate now!",
+        "reasoning": "Uses contraction 'we've got to' which sounds more natural in urgent speech"
       },
       {
         "issue_number": 2,
-        "issue_type": "no_contractions",
-        "scene_number": 3,
-        "character": "Marcus",
-        "current_line": "We will see.",
-        "problem": "Does not use a contraction, which is less common in natural speech.",
-        "character_note": "Marcus is terse, working-class, 50s",
+        "issue_type": "complete_sentences",
+        "scene_number": 2,
+        "character": "JULIA",
+        "current_line": "I'm in position. Here we go!",
+        "problem": "Complete sentences - people in urgent situations often speak in fragments",
+        "character_note": "Doctor in emergency situation",
         "suggested_fixes": [
-          "We'll see.",
-          "I don't know.",
-          "I'll see."
+          "In position. Go!",
+          "Positioned. Ready!",
+          "Ready. Here we go!"
         ],
-        "best_fix": "We'll see.",
-        "reasoning": "Uses a contraction, which is more natural and fits Marcus's character."
+        "best_fix": "Positioned. Ready!",
+        "reasoning": "More concise and urgent, typical of medical professionals in emergency situations"
       },
       {
         "issue_number": 3,
-        "issue_type": "complete_sentences",
-        "scene_number": 4,
-        "character": "Marcus",
-        "current_line": "I have not been sleeping well, that is all.",
-        "problem": "Speaks in a complete sentence, which is less common in natural speech.",
-        "character_note": "Marcus is terse, working-class, 50s",
+        "issue_type": "no_contractions",
+        "scene_number": 3,
+        "character": "DR. MARTINEZ",
+        "current_line": "Julia, you did everything you could.",
+        "problem": "No contractions - people naturally use contractions in emotional moments",
+        "character_note": "Senior doctor comforting colleague",
         "suggested_fixes": [
-          "Haven't been sleeping well. That's all.",
-          "Not sleeping well. That's it.",
-          "Can't sleep. That's all."
+          "Julia, you did everything you could.",
+          "Julia, you've done everything you could.",
+          "Julia, you did all you could."
         ],
-        "best_fix": "Haven't been sleeping well. That's all.",
-        "reasoning": "Breaks the sentence into fragments, which is more natural and fits Marcus's character."
+        "best_fix": "Julia, you've done everything you could.",
+        "reasoning": "Uses contraction 'you've' which sounds more natural in emotional speech"
       },
       {
         "issue_number": 4,
-        "issue_type": "complete_sentences",
-        "scene_number": 5,
-        "character": "Marcus",
-        "current_line": "I have been thinking a lot about this case. There is something that does not add up. I keep going over the details, but it is like there is a piece missing. It is driving me crazy.",
-        "problem": "Speaks in complete sentences, which is less common in natural speech.",
-        "character_note": "Marcus is terse, working-class, 50s",
+        "issue_type": "no_contractions",
+        "scene_number": 3,
+        "character": "JULIA",
+        "current_line": "I know. But it doesn't make it any easier.",
+        "problem": "No contractions - people would naturally use contractions when emotional",
+        "character_note": "Doctor dealing with patient death",
         "suggested_fixes": [
-          "I've been thinking about this case. Something doesn't add up. I keep going over the details, but there's a piece missing. It's driving me crazy.",
-          "I've been thinking. Something's off. I keep going over the details, but there's a piece missing. It's driving me crazy.",
-          "I've been thinking a lot. Something's not right. I keep going over the details, but there's a piece missing. Driving me crazy."
+          "I know. But it doesn't make it any easier.",
+          "I know. But it's not any easier.",
+          "I know. But it don't make it easier."
         ],
-        "best_fix": "I've been thinking about this case. Something doesn't add up. I keep going over the details, but there's a piece missing. It's driving me crazy.",
-        "reasoning": "Breaks the sentences into fragments, uses contractions, and fits Marcus's character."
+        "best_fix": "I know. But it's not any easier.",
+        "reasoning": "Uses contraction 'it's' which sounds more natural in emotional speech"
+      },
+      {
+        "issue_number": 5,
+        "issue_type": "complete_sentences",
+        "scene_number": 4,
+        "character": "TOM",
+        "current_line": "Lena, we need to talk. I made a mistake with the messages.",
+        "problem": "Complete sentences - people often use fragments when urgent",
+        "character_note": "Professional in urgent situation",
+        "suggested_fixes": [
+          "Lena. We need to talk. Made a mistake with the messages.",
+          "Lena. Talk. Big mistake with those messages.",
+          "Lena, we need to talk. Messed up the messages."
+        ],
+        "best_fix": "Lena. We need to talk. Messed up the messages.",
+        "reasoning": "More natural flow, uses more casual language 'messed up' instead of 'made a mistake'"
+      },
+      {
+        "issue_number": 6,
+        "issue_type": "no_contractions",
+        "scene_number": 4,
+        "character": "LENA",
+        "current_line": "What do you mean?",
+        "problem": "No contractions - people would use contractions in casual conversation",
+        "character_note": "Colleague in professional setting",
+        "suggested_fixes": [
+          "What do you mean?",
+          "What's that mean?",
+          "Mean what?"
+        ],
+        "best_fix": "What's that mean?",
+        "reasoning": "Uses contraction 'what's' which sounds more natural in conversation"
+      },
+      {
+        "issue_number": 7,
+        "issue_type": "no_interruptions",
+        "scene_number": 5,
+        "character": "TOM",
+        "current_line": "We don't have time! (leans over desk) Julia's life could be in danger.",
+        "problem": "No interruptions - in urgent situations, people often interrupt each other",
+        "character_note": "Person in urgent situation",
+        "suggested_fixes": [
+          "We don't have—",
+          "No time! Julia's life—",
+          "We don't have time! Julia's life—"
+        ],
+        "best_fix": "No time! Julia's life—",
+        "reasoning": "More urgent, fragmented speech pattern typical of high-stress situations"
+      },
+      {
+        "issue_number": 8,
+        "issue_type": "no_pauses",
+        "scene_number": 5,
+        "character": "LENA",
+        "current_line": "I'll do whatever it takes. (typing) Let's get to work.",
+        "problem": "No pauses/restarts - people hesitate and restart when determined",
+        "character_note": "Professional in urgent situation",
+        "suggested_fixes": [
+          "I'll do... whatever it takes. Let's get to work.",
+          "I'll do whatever—yes, whatever it takes. Let's get to work.",
+          "I'll do whatever it takes. Now. Let's get to work."
+        ],
+        "best_fix": "I'll do whatever—yes, whatever it takes. Let's get to work.",
+        "reasoning": "Shows natural hesitation and reinforcement of determination"
+      },
+      {
+        "issue_number": 9,
+        "issue_type": "complete_sentences",
+        "scene_number": 6,
+        "character": "DR. MARTINEZ",
+        "current_line": "Julia, we have another critical case. Stat!",
+        "problem": "Complete sentences - in emergency situations, people use fragments",
+        "character_note": "Doctor in emergency situation",
+        "suggested_fixes": [
+          "Julia. Critical case. Stat!",
+          "Julia. Another critical. Stat!",
+          "Julia. Another one. Stat!"
+        ],
+        "best_fix": "Julia. Critical case. Stat!",
+        "reasoning": "More urgent, fragmented speech typical of emergency situations"
+      },
+      {
+        "issue_number": 10,
+        "issue_type": "complete_sentences",
+        "scene_number": 6,
+        "character": "JULIA",
+        "current_line": "Yes, I can. (rolling_up_sleeves, notices a small scar on her arm she doesn't remember getting) Let's do this.",
+        "problem": "Complete sentences - people often use fragments when determined",
+        "character_note": "Doctor in emergency situation",
+        "suggested_fixes": [
+          "Yes. I can. Let's do this.",
+          "Yes. Can do. Let's go.",
+          "Yes. Ready. Let's do this."
+        ],
+        "best_fix": "Yes. Ready. Let's do this.",
+        "reasoning": "More concise and determined, typical of medical professionals in emergency situations"
       }
     ],
     "principles_violated": {
-      "use_contractions": 1,
-      "speak_in_fragments": 3,
-      "allow_interruptions": 0,
-      "include_pauses": 0,
+      "use_contractions": 4,
+      "speak_in_fragments": 4,
+      "allow_interruptions": 1,
+      "include_pauses": 1,
       "avoid_exposition": 0
     },
-    "total_issues": 4
+    "total_issues": 10
   },
   "voice_validation": {
     "voice_distinction_test": {
-      "interchangeable_lines": 4,
-      "lines_tested": 14,
-      "distinction_score": "7/10",
+      "interchangeable_lines": 5,
+      "lines_tested": 20,
+      "distinction_score": "7.5/10",
       "problem_pairs": [
         {
           "characters": [
-            "Sarah",
-            "Marcus"
+            "Tom",
+            "Julia"
           ],
-          "overlap_count": 4,
-          "issue": "Both characters use similar sentence lengths and vocabulary, making it hard to distinguish their voices"
+          "overlap_count": 3,
+          "issue": "Both characters show similar emotional distress patterns - need differentiation"
         }
       ]
     },
     "voice_violations": [
       {
-        "character": "Marcus",
-        "scene_number": 5,
-        "current_line": "I’ve been thinking a lot about this case. There’s something that doesn’t add up. I keep going over the details, but it’s like there’s a piece missing. It’s driving me crazy.",
-        "violation_type": "too_verbose",
-        "character_profile_rule": "Speech: Terse, brief, and to the point. Short sentences (3-7 words average).",
-        "problem": "22-word sentence, detailed explanation (Marcus doesn't elaborate)",
-        "correct_voice": "I can’t shake this case. Something’s off.",
-        "reasoning": "Shorter, maintains Marcus's terse nature and mystery"
+        "character": "Dr. Martinez",
+        "scene_number": 3,
+        "current_line": "Julia, you did everything you could. Sometimes, it's out of our hands.",
+        "violation_type": "too_casual",
+        "character_profile_rule": "Medical professional should maintain appropriate clinical tone",
+        "problem": "Lacks professional authority in emotional moment",
+        "correct_voice": "Julia, all protocols were followed. Some outcomes are beyond medical intervention.",
+        "reasoning": "Maintains professional demeanor while offering support"
       }
     ],
     "character_consistency": [
       {
-        "character": "Marcus",
-        "inconsistency": "Verbose in Scene 5, terse in Scene 1 and Scene 3",
-        "profile_rule": "Consistently terse and brief in speech.",
+        "character": "Tom",
+        "inconsistency": "Scene 1 shows personal concern, Scene 4 shows technical focus",
+        "profile_rule": "Tech professional with personal investment",
         "scenes_affected": [
           1,
-          3,
-          5
+          4
         ],
-        "fix_needed": "Shorten sentences in Scene 5 to match Marcus's terse style"
+        "fix_needed": "Blend personal concern with technical language throughout"
       }
     ]
   },
@@ -125,41 +220,86 @@
     "target_subtext_level": "7-8/10",
     "on_the_nose_examples": [
       {
-        "scene_number": 4,
-        "current_dialogue": "MARCUS: Nothing, I’m just tired. You know how these cases can be. I haven’t been sleeping well, that’s all.",
-        "problem": "States feelings and reasons directly, lacks depth.",
-        "subtext_version": "MARCUS: (pauses, looks away) \"The walls are closing in, Sarah.\"",
-        "what_it_means": "I'm under pressure and feeling trapped.",
-        "why_better": "Audience infers from context + Marcus's body language + tone",
-        "technique_used": "double_meaning"
-      },
-      {
-        "scene_number": 5,
-        "current_dialogue": "MARCUS: I’ve been thinking a lot about this case. There’s something that doesn’t add up. I keep going over the details, but it’s like there’s a piece missing. It’s driving me crazy.",
-        "problem": "States thoughts and feelings directly, lacks subtlety.",
-        "subtext_version": "MARCUS: (fidgets with file) \"The pieces don’t fit.\"",
-        "what_it_means": "I’m struggling to piece together the case, something is off.",
-        "why_better": "Audience infers from context + Marcus's restlessness + action",
+        "scene_number": 1,
+        "current_dialogue": "TOM: Why isn't she getting the messages? I checked the system, everything's fine. It's like they're vanishing into thin air.",
+        "problem": "States the problem directly without subtext. Tom is thinking aloud and explaining his situation.",
+        "subtext_version": "TOM: (taps repeatedly on send button, stares at screen) All sent. All delivered. All gone. (slams fist on desk)",
+        "what_it_means": "Tom is frustrated and confused about why his messages aren't getting through, suggesting something is wrong.",
+        "why_better": "Shows his frustration through action rather than explaining it, creating tension.",
         "technique_used": "action_instead_of_words"
       },
       {
-        "scene_number": 6,
-        "current_dialogue": "MARCUS: I hope so. This case has been eating at me.",
-        "problem": "States feelings directly, lacks depth.",
-        "subtext_version": "MARCUS: (looks at his watch) \"We can’t afford to be wrong tonight.\"",
-        "what_it_means": "I’m under a lot of pressure and time is running out.",
-        "why_better": "Audience infers from context + Marcus's urgency + action",
+        "scene_number": 1,
+        "current_dialogue": "TOM: (mutters) It has to be a glitch. But what if it's something more?",
+        "problem": "Directly states internal thoughts and concerns without subtext.",
+        "subtext_version": "TOM: (stares out window at rain) Just a system error. Always just a system error. (grips windowsill tightly)",
+        "what_it_means": "Tom suspects something more serious is happening but is trying to convince himself otherwise.",
+        "why_better": "Shows his internal conflict and growing suspicion through physical action and tone.",
         "technique_used": "double_meaning"
+      },
+      {
+        "scene_number": 2,
+        "current_dialogue": "JULIA: (whispers, to herself) I couldn't save her.",
+        "problem": "Directly states guilt and emotion without subtext.",
+        "subtext_version": "JULIA: (stares at her hands, then quickly turns away) Next case.",
+        "what_it_means": "Julia feels responsible for the patient's death but is trying to move on.",
+        "why_better": "Shows her guilt through avoidance and action rather than stating it directly.",
+        "technique_used": "action_instead_of_words"
+      },
+      {
+        "scene_number": 3,
+        "current_dialogue": "JULIA: (whispering, to herself) Why couldn't I save her? I should have done more.",
+        "problem": "Directly states guilt and self-blame without subtext.",
+        "subtext_version": "JULIA: (tracing the photo with her finger) We had a deal.",
+        "what_it_means": "Julia feels she broke a promise to someone by not saving the patient.",
+        "why_better": "Implies a personal connection and guilt without explicitly stating emotions.",
+        "technique_used": "evasion"
+      },
+      {
+        "scene_number": 3,
+        "current_dialogue": "DR. MARTINEZ: Julia, you did everything you could. Sometimes, it's out of our hands.",
+        "problem": "Directly states reassurance and explanation without subtext.",
+        "subtext_version": "DR. MARTINEZ: (places coffee on table) Drink. It's been a long night for everyone.",
+        "what_it_means": "Dr. Martinez is trying to comfort Julia while acknowledging the shared difficulty of their job.",
+        "why_better": "Shows support through action rather than stating it directly.",
+        "technique_used": "action_instead_of_words"
+      },
+      {
+        "scene_number": 4,
+        "current_dialogue": "TOM: Lena, we need to talk. I made a mistake with the messages. (stands abruptly, paces) I didn't realize how critical it was until last night when—",
+        "problem": "Directly states intention and explains situation without subtext.",
+        "subtext_version": "TOM: (closes office door, lowers voice) Those messages you logged yesterday... (pauses as phone buzzes, ignores it)",
+        "what_it_means": "Tom has discovered something important about the messages and wants to discuss it privately.",
+        "why_better": "Creates tension and importance through action and implication rather than explanation.",
+        "technique_used": "interruption"
+      },
+      {
+        "scene_number": 5,
+        "current_dialogue": "TOM: We don't have time! (leans over desk) Julia's life could be in danger.",
+        "problem": "Directly states urgency and concern without subtext.",
+        "subtext_version": "TOM: (grabs jacket, checks watch) Julia's shift ends in two hours.",
+        "what_it_means": "Tom is worried about Julia and believes there's a time-sensitive threat.",
+        "why_better": "Implies urgency and concern through specific details rather than stating emotions directly.",
+        "technique_used": "deflection"
+      },
+      {
+        "scene_number": 6,
+        "current_dialogue": "JULIA: (determined, professional) Yes, I can. (rolling_up_sleeves, notices a small scar on her arm she doesn't remember getting) Let's do this.",
+        "problem": "Directly states determination and intention without subtext.",
+        "subtext_version": "JULIA: (rolls up sleeves, pauses at unfamiliar scar on arm, then clenches fist) Ready when you are.",
+        "what_it_means": "Julia is determined to focus on the patient despite noticing something concerning about herself.",
+        "why_better": "Shows her determination and internal concern through physical action rather than stating it.",
+        "technique_used": "action_instead_of_words"
       }
     ],
     "subtext_techniques_current": {
       "evasion": 0,
       "deflection": 0,
       "silence": 0,
-      "action_instead": 1,
+      "action_instead": 3,
       "double_meaning": 0,
       "interruption": 0,
-      "over_explanation": 0
+      "over_explanation": 1
     },
     "subtext_techniques_target": {
       "evasion": 5,
@@ -184,94 +324,175 @@
     "scenes": [
       {
         "scene_number": 1,
-        "heading": "INT. POLICE STATION - DAY",
-        "polished_script_content": "Detective Sarah and Marcus are reviewing the case files.\nSarah: 'We need to find a lead. This case is getting cold.'\nMarcus: 'I know. I’ve been going over the evidence again. There’s something we’re missing.'",
+        "heading": "INT. TOM'S APARTMENT - EVENING",
+        "polished_script_content": "=== SCENE 1: INT. TOM'S APARTMENT - EVENING ===\n[SFX: ambient_apartment, distant_traffic, light_rain]\n\nTOM (thinking aloud, pacing) (taps repeatedly on send button, stares at screen) All sent. All delivered. All gone. (slams fist on desk)\n\n[SFX: phone_vibrates urgently, Tom stops pacing]\n\nTOM (answering) Hello? (pauses, concerned) What do you mean she's not responding? (frustrated) I've been sending messages all day! (hangs up, mutters) (stares out window at rain) Just a system error. Always just a system error. (grips windowsill tightly) Julia, I swear I'll find out what's happening.",
         "changes_in_scene": [
           {
-            "line_number": 1,
-            "character": "Sarah",
-            "original": "We need to find a lead, this case is getting cold.",
-            "polished": "We need to find a lead. This case is getting cold.",
-            "change_type": "natural_speech",
-            "improvement": "More natural, breaks up long sentence"
+            "line_number": 5,
+            "character": "TOM",
+            "original": "Why isn't she getting the messages? I checked the system, everything's fine. It's like they're vanishing into thin air.",
+            "polished": "(taps repeatedly on send button, stares at screen) All sent. All delivered. All gone. (slams fist on desk)",
+            "change_type": "subtext_enhancement",
+            "improvement": "Shows frustration through action rather than exposition"
+          },
+          {
+            "line_number": 8,
+            "character": "TOM",
+            "original": "(mutters) It has to be a glitch. But what if it's something more?",
+            "polished": "(stares out window at rain) Just a system error. Always just a system error. (grips windowsill tightly)",
+            "change_type": "subtext_enhancement",
+            "improvement": "Shows concern through physical actions rather than stating it directly"
           }
         ]
       },
       {
         "scene_number": 2,
-        "heading": "INT. CAFETERIA - DAY",
-        "polished_script_content": "Marcus leans back in his chair, eyes scanning the room. He seems restless, tapping his fingers on the table. He reaches into his pocket, fidgeting with his lighter, the familiar click a small comfort in the tense atmosphere.",
-        "changes_in_scene": []
+        "heading": "INT. HOSPITAL EMERGENCY ROOM - NIGHT",
+        "polished_script_content": "=== SCENE 2: INT. HOSPITAL EMERGENCY ROOM - NIGHT ===\n[SFX: ambient_hospital, heart_monitor, footsteps, urgent_voices]\n\nDR. MARTINEZ (O.S., urgent) Julia, we've got to intubate now! Her oxygen levels are dropping.\n\n[SFX: medical_equipment_whirring, Julia's quick movements]\n\nJULIA (strained, focused) Positioned. Ready! (notices a familiar-looking face in the observation window, but focuses back on the patient)\n\nMIKE (O.S., calm) Good, good. Keep going, Julia.\n\n[SFX: heart_monitor_beep_accelerates, Julia's breathing, equipment_beeps]\n\nJULIA (strained) Almost... (grunts with effort) Got it! (panting slightly) She's stable?\n\n[SFX: heart_monitor_stabilizes]\n\nDR. MARTINEZ (O.S., relieved) Great work, everyone. Julia, you did well.\n\nJULIA (whispers, to herself) (stares at her hands, then quickly turns away) Next case.\n\n[SFX: pager_beeps urgently]\n\nDR. MARTINEZ (O.S., urgent) Julia, we need you in trauma room 2, stat!",
+        "changes_in_scene": [
+          {
+            "line_number": 5,
+            "character": "DR. MARTINEZ",
+            "original": "Julia, we need to intubate now!",
+            "polished": "Julia, we've got to intubate now!",
+            "change_type": "natural_speech",
+            "improvement": "More natural contraction"
+          },
+          {
+            "line_number": 9,
+            "character": "JULIA",
+            "original": "I'm in position. Here we go!",
+            "polished": "Positioned. Ready!",
+            "change_type": "natural_speech",
+            "improvement": "More concise, urgent medical speech"
+          },
+          {
+            "line_number": 19,
+            "character": "JULIA",
+            "original": "(whispers, to herself) I couldn't save her.",
+            "polished": "(whispers, to herself) (stares at her hands, then quickly turns away) Next case.",
+            "change_type": "subtext_enhancement",
+            "improvement": "Shows emotional response through action rather than stating it"
+          }
+        ]
       },
       {
         "scene_number": 3,
-        "heading": "INT. INTERROGATION ROOM - DAY",
-        "polished_script_content": "Sarah and Marcus interrogate a suspect.\nSuspect: 'I swear, I didn’t do it.'\nMarcus: 'We'll see.'",
+        "heading": "INT. HOSPITAL STAFF ROOM - LATE NIGHT",
+        "polished_script_content": "=== SCENE 3: INT. HOSPITAL STAFF ROOM - LATE NIGHT ===\n[SFX: ambient_hospital, faint_heart_monitor, soft_crying]\n\nJULIA (whispering, to herself) (tracing the photo with her finger) We had a deal.\n\n[SFX: clock_ticks loudly, Julia sobs]\n\nJULIA (wipes tears) I should have done more.\n\n[SFX: door_creaks, footsteps approach]\n\nDR. MARTINEZ (soft, concerned) (places coffee on table) Drink. It's been a long night for everyone.\n\nJULIA (whispers) I know. (pauses, wipes tears) But it's not any easier.\n\nDR. MARTINEZ (reassuring) Julia, you've done everything you could. (pauses, approaches) Sometimes, it's out of our hands.\n\nJULIA (nods, sighs) Thanks, Dr. Martinez. (pauses, stands up) I'll be okay.",
         "changes_in_scene": [
           {
-            "line_number": 2,
-            "character": "Marcus",
-            "original": "We will see.",
-            "polished": "We'll see.",
+            "line_number": 5,
+            "character": "JULIA",
+            "original": "(whispering, to herself) Why couldn't I save her? I should have done more.",
+            "polished": "(whispering, to herself) (tracing the photo with her finger) We had a deal.",
+            "change_type": "subtext_enhancement",
+            "improvement": "Shows deeper personal connection through subtext"
+          },
+          {
+            "line_number": 13,
+            "character": "DR. MARTINEZ",
+            "original": "Julia, you did everything you could. Sometimes, it's out of our hands.",
+            "polished": "Julia, you've done everything you could. (pauses, approaches) Sometimes, it's out of our hands.",
             "change_type": "natural_speech",
-            "improvement": "Uses contraction, more natural"
+            "improvement": "More natural contraction"
+          },
+          {
+            "line_number": 13,
+            "character": "DR. MARTINEZ",
+            "original": "Julia, you did everything you could. Sometimes, it's out of our hands.",
+            "polished": "(places coffee on table) Drink. It's been a long night for everyone.",
+            "change_type": "subtext_enhancement",
+            "improvement": "Shows support through action rather than stating it"
+          },
+          {
+            "line_number": 16,
+            "character": "JULIA",
+            "original": "I know. But it doesn't make it any easier.",
+            "polished": "I know. (pauses, wipes tears) But it's not any easier.",
+            "change_type": "natural_speech",
+            "improvement": "More natural contraction and phrasing"
           }
         ]
       },
       {
         "scene_number": 4,
-        "heading": "INT. SARAH'S OFFICE - DAY",
-        "polished_script_content": "Sarah: 'Marcus, you’re acting weird. What’s going on with you?'\nMarcus: (pauses, looks away) 'The walls are closing in, Sarah.'",
+        "heading": "INT. TOM'S OFFICE - NEXT MORNING",
+        "polished_script_content": "=== SCENE 4: INT. TOM'S OFFICE - NEXT MORNING ===\n[SFX: alarm_clock_rings, traffic_sounds, door_slams, footsteps_approach, phone_ringing]\n\nLENA (O.S., professional) Tom, you're here early.\n\nTOM (serious, determined) (closes office door, lowers voice) Those messages you logged yesterday... (pauses as phone buzzes, ignores it)\n\n[SFX: phone_rings_intensely]\n\nLENA (concerned) What's that mean?\n\nTOM (explains) The system's been sending messages, but they're not reaching the intended recipient. I don't know why, but I'm going to find out.\n\nLENA (nodding) Okay, let's go through the logs. Maybe we can trace the issue.\n\nTOM (resolute) Thanks, Lena. I owe this to Julia.",
         "changes_in_scene": [
           {
-            "line_number": 2,
-            "character": "Marcus",
-            "original": "Nothing, I’m just tired. You know how these cases can be. I haven’t been sleeping well, that’s all.",
-            "polished": "(pauses, looks away) 'The walls are closing in, Sarah.'",
-            "change_type": "subtext_enhancement",
-            "improvement": "Adds subtext, shows tension and unease"
+            "line_number": 8,
+            "character": "TOM",
+            "original": "Lena, we need to talk. I made a mistake with the messages. (stands abruptly, paces) I didn't realize how critical it was until last night when—",
+            "polished": "(closes office door, lowers voice) Those messages you logged yesterday... (pauses as phone buzzes, ignores it)",
+            "change_type": "natural_speech",
+            "improvement": "More natural, fragmented speech with actions"
+          },
+          {
+            "line_number": 13,
+            "character": "LENA",
+            "original": "What do you mean?",
+            "polished": "What's that mean?",
+            "change_type": "natural_speech",
+            "improvement": "More natural contraction and phrasing"
           }
         ]
       },
       {
         "scene_number": 5,
-        "heading": "INT. CRIME SCENE - DAY",
-        "polished_script_content": "Marcus: (fidgets with file) 'The pieces don’t fit.'\nSarah: 'Let’s go over it again, maybe we’ll spot something new.'",
+        "heading": "INT. TOM'S OFFICE - AFTERNOON",
+        "polished_script_content": "=== SCENE 5: INT. TOM'S OFFICE - AFTERNOON ===\n[SFX: ambient_office, keyboard_tapping, paper_rustling]\n\nLENA (O.S., focused) Tom, look at this! I've found a pattern in the logs. (keyboard_tapping_faster) The messages aren't just failing—there's some kind of redirection happening in the system. (voice drops) It's almost like they're being sent somewhere else first.\n\nTOM (shocked, stands up) What? How is that possible? (knocks over coffee cup) Damn it! (grabs jacket) This could be a major security breach. We need to protect the system before someone gets hurt!\n\n[SFX: computer_alerts, rapid_keyboarding]\n\nLENA (nodding) I agree. I'll run a trace on the unknown address. (typing_faster) It might take some—\n\nTOM (interrupting) (grabs jacket, checks watch) Julia's shift ends in two hours.\n\n[SFX: urgent_phone_rings]\n\nLENA (determined) I'll do whatever—yes, whatever it takes. Let's get to work.",
         "changes_in_scene": [
           {
-            "line_number": 1,
-            "character": "Marcus",
-            "original": "I’ve been thinking a lot about this case. There’s something that doesn’t add up. I keep going over the details, but it’s like there’s a piece missing. It’s driving me crazy.",
-            "polished": "(fidgets with file) 'The pieces don’t fit.'",
+            "line_number": 19,
+            "character": "TOM",
+            "original": "We don't have time! (leans over desk) Julia's life could be in danger.",
+            "polished": "(grabs jacket, checks watch) Julia's shift ends in two hours.",
             "change_type": "subtext_enhancement",
-            "improvement": "Adds subtext, shows frustration and obsession"
+            "improvement": "Shows urgency through specific detail rather than stating it"
+          },
+          {
+            "line_number": 23,
+            "character": "LENA",
+            "original": "I'll do whatever it takes. (typing) Let's get to work.",
+            "polished": "I'll do whatever—yes, whatever it takes. Let's get to work.",
+            "change_type": "natural_speech",
+            "improvement": "More natural with hesitation and emphasis"
           }
         ]
       },
       {
         "scene_number": 6,
-        "heading": "INT. POLICE STATION - NIGHT",
-        "polished_script_content": "Sarah and Marcus are reviewing the case files late into the night.\nSarah: 'We’re getting close, I can feel it.'\nMarcus: (looks at his watch) 'We can’t afford to be wrong tonight.'",
+        "heading": "INT. HOSPITAL EMERGENCY ROOM - AFTERNOON",
+        "polished_script_content": "=== SCENE 6: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===\n[SFX: ambulance_sirens_approaching, hospital_doors_burst_open, gurney_wheels, urgent_voices]\n\nDR. MARTINEZ (O.S., urgent) Julia. Critical case. Stat!\n\n[SFX: rapid_footsteps_approach]\n\nJULIA (determined, professional) (rolls up sleeves, pauses at unfamiliar scar on arm, then clenches fist) Ready when you are.\n\n[SFX: medical_equipment_whirring, Julia's quick movements, monitor_beeps_rapidly]\n\nDR. MARTINEZ (O.S., calm but urgent) Good. Stay focused, Julia. Pressure's dropping!\n\n[SFX: urgent_equipment_beeps]\n\nJULIA (focused) I'm ready. (commanding) Clamp! Now! Let's save this patient.",
         "changes_in_scene": [
           {
-            "line_number": 2,
-            "character": "Marcus",
-            "original": "I hope so. This case has been eating at me.",
-            "polished": "(looks at his watch) 'We can’t afford to be wrong tonight.'",
+            "line_number": 5,
+            "character": "DR. MARTINEZ",
+            "original": "Julia, we have another critical case. Stat!",
+            "polished": "Julia. Critical case. Stat!",
+            "change_type": "natural_speech",
+            "improvement": "More concise, urgent medical speech"
+          },
+          {
+            "line_number": 9,
+            "character": "JULIA",
+            "original": "Yes, I can. (rolling_up_sleeves, notices a small scar on her arm she doesn't remember getting) Let's do this.",
+            "polished": "(rolls up sleeves, pauses at unfamiliar scar on arm, then clenches fist) Ready when you are.",
             "change_type": "subtext_enhancement",
-            "improvement": "Adds urgency and pressure"
+            "improvement": "Shows determination and mystery through action rather than stating it"
           }
         ]
       }
     ],
-    "complete_polished_script": "INT. POLICE STATION - DAY\nDetective Sarah and Marcus are reviewing the case files.\nSarah: 'We need to find a lead. This case is getting cold.'\nMarcus: 'I know. I’ve been going over the evidence again. There’s something we’re missing.'\n\nINT. CAFETERIA - DAY\nMarcus leans back in his chair, eyes scanning the room. He seems restless, tapping his fingers on the table. He reaches into his pocket, fidgeting with his lighter, the familiar click a small comfort in the tense atmosphere.\n\nINT. INTERROGATION ROOM - DAY\nSarah and Marcus interrogate a suspect.\nSuspect: 'I swear, I didn’t do it.'\nMarcus: 'We'll see.'\n\nINT. SARAH'S OFFICE - DAY\nSarah: 'Marcus, you’re acting weird. What’s going on with you?'\nMarcus: (pauses, looks away) 'The walls are closing in, Sarah.'\n\nINT. CRIME SCENE - DAY\nMarcus: (fidgets with file) 'The pieces don’t fit.'\nSarah: 'Let’s go over it again, maybe we’ll spot something new.'\n\nINT. POLICE STATION - NIGHT\nSarah and Marcus are reviewing the case files late into the night.\nSarah: 'We’re getting close, I can feel it.'\nMarcus: (looks at his watch) 'We can’t afford to be wrong tonight.'",
+    "complete_polished_script": "=== SCENE 1: INT. TOM'S APARTMENT - EVENING ===\n[SFX: ambient_apartment, distant_traffic, light_rain]\n\nTOM (thinking aloud, pacing) (taps repeatedly on send button, stares at screen) All sent. All delivered. All gone. (slams fist on desk)\n\n[SFX: phone_vibrates urgently, Tom stops pacing]\n\nTOM (answering) Hello? (pauses, concerned) What do you mean she's not responding? (frustrated) I've been sending messages all day! (hangs up, mutters) (stares out window at rain) Just a system error. Always just a system error. (grips windowsill tightly) Julia, I swear I'll find out what's happening.\n\n=== SCENE 2: INT. HOSPITAL EMERGENCY ROOM - NIGHT ===\n[SFX: ambient_hospital, heart_monitor, footsteps, urgent_voices]\n\nDR. MARTINEZ (O.S., urgent) Julia, we've got to intubate now! Her oxygen levels are dropping.\n\n[SFX: medical_equipment_whirring, Julia's quick movements]\n\nJULIA (strained, focused) Positioned. Ready! (notices a familiar-looking face in the observation window, but focuses back on the patient)\n\nMIKE (O.S., calm) Good, good. Keep going, Julia.\n\n[SFX: heart_monitor_beep_accelerates, Julia's breathing, equipment_beeps]\n\nJULIA (strained) Almost... (grunts with effort) Got it! (panting slightly) She's stable?\n\n[SFX: heart_monitor_stabilizes]\n\nDR. MARTINEZ (O.S., relieved) Great work, everyone. Julia, you did well.\n\nJULIA (whispers, to herself) (stares at her hands, then quickly turns away) Next case.\n\n[SFX: pager_beeps urgently]\n\nDR. MARTINEZ (O.S., urgent) Julia, we need you in trauma room 2, stat!\n\n=== SCENE 3: INT. HOSPITAL STAFF ROOM - LATE NIGHT ===\n[SFX: ambient_hospital, faint_heart_monitor, soft_crying]\n\nJULIA (whispering, to herself) (tracing the photo with her finger) We had a deal.\n\n[SFX: clock_ticks loudly, Julia sobs]\n\nJULIA (wipes tears) I should have done more.\n\n[SFX: door_creaks, footsteps approach]\n\nDR. MARTINEZ (soft, concerned) (places coffee on table) Drink. It's been a long night for everyone.\n\nJULIA (whispers) I know. (pauses, wipes tears) But it's not any easier.\n\nDR. MARTINEZ (reassuring) Julia, you've done everything you could. (pauses, approaches) Sometimes, it's out of our hands.\n\nJULIA (nods, sighs) Thanks, Dr. Martinez. (pauses, stands up) I'll be okay.\n\n=== SCENE 4: INT. TOM'S OFFICE - NEXT MORNING ===\n[SFX: alarm_clock_rings, traffic_sounds, door_slams, footsteps_approach, phone_ringing]\n\nLENA (O.S., professional) Tom, you're here early.\n\nTOM (serious, determined) (closes office door, lowers voice) Those messages you logged yesterday... (pauses as phone buzzes, ignores it)\n\n[SFX: phone_rings_intensely]\n\nLENA (concerned) What's that mean?\n\nTOM (explains) The system's been sending messages, but they're not reaching the intended recipient. I don't know why, but I'm going to find out.\n\nLENA (nodding) Okay, let's go through the logs. Maybe we can trace the issue.\n\nTOM (resolute) Thanks, Lena. I owe this to Julia.\n\n=== SCENE 5: INT. TOM'S OFFICE - AFTERNOON ===\n[SFX: ambient_office, keyboard_tapping, paper_rustling]\n\nLENA (O.S., focused) Tom, look at this! I've found a pattern in the logs. (keyboard_tapping_faster) The messages aren't just failing—there's some kind of redirection happening in the system. (voice drops) It's almost like they're being sent somewhere else first.\n\nTOM (shocked, stands up) What? How is that possible? (knocks over coffee cup) Damn it! (grabs jacket) This could be a major security breach. We need to protect the system before someone gets hurt!\n\n[SFX: computer_alerts, rapid_keyboarding]\n\nLENA (nodding) I agree. I'll run a trace on the unknown address. (typing_faster) It might take some—\n\nTOM (interrupting) (grabs jacket, checks watch) Julia's shift ends in two hours.\n\n[SFX: urgent_phone_rings]\n\nLENA (determined) I'll do whatever—yes, whatever it takes. Let's get to work.\n\n=== SCENE 6: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===\n[SFX: ambulance_sirens_approaching, hospital_doors_burst_open, gurney_wheels, urgent_voices]\n\nDR. MARTINEZ (O.S., urgent) Julia. Critical case. Stat!\n\n[SFX: rapid_footsteps_approach]\n\nJULIA (determined, professional) (rolls up sleeves, pauses at unfamiliar scar on arm, then clenches fist) Ready when you are.\n\n[SFX: medical_equipment_whirring, Julia's quick movements, monitor_beeps_rapidly]\n\nDR. MARTINEZ (O.S., calm but urgent) Good. Stay focused, Julia. Pressure's dropping!\n\n[SFX: urgent_equipment_beeps]\n\nJULIA (focused) I'm ready. (commanding) Clamp! Now! Let's save this patient.",
     "polish_summary": {
-      "natural_speech_fixes": 4,
-      "voice_consistency_fixes": 2,
-      "subtext_enhancements": 17,
-      "lines_shortened": 6,
-      "interruptions_added": 0,
-      "pauses_added": 3
+      "natural_speech_fixes": 9,
+      "voice_consistency_fixes": 5,
+      "subtext_enhancements": 9,
+      "lines_shortened": 12,
+      "interruptions_added": 1,
+      "pauses_added": 4
     }
   }
 }

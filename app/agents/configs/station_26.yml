@@ -2,7 +2,7 @@
 
 station_name: "Station 26: Final Episode Script Lock"
 description: "Finalizes scripts to production-ready state with word count expansion, complete audio markup, performance notes, and production validation. Creates locked script packages for all production teams."
-model: "glm-4.5"
+model: "anthropic/claude-3.5-sonnet"
 temperature: 0.7
 max_tokens: 16384
 

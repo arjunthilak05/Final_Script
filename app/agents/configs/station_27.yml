@@ -2,7 +2,7 @@
 
 station_name: "Station 27: Master Script Assembly"
 description: "Final assembly of all finalized scripts into production-ready master scripts with complete specifications, format conversions, and delivery packages."
-model: "glm-4.5"
+model: "anthropic/claude-3.5-sonnet"
 temperature: 0.7
 max_tokens: 16384
 

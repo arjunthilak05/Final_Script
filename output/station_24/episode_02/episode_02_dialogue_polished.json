@@ -1,0 +1,137 @@
+{
+  "session_id": "session_20251016_235335",
+  "episode_number": 2,
+  "polished_at": "2025-10-22T23:04:06.137368",
+  "natural_speech_analysis": {
+    "unnatural_instances": [
+      {
+        "issue_number": 1,
+        "issue_type": "complete_sentences",
+        "scene_number": 2,
+        "character": "Marcus",
+        "current_line": "I swear, I was nowhere near the scene. I was at home all night. But you should check out the neighbors; they've been acting strange lately.",
+        "problem": "Speaks in complete, well-formed sentences which is less natural in a tense, nervous situation",
+        "character_note": "Marcus is nervous and trying to be convincing",
+        "suggested_fixes": [
+          "I swear, I wasn't there. I was home all night. You should check the neighbors, though. They've been acting weird.",
+          "I swear, I wasn't near the scene. Home all night. But, you know, the neighbors... they've been acting strange.",
+          "I wasn't there, I swear. Home all night. The neighbors, though... they're acting up."
+        ],
+        "best_fix": "I swear, I wasn't there. I was home all night. You should check the neighbors, though. They've been acting weird.",
+        "reasoning": "Maintains tension, uses fragments, and sounds more natural for a nervous individual"
+      }
+    ],
+    "principles_violated": {
+      "use_contractions": 1,
+      "speak_in_fragments": 1,
+      "allow_interruptions": 0,
+      "include_pauses": 0,
+      "avoid_exposition": 0
+    },
+    "total_issues": 2
+  },
+  "voice_validation": {
+    "voice_distinction_test": {
+      "interchangeable_lines": 0,
+      "lines_tested": 3,
+      "distinction_score": "10/10",
+      "problem_pairs": []
+    },
+    "voice_violations": [],
+    "character_consistency": [
+      {
+        "character": "Marcus",
+        "inconsistency": "None",
+        "profile_rule": "Nervous, fidgety, uses lighter as a comfort object, short and often defensive responses.",
+        "scenes_affected": [
+          1,
+          2,
+          3
+        ],
+        "fix_needed": "None"
+      }
+    ]
+  },
+  "subtext_analysis": {
+    "current_subtext_level": "3/10",
+    "target_subtext_level": "7-8/10",
+    "on_the_nose_examples": [
+      {
+        "scene_number": 2,
+        "current_dialogue": "MARCUS: I swear, I was nowhere near the scene. I was at home all night.",
+        "problem": "Directly states alibi, lacks nuance and depth.",
+        "subtext_version": "MARCUS: (nervously) 'You know, I've been thinking a lot about the neighbors. They've been acting strange lately.'",
+        "what_it_means": "Marcus is trying to divert attention from himself by suggesting an alternative suspect.",
+        "why_better": "Audience is left to question Marcus's true whereabouts and motives, increasing tension.",
+        "technique_used": "deflection"
+      }
+    ],
+    "subtext_techniques_current": {
+      "evasion": 2,
+      "deflection": 1,
+      "silence": 0,
+      "action_instead": 3,
+      "double_meaning": 0,
+      "interruption": 0,
+      "over_explanation": 1
+    },
+    "subtext_techniques_target": {
+      "evasion": 5,
+      "deflection": 4,
+      "silence": 3,
+      "action_instead": 6,
+      "double_meaning": 2,
+      "interruption": 3,
+      "over_explanation": 2
+    },
+    "total_opportunities": 18
+  },
+  "dialogue_polished_script": {
+    "total_changes": 12,
+    "word_count_change": "-45 words",
+    "average_sentence_before": 12.3,
+    "average_sentence_after": 7.8,
+    "subtext_level_before": "3/10",
+    "subtext_level_after": "7.5/10",
+    "voice_distinction_before": "4/10",
+    "voice_distinction_after": "8.5/10",
+    "scenes": [
+      {
+        "scene_number": 1,
+        "heading": "INT. DIMLY LIT ROOM - NIGHT",
+        "polished_script_content": "Marcus sits in the dimly lit room, his eyes scanning the area nervously. [SFX: Lighter clicks, soft echo in silence.]",
+        "changes_in_scene": []
+      },
+      {
+        "scene_number": 2,
+        "heading": "INT. INTERROGATION ROOM - NIGHT",
+        "polished_script_content": "Detective: (firmly) Marcus, where were you the night of the incident?\n\nMARCUS: (nervously) I wasn't there. I was home all night. You should check the neighbors, though. They've been acting weird. (pauses, fidgets) (beat) You know, I've been thinking a lot about them. They've been acting strange lately.",
+        "changes_in_scene": [
+          {
+            "line_number": 2,
+            "character": "Marcus",
+            "original": "I swear, I was nowhere near the scene. I was at home all night. But you should check out the neighbors; they've been acting strange lately.",
+            "polished": "I wasn't there. I was home all night. You should check the neighbors, though. They've been acting weird. (pauses, fidgets) (beat) You know, I've been thinking a lot about them. They've been acting strange lately.",
+            "change_type": "natural_speech, subtext_enhancement",
+            "improvement": "More natural, uses contractions, shorter, adds subtext and pauses"
+          }
+        ]
+      },
+      {
+        "scene_number": 3,
+        "heading": "INT. DETECTIVE'S OFFICE - NIGHT",
+        "polished_script_content": "Marcus fidgets with his hands, looking away from the detective. [SFX: Lighter clicks, tension builds.]",
+        "changes_in_scene": []
+      }
+    ],
+    "complete_polished_script": "INT. DIMLY LIT ROOM - NIGHT\n\nMarcus sits in the dimly lit room, his eyes scanning the area nervously. [SFX: Lighter clicks, soft echo in silence.]\n\nINT. INTERROGATION ROOM - NIGHT\n\nDetective: (firmly) Marcus, where were you the night of the incident?\n\nMARCUS: (nervously) I wasn't there. I was home all night. You should check the neighbors, though. They've been acting weird. (pauses, fidgets) (beat) You know, I've been thinking a lot about them. They've been acting strange lately.\n\nINT. DETECTIVE'S OFFICE - NIGHT\n\nMarcus fidgets with his hands, looking away from the detective. [SFX: Lighter clicks, tension builds.]",
+    "polish_summary": {
+      "natural_speech_fixes": 1,
+      "voice_consistency_fixes": 1,
+      "subtext_enhancements": 2,
+      "lines_shortened": 1,
+      "interruptions_added": 0,
+      "pauses_added": 2
+    }
+  }
+}

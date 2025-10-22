@@ -277,13 +277,16 @@ class Station22MomentumCheck:
         # Task 4: Auto-fix Momentum
         print()
         print("🔧 Task 4/4: Auto-Fix Momentum Issues...")
-        corrected_draft = await self.execute_auto_fix_momentum(
+        momentum_fixes = await self.execute_auto_fix_momentum(
             episode_number,
             first_draft,
             pacing_analysis,
             repetition_analysis,
             energy_analysis
         )
+
+        # Convert momentum_fixes to corrected_draft structure with scenes
+        corrected_draft = self._convert_momentum_fixes_to_script(momentum_fixes, first_draft)
         print("✅ Corrected draft generated")
         print()
 
@@ -436,7 +439,7 @@ class Station22MomentumCheck:
             # Extract JSON
             analysis_data = extract_json(response)
 
-            return analysis_data.get('energy_flow_analysis', {})
+            return analysis_data.get('energy_flow', {})
 
         except Exception as e:
             print(f"❌ Energy flow analysis failed: {str(e)}")
@@ -470,7 +473,7 @@ class Station22MomentumCheck:
             # Extract JSON
             corrected_data = extract_json(response)
 
-            return corrected_data.get('momentum_corrected_script', {})
+            return corrected_data.get('momentum_fixes', {})
 
         except Exception as e:
             print(f"❌ Auto-fix momentum failed: {str(e)}")
@@ -522,6 +525,37 @@ class Station22MomentumCheck:
             parts.append(f"- {issue.get('location', 'Unknown')}: {issue.get('problem', '')}")
 
         return "\n".join(parts)
+
+    def _convert_momentum_fixes_to_script(self, momentum_fixes: Dict, original_script: Dict) -> Dict:
+        """Convert momentum_fixes structure to corrected_draft structure with scenes"""
+        # If full_corrected_script is provided, reconstruct scene structure
+        full_script_text = momentum_fixes.get('full_corrected_script', '')
+        fixes = momentum_fixes.get('fixes', [])
+        total_changes = momentum_fixes.get('total_changes', len(fixes))
+
+        # Try to extract scenes from the full corrected script by splitting on scene headings
+        # For now, create a simplified structure that includes the fixes
+        corrected_draft = {
+            'total_word_count': momentum_fixes.get('word_count_after',
+                                                   original_script.get('total_word_count', 0)),
+            'total_changes': total_changes,
+            'changes_made': fixes,
+            'scenes': self._extract_scenes_from_text(full_script_text) if full_script_text else original_script.get('scenes', [])
+        }
+
+        return corrected_draft
+
+    def _extract_scenes_from_text(self, full_script_text: str) -> List[Dict]:
+        """Extract scene structure from full script text"""
+        # This is a simplified extraction - in practice, the LLM should return structured data
+        # For now, return a single scene with the entire text
+        if not full_script_text:
+            return []
+
+        return [{
+            'heading': 'CORRECTED SCRIPT',
+            'script_content': full_script_text
+        }]
 
     def display_detected_issues(self, pacing: Dict, repetition: Dict, energy: Dict):
         """Display all detected issues"""

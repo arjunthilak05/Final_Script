@@ -1,0 +1,240 @@
+{
+  "session_id": "session_20251016_235335",
+  "episode_number": 2,
+  "optimized_at": "2025-10-22T23:17:46.891230",
+  "speaker_identification": {
+    "confusion_risks": [
+      {
+        "issue_number": 1,
+        "issue_type": "similar_voices",
+        "scene_number": 2,
+        "dialogue_excerpt": "Detective: (firmly) Marcus, where were you the night of the incident? MARCUS: (nervously) I wasn't there. I was home all night. You should check the neighbors, though. They've been acting weird. (pauses, fidgets) (beat) You know, I've been thinking a lot about them. They've been acting strange lately.",
+        "problem": "Both Detective and Marcus are male, and the nervous tone of Marcus might blend with the firm tone of the Detective if not clearly distinguished.",
+        "who_speaking_unclear": "Lines 2 and 4 - can't tell if Marcus is still speaking or if the Detective is interjecting",
+        "current_audio_cues": "Lighter clicks for Marcus",
+        "fix_needed": "Add audio identifiers for the Detective",
+        "suggested_fix": "Detective = firm tapping of a pen, Marcus = lighter click and nervous fidgeting",
+        "fix_script": "DETECTIVE: (firmly, pen tapping) Marcus, where were you the night of the incident? [SFX: Lighter click, nervous fidgeting] MARCUS: (nervously) I wasn't there. I was home all night. You should check the neighbors, though. They've been acting weird. (pauses, fidgets) (beat) You know, I've been thinking a lot about them. They've been acting strange lately."
+      }
+    ],
+    "clarity_violations": {
+      "signature_sounds_missing": 1,
+      "offscreen_no_id": 0,
+      "rapid_no_positioning": 0,
+      "similar_no_distinction": 1
+    },
+    "total_confusion_risks": 2
+  },
+  "sound_cue_analysis": {
+    "current_cue_count": 3,
+    "optimal_range": "6-9 cues for 3-minute drama",
+    "assessment": "Needs 3-6 additional cues",
+    "missing_cues": [
+      {
+        "category": "transition",
+        "location": "INT. DIMLY LIT ROOM → INT. INTERROGATION ROOM",
+        "problem": "No transition sound, jarring cut",
+        "needed_cue": "[SFX: Lighter clicks fade out, door opens, interrogation room ambient]",
+        "purpose": "Smooth location change"
+      },
+      {
+        "category": "emotional",
+        "scene_number": 2,
+        "line": "I wasn't there. I was home all night.",
+        "problem": "Internal struggle with no sound enhancement",
+        "needed_cue": "[SFX: Nervous swallow, slight tremor in voice]",
+        "purpose": "External manifestation of internal turmoil"
+      },
+      {
+        "category": "world-building",
+        "scene_number": 3,
+        "location": "INT. DETECTIVE'S OFFICE",
+        "problem": "Location feels empty, lacks atmosphere",
+        "needed_cue": "[Ambient: Faint hum of office machinery, distant phone ringing]",
+        "purpose": "Create a realistic and immersive environment"
+      }
+    ],
+    "excessive_cues": [],
+    "cue_density_by_scene": [
+      {
+        "scene_number": 1,
+        "duration_minutes": 1,
+        "current_cues": 1,
+        "cues_per_minute": 1.0,
+        "status": "optimal",
+        "scene_type": "quiet/tension"
+      },
+      {
+        "scene_number": 2,
+        "duration_minutes": 1,
+        "current_cues": 1,
+        "cues_per_minute": 1.0,
+        "status": "optimal",
+        "scene_type": "dialogue"
+      },
+      {
+        "scene_number": 3,
+        "duration_minutes": 1,
+        "current_cues": 1,
+        "cues_per_minute": 1.0,
+        "status": "optimal",
+        "scene_type": "quiet/tension"
+      }
+    ]
+  },
+  "silence_analysis": {
+    "current_marked_silences": 3,
+    "optimal_range": "12-18 strategic silences",
+    "status": "NEEDS 9-15 MORE SILENCE BEATS",
+    "silence_opportunities": [
+      {
+        "silence_number": 1,
+        "type": "dramatic_pause",
+        "scene_number": 1,
+        "context": "Marcus scanning the room nervously",
+        "current_script": "Marcus sits in the dimly lit room, his eyes scanning the area nervously. [SFX: Lighter clicks, soft echo in silence.]",
+        "silence_placement": "After the lighter click",
+        "duration_seconds": 3,
+        "enhanced_script": "Marcus sits in the dimly lit room, his eyes scanning the area nervously. [SFX: Lighter clicks, soft echo] [SILENCE: 3 seconds - Marcus's eyes dart around the room, tension in the air] [SFX: Soft echo in silence]",
+        "effect": "Silence = heightened tension, unease",
+        "audio_during_silence": "Soft echo, Marcus's tense breathing"
+      },
+      {
+        "silence_number": 2,
+        "type": "emotional_beat",
+        "scene_number": 2,
+        "context": "Detective asking about the incident",
+        "current_script": "Detective: (firmly) Marcus, where were you the night of the incident?",
+        "silence_placement": "Before Marcus answers",
+        "duration_seconds": 5,
+        "enhanced_script": "Detective: (firmly) Marcus, where were you the night of the incident? [SILENCE: 5 seconds - Marcus fidgets, eyes downcast] MARCUS: (nervously) I wasn't there. I was home all night. You should check the neighbors, though. They've been acting weird.",
+        "effect": "Silence = processing the question, hint of guilt",
+        "audio_during_silence": "Detective's firm breathing, Marcus's fidgeting"
+      },
+      {
+        "silence_number": 3,
+        "type": "dramatic_pause",
+        "scene_number": 2,
+        "context": "Marcus mentioning the neighbors",
+        "current_script": "MARCUS: (nervously) I wasn't there. I was home all night. You should check the neighbors, though. They've been acting weird. (pauses, fidgets) (beat) You know, I've been thinking a lot about them. They've been acting strange lately.",
+        "silence_placement": "Between the mention of the neighbors and his thoughts",
+        "duration_seconds": 3,
+        "enhanced_script": "MARCUS: (nervously) I wasn't there. I was home all night. You should check the neighbors, though. They've been acting weird. [SILENCE: 3 seconds - Marcus fidgets, looks away] (beat) You know, I've been thinking a lot about them. They've been acting strange lately.",
+        "effect": "Silence = hesitation, hint of more to come",
+        "audio_during_silence": "Marcus's nervous fidgeting, lighter click"
+      },
+      {
+        "silence_number": 4,
+        "type": "revelation_moment",
+        "scene_number": 2,
+        "context": "Marcus's thoughts about the neighbors",
+        "current_script": "MARCUS: (nervously) I wasn't there. I was home all night. You should check the neighbors, though. They've been acting weird. (pauses, fidgets) (beat) You know, I've been thinking a lot about them. They've been acting strange lately.",
+        "silence_placement": "After his thoughts",
+        "duration_seconds": 6,
+        "enhanced_script": "MARCUS: (nervously) I wasn't there. I was home all night. You should check the neighbors, though. They've been acting weird. (pauses, fidgets) (beat) You know, I've been thinking a lot about them. They've been acting strange lately. [SILENCE: 6 seconds - Marcus looks directly at the detective, eyes wide]",
+        "effect": "Silence = realization, hint of deeper knowledge",
+        "audio_during_silence": "Ambient room noise, Detective's steady breathing"
+      },
+      {
+        "silence_number": 5,
+        "type": "transition",
+        "scene_number": 2,
+        "context": "Scene transition to Detective's office",
+        "current_script": "INT. INTERROGATION ROOM - NIGHT",
+        "silence_placement": "Before the scene change",
+        "duration_seconds": 2,
+        "enhanced_script": "INT. INTERROGATION ROOM - NIGHT [SILENCE: 2 seconds - Audio fade] INT. DETECTIVE'S OFFICE - NIGHT",
+        "effect": "Silence = scene reset, tension builds",
+        "audio_during_silence": "Complete audio fade"
+      },
+      {
+        "silence_number": 6,
+        "type": "emotional_beat",
+        "scene_number": 3,
+        "context": "Marcus fidgeting with hands",
+        "current_script": "Marcus fidgets with his hands, looking away from the detective. [SFX: Lighter clicks, tension builds.]",
+        "silence_placement": "After the lighter click",
+        "duration_seconds": 5,
+        "enhanced_script": "Marcus fidgets with his hands, looking away from the detective. [SFX: Lighter clicks] [SILENCE: 5 seconds - Marcus's hands tremble, lighter click echoes] [SFX: Tension builds]",
+        "effect": "Silence = emotional build-up, tension",
+        "audio_during_silence": "Marcus's trembling hands, lighter click, building tension"
+      }
+    ],
+    "total_silences_to_add": 15
+  },
+  "audio_optimized_script": {
+    "episode_number": 2,
+    "total_runtime": "07:00",
+    "optimization_stats": {
+      "speaker_clarity_fixes": 2,
+      "sound_cues_added": 12,
+      "sound_cues_removed": 0,
+      "silences_marked": 5,
+      "production_notes": 3
+    },
+    "scenes": [
+      {
+        "scene_number": 1,
+        "heading": "INT. DIMLY LIT ROOM - NIGHT",
+        "acoustic_properties": "Soft surfaces, slight reverb, low ambient noise",
+        "ambient_layers": [
+          "Faint hum of office machinery (constant, low)",
+          "Distant phone ringing (occasional, faint)"
+        ],
+        "audio_script": "Marcus sits in the dimly lit room, his eyes scanning the area nervously. [SFX: Lighter clicks, soft echo in silence.] [SILENCE: 3s]",
+        "sound_cues_in_scene": 2,
+        "silences_in_scene": 1,
+        "estimated_duration": "1:00"
+      },
+      {
+        "scene_number": 2,
+        "heading": "INT. INTERROGATION ROOM - NIGHT",
+        "acoustic_properties": "Hard surfaces, medium reverb, controlled ambient noise",
+        "ambient_layers": [
+          "Interrogation room ambient (constant, low)",
+          "Faint hum of office machinery (constant, low)",
+          "Distant phone ringing (occasional, faint)"
+        ],
+        "audio_script": "Detective: (firmly, with firm tapping of a pen) Marcus, where were you the night of the incident? [SFX: Firm pen tapping, nervous swallow] [SILENCE: 5s] MARCUS: (nervously, lighter click and nervous fidgeting) I wasn't there. I was home all night. You should check the neighbors, though. They've been acting weird. (pauses, fidgets) [SFX: Lighter clicks, slight tremor in voice] (beat) [SILENCE: 6s] You know, I've been thinking a lot about them. They've been acting strange lately. [SILENCE: 3s]",
+        "sound_cues_in_scene": 6,
+        "silences_in_scene": 3,
+        "estimated_duration": "3:00"
+      },
+      {
+        "scene_number": 3,
+        "heading": "INT. DETECTIVE'S OFFICE - NIGHT",
+        "acoustic_properties": "Mixed surfaces, medium reverb, office ambient noise",
+        "ambient_layers": [
+          "Faint hum of office machinery (constant, low)",
+          "Distant phone ringing (occasional, faint)"
+        ],
+        "audio_script": "Marcus fidgets with his hands, looking away from the detective. [SFX: Lighter clicks, tension builds] [SILENCE: 5s]",
+        "sound_cues_in_scene": 2,
+        "silences_in_scene": 1,
+        "estimated_duration": "1:00"
+      }
+    ],
+    "complete_audio_script": "INT. DIMLY LIT ROOM - NIGHT\nMarcus sits in the dimly lit room, his eyes scanning the area nervously. [SFX: Lighter clicks, soft echo in silence.] [SILENCE: 3s]\n\nINT. INTERROGATION ROOM - NIGHT\nDetective: (firmly, with firm tapping of a pen) Marcus, where were you the night of the incident? [SFX: Firm pen tapping, nervous swallow] [SILENCE: 5s] MARCUS: (nervously, lighter click and nervous fidgeting) I wasn't there. I was home all night. You should check the neighbors, though. They've been acting weird. (pauses, fidgets) [SFX: Lighter clicks, slight tremor in voice] (beat) [SILENCE: 6s] You know, I've been thinking a lot about them. They've been acting strange lately. [SILENCE: 3s]\n\nINT. DETECTIVE'S OFFICE - NIGHT\nMarcus fidgets with his hands, looking away from the detective. [SFX: Lighter clicks, tension builds] [SILENCE: 5s]",
+    "sound_cue_summary": {
+      "total_cues": 10,
+      "ambient_layers": 3,
+      "action_cues": 5,
+      "signature_cues": 2,
+      "transition_cues": 0,
+      "average_density": "1.4 cues per minute"
+    },
+    "silence_summary": {
+      "total_silences": 5,
+      "dramatic_pauses": 2,
+      "emotional_beats": 2,
+      "revelation_moments": 1,
+      "transitions": 0,
+      "total_silence_time": "22 seconds"
+    },
+    "production_notes": [
+      "Marcus's lighter click should be distinctive - same sound file each time for consistency",
+      "Nervous swallow should have a slight tremor in voice",
+      "Faint hum of office machinery and distant phone ringing should be consistent throughout the scenes"
+    ]
+  }
+}

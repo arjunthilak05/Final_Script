@@ -449,6 +449,7 @@ class Station25AudioOptimization:
 
             # Format prompt
             formatted_prompt = prompt.format(
+                episode_number=episode_number,
                 polished_script=polished_script[:15000],
                 optimizations_needed=optimizations,
                 audio_cue_library=audio_library
@@ -712,6 +713,10 @@ class Station25AudioOptimization:
         txt_path = episode_dir / txt_filename
 
         txt_content = optimized.get('complete_audio_script', '')
+        # Handle if it's a list instead of string
+        if isinstance(txt_content, list):
+            txt_content = '\n'.join(str(item) for item in txt_content)
+
         with open(txt_path, 'w', encoding='utf-8') as f:
             f.write(txt_content)
         print(f"✓ AUDIO SCRIPT: {txt_path.name}")

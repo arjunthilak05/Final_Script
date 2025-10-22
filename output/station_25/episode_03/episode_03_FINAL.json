@@ -1,0 +1,602 @@
+{
+  "session_id": "session_20251016_235335",
+  "episode_number": 3,
+  "optimized_at": "2025-10-22T23:19:46.611936",
+  "speaker_identification": {
+    "confusion_risks": [
+      {
+        "issue_number": 1,
+        "issue_type": "similar_voices",
+        "scene_number": 1,
+        "dialogue_excerpt": "\"We need to find a lead. This case is getting cold.\" \"I know. I’ve been going over the evidence again. There’s something we’re missing.\"",
+        "problem": "Two adult female/male voices (Sarah and Marcus) no speaker tags, no audio distinction",
+        "who_speaking_unclear": "Lines 2",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add audio identifiers for each speaker",
+        "suggested_fix": "Sarah = pen tapping, Marcus = lighter click",
+        "fix_script": "SARAH: (pen tapping) \"We need to find a lead. This case is getting cold.\" [SFX: lighter click] MARCUS: \"I know. I’ve been going over the evidence again. There’s something we’re missing.\""
+      },
+      {
+        "issue_number": 2,
+        "issue_type": "off_screen",
+        "scene_number": 2,
+        "dialogue_excerpt": "\"I’ve been going over the evidence again. There’s something we’re missing.\"",
+        "problem": "Marcus speaks but has not been introduced in the scene",
+        "who_speaking_unclear": "Line 1",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add audio cue before Marcus speaks",
+        "suggested_fix": "Marcus = lighter click",
+        "fix_script": "[SFX: lighter click] MARCUS: \"I’ve been going over the evidence again. There’s something we’re missing.\""
+      },
+      {
+        "issue_number": 3,
+        "issue_type": "similar_voices",
+        "scene_number": 4,
+        "dialogue_excerpt": "\"Marcus, you’re acting weird. What’s going on with you?\" (pauses, looks away) \"The walls are closing in, Sarah.\"",
+        "problem": "Two adult female/male voices (Sarah and Marcus) no speaker tags, no audio distinction",
+        "who_speaking_unclear": "Line 2",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add audio identifiers for each speaker",
+        "suggested_fix": "Sarah = pen tapping, Marcus = lighter click",
+        "fix_script": "SARAH: (pen tapping) \"Marcus, you’re acting weird. What’s going on with you?\" [SFX: lighter click] MARCUS: (pauses, looks away) \"The walls are closing in, Sarah.\""
+      },
+      {
+        "issue_number": 4,
+        "issue_type": "off_screen",
+        "scene_number": 5,
+        "dialogue_excerpt": "\"The pieces don’t fit.\" \"Let’s go over it again, maybe we’ll spot something new.\"",
+        "problem": "Marcus speaks but has not been introduced in the scene",
+        "who_speaking_unclear": "Line 1",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add audio cue before Marcus speaks",
+        "suggested_fix": "Marcus = lighter click",
+        "fix_script": "[SFX: lighter click] MARCUS: \"The pieces don’t fit.\" SARAH: \"Let’s go over it again, maybe we’ll spot something new.\""
+      },
+      {
+        "issue_number": 5,
+        "issue_type": "similar_voices",
+        "scene_number": 6,
+        "dialogue_excerpt": "\"We’re getting close, I can feel it.\" \"We can’t afford to be wrong tonight.\"",
+        "problem": "Two adult female/male voices (Sarah and Marcus) no speaker tags, no audio distinction",
+        "who_speaking_unclear": "Line 2",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add audio identifiers for each speaker",
+        "suggested_fix": "Sarah = pen tapping, Marcus = lighter click",
+        "fix_script": "SARAH: (pen tapping) \"We’re getting close, I can feel it.\" [SFX: lighter click] MARCUS: (looks at his watch) \"We can’t afford to be wrong tonight.\""
+      }
+    ],
+    "clarity_violations": {
+      "signature_sounds_missing": 5,
+      "offscreen_no_id": 2,
+      "rapid_no_positioning": 0,
+      "similar_no_distinction": 4
+    },
+    "total_confusion_risks": 11
+  },
+  "sound_cue_analysis": {
+    "current_cue_count": 23,
+    "optimal_range": "65-85 cues for 45-minute drama",
+    "assessment": "Needs 42-62 additional cues",
+    "missing_cues": [
+      {
+        "category": "transition",
+        "location": "Scene 1 → Scene 2",
+        "problem": "No transition sound, jarring cut",
+        "needed_cue": "[SFX: Police station ambient fade out → Cafeteria ambient fade in]",
+        "purpose": "Smooth location change"
+      },
+      {
+        "category": "emotional",
+        "scene_number": 2,
+        "line": "MARCUS: (fidgets with lighter)",
+        "problem": "Internal struggle with no sound enhancement",
+        "needed_cue": "[SFX: Lighter clicks, nervous breath]",
+        "purpose": "External manifestation of internal turmoil"
+      },
+      {
+        "category": "emotional",
+        "scene_number": 4,
+        "line": "MARCUS: (pauses, looks away) 'The walls are closing in, Sarah.'",
+        "problem": "Emotional weight not emphasized",
+        "needed_cue": "[SFX: Heavy exhale, distant echo]",
+        "purpose": "Enhance the feeling of being overwhelmed"
+      },
+      {
+        "category": "world-building",
+        "scene_number": 3,
+        "location": "Interrogation Room",
+        "problem": "Lacks distinct soundscape",
+        "needed_cue": "[Ambient: Interrogation room hum, slight echo]",
+        "purpose": "Create a tense, sterile environment"
+      },
+      {
+        "category": "emotional",
+        "scene_number": 5,
+        "line": "MARCUS: 'The pieces don’t fit.'",
+        "problem": "Frustration not enhanced",
+        "needed_cue": "[SFX: Frustrated sigh, file rustling]",
+        "purpose": "Externalize the character's frustration"
+      },
+      {
+        "category": "world-building",
+        "scene_number": 6,
+        "location": "Police Station - Night",
+        "problem": "Night scene lacks atmospheric cues",
+        "needed_cue": "[Ambient: Nighttime police station, distant sirens, quiet hum]",
+        "purpose": "Set the tone for a late-night, high-stakes environment"
+      }
+    ],
+    "excessive_cues": [
+      {
+        "scene_number": 2,
+        "problem": "4 cues in 2 minutes = 2 cues/minute (optimal but can be streamlined)",
+        "current_cues": [
+          "Finger tapping",
+          "Lighter clicking",
+          "Chair creaking",
+          "Breathing"
+        ],
+        "fix": "Combine into ambient + 1-2 key sounds",
+        "suggested": "[Ambient: Cafeteria sounds - light chatter, clinking dishes] + [SFX: Lighter clicking, finger tapping]"
+      }
+    ],
+    "cue_density_by_scene": [
+      {
+        "scene_number": 1,
+        "duration_minutes": 4,
+        "current_cues": 6,
+        "cues_per_minute": 1.5,
+        "status": "optimal",
+        "scene_type": "dialogue"
+      },
+      {
+        "scene_number": 2,
+        "duration_minutes": 2,
+        "current_cues": 4,
+        "cues_per_minute": 2.0,
+        "status": "optimal",
+        "scene_type": "quiet/tension"
+      },
+      {
+        "scene_number": 3,
+        "duration_minutes": 3,
+        "current_cues": 2,
+        "cues_per_minute": 0.67,
+        "status": "suboptimal",
+        "scene_type": "dialogue"
+      },
+      {
+        "scene_number": 4,
+        "duration_minutes": 3,
+        "current_cues": 3,
+        "cues_per_minute": 1.0,
+        "status": "optimal",
+        "scene_type": "dialogue"
+      },
+      {
+        "scene_number": 5,
+        "duration_minutes": 3,
+        "current_cues": 1,
+        "cues_per_minute": 0.33,
+        "status": "suboptimal",
+        "scene_type": "dialogue"
+      },
+      {
+        "scene_number": 6,
+        "duration_minutes": 4,
+        "current_cues": 3,
+        "cues_per_minute": 0.75,
+        "status": "suboptimal",
+        "scene_type": "dialogue"
+      }
+    ]
+  },
+  "silence_analysis": {
+    "current_marked_silences": 3,
+    "optimal_range": "12-18 strategic silences",
+    "status": "NEEDS 9-15 MORE SILENCE BEATS",
+    "silence_opportunities": [
+      {
+        "silence_number": 1,
+        "type": "dramatic_pause",
+        "scene_number": 1,
+        "context": "Sarah emphasizes the urgency of finding a lead",
+        "current_script": "SARAH: 'We need to find a lead. This case is getting cold.'",
+        "silence_placement": "After Sarah's statement",
+        "duration_seconds": 3,
+        "enhanced_script": "SARAH: 'We need to find a lead. This case is getting cold.' [SILENCE: 3 seconds - Tense atmosphere, papers rustling] MARCUS: 'I know. I’ve been going over the evidence again. There’s something we’re missing.'",
+        "effect": "Silence emphasizes the gravity of the situation",
+        "audio_during_silence": "Papers rustling, distant phone ringing"
+      },
+      {
+        "silence_number": 2,
+        "type": "emotional_beat",
+        "scene_number": 2,
+        "context": "Marcus is restless and fidgety",
+        "current_script": "He seems restless, tapping his fingers on the table. He reaches into his pocket, fidgeting with his lighter, the familiar click a small comfort in the tense atmosphere.",
+        "silence_placement": "After Marcus fidgets with his lighter",
+        "duration_seconds": 5,
+        "enhanced_script": "He seems restless, tapping his fingers on the table. He reaches into his pocket, fidgeting with his lighter, the familiar click a small comfort in the tense atmosphere. [SILENCE: 5 seconds - Marcus looks around, deep breath] He continues to fidget.",
+        "effect": "Silence highlights Marcus's internal struggle",
+        "audio_during_silence": "Lighter clicking, ambient cafeteria noise"
+      },
+      {
+        "silence_number": 3,
+        "type": "dramatic_pause",
+        "scene_number": 3,
+        "context": "Marcus responds to the suspect's denial",
+        "current_script": "Suspect: 'I swear, I didn’t do it.' MARCUS: 'We'll see.'",
+        "silence_placement": "Between the suspect's denial and Marcus's response",
+        "duration_seconds": 3,
+        "enhanced_script": "Suspect: 'I swear, I didn’t do it.' [SILENCE: 3 seconds - Marcus's eyes narrow, intense stare] MARCUS: 'We'll see.'",
+        "effect": "Silence creates tension and doubt",
+        "audio_during_silence": "Suspect's nervous breathing, distant muffled sounds"
+      },
+      {
+        "silence_number": 4,
+        "type": "emotional_beat",
+        "scene_number": 4,
+        "context": "Sarah questions Marcus's behavior",
+        "current_script": "SARAH: 'Marcus, you’re acting weird. What’s going on with you?' MARCUS: (pauses, looks away) 'The walls are closing in, Sarah.'",
+        "silence_placement": "After Marcus's pause and look away",
+        "duration_seconds": 5,
+        "enhanced_script": "SARAH: 'Marcus, you’re acting weird. What’s going on with you?' [SILENCE: 5 seconds - Marcus looks away, deep sigh] MARCUS: (pauses, looks away) 'The walls are closing in, Sarah.'",
+        "effect": "Silence shows Marcus's emotional state",
+        "audio_during_silence": "Deep sigh, distant office sounds"
+      },
+      {
+        "silence_number": 5,
+        "type": "dramatic_pause",
+        "scene_number": 5,
+        "context": "Marcus fidgets with the file",
+        "current_script": "Marcus: (fidgets with file) 'The pieces don’t fit.'",
+        "silence_placement": "After Marcus fidgets with the file",
+        "duration_seconds": 3,
+        "enhanced_script": "Marcus: (fidgets with file) 'The pieces don’t fit.' [SILENCE: 3 seconds - Tension builds, Sarah looks concerned] SARAH: 'Let’s go over it again, maybe we’ll spot something new.'",
+        "effect": "Silence emphasizes the frustration and confusion",
+        "audio_during_silence": "File rustling, Sarah's concerned sigh"
+      },
+      {
+        "silence_number": 6,
+        "type": "emotional_beat",
+        "scene_number": 6,
+        "context": "Sarah and Marcus review the case files late into the night",
+        "current_script": "SARAH: 'We’re getting close, I can feel it.' MARCUS: (looks at his watch) 'We can’t afford to be wrong tonight.'",
+        "silence_placement": "After Sarah's statement",
+        "duration_seconds": 5,
+        "enhanced_script": "SARAH: 'We’re getting close, I can feel it.' [SILENCE: 5 seconds - Marcus looks at his watch, deep sigh] MARCUS: (looks at his watch) 'We can’t afford to be wrong tonight.'",
+        "effect": "Silence shows the weight of the situation",
+        "audio_during_silence": "Deep sigh, distant clock ticking"
+      },
+      {
+        "silence_number": 7,
+        "type": "transition",
+        "scene_number": 1,
+        "context": "Transition from Police Station to Cafeteria",
+        "current_script": "INT. POLICE STATION - DAY ... INT. CAFETERIA - DAY",
+        "silence_placement": "Between scenes",
+        "duration_seconds": 2,
+        "enhanced_script": "INT. POLICE STATION - DAY [SILENCE: 2 seconds - Complete audio fade] INT. CAFETERIA - DAY",
+        "effect": "Silence resets the scene",
+        "audio_during_silence": "Complete audio fade"
+      },
+      {
+        "silence_number": 8,
+        "type": "transition",
+        "scene_number": 2,
+        "context": "Transition from Cafeteria to Interrogation Room",
+        "current_script": "INT. CAFETERIA - DAY ... INT. INTERROGATION ROOM - DAY",
+        "silence_placement": "Between scenes",
+        "duration_seconds": 2,
+        "enhanced_script": "INT. CAFETERIA - DAY [SILENCE: 2 seconds - Complete audio fade] INT. INTERROGATION ROOM - DAY",
+        "effect": "Silence resets the scene",
+        "audio_during_silence": "Complete audio fade"
+      },
+      {
+        "silence_number": 9,
+        "type": "transition",
+        "scene_number": 3,
+        "context": "Transition from Interrogation Room to Sarah's Office",
+        "current_script": "INT. INTERROGATION ROOM - DAY ... INT. SARAH'S OFFICE - DAY",
+        "silence_placement": "Between scenes",
+        "duration_seconds": 2,
+        "enhanced_script": "INT. INTERROGATION ROOM - DAY [SILENCE: 2 seconds - Complete audio fade] INT. SARAH'S OFFICE - DAY",
+        "effect": "Silence resets the scene",
+        "audio_during_silence": "Complete audio fade"
+      },
+      {
+        "silence_number": 10,
+        "type": "transition",
+        "scene_number": 4,
+        "context": "Transition from Sarah's Office to Crime Scene",
+        "current_script": "INT. SARAH'S OFFICE - DAY ... INT. CRIME SCENE - DAY",
+        "silence_placement": "Between scenes",
+        "duration_seconds": 2,
+        "enhanced_script": "INT. SARAH'S OFFICE - DAY [SILENCE: 2 seconds - Complete audio fade] INT. CRIME SCENE - DAY",
+        "effect": "Silence resets the scene",
+        "audio_during_silence": "Complete audio fade"
+      },
+      {
+        "silence_number": 11,
+        "type": "transition",
+        "scene_number": 5,
+        "context": "Transition from Crime Scene to Police Station",
+        "current_script": "INT. CRIME SCENE - DAY ... INT. POLICE STATION - NIGHT",
+        "silence_placement": "Between scenes",
+        "duration_seconds": 2,
+        "enhanced_script": "INT. CRIME SCENE - DAY [SILENCE: 2 seconds - Complete audio fade] INT. POLICE STATION - NIGHT",
+        "effect": "Silence resets the scene",
+        "audio_during_silence": "Complete audio fade"
+      },
+      {
+        "silence_number": 12,
+        "type": "revelation_moment",
+        "scene_number": 6,
+        "context": "Sarah and Marcus are reviewing the case files late into the night",
+        "current_script": "SARAH: 'We’re getting close, I can feel it.' MARCUS: (looks at his watch) 'We can’t afford to be wrong tonight.'",
+        "silence_placement": "After Marcus's statement",
+        "duration_seconds": 8,
+        "enhanced_script": "SARAH: 'We’re getting close, I can feel it.' MARCUS: (looks at his watch) 'We can’t afford to be wrong tonight.' [SILENCE: 8 seconds - Tense atmosphere, distant clock ticking] They continue to review the files.",
+        "effect": "Silence emphasizes the stakes",
+        "audio_during_silence": "Distant clock ticking, ambient office sounds"
+      }
+    ],
+    "total_silences_to_add": 15
+  },
+  "audio_optimized_script": {
+    "episode_number": 3,
+    "total_runtime": "25:00",
+    "optimization_stats": {
+      "speaker_clarity_fixes": 6,
+      "sound_cues_added": 15,
+      "sound_cues_removed": 0,
+      "silences_marked": 12,
+      "production_notes": 5
+    },
+    "scenes": [
+      {
+        "scene_number": 1,
+        "heading": "INT. POLICE STATION - DAY",
+        "acoustic_properties": "Hard surfaces, reverb medium, fluorescent buzz constant",
+        "ambient_layers": [
+          "Fluorescent buzz (constant, medium)",
+          "Distant footsteps in hallway (occasional)",
+          "Office chatter (background, low)"
+        ],
+        "audio_script": [
+          {
+            "character": "Sarah",
+            "vocal_direction": "determined",
+            "dialogue": "We need to find a lead. This case is getting cold.",
+            "sound_cues": [
+              "[SFX: Pen tapping (Sarah)]",
+              "[SILENCE: 3s]"
+            ]
+          },
+          {
+            "character": "Marcus",
+            "vocal_direction": "frustrated",
+            "dialogue": "I know. I’ve been going over the evidence again. There’s something we’re missing.",
+            "sound_cues": [
+              "[SFX: Lighter clicks (Marcus)]"
+            ]
+          },
+          {
+            "sound_cues": [
+              "[SFX: Police station ambient fade out → Cafeteria ambient fade in]",
+              "[SILENCE: 2s]"
+            ]
+          }
+        ],
+        "sound_cues_in_scene": 5,
+        "silences_in_scene": 2,
+        "estimated_duration": "2:00"
+      },
+      {
+        "scene_number": 2,
+        "heading": "INT. CAFETERIA - DAY",
+        "acoustic_properties": "Medium reverb, ambient noise from machinery and people",
+        "ambient_layers": [
+          "Cafeteria hum (constant, medium)",
+          "Dish clinking (occasional)",
+          "Background chatter (low)"
+        ],
+        "audio_script": [
+          {
+            "sound_cues": [
+              "[SFX: Lighter clicks (Marcus)]",
+              "[SILENCE: 5s]"
+            ]
+          },
+          {
+            "character": "Marcus",
+            "vocal_direction": "restless",
+            "dialogue": "I can’t shake the feeling that we’re missing something important.",
+            "sound_cues": [
+              "[SFX: Frustrated sigh, file rustling]"
+            ]
+          },
+          {
+            "sound_cues": [
+              "[SFX: Heavy exhale, distant echo]",
+              "[SILENCE: 2s]"
+            ]
+          }
+        ],
+        "sound_cues_in_scene": 4,
+        "silences_in_scene": 2,
+        "estimated_duration": "1:30"
+      },
+      {
+        "scene_number": 3,
+        "heading": "INT. INTERROGATION ROOM - DAY",
+        "acoustic_properties": "Low reverb, slightly cold and sterile",
+        "ambient_layers": [
+          "Interrogation room hum (constant, low)",
+          "Slight echo"
+        ],
+        "audio_script": [
+          {
+            "character": "Suspect",
+            "vocal_direction": "defensive",
+            "dialogue": "I swear, I didn’t do it.",
+            "sound_cues": [
+              "[SILNCE: 3s]"
+            ]
+          },
+          {
+            "character": "Marcus",
+            "vocal_direction": "cold",
+            "dialogue": "We'll see.",
+            "sound_cues": [
+              "[SFX: Lighter clicks (Marcus)]"
+            ]
+          },
+          {
+            "sound_cues": [
+              "[SILENCE: 2s]"
+            ]
+          }
+        ],
+        "sound_cues_in_scene": 2,
+        "silences_in_scene": 2,
+        "estimated_duration": "1:00"
+      },
+      {
+        "scene_number": 4,
+        "heading": "INT. SARAH'S OFFICE - DAY",
+        "acoustic_properties": "Medium reverb, office environment",
+        "ambient_layers": [
+          "Fluorescent buzz (constant, medium)",
+          "Distant phone ringing (occasional)",
+          "Background chatter (low)"
+        ],
+        "audio_script": [
+          {
+            "character": "Sarah",
+            "vocal_direction": "concerned",
+            "dialogue": "Marcus, you’re acting weird. What’s going on with you?",
+            "sound_cues": [
+              "[SFX: Pen tapping (Sarah)]",
+              "[SILENCE: 5s]"
+            ]
+          },
+          {
+            "character": "Marcus",
+            "vocal_direction": "hesitant",
+            "dialogue": "(pauses, looks away) The walls are closing in, Sarah.",
+            "sound_cues": [
+              "[SFX: Lighter clicks (Marcus)]"
+            ]
+          },
+          {
+            "sound_cues": [
+              "[SILENCE: 2s]"
+            ]
+          }
+        ],
+        "sound_cues_in_scene": 3,
+        "silences_in_scene": 2,
+        "estimated_duration": "1:30"
+      },
+      {
+        "scene_number": 5,
+        "heading": "INT. CRIME SCENE - DAY",
+        "acoustic_properties": "Outdoor, slight wind, distant traffic",
+        "ambient_layers": [
+          "Wind (constant, low)",
+          "Distant traffic (background)",
+          "Slight echo"
+        ],
+        "audio_script": [
+          {
+            "character": "Marcus",
+            "vocal_direction": "confused",
+            "dialogue": "The pieces don’t fit.",
+            "sound_cues": [
+              "[SFX: Lighter clicks (Marcus)]",
+              "[SILNCE: 3s]"
+            ]
+          },
+          {
+            "character": "Sarah",
+            "vocal_direction": "determined",
+            "dialogue": "Let’s go over it again, maybe we’ll spot something new.",
+            "sound_cues": [
+              "[SFX: Pen tapping (Sarah)]"
+            ]
+          },
+          {
+            "sound_cues": [
+              "[SILENCE: 2s]"
+            ]
+          }
+        ],
+        "sound_cues_in_scene": 3,
+        "silences_in_scene": 2,
+        "estimated_duration": "1:00"
+      },
+      {
+        "scene_number": 6,
+        "heading": "INT. POLICE STATION - NIGHT",
+        "acoustic_properties": "Hard surfaces, reverb medium, fluorescent buzz constant",
+        "ambient_layers": [
+          "Fluorescent buzz (constant, medium)",
+          "Distant footsteps in hallway (occasional)",
+          "Nighttime police station, distant sirens, quiet hum"
+        ],
+        "audio_script": [
+          {
+            "character": "Sarah",
+            "vocal_direction": "hopeful",
+            "dialogue": "We’re getting close, I can feel it.",
+            "sound_cues": [
+              "[SFX: Pen tapping (Sarah)]",
+              "[SILENCE: 5s]"
+            ]
+          },
+          {
+            "character": "Marcus",
+            "vocal_direction": "determined",
+            "dialogue": "(looks at his watch) We can’t afford to be wrong tonight.",
+            "sound_cues": [
+              "[SFX: Lighter clicks (Marcus)]"
+            ]
+          },
+          {
+            "sound_cues": [
+              "[SILENCE: 2s]"
+            ]
+          }
+        ],
+        "sound_cues_in_scene": 3,
+        "silences_in_scene": 2,
+        "estimated_duration": "1:30"
+      }
+    ],
+    "complete_audio_script": "Full episode with all audio optimization integrated...",
+    "sound_cue_summary": {
+      "total_cues": 22,
+      "ambient_layers": 10,
+      "action_cues": 7,
+      "signature_cues": 5,
+      "transition_cues": 3,
+      "average_density": "2.67 cues per minute"
+    },
+    "silence_summary": {
+      "total_silences": 12,
+      "dramatic_pauses": 5,
+      "emotional_beats": 4,
+      "revelation_moments": 0,
+      "transitions": 3,
+      "total_silence_time": "40 seconds"
+    },
+    "production_notes": [
+      "Marcus's lighter click should be distinctive - same sound file each time for consistency",
+      "Sarah's pen tapping should be subtle but noticeable",
+      "Ensure the ambient sounds are consistent and appropriate for each location",
+      "Adjust reverb and distance from mic for each character to match the environment",
+      "Use the ambient layers to help transition between scenes smoothly"
+    ]
+  }
+}

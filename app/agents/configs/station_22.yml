@@ -2,7 +2,7 @@
 
 station_name: "Station 22: Momentum Check"
 description: "Analyzes and fixes pacing issues, repetitions, and energy flow in first drafts. Uses LLM to detect momentum problems and automatically generate fixes."
-model: "anthropic/claude-3.5-sonnet"
+model: "glm-4.5"
 temperature: 0.7
 max_tokens: 16384
 
@@ -26,13 +26,10 @@ prompts:
   pacing_analysis: |
     **ROLE:** You are a script pacing analyst specializing in audio drama momentum.
 
-    **EPISODE CONTEXT:**
-    Episode {episode_number}: "{episode_title}"
-    Runtime Target: {runtime_target}
-    Current Word Count: {current_word_count}
+    **EPISODE:** {episode_number}
 
     **FIRST DRAFT SCRIPT:**
-    {first_draft_script}
+    {current_script}
 
     **YOUR TASK:**
     Analyze this first draft for pacing and momentum issues.
@@ -87,8 +84,10 @@ prompts:
   repetition_detection: |
     **ROLE:** You are analyzing for repetitions and redundancies.
 
+    **EPISODE:** {episode_number}
+
     **FIRST DRAFT:**
-    {first_draft_script}
+    {current_script}
 
     **DETECT:**
 
@@ -133,8 +132,10 @@ prompts:
   energy_flow_analysis: |
     **ROLE:** You are mapping dramatic energy flow across the episode.
 
+    **EPISODE:** {episode_number}
+
     **FIRST DRAFT:**
-    {first_draft_script}
+    {current_script}
 
     **ANALYZE ENERGY:**
     Rate each scene's dramatic energy on 1-10 scale:
@@ -182,7 +183,7 @@ prompts:
     {original_script}
 
     **ISSUES TO FIX:**
-    {issues_to_fix}
+    {fixes_needed}
 
     **YOUR TASK:**
     Rewrite the problematic sections to improve momentum while maintaining:

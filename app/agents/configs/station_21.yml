@@ -2,7 +2,7 @@
 
 station_name: "Station 21: First Draft (Scene-by-Scene)"
 description: "Generates scene-by-scene first drafts with dialogue, audio cues, and stage directions. Integrates all 20 previous stations to create production-ready scripts in multiple formats (Fountain, PDF, JSON, TXT)."
-model: "anthropic/claude-3.5-sonnet"
+model: "glm-4.5"
 temperature: 0.75
 max_tokens: 16384
 

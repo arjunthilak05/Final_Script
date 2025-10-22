@@ -2,7 +2,7 @@
 
 station_name: "Station 24: Dialogue Polish"
 description: "Analyzes dialogue for natural speech patterns, character voice consistency, and subtext. Auto-polishes dialogue to professional standards while maintaining character identity."
-model: "anthropic/claude-3.5-sonnet"
+model: "glm-4.5"
 temperature: 0.7
 max_tokens: 16384
 

@@ -1,0 +1,40 @@
+======================================================================
+EPISODE 2 P3 VALIDATION REPORT
+======================================================================
+Generated: 2025-10-22 23:00:27
+Session: session_20251016_235335
+
+PLANT COMPLIANCE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Required Plants: 1
+  Strong Plants: 0
+  Weak Plants: 0
+  Missing Plants: 1
+
+PAYOFF TIMING:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Premature Reveals: 0
+
+MISDIRECTION BALANCE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Fair Play: needs_adjustment
+
+P3 INTEGRATIONS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Total Integrations: 3
+  Compliance Before: 4/6 plants present
+  Compliance After: 6/6 plants present
+
+1. [PLANT_ADDITION] Scene 2
+   P3 Marker: P_MC_001
+   Technique: Added the sound of the lighter click during a moment of tension to make it noticeable but not forced.
+
+2. [MISDIRECTION_BALANCE] Scene 4
+   P3 Marker: P_MG_001
+   Technique: Dialled back Marcus's defensiveness and added a plausible motive for another character.
+
+3. [PLANT_STRENGTHENING] Scene 5
+   P3 Marker: P_MC_002
+   Technique: Added the lighter click to emphasize the character's nervousness and make it more distinctive.
+
+======================================================================

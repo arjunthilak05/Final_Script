@@ -1,0 +1,257 @@
+{
+  "session_id": "session_20251016_235335",
+  "episode_number": 1,
+  "optimized_at": "2025-10-22T23:16:45.874024",
+  "speaker_identification": {
+    "confusion_risks": [
+      {
+        "issue_number": 1,
+        "issue_type": "off_screen",
+        "scene_number": 1,
+        "dialogue_excerpt": "I can't... I can't shake the feeling that someone's watching us. (pause) I thought I saw someone familiar outside.",
+        "problem": "Marcus is introduced in the scene but there are no audio clues before he starts speaking",
+        "who_speaking_unclear": "Initial line of the episode, no audio identifier",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add an audio identifier for Marcus",
+        "suggested_fix": "Add a lighter click before Marcus speaks",
+        "fix_script": "[SFX: Lighter click] MARCUS: (glancing out the window) I can't... I can't shake the feeling that someone's watching us. (pause) I thought I saw someone familiar outside."
+      },
+      {
+        "issue_number": 2,
+        "issue_type": "similar_voices",
+        "scene_number": 2,
+        "dialogue_excerpt": "I've been carrying this weight for too long. (pause) Some things are better left unsaid... for now.",
+        "problem": "Marcus is speaking in a similar tone and setting, no clear distinction from the previous scene",
+        "who_speaking_unclear": "Listener may not recognize it's Marcus if they didn't hear the first scene",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add a unique audio identifier for the office setting",
+        "suggested_fix": "Add the sound of a desk drawer opening and closing before Marcus speaks",
+        "fix_script": "[SFX: Desk drawer opens and closes] MARCUS: (sighing heavily) I've been carrying this weight for too long. (pause) Some things are better left unsaid... for now."
+      }
+    ],
+    "clarity_violations": {
+      "signature_sounds_missing": 2,
+      "offscreen_no_id": 1,
+      "rapid_no_positioning": 0,
+      "similar_no_distinction": 1
+    },
+    "total_confusion_risks": 4
+  },
+  "sound_cue_analysis": {
+    "current_cue_count": 10,
+    "optimal_range": "6-12 cues for 5-minute scenes",
+    "assessment": "Needs 2-8 additional cues",
+    "missing_cues": [
+      {
+        "category": "transition",
+        "location": "INT. COFFEE SHOP - DAY → INT. DETECTIVE’S OFFICE - NIGHT",
+        "problem": "No transition sound, jarring cut",
+        "needed_cue": "[SFX: Coffee shop ambient fades out → Office ambient fades in]",
+        "purpose": "Smooth location change"
+      },
+      {
+        "category": "emotional",
+        "scene_number": 1,
+        "line": "MARCUS: (glancing out the window) I can't... I can't shake the feeling that someone's watching us. (pause) I thought I saw someone familiar outside.",
+        "problem": "Internal struggle with no sound enhancement",
+        "needed_cue": "[SFX: Shaky exhale, light tapping on the table]",
+        "purpose": "External manifestation of internal tension"
+      },
+      {
+        "category": "emotional",
+        "scene_number": 2,
+        "line": "MARCUS: (sighing heavily) I've been carrying this weight for too long. (pause) Some things are better left unsaid... for now.",
+        "problem": "Internal struggle with no sound enhancement",
+        "needed_cue": "[SFX: Heavy sigh, slight rustling of papers]",
+        "purpose": "External manifestation of internal relief or resignation"
+      }
+    ],
+    "excessive_cues": [],
+    "cue_density_by_scene": [
+      {
+        "scene_number": 1,
+        "duration_minutes": 2,
+        "current_cues": 2,
+        "cues_per_minute": 1.0,
+        "status": "suboptimal",
+        "scene_type": "dialogue"
+      },
+      {
+        "scene_number": 2,
+        "duration_minutes": 3,
+        "current_cues": 2,
+        "cues_per_minute": 0.67,
+        "status": "suboptimal",
+        "scene_type": "dialogue"
+      }
+    ]
+  },
+  "silence_analysis": {
+    "current_marked_silences": 2,
+    "optimal_range": "12-18 strategic silences",
+    "status": "NEEDS 10-16 MORE SILENCE BEATS",
+    "silence_opportunities": [
+      {
+        "silence_number": 1,
+        "type": "dramatic_pause",
+        "scene_number": 1,
+        "context": "Marcus feels watched, tension builds",
+        "current_script": "MARCUS: (glancing out the window) I can't... I can't shake the feeling that someone's watching us. (pause) I thought I saw someone familiar outside.",
+        "silence_placement": "Between the two statements",
+        "duration_seconds": 3,
+        "enhanced_script": "MARCUS: (glancing out the window) I can't... I can't shake the feeling that someone's watching us. [SILENCE: 3 seconds - Marcus turns back, eyes wide, breath held] I thought I saw someone familiar outside.",
+        "effect": "Silence amplifies the sense of unease and suspicion",
+        "audio_during_silence": "Ambient coffee shop sounds, distant conversation, Marcus's shallow breathing"
+      },
+      {
+        "silence_number": 2,
+        "type": "emotional_beat",
+        "scene_number": 2,
+        "context": "Marcus carries a heavy burden",
+        "current_script": "MARCUS: (sighing heavily) I've been carrying this weight for too long. (pause) Some things are better left unsaid... for now.",
+        "silence_placement": "Before the final statement",
+        "duration_seconds": 4,
+        "enhanced_script": "MARCUS: (sighing heavily) I've been carrying this weight for too long. [SILENCE: 4 seconds - Marcus leans back, eyes closed, deep breath] Some things are better left unsaid... for now.",
+        "effect": "Silence conveys the depth of his emotional struggle",
+        "audio_during_silence": "Heavy sigh, distant office noises, Marcus's deep breathing"
+      }
+    ],
+    "total_silences_to_add": 10
+  },
+  "audio_optimized_script": {
+    "episode_number": 1,
+    "total_runtime": "04:30",
+    "optimization_stats": {
+      "speaker_clarity_fixes": 2,
+      "sound_cues_added": 4,
+      "sound_cues_removed": 0,
+      "silences_marked": 2,
+      "production_notes": 3
+    },
+    "scenes": [
+      {
+        "scene_number": 1,
+        "heading": "INT. COFFEE SHOP - DAY",
+        "acoustic_properties": "Soft surfaces, light reverb, ambient coffee shop chatter",
+        "ambient_layers": [
+          "Coffee shop chatter (constant, medium)",
+          "Cup clinking (occasional)",
+          "Background music (soft, distant)"
+        ],
+        "audio_script": [
+          {
+            "character": "MARCUS",
+            "vocal_direction": "nervous, glancing out the window",
+            "dialogue": "I can't... I can't shake the feeling that someone's watching us. (pause) I thought I saw someone familiar outside.",
+            "sound_cues": [
+              "[SFX: Lighter click]",
+              "[SILENCE: 3 seconds (background ambient)]"
+            ]
+          }
+        ],
+        "sound_cues_in_scene": 2,
+        "silences_in_scene": 1,
+        "estimated_duration": "2:00"
+      },
+      {
+        "scene_number": 2,
+        "heading": "INT. DETECTIVE’S OFFICE - NIGHT",
+        "acoustic_properties": "Hard surfaces, medium reverb, office ambiance",
+        "ambient_layers": [
+          "Office ambiance (constant, medium)",
+          "Typing on computer (occasional)",
+          "Distant phone ringing (rare)"
+        ],
+        "audio_script": [
+          {
+            "character": "MARCUS",
+            "vocal_direction": "sighing heavily, somber",
+            "dialogue": "I've been carrying this weight for too long. (pause) Some things are better left unsaid... for now.",
+            "sound_cues": [
+              "[SFX: Desk drawer opening and closing]",
+              "[SFX: Heavy sigh]",
+              "[SFX: Slight rustling of papers]",
+              "[SILENCE: 4 seconds (background ambient)]"
+            ]
+          }
+        ],
+        "sound_cues_in_scene": 4,
+        "silences_in_scene": 1,
+        "estimated_duration": "2:30"
+      }
+    ],
+    "complete_audio_script": [
+      {
+        "scene_number": 1,
+        "heading": "INT. COFFEE SHOP - DAY",
+        "acoustic_properties": "Soft surfaces, light reverb, ambient coffee shop chatter",
+        "ambient_layers": [
+          "Coffee shop chatter (constant, medium)",
+          "Cup clinking (occasional)",
+          "Background music (soft, distant)"
+        ],
+        "audio_script": [
+          {
+            "character": "MARCUS",
+            "vocal_direction": "nervous, glancing out the window",
+            "dialogue": "I can't... I can't shake the feeling that someone's watching us. (pause) I thought I saw someone familiar outside.",
+            "sound_cues": [
+              "[SFX: Lighter click]",
+              "[SILENCE: 3 seconds (background ambient)]"
+            ]
+          }
+        ],
+        "sound_cues_in_scene": 2,
+        "silences_in_scene": 1,
+        "estimated_duration": "2:00"
+      },
+      {
+        "scene_number": 2,
+        "heading": "INT. DETECTIVE’S OFFICE - NIGHT",
+        "acoustic_properties": "Hard surfaces, medium reverb, office ambiance",
+        "ambient_layers": [
+          "Office ambiance (constant, medium)",
+          "Typing on computer (occasional)",
+          "Distant phone ringing (rare)"
+        ],
+        "audio_script": [
+          {
+            "character": "MARCUS",
+            "vocal_direction": "sighing heavily, somber",
+            "dialogue": "I've been carrying this weight for too long. (pause) Some things are better left unsaid... for now.",
+            "sound_cues": [
+              "[SFX: Desk drawer opening and closing]",
+              "[SFX: Heavy sigh]",
+              "[SFX: Slight rustling of papers]",
+              "[SILENCE: 4 seconds (background ambient)]"
+            ]
+          }
+        ],
+        "sound_cues_in_scene": 4,
+        "silences_in_scene": 1,
+        "estimated_duration": "2:30"
+      }
+    ],
+    "sound_cue_summary": {
+      "total_cues": 6,
+      "ambient_layers": 6,
+      "action_cues": 2,
+      "emotional_cues": 2,
+      "transition_cues": 0,
+      "average_density": "1.33 cues per minute"
+    },
+    "silence_summary": {
+      "total_silences": 2,
+      "dramatic_pauses": 1,
+      "emotional_beats": 1,
+      "revelation_moments": 0,
+      "transitions": 0,
+      "total_silence_time": "7 seconds"
+    },
+    "production_notes": [
+      "Marcus's lighter click should be distinctive - same sound file each time for consistency",
+      "Ensure the office ambiance transitions smoothly from the coffee shop ambient",
+      "The heavy sigh in Scene 2 should be slightly reverb-heavy to match the office setting"
+    ]
+  }
+}

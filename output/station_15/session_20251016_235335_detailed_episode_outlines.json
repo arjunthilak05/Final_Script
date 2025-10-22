@@ -1,6 +1,6 @@
 {
   "session_id": "session_20251016_235335",
-  "timestamp": "20251019_234728",
+  "timestamp": "20251022_223303",
   "project_title": "The Accidental Lifeline",
   "episode_count": "3-6 episodes",
   "outline_data": {
@@ -8,228 +8,7 @@
       {
         "episode_number": 1,
         "episode_title": "Wrong Number, Right Message",
-        "episode_summary": "Tom, a motivational life coach, accidentally sends an inspirational message to Julia, a depressed ER doctor, instead of his client. Julia finds unexpected comfort in the message during a difficult shift, while Tom begins working with Sarah, a young professional battling anxiety.",
-        "total_estimated_runtime": "18 minutes",
-        "scenes": [
-          {
-            "scene_number": 1,
-            "location": "Tom's Apartment",
-            "time": "Early Morning",
-            "characters_present": [
-              "Tom"
-            ],
-            "goal": "To start his day with his routine and send motivational messages to clients",
-            "obstacle": "Rushing and being distracted while typing the phone number",
-            "choice": "Quickly typing a number from memory without double-checking",
-            "consequence": "Sends the message to the wrong number - Julia",
-            "reveals": {
-              "plants": [
-                "Tom's dedication to his morning routine",
-                "Tom's tendency to rush when distracted"
-              ],
-              "proofs": [
-                "Sound of Tom typing quickly and sending the message"
-              ],
-              "payoffs": [
-                "Establishes the core premise of the accidental connection"
-              ]
-            },
-            "soundscape_notes": "Alarm clock sound, stretching sounds, soft hum of refrigerator, tapping on phone keyboard, message sent notification, distant city traffic",
-            "transition_to_next": "Sound of message notification transitioning to Julia's phone",
-            "estimated_runtime": "3 minutes",
-            "emotional_state": "Tom: Focused and optimistic",
-            "audio_storytelling_notes": "Use close-up audio of Tom's keyboard typing to emphasize the mistake. Morning light sounds to establish the time of day."
-          },
-          {
-            "scene_number": 2,
-            "location": "Julia's Apartment",
-            "time": "Early Morning",
-            "characters_present": [
-              "Julia"
-            ],
-            "goal": "To prepare for another challenging day at the hospital",
-            "obstacle": "Feeling depressed and overwhelmed before her shift begins",
-            "choice": "To check her phone as she's getting ready",
-            "consequence": "Receives Tom's message and finds unexpected comfort in it",
-            "reveals": {
-              "plants": [
-                "Julia's depression and emotional state",
-                "Julia's reliance on external motivation"
-              ],
-              "proofs": [
-                "Julia's emotional reaction to the message"
-              ],
-              "payoffs": [
-                "Shows the impact of Tom's accidental message"
-              ]
-            },
-            "soundscape_notes": "Sighing, shuffling sounds, coffee maker, message notification, soft gasp, pause in movement",
-            "transition_to_next": "Sound of Julia's phone alarm signaling it's time to leave for work",
-            "estimated_runtime": "3 minutes",
-            "emotional_state": "Julia: Depressed, then momentarily uplifted",
-            "audio_storytelling_notes": "Use subtle audio cues to show Julia's depression (heavy sighs, slow movements) followed by a pause when she reads the message."
-          },
-          {
-            "scene_number": 3,
-            "location": "Tom's Office",
-            "time": "Mid-Morning",
-            "characters_present": [
-              "Tom",
-              "Sarah"
-            ],
-            "goal": "Tom to establish a coaching relationship with Sarah",
-            "obstacle": "Sarah's anxiety and self-doubt",
-            "choice": "Tom uses his motivational approach to help Sarah open up",
-            "consequence": "Sarah begins to trust Tom and the coaching process",
-            "reveals": {
-              "plants": [
-                "Tom's coaching style",
-                "Sarah's anxiety issues"
-              ],
-              "proofs": [
-                "Sarah's hesitant responses becoming more open"
-              ],
-              "payoffs": [
-                "Establishes Tom's professional role and Sarah as a client"
-              ]
-            },
-            "soundscape_notes": "Soft office ambient sounds, clock ticking, hesitant speech patterns, gradually becoming more confident, papers shuffling",
-            "transition_to_next": "Sound of Tom's phone ringing with a client call",
-            "estimated_runtime": "4 minutes",
-            "emotional_state": "Tom: Professional and supportive; Sarah: Anxious, then slightly more hopeful",
-            "audio_storytelling_notes": "Use audio to show the progression of Sarah's anxiety through her voice patterns and breathing sounds."
-          },
-          {
-            "scene_number": 4,
-            "location": "Hospital Corridors",
-            "time": "Afternoon",
-            "characters_present": [
-              "Julia",
-              "Dr. Martinez"
-            ],
-            "goal": "To handle their daily hospital duties",
-            "obstacle": "An emergency case that pushes Julia to her emotional limits",
-            "choice": "Julia chooses to push through her emotional exhaustion to help the patient",
-            "consequence": "Julia successfully helps the patient but is emotionally drained",
-            "reveals": {
-              "plants": [
-                "Julia's professional dedication",
-                "The emotional toll of her job"
-              ],
-              "proofs": [
-                "Julia's interactions with the emergency case"
-              ],
-              "payoffs": [
-                "Shows why Julia needed Tom's message"
-              ]
-            },
-            "soundscape_notes": "Hospital beeps, urgent footsteps, PA announcements, medical equipment sounds, tense breathing, soft sigh of relief",
-            "transition_to_next": "Sound of Julia checking her phone during a break",
-            "estimated_runtime": "5 minutes",
-            "emotional_state": "Julia: Stressed and overwhelmed, then emotionally exhausted",
-            "audio_storytelling_notes": "Use escalating hospital sounds to build tension during the emergency case, then contrast with quiet sounds during the aftermath."
-          },
-          {
-            "scene_number": 5,
-            "location": "Hospital Break Room",
-            "time": "Late Afternoon",
-            "characters_present": [
-              "Julia"
-            ],
-            "goal": "To recover emotionally during a short break",
-            "obstacle": "Feeling overwhelmed and questioning her career choice",
-            "choice": "To read Tom's message again for comfort",
-            "consequence": "Finds renewed strength to continue her shift",
-            "reveals": {
-              "plants": [
-                "Julia's growing reliance on the message",
-                "Julia's career doubts"
-              ],
-              "proofs": [
-                "Julia's emotional response to rereading the message"
-              ],
-              "payoffs": [
-                "Establishes the lifeline theme of the series"
-              ]
-            },
-            "soundscape_notes": "Quiet break room sounds, coffee machine, soft sigh, phone screen swipe, slow, deep breathing",
-            "transition_to_next": "Sound of Julia's pager signaling break is over",
-            "estimated_runtime": "3 minutes",
-            "emotional_state": "Julia: Emotionally exhausted, then slightly renewed",
-            "audio_storytelling_notes": "Use intimate audio to create a personal moment for Julia, emphasizing the private nature of her connection to the message."
-          }
-        ],
-        "episode_arc": {
-          "opening_hook": "Tom accidentally sends a motivational message to the wrong number while rushing through his morning routine",
-          "midpoint_turn": "Julia receives the message during a difficult moment at the hospital and finds unexpected comfort",
-          "climax": "Julia faces a challenging emergency case that pushes her to her emotional limits",
-          "resolution": "Julia finds strength in Tom's message during her break, helping her continue her shift",
-          "cliffhanger": "Julia looks forward to receiving another message, while Tom remains unaware of his mistake"
-        },
-        "character_emotional_journey": [
-          {
-            "character_name": "Tom",
-            "starting_emotional_state": "Optimistic and focused on his work",
-            "key_emotional_beats": [
-              "Focused during morning routine",
-              "Professional with Sarah",
-              "Unaware of his mistake"
-            ],
-            "ending_emotional_state": "Satisfied with his day, unaware of the impact he's had on Julia",
-            "growth": "Begins to recognize the value of his motivational work through Sarah's response"
-          },
-          {
-            "character_name": "Julia",
-            "starting_emotional_state": "Depressed and dreading her day",
-            "key_emotional_beats": [
-              "Momentarily uplifted by the message",
-              "Overwhelmed by emergency case",
-              "Finding comfort in the message again"
-            ],
-            "ending_emotional_state": "Emotionally exhausted but with a glimmer of hope",
-            "growth": "Discovers unexpected comfort in a stranger's words, opening her to receive support"
-          },
-          {
-            "character_name": "Sarah",
-            "starting_emotional_state": "Anxious and uncertain",
-            "key_emotional_beats": [
-              "Hesitant to open up",
-              "Beginning to trust Tom",
-              "Feeling slightly more hopeful"
-            ],
-            "ending_emotional_state": "Slightly more confident and open to the coaching process",
-            "growth": "Takes first steps in overcoming anxiety by trusting Tom"
-          }
-        ],
-        "information_flow": {
-          "revealed_to_audience": [
-            "Tom's identity as a motivational coach",
-            "Julia's profession and emotional state",
-            "Tom's accidental message to Julia",
-            "The impact of the message on Julia",
-            "Sarah's introduction as Tom's client"
-          ],
-          "revealed_to_characters": [
-            "Tom has a new client (Sarah)",
-            "Julia received a mysterious message",
-            "Sarah is beginning to trust the coaching process"
-          ],
-          "hidden_from_audience": [
-            "The full extent of Julia's depression",
-            "The exact nature of Sarah's anxiety"
-          ],
-          "hidden_from_characters": [
-            "Tom doesn't know he sent the message to the wrong person",
-            "Julia doesn't know who sent the message",
-            "Sarah doesn't know about Julia"
-          ]
-        },
-        "audio_production_notes": "Use distinct audio signatures for each character's environment. Tom's spaces should sound open and motivational, Julia's should feel more contained and tense, and the hospital should have its own sterile, urgent soundscape. The message notification should have a distinctive sound that becomes recognizable throughout the series."
-      },
-      {
-        "episode_number": 2,
-        "episode_title": "Growing Connection",
-        "episode_summary": "As days pass, Julia increasingly relies on Tom's daily messages as a lifeline during her challenging shifts. Tom notices one of his clients isn't responding to his messages, while Julia secretly researches Tom online. Dr. Martinez becomes concerned about Julia's secretive behavior.",
+        "episode_summary": "Tom, a motivational life coach, accidentally sends an inspirational message to Julia, a depressed ER doctor, instead of his client. Julia finds unexpected comfort in the words during a difficult shift, while Tom begins working with Sarah, a young professional battling anxiety.",
         "total_estimated_runtime": "20 minutes",
         "scenes": [
           {
@@ -239,116 +18,110 @@
             "characters_present": [
               "Tom"
             ],
-            "goal": "To send his daily motivational messages to clients",
-            "obstacle": "Feeling concerned about a client who hasn't been responding",
-            "choice": "To send another message and hope for a response",
-            "consequence": "Again sends the message to Julia instead of his client",
+            "goal": "To start his day with his morning routine and send motivational messages to his clients",
+            "obstacle": "Distraction and a momentary lapse in attention",
+            "choice": "To quickly type and send the message without double-checking the recipient",
+            "consequence": "The message is sent to a wrong number - Julia",
             "reveals": {
               "plants": [
-                "Tom's growing concern about his unresponsive client",
-                "Tom's repetition of the same mistake"
+                "Tom's dedication to his morning routine",
+                "His habit of sending messages to multiple clients"
               ],
               "proofs": [
-                "Tom's frustrated reaction when checking his phone for responses"
+                "The message is sent to an unknown number"
               ],
-              "payoffs": [
-                "Reinforces the ongoing accidental connection"
-              ]
+              "payoffs": []
             },
-            "soundscape_notes": "Morning sounds, keyboard typing, message sent notification, frustrated sigh, clock ticking",
-            "transition_to_next": "Sound of message notification transitioning to Julia's phone",
+            "soundscape_notes": "Sound of alarm clock, morning stretching, typing on phone, soft morning ambient sounds, gentle background music",
+            "transition_to_next": "Sound of phone notification as message is sent, transition to hospital sounds",
             "estimated_runtime": "3 minutes",
-            "emotional_state": "Tom: Concerned but still optimistic",
-            "audio_storytelling_notes": "Use subtle audio cues to show Tom's growing concern, such as a slight hesitation before sending the message and checking his phone more frequently."
+            "emotional_state": "Tom - Focused, optimistic, routine-driven",
+            "audio_storytelling_notes": "Use close-up sound of typing to emphasize the accidental nature of the mistake. Morning sounds establish Tom's character and routine."
           },
           {
             "scene_number": 2,
-            "location": "Julia's Apartment",
-            "time": "Early Morning",
+            "location": "Hospital Corridors",
+            "time": "Morning",
             "characters_present": [
-              "Julia"
+              "Julia",
+              "Dr. Martinez"
             ],
-            "goal": "To prepare for another difficult day at work",
-            "obstacle": "Feeling particularly depressed and anxious about her shift",
-            "choice": "To check her phone immediately upon waking, hoping for another message",
-            "consequence": "Receives Tom's message and feels a sense of relief and comfort",
+            "goal": "Julia wants to get through her shift emotionally intact",
+            "obstacle": "High-stress environment, emotionally draining cases, her own depression",
+            "choice": "To push through her exhaustion and focus on her patients",
+            "consequence": "She becomes increasingly emotionally drained",
             "reveals": {
               "plants": [
-                "Julia's growing dependence on the messages",
-                "Julia's anticipation of receiving them"
+                "Julia's emotional state",
+                "The stressful nature of her job"
               ],
               "proofs": [
-                "Julia's immediate check of her phone and emotional response"
+                "Her interaction with Dr. Martinez shows her struggle"
               ],
-              "payoffs": [
-                "Shows the deepening impact of Tom's messages on Julia"
-              ]
+              "payoffs": []
             },
-            "soundscape_notes": "Alarm sound, groaning, immediate phone check, message notification, sigh of relief, coffee brewing",
-            "transition_to_next": "Sound of Julia's phone as she researches Tom online",
-            "estimated_runtime": "3 minutes",
-            "emotional_state": "Julia: Anxious and depressed, then relieved and comforted",
-            "audio_storytelling_notes": "Use audio to show Julia's anticipation through the sound of her immediately checking her phone, and her relief through her breathing pattern changing."
+            "soundscape_notes": "Hospital beeping, footsteps on linoleum, PA announcements, distant patient sounds, muffled conversations",
+            "transition_to_next": "Sound of Julia's phone notification as she receives Tom's message",
+            "estimated_runtime": "4 minutes",
+            "emotional_state": "Julia - Exhausted, overwhelmed, emotionally guarded",
+            "audio_storytelling_notes": "Use layered hospital sounds to create atmosphere of stress and urgency. Julia's breathing becomes more labored as the scene progresses."
           },
           {
             "scene_number": 3,
-            "location": "Julia's Apartment",
-            "time": "Morning (before work)",
+            "location": "Hospital Staff Room",
+            "time": "Mid-morning",
             "characters_present": [
               "Julia"
             ],
-            "goal": "To learn more about the person sending her motivational messages",
-            "obstacle": "Only having a first name and no other information",
-            "choice": "To search for Tom online using his name and the motivational quotes from his messages",
-            "consequence": "Discovers Tom's website and professional profile as a life coach",
+            "goal": "To find a moment of peace during her break",
+            "obstacle": "Emotional exhaustion, difficulty relaxing",
+            "choice": "To check her phone and read the unexpected message",
+            "consequence": "She finds unexpected comfort in Tom's words",
             "reveals": {
               "plants": [
-                "Julia's curiosity about Tom",
-                "Julia's growing connection to the messages"
+                "Julia's vulnerability",
+                "Her need for support"
               ],
               "proofs": [
-                "Sounds of Julia typing on her computer, clicking through websites"
+                "The message content and her reaction to it"
               ],
               "payoffs": [
-                "Julia learns Tom's identity and profession"
+                "The accidental impact of Tom's message"
               ]
             },
-            "soundscape_notes": "Computer keyboard typing, mouse clicks, soft gasp of recognition, thoughtful humming",
-            "transition_to_next": "Sound of Julia's alarm signaling it's time to leave for work",
+            "soundscape_notes": "Quiet hospital staff room sounds, coffee machine, distant hospital noises, phone notification sound",
+            "transition_to_next": "Sound of Julia taking a deep breath, music shift to more hopeful tone",
             "estimated_runtime": "3 minutes",
-            "emotional_state": "Julia: Curious, then surprised and intrigued",
-            "audio_storytelling_notes": "Use audio to show Julia's discovery process, with keyboard sounds becoming more excited as she finds information."
+            "emotional_state": "Julia - Initially exhausted, then surprised, then comforted",
+            "audio_storytelling_notes": "Use contrast between the chaotic hospital sounds and the quiet moment when Julia reads the message. Sound of her breathing changes as she reads."
           },
           {
             "scene_number": 4,
             "location": "Tom's Office",
-            "time": "Mid-Morning",
+            "time": "Late Morning",
             "characters_present": [
               "Tom",
               "Sarah"
             ],
-            "goal": "Tom to continue helping Sarah with her anxiety",
-            "obstacle": "Sarah is facing a crisis at work that triggers her anxiety",
-            "choice": "Tom uses specific techniques to help Sarah manage her anxiety in real-time",
-            "consequence": "Sarah successfully navigates her work crisis using Tom's techniques",
+            "goal": "Tom wants to help Sarah with her anxiety issues",
+            "obstacle": "Sarah's self-doubt and resistance to opening up",
+            "choice": "To use gentle motivational techniques to build trust",
+            "consequence": "Sarah begins to open up and engage in the process",
             "reveals": {
               "plants": [
-                "Tom's coaching effectiveness",
-                "Sarah's progress"
+                "Tom's coaching style",
+                "Sarah's anxiety issues"
               ],
               "proofs": [
-                "Sarah's anxious voice becoming calmer",
-                "Sound of Sarah successfully handling her work situation"
+                "Their interaction shows Tom's methods"
               ],
-              "payoffs": [
-                "Shows Tom's positive impact on Sarah"
-              ]
+              "payoffs": []
             },
-            "soundscape_notes": "Office ambient sounds, increasingly anxious breathing, calming voice guidance, phone call sounds, relieved sigh",
-            "transition_to_next": "Sound of Tom checking his phone for messages from his other client",
-            "estimated_runtime": "4 minutes",
-            "emotional_state": "Tom: Professional and supportive; Sarah: Anxious, then calm and accomplished",
-            "audio_storytelling_notes": "Use audio to contrast Sarah's anxious breathing with her calmer breathing after applying Tom's techniques."
+            "soundscape_notes": "Office ambient sounds, computer humming, soft background music, pen on paper",
+            "transition_to_next": "Sound of session ending, transition back to hospital",
+            "estimated_runtime": "5 minutes",
+            "emotional_state": "Tom - Professional, encouraging, supportive; Sarah - Anxious, hesitant, gradually opening up",
+            "audio_storytelling_notes": "Use audio contrast between Tom's calm, steady voice and Sarah's hesitant, higher-pitched responses to show their dynamic."
           },
           {
             "scene_number": 5,
@@ -356,409 +129,650 @@
             "time": "Afternoon",
             "characters_present": [
               "Julia",
-              "Dr. Martinez",
-              "Mike"
+              "Dr. Lee",
+              "Nurse Linda"
             ],
-            "goal": "To handle a traumatic emergency case",
-            "obstacle": "The case is particularly challenging and emotionally draining",
-            "choice": "Julia chooses to lead the team through the crisis despite her emotional state",
-            "consequence": "The team successfully saves the patient, but Julia is emotionally devastated",
+            "goal": "Julia needs to handle a critical medical emergency",
+            "obstacle": "High-pressure situation, emotional fatigue",
+            "choice": "To draw strength from the message she received earlier",
+            "consequence": "She successfully navigates the crisis, finding unexpected resilience",
             "reveals": {
               "plants": [
-                "Julia's professional skill under pressure",
-                "The emotional toll of her job"
+                "The impact of Tom's message on Julia's work"
               ],
               "proofs": [
-                "Urgent medical sounds, team coordination, emotional aftermath"
+                "Her performance during the emergency"
               ],
               "payoffs": [
-                "Shows why Julia needs the emotional support from Tom's messages"
+                "The lasting effect of the accidental message"
               ]
             },
-            "soundscape_notes": "Emergency room sounds, urgent medical instructions, equipment beeps, tense breathing, eventual slowing of pace, exhausted sighs",
-            "transition_to_next": "Sound of Julia receiving another message from Tom during a break",
-            "estimated_runtime": "5 minutes",
-            "emotional_state": "Julia: Professional and focused, then emotionally drained",
-            "audio_storytelling_notes": "Use escalating emergency sounds to build tension, then contrast with quiet, exhausted sounds in the aftermath."
+            "soundscape_notes": "Intense ER sounds, medical equipment beeping, urgent voices, rapid movement, heightened musical tension",
+            "transition_to_next": "Sound of emergency resolving, shift to quieter, more reflective music",
+            "estimated_runtime": "4 minutes",
+            "emotional_state": "Julia - Initially stressed, then focused, then relieved and reflective",
+            "audio_storytelling_notes": "Use escalating sounds during the emergency, then a sudden shift to quiet as the crisis resolves, emphasizing Julia's emotional journey."
           },
           {
             "scene_number": 6,
-            "location": "Hospital Break Room",
-            "time": "Late Afternoon",
+            "location": "Julia's Home",
+            "time": "Evening",
             "characters_present": [
-              "Julia",
-              "Dr. Martinez"
+              "Julia"
             ],
-            "goal": "Julia to recover emotionally from the traumatic case",
-            "obstacle": "Feeling overwhelmed by the emotional toll of her job",
-            "choice": "Julia checks her phone and finds comfort in Tom's message",
-            "consequence": "Dr. Martinez notices Julia's secretive behavior and becomes concerned",
+            "goal": "To process her day and find emotional equilibrium",
+            "obstacle": "Emotional exhaustion, loneliness",
+            "choice": "To reread Tom's message and contemplate its meaning",
+            "consequence": "She finds hope and looks forward to receiving more messages",
             "reveals": {
               "plants": [
-                "Julia's reliance on the messages",
-                "Dr. Martinez's concern for Julia"
+                "Julia's growing reliance on the messages"
               ],
               "proofs": [
-                "Julia's emotional response to the message",
-                "Dr. Martinez's questioning look"
+                "Her emotional response to rereading the message"
               ],
               "payoffs": [
-                "Sets up future conflict with Dr. Martinez"
+                "The setup for her future connection with Tom"
               ]
             },
-            "soundscape_notes": "Quiet break room sounds, exhausted breathing, phone notification, soft gasp, Dr. Martinez's approaching footsteps, concerned voice",
-            "transition_to_next": "Sound of Tom's phone ringing with a call from his client",
-            "estimated_runtime": "2 minutes",
-            "emotional_state": "Julia: Emotionally drained, then comforted; Dr. Martinez: Concerned and curious",
-            "audio_storytelling_notes": "Use audio to create a moment of intimacy when Julia reads the message, then introduce Dr. Martinez with footsteps that break the moment."
+            "soundscape_notes": "Quiet home sounds, soft evening ambiance, distant city noises, reflective piano music",
+            "transition_to_next": "Sound of Julia's phone as she sets it down, hopeful music fade out",
+            "estimated_runtime": "3 minutes",
+            "emotional_state": "Julia - Exhausted, contemplative, hopeful",
+            "audio_storytelling_notes": "Use intimate, close-miked sounds to create a sense of Julia's inner world. Music shifts from melancholic to hopeful as the scene progresses."
           }
         ],
         "episode_arc": {
-          "opening_hook": "Tom sends another message to Julia, continuing the accidental connection",
-          "midpoint_turn": "Julia researches Tom online and discovers his identity",
-          "climax": "Julia faces a traumatic emergency case that pushes her to her emotional limits",
-          "resolution": "Julia finds comfort in Tom's message but arouses Dr. Martinez's suspicion",
-          "cliffhanger": "Tom's actual client calls to complain about not receiving messages, creating a crisis"
+          "opening_hook": "Tom accidentally sends a motivational message to a wrong number while following his morning routine",
+          "midpoint_turn": "Julia receives the message during a difficult shift and finds unexpected comfort in it",
+          "climax": "Julia draws strength from the message during a medical emergency",
+          "resolution": "Julia reflects on the message at home, finding hope",
+          "cliffhanger": "Julia looks forward to receiving more messages, unaware that Tom doesn't know she's receiving them"
         },
         "character_emotional_journey": [
           {
             "character_name": "Tom",
-            "starting_emotional_state": "Concerned about his unresponsive client",
+            "starting_emotional_state": "Focused, optimistic, routine-driven",
             "key_emotional_beats": [
-              "Sending another message with hope",
-              "Helping Sarah through a crisis",
-              "Becoming more concerned about the unresponsive client"
+              "Confident in his morning routine",
+              "Professional and encouraging with Sarah"
             ],
-            "ending_emotional_state": "Increasingly worried and confused",
-            "growth": "Becomes more invested in his clients' responses and the impact of his messages"
+            "ending_emotional_state": "Satisfied with his day's work, unaware of his mistake",
+            "growth": "Begins to recognize the impact of his words through his work with Sarah"
           },
           {
             "character_name": "Julia",
-            "starting_emotional_state": "Anxious and depressed",
+            "starting_emotional_state": "Exhausted, overwhelmed, emotionally guarded",
             "key_emotional_beats": [
-              "Relief at receiving another message",
-              "Curiosity about Tom's identity",
-              "Emotional devastation from the traumatic case",
-              "Comfort from Tom's message"
+              "Surprised by the message",
+              "Comforted by the words",
+              "Drawing strength during emergency",
+              "Hopeful at home"
             ],
-            "ending_emotional_state": "Emotionally exhausted but comforted, with a growing connection to Tom",
-            "growth": "Begins to actively seek out information about Tom and rely more on his messages"
+            "ending_emotional_state": "Exhausted but hopeful, beginning to open up",
+            "growth": "Discovers unexpected comfort and strength from Tom's message, beginning to find hope"
           },
           {
             "character_name": "Sarah",
-            "starting_emotional_state": "Anxious about a work crisis",
+            "starting_emotional_state": "Anxious, hesitant, doubtful",
             "key_emotional_beats": [
-              "Applying Tom's techniques",
-              "Successfully navigating the crisis",
-              "Feeling accomplished"
+              "Resistant to opening up",
+              "Gradually engaging with Tom's methods"
             ],
-            "ending_emotional_state": "Confident and proud of herself",
-            "growth": "Gains confidence in her ability to manage anxiety using Tom's techniques"
+            "ending_emotional_state": "Slightly more open, beginning to trust the process",
+            "growth": "Takes first steps in her coaching journey with Tom"
+          }
+        ],
+        "information_flow": {
+          "revealed_to_audience": [
+            "Tom accidentally sent a message to Julia",
+            "Julia found comfort in the message",
+            "Tom is unaware of his mistake"
+          ],
+          "revealed_to_characters": [
+            "Julia received an unexpected message",
+            "Tom worked with Sarah",
+            "Julia faced a medical emergency"
+          ],
+          "hidden_from_audience": [
+            "The full impact of the message on Julia",
+            "Tom's past struggles with self-esteem"
+          ],
+          "hidden_from_characters": [
+            "Tom sent the message to the wrong person",
+            "Julia doesn't know who sent the message"
+          ]
+        },
+        "audio_production_notes": "The episode should balance the contrasting environments of Tom's calm, organized world and Julia's chaotic, stressful hospital environment. Sound design should emphasize the accidental nature of the message sending and the emotional impact it has on Julia. Music should shift from neutral to hopeful as the episode progresses."
+      },
+      {
+        "episode_number": 2,
+        "episode_title": "Growing Connection",
+        "episode_summary": "As days pass, Julia increasingly relies on Tom's daily messages as a lifeline during her challenging shifts. Tom notices one client isn't responding, while Julia secretly researches him online. Dr. Martinez notices Julia's improved mood but becomes concerned about her secretive behavior.",
+        "total_estimated_runtime": "20 minutes",
+        "scenes": [
+          {
+            "scene_number": 1,
+            "location": "Tom's Apartment",
+            "time": "Early Morning (several days later)",
+            "characters_present": [
+              "Tom"
+            ],
+            "goal": "To send his daily motivational messages to his clients",
+            "obstacle": "Slight distraction, thinking about his growing business",
+            "choice": "To quickly send messages to all clients, including the one who hasn't responded",
+            "consequence": "He again sends a message to Julia without realizing",
+            "reveals": {
+              "plants": [
+                "Tom's concern about his unresponsive client",
+                "His growing confidence in his business"
+              ],
+              "proofs": [
+                "His routine of sending messages"
+              ],
+              "payoffs": []
+            },
+            "soundscape_notes": "Morning sounds, phone typing, coffee brewing, birds outside window, soft background music",
+            "transition_to_next": "Sound of message notification, transition to hospital",
+            "estimated_runtime": "2 minutes",
+            "emotional_state": "Tom - Focused, slightly concerned, business-minded",
+            "audio_storytelling_notes": "Use similar morning sounds as Episode 1 to establish routine, but with slight variations to show time passing."
+          },
+          {
+            "scene_number": 2,
+            "location": "Julia's Home",
+            "time": "Early Morning",
+            "characters_present": [
+              "Julia"
+            ],
+            "goal": "To mentally prepare for another challenging day at the hospital",
+            "obstacle": "Anxiety, depression, exhaustion",
+            "choice": "To check her phone, hoping for another message",
+            "consequence": "She receives Tom's message and finds comfort in it",
+            "reveals": {
+              "plants": [
+                "Julia's growing reliance on the messages"
+              ],
+              "proofs": [
+                "Her emotional reaction to receiving it"
+              ],
+              "payoffs": [
+                "The continuation of their accidental connection"
+              ]
+            },
+            "soundscape_notes": "Morning home sounds, coffee brewing, soft morning light, phone notification, hopeful music",
+            "transition_to_next": "Sound of Julia taking a deep breath, transition to hospital",
+            "estimated_runtime": "3 minutes",
+            "emotional_state": "Julia - Anxious, hopeful, comforted",
+            "audio_storytelling_notes": "Use intimate morning sounds to show Julia's private world. Sound of her breathing changes as she reads the message."
+          },
+          {
+            "scene_number": 3,
+            "location": "Hospital Emergency Room",
+            "time": "Morning",
+            "characters_present": [
+              "Julia",
+              "Mike",
+              "Dr. Martinez"
+            ],
+            "goal": "Julia needs to handle multiple incoming trauma cases",
+            "obstacle": "Overwhelming situation, limited resources, emotional stress",
+            "choice": "To draw strength from Tom's message and take charge",
+            "consequence": "She successfully manages the crisis, impressing her colleagues",
+            "reveals": {
+              "plants": [
+                "Julia's growing confidence",
+                "The impact of Tom's messages on her work"
+              ],
+              "proofs": [
+                "Her leadership during the crisis"
+              ],
+              "payoffs": [
+                "The positive effect of the messages on her professional life"
+              ]
+            },
+            "soundscape_notes": "Chaotic ER sounds, multiple medical alerts, urgent voices, rapid movement, tense music",
+            "transition_to_next": "Sound of crisis resolving, shift to quieter aftermath",
+            "estimated_runtime": "5 minutes",
+            "emotional_state": "Julia - Initially stressed, then focused, then confident and relieved; Dr. Martinez - Concerned, then impressed; Mike - Stressed, then admiring",
+            "audio_storytelling_notes": "Use escalating sounds during the crisis, then a sudden shift to quieter aftermath. Julia's voice becomes more authoritative as the scene progresses."
+          },
+          {
+            "scene_number": 4,
+            "location": "Hospital Staff Room",
+            "time": "Afternoon",
+            "characters_present": [
+              "Julia",
+              "Dr. Martinez"
+            ],
+            "goal": "Julia wants to process the morning's events",
+            "obstacle": "Emotional exhaustion, Dr. Martinez's curiosity about her changed behavior",
+            "choice": "To deflect questions about her improved mood",
+            "consequence": "Dr. Martinez becomes concerned about her secretive behavior",
+            "reveals": {
+              "plants": [
+                "Dr. Martinez's concern for Julia",
+                "Julia's secrecy about the messages"
+              ],
+              "proofs": [
+                "Their conversation about Julia's changed behavior"
+              ],
+              "payoffs": []
+            },
+            "soundscape_notes": "Quiet staff room sounds, coffee machine, distant hospital noises, reflective music",
+            "transition_to_next": "Sound of Julia's phone notification as she receives another message",
+            "estimated_runtime": "3 minutes",
+            "emotional_state": "Julia - Guarded, reflective, slightly defensive; Dr. Martinez - Concerned, supportive, slightly suspicious",
+            "audio_storytelling_notes": "Use close-miked sounds to create intimacy in their conversation. Background music shifts to slightly tense as Dr. Martinez questions Julia."
+          },
+          {
+            "scene_number": 5,
+            "location": "Tom's Office",
+            "time": "Late Afternoon",
+            "characters_present": [
+              "Tom",
+              "Lena"
+            ],
+            "goal": "Tom wants to check on his unresponsive client",
+            "obstacle": "No response to his messages, growing concern",
+            "choice": "To discuss the situation with his assistant Lena",
+            "consequence": "He becomes more concerned about the client but remains unaware of his mistake",
+            "reveals": {
+              "plants": [
+                "Tom's growing business concerns",
+                "Lena's role as his assistant"
+              ],
+              "proofs": [
+                "Their conversation about the unresponsive client"
+              ],
+              "payoffs": []
+            },
+            "soundscape_notes": "Office sounds, keyboard typing, phone ringing, soft background music",
+            "transition_to_next": "Sound of phone ringing with Tom's client calling",
+            "estimated_runtime": "3 minutes",
+            "emotional_state": "Tom - Concerned, professional, slightly frustrated; Lena - Supportive, practical, reassuring",
+            "audio_storytelling_notes": "Use professional office sounds to establish the business environment. Tom's voice shows increasing concern as the conversation progresses."
+          },
+          {
+            "scene_number": 6,
+            "location": "Julia's Home",
+            "time": "Evening",
+            "characters_present": [
+              "Julia"
+            ],
+            "goal": "To learn more about the person sending her messages",
+            "obstacle": "Limited information, only a phone number",
+            "choice": "To search online for information related to the messages",
+            "consequence": "She discovers Tom's coaching business and feels a connection to him",
+            "reveals": {
+              "plants": [
+                "Julia's growing curiosity about Tom",
+                "Her emotional investment in the connection"
+              ],
+              "proofs": [
+                "Her online research and reaction to finding Tom's business"
+              ],
+              "payoffs": [
+                "The setup for their eventual meeting"
+              ]
+            },
+            "soundscape_notes": "Evening home sounds, computer keyboard, mouse clicks, soft background music",
+            "transition_to_next": "Sound of phone ringing as Tom's client calls him",
+            "estimated_runtime": "3 minutes",
+            "emotional_state": "Julia - Curious, hopeful, increasingly connected",
+            "audio_storytelling_notes": "Use intimate computer sounds to show Julia's private investigation. Music shifts to more hopeful as she makes discoveries."
+          },
+          {
+            "scene_number": 7,
+            "location": "Tom's Apartment",
+            "time": "Evening",
+            "characters_present": [
+              "Tom"
+            ],
+            "goal": "To relax after work",
+            "obstacle": "Persistent thoughts about his unresponsive client",
+            "choice": "To check his phone one more time",
+            "consequence": "He finds no response and becomes more concerned",
+            "reveals": {
+              "plants": [
+                "Tom's dedication to his clients",
+                "His growing concern about the situation"
+              ],
+              "proofs": [
+                "His reaction to the lack of response"
+              ],
+              "payoffs": []
+            },
+            "soundscape_notes": "Evening apartment sounds, soft music, distant city noises",
+            "transition_to_next": "Sound of phone ringing, dramatic music shift",
+            "estimated_runtime": "1 minute",
+            "emotional_state": "Tom - Relaxed, then concerned, then frustrated",
+            "audio_storytelling_notes": "Use relaxed evening sounds that shift to tension as the phone rings. Tom's breathing changes as he becomes more concerned."
+          }
+        ],
+        "episode_arc": {
+          "opening_hook": "Tom sends another message to Julia without realizing his mistake",
+          "midpoint_turn": "Julia successfully manages a crisis at the hospital, drawing strength from the message",
+          "climax": "Dr. Martinez confronts Julia about her changed behavior, leading Julia to become more secretive",
+          "resolution": "Julia researches Tom online, discovering his business",
+          "cliffhanger": "Tom's client calls to complain about not receiving messages, creating a crisis"
+        },
+        "character_emotional_journey": [
+          {
+            "character_name": "Tom",
+            "starting_emotional_state": "Focused, slightly concerned",
+            "key_emotional_beats": [
+              "Confident in his routine",
+              "Concerned about unresponsive client",
+              "Frustrated by lack of response"
+            ],
+            "ending_emotional_state": "Increasingly concerned, frustrated",
+            "growth": "Becomes more invested in his clients' responses, showing his dedication"
+          },
+          {
+            "character_name": "Julia",
+            "starting_emotional_state": "Anxious, hopeful",
+            "key_emotional_beats": [
+              "Comforted by the message",
+              "Confident during crisis",
+              "Defensive with Dr. Martinez",
+              "Curious about Tom"
+            ],
+            "ending_emotional_state": "Connected, curious, emotionally invested",
+            "growth": "Becomes more confident in her work and develops a growing connection to Tom through his messages"
           },
           {
             "character_name": "Dr. Martinez",
-            "starting_emotional_state": "Professional and supportive",
+            "starting_emotional_state": "Professional, observant",
             "key_emotional_beats": [
-              "Leading the team through the emergency",
-              "Noticing Julia's emotional state",
-              "Becoming concerned about Julia's secretive behavior"
+              "Impressed by Julia's crisis management",
+              "Concerned about Julia's secrecy"
             ],
-            "ending_emotional_state": "Concerned and curious about Julia's behavior",
-            "growth": "Becomes more aware of Julia's emotional struggles and more invested in her wellbeing"
+            "ending_emotional_state": "Supportive but suspicious",
+            "growth": "Develops deeper concern for Julia's wellbeing, showing her mentor role"
           }
         ],
         "information_flow": {
           "revealed_to_audience": [
             "Julia is becoming dependent on Tom's messages",
-            "Julia has discovered Tom's identity",
-            "Tom is concerned about his unresponsive client",
-            "Sarah is making progress with her anxiety",
-            "Dr. Martinez is becoming concerned about Julia"
+            "Julia researched Tom online",
+            "Tom is concerned about his unresponsive client"
           ],
           "revealed_to_characters": [
-            "Julia knows Tom is a life coach",
-            "Tom knows one client isn't responding",
-            "Sarah has successfully applied Tom's techniques",
-            "Dr. Martinez has noticed Julia's secretive behavior"
+            "Julia found Tom's business online",
+            "Tom's client hasn't been receiving messages",
+            "Dr. Martinez noticed Julia's changed behavior"
           ],
           "hidden_from_audience": [
-            "The exact nature of Julia's depression",
-            "The identity of Tom's unresponsive client"
+            "The exact reason for Tom's client not receiving messages",
+            "The full extent of Julia's emotional reliance"
           ],
           "hidden_from_characters": [
-            "Tom doesn't know Julia is receiving his messages",
-            "Julia doesn't know Tom is concerned about the messages not reaching his client",
-            "Dr. Martinez doesn't know about the messages"
+            "Tom is sending messages to Julia",
+            "Julia doesn't know Tom is unaware he's sending her messages"
           ]
         },
-        "audio_production_notes": "Continue using distinct audio signatures for each character's environment. The message notification should remain consistent. Use audio to show Julia's growing connection to Tom through her reactions to the messages. The hospital emergency scene should have escalating tension in the audio design. The break room scene should have a stark audio contrast to show Julia's emotional journey."
+        "audio_production_notes": "This episode should continue to contrast Tom's and Julia's environments while showing their growing connection through the messages. Sound design should emphasize Julia's increasing emotional investment and Tom's growing concern. Music should reflect the developing emotional stakes."
       },
       {
         "episode_number": 3,
         "episode_title": "The Discovery",
-        "episode_summary": "Tom discovers he's been sending messages to the wrong number when his client complains about not receiving them. Meanwhile, Julia experiences a traumatic loss at the hospital and desperately waits for a message that may not come. Tom decides to track down the unknown recipient.",
-        "total_estimated_runtime": "22 minutes",
+        "episode_summary": "Tom discovers he's been sending messages to the wrong number when his client complains. Meanwhile, Julia experiences a traumatic loss at the hospital and desperately waits for a message. Tom decides to track down the unknown recipient, setting up their eventual meeting.",
+        "total_estimated_runtime": "20 minutes",
         "scenes": [
           {
             "scene_number": 1,
-            "location": "Tom's Office",
-            "time": "Morning",
+            "location": "Tom's Apartment",
+            "time": "Evening",
             "characters_present": [
               "Tom"
             ],
-            "goal": "To follow up with his unresponsive client",
-            "obstacle": "The client hasn't responded to multiple messages",
-            "choice": "To call the client directly",
-            "consequence": "Discovers the client never received his messages",
+            "goal": "To understand why his client hasn't been receiving messages",
+            "obstacle": "Confusion about the situation",
+            "choice": "To review his message history",
+            "consequence": "He discovers with shock that he's been sending messages to a wrong number",
             "reveals": {
               "plants": [
-                "Tom's growing concern about the missing messages"
+                "Tom's attention to detail",
+                "His professional integrity"
               ],
               "proofs": [
-                "Client's voice over the phone expressing confusion about not receiving messages"
+                "His review of the message history"
               ],
               "payoffs": [
-                "Tom begins to realize something is wrong"
+                "The revelation of the wrong number"
               ]
             },
-            "soundscape_notes": "Office sounds, phone ringing, confused conversation, keyboard typing as Tom checks his message history",
-            "transition_to_next": "Sound of Tom's gasp as he discovers his mistake",
-            "estimated_runtime": "4 minutes",
-            "emotional_state": "Tom: Confused, then shocked and concerned",
-            "audio_storytelling_notes": "Use audio to build Tom's confusion through his tone of voice, then shock through a sharp intake of breath and silence."
+            "soundscape_notes": "Evening apartment sounds, phone tapping, gasp of realization, tense music",
+            "transition_to_next": "Sound of Tom's shocked breathing, transition to hospital",
+            "estimated_runtime": "3 minutes",
+            "emotional_state": "Tom - Confused, then shocked, then guilty",
+            "audio_storytelling_notes": "Use close-miked sounds of Tom's phone interactions. Music shifts from neutral to tense as he makes the discovery."
           },
           {
             "scene_number": 2,
-            "location": "Tom's Office",
-            "time": "Morning (continued)",
-            "characters_present": [
-              "Tom"
-            ],
-            "goal": "To figure out what happened to his messages",
-            "obstacle": "Uncertainty about where the messages went and concern for the unintended recipient",
-            "choice": "To carefully review his message history and discover the wrong number",
-            "consequence": "Realizes he's been sending messages to a stranger (Julia) for weeks",
-            "reveals": {
-              "plants": [
-                "Tom's attention to detail in reviewing his messages"
-              ],
-              "proofs": [
-                "Sound of Tom scrolling through his message history, discovering the wrong number"
-              ],
-              "payoffs": [
-                "Tom discovers the core premise of the show"
-              ]
-            },
-            "soundscape_notes": "Intense keyboard typing, mouse clicks, sharp intake of breath, silence, then frantic typing",
-            "transition_to_next": "Sound of Julia's phone receiving a notification",
-            "estimated_runtime": "3 minutes",
-            "emotional_state": "Tom: Shocked, then curious and concerned",
-            "audio_storytelling_notes": "Use audio to show Tom's discovery process, with keyboard sounds becoming more frantic as he realizes the extent of his mistake."
-          },
-          {
-            "scene_number": 3,
             "location": "Hospital Emergency Room",
-            "time": "Afternoon",
+            "time": "Night",
             "characters_present": [
               "Julia",
               "Dr. Martinez",
               "Mike"
             ],
-            "goal": "To save a critically ill patient",
-            "obstacle": "The patient's condition rapidly deteriorates despite their efforts",
-            "choice": "Julia chooses to try an experimental procedure",
-            "consequence": "The patient doesn't survive, leaving Julia emotionally devastated",
+            "goal": "Julia needs to save a critical patient",
+            "obstacle": "Complicated case, time pressure, emotional investment",
+            "choice": "To try every possible intervention",
+            "consequence": "Despite her best efforts, the patient doesn't survive",
             "reveals": {
               "plants": [
-                "Julia's dedication to saving patients",
-                "The emotional toll of her job"
+                "Julia's emotional investment in her patients",
+                "The toll her job takes on her"
               ],
               "proofs": [
-                "Urgent medical sounds, desperate attempts to save the patient, silence when the patient is lost"
+                "Her desperate attempts to save the patient",
+                "Her reaction to the loss"
               ],
               "payoffs": [
-                "Shows Julia at her lowest point, needing support"
+                "The depth of Julia's emotional vulnerability"
               ]
             },
-            "soundscape_notes": "Emergency room sounds, urgent medical instructions, equipment beeps, increasingly desperate voices, eventual silence, soft crying",
-            "transition_to_next": "Sound of Julia retreating to an empty room",
+            "soundscape_notes": "Intense ER sounds, medical equipment beeping, urgent voices, desperate attempts to revive patient, sudden silence as patient is lost",
+            "transition_to_next": "Sound of Julia's devastated breathing, transition to quiet space",
             "estimated_runtime": "6 minutes",
-            "emotional_state": "Julia: Professional and focused, then desperate, finally devastated",
-            "audio_storytelling_notes": "Use escalating emergency sounds to build tension, then contrast with sudden silence when the patient is lost, emphasizing the emotional impact."
+            "emotional_state": "Julia - Focused, desperate, then devastated; Dr. Martinez - Professional, concerned, then supportive; Mike - Professional, stressed, then compassionate",
+            "audio_storytelling_notes": "Use escalating sounds during the crisis, then sudden silence when the patient is lost. Julia's breathing becomes increasingly labored throughout the scene."
           },
           {
-            "scene_number": 4,
-            "location": "Hospital Supply Closet",
-            "time": "Late Afternoon",
+            "scene_number": 3,
+            "location": "Hospital Staff Room",
+            "time": "Late Night",
             "characters_present": [
               "Julia"
             ],
-            "goal": "To cope with the trauma of losing a patient",
-            "obstacle": "Overwhelming guilt and emotional devastation",
-            "choice": "To check her phone for a message from Tom",
-            "consequence": "No message has arrived, leaving Julia feeling abandoned",
+            "goal": "To process the traumatic loss",
+            "obstacle": "Overwhelming grief, guilt, emotional exhaustion",
+            "choice": "To check her phone, desperately seeking comfort",
+            "consequence": "No message has arrived, leaving her feeling abandoned",
             "reveals": {
               "plants": [
-                "Julia's dependence on Tom's messages for emotional support"
+                "Julia's reliance on the messages for emotional support"
               ],
               "proofs": [
-                "Sound of Julia repeatedly checking her phone, growing more desperate"
+                "Her reaction to not receiving a message"
               ],
               "payoffs": [
-                "Shows the impact of the messages stopping"
+                "The depth of her dependence on Tom's messages"
               ]
             },
-            "soundscape_notes": "Closet door closing, muffled hospital sounds, shaky breathing, phone screen swiping, increasing desperation in breathing, soft sobbing",
-            "transition_to_next": "Sound of Tom making a call to track down the message recipient",
+            "soundscape_notes": "Quiet staff room sounds, Julia's ragged breathing, phone sounds, silence, melancholic music",
+            "transition_to_next": "Sound of Julia's devastated sigh, transition to Tom's office",
             "estimated_runtime": "3 minutes",
-            "emotional_state": "Julia: Devastated, then increasingly desperate and abandoned",
-            "audio_storytelling_notes": "Use audio to create an intimate, isolated space for Julia's breakdown, with muffled hospital sounds emphasizing her separation from others."
+            "emotional_state": "Julia - Devastated, desperate, abandoned",
+            "audio_storytelling_notes": "Use intimate, close-miked sounds to emphasize Julia's isolation. Music shifts to melancholic as she realizes no message has arrived."
           },
           {
-            "scene_number": 5,
+            "scene_number": 4,
             "location": "Tom's Office",
-            "time": "Evening",
+            "time": "Next Morning",
             "characters_present": [
               "Tom",
               "Lena"
             ],
-            "goal": "To track down the unknown recipient of his messages",
-            "obstacle": "Ethical concerns about tracking someone without permission and limited information",
-            "choice": "To use his resources to find Julia, motivated by concern and curiosity",
-            "consequence": "Discovers Julia is an ER doctor at City General Hospital",
+            "goal": "Tom wants to make amends for his mistake",
+            "obstacle": "Ethical concerns about tracking down the unknown recipient",
+            "choice": "To enlist Lena's help in finding the person",
+            "consequence": "They begin a search to identify Julia",
             "reveals": {
               "plants": [
-                "Tom's resourcefulness and determination",
-                "Lena's support of Tom's decision"
+                "Tom's sense of responsibility",
+                "Lena's research skills"
               ],
               "proofs": [
-                "Sound of research, phone calls, computer typing"
+                "Their conversation about finding the recipient"
               ],
               "payoffs": [
-                "Tom discovers Julia's identity and profession"
+                "The setup for Tom and Julia's meeting"
               ]
             },
-            "soundscape_notes": "Office sounds, computer keyboard, phone calls, hushed conversation with Lena, moment of discovery",
-            "transition_to_next": "Sound of Tom deciding to go to the hospital",
+            "soundscape_notes": "Office sounds, computer keyboard, phone calls, determined background music",
+            "transition_to_next": "Sound of computer keyboard as research begins",
+            "estimated_runtime": "4 minutes",
+            "emotional_state": "Tom - Guilty, determined, responsible; Lena - Professional, supportive, curious",
+            "audio_storytelling_notes": "Use professional office sounds with determined music to show their mission. Tom's voice shows resolve to make things right."
+          },
+          {
+            "scene_number": 5,
+            "location": "Tom's Office",
+            "time": "Afternoon",
+            "characters_present": [
+              "Tom",
+              "Lena"
+            ],
+            "goal": "To identify the unknown recipient of the messages",
+            "obstacle": "Limited information from just a phone number",
+            "choice": "To use professional resources to trace the number",
+            "consequence": "They discover Julia is an ER doctor at the city hospital",
+            "reveals": {
+              "plants": [
+                "Tom's resourcefulness",
+                "Lena's technical skills"
+              ],
+              "proofs": [
+                "Their research process and discovery"
+              ],
+              "payoffs": [
+                "Julia's identity revealed"
+              ]
+            },
+            "soundscape_notes": "Research sounds, keyboard typing, phone calls, moment of discovery, dramatic music",
+            "transition_to_next": "Sound of moment of discovery, transition to hospital",
             "estimated_runtime": "3 minutes",
-            "emotional_state": "Tom: Determined and curious, then surprised and concerned",
-            "audio_storytelling_notes": "Use audio to show Tom's research process, with keyboard and phone sounds building to a moment of discovery."
+            "emotional_state": "Tom - Focused, then surprised, then curious; Lena - Professional, then excited, then supportive",
+            "audio_storytelling_notes": "Use research sounds with building tension. Music swells at the moment of discovery."
           },
           {
             "scene_number": 6,
-            "location": "Hospital Corridor",
-            "time": "Night",
+            "location": "Hospital Emergency Room",
+            "time": "Afternoon",
             "characters_present": [
-              "Tom"
+              "Julia",
+              "Dr. Martinez"
             ],
-            "goal": "To see Julia and perhaps explain the situation",
-            "obstacle": "Not knowing what to say or how to approach her",
-            "choice": "To observe Julia from a distance before approaching",
-            "consequence": "Sees Julia's devastated state and realizes the impact his messages had on her",
+            "goal": "Julia needs to continue working despite her trauma",
+            "obstacle": "Emotional devastation, lack of support message",
+            "choice": "To push through her exhaustion and continue her shift",
+            "consequence": "She reaches her emotional breaking point",
             "reveals": {
               "plants": [
-                "Tom's concern for Julia",
-                "Julia's emotional state"
+                "Julia's emotional state",
+                "The impact of not receiving the message"
               ],
               "proofs": [
-                "Sound of Tom's footsteps stopping, his sharp intake of breath as he sees Julia"
+                "Her interaction with Dr. Martinez"
               ],
               "payoffs": [
-                "Tom understands the profound impact of his accidental messages"
+                "The depth of her need for support"
               ]
             },
-            "soundscape_notes": "Hospital corridor sounds, footsteps, pause in walking, soft gasp, distant crying, hesitant movement",
-            "transition_to_next": "Sound of Tom turning away, deciding not to approach Julia yet",
+            "soundscape_notes": "Hospital sounds, Julia's strained voice, Dr. Martinez's concerned tone, tense music",
+            "transition_to_next": "Sound of Julia breaking down, dramatic music swell",
             "estimated_runtime": "3 minutes",
-            "emotional_state": "Tom: Nervous and uncertain, then deeply moved and concerned",
-            "audio_storytelling_notes": "Use audio to create a moment of observation and revelation, with hospital sounds emphasizing the setting and Tom's hesitation."
+            "emotional_state": "Julia - Struggling, exhausted, breaking down; Dr. Martinez - Concerned, supportive, worried",
+            "audio_storytelling_notes": "Use hospital sounds with Julia's increasingly strained voice. Music becomes more tense as she approaches her breaking point."
           }
         ],
         "episode_arc": {
-          "opening_hook": "Tom discovers his client hasn't been receiving his messages",
-          "midpoint_turn": "Tom realizes he's been sending messages to a wrong number",
-          "climax": "Julia experiences a traumatic loss at the hospital and desperately waits for a message that doesn't come",
-          "resolution": "Tom tracks down Julia and discovers her identity and profession",
-          "cliffhanger": "Tom sees Julia's devastated state at the hospital and realizes the impact of his messages, but doesn't approach her"
+          "opening_hook": "Tom discovers he's been sending messages to the wrong number",
+          "midpoint_turn": "Julia experiences a traumatic loss at the hospital",
+          "climax": "Julia desperately waits for a message that doesn't come, reaching her emotional breaking point",
+          "resolution": "Tom discovers Julia's identity as an ER doctor",
+          "cliffhanger": "Tom knows who Julia is while she reaches her lowest point, setting up their meeting"
         },
         "character_emotional_journey": [
           {
             "character_name": "Tom",
-            "starting_emotional_state": "Confused and concerned",
+            "starting_emotional_state": "Confused, shocked",
             "key_emotional_beats": [
-              "Shock at discovering his mistake",
-              "Curiosity about the unintended recipient",
-              "Determination to track down Julia",
-              "Compassion upon seeing her state"
+              "Guilty about his mistake",
+              "Determined to make amends",
+              "Focused on finding Julia",
+              "Surprised by her profession"
             ],
-            "ending_emotional_state": "Deeply moved and concerned for Julia",
-            "growth": "Realizes the profound impact his words can have on others, even strangers"
+            "ending_emotional_state": "Determined, curious, responsible",
+            "growth": "Develops a deeper sense of responsibility for the impact of his actions, showing his integrity"
           },
           {
             "character_name": "Julia",
-            "starting_emotional_state": "Hopeful and anticipating Tom's message",
+            "starting_emotional_state": "Hopeful, expecting a message",
             "key_emotional_beats": [
-              "Professional focus during the emergency",
-              "Desperation to save the patient",
-              "Devastation at losing the patient",
-              "Abandonment when no message arrives"
+              "Focused during crisis",
+              "Devastated by loss",
+              "Abandoned when no message comes",
+              "Breaking down emotionally"
             ],
-            "ending_emotional_state": "Completely devastated and alone",
-            "growth": "Confronts her deepest emotional pain and realizes her dependence on the messages"
+            "ending_emotional_state": "Devastated, abandoned, at her lowest point",
+            "growth": "Reaches her emotional breaking point, revealing the depth of her need for support and connection"
           },
           {
             "character_name": "Dr. Martinez",
-            "starting_emotional_state": "Professional and supportive",
+            "starting_emotional_state": "Professional, supportive",
             "key_emotional_beats": [
-              "Working alongside Julia during the emergency",
-              "Concern for Julia after the patient is lost",
-              "Noticing Julia's disappearance"
+              "Working alongside Julia during crisis",
+              "Supporting Julia after the loss",
+              "Concerned about Julia's breakdown"
             ],
-            "ending_emotional_state": "Worried and searching for Julia",
-            "growth": "Deepens her concern for Julia's emotional wellbeing"
-          },
-          {
-            "character_name": "Lena",
-            "starting_emotional_state": "Professional and supportive",
-            "key_emotional_beats": [
-              "Assisting Tom with his research",
-              "Expressing concern about the ethics of tracking someone",
-              "Supporting Tom's decision to find Julia"
-            ],
-            "ending_emotional_state": "Supportive of Tom's mission",
-            "growth": "Becomes more involved in Tom's work and personal concerns"
+            "ending_emotional_state": "Deeply concerned, worried, supportive",
+            "growth": "Develops a deeper understanding of Julia's emotional state, strengthening her mentor role"
           }
         ],
         "information_flow": {
           "revealed_to_audience": [
-            "Tom discovers he's been sending messages to the wrong number",
-            "Julia experiences a traumatic loss at work",
-            "Tom tracks down Julia and discovers she's an ER doctor",
-            "Tom sees Julia's devastated state",
-            "Julia doesn't receive a message when she needs it most"
+            "Tom discovered his mistake",
+            "Julia experienced a traumatic loss",
+            "Tom discovered Julia's identity",
+            "Julia is at her emotional breaking point"
           ],
           "revealed_to_characters": [
-            "Tom knows he's been sending messages to Julia",
-            "Tom knows Julia is an ER doctor",
-            "Tom has seen Julia's emotional state",
-            "Julia knows the messages have stopped"
+            "Tom discovered he sent messages to the wrong number",
+            "Julia lost a patient",
+            "Tom discovered Julia is an ER doctor",
+            "Dr. Martinez saw Julia's breakdown"
           ],
           "hidden_from_audience": [
-            "Tom's exact plan for approaching Julia"
+            "The exact nature of Julia's trauma",
+            "Tom's plan to approach Julia"
           ],
           "hidden_from_characters": [
-            "Julia doesn't know Tom has discovered his mistake",
-            "Julia doesn't know Tom is at the hospital",
-            "Julia doesn't know Tom has tracked her down"
+            "Julia doesn't know Tom discovered his mistake",
+            "Julia doesn't know Tom knows who she is"
           ]
         },
-        "audio_production_notes": "Use audio to create dramatic irony - the audience knows Tom has discovered his mistake, but Julia doesn't. The hospital emergency scene should have intense, escalating sounds that suddenly stop when the patient is lost. Use audio to show Julia's isolation when she checks for messages and finds none. Tom's discovery process should have clear audio cues showing his research. The final scene should use audio to emphasize Tom's hesitation and observation of Julia."
+        "audio_production_notes": "This episode should emphasize the dramatic irony of Tom knowing about Julia while she remains unaware. Sound design should contrast Tom's determined investigation with Julia's emotional devastation. Music should reflect the high emotional stakes and dramatic tension."
       },
       {
         "episode_number": 4,
         "episode_title": "Crossing Paths",
-        "episode_summary": "Tom learns more about Julia and discovers she's been anonymously funding a mental health initiative he supports. Julia's mental state deteriorates without the messages, leading her to consider leaving her job. They nearly meet several times, but circumstances prevent their introduction.",
-        "total_estimated_runtime": "21 minutes",
+        "episode_summary": "Tom learns more about Julia and discovers she's been anonymously funding his work. Julia's mental state deteriorates without the messages. They nearly meet several times but don't connect. Sarah makes a breakthrough in her treatment, inspiring Tom. Julia faces her most challenging day while Tom decides to meet her.",
+        "total_estimated_runtime": "20 minutes",
         "scenes": [
           {
             "scene_number": 1,
@@ -768,176 +782,178 @@
               "Tom",
               "Lena"
             ],
-            "goal": "To learn more about Julia and her connection to his work",
-            "obstacle": "Limited information and ethical concerns about researching someone without permission",
-            "choice": "To research Julia's professional background and charitable activities",
-            "consequence": "Discovers Julia has been anonymously funding a mental health initiative Tom supports",
+            "goal": "Tom wants to learn more about Julia before approaching her",
+            "obstacle": "Limited information from professional sources",
+            "choice": "To research her professional background and connections",
+            "consequence": "He discovers Julia has been anonymously funding a mental health initiative he supports",
             "reveals": {
               "plants": [
                 "Julia's connection to mental health causes",
-                "Tom's curiosity about Julia"
+                "Tom's growing fascination with Julia"
               ],
               "proofs": [
-                "Sound of research on computer, surprised reaction from Tom"
+                "Their research and discovery of her anonymous donations"
               ],
               "payoffs": [
-                "Tom discovers Julia's anonymous support of his work"
+                "The revelation of Julia's secret support"
               ]
             },
-            "soundscape_notes": "Office sounds, computer keyboard typing, mouse clicks, surprised gasp, thoughtful pause",
-            "transition_to_next": "Sound of Julia receiving a notification (not from Tom)",
+            "soundscape_notes": "Office sounds, computer research, moment of discovery, surprised music",
+            "transition_to_next": "Sound of moment of discovery, transition to hospital",
             "estimated_runtime": "4 minutes",
-            "emotional_state": "Tom: Curious, then surprised and impressed",
-            "audio_storytelling_notes": "Use audio to show Tom's discovery process, with keyboard sounds building to a moment of surprise."
+            "emotional_state": "Tom - Curious, focused, then surprised and impressed; Lena - Professional, supportive, then surprised",
+            "audio_storytelling_notes": "Use research sounds with building curiosity. Music shifts to surprised discovery when they find Julia's anonymous donations."
           },
           {
             "scene_number": 2,
-            "location": "Julia's Apartment",
+            "location": "Hospital Emergency Room",
             "time": "Morning",
             "characters_present": [
-              "Julia"
+              "Julia",
+              "Mike"
             ],
-            "goal": "To prepare for work while coping with the trauma of losing her patient",
-            "obstacle": "Deep emotional devastation and the absence of Tom's messages",
-            "choice": "To consider taking a leave of absence or quitting her job",
-            "consequence": "Decides to talk to Dr. Martinez about her plans",
+            "goal": "Julia needs to handle her duties despite emotional exhaustion",
+            "obstacle": "Lack of recent messages, emotional fatigue, difficulty concentrating",
+            "choice": "To push through her exhaustion and focus on her work",
+            "consequence": "She makes small errors that concern Mike",
             "reveals": {
               "plants": [
-                "Julia's deteriorating mental state",
-                "The impact of the messages stopping"
+                "Julia's deteriorating mental state without messages",
+                "Her colleagues' concern"
               ],
               "proofs": [
-                "Sound of Julia's shaky breathing, hesitant movements, soft crying"
+                "Her interaction with Mike and her errors"
               ],
               "payoffs": [
-                "Shows Julia considering major life changes"
+                "The impact of the missing messages on her work"
               ]
             },
-            "soundscape_notes": "Slow, heavy movements, shaky breathing, soft crying, hesitant packing sounds, phone notification (not from Tom), disappointed sigh",
-            "transition_to_next": "Sound of Julia leaving for work",
+            "soundscape_notes": "Hospital sounds, Julia's strained voice, Mike's concerned tone, tense music",
+            "transition_to_next": "Sound of Julia's phone as she checks for messages",
             "estimated_runtime": "3 minutes",
-            "emotional_state": "Julia: Devastated, then determined to make a change",
-            "audio_storytelling_notes": "Use audio to emphasize Julia's emotional state through her breathing and movement sounds, showing her exhaustion and devastation."
+            "emotional_state": "Julia - Exhausted, distracted, struggling; Mike - Professional, concerned, supportive",
+            "audio_storytelling_notes": "Use hospital sounds with Julia's increasingly strained voice and breathing. Music reflects her deteriorating state."
           },
           {
             "scene_number": 3,
-            "location": "Hospital Corridor",
+            "location": "Hospital Staff Room",
             "time": "Afternoon",
             "characters_present": [
               "Julia",
-              "Dr. Martinez"
+              "Mike"
             ],
-            "goal": "Julia to discuss her plans to leave her job",
-            "obstacle": "Fear of disappointing Dr. Martinez and uncertainty about her future",
-            "choice": "Julia decides to be honest about her burnout and need for a change",
-            "consequence": "Dr. Martinez expresses concern but supports Julia's decision",
+            "goal": "Julia needs to take a break and regain her composure",
+            "obstacle": "Emotional exhaustion, thoughts of leaving her job",
+            "choice": "To confide in Mike about her burnout",
+            "consequence": "Mike offers support and understanding",
             "reveals": {
               "plants": [
-                "Julia's burnout",
-                "Dr. Martinez's supportive relationship with Julia"
+                "Julia's consideration of leaving medicine",
+                "Her need for support"
               ],
               "proofs": [
-                "Hushed conversation, supportive tones, relieved sigh from Julia"
+                "Her conversation with Mike"
               ],
               "payoffs": [
-                "Julia begins to accept her need for change"
+                "The development of her support network"
               ]
             },
-            "soundscape_notes": "Hospital corridor sounds, hushed conversation, supportive tones, relieved sigh, footsteps walking away",
-            "transition_to_next": "Sound of Tom arriving at the hospital",
+            "soundscape_notes": "Quiet staff room sounds, Julia's tired voice, Mike's supportive tone, reflective music",
+            "transition_to_next": "Sound of hospital PA system, transition to coffee shop",
             "estimated_runtime": "3 minutes",
-            "emotional_state": "Julia: Nervous and uncertain, then relieved; Dr. Martinez: Concerned, then supportive",
-            "audio_storytelling_notes": "Use audio to create an intimate conversation in the busy hospital setting, with hushed tones contrasting with background hospital sounds."
+            "emotional_state": "Julia - Exhausted, vulnerable, considering change; Mike - Supportive, understanding, compassionate",
+            "audio_storytelling_notes": "Use intimate staff room sounds to create a space for honest conversation. Music shifts to more supportive as Mike responds."
           },
           {
             "scene_number": 4,
-            "location": "Hospital Lobby",
-            "time": "Afternoon",
-            "characters_present": [
-              "Tom",
-              "Julia (separately)"
-            ],
-            "goal": "Tom to see Julia and perhaps approach her",
-            "obstacle": "Julia is rushing through the lobby on her way to an emergency",
-            "choice": "Tom decides not to approach Julia in this moment",
-            "consequence": "Another near-miss between them, with Julia unaware of Tom's presence",
-            "reveals": {
-              "plants": [
-                "Tom's hesitation to approach Julia",
-                "The timing not being right for their meeting"
-              ],
-              "proofs": [
-                "Sound of Tom hesitating, Julia rushing away, emergency calls"
-              ],
-              "payoffs": [
-                "Builds tension for their eventual meeting"
-              ]
-            },
-            "soundscape_notes": "Hospital lobby sounds, footsteps, pause in walking, urgent PA announcement, rushing footsteps, disappointed sigh from Tom",
-            "transition_to_next": "Sound of Tom leaving the hospital",
-            "estimated_runtime": "2 minutes",
-            "emotional_state": "Tom: Nervous, then disappointed; Julia: Focused and unaware",
-            "audio_storytelling_notes": "Use audio to create a near-miss moment, with Tom's hesitation contrasting with Julia's urgent departure."
-          },
-          {
-            "scene_number": 5,
             "location": "Coffee Shop",
             "time": "Late Afternoon",
             "characters_present": [
               "Tom",
-              "Julia (separately)"
+              "Julia"
             ],
-            "goal": "Tom to approach Julia in a more relaxed setting",
-            "obstacle": "Julia is deep in thought and leaves before Tom can approach her",
-            "choice": "Tom decides to follow Julia out but loses her in the crowd",
-            "consequence": "Another missed opportunity for them to meet",
+            "goal": "Tom wants to observe Julia before approaching her",
+            "obstacle": "Uncertainty about how to approach the situation",
+            "choice": "To wait for the right moment to introduce himself",
+            "consequence": "Julia leaves before he can approach her",
             "reveals": {
               "plants": [
-                "The near-misses continuing",
-                "The timing still not being right"
+                "Tom's hesitation in approaching Julia",
+                "The near-miss in their meeting"
               ],
               "proofs": [
-                "Coffee shop sounds, Tom's hesitation, Julia leaving"
+                "Their presence in the same location without connecting"
               ],
               "payoffs": [
-                "Builds anticipation for their eventual meeting"
+                "The building anticipation of their eventual meeting"
               ]
             },
-            "soundscape_notes": "Coffee shop sounds, coffee grinding, soft background music, footsteps approaching and receding, disappointed sigh, city street sounds",
-            "transition_to_next": "Sound of Tom deciding to take more direct action",
+            "soundscape_notes": "Coffee shop sounds, background chatter, Julia and Tom's voices in the background, near-miss music",
+            "transition_to_next": "Sound of coffee shop door closing as Julia leaves",
             "estimated_runtime": "3 minutes",
-            "emotional_state": "Tom: Hopeful, then frustrated; Julia: Pensive and unaware",
-            "audio_storytelling_notes": "Use audio to create a relaxed atmosphere that becomes tense with hesitation and missed opportunity."
+            "emotional_state": "Tom - Hesitant, observant, regretful; Julia - Unaware, exhausted, preoccupied",
+            "audio_storytelling_notes": "Use coffee shop ambient sounds with their voices in the background to create the near-miss feeling. Music reflects the missed connection."
           },
           {
-            "scene_number": 6,
+            "scene_number": 5,
             "location": "Tom's Office",
-            "time": "Evening",
+            "time": "Late Afternoon",
             "characters_present": [
               "Tom",
               "Sarah"
             ],
-            "goal": "Tom to meet with Sarah while processing his thoughts about Julia",
-            "obstacle": "Tom is distracted by his thoughts about Julia and the near-misses",
-            "choice": "Tom shares his dilemma with Sarah (without revealing specific details)",
-            "consequence": "Sarah offers insightful advice about making connections",
+            "goal": "Tom wants to continue Sarah's coaching session",
+            "obstacle": "Sarah is facing a major professional challenge",
+            "choice": "To guide Sarah through applying his techniques to her challenge",
+            "consequence": "Sarah successfully navigates the challenge, making a breakthrough",
             "reveals": {
               "plants": [
-                "Sarah's growth and insight",
-                "Tom's dilemma about approaching Julia"
+                "Sarah's growth and progress",
+                "Tom's effective coaching methods"
               ],
               "proofs": [
-                "Sarah's confident voice, Tom's thoughtful responses"
+                "Their interaction and her successful application of his techniques"
               ],
               "payoffs": [
-                "Sarah shows how much she's grown through Tom's coaching"
+                "Sarah's breakthrough and transformation"
               ]
             },
-            "soundscape_notes": "Office sounds, thoughtful conversation, confident voice from Sarah, pause in conversation, moment of realization",
-            "transition_to_next": "Sound of Tom making a decision",
+            "soundscape_notes": "Office sounds, Sarah's increasingly confident voice, Tom's supportive tone, uplifting music",
+            "transition_to_next": "Sound of successful conclusion, transition to hospital",
             "estimated_runtime": "3 minutes",
-            "emotional_state": "Tom: Distracted and conflicted, then determined; Sarah: Confident and insightful",
-            "audio_storytelling_notes": "Use audio to show Sarah's growth through her confident voice and thoughtful advice, contrasting with Tom's distracted state."
+            "emotional_state": "Tom - Professional, supportive, proud; Sarah - Initially anxious, then confident, then triumphant",
+            "audio_storytelling_notes": "Use office sounds with Sarah's voice becoming more confident throughout the scene. Music shifts to uplifting as she succeeds."
+          },
+          {
+            "scene_number": 6,
+            "location": "Hospital Emergency Room",
+            "time": "Evening",
+            "characters_present": [
+              "Julia",
+              "Dr. Martinez"
+            ],
+            "goal": "Julia needs to handle multiple critical cases simultaneously",
+            "obstacle": "Overwhelming situation, emotional exhaustion, lack of recent messages for support",
+            "choice": "To push through her exhaustion with pure determination",
+            "consequence": "She manages the cases but reaches her absolute limit",
+            "reveals": {
+              "plants": [
+                "Julia's resilience despite challenges",
+                "The absence of messages affecting her performance"
+              ],
+              "proofs": [
+                "Her handling of the multiple cases",
+                "Her exhausted state afterward"
+              ],
+              "payoffs": [
+                "The setup for her most challenging day"
+              ]
+            },
+            "soundscape_notes": "Chaotic ER sounds, multiple medical alerts, urgent voices, Julia's strained commands, tense music",
+            "transition_to_next": "Sound of crisis resolving, shift to Tom's office",
+            "estimated_runtime": "3 minutes",
+            "emotional_state": "Julia - Struggling, determined, then completely exhausted; Dr. Martinez - Concerned, supportive, impressed",
+            "audio_storytelling_notes": "Use intense, layered hospital sounds to show the chaos. Julia's voice becomes increasingly strained throughout the scene."
           },
           {
             "scene_number": 7,
@@ -946,115 +962,104 @@
             "characters_present": [
               "Tom"
             ],
-            "goal": "To decide how to approach Julia",
-            "obstacle": "Uncertainty about how Julia will react and fear of making things worse",
-            "choice": "Tom decides to go to the hospital tomorrow and find Julia",
-            "consequence": "Sets up their eventual meeting",
+            "goal": "Tom needs to decide how to approach Julia",
+            "obstacle": "Uncertainty about the right way to connect with her",
+            "choice": "To decide to meet Julia at the hospital the next day",
+            "consequence": "He commits to finally connecting with her",
             "reveals": {
               "plants": [
-                "Tom's determination to connect with Julia",
-                "The timing finally feeling right"
+                "Tom's determination to make things right",
+                "His growing connection to Julia"
               ],
               "proofs": [
-                "Sound of Tom's decisive actions, confident tone"
+                "His decision and preparation"
               ],
               "payoffs": [
-                "Sets up the climactic meeting in the next episode"
+                "The setup for their inevitable meeting"
               ]
             },
-            "soundscape_notes": "Apartment sounds, pacing footsteps, phone typing, decisive voice, confident sigh",
-            "transition_to_next": "Sound of Julia at home, preparing for another difficult day",
-            "estimated_runtime": "3 minutes",
-            "emotional_state": "Tom: Uncertain, then determined",
-            "audio_storytelling_notes": "Use audio to show Tom's decision-making process, with pacing and thoughtful pauses leading to a moment of determination."
+            "soundscape_notes": "Evening apartment sounds, Tom's determined voice, decisive music",
+            "transition_to_next": "Sound of Tom making his decision, dramatic music swell",
+            "estimated_runtime": "1 minute",
+            "emotional_state": "Tom - Reflective, decisive, determined",
+            "audio_storytelling_notes": "Use intimate evening sounds with Tom's voice showing resolve. Music becomes decisive as he makes his decision."
           }
         ],
         "episode_arc": {
-          "opening_hook": "Tom discovers Julia has been anonymously funding a mental health initiative he supports",
-          "midpoint_turn": "Julia decides to talk to Dr. Martinez about leaving her job",
-          "climax": "Tom and Julia nearly meet at the hospital and coffee shop, but circumstances prevent their introduction",
-          "resolution": "Tom, inspired by Sarah's growth, decides to approach Julia directly",
-          "cliffhanger": "Tom decides to go to the hospital to find Julia, setting up their inevitable meeting"
+          "opening_hook": "Tom discovers Julia has been anonymously funding his work",
+          "midpoint_turn": "Julia confides in Mike about her burnout and consideration of leaving medicine",
+          "climax": "Tom and Julia nearly meet at the coffee shop but miss each other",
+          "resolution": "Sarah makes a breakthrough in her treatment, inspiring Tom",
+          "cliffhanger": "Julia faces her most challenging day while Tom decides to meet her"
         },
         "character_emotional_journey": [
           {
             "character_name": "Tom",
-            "starting_emotional_state": "Curious and impressed by Julia",
+            "starting_emotional_state": "Curious, impressed by Julia's anonymous support",
             "key_emotional_beats": [
-              "Surprise at discovering Julia's funding",
-              "Frustration at near-misses",
-              "Inspiration from Sarah's growth",
-              "Determination to approach Julia"
+              "Surprised by Julia's donations",
+              "Hesitant to approach her",
+              "Inspired by Sarah's breakthrough",
+              "Determined to meet Julia"
             ],
-            "ending_emotional_state": "Determined and purposeful",
-            "growth": "Becomes more confident in his decision to connect with Julia and more appreciative of his impact on others"
+            "ending_emotional_state": "Determined, resolved, inspired",
+            "growth": "Develops a deeper appreciation for the impact of his work and a stronger connection to Julia through discovering her support"
           },
           {
             "character_name": "Julia",
-            "starting_emotional_state": "Devastated and considering major life changes",
+            "starting_emotional_state": "Exhausted, struggling without messages",
             "key_emotional_beats": [
-              "Deciding to talk to Dr. Martinez",
-              "Relief at being supported in her decision",
-              "Unaware of Tom's presence during near-misses",
-              "Continuing to struggle without the messages"
+              "Making errors at work",
+              "Confiding in Mike about burnout",
+              "Missing Tom at the coffee shop",
+              "Handling multiple critical cases"
             ],
-            "ending_emotional_state": "Resigned to her decision but still emotionally drained",
-            "growth": "Begins to accept her need for change and to set boundaries in her life"
+            "ending_emotional_state": "Completely exhausted, at her limit",
+            "growth": "Reaches her breaking point, revealing her need for support and connection, and begins to consider major life changes"
           },
           {
             "character_name": "Sarah",
-            "starting_emotional_state": "Confident and growing",
+            "starting_emotional_state": "Anxious about her professional challenge",
             "key_emotional_beats": [
-              "Listening to Tom's dilemma",
-              "Offering insightful advice",
-              "Showing her personal growth"
+              "Applying Tom's techniques",
+              "Facing her challenge head-on",
+              "Succeeding despite her anxiety"
             ],
-            "ending_emotional_state": "Confident and empowered",
-            "growth": "Demonstrates significant progress in managing her anxiety and becomes a source of wisdom for others"
-          },
-          {
-            "character_name": "Dr. Martinez",
-            "starting_emotional_state": "Concerned for Julia",
-            "key_emotional_beats": [
-              "Listening to Julia's concerns",
-              "Supporting her decision",
-              "Offering guidance"
-            ],
-            "ending_emotional_state": "Supportive and understanding",
-            "growth": "Deepens her supportive relationship with Julia and shows her mentorship qualities"
+            "ending_emotional_state": "Confident, triumphant, inspired",
+            "growth": "Makes a significant breakthrough in her anxiety treatment, becoming more confident and capable"
           }
         ],
         "information_flow": {
           "revealed_to_audience": [
-            "Julia has been anonymously funding a mental health initiative Tom supports",
-            "Julia is considering leaving her job",
-            "Tom and Julia nearly meet multiple times",
-            "Sarah has grown significantly through Tom's coaching",
-            "Tom decides to approach Julia directly"
+            "Julia has been anonymously funding Tom's work",
+            "Julia is considering leaving medicine",
+            "Tom and Julia nearly met",
+            "Sarah made a breakthrough",
+            "Tom decided to meet Julia"
           ],
           "revealed_to_characters": [
-            "Tom knows Julia has been supporting his work",
-            "Julia has decided to discuss leaving her job",
-            "Dr. Martinez supports Julia's decision",
-            "Tom has decided to approach Julia"
+            "Tom discovered Julia's anonymous donations",
+            "Mike learned about Julia's burnout",
+            "Sarah succeeded in her challenge",
+            "Tom decided to approach Julia"
           ],
           "hidden_from_audience": [
-            "The exact nature of Julia's funding",
-            "Julia's specific plans for the future"
+            "Tom's exact plan for approaching Julia",
+            "Julia's specific thoughts about leaving medicine"
           ],
           "hidden_from_characters": [
-            "Julia doesn't know Tom has been trying to meet her",
-            "Julia doesn't know Tom knows about her funding",
-            "Julia doesn't know Tom has decided to approach her"
+            "Julia doesn't know Tom discovered her donations",
+            "Julia doesn't know Tom plans to meet her",
+            "Tom doesn't know Julia considered leaving medicine"
           ]
         },
-        "audio_production_notes": "Use audio to create tension during the near-miss scenes, with close calls in sound design. The coffee shop scene should have a relaxed atmosphere that becomes tense with hesitation. Sarah's scene should use audio to show her growth through confident voice patterns. Tom's final decision scene should build to a moment of determination through audio cues. Continue using distinct audio signatures for each character's environment."
+        "audio_production_notes": "This episode should build tension through near-misses and delayed meetings. Sound design should contrast Tom's growing determination with Julia's deteriorating state without the messages. Music should reflect the building anticipation of their eventual meeting."
       },
       {
         "episode_number": 5,
         "episode_title": "Intentional Lifeline",
-        "episode_summary": "On her most difficult day at the hospital, Julia faces a crisis that pushes her to her emotional limit. Tom arrives, having tracked her down, and explains the situation. They develop a genuine friendship, finding renewed purpose in their lives and work.",
-        "total_estimated_runtime": "24 minutes",
+        "episode_summary": "On her most difficult day, Julia faces a crisis while Tom arrives to meet her. Their meeting is initially awkward but becomes profound as they share how the messages impacted each other. Both characters find renewed purpose, establishing a new, intentional connection.",
+        "total_estimated_runtime": "20 minutes",
         "scenes": [
           {
             "scene_number": 1,
@@ -1065,254 +1070,279 @@
               "Dr. Martinez",
               "Mike"
             ],
-            "goal": "To handle multiple critical patients during a mass casualty event",
-            "obstacle": "Overwhelming number of patients and limited resources",
-            "choice": "Julia chooses to take charge and organize the team effectively",
-            "consequence": "The team works efficiently, but Julia is pushed to her emotional limit",
+            "goal": "Julia needs to handle the most challenging case of her career",
+            "obstacle": "Complex medical situation, emotional exhaustion, lack of support messages",
+            "choice": "To draw on her remaining strength and experience",
+            "consequence": "She begins the case but is clearly overwhelmed",
             "reveals": {
               "plants": [
-                "Julia's professional skill under extreme pressure",
-                "The emotional toll of her work"
+                "Julia at her professional limit",
+                "The absence of messages affecting her confidence"
               ],
               "proofs": [
-                "Calm but urgent instructions, efficient team coordination, increasingly strained voice"
+                "Her struggle with the case",
+                "Her colleagues' concern"
               ],
               "payoffs": [
-                "Shows Julia at her breaking point, needing support"
+                "The setup for Tom's arrival at her moment of crisis"
               ]
             },
-            "soundscape_notes": "Chaotic emergency room sounds, multiple urgent beeps, rushed footsteps, urgent instructions, increasingly strained breathing",
-            "transition_to_next": "Sound of Julia taking a moment to compose herself",
-            "estimated_runtime": "5 minutes",
-            "emotional_state": "Julia: Professional and focused, then increasingly strained and overwhelmed",
-            "audio_storytelling_notes": "Use audio to build chaos and tension, then contrast with a moment of relative quiet when Julia tries to compose herself."
+            "soundscape_notes": "Intense ER sounds, complex medical terminology, Julia's strained commands, urgent music",
+            "transition_to_next": "Sound of hospital entrance, Tom's arrival",
+            "estimated_runtime": "4 minutes",
+            "emotional_state": "Julia - Overwhelmed, exhausted, struggling; Dr. Martinez - Concerned, supportive; Mike - Professional, worried",
+            "audio_storytelling_notes": "Use intense, complex hospital sounds to show the difficulty of the case. Julia's voice becomes increasingly strained throughout the scene."
           },
           {
             "scene_number": 2,
-            "location": "Hospital Supply Closet",
-            "time": "Late Morning",
+            "location": "Hospital Entrance",
+            "time": "Morning",
             "characters_present": [
-              "Julia"
+              "Tom"
             ],
-            "goal": "To take a brief moment to recover emotionally during the crisis",
-            "obstacle": "Being at her emotional breaking point and feeling completely alone",
-            "choice": "Julia checks her phone one more time, hoping for a message from Tom",
-            "consequence": "No message has arrived, leaving her feeling abandoned at her lowest point",
+            "goal": "Tom wants to find Julia and introduce himself",
+            "obstacle": "Navigating the unfamiliar hospital environment",
+            "choice": "To ask for directions and make his way to the ER",
+            "consequence": "He arrives just as Julia is facing her crisis",
             "reveals": {
               "plants": [
-                "Julia's dependence on Tom's messages",
-                "Her emotional vulnerability"
+                "Tom's determination to make things right",
+                "His unfamiliarity with the hospital environment"
               ],
               "proofs": [
-                "Sound of shaky breathing, desperate phone check, soft sobbing"
+                "His navigation through the hospital",
+                "His arrival at the critical moment"
               ],
               "payoffs": [
-                "Shows Julia at her most vulnerable moment"
+                "The timing of his arrival at Julia's moment of need"
               ]
             },
-            "soundscape_notes": "Closet door closing, muffled emergency sounds, shaky breathing, desperate phone screen swiping, disappointed sob, muffled crying",
-            "transition_to_next": "Sound of the closet door opening",
-            "estimated_runtime": "3 minutes",
-            "emotional_state": "Julia: Overwhelmed, then desperate and abandoned",
-            "audio_storytelling_notes": "Use audio to create an intimate, isolated space for Julia's breakdown, with muffled emergency sounds emphasizing her separation from the crisis outside."
+            "soundscape_notes": "Hospital entrance sounds, Tom's hesitant voice, directions from staff, determined footsteps, building music",
+            "transition_to_next": "Sound of ER doors opening, transition to crisis",
+            "estimated_runtime": "2 minutes",
+            "emotional_state": "Tom - Determined, slightly nervous, focused",
+            "audio_storytelling_notes": "Use hospital navigation sounds with Tom's voice showing determination. Music builds as he approaches the ER."
           },
           {
             "scene_number": 3,
-            "location": "Hospital Supply Closet",
-            "time": "Late Morning (continued)",
+            "location": "Hospital Emergency Room",
+            "time": "Morning",
             "characters_present": [
               "Julia",
-              "Tom"
+              "Tom",
+              "Dr. Martinez",
+              "Mike"
             ],
-            "goal": "Tom to approach Julia and explain the situation",
-            "obstacle": "Julia's emotional state and the awkwardness of their first meeting",
-            "choice": "Tom gently introduces himself and explains the accidental messages",
-            "consequence": "Julia is shocked but relieved, finally understanding what happened",
+            "goal": "Julia needs to handle the critical case with Tom's unexpected arrival",
+            "obstacle": "Surprise at seeing Tom, not knowing who he is, continuing crisis",
+            "choice": "To push through her confusion and focus on the patient",
+            "consequence": "Tom recognizes the situation and offers unexpected support",
             "reveals": {
               "plants": [
-                "Tom's nervousness about approaching Julia",
-                "Julia's shock at seeing Tom"
+                "Tom's ability to provide support",
+                "Julia's recognition of him"
               ],
               "proofs": [
-                "Hesitant voice from Tom, shocked gasp from Julia, emotional explanation"
+                "Their initial interaction during the crisis"
               ],
               "payoffs": [
-                "The central premise is finally revealed to Julia"
+                "The beginning of their in-person connection"
               ]
             },
-            "soundscape_notes": "Closet door opening, hesitant footsteps, surprised gasp, hesitant introduction, emotional voice, relieved breathing",
-            "transition_to_next": "Sound of Julia and Tom moving to a more private space to talk",
+            "soundscape_notes": "ER crisis sounds, Julia's surprised reaction, Tom's supportive voice, dramatic music",
+            "transition_to_next": "Sound of crisis resolving, shift to quieter moment",
             "estimated_runtime": "4 minutes",
-            "emotional_state": "Tom: Nervous, then relieved; Julia: Shocked, then understanding and relieved",
-            "audio_storytelling_notes": "Use audio to create an intimate, emotional moment, with hesitant voices giving way to more open, emotional communication."
+            "emotional_state": "Julia - Surprised, confused, then focused; Tom - Determined, supportive, slightly nervous; Dr. Martinez - Surprised, observant; Mike - Confused, professional",
+            "audio_storytelling_notes": "Use ER crisis sounds with a moment of surprise as Tom arrives. Music shifts to dramatic as they connect during the crisis."
           },
           {
             "scene_number": 4,
-            "location": "Hospital Garden",
+            "location": "Hospital Staff Room",
             "time": "Afternoon",
             "characters_present": [
               "Julia",
               "Tom"
             ],
-            "goal": "To have a deeper conversation about the impact of the messages and their lives",
-            "obstacle": "The emotional intensity of the situation and the need for honesty",
-            "choice": "Julia shares how much the messages meant to her, and Tom shares his own struggles",
-            "consequence": "They establish a genuine connection based on mutual understanding and respect",
+            "goal": "Julia and Tom need to process their meeting and explain the situation",
+            "obstacle": "Awkwardness of their unusual first meeting, emotional vulnerability",
+            "choice": "To be honest about their experiences and feelings",
+            "consequence": "They develop a genuine understanding and connection",
             "reveals": {
               "plants": [
-                "Tom's own struggles with self-esteem",
-                "Julia's professional burnout"
+                "Julia's emotional vulnerability",
+                "Tom's sense of responsibility"
               ],
               "proofs": [
-                "Emotional voices, shared vulnerability, moments of understanding"
+                "Their honest conversation about the messages",
+                "Their emotional reactions"
               ],
               "payoffs": [
-                "Both characters find understanding and connection"
+                "The resolution of the accidental connection mystery"
               ]
             },
-            "soundscape_notes": "Outdoor garden sounds, birds chirping, soft wind, emotional voices, moments of silence, relieved sighs",
-            "transition_to_next": "Sound of Julia and Tom returning to the hospital",
+            "soundscape_notes": "Quiet staff room sounds, hesitant voices, emotional confessions, reflective music",
+            "transition_to_next": "Sound of emotional connection, shift to more hopeful music",
             "estimated_runtime": "5 minutes",
-            "emotional_state": "Tom: Vulnerable and open; Julia: Open and relieved",
-            "audio_storytelling_notes": "Use audio to create a peaceful, healing atmosphere in contrast to the earlier chaos, with natural sounds emphasizing the emotional breakthrough."
+            "emotional_state": "Julia - Initially awkward, then vulnerable, then connected; Tom - Initially nervous, then sincere, then connected",
+            "audio_storytelling_notes": "Use intimate staff room sounds to create a space for honest conversation. Music shifts from tentative to hopeful as they connect."
           },
           {
             "scene_number": 5,
             "location": "Tom's Office",
-            "time": "Several Days Later",
+            "time": "Next Day",
             "characters_present": [
               "Tom",
               "Sarah"
             ],
-            "goal": "Tom to meet with Sarah and share his experience with Julia",
-            "obstacle": "Processing the profound impact of his accidental connection with Julia",
-            "choice": "Tom shares his story with Sarah (without revealing specific details about Julia)",
-            "consequence": "Sarah is inspired by the story and shares her own progress",
+            "goal": "Tom wants to share his experience with Sarah and continue her coaching",
+            "obstacle": "Processing his own emotional experience",
+            "choice": "To use his experience with Julia to inspire Sarah",
+            "consequence": "Sarah gains new perspective and continues her progress",
             "reveals": {
               "plants": [
-                "Sarah's continued growth",
-                "Tom's new perspective on his work"
+                "Tom's growth from his experience with Julia",
+                "Sarah's continued development"
               ],
               "proofs": [
-                "Inspired conversation, confident voice from Sarah, thoughtful responses from Tom"
+                "Their conversation about the experience",
+                "Sarah's reaction"
               ],
               "payoffs": [
-                "Shows the positive impact of Tom and Julia's connection on others"
+                "Sarah's transformation and inspiration to others"
               ]
             },
-            "soundscape_notes": "Office sounds, thoughtful conversation, confident voice from Sarah, inspired tone from Tom, moments of understanding",
-            "transition_to_next": "Sound of Tom preparing to meet Julia again",
-            "estimated_runtime": "3 minutes",
-            "emotional_state": "Tom: Reflective and inspired; Sarah: Confident and inspiring",
-            "audio_storytelling_notes": "Use audio to show the positive impact of their conversation, with inspired tones and confident voices."
+            "soundscape_notes": "Office sounds, Tom's reflective voice, Sarah's inspired responses, uplifting music",
+            "transition_to_next": "Sound of successful session, transition to hospital",
+            "estimated_runtime": "2 minutes",
+            "emotional_state": "Tom - Reflective, inspired, more purposeful; Sarah - Inspired, confident, growing",
+            "audio_storytelling_notes": "Use office sounds with Tom's more reflective voice. Music shifts to uplifting as Sarah responds to his inspiration."
           },
           {
             "scene_number": 6,
+            "location": "Hospital Office",
+            "time": "Next Day",
+            "characters_present": [
+              "Julia",
+              "Dr. Martinez"
+            ],
+            "goal": "Julia needs to make decisions about her future at the hospital",
+            "obstacle": "Emotional exhaustion, reconsidering her career path",
+            "choice": "To decide to stay in medicine with better boundaries",
+            "consequence": "She finds renewed purpose in her work",
+            "reveals": {
+              "plants": [
+                "Julia's reconsideration of her career",
+                "Her need for balance"
+              ],
+              "proofs": [
+                "Her conversation with Dr. Martinez",
+                "Her decision"
+              ],
+              "payoffs": [
+                "Julia's renewed purpose and direction"
+              ]
+            },
+            "soundscape_notes": "Office sounds, Julia's thoughtful voice, Dr. Martinez's supportive tone, hopeful music",
+            "transition_to_next": "Sound of decision made, transition to final scene",
+            "estimated_runtime": "2 minutes",
+            "emotional_state": "Julia - Thoughtful, decisive, hopeful; Dr. Martinez - Supportive, proud, understanding",
+            "audio_storytelling_notes": "Use office sounds with Julia's voice showing thoughtful consideration. Music shifts to hopeful as she makes her decision."
+          },
+          {
+            "scene_number": 7,
             "location": "Coffee Shop",
-            "time": "Afternoon",
+            "time": "Evening",
             "characters_present": [
               "Julia",
               "Tom"
             ],
-            "goal": "To establish a new, intentional connection as friends",
-            "obstacle": "Navigating their unusual beginning and establishing boundaries",
-            "choice": "They agree to stay in touch and support each other intentionally",
-            "consequence": "They establish a genuine friendship based on mutual respect and understanding",
+            "goal": "Julia and Tom want to establish their new connection",
+            "obstacle": "Navigating their unusual beginning and future relationship",
+            "choice": "To acknowledge the accidental nature of their connection while choosing to continue it intentionally",
+            "consequence": "They establish a new, intentional connection based on mutual understanding and support",
             "reveals": {
               "plants": [
-                "Julia's renewed sense of purpose",
-                "Tom's deeper understanding of his impact"
+                "Their acknowledgment of the accidental beginning",
+                "Their choice to continue intentionally"
               ],
               "proofs": [
-                "Relaxed conversation, mutual respect, plans for the future"
+                "Their conversation about their past and future",
+                "Their emotional connection"
               ],
               "payoffs": [
-                "The accidental lifeline becomes an intentional connection"
+                "The resolution of their relationship arc and the season's theme"
               ]
             },
-            "soundscape_notes": "Coffee shop sounds, relaxed conversation, comfortable laughter, moments of understanding, optimistic tones",
-            "transition_to_next": "Sound of Julia and Tom parting ways with plans to meet again",
-            "estimated_runtime": "4 minutes",
-            "emotional_state": "Julia: Renewed and hopeful; Tom: Optimistic and purposeful",
-            "audio_storytelling_notes": "Use audio to create a warm, relaxed atmosphere that contrasts with earlier tension, emphasizing their new connection."
+            "soundscape_notes": "Coffee shop sounds, comfortable conversation, laughter, hopeful, uplifting music",
+            "transition_to_next": "Sound of connection and laughter, music swell to conclusion",
+            "estimated_runtime": "3 minutes",
+            "emotional_state": "Julia - Hopeful, connected, renewed; Tom - Hopeful, connected, purposeful",
+            "audio_storytelling_notes": "Use warm coffee shop sounds with comfortable conversation. Music shifts to uplifting as they establish their new connection."
           }
         ],
         "episode_arc": {
-          "opening_hook": "Julia faces a mass casualty event that pushes her to her emotional limit",
-          "midpoint_turn": "Tom finds Julia in the supply closet and explains the accidental messages",
-          "climax": "Julia and Tom have a heartfelt conversation in the hospital garden, sharing their vulnerabilities",
-          "resolution": "They establish a genuine friendship based on mutual understanding and respect",
-          "cliffhanger": "The season concludes with Julia and Tom establishing a new, intentional connection, showing how their accidental lifeline has transformed both their lives"
+          "opening_hook": "Julia faces her most challenging case while Tom arrives at the hospital",
+          "midpoint_turn": "Tom and Julia meet during the crisis and their initial awkward interaction",
+          "climax": "Julia and Tom have an honest conversation about the messages and their impact",
+          "resolution": "Both characters find renewed purpose in their lives and work",
+          "cliffhanger": "Julia and Tom establish a new, intentional connection, showing how their accidental lifeline transformed both their lives"
         },
         "character_emotional_journey": [
           {
             "character_name": "Tom",
-            "starting_emotional_state": "Determined and purposeful",
+            "starting_emotional_state": "Determined, slightly nervous",
             "key_emotional_beats": [
-              "Nervous about approaching Julia",
-              "Relief at explaining the situation",
-              "Vulnerability in sharing his struggles",
-              "Inspiration from the connection",
-              "Optimism about their new friendship"
+              "Supportive during Julia's crisis",
+              "Awkward but sincere in their meeting",
+              "Honest about his mistake and impact",
+              "Inspired by his connection with Julia"
             ],
-            "ending_emotional_state": "Optimistic and purposeful with a deeper understanding of his impact",
-            "growth": "Gains a deeper appreciation for the impact of his words and develops a meaningful connection with Julia"
+            "ending_emotional_state": "Purposeful, connected, hopeful",
+            "growth": "Gains deeper understanding of his impact on others and finds new purpose in his work through his connection with Julia"
           },
           {
             "character_name": "Julia",
-            "starting_emotional_state": "Overwhelmed and at her breaking point",
+            "starting_emotional_state": "Overwhelmed, exhausted",
             "key_emotional_beats": [
-              "Desperation when no message arrives",
-              "Shock at seeing Tom",
-              "Relief at understanding the situation",
-              "Vulnerability in sharing her struggles",
-              "Renewed sense of purpose"
+              "Surprised by Tom's arrival",
+              "Vulnerable in their conversation",
+              "Honest about the messages' impact",
+              "Renewed in her purpose"
             ],
-            "ending_emotional_state": "Renewed and hopeful with better boundaries",
+            "ending_emotional_state": "Renewed, connected, hopeful",
             "growth": "Finds renewed purpose in her career with better boundaries and develops a meaningful connection with Tom"
           },
           {
             "character_name": "Sarah",
-            "starting_emotional_state": "Confident and growing",
+            "starting_emotional_state": "Confident from previous breakthrough",
             "key_emotional_beats": [
-              "Listening to Tom's story",
-              "Sharing her own progress",
-              "Inspiring Tom with her growth"
+              "Inspired by Tom's experience",
+              "Continuing her progress",
+              "Becoming an example for others"
             ],
-            "ending_emotional_state": "Confident and inspiring to others",
-            "growth": "Has transformed from an anxious client to someone who can inspire others, showing the full impact of Tom's coaching"
+            "ending_emotional_state": "Inspired, confident, purposeful",
+            "growth": "Continues her transformation from anxiety to confidence and becomes an inspiration to others in Tom's program"
           }
         ],
         "information_flow": {
           "revealed_to_audience": [
-            "Julia faces a crisis that pushes her to her limit",
-            "Tom finally meets Julia and explains the situation",
-            "Julia learns about the accidental messages",
-            "Tom and Julia establish a genuine friendship",
-            "Sarah has made significant progress"
+            "Tom and Julia finally met",
+            "They shared the impact of the messages",
+            "Julia decided to stay in medicine",
+            "They established an intentional connection"
           ],
           "revealed_to_characters": [
-            "Julia learns Tom sent the messages accidentally",
-            "Tom learns the impact of his messages on Julia",
-            "Julia and Tom establish a new connection",
-            "Tom shares his experience with Sarah"
+            "Tom and Julia learned about each other through their conversation",
+            "Julia decided to stay in medicine with better boundaries",
+            "They chose to continue their connection intentionally"
           ],
-          "hidden_from_audience": [
-            "The exact nature of Julia's future plans",
-            "The future development of Tom and Julia's friendship"
-          ],
-          "hidden_from_characters": [
-            "Sarah doesn't know the full details about Julia",
-            "Others at the hospital don't know about Tom and Julia's connection"
-          ],
-          "revealed_to_both": [
-            "The accidental nature of the messages and their profound impact"
-          ]
+          "hidden_from_audience": [],
+          "hidden_from_characters": []
         },
-        "audio_production_notes": "Use audio to create contrast between the chaotic emergency scene and the intimate moments of connection. The supply closet scene should have intimate, emotional audio that emphasizes the vulnerability of both characters. The garden scene should use natural sounds to create a healing atmosphere. The coffee shop scene should have warm, relaxed audio that shows their new connection. Use consistent audio signatures for each character throughout the episode, showing their emotional journeys through sound."
+        "audio_production_notes": "This episode should emphasize the emotional catharsis and resolution. Sound design should reflect the journey from crisis to connection, with music shifting from tense to hopeful. The final scene should have warm, uplifting audio elements that provide emotional satisfaction."
       }
     ],
-    "series_structure_notes": "The five-episode series follows a clear narrative arc from accidental connection to intentional relationship. Each episode builds on the previous one, with escalating emotional stakes and character development. The audio design consistently uses distinct sound signatures for each character and location, creating a rich auditory world that enhances the storytelling. The series explores themes of mental health, the unexpected impact we can have on others, and how meaningful connections can form in unlikely ways. Each episode ends with a hook that leads naturally into the next, building tension and anticipation. The final episode provides a satisfying resolution while leaving room for future development of the characters' relationships.",
-    "production_considerations": "The series requires careful attention to audio design to create distinct environments for each character and to convey emotional states through sound. The message notification sound should remain consistent throughout the series. Voice actors need to convey subtle emotional shifts, particularly for Julia's journey from depression to hope. The hospital scenes require layered sound design to create urgency and chaos, while more intimate scenes need focused, clean audio to emphasize emotional moments. Music should be used sparingly to enhance emotional beats without overwhelming the storytelling. The series should maintain a balance between dialogue and sound design to fully utilize the audio-only medium."
+    "series_structure_notes": "The detailed episode outlines follow a clear narrative arc that progresses from accidental connection to intentional relationship. Each episode builds on the previous one, with increasing emotional stakes and character development. The series structure follows a 'Rise→Fall→Redemption Arc' with Tom and Julia's relationship evolving through five distinct phases: 1) Accidental connection, 2) Growing dependence, 3) Discovery and crisis, 4) Near-misses and anticipation, and 5) Intentional connection. The audio storytelling reinforces this arc through carefully designed soundscapes that reflect the characters' emotional states and the progression of their relationship.",
+    "production_considerations": "The production should focus on creating distinct audio environments for Tom's world (calm, organized, professional) and Julia's world (chaotic, stressful, medical). The contrast between these environments should be emphasized through sound design. The narration should guide the audience through the emotional journey, with tone shifts that match the characters' development. Music should progress from neutral to tense to hopeful across the series, reflecting the emotional arc. Special attention should be paid to the audio representation of text messages and their impact on Julia. Voice actors should clearly differentiate the characters' emotional states through vocal performance, with particular attention to Julia's journey from despair to hope and Tom's development from naive confidence to deeper understanding."
   }
 }

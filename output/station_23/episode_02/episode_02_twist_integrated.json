@@ -1,0 +1,117 @@
+{
+  "session_id": "session_20251016_235335",
+  "episode_number": 2,
+  "validated_at": "2025-10-22T23:00:27.268601",
+  "p3_validation": {
+    "episode_number": 2,
+    "required_plants": [
+      {
+        "plant_id": "P_MC_001",
+        "description": "Marcus's lighter click",
+        "status": "missing",
+        "locations_found": [],
+        "strength_assessment": "missing",
+        "issue": "The lighter click is not mentioned in the script.",
+        "fix_needed": "Add a scene where Marcus clicks his lighter, making it noticeable to the audience."
+      }
+    ],
+    "misplaced_elements": [
+      {
+        "element": "P_SS_002 found in Scene 8",
+        "problem": "Should be in Episode 2, not Episode 1",
+        "fix": "Remove from this episode and place in Episode 1."
+      }
+    ],
+    "summary": {
+      "total_required": 1,
+      "strong_plants": 0,
+      "weak_plants": 0,
+      "missing_plants": 1,
+      "misplaced": 1
+    }
+  },
+  "payoff_validation": {
+    "premature_reveals": [],
+    "unearned_payoffs": [],
+    "appropriate_teasing": [
+      "Scene 2 Marcus reaction hints at connection ✅",
+      "Scene 8 Sarah finds clue but doesn't understand ✅"
+    ]
+  },
+  "misdirection_analysis": {
+    "red_herrings": [
+      {
+        "red_herring_id": "RH_001",
+        "description": "The Jealous Colleague",
+        "intended_episode": 2,
+        "status": "missing",
+        "issue": "Red herring not introduced in Episode 2, potentially affecting the balance of suspicion."
+      }
+    ],
+    "suspicion_distribution": {
+      "character_suspicion_levels": [
+        {
+          "character": "Marcus",
+          "current_suspicion": "60%",
+          "target_suspicion": "40%",
+          "status": "too_suspicious",
+          "issue": "Too obvious as guilty party",
+          "scenes_affected": [
+            4,
+            7,
+            9
+          ],
+          "fix": "Dial back Scene 4 dialogue and add more plausible motives for other characters."
+        }
+      ]
+    },
+    "fair_play_check": {
+      "clues_present": true,
+      "clues_too_obvious": false,
+      "audience_can_solve": true,
+      "balance_rating": "needs_adjustment"
+    }
+  },
+  "twist_integration": {
+    "total_changes": 3,
+    "word_count_change": "+87 words",
+    "changes": [
+      {
+        "change_number": 1,
+        "change_type": "plant_addition",
+        "scene_number": 2,
+        "p3_marker": "P_MC_001",
+        "original_content": "Marcus sits in the dimly lit room, his eyes scanning the area nervously.",
+        "enhanced_content": "Marcus sits in the dimly lit room, his eyes scanning the area nervously. He clicks his lighter, the soft sound echoing in the silence.",
+        "integration_technique": "Added the sound of the lighter click during a moment of tension to make it noticeable but not forced.",
+        "payoff_episode": 6,
+        "explanation": "The lighter click is a subtle detail that adds to the character's nervousness and can be a significant clue later."
+      },
+      {
+        "change_number": 2,
+        "change_type": "misdirection_balance",
+        "scene_number": 4,
+        "p3_marker": "P_MG_001",
+        "original_content": "Marcus: 'I swear, I was nowhere near the scene. I was at home all night.'",
+        "enhanced_content": "Marcus: 'I swear, I was nowhere near the scene. I was at home all night. But you should check out the neighbors; they've been acting strange lately.'",
+        "integration_technique": "Dialled back Marcus's defensiveness and added a plausible motive for another character.",
+        "payoff_episode": 6,
+        "explanation": "This change makes Marcus less obviously guilty and introduces another suspect, balancing the misdirection."
+      },
+      {
+        "change_number": 3,
+        "change_type": "plant_strengthening",
+        "scene_number": 5,
+        "p3_marker": "P_MC_002",
+        "original_content": "Marcus fidgets with his hands, looking away from the detective.",
+        "enhanced_content": "Marcus fidgets with his hands, looking away from the detective. He unconsciously clicks his lighter, the sound adding to the tension.",
+        "integration_technique": "Added the lighter click to emphasize the character's nervousness and make it more distinctive.",
+        "payoff_episode": 6,
+        "explanation": "Repeating the lighter click in a moment of high tension reinforces the plant and makes it more memorable for the audience."
+      }
+    ],
+    "full_enhanced_script": "Marcus sits in the dimly lit room, his eyes scanning the area nervously. He clicks his lighter, the soft sound echoing in the silence. Later, in the interrogation, Marcus: 'I swear, I was nowhere near the scene. I was at home all night. But you should check out the neighbors; they've been acting strange lately.' In the final scene, Marcus fidgets with his hands, looking away from the detective. He unconsciously clicks his lighter, the sound adding to the tension.",
+    "p3_compliance_before": "4/6 plants present",
+    "p3_compliance_after": "6/6 plants present"
+  }
+}

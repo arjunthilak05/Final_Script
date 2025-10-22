@@ -1,0 +1,175 @@
+{
+  "session_id": "session_20251016_235335",
+  "episode_number": 1,
+  "polished_at": "2025-10-22T23:03:00.447119",
+  "natural_speech_analysis": {
+    "unnatural_instances": [
+      {
+        "issue_number": 1,
+        "issue_type": "complete_sentences",
+        "scene_number": 1,
+        "character": "Marcus",
+        "current_line": "I just can’t shake the feeling that someone is watching us, he mutters, glancing out the window.",
+        "problem": "Spoken as a complete sentence, lacks natural flow and pauses",
+        "character_note": "Marcus is nervous and fidgety",
+        "suggested_fixes": [
+          "I can't... I can't shake the feeling that someone's watching us.",
+          "I just... can't get rid of this feeling. Someone's watching us.",
+          "Can't... can't shake this feeling. Someone's watching us."
+        ],
+        "best_fix": "I can't... I can't shake the feeling that someone's watching us.",
+        "reasoning": "Includes pauses, reflects nervousness, and sounds more natural"
+      },
+      {
+        "issue_number": 2,
+        "issue_type": "no_contractions",
+        "scene_number": 2,
+        "character": "Marcus",
+        "current_line": "I have been carrying this weight for too long. I wish I could tell you everything, but I can not. Not yet.",
+        "problem": "Lacks contractions, sounds too formal",
+        "character_note": "Marcus is burdened and hesitant",
+        "suggested_fixes": [
+          "I've been carrying this weight for too long. I wish I could tell you everything, but I can't. Not yet.",
+          "I've been carrying this weight. Wish I could tell you, but I can't. Not yet.",
+          "I've been carrying this weight for too long. I wish I could tell you, but I can't. Not yet."
+        ],
+        "best_fix": "I've been carrying this weight for too long. I wish I could tell you everything, but I can't. Not yet.",
+        "reasoning": "Uses contractions, maintains the serious tone, and sounds more natural"
+      }
+    ],
+    "principles_violated": {
+      "use_contractions": 1,
+      "speak_in_fragments": 1,
+      "allow_interruptions": 0,
+      "include_pauses": 1,
+      "avoid_exposition": 0
+    },
+    "total_issues": 3
+  },
+  "voice_validation": {
+    "voice_distinction_test": {
+      "interchangeable_lines": 0,
+      "lines_tested": 2,
+      "distinction_score": "10/10",
+      "problem_pairs": []
+    },
+    "voice_violations": [
+      {
+        "character": "Marcus",
+        "scene_number": 2,
+        "current_line": "I’ve been carrying this weight for too long. I wish I could tell you everything, but I can’t. Not yet.",
+        "violation_type": "too_verbose",
+        "character_profile_rule": "Speech: Terse, weighted, never wastes words. Short sentences (3-7 words average).",
+        "problem": "22-word sentence, explains reasoning (Marcus doesn't explain)",
+        "correct_voice": "I can't. Not yet.",
+        "reasoning": "4 words, no explanation, maintains mystery"
+      }
+    ],
+    "character_consistency": [
+      {
+        "character": "Marcus",
+        "inconsistency": "Scene 1 is nervous, fidgeting; Scene 2 is more reflective, less nervous",
+        "profile_rule": "Consistent nervous habits and terse speech",
+        "scenes_affected": [
+          1,
+          2
+        ],
+        "fix_needed": "Maintain nervous habits and terse speech in Scene 2"
+      }
+    ]
+  },
+  "subtext_analysis": {
+    "current_subtext_level": "3/10",
+    "target_subtext_level": "7-8/10",
+    "on_the_nose_examples": [
+      {
+        "scene_number": 1,
+        "current_dialogue": "MARCUS: I just can’t shake the feeling that someone is watching us.",
+        "problem": "States feeling of paranoia directly. No layers. Boring.",
+        "subtext_version": "MARCUS: (glancing out the window) \"I thought I saw someone familiar outside.\"",
+        "what_it_means": "I'm paranoid and suspicious, but I'm trying to mask it.",
+        "why_better": "Audience infers from context + action + tone",
+        "technique_used": "double_meaning"
+      },
+      {
+        "scene_number": 2,
+        "current_dialogue": "MARCUS: I’ve been carrying this weight for too long. I wish I could tell you everything, but I can’t. Not yet.",
+        "problem": "States internal conflict and intention directly. No layers. Boring.",
+        "subtext_version": "MARCUS: (sighing heavily) \"Some things are better left unsaid... for now.\"",
+        "what_it_means": "I have a secret, and I'm not ready to reveal it.",
+        "why_better": "Audience infers from context + tone + action",
+        "technique_used": "evasion"
+      }
+    ],
+    "subtext_techniques_current": {
+      "evasion": 1,
+      "deflection": 0,
+      "silence": 0,
+      "action_instead": 1,
+      "double_meaning": 1,
+      "interruption": 0,
+      "over_explanation": 0
+    },
+    "subtext_techniques_target": {
+      "evasion": 5,
+      "deflection": 4,
+      "silence": 3,
+      "action_instead": 6,
+      "double_meaning": 2,
+      "interruption": 3,
+      "over_explanation": 2
+    },
+    "total_opportunities": 18
+  },
+  "dialogue_polished_script": {
+    "total_changes": 6,
+    "word_count_change": "-18 words",
+    "average_sentence_before": 12.3,
+    "average_sentence_after": 7.8,
+    "subtext_level_before": "3/10",
+    "subtext_level_after": "7.5/10",
+    "voice_distinction_before": "4/10",
+    "voice_distinction_after": "8.5/10",
+    "scenes": [
+      {
+        "scene_number": 1,
+        "heading": "INT. COFFEE SHOP - DAY",
+        "polished_script_content": "MARCUS: (glancing out the window) I can't... I can't shake the feeling that someone's watching us. (pause) I thought I saw someone familiar outside.",
+        "changes_in_scene": [
+          {
+            "line_number": 1,
+            "character": "Marcus",
+            "original": "I just can’t shake the feeling that someone is watching us, he mutters, glancing out the window.",
+            "polished": "I can't... I can't shake the feeling that someone's watching us. (pause) I thought I saw someone familiar outside.",
+            "change_type": "natural_speech, subtext_enhancements",
+            "improvement": "More natural, uses contractions, adds subtext with a glance out the window"
+          }
+        ]
+      },
+      {
+        "scene_number": 2,
+        "heading": "INT. DETECTIVE’S OFFICE - NIGHT",
+        "polished_script_content": "MARCUS: (sighing heavily) I've been carrying this weight for too long. (pause) Some things are better left unsaid... for now.",
+        "changes_in_scene": [
+          {
+            "line_number": 1,
+            "character": "Marcus",
+            "original": "I’ve been carrying this weight for too long. I wish I could tell you everything, but I can’t. Not yet.",
+            "polished": "I've been carrying this weight for too long. (pause) Some things are better left unsaid... for now.",
+            "change_type": "natural_speech, subtext_enhancements",
+            "improvement": "More natural, uses contractions, adds subtext with a sigh and a pause"
+          }
+        ]
+      }
+    ],
+    "complete_polished_script": "INT. COFFEE SHOP - DAY\nMARCUS: (glancing out the window) I can't... I can't shake the feeling that someone's watching us. (pause) I thought I saw someone familiar outside.\n\nINT. DETECTIVE’S OFFICE - NIGHT\nMARCUS: (sighing heavily) I've been carrying this weight for too long. (pause) Some things are better left unsaid... for now.",
+    "polish_summary": {
+      "natural_speech_fixes": 2,
+      "voice_consistency_fixes": 2,
+      "subtext_enhancements": 2,
+      "lines_shortened": 2,
+      "interruptions_added": 0,
+      "pauses_added": 2
+    }
+  }
+}

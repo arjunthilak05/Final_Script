@@ -1,20 +1,20 @@
 === SCENE 1: INT. TOM'S APARTMENT - EVENING ===
 [SFX: ambient_apartment, distant_traffic, light_rain]
 
-TOM (thinking aloud, pacing) (taps repeatedly on send button, stares at screen) All sent. All delivered. All gone. (slams fist on desk)
+TOM (thinking aloud, pacing) Why isn't she getting the messages? I checked the system, everything looks good. It's like they're just disappearing. (sighs) (glances at his computer screen showing a message interface with unusual error codes)
 
 [SFX: phone_vibrates urgently, Tom stops pacing]
 
-TOM (answering) Hello? (pauses, concerned) What do you mean she's not responding? (frustrated) I've been sending messages all day! (hangs up, mutters) (stares out window at rain) Just a system error. Always just a system error. (grips windowsill tightly) Julia, I swear I'll find out what's happening.
+TOM (answering) Hello? (pauses, concerned) What do you mean she's not responding? (frustrated, slams fist on table) I've been sending messages all day! (hangs up, muttering) It's gotta be a glitch. But what if it's something more? (paces quickly to window) Julia, I swear I'll find out what's happening.
 
 === SCENE 2: INT. HOSPITAL EMERGENCY ROOM - NIGHT ===
 [SFX: ambient_hospital, heart_monitor, footsteps, urgent_voices]
 
-DR. MARTINEZ (O.S., urgent) Julia, we've got to intubate now! Her oxygen levels are dropping.
+DR. MARTINEZ (O.S., urgent) Julia, we need to intubate now! Her oxygen levels are dropping.
 
 [SFX: medical_equipment_whirring, Julia's quick movements]
 
-JULIA (strained, focused) Positioned. Ready! (notices a familiar-looking face in the observation window, but focuses back on the patient)
+JULIA (strained, focused) I'm in position. Here we go! (notices a familiar-looking face in the observation window, but focuses back on the patient)
 
 MIKE (O.S., calm) Good, good. Keep going, Julia.
 
@@ -26,7 +26,7 @@ JULIA (strained) Almost... (grunts with effort) Got it! (panting slightly) She's
 
 DR. MARTINEZ (O.S., relieved) Great work, everyone. Julia, you did well.
 
-JULIA (whispers, to herself) (stares at her hands, then quickly turns away) Next case.
+JULIA (whispers, to herself, notices a distinctive ring on the patient's finger) I... I couldn't save her. (hands trembling, notices a distinctive ring on the patient's finger that looks familiar, walks away quickly)
 
 [SFX: pager_beeps urgently]
 
@@ -35,7 +35,7 @@ DR. MARTINEZ (O.S., urgent) Julia, we need you in trauma room 2, stat!
 === SCENE 3: INT. HOSPITAL STAFF ROOM - LATE NIGHT ===
 [SFX: ambient_hospital, faint_heart_monitor, soft_crying]
 
-JULIA (whispering, to herself) (tracing the photo with her finger) We had a deal.
+JULIA (whispering, to herself, stares at the photo of a young woman) Why couldn't I save her? (looks at a photo on her phone of a young woman) I promised I'd always be there.
 
 [SFX: clock_ticks loudly, Julia sobs]
 
@@ -43,11 +43,11 @@ JULIA (wipes tears) I should have done more.
 
 [SFX: door_creaks, footsteps approach]
 
-DR. MARTINEZ (soft, concerned) (places coffee on table) Drink. It's been a long night for everyone.
+DR. MARTINEZ (soft, concerned) Julia, you did everything you could. (pauses, approaches) Sometimes, it's out of our hands.
 
-JULIA (whispers) I know. (pauses, wipes tears) But it's not any easier.
+JULIA (whispers) I know. (pauses, wipes tears) But it doesn't make it any easier.
 
-DR. MARTINEZ (reassuring) Julia, you've done everything you could. (pauses, approaches) Sometimes, it's out of our hands.
+DR. MARTINEZ (reassuring) You're one of the best doctors I know. Don't doubt yourself.
 
 JULIA (nods, sighs) Thanks, Dr. Martinez. (pauses, stands up) I'll be okay.
 
@@ -56,13 +56,13 @@ JULIA (nods, sighs) Thanks, Dr. Martinez. (pauses, stands up) I'll be okay.
 
 LENA (O.S., professional) Tom, you're here early.
 
-TOM (serious, determined) (closes office door, lowers voice) Those messages you logged yesterday... (pauses as phone buzzes, ignores it)
+TOM (serious, determined) Lena, we need to talk. I made a mistake with the messages. (glances at his phone nervously) I didn't realize how critical it was until last night when—
 
-[SFX: phone_rings_intensely]
+(SFX: phone_rings_intensely)
 
-LENA (concerned) What's that mean?
+LENA (concerned) What do you mean?
 
-TOM (explains) The system's been sending messages, but they're not reaching the intended recipient. I don't know why, but I'm going to find out.
+TOM (explains) The system's been sending messages, but they're not reaching the intended recipient. I don't... I don't know why, but I'm going to find out.
 
 LENA (nodding) Okay, let's go through the logs. Maybe we can trace the issue.
 
@@ -77,22 +77,20 @@ TOM (shocked, stands up) What? How is that possible? (knocks over coffee cup) Da
 
 [SFX: computer_alerts, rapid_keyboarding]
 
-LENA (nodding) I agree. I'll run a trace on the unknown address. (typing_faster) It might take some—
+LENA (determined) I agree. I'll run a trace on the unknown address. (typing_faster) It might take some—
 
-TOM (interrupting) (grabs jacket, checks watch) Julia's shift ends in two hours.
+TOM (interrupting) We don't have time! (leans over desk) Julia's life could be in danger.
 
-[SFX: urgent_phone_rings]
-
-LENA (determined) I'll do whatever—yes, whatever it takes. Let's get to work.
+LENA (determined) I'll do whatever it takes. (typing) Let's get to work.
 
 === SCENE 6: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===
 [SFX: ambulance_sirens_approaching, hospital_doors_burst_open, gurney_wheels, urgent_voices]
 
-DR. MARTINEZ (O.S., urgent) Julia. Critical case. Stat!
+DR. MARTINEZ (O.S., urgent) Julia, we have another critical case. Stat!
 
 [SFX: rapid_footsteps_approach]
 
-JULIA (determined, professional) (rolls up sleeves, pauses at unfamiliar scar on arm, then clenches fist) Ready when you are.
+JULIA (determined, professional, notices a small scar on her arm) I'm ready. (commanding) Clamp! Now! Let's save this patient.
 
 [SFX: medical_equipment_whirring, Julia's quick movements, monitor_beeps_rapidly]
 

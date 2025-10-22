@@ -1,7 +1,7 @@
-# Station 23: Twist Integration Configuration
+# Station 23: Story Coherence & Character Check
 
-station_name: "Station 23: Twist Integration"
-description: "Validates P3 Grid (Plant/Proof/Payoff) integration, checks for missing plants, premature payoffs, and misdirection balance. Auto-integrates missing elements."
+station_name: "Station 23: Story Coherence Check"
+description: "Validates story logic, character consistency, and emotional authenticity. Genre-aware: drama focused for character-driven stories, minimal P3 Grid application only for thrillers/mysteries."
 model: "glm-4.5"
 temperature: 0.7
 max_tokens: 16384
@@ -13,261 +13,127 @@ input:
       name: "First Draft"
     - station: 22
       name: "Momentum Check (optional)"
-    - station: 10
-      name: "Reveal Strategy (P3 Grid)"
 
 # Output configuration
 output:
   directory: "output/station_23"
   episode_subdirectory: "episode_{episode_number:02d}"
-  enhanced_script: "episode_{episode_number:02d}_twist_integrated.json"
-  p3_report: "episode_{episode_number:02d}_p3_validation.txt"
-  plain_text: "episode_{episode_number:02d}_twist_integrated.txt"
+  coherence_check: "episode_{episode_number:02d}_coherence_check.json"
+  enhancements: "episode_{episode_number:02d}_enhanced.txt"
+  summary: "episode_{episode_number:02d}_coherence_summary.txt"
 
 prompts:
-  p3_cross_reference: |
-    **ROLE:** You are validating Plant/Proof/Payoff (P3) grid compliance.
+  story_coherence_validation: |
+    **ROLE:** You are validating story logic and narrative coherence.
 
     **EPISODE:** {episode_number}
     **SCRIPT:** {current_script}
 
-    **P3 GRID REQUIREMENTS (From Station 10):**
-    {p3_grid_for_episode}
-
     **YOUR TASK:**
-    Cross-reference the script against the P3 grid to find:
+    Validate that the story is logically coherent and emotionally consistent.
 
-    1. **MISSING PLANTS** - Required plants not present
-    2. **WEAK PLANTS** - Plants too subtle to be noticed
-    3. **MISPLACED PLANTS** - Plants appearing in wrong episode
-    4. **MISSING PROOFS** - Evidence not properly shown
+    **VALIDATION FOCUS (Character Drama):**
 
-    **PLANT STRENGTH CRITERIA:**
-    - **Strong Plant:** Clear, memorable, audience will notice
-    - **Weak Plant:** Too subtle, audience may miss
-    - **Missing Plant:** Not present in script at all
+    1. **STORY LOGIC**
+       - Do events follow logically from previous events?
+       - Are character decisions motivated and believable?
+       - Does cause/effect flow naturally?
+
+    2. **CHARACTER CONSISTENCY**
+       - Do characters act according to established personalities?
+       - Are emotional reactions appropriate to situations?
+       - Is dialogue consistent with character voice?
+
+    3. **EMOTIONAL BEATS**
+       - Are emotional moments earned and believable?
+       - Does emotional arc make sense?
+       - Are transitions between emotional states smooth?
+
+    4. **RELATIONSHIP DYNAMICS**
+       - Do character interactions feel authentic?
+       - Do relationships evolve naturally?
+       - Is subtext clear in dialogue?
 
     **OUTPUT FORMAT:** Return ONLY valid JSON:
 
     {{
-      "p3_validation": {{
+      "story_coherence": {{
         "episode_number": {episode_number},
-        "required_plants": [
-          {{
-            "plant_id": "P_MC_001",
-            "description": "Marcus's lighter click",
-            "status": "present|weak|missing",
-            "locations_found": ["Scene 2, Line 15", "Scene 9, Line 42"],
-            "strength_assessment": "strong|weak",
-            "issue": "Description of problem if any",
-            "fix_needed": "What needs to change"
-          }}
-        ],
-        "misplaced_elements": [
-          {{
-            "element": "P_SS_002 found in Scene 8",
-            "problem": "Should be in Episode 2, not Episode 1",
-            "fix": "Remove from this episode"
-          }}
-        ],
-        "summary": {{
-          "total_required": 6,
-          "strong_plants": 3,
-          "weak_plants": 1,
-          "missing_plants": 1,
-          "misplaced": 1
-        }}
-      }}
-    }}
-
-  payoff_validation: |
-    **ROLE:** You are checking for premature or unearned payoffs.
-
-    **EPISODE:** {episode_number}
-    **SCRIPT:** {current_script}
-
-    **REVEAL SCHEDULE (From Station 10):**
-    {reveal_schedule}
-
-    **YOUR TASK:**
-    Identify any information revealed too early or without proper setup.
-
-    **CHECK FOR:**
-
-    1. **PREMATURE PAYOFFS** - Reveals scheduled for later episodes
-    2. **UNEARNED REVEALS** - Payoffs without sufficient plants/proofs
-    3. **TOO EXPLICIT** - Should hint, not confirm
-    4. **MISSING AMBIGUITY** - Needs room for audience speculation
-
-    **OUTPUT FORMAT:** Return ONLY valid JSON:
-
-    {{
-      "payoff_validation": {{
-        "premature_reveals": [
-          {{
-            "scene_number": 9,
-            "content_revealed": "Marcus admits guilt explicitly",
-            "scheduled_for_episode": 5,
-            "current_episode": 1,
-            "episodes_too_early": 4,
-            "problem": "This is Episode 5 payoff happening in Episode 1",
-            "current_content": "Exact dialogue/action showing reveal",
-            "fix_needed": "Rewrite to hint without confirming"
-          }}
-        ],
-        "unearned_payoffs": [
-          {{
-            "payoff": "Rodriguez revealed as corrupt",
-            "problem": "No prior plants to support this",
-            "needed_plants": ["Rodriguez suspicious behavior in E1-3"],
-            "fix": "Add plants or remove/delay payoff"
-          }}
-        ],
-        "appropriate_teasing": [
-          "Scene 2 Marcus reaction hints at connection ✅",
-          "Scene 8 Sarah finds clue but doesn't understand ✅"
+        "coherence_score": "9/10",
+        "story_logic": {{
+          "status": "valid",
+          "assessment": "Events follow logically from character motivations"
+        }},
+        "character_consistency": {{
+          "consistent_characters": ["Tom", "Julia"],
+          "authenticity": "genuine"
+        }},
+        "emotional_authenticity": {{
+          "earned_moments": 6,
+          "emotional_arc": "believable",
+          "assessment": "All emotional beats are earned through character interaction"
+        }},
+        "issues_found": [],
+        "recommendations": [
+          "Story is coherent and emotionally authentic"
         ]
       }}
     }}
 
-  misdirection_balance: |
-    **ROLE:** You are analyzing red herring and misdirection balance.
+  minimal_enhancement: |
+    **ROLE:** You are making minimal targeted improvements to story coherence.
 
+    **EPISODE:** {episode_number}
     **SCRIPT:** {current_script}
-
-    **RED HERRINGS PLANNED (From Station 10):**
-    {red_herrings}
+    **COHERENCE_ISSUES:** {coherence_issues}
 
     **YOUR TASK:**
-    Check if misdirections are properly balanced - not too obvious, not too subtle.
+    Make ONLY minimal, targeted improvements. Preserve the original story.
 
-    **ANALYZE:**
-
-    1. **RED HERRING TIMING** - Introduced at right time?
-    2. **SUSPICION DISTRIBUTION** - Is one character TOO suspicious?
-    3. **FAIR PLAY** - Are clues present but not obvious?
-    4. **BALANCE** - Multiple plausible suspects/explanations?
-
-    **IDEAL BALANCE:**
-    - Guilty party: 40% suspicious (hidden in plain sight)
-    - Red herrings: 30-60% suspicious (plausible alternatives)
-    - Innocents: 10-20% suspicious (everyone has secrets)
+    **FIX PRINCIPLES (Minimal Intervention):**
+    - Only fix clear logic problems
+    - Only add brief character motivation where unclear
+    - Only smooth obvious transitions
+    - Only enhance genuine emotional beats
+    - Do NOT rewrite scenes
+    - Do NOT add new plot points
+    - Do NOT change character arc
+    - Do NOT over-complicate
 
     **OUTPUT FORMAT:** Return ONLY valid JSON:
 
     {{
-      "misdirection_analysis": {{
-        "red_herrings": [
+      "coherence_enhancements": {{
+        "episode_number": {episode_number},
+        "total_changes": 2,
+        "enhancement_type": "minimal_targeted_fixes",
+        "enhancements": [
           {{
-            "red_herring_id": "RH_001",
-            "description": "The Jealous Colleague",
-            "intended_episode": 2,
-            "status": "correct|too_early|missing",
-            "issue": "Description if any"
+            "enhancement_number": 1,
+            "scene_number": 2,
+            "type": "add_motivation|clarify_transition|enhance_emotion",
+            "original_content": "Tom hangs up.",
+            "enhanced_content": "Tom hangs up, taking a moment to collect himself.",
+            "reason": "Clarifies emotional response"
           }}
         ],
-        "suspicion_distribution": {{
-          "character_suspicion_levels": [
-            {{
-              "character": "Marcus",
-              "current_suspicion": "60%",
-              "target_suspicion": "40%",
-              "status": "too_suspicious|correct|not_suspicious_enough",
-              "issue": "Too obvious as guilty party",
-              "scenes_affected": [4, 7, 9],
-              "fix": "Dial back Scene 4 dialogue"
-            }}
-          ]
-        }},
-        "fair_play_check": {{
-          "clues_present": true,
-          "clues_too_obvious": false,
-          "audience_can_solve": true,
-          "balance_rating": "good|needs_adjustment"
-        }}
-      }}
-    }}
-
-  auto_integrate_fixes: |
-    **ROLE:** You are integrating missing P3 elements and fixing payoff timing.
-
-    **ORIGINAL SCRIPT:** {original_script}
-
-    **REQUIRED FIXES:**
-    {fixes_needed}
-
-    **YOUR TASK:**
-    Rewrite affected sections to:
-    1. Add missing plants organically
-    2. Fix premature payoffs to appropriate hints
-    3. Strengthen weak plants
-    4. Balance misdirection
-    5. Remove misplaced elements
-
-    **INTEGRATION PRINCIPLES:**
-
-    **Adding Plants:**
-    - Make them feel natural, not forced
-    - Characters shouldn't draw attention to them
-    - Plants can be dialogue, action, or sound
-    - Place in moments of other activity (hide in plain sight)
-
-    **Fixing Premature Payoffs:**
-    - Convert explicit to ambiguous
-    - Show evidence, don't explain it
-    - Let audience suspect, don't confirm
-    - Save "aha moment" for proper episode
-
-    **Strengthening Weak Plants:**
-    - Add emphasis (pause, reaction, repeat)
-    - Make more distinctive
-    - Add character attention to it
-    - Link to emotion or action
-
-    **Balancing Misdirection:**
-    - Give innocent explanations for suspicious behavior
-    - Add logical reasons for evasion
-    - Reduce certainty in audience
-    - Maintain fair play
-
-    **OUTPUT FORMAT:** Return ONLY valid JSON:
-
-    {{
-      "twist_integration": {{
-        "total_changes": 8,
-        "word_count_change": "+87 words",
-        "changes": [
-          {{
-            "change_number": 1,
-            "change_type": "plant_addition|plant_strengthening|payoff_fix|misdirection_balance",
-            "scene_number": 4,
-            "p3_marker": "P_RO_001",
-            "original_content": "Current scene content",
-            "enhanced_content": "Scene with P3 element integrated",
-            "integration_technique": "How it was added naturally",
-            "payoff_episode": 6,
-            "explanation": "Why this works"
-          }}
-        ],
-        "full_enhanced_script": "Complete script with all P3 integrations",
-        "p3_compliance_before": "4/6 plants present",
-        "p3_compliance_after": "6/6 plants present"
+        "full_enhanced_script": "Complete script with minimal enhancements...",
+        "preservation_status": "Original story and character arc fully preserved",
+        "summary": "Minimal coherence improvements while maintaining narrative integrity"
       }}
     }}
 
 dependencies:
   - station: 21
     name: "First Draft (required)"
-  - station: 10
-    name: "Reveal Strategy (P3 Grid required)"
   - station: 22
-    name: "Momentum Check (optional, uses that version if available)"
+    name: "Momentum Check (optional)"
 
 enabled: true
 
 special_features:
-  supports_episode_selection: true
-  validates_p3_grid: true
-  auto_integrates_plants: true
-  generates_p3_report: true
-  tracks_payoffs_across_episodes: true
+  genre_aware: true
+  minimal_intervention: true
+  preserves_original_narrative: true
+  validates_emotional_authenticity: true
+  character_focused: true

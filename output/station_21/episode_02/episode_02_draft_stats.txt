@@ -1,7 +1,7 @@
 ======================================================================
 EPISODE 2 FIRST DRAFT STATISTICS
 ======================================================================
-Generated: 2025-10-19 23:07:19
+Generated: 2025-10-22 22:43:35
 Session: session_20251016_235335
 
 WORD COUNT ANALYSIS:
@@ -10,13 +10,14 @@ WORD COUNT ANALYSIS:
   Completion: 70%
 
 SCENE ANALYSIS:
-  Total Scenes: 6
-  Scene 1: 215 words
-  Scene 2: 280 words
-  Scene 3: 345 words
-  Scene 4: 450 words
-  Scene 5: 280 words
-  Scene 6: 150 words
+  Total Scenes: 7
+  Scene 1: 210 words
+  Scene 2: 185 words
+  Scene 3: 265 words
+  Scene 4: 230 words
+  Scene 5: 215 words
+  Scene 6: 230 words
+  Scene 7: 215 words
 
 AUDIO INTEGRATION:
   Total Audio Cues: 47

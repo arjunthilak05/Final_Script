@@ -1,0 +1,321 @@
+# Station 26: Final Episode Script Lock Configuration
+
+station_name: "Station 26: Final Episode Script Lock"
+description: "Finalizes scripts to production-ready state with word count expansion, complete audio markup, performance notes, and production validation. Creates locked script packages for all production teams."
+model: "glm-4.5"
+temperature: 0.7
+max_tokens: 16384
+
+# Input configuration
+input:
+  required_stations:
+    - station: 25
+      name: "Audio Optimization (audio-optimized script)"
+    - station: 24
+      name: "Dialogue Polish (dialogue quality)"
+    - station: 23
+      name: "Twist Integration (P3 grid)"
+    - station: 11
+      name: "Runtime Planning (target word count)"
+
+# Output configuration
+output:
+  directory: "output/station_26"
+  episode_subdirectory: "episode_{episode_number:02d}"
+  final_script: "episode_{episode_number:02d}_v1.0_FINAL.json"
+  fountain_format: "episode_{episode_number:02d}_v1.0_FINAL.fountain"
+  production_report: "episode_{episode_number:02d}_PRODUCTION.txt"
+
+prompts:
+  word_count_expansion: |
+    **ROLE:** You are expanding a script to reach its production target word count.
+
+    **EPISODE:** {episode_number}
+    **CURRENT SCRIPT:** {current_script}
+    **CURRENT WORD COUNT:** {current_word_count}
+    **TARGET WORD COUNT:** {target_word_count}
+    **GAP:** {word_count_gap}
+
+    **YOUR TASK:**
+    Expand the script to reach target word count while maintaining:
+    - Plot points (don't change what happens)
+    - Character voices (same dialogue style)
+    - Audio-first formatting (preserve [SFX:] notation)
+    - Pacing (don't slow down the story)
+    - Existing scenes and structure
+
+    **EXPANSION STRATEGIES:**
+
+    1. **DIALOGUE BEATS** - Add tension and character layers
+       - Expand key scenes with more subtext
+       - Add hesitations, interruptions, double meanings
+       - Show conflict through conversation rhythm
+
+    2. **EMOTIONAL DEPTH** - Enhance character interiority
+       - Add physical manifestations (breathing, movement)
+       - Include sensory details (sounds, smells)
+       - Show internal conflict through external signs
+
+    3. **WORLD BUILDING** - Enrich environmental storytelling
+       - Add location details through sound and action
+       - Show bureaucratic obstacles and systems
+       - Include personal touches (objects, decorations)
+
+    4. **SUBTEXT LAYERS** - Deepen meaning beneath dialogue
+       - Add pauses where characters wrestle with truth
+       - Include evasion and deflection that reveals character
+       - Show what's NOT being said
+
+    5. **MEMORY/FLASHBACK** - Use audio to access past
+       - Brief audio fragments of previous events
+       - Character reactions triggered by sounds
+       - Haunting details that inform present
+
+    **DISTRIBUTION GUIDELINES:**
+    - Don't expand one scene excessively (max +300 words per scene)
+    - Spread additions across multiple scenes for pacing
+    - Prioritize character moments and emotional beats
+    - Keep action/urgency intact
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON:
+
+    {{
+      "word_count_expansion": {{
+        "current_word_count": {current_word_count},
+        "target_word_count": {target_word_count},
+        "gap": {word_count_gap},
+        "expansion_areas": [
+          {{
+            "scene_number": 2,
+            "area_type": "dialogue_beats|emotional_depth|world_building|subtext|memory",
+            "original_excerpt": "Current content",
+            "expanded_excerpt": "Content with additions",
+            "words_added": 85,
+            "rationale": "Why this expansion works"
+          }}
+        ],
+        "total_words_added": {word_count_gap},
+        "final_word_count": {target_word_count},
+        "expanded_full_script": "Complete script with all expansions integrated"
+      }}
+    }}
+
+  audio_markup_finalization: |
+    **ROLE:** You are finalizing complete audio markup specifications.
+
+    **EXPANDED SCRIPT:** {expanded_script}
+
+    **YOUR TASK:**
+    Ensure complete audio specifications for production teams:
+    - All sound cues fully specified with technical details
+    - Volume levels and mixing notes for each cue
+    - Acoustic environment specifications
+    - Speaker identification clear throughout
+    - Silence markers with durations and purpose
+    - Transition audio between all scenes
+
+    **AUDIO SPECIFICATION LEVELS:**
+
+    1. **AMBIENT (Continuous backgrounds)**
+       - Define for each location
+       - Specify layers (constant vs. periodic sounds)
+       - Include volume levels (Low/Medium/High)
+
+    2. **SIGNATURE SOUNDS (Character identifiers)**
+       - Consistent sounds for each character
+       - Specified with exact source/quality
+       - Marked at each appearance
+
+    3. **ACTION SOUNDS (Story events)**
+       - Every significant action with audio
+       - Source specified (Foley/Library/Custom)
+       - Volume and distance from mic
+
+    4. **EMOTIONAL AUDIO (Internal states)**
+       - Breathing patterns marked
+       - Silence moments with purpose specified
+       - Acoustic changes for emotional shifts
+
+    5. **TRANSITIONS (Scene bridges)**
+       - Audio bridges between all locations
+       - Music cues with style specifications
+       - Crossfade points marked
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON:
+
+    {{
+      "audio_markup_finalization": {{
+        "total_audio_elements": 125,
+        "specification_completeness": "100%",
+        "audio_elements": [
+          {{
+            "element_number": 1,
+            "type": "ambient|signature|action|emotional|transition",
+            "location": "Scene 1",
+            "description": "Complete audio cue specification",
+            "source_type": "Foley|Library|Custom|Music",
+            "volume_relative_to_dialogue": "-6dB",
+            "acoustic_notes": "Reverb characteristics, distance, filters",
+            "mixing_placement": "Foreground|Background|Blend",
+            "production_notes": "Special requirements for sound design"
+          }}
+        ],
+        "complete_audio_script": "Full script with all audio markup finalized"
+      }}
+    }}
+
+  performance_notes_addition: |
+    **ROLE:** You are adding comprehensive performance direction for voice actors.
+
+    **SCRIPT:** {script}
+
+    **YOUR TASK:**
+    Add detailed performance notes that help actors deliver their best:
+    - Emotional state and subtext
+    - Physical actions (for audio interpretation)
+    - Pacing and rhythm indicators
+    - Character motivation notes
+    - Relationship context
+
+    **DIRECTION TYPES:**
+
+    1. **EMOTIONAL STATE** - How character feels
+       Example: (barely whispered, strained, guilt-heavy)
+
+    2. **PHYSICAL ACTION** - What character does
+       Example: [Marcus's hand trembles as he picks up lighter]
+
+    3. **SUBTEXT** - What's really meant
+       Example: [Meaning: He's lying to protect someone]
+
+    4. **PACING** - Speed and rhythm
+       Example: [Rapid-fire, overlapping slightly]
+
+    5. **RELATIONSHIP** - Dynamic with other characters
+       Example: [Defensive, as if protecting a secret from her]
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON:
+
+    {{
+      "performance_notes": {{
+        "total_notes_added": 87,
+        "notes_by_character": {{
+          "Marcus": {{
+            "total_lines": 47,
+            "notes_added": 38,
+            "emotional_arc": "Guarded → Conflicted → Resigned",
+            "key_challenge": "Conveying guilt through voice restraint",
+            "performance_notes": [
+              {{
+                "line_number": 5,
+                "original": "I can't do this.",
+                "performance_direction": "(flat affect, no warmth, resigned rather than hostile)",
+                "subtext": "I want to escape but I know I can't",
+                "delivery_notes": "Beat before word, no beat after - let it land"
+              }}
+            ]
+          }}
+        }},
+        "script_with_performance_notes": "Complete script with all direction integrated"
+      }}
+    }}
+
+  production_validation: |
+    **ROLE:** You are conducting final production validation checklist.
+
+    **FINAL SCRIPT:** {final_script}
+
+    **YOUR TASK:**
+    Validate that script meets all production standards:
+    - Word count targets
+    - Runtime estimates accurate
+    - All scenes properly formatted
+    - No visual-only content
+    - Audio specifications complete
+    - Performance direction comprehensive
+    - Continuity checked
+    - Format compliance verified
+
+    **VALIDATION CHECKLIST:**
+
+    1. **WORD COUNT & RUNTIME**
+       - Word count within target range
+       - Runtime estimate 45:00 or target length
+
+    2. **SCENE STRUCTURE**
+       - All scenes properly headed
+       - Proper formatting throughout
+       - No formatting errors
+
+    3. **AUDIO COMPLIANCE**
+       - No visual-only actions
+       - All locations have acoustic context
+       - Speaker identification clear
+       - Sound density appropriate
+
+    4. **CHARACTER CONTINUITY**
+       - Names spelled consistently
+       - Character arcs logical
+       - Dialogue voices distinct
+
+    5. **PRODUCTION READINESS**
+       - Performance notes comprehensive
+       - Technical specs complete
+       - All cues specified
+       - No ambiguities for production teams
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON:
+
+    {{
+      "production_validation": {{
+        "validation_status": "READY_FOR_PRODUCTION",
+        "word_count": 4512,
+        "target_range": "4500-5000",
+        "word_count_status": "✅ WITHIN TARGET",
+        "runtime_estimate": "45:00",
+        "scenes": 9,
+        "audio_elements": 126,
+        "performance_notes": 87,
+        "validation_results": [
+          {{
+            "check": "Word count within target",
+            "status": "✅ PASS",
+            "details": "4,512 words (target: 4,500-5,000)"
+          }},
+          {{
+            "check": "No visual-only actions",
+            "status": "✅ PASS",
+            "details": "All actions have audio component or explanation"
+          }},
+          {{
+            "check": "Speaker identification clear",
+            "status": "✅ PASS",
+            "details": "All speakers identifiable from audio context"
+          }}
+        ],
+        "issues_found": 0,
+        "ready_for_production": true,
+        "production_notes": "Script is ready for immediate voice recording and sound design"
+      }}
+    }}
+
+dependencies:
+  - station: 25
+    name: "Audio Optimization (audio script required)"
+  - station: 24
+    name: "Dialogue Polish (quality baseline)"
+  - station: 23
+    name: "Twist Integration (P3 elements)"
+  - station: 11
+    name: "Runtime Planning (targets)"
+
+enabled: true
+
+special_features:
+  supports_episode_selection: true
+  auto_expands_to_target: true
+  finalizes_audio_markup: true
+  adds_performance_direction: true
+  validates_for_production: true
+  locks_script_version: true
+  generates_production_package: true

@@ -1,0 +1,117 @@
+{
+  "session_id": "session_20251016_235335",
+  "episode_number": 3,
+  "validated_at": "2025-10-22T23:01:20.546240",
+  "p3_validation": {
+    "episode_number": 3,
+    "required_plants": [
+      {
+        "plant_id": "P_MC_001",
+        "description": "Marcus's lighter click",
+        "status": "missing",
+        "locations_found": [],
+        "strength_assessment": "",
+        "issue": "The plant is not present in the script.",
+        "fix_needed": "Introduce the sound of Marcus's lighter clicking in a relevant scene."
+      }
+    ],
+    "misplaced_elements": [
+      {
+        "element": "P_SS_002 found in Scene 8",
+        "problem": "Should be in Episode 2, not Episode 3",
+        "fix": "Remove from this episode and ensure it appears in Episode 2."
+      }
+    ],
+    "summary": {
+      "total_required": 1,
+      "strong_plants": 0,
+      "weak_plants": 0,
+      "missing_plants": 1,
+      "misplaced": 1
+    }
+  },
+  "payoff_validation": {
+    "premature_reveals": [],
+    "unearned_payoffs": [],
+    "appropriate_teasing": [
+      "Scene 2 Marcus reaction hints at connection ✅",
+      "Scene 8 Sarah finds clue but doesn't understand ✅"
+    ]
+  },
+  "misdirection_analysis": {
+    "red_herrings": [
+      {
+        "red_herring_id": "RH_001",
+        "description": "The Jealous Colleague",
+        "intended_episode": 2,
+        "status": "missing",
+        "issue": "Red herring not defined or introduced in the script"
+      }
+    ],
+    "suspicion_distribution": {
+      "character_suspicion_levels": [
+        {
+          "character": "Marcus",
+          "current_suspicion": "60%",
+          "target_suspicion": "40%",
+          "status": "too_suspicious",
+          "issue": "Too obvious as guilty party",
+          "scenes_affected": [
+            4,
+            7,
+            9
+          ],
+          "fix": "Dial back Scene 4 dialogue"
+        }
+      ]
+    },
+    "fair_play_check": {
+      "clues_present": false,
+      "clues_too_obvious": false,
+      "audience_can_solve": false,
+      "balance_rating": "needs_adjustment"
+    }
+  },
+  "twist_integration": {
+    "total_changes": 3,
+    "word_count_change": "+55 words",
+    "changes": [
+      {
+        "change_number": 1,
+        "change_type": "plant_addition",
+        "scene_number": 2,
+        "p3_marker": "P_MC_001",
+        "original_content": "Marcus leans back in his chair, eyes scanning the room. He seems restless, tapping his fingers on the table.",
+        "enhanced_content": "Marcus leans back in his chair, eyes scanning the room. He seems restless, tapping his fingers on the table. He reaches into his pocket, fidgeting with his lighter, the familiar click a small comfort in the tense atmosphere.",
+        "integration_technique": "Added the sound of Marcus's lighter clicking during a moment of tension to make it feel natural.",
+        "payoff_episode": 6,
+        "explanation": "The lighter click adds a subtle detail that can be referenced later without drawing attention to it in the moment."
+      },
+      {
+        "change_number": 2,
+        "change_type": "misdirection_balance",
+        "scene_number": 4,
+        "p3_marker": "P_MD_001",
+        "original_content": "Sarah: 'Marcus, you’re acting weird. What’s going on with you?' Marcus: 'Nothing, I’m just tired. You know how these cases can be.'",
+        "enhanced_content": "Sarah: 'Marcus, you’re acting weird. What’s going on with you?' Marcus: 'Nothing, I’m just tired. You know how these cases can be. I haven’t been sleeping well, that’s all.'",
+        "integration_technique": "Provided an innocent explanation for Marcus's behavior to reduce certainty in the audience.",
+        "payoff_episode": 6,
+        "explanation": "By giving a plausible reason for Marcus's behavior, the audience is less likely to immediately suspect him, maintaining the mystery."
+      },
+      {
+        "change_number": 3,
+        "change_type": "plant_strengthening",
+        "scene_number": 5,
+        "p3_marker": "P_MC_002",
+        "original_content": "Marcus: 'I’ve been thinking a lot about this case. There’s something that doesn’t add up.'",
+        "enhanced_content": "Marcus: 'I’ve been thinking a lot about this case. There’s something that doesn’t add up. I keep going over the details, but it’s like there’s a piece missing. It’s driving me crazy.'",
+        "integration_technique": "Added emphasis and a more distinctive emotional reaction to make the plant more memorable.",
+        "payoff_episode": 6,
+        "explanation": "The added emphasis and emotional reaction make the plant more distinctive and memorable, increasing the likelihood that the audience will recall it later."
+      }
+    ],
+    "full_enhanced_script": "Scene 1: INT. POLICE STATION - DAY\nDetective Sarah and Marcus are reviewing the case files.\nSarah: 'We need to find a lead, this case is getting cold.'\nMarcus: 'I know. I’ve been going over the evidence again. There’s something we’re missing.'\n\nScene 2: INT. CAFETERIA - DAY\nMarcus leans back in his chair, eyes scanning the room. He seems restless, tapping his fingers on the table. He reaches into his pocket, fidgeting with his lighter, the familiar click a small comfort in the tense atmosphere.\n\nScene 3: INT. INTERROGATION ROOM - DAY\nSarah and Marcus interrogate a suspect.\nSuspect: 'I swear, I didn’t do it.'\nMarcus: 'We’ll see.'\n\nScene 4: INT. SARAH'S OFFICE - DAY\nSarah: 'Marcus, you’re acting weird. What’s going on with you?'\nMarcus: 'Nothing, I’m just tired. You know how these cases can be. I haven’t been sleeping well, that’s all.'\n\nScene 5: INT. CRIME SCENE - DAY\nMarcus: 'I’ve been thinking a lot about this case. There’s something that doesn’t add up. I keep going over the details, but it’s like there’s a piece missing. It’s driving me crazy.'\nSarah: 'Let’s go over it again, maybe we’ll spot something new.'\n\nScene 6: INT. POLICE STATION - NIGHT\nSarah and Marcus are reviewing the case files late into the night.\nSarah: 'We’re getting close, I can feel it.'\nMarcus: 'I hope so. This case has been eating at me.'",
+    "p3_compliance_before": "4/6 plants present",
+    "p3_compliance_after": "6/6 plants present"
+  }
+}

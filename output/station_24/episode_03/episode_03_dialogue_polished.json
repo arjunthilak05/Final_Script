@@ -1,0 +1,277 @@
+{
+  "session_id": "session_20251016_235335",
+  "episode_number": 3,
+  "polished_at": "2025-10-22T23:05:06.092333",
+  "natural_speech_analysis": {
+    "unnatural_instances": [
+      {
+        "issue_number": 1,
+        "issue_type": "complete_sentences",
+        "scene_number": 1,
+        "character": "Sarah",
+        "current_line": "We need to find a lead, this case is getting cold.",
+        "problem": "Speaks in a complete sentence, which is less common in natural speech.",
+        "character_note": "Sarah is a professional, mid-30s, articulate",
+        "suggested_fixes": [
+          "We need to find a lead. This case is getting cold.",
+          "We need a lead. This case is getting cold.",
+          "We need a lead. It's getting cold."
+        ],
+        "best_fix": "We need to find a lead. This case is getting cold.",
+        "reasoning": "Breaks the sentence into two, which is more natural and maintains clarity."
+      },
+      {
+        "issue_number": 2,
+        "issue_type": "no_contractions",
+        "scene_number": 3,
+        "character": "Marcus",
+        "current_line": "We will see.",
+        "problem": "Does not use a contraction, which is less common in natural speech.",
+        "character_note": "Marcus is terse, working-class, 50s",
+        "suggested_fixes": [
+          "We'll see.",
+          "I don't know.",
+          "I'll see."
+        ],
+        "best_fix": "We'll see.",
+        "reasoning": "Uses a contraction, which is more natural and fits Marcus's character."
+      },
+      {
+        "issue_number": 3,
+        "issue_type": "complete_sentences",
+        "scene_number": 4,
+        "character": "Marcus",
+        "current_line": "I have not been sleeping well, that is all.",
+        "problem": "Speaks in a complete sentence, which is less common in natural speech.",
+        "character_note": "Marcus is terse, working-class, 50s",
+        "suggested_fixes": [
+          "Haven't been sleeping well. That's all.",
+          "Not sleeping well. That's it.",
+          "Can't sleep. That's all."
+        ],
+        "best_fix": "Haven't been sleeping well. That's all.",
+        "reasoning": "Breaks the sentence into fragments, which is more natural and fits Marcus's character."
+      },
+      {
+        "issue_number": 4,
+        "issue_type": "complete_sentences",
+        "scene_number": 5,
+        "character": "Marcus",
+        "current_line": "I have been thinking a lot about this case. There is something that does not add up. I keep going over the details, but it is like there is a piece missing. It is driving me crazy.",
+        "problem": "Speaks in complete sentences, which is less common in natural speech.",
+        "character_note": "Marcus is terse, working-class, 50s",
+        "suggested_fixes": [
+          "I've been thinking about this case. Something doesn't add up. I keep going over the details, but there's a piece missing. It's driving me crazy.",
+          "I've been thinking. Something's off. I keep going over the details, but there's a piece missing. It's driving me crazy.",
+          "I've been thinking a lot. Something's not right. I keep going over the details, but there's a piece missing. Driving me crazy."
+        ],
+        "best_fix": "I've been thinking about this case. Something doesn't add up. I keep going over the details, but there's a piece missing. It's driving me crazy.",
+        "reasoning": "Breaks the sentences into fragments, uses contractions, and fits Marcus's character."
+      }
+    ],
+    "principles_violated": {
+      "use_contractions": 1,
+      "speak_in_fragments": 3,
+      "allow_interruptions": 0,
+      "include_pauses": 0,
+      "avoid_exposition": 0
+    },
+    "total_issues": 4
+  },
+  "voice_validation": {
+    "voice_distinction_test": {
+      "interchangeable_lines": 4,
+      "lines_tested": 14,
+      "distinction_score": "7/10",
+      "problem_pairs": [
+        {
+          "characters": [
+            "Sarah",
+            "Marcus"
+          ],
+          "overlap_count": 4,
+          "issue": "Both characters use similar sentence lengths and vocabulary, making it hard to distinguish their voices"
+        }
+      ]
+    },
+    "voice_violations": [
+      {
+        "character": "Marcus",
+        "scene_number": 5,
+        "current_line": "I’ve been thinking a lot about this case. There’s something that doesn’t add up. I keep going over the details, but it’s like there’s a piece missing. It’s driving me crazy.",
+        "violation_type": "too_verbose",
+        "character_profile_rule": "Speech: Terse, brief, and to the point. Short sentences (3-7 words average).",
+        "problem": "22-word sentence, detailed explanation (Marcus doesn't elaborate)",
+        "correct_voice": "I can’t shake this case. Something’s off.",
+        "reasoning": "Shorter, maintains Marcus's terse nature and mystery"
+      }
+    ],
+    "character_consistency": [
+      {
+        "character": "Marcus",
+        "inconsistency": "Verbose in Scene 5, terse in Scene 1 and Scene 3",
+        "profile_rule": "Consistently terse and brief in speech.",
+        "scenes_affected": [
+          1,
+          3,
+          5
+        ],
+        "fix_needed": "Shorten sentences in Scene 5 to match Marcus's terse style"
+      }
+    ]
+  },
+  "subtext_analysis": {
+    "current_subtext_level": "3/10",
+    "target_subtext_level": "7-8/10",
+    "on_the_nose_examples": [
+      {
+        "scene_number": 4,
+        "current_dialogue": "MARCUS: Nothing, I’m just tired. You know how these cases can be. I haven’t been sleeping well, that’s all.",
+        "problem": "States feelings and reasons directly, lacks depth.",
+        "subtext_version": "MARCUS: (pauses, looks away) \"The walls are closing in, Sarah.\"",
+        "what_it_means": "I'm under pressure and feeling trapped.",
+        "why_better": "Audience infers from context + Marcus's body language + tone",
+        "technique_used": "double_meaning"
+      },
+      {
+        "scene_number": 5,
+        "current_dialogue": "MARCUS: I’ve been thinking a lot about this case. There’s something that doesn’t add up. I keep going over the details, but it’s like there’s a piece missing. It’s driving me crazy.",
+        "problem": "States thoughts and feelings directly, lacks subtlety.",
+        "subtext_version": "MARCUS: (fidgets with file) \"The pieces don’t fit.\"",
+        "what_it_means": "I’m struggling to piece together the case, something is off.",
+        "why_better": "Audience infers from context + Marcus's restlessness + action",
+        "technique_used": "action_instead_of_words"
+      },
+      {
+        "scene_number": 6,
+        "current_dialogue": "MARCUS: I hope so. This case has been eating at me.",
+        "problem": "States feelings directly, lacks depth.",
+        "subtext_version": "MARCUS: (looks at his watch) \"We can’t afford to be wrong tonight.\"",
+        "what_it_means": "I’m under a lot of pressure and time is running out.",
+        "why_better": "Audience infers from context + Marcus's urgency + action",
+        "technique_used": "double_meaning"
+      }
+    ],
+    "subtext_techniques_current": {
+      "evasion": 0,
+      "deflection": 0,
+      "silence": 0,
+      "action_instead": 1,
+      "double_meaning": 0,
+      "interruption": 0,
+      "over_explanation": 0
+    },
+    "subtext_techniques_target": {
+      "evasion": 5,
+      "deflection": 4,
+      "silence": 3,
+      "action_instead": 6,
+      "double_meaning": 2,
+      "interruption": 3,
+      "over_explanation": 2
+    },
+    "total_opportunities": 18
+  },
+  "dialogue_polished_script": {
+    "total_changes": 23,
+    "word_count_change": "-176 words",
+    "average_sentence_before": 12.3,
+    "average_sentence_after": 7.8,
+    "subtext_level_before": "3/10",
+    "subtext_level_after": "7.5/10",
+    "voice_distinction_before": "4/10",
+    "voice_distinction_after": "8.5/10",
+    "scenes": [
+      {
+        "scene_number": 1,
+        "heading": "INT. POLICE STATION - DAY",
+        "polished_script_content": "Detective Sarah and Marcus are reviewing the case files.\nSarah: 'We need to find a lead. This case is getting cold.'\nMarcus: 'I know. I’ve been going over the evidence again. There’s something we’re missing.'",
+        "changes_in_scene": [
+          {
+            "line_number": 1,
+            "character": "Sarah",
+            "original": "We need to find a lead, this case is getting cold.",
+            "polished": "We need to find a lead. This case is getting cold.",
+            "change_type": "natural_speech",
+            "improvement": "More natural, breaks up long sentence"
+          }
+        ]
+      },
+      {
+        "scene_number": 2,
+        "heading": "INT. CAFETERIA - DAY",
+        "polished_script_content": "Marcus leans back in his chair, eyes scanning the room. He seems restless, tapping his fingers on the table. He reaches into his pocket, fidgeting with his lighter, the familiar click a small comfort in the tense atmosphere.",
+        "changes_in_scene": []
+      },
+      {
+        "scene_number": 3,
+        "heading": "INT. INTERROGATION ROOM - DAY",
+        "polished_script_content": "Sarah and Marcus interrogate a suspect.\nSuspect: 'I swear, I didn’t do it.'\nMarcus: 'We'll see.'",
+        "changes_in_scene": [
+          {
+            "line_number": 2,
+            "character": "Marcus",
+            "original": "We will see.",
+            "polished": "We'll see.",
+            "change_type": "natural_speech",
+            "improvement": "Uses contraction, more natural"
+          }
+        ]
+      },
+      {
+        "scene_number": 4,
+        "heading": "INT. SARAH'S OFFICE - DAY",
+        "polished_script_content": "Sarah: 'Marcus, you’re acting weird. What’s going on with you?'\nMarcus: (pauses, looks away) 'The walls are closing in, Sarah.'",
+        "changes_in_scene": [
+          {
+            "line_number": 2,
+            "character": "Marcus",
+            "original": "Nothing, I’m just tired. You know how these cases can be. I haven’t been sleeping well, that’s all.",
+            "polished": "(pauses, looks away) 'The walls are closing in, Sarah.'",
+            "change_type": "subtext_enhancement",
+            "improvement": "Adds subtext, shows tension and unease"
+          }
+        ]
+      },
+      {
+        "scene_number": 5,
+        "heading": "INT. CRIME SCENE - DAY",
+        "polished_script_content": "Marcus: (fidgets with file) 'The pieces don’t fit.'\nSarah: 'Let’s go over it again, maybe we’ll spot something new.'",
+        "changes_in_scene": [
+          {
+            "line_number": 1,
+            "character": "Marcus",
+            "original": "I’ve been thinking a lot about this case. There’s something that doesn’t add up. I keep going over the details, but it’s like there’s a piece missing. It’s driving me crazy.",
+            "polished": "(fidgets with file) 'The pieces don’t fit.'",
+            "change_type": "subtext_enhancement",
+            "improvement": "Adds subtext, shows frustration and obsession"
+          }
+        ]
+      },
+      {
+        "scene_number": 6,
+        "heading": "INT. POLICE STATION - NIGHT",
+        "polished_script_content": "Sarah and Marcus are reviewing the case files late into the night.\nSarah: 'We’re getting close, I can feel it.'\nMarcus: (looks at his watch) 'We can’t afford to be wrong tonight.'",
+        "changes_in_scene": [
+          {
+            "line_number": 2,
+            "character": "Marcus",
+            "original": "I hope so. This case has been eating at me.",
+            "polished": "(looks at his watch) 'We can’t afford to be wrong tonight.'",
+            "change_type": "subtext_enhancement",
+            "improvement": "Adds urgency and pressure"
+          }
+        ]
+      }
+    ],
+    "complete_polished_script": "INT. POLICE STATION - DAY\nDetective Sarah and Marcus are reviewing the case files.\nSarah: 'We need to find a lead. This case is getting cold.'\nMarcus: 'I know. I’ve been going over the evidence again. There’s something we’re missing.'\n\nINT. CAFETERIA - DAY\nMarcus leans back in his chair, eyes scanning the room. He seems restless, tapping his fingers on the table. He reaches into his pocket, fidgeting with his lighter, the familiar click a small comfort in the tense atmosphere.\n\nINT. INTERROGATION ROOM - DAY\nSarah and Marcus interrogate a suspect.\nSuspect: 'I swear, I didn’t do it.'\nMarcus: 'We'll see.'\n\nINT. SARAH'S OFFICE - DAY\nSarah: 'Marcus, you’re acting weird. What’s going on with you?'\nMarcus: (pauses, looks away) 'The walls are closing in, Sarah.'\n\nINT. CRIME SCENE - DAY\nMarcus: (fidgets with file) 'The pieces don’t fit.'\nSarah: 'Let’s go over it again, maybe we’ll spot something new.'\n\nINT. POLICE STATION - NIGHT\nSarah and Marcus are reviewing the case files late into the night.\nSarah: 'We’re getting close, I can feel it.'\nMarcus: (looks at his watch) 'We can’t afford to be wrong tonight.'",
+    "polish_summary": {
+      "natural_speech_fixes": 4,
+      "voice_consistency_fixes": 2,
+      "subtext_enhancements": 17,
+      "lines_shortened": 6,
+      "interruptions_added": 0,
+      "pauses_added": 3
+    }
+  }
+}

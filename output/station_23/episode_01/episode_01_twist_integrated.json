@@ -1,0 +1,137 @@
+{
+  "session_id": "session_20251016_235335",
+  "episode_number": 1,
+  "validated_at": "2025-10-22T22:58:39.116480",
+  "p3_validation": {
+    "episode_number": 1,
+    "required_plants": [
+      {
+        "plant_id": "P_MC_001",
+        "description": "Marcus's lighter click",
+        "status": "missing",
+        "locations_found": [],
+        "strength_assessment": "missing",
+        "issue": "Plant not present in the script",
+        "fix_needed": "Introduce the lighter click in a relevant scene"
+      }
+    ],
+    "misplaced_elements": [
+      {
+        "element": "P_SS_002 found in Scene 8",
+        "problem": "Should be in Episode 2, not Episode 1",
+        "fix": "Remove from this episode"
+      }
+    ],
+    "summary": {
+      "total_required": 1,
+      "strong_plants": 0,
+      "weak_plants": 0,
+      "missing_plants": 1,
+      "misplaced": 1
+    }
+  },
+  "payoff_validation": {
+    "premature_reveals": [
+      {
+        "scene_number": 9,
+        "content_revealed": "Marcus admits guilt explicitly",
+        "scheduled_for_episode": 5,
+        "current_episode": 1,
+        "episodes_too_early": 4,
+        "problem": "This is Episode 5 payoff happening in Episode 1",
+        "current_content": "Exact dialogue/action showing reveal",
+        "fix_needed": "Rewrite to hint without confirming"
+      }
+    ],
+    "unearned_payoffs": [
+      {
+        "payoff": "Rodriguez revealed as corrupt",
+        "problem": "No prior plants to support this",
+        "needed_plants": [
+          "Rodriguez suspicious behavior in E1-3"
+        ],
+        "fix": "Add plants or remove/delay payoff"
+      }
+    ],
+    "appropriate_teasing": [
+      "Scene 2 Marcus reaction hints at connection ✅",
+      "Scene 8 Sarah finds clue but doesn't understand ✅"
+    ]
+  },
+  "misdirection_analysis": {
+    "red_herrings": [
+      {
+        "red_herring_id": "RH_001",
+        "description": "The Jealous Colleague",
+        "intended_episode": 2,
+        "status": "missing",
+        "issue": "Red herring not defined or introduced"
+      }
+    ],
+    "suspicion_distribution": {
+      "character_suspicion_levels": [
+        {
+          "character": "Marcus",
+          "current_suspicion": "60%",
+          "target_suspicion": "40%",
+          "status": "too_suspicious",
+          "issue": "Too obvious as guilty party",
+          "scenes_affected": [
+            4,
+            7,
+            9
+          ],
+          "fix": "Dial back Scene 4 dialogue"
+        }
+      ]
+    },
+    "fair_play_check": {
+      "clues_present": true,
+      "clues_too_obvious": false,
+      "audience_can_solve": true,
+      "balance_rating": "needs_adjustment"
+    }
+  },
+  "twist_integration": {
+    "total_changes": 3,
+    "word_count_change": "+120 words",
+    "changes": [
+      {
+        "change_number": 1,
+        "change_type": "plant_addition",
+        "scene_number": 4,
+        "p3_marker": "P_MC_001",
+        "original_content": "Marcus looks nervous as he glances around the room, his hands fidgeting with his shirt collar.",
+        "enhanced_content": "Marcus looks nervous as he glances around the room, his hands fidgeting with his shirt collar. He reaches into his pocket and clicks his lighter, a nervous habit he’s had for years.",
+        "integration_technique": "Integrated the lighter click as a nervous habit during a tense moment to make it feel natural.",
+        "payoff_episode": 6,
+        "explanation": "This subtle action introduces the lighter without drawing too much attention, making it a natural part of Marcus's character."
+      },
+      {
+        "change_number": 2,
+        "change_type": "payoff_fix",
+        "scene_number": 9,
+        "p3_marker": "P_MC_002",
+        "original_content": "Marcus admits, 'I did it. I’m guilty, and I can’t take it anymore.'",
+        "enhanced_content": "Marcus sighs heavily, looking down at his hands. 'I’ve been carrying this weight for too long. I wish I could tell you everything, but I can’t. Not yet.'",
+        "integration_technique": "Converted the explicit admission to a more ambiguous statement, hinting at guilt without confirming it.",
+        "payoff_episode": 5,
+        "explanation": "This change allows the audience to suspect Marcus without confirming his guilt, maintaining the mystery until the appropriate episode."
+      },
+      {
+        "change_number": 3,
+        "change_type": "misdirection_balance",
+        "scene_number": 4,
+        "p3_marker": "P_MC_003",
+        "original_content": "Marcus looks nervous as he glances around the room, his hands fidgeting with his shirt collar.",
+        "enhanced_content": "Marcus looks nervous as he glances around the room, his hands fidgeting with his shirt collar. 'I just can’t shake the feeling that someone is watching us,' he mutters, glancing out the window.",
+        "integration_technique": "Added an innocent explanation for his nervous behavior by suggesting he feels watched, which could be a logical reason for his actions.",
+        "payoff_episode": 6,
+        "explanation": "This change reduces the certainty that Marcus is guilty by providing an alternative, plausible explanation for his behavior."
+      }
+    ],
+    "full_enhanced_script": "INT. COFFEE SHOP - DAY\n\nMarcus looks nervous as he glances around the room, his hands fidgeting with his shirt collar. He reaches into his pocket and clicks his lighter, a nervous habit he’s had for years. 'I just can’t shake the feeling that someone is watching us,' he mutters, glancing out the window.\n\n...\n\nINT. DETECTIVE’S OFFICE - NIGHT\n\nMarcus sighs heavily, looking down at his hands. 'I’ve been carrying this weight for too long. I wish I could tell you everything, but I can’t. Not yet.'",
+    "p3_compliance_before": "4/6 plants present",
+    "p3_compliance_after": "6/6 plants present"
+  }
+}

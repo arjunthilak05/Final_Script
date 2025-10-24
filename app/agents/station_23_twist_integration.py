@@ -79,7 +79,7 @@ class Station23TwistIntegration:
     async def run(self):
         """Main execution method with episode loop"""
         print("=" * 70)
-        print("🎭 STATION 23: TWIST INTEGRATION (P3 VALIDATION)")
+        print("📖 STATION 23: STORY COHERENCE VALIDATION")
         print("=" * 70)
         print()
 
@@ -195,7 +195,7 @@ class Station23TwistIntegration:
     def display_episode_selection(self):
         """Display episode selection menu with P3 validation status"""
         print("=" * 70)
-        print("📺 EPISODE SELECTION & P3 VALIDATION STATUS")
+        print("📺 EPISODE SELECTION & COHERENCE VALIDATION STATUS")
         print("=" * 70)
         print()
 
@@ -203,11 +203,11 @@ class Station23TwistIntegration:
         print(f"P3 Grid Loaded: {'✅' if self.p3_grid else '⚠️  Limited'}")
         print()
 
-        print("EPISODE P3 VALIDATION STATUS:")
+        print("EPISODE COHERENCE VALIDATION STATUS:")
         print("━" * 70)
         print()
         print("┌" + "─" * 68 + "┐")
-        print("│ " + "Ep".ljust(4) + "Source".ljust(12) + "Words".ljust(10) + "P3 Status".ljust(40) + " │")
+        print("│ " + "Ep".ljust(4) + "Source".ljust(12) + "Words".ljust(10) + "Coherence Status".ljust(40) + " │")
         print("├" + "─" * 68 + "┤")
 
         for episode_num in sorted(self.script_episodes.keys()):
@@ -218,9 +218,9 @@ class Station23TwistIntegration:
             word_count = script.get('total_word_count', 0)
 
             if episode_num in self.validated_episodes:
-                status = "✅ P3 VALIDATED & INTEGRATED"
+                status = "✅ COHERENCE VALIDATED & ENHANCED"
             else:
-                status = "🟡 NEEDS P3 VALIDATION"
+                status = "🟡 NEEDS COHERENCE VALIDATION"
 
             # Format row
             row = f"│ {str(episode_num).ljust(4)}{source.ljust(12)}{str(word_count).ljust(10)}{status.ljust(40)} │"
@@ -252,12 +252,12 @@ class Station23TwistIntegration:
         print("⭐ EPISODE SELECTION REQUIRED")
         print("=" * 70)
         print()
-        print("Which episode would you like to validate for P3 integration?")
+        print("Which episode would you like to validate for coherence?")
         print()
         print("💡 RECOMMENDATIONS:")
         print("  • Validate in chronological order for best results")
-        print("  • Earlier episodes establish plants for later payoffs")
-        print("  • Sequential validation ensures grid consistency")
+        print("  • Earlier episodes establish character consistency")
+        print("  • Sequential validation ensures story coherence")
         print()
 
         available_episodes = sorted(self.script_episodes.keys())
@@ -332,13 +332,11 @@ class Station23TwistIntegration:
             review_result = await self.human_review(episode_number, enhanced_script, script)
 
             if review_result == "regenerate":
-                # Regenerate the integrations
-                enhanced_script = await self.execute_auto_integrate_fixes(
+                # Regenerate the enhancements
+                enhanced_script = await self.execute_minimal_enhancement(
                     episode_number,
                     script,
-                    p3_validation,
-                    payoff_validation,
-                    misdirection_analysis
+                    coherence_check
                 )
         else:
             print("✅ Auto-accepting enhanced script (skip_review=True)")
@@ -348,9 +346,7 @@ class Station23TwistIntegration:
         await self.save_episode_outputs(
             episode_number,
             enhanced_script,
-            p3_validation,
-            payoff_validation,
-            misdirection_analysis
+            coherence_check
         )
 
         # Mark as validated
@@ -374,22 +370,90 @@ class Station23TwistIntegration:
         print("=" * 70)
         print()
 
-    async def execute_p3_cross_reference(self, episode_number: int, script: Dict) -> Dict:
-        """Task 1: Cross-reference P3 grid against script"""
+    def display_coherence_report(self, coherence_check: Dict):
+        """Display story coherence validation report"""
+        print("=" * 70)
+        print("📖 STORY COHERENCE VALIDATION REPORT")
+        print("=" * 70)
+        print()
+
+        # Coherence Score
+        coherence_score = coherence_check.get('coherence_score', 'Unknown')
+        print(f"📊 COHERENCE SCORE: {coherence_score}")
+        print()
+
+        # Story Logic
+        story_logic = coherence_check.get('story_logic', {})
+        logic_status = story_logic.get('status', 'unknown')
+        logic_assessment = story_logic.get('assessment', 'No assessment provided')
+        
+        print("🧠 STORY LOGIC:")
+        print("━" * 70)
+        print(f"  Status: {'✅' if logic_status == 'valid' else '⚠️'} {logic_status}")
+        print(f"  Assessment: {logic_assessment}")
+        print()
+
+        # Character Consistency
+        character_consistency = coherence_check.get('character_consistency', {})
+        consistent_chars = character_consistency.get('consistent_characters', [])
+        authenticity = character_consistency.get('authenticity', 'unknown')
+        
+        print("👥 CHARACTER CONSISTENCY:")
+        print("━" * 70)
+        print(f"  Consistent Characters: {', '.join(consistent_chars) if consistent_chars else 'None listed'}")
+        print(f"  Authenticity: {'✅' if authenticity == 'genuine' else '⚠️'} {authenticity}")
+        print()
+
+        # Emotional Authenticity
+        emotional_auth = coherence_check.get('emotional_authenticity', {})
+        earned_moments = emotional_auth.get('earned_moments', 0)
+        emotional_arc = emotional_auth.get('emotional_arc', 'unknown')
+        emotional_assessment = emotional_auth.get('assessment', 'No assessment provided')
+        
+        print("💝 EMOTIONAL AUTHENTICITY:")
+        print("━" * 70)
+        print(f"  Earned Moments: {earned_moments}")
+        print(f"  Emotional Arc: {'✅' if emotional_arc == 'believable' else '⚠️'} {emotional_arc}")
+        print(f"  Assessment: {emotional_assessment}")
+        print()
+
+        # Issues and Recommendations
+        issues = coherence_check.get('issues_found', [])
+        recommendations = coherence_check.get('recommendations', [])
+        
+        print("🔍 ISSUES FOUND:")
+        print("━" * 70)
+        if issues:
+            for i, issue in enumerate(issues, 1):
+                print(f"  {i}. {issue}")
+        else:
+            print("  ✅ No issues found")
+        print()
+
+        print("💡 RECOMMENDATIONS:")
+        print("━" * 70)
+        if recommendations:
+            for i, rec in enumerate(recommendations, 1):
+                print(f"  {i}. {rec}")
+        else:
+            print("  ✅ No recommendations")
+        print()
+
+        print("=" * 70)
+        print()
+
+    async def execute_story_coherence_validation(self, episode_number: int, script: Dict) -> Dict:
+        """Task 1: Validate story logic and character consistency"""
         try:
-            prompt = self.config.get_prompt('p3_cross_reference')
+            prompt = self.config.get_prompt('story_coherence_validation')
 
             # Prepare script content
             script_content = self._format_script_for_analysis(script)
 
-            # Prepare P3 grid for this episode
-            p3_grid_for_episode = self._format_p3_grid_for_episode(episode_number)
-
             # Format prompt
             formatted_prompt = prompt.format(
                 episode_number=episode_number,
-                current_script=script_content,
-                p3_grid_for_episode=p3_grid_for_episode
+                current_script=script_content
             )
 
             # Execute LLM call
@@ -402,28 +466,28 @@ class Station23TwistIntegration:
             # Extract JSON
             validation_data = extract_json(response)
 
-            return validation_data.get('p3_validation', {})
+            return validation_data.get('story_coherence', {})
 
         except Exception as e:
-            print(f"❌ P3 cross-reference failed: {str(e)}")
+            print(f"❌ Story coherence validation failed: {str(e)}")
             raise
 
-    async def execute_payoff_validation(self, episode_number: int, script: Dict) -> Dict:
-        """Task 2: Validate payoff timing"""
+    async def execute_minimal_enhancement(self, episode_number: int, script: Dict, coherence_check: Dict) -> Dict:
+        """Task 2: Generate minimal coherence enhancements"""
         try:
-            prompt = self.config.get_prompt('payoff_validation')
+            prompt = self.config.get_prompt('minimal_enhancement')
 
             # Prepare script content
             script_content = self._format_script_for_analysis(script)
 
-            # Prepare reveal schedule
-            reveal_schedule = self._format_reveal_schedule()
+            # Prepare coherence issues
+            coherence_issues = self._format_coherence_issues(coherence_check)
 
             # Format prompt
             formatted_prompt = prompt.format(
                 episode_number=episode_number,
                 current_script=script_content,
-                reveal_schedule=reveal_schedule
+                coherence_issues=coherence_issues
             )
 
             # Execute LLM call
@@ -434,12 +498,12 @@ class Station23TwistIntegration:
             )
 
             # Extract JSON
-            validation_data = extract_json(response)
+            enhancement_data = extract_json(response)
 
-            return validation_data.get('payoff_validation', {})
+            return enhancement_data.get('coherence_enhancements', {})
 
         except Exception as e:
-            print(f"❌ Payoff validation failed: {str(e)}")
+            print(f"❌ Minimal enhancement failed: {str(e)}")
             raise
 
     async def execute_misdirection_balance(self, episode_number: int, script: Dict) -> Dict:
@@ -524,6 +588,31 @@ class Station23TwistIntegration:
             parts.append(script_content)
             parts.append("")
 
+        return "\n".join(parts)
+
+    def _format_coherence_issues(self, coherence_check: Dict) -> str:
+        """Format coherence issues for enhancement prompt"""
+        issues = coherence_check.get('issues_found', [])
+        recommendations = coherence_check.get('recommendations', [])
+        
+        parts = []
+        
+        if issues:
+            parts.append("ISSUES FOUND:")
+            for issue in issues:
+                parts.append(f"- {issue}")
+        else:
+            parts.append("ISSUES FOUND: None")
+        
+        parts.append("")
+        
+        if recommendations:
+            parts.append("RECOMMENDATIONS:")
+            for rec in recommendations:
+                parts.append(f"- {rec}")
+        else:
+            parts.append("RECOMMENDATIONS: None")
+        
         return "\n".join(parts)
 
     def _format_p3_grid_for_episode(self, episode_number: int) -> str:
@@ -719,42 +808,37 @@ class Station23TwistIntegration:
         print()
 
     def display_enhanced_script(self, episode_number: int, original: Dict, enhanced: Dict):
-        """Display enhanced script with P3 integrations"""
+        """Display enhanced script with coherence improvements"""
         print("=" * 70)
-        print(f"✨ EPISODE {episode_number}: P3-ENHANCED SCRIPT")
+        print(f"✨ EPISODE {episode_number}: COHERENCE-ENHANCED SCRIPT")
         print("=" * 70)
         print()
 
-        changes = enhanced.get('changes', [])
-        total_changes = enhanced.get('total_changes', len(changes))
-        word_count_change = enhanced.get('word_count_change', '+0 words')
+        enhancements = enhanced.get('enhancements', [])
+        total_changes = enhanced.get('total_changes', len(enhancements))
+        enhancement_type = enhanced.get('enhancement_type', 'unknown')
+        preservation_status = enhanced.get('preservation_status', 'Unknown')
 
-        compliance_before = enhanced.get('p3_compliance_before', 'Unknown')
-        compliance_after = enhanced.get('p3_compliance_after', 'Unknown')
-
-        print("P3 INTEGRATION STATISTICS:")
+        print("COHERENCE ENHANCEMENT STATISTICS:")
         print("━" * 70)
-        print(f"  • Total P3 Integrations: {total_changes}")
-        print(f"  • Word Count Change: {word_count_change}")
-        print(f"  • P3 Compliance Before: {compliance_before}")
-        print(f"  • P3 Compliance After: {compliance_after}")
+        print(f"  • Total Enhancements: {total_changes}")
+        print(f"  • Enhancement Type: {enhancement_type}")
+        print(f"  • Preservation Status: {preservation_status}")
         print()
 
-        print("P3 INTEGRATIONS MADE:")
+        print("COHERENCE ENHANCEMENTS MADE:")
         print("━" * 70)
 
-        for i, change in enumerate(changes[:10], 1):
-            change_type = change.get('change_type', 'unknown')
-            scene_num = change.get('scene_number', '?')
-            p3_marker = change.get('p3_marker', '')
-            technique = change.get('integration_technique', '')
+        for i, enhancement in enumerate(enhancements[:10], 1):
+            enhancement_type = enhancement.get('type', 'unknown')
+            scene_num = enhancement.get('scene_number', '?')
+            reason = enhancement.get('reason', '')
 
-            print(f"  {i}. [{change_type.upper()}] Scene {scene_num}")
-            print(f"     P3 Marker: {p3_marker}")
-            print(f"     Technique: {technique}")
+            print(f"  {i}. [{enhancement_type.upper()}] Scene {scene_num}")
+            print(f"     Reason: {reason}")
 
-        if len(changes) > 10:
-            print(f"  ... and {len(changes) - 10} more integrations")
+        if len(enhancements) > 10:
+            print(f"  ... and {len(enhancements) - 10} more enhancements")
 
         print()
         print("=" * 70)
@@ -763,22 +847,22 @@ class Station23TwistIntegration:
     async def human_review(self, episode_number: int, enhanced: Dict, original: Dict) -> str:
         """Human review interface"""
         print("=" * 70)
-        print("⭐ P3-ENHANCED SCRIPT REVIEW")
+        print("⭐ COHERENCE-ENHANCED SCRIPT REVIEW")
         print("=" * 70)
         print()
 
         total_changes = enhanced.get('total_changes', 0)
-        compliance_after = enhanced.get('p3_compliance_after', 'Unknown')
+        enhancement_type = enhanced.get('enhancement_type', 'Unknown')
 
-        print(f"Episode {episode_number} P3 integration complete:")
-        print(f"  • {total_changes} P3 elements integrated")
-        print(f"  • P3 Compliance: {compliance_after}")
+        print(f"Episode {episode_number} coherence enhancement complete:")
+        print(f"  • {total_changes} coherence improvements made")
+        print(f"  • Enhancement Type: {enhancement_type}")
         print()
         print("OPTIONS:")
         print("  [Enter] - Approve and save (recommended)")
-        print("  [R]     - Regenerate P3 integrations")
+        print("  [R]     - Regenerate coherence enhancements")
         print("  [V]     - View complete enhanced script")
-        print("  [D]     - View detailed P3 integration report")
+        print("  [D]     - View detailed enhancement report")
         print()
 
         choice = input("Your choice: ").strip().upper()
@@ -792,7 +876,7 @@ class Station23TwistIntegration:
             self.display_detailed_integration_report(enhanced)
             return await self.human_review(episode_number, enhanced, original)
         else:
-            print("✅ P3-enhanced script approved. Saving files...")
+            print("✅ Coherence-enhanced script approved. Saving files...")
             print()
             return "approved"
 
@@ -814,24 +898,22 @@ class Station23TwistIntegration:
         input("\nPress Enter to return to review menu...")
 
     def display_detailed_integration_report(self, enhanced: Dict):
-        """Display detailed P3 integration report"""
-        changes = enhanced.get('changes', [])
+        """Display detailed coherence enhancement report"""
+        enhancements = enhanced.get('enhancements', [])
 
         print("\n" + "=" * 70)
-        print("DETAILED P3 INTEGRATION REPORT")
+        print("DETAILED COHERENCE ENHANCEMENT REPORT")
         print("=" * 70 + "\n")
 
-        for i, change in enumerate(changes, 1):
-            print(f"\nINTEGRATION {i}:")
-            print(f"  Type: {change.get('change_type', 'unknown')}")
-            print(f"  Scene: {change.get('scene_number', '?')}")
-            print(f"  P3 Marker: {change.get('p3_marker', '')}")
-            print(f"  Payoff Episode: {change.get('payoff_episode', '?')}")
-            print(f"  Technique: {change.get('integration_technique', '')}")
-            print(f"  Explanation: {change.get('explanation', '')}")
+        for i, enhancement in enumerate(enhancements, 1):
+            print(f"\nENHANCEMENT {i}:")
+            print(f"  Type: {enhancement.get('type', 'unknown')}")
+            print(f"  Scene: {enhancement.get('scene_number', '?')}")
+            print(f"  Reason: {enhancement.get('reason', '')}")
+            print(f"  Explanation: {enhancement.get('explanation', '')}")
 
-            original = change.get('original_content', '')
-            enhanced_content = change.get('enhanced_content', '')
+            original = enhancement.get('original_content', '')
+            enhanced_content = enhancement.get('enhanced_content', '')
 
             if original:
                 print(f"  Original: {original[:200]}")
@@ -843,12 +925,11 @@ class Station23TwistIntegration:
         input("\nPress Enter to return to review menu...")
 
     async def save_episode_outputs(self, episode_number: int, enhanced: Dict,
-                                   p3_validation: Dict, payoff_validation: Dict,
-                                   misdirection: Dict):
+                                   coherence_check: Dict):
         """Save episode in multiple formats"""
         print()
         print("=" * 70)
-        print("💾 SAVING P3 VALIDATION FILES")
+        print("💾 SAVING COHERENCE VALIDATION FILES")
         print("=" * 70)
         print()
 
@@ -857,17 +938,15 @@ class Station23TwistIntegration:
         episode_dir.mkdir(exist_ok=True)
 
         # 1. Save JSON with all validation + enhanced script
-        json_filename = f"episode_{episode_number:02d}_twist_integrated.json"
+        json_filename = f"episode_{episode_number:02d}_coherence_enhanced.json"
         json_path = episode_dir / json_filename
 
         full_data = {
             'session_id': self.session_id,
             'episode_number': episode_number,
             'validated_at': datetime.now().isoformat(),
-            'p3_validation': p3_validation,
-            'payoff_validation': payoff_validation,
-            'misdirection_analysis': misdirection,
-            'twist_integration': enhanced
+            'story_coherence_check': coherence_check,
+            'coherence_enhancements': enhanced
         }
 
         with open(json_path, 'w', encoding='utf-8') as f:
@@ -875,7 +954,7 @@ class Station23TwistIntegration:
         print(f"✅ Saved JSON: {json_path}")
 
         # 2. Save Enhanced Script (Plain Text)
-        txt_filename = f"episode_{episode_number:02d}_twist_integrated.txt"
+        txt_filename = f"episode_{episode_number:02d}_coherence_enhanced.txt"
         txt_path = episode_dir / txt_filename
 
         txt_content = enhanced.get('full_enhanced_script', '')
@@ -883,15 +962,14 @@ class Station23TwistIntegration:
             f.write(txt_content)
         print(f"✅ Saved Enhanced Script: {txt_path}")
 
-        # 3. Save P3 Validation Report
-        report_filename = f"episode_{episode_number:02d}_p3_validation.txt"
+        # 3. Save Coherence Validation Report
+        report_filename = f"episode_{episode_number:02d}_coherence_report.txt"
         report_path = episode_dir / report_filename
 
-        report_content = self.generate_p3_report(episode_number, p3_validation, payoff_validation,
-                                                 misdirection, enhanced)
+        report_content = self.generate_coherence_report(episode_number, coherence_check, enhanced)
         with open(report_path, 'w', encoding='utf-8') as f:
             f.write(report_content)
-        print(f"✅ Saved P3 Report: {report_path}")
+        print(f"✅ Saved Coherence Report: {report_path}")
 
         # 4. Save to Redis for Station 24+
         redis_key = f"audiobook:{self.session_id}:station_23:episode_{episode_number:02d}"
@@ -900,61 +978,90 @@ class Station23TwistIntegration:
 
         print()
 
-    def generate_p3_report(self, episode_number: int, p3_validation: Dict,
-                          payoff_validation: Dict, misdirection: Dict, enhanced: Dict) -> str:
-        """Generate comprehensive P3 validation report"""
+    def generate_coherence_report(self, episode_number: int, coherence_check: Dict, enhanced: Dict) -> str:
+        """Generate comprehensive coherence validation report"""
         lines = []
 
         lines.append("=" * 70)
-        lines.append(f"EPISODE {episode_number} P3 VALIDATION REPORT")
+        lines.append(f"EPISODE {episode_number} STORY COHERENCE REPORT")
         lines.append("=" * 70)
         lines.append(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         lines.append(f"Session: {self.session_id}")
         lines.append("")
 
-        # P3 Grid Compliance
-        summary = p3_validation.get('summary', {})
-        lines.append("PLANT COMPLIANCE:")
+        # Coherence Score
+        coherence_score = coherence_check.get('coherence_score', 'Unknown')
+        lines.append("COHERENCE SCORE:")
         lines.append("━" * 70)
-        lines.append(f"  Required Plants: {summary.get('total_required', 0)}")
-        lines.append(f"  Strong Plants: {summary.get('strong_plants', 0)}")
-        lines.append(f"  Weak Plants: {summary.get('weak_plants', 0)}")
-        lines.append(f"  Missing Plants: {summary.get('missing_plants', 0)}")
+        lines.append(f"  Score: {coherence_score}")
         lines.append("")
 
-        # Payoff Timing
-        premature_reveals = payoff_validation.get('premature_reveals', [])
-        lines.append("PAYOFF TIMING:")
+        # Story Logic
+        story_logic = coherence_check.get('story_logic', {})
+        logic_status = story_logic.get('status', 'unknown')
+        logic_assessment = story_logic.get('assessment', 'No assessment provided')
+        lines.append("STORY LOGIC:")
         lines.append("━" * 70)
-        lines.append(f"  Premature Reveals: {len(premature_reveals)}")
-        for reveal in premature_reveals:
-            lines.append(f"    • Scene {reveal.get('scene_number', '?')}: {reveal.get('content_revealed', '')}")
+        lines.append(f"  Status: {logic_status}")
+        lines.append(f"  Assessment: {logic_assessment}")
         lines.append("")
 
-        # Misdirection Balance
-        fair_play = misdirection.get('fair_play_check', {})
-        lines.append("MISDIRECTION BALANCE:")
+        # Character Consistency
+        character_consistency = coherence_check.get('character_consistency', {})
+        consistent_chars = character_consistency.get('consistent_characters', [])
+        authenticity = character_consistency.get('authenticity', 'unknown')
+        lines.append("CHARACTER CONSISTENCY:")
         lines.append("━" * 70)
-        lines.append(f"  Fair Play: {fair_play.get('balance_rating', 'unknown')}")
+        lines.append(f"  Consistent Characters: {', '.join(consistent_chars) if consistent_chars else 'None listed'}")
+        lines.append(f"  Authenticity: {authenticity}")
         lines.append("")
 
-        # P3 Integrations
+        # Emotional Authenticity
+        emotional_auth = coherence_check.get('emotional_authenticity', {})
+        earned_moments = emotional_auth.get('earned_moments', 0)
+        emotional_arc = emotional_auth.get('emotional_arc', 'unknown')
+        emotional_assessment = emotional_auth.get('assessment', 'No assessment provided')
+        lines.append("EMOTIONAL AUTHENTICITY:")
+        lines.append("━" * 70)
+        lines.append(f"  Earned Moments: {earned_moments}")
+        lines.append(f"  Emotional Arc: {emotional_arc}")
+        lines.append(f"  Assessment: {emotional_assessment}")
+        lines.append("")
+
+        # Issues and Recommendations
+        issues = coherence_check.get('issues_found', [])
+        recommendations = coherence_check.get('recommendations', [])
+        lines.append("ISSUES FOUND:")
+        lines.append("━" * 70)
+        if issues:
+            for i, issue in enumerate(issues, 1):
+                lines.append(f"  {i}. {issue}")
+        else:
+            lines.append("  No issues found")
+        lines.append("")
+
+        lines.append("RECOMMENDATIONS:")
+        lines.append("━" * 70)
+        if recommendations:
+            for i, rec in enumerate(recommendations, 1):
+                lines.append(f"  {i}. {rec}")
+        else:
+            lines.append("  No recommendations")
+        lines.append("")
+
+        # Enhancements
         total_changes = enhanced.get('total_changes', 0)
-        compliance_before = enhanced.get('p3_compliance_before', 'Unknown')
-        compliance_after = enhanced.get('p3_compliance_after', 'Unknown')
-
-        lines.append("P3 INTEGRATIONS:")
+        enhancement_type = enhanced.get('enhancement_type', 'unknown')
+        lines.append("COHERENCE ENHANCEMENTS:")
         lines.append("━" * 70)
-        lines.append(f"  Total Integrations: {total_changes}")
-        lines.append(f"  Compliance Before: {compliance_before}")
-        lines.append(f"  Compliance After: {compliance_after}")
+        lines.append(f"  Total Changes: {total_changes}")
+        lines.append(f"  Enhancement Type: {enhancement_type}")
         lines.append("")
 
-        changes = enhanced.get('changes', [])
-        for i, change in enumerate(changes, 1):
-            lines.append(f"{i}. [{change.get('change_type', 'unknown').upper()}] Scene {change.get('scene_number', '?')}")
-            lines.append(f"   P3 Marker: {change.get('p3_marker', '')}")
-            lines.append(f"   Technique: {change.get('integration_technique', '')}")
+        enhancements = enhanced.get('enhancements', [])
+        for i, enhancement in enumerate(enhancements, 1):
+            lines.append(f"{i}. [{enhancement.get('type', 'unknown').upper()}] Scene {enhancement.get('scene_number', '?')}")
+            lines.append(f"   Reason: {enhancement.get('reason', '')}")
             lines.append("")
 
         lines.append("=" * 70)
@@ -965,7 +1072,7 @@ class Station23TwistIntegration:
         """Ask if user wants to continue validation"""
         print()
         print("=" * 70)
-        print("⭐ CONTINUE P3 VALIDATION?")
+        print("⭐ CONTINUE COHERENCE VALIDATION?")
         print("=" * 70)
         print()
         print(f"Episodes validated: {len(self.validated_episodes)}/{len(self.script_episodes)}")
@@ -993,7 +1100,7 @@ class Station23TwistIntegration:
         print(f"Session ID: {self.session_id}")
         print()
         print("Your progress has been saved.")
-        print("Resume P3 validation anytime by running Station 23 again.")
+        print("Resume coherence validation anytime by running Station 23 again.")
         print()
         print("Next Steps:")
         print("  1. Continue validating remaining episodes (Station 23)")

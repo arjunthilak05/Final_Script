@@ -1,0 +1,75 @@
+{
+  "session_id": "session_20251023_112749",
+  "timestamp": "2025-10-24T21:17:38.268729",
+  "total_episodes": 1,
+  "episode_results": [
+    {
+      "episode_id": 1,
+      "emotional_scorecard": {
+        "emotional_scorecard": {},
+        "relationship_chart": [],
+        "universal_resonance": {},
+        "problem_flags": [
+          {
+            "type": "Placeholder Content",
+            "location": "Entire Episode",
+            "issue": "Script contains only placeholder text",
+            "recommended_fix": "Run Station 27 to generate actual episode scripts"
+          }
+        ],
+        "line_adjustments": []
+      },
+      "relationship_chart": {
+        "relationship_chart": []
+      },
+      "universal_resonance": {
+        "universal_resonance": {}
+      },
+      "problem_flags": [
+        {
+          "type": "Placeholder Content",
+          "location": "Entire Episode",
+          "issue": "Script contains only placeholder text",
+          "recommended_fix": "Run Station 27 to generate actual episode scripts"
+        }
+      ],
+      "line_adjustments": [],
+      "timestamp": "2025-10-24T21:17:19.644304"
+    }
+  ],
+  "summary_report": {
+    "executive_summary": "The analysis of the current session reveals a significant limitation in evaluating emotional truth and narrative development. The single episode processed consists entirely of placeholder text, which prevents meaningful assessment of emotional arcs, character relationships, and universal resonance. Without actual content, it's impossible to determine the emotional health of the narrative or provide insights into character development and audience engagement potential.",
+    "overall_emotional_health": {
+      "average_arc_score": 0,
+      "average_relationship_score": 0,
+      "average_resonance_score": 0,
+      "total_problems": 1,
+      "total_adjustments": 0
+    },
+    "episode_breakdown": [
+      {
+        "episode_id": 1,
+        "emotional_health_score": 0,
+        "key_strengths": [],
+        "key_weaknesses": [
+          "Complete absence of actual content",
+          "Inability to assess emotional development",
+          "No character relationships established"
+        ],
+        "critical_fixes": [
+          "Run Station 27 to generate actual episode scripts",
+          "Develop character emotional arcs",
+          "Establish meaningful relationship dynamics"
+        ]
+      }
+    ],
+    "series_recommendations": [
+      "Generate actual episode content through Station 27 before further analysis",
+      "Establish clear emotional objectives for each character before script development",
+      "Create a relationship map to ensure consistent character dynamics across episodes",
+      "Develop universal themes that will resonate with the target audience",
+      "Implement a review process to validate emotional truth in future scripts"
+    ],
+    "emotional_consistency_notes": "Emotional consistency cannot be evaluated due to the absence of actual content. Once genuine scripts are generated, consistency should be assessed across character development, relationship evolution, and thematic resonance. Regular emotional truth validation should be implemented as part of the content development process."
+  }
+}

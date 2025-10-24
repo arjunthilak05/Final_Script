@@ -1,0 +1,492 @@
+{
+  "Character Bible Document": {
+    "session_id": "session_20251017_142930",
+    "timestamp": "2025-10-17T16:35:50.844878",
+    "working_title": "Wrong Number, Right Message",
+    "primary_genre": "Contemporary Romance",
+    "target_age": "25-55",
+    "episode_count": "8-12 episodes",
+    "episode_length": "35-45 min each",
+    "story_complexity": "Unknown",
+    "tone": "The audio narrative carefully balances dark moments of depression and conflict with light moments of connection and humor through a nuanced approach. Dark moments are characterized by minimal sound design, lower vocal registers, and dissonant musical elements, but are never allowed to dominate for extended periods. Light moments feature warmer musical tones, more dynamic vocal performances, and richer environmental sounds. The balance shifts progressively across episodes, with early installments weighted toward darkness (60/40 dark/light), middle episodes achieving equilibrium (50/50), and final episodes leaning toward light (40/60 dark/light). This progression reflects the characters' emotional journeys while maintaining authentic dramatic tension throughout.",
+    "narrator_strategy": "With Narrator",
+    "core_premise": "Unknown",
+    "character_bible": {
+      "project_overview": {
+        "working_title": "Wrong Number, Right Message",
+        "primary_genre": "Contemporary Romance",
+        "target_age": "25-55",
+        "episode_count": "8-12 episodes",
+        "core_premise": "Unknown"
+      },
+      "tier_1_protagonists": [
+        {
+          "name": "Tom",
+          "age": "35",
+          "role": "Morning Motivation Coach",
+          "psychological_profile": {
+            "background": "Tom grew up in a low-income family and struggled with self-esteem issues. He turned his life around through self-help and now helps others do the same. He is passionate about his work but often finds himself overextending to prove his worth.",
+            "motivations": "To help people achieve their best selves and to prove his own worth through his work.",
+            "fears": "Failure and the fear of not being enough, both professionally and personally.",
+            "desires": "To find a deeper sense of fulfillment and a meaningful connection.",
+            "personality_traits": [
+              "Optimistic",
+              "Supportive",
+              "Determined"
+            ],
+            "internal_conflicts": "Struggles with balancing his professional ambitions and personal well-being. Often neglects his own needs to focus on others."
+          },
+          "voice_signature": {
+            "pitch": "medium",
+            "pace": "medium",
+            "vocabulary_style": "sophisticated but accessible",
+            "speech_patterns": "Uses motivational phrases and structured sentences. Often pauses to emphasize key points."
+          },
+          "character_arc": {
+            "beginning_state": "Highly driven but emotionally drained, often neglecting his own needs.",
+            "key_growth_moments": [
+              "Meeting Julia and beginning to question his own well-being.",
+              "Facing a personal crisis that forces him to reevaluate his life.",
+              "Learning to set boundaries and prioritize his own happiness."
+            ],
+            "end_state": "More balanced and fulfilled, with a deeper understanding of his own needs and a stronger connection to Julia.",
+            "transformation": "From a driven but unfulfilled coach to a more grounded and self-aware individual."
+          },
+          "key_relationships": {
+            "allies": [
+              "Julia",
+              "Michael"
+            ],
+            "enemies": [
+              "None"
+            ],
+            "family": [
+              "None"
+            ],
+            "romantic": "Julia"
+          },
+          "secret_revelation_timeline": [
+            {
+              "episode_range": "Episodes 3-4",
+              "secret": "Tom's own struggles with self-esteem and his past.",
+              "to_whom": "Julia",
+              "impact": "Julia gains a deeper understanding of Tom, leading to a stronger emotional bond."
+            }
+          ],
+          "audio_identification_markers": {
+            "verbal_tics": [
+              "You can do it!",
+              "Believe in yourself."
+            ],
+            "catchphrases": [
+              "Life is a journey, not a destination.",
+              "Every step forward is progress."
+            ],
+            "emotional_temperature": {
+              "anger": "Frustrated but maintains a calm tone.",
+              "fear": "Anxiety is often masked with a supportive tone.",
+              "joy": "Enthusiastic and uplifting.",
+              "sadness": "Soft and reflective."
+            },
+            "unique_speech_patterns": "Uses motivational phrases and structured sentences, often pausing for emphasis."
+          }
+        },
+        {
+          "name": "Julia",
+          "age": "32",
+          "role": "Depressed ER Doctor",
+          "psychological_profile": {
+            "background": "Julia grew up in a high-pressure environment, always expected to excel. She is a brilliant doctor but struggles with severe depression and a sense of isolation. Her work is her escape, but it also exacerbates her burnout.",
+            "motivations": "To find a way to cope with her depression and to connect with others on a deeper level.",
+            "fears": "Being seen as weak or incapable, both in her personal and professional life.",
+            "desires": "To find a sense of peace and a meaningful connection.",
+            "personality_traits": [
+              "Intelligent",
+              "Compassionate",
+              "Reserved"
+            ],
+            "internal_conflicts": "Struggles with the pressure to be perfect and the need to be vulnerable. Often feels overwhelmed and isolated."
+          },
+          "voice_signature": {
+            "pitch": "medium-low",
+            "pace": "slow",
+            "vocabulary_style": "sophisticated but accessible",
+            "speech_patterns": "Speaks with a thoughtful and sometimes hesitant tone, often pausing to gather her thoughts."
+          },
+          "character_arc": {
+            "beginning_state": "Struggling with severe depression and a sense of isolation, often putting up emotional walls.",
+            "key_growth_moments": [
+              "Opening up to Tom about her struggles.",
+              "Finding a supportive community through her work and personal relationships.",
+              "Gradually building the courage to seek help and prioritize her mental health."
+            ],
+            "end_state": "More open and resilient, with a stronger support network and a better understanding of her own worth.",
+            "transformation": "From a depressed and isolated doctor to a more balanced and connected individual."
+          },
+          "key_relationships": {
+            "allies": [
+              "Tom",
+              "Sarah"
+            ],
+            "enemies": [
+              "None"
+            ],
+            "family": [
+              "None"
+            ],
+            "romantic": "Tom"
+          },
+          "secret_revelation_timeline": [
+            {
+              "episode_range": "Episodes 5-6",
+              "secret": "Julia's past trauma and the root of her depression.",
+              "to_whom": "Tom",
+              "impact": "Tom gains a deeper understanding of Julia's struggles, leading to a more supportive and empathetic relationship."
+            }
+          ],
+          "audio_identification_markers": {
+            "verbal_tics": [
+              "I just need a moment.",
+              "I'm okay, really."
+            ],
+            "catchphrases": [
+              "Every day is a new chance.",
+              "We all need a bit of help sometimes."
+            ],
+            "emotional_temperature": {
+              "anger": "Rarely shows anger, more often frustrated and weary.",
+              "fear": "Sounds anxious and uncertain.",
+              "joy": "Genuine but often muted, with a soft tone.",
+              "sadness": "Deep and resonant, with a sense of weariness."
+            },
+            "unique_speech_patterns": "Speaks with a thoughtful and sometimes hesitant tone, often pausing to gather her thoughts."
+          }
+        },
+        {
+          "name": "Michael",
+          "age": "40",
+          "role": "Tom's Actual Client",
+          "psychological_profile": {
+            "background": "Michael is a successful businessman who has achieved everything he thought he wanted but feels unfulfilled. He struggles with a sense of emptiness and a lack of direction. He seeks Tom's help to find meaning in his life.",
+            "motivations": "To find a deeper sense of purpose and fulfillment.",
+            "fears": "Feeling like a failure despite his success, and the fear of not knowing what he truly wants.",
+            "desires": "To find a sense of purpose and a more meaningful life.",
+            "personality_traits": [
+              "Ambitious",
+              "Reflective",
+              "Analytical"
+            ],
+            "internal_conflicts": "Struggles with the gap between his external success and internal dissatisfaction. Often feels lost and uncertain."
+          },
+          "voice_signature": {
+            "pitch": "low",
+            "pace": "medium",
+            "vocabulary_style": "sophisticated but accessible",
+            "speech_patterns": "Speaks with a confident but reflective tone, often using business jargon and analytical language."
+          },
+          "character_arc": {
+            "beginning_state": "Successful but unfulfilled, often feeling lost and directionless.",
+            "key_growth_moments": [
+              "Realizing that material success is not enough.",
+              "Finding a new passion and purpose through personal growth.",
+              "Learning to value relationships and emotional connections."
+            ],
+            "end_state": "More fulfilled and grounded, with a clearer sense of purpose and stronger relationships.",
+            "transformation": "From a driven but unfulfilled businessman to a more balanced and purposeful individual."
+          },
+          "key_relationships": {
+            "allies": [
+              "Tom"
+            ],
+            "enemies": [
+              "None"
+            ],
+            "family": [
+              "None"
+            ],
+            "romantic": "None"
+          },
+          "secret_revelation_timeline": [
+            {
+              "episode_range": "Episodes 7-8",
+              "secret": "Michael's past failures and the source of his unfulfillment.",
+              "to_whom": "Tom",
+              "impact": "Tom gains a deeper understanding of Michael's struggles, leading to more effective coaching and a stronger bond."
+            }
+          ],
+          "audio_identification_markers": {
+            "verbal_tics": [
+              "I need to think this through.",
+              "That's a good point."
+            ],
+            "catchphrases": [
+              "Success is not just about the destination, but the journey.",
+              "It's never too late to find your purpose."
+            ],
+            "emotional_temperature": {
+              "anger": "Frustrated but maintains a calm tone.",
+              "fear": "Anxious and uncertain, often sounding reflective.",
+              "joy": "Genuine but often guarded, with a sense of cautious optimism.",
+              "sadness": "Deep and resonant, with a sense of reflection."
+            },
+            "unique_speech_patterns": "Speaks with a confident but reflective tone, often using business jargon and analytical language."
+          }
+        }
+      ],
+      "tier_2_major_supporting": [
+        {
+          "name": "Sarah",
+          "age": "30",
+          "role": "Julia's ER Colleague",
+          "relevant_backstory": "Sarah is a dedicated ER doctor who has been Julia's friend and colleague for several years. She is supportive and caring, often providing a listening ear and a shoulder to lean on.",
+          "distinct_voice": {
+            "pitch": "medium-high",
+            "pace": "fast",
+            "vocabulary_style": "sophisticated but accessible",
+            "speech_patterns": "Speaks with a warm and professional tone, often using medical jargon and offering practical advice."
+          },
+          "episode_specific_arc": {
+            "early_episodes": "Supports Julia through her struggles, offering emotional and professional advice.",
+            "middle_episodes": "Becomes more involved in Julia's personal life, encouraging her to seek help and open up.",
+            "late_episodes": "Celebrates Julia's growth and supports her in her new journey."
+          },
+          "story_function": "Provides emotional and professional support to Julia, helping her navigate her personal and professional challenges.",
+          "relationship_to_protagonists": [
+            "Julia's close friend and colleague"
+          ],
+          "audio_identification_markers": {
+            "verbal_tics": [
+              "You can do this.",
+              "Let's take it one step at a time."
+            ],
+            "catchphrases": [
+              "We've got this.",
+              "You're not alone."
+            ],
+            "emotional_temperature": {
+              "anger": "Firm but supportive.",
+              "fear": "Concerned and caring.",
+              "joy": "Genuine and warm.",
+              "sadness": "Empathetic and supportive."
+            },
+            "unique_speech_patterns": "Speaks with a warm and professional tone, often using medical jargon and offering practical advice."
+          }
+        },
+        {
+          "name": "Liam",
+          "age": "28",
+          "role": "Tom's Colleague",
+          "relevant_backstory": "Liam is a fellow coach who has known Tom for several years. He is more laid-back and often provides a different perspective on Tom's methods and personal life.",
+          "distinct_voice": {
+            "pitch": "medium",
+            "pace": "medium",
+            "vocabulary_style": "informal",
+            "speech_patterns": "Speaks with a casual and encouraging tone, often using colloquial language and humor."
+          },
+          "episode_specific_arc": {
+            "early_episodes": "Challenges Tom's methods and encourages him to be more self-reflective.",
+            "middle_episodes": "Becomes a sounding board for Tom's personal struggles and growth.",
+            "late_episodes": "Celebrates Tom's transformation and offers ongoing support."
+          },
+          "story_function": "Provides a different perspective and challenges Tom to grow, both professionally and personally.",
+          "relationship_to_protagonists": [
+            "Tom's colleague and friend"
+          ],
+          "audio_identification_markers": {
+            "verbal_tics": [
+              "You know what I mean?",
+              "Just saying."
+            ],
+            "catchphrases": [
+              "Sometimes you gotta step back to move forward.",
+              "Life's too short to be serious all the time."
+            ],
+            "emotional_temperature": {
+              "anger": "Playful but firm.",
+              "fear": "Concerned but supportive.",
+              "joy": "Enthusiastic and encouraging.",
+              "sadness": "Empathetic and understanding."
+            },
+            "unique_speech_patterns": "Speaks with a casual and encouraging tone, often using colloquial language and humor."
+          }
+        },
+        {
+          "name": "Nina",
+          "age": "35",
+          "role": "Julia's Sister",
+          "relevant_backstory": "Nina is Julia's older sister and a successful lawyer. She is supportive but often overprotective, which sometimes creates tension between them. She is concerned about Julia's well-being and wants to help.",
+          "distinct_voice": {
+            "pitch": "medium-high",
+            "pace": "fast",
+            "vocabulary_style": "formal",
+            "speech_patterns": "Speaks with a confident and sometimes assertive tone, often using legal jargon and structured arguments."
+          },
+          "episode_specific_arc": {
+            "early_episodes": "Expresses concern about Julia's well-being and offers her support.",
+            "middle_episodes": "Becomes more involved in Julia's personal life, sometimes overstepping boundaries.",
+            "late_episodes": "Learns to respect Julia's independence and supports her in her new journey."
+          },
+          "story_function": "Provides a different perspective on Julia's life, sometimes challenging her but ultimately supporting her growth.",
+          "relationship_to_protagonists": [
+            "Julia's older sister"
+          ],
+          "audio_identification_markers": {
+            "verbal_tics": [
+              "I'm just saying.",
+              "For your own good."
+            ],
+            "catchphrases": [
+              "You're stronger than you think.",
+              "Sometimes you need to take a stand."
+            ],
+            "emotional_temperature": {
+              "anger": "Assertive and firm.",
+              "fear": "Concerned and protective.",
+              "joy": "Genuine and proud.",
+              "sadness": "Empathetic and supportive."
+            },
+            "unique_speech_patterns": "Speaks with a confident and sometimes assertive tone, often using legal jargon and structured arguments."
+          }
+        }
+      ],
+      "tier_3_recurring": [
+        {
+          "name": "Dr. Patel",
+          "age": "45",
+          "role": "Julia's Mentor",
+          "defining_trait": "Wise and experienced ER doctor who provides guidance and support.",
+          "memorable_voice_hook": "Deep, calm, and authoritative.",
+          "narrative_purpose": "Provides professional guidance and emotional support to Julia, helping her navigate the challenges of her job.",
+          "episodes_appearing": [
+            2,
+            5,
+            8
+          ],
+          "audio_identification_markers": {
+            "verbal_tics": [
+              "You need to take a deep breath.",
+              "Let's focus on the next step."
+            ],
+            "catchphrases": [
+              "Experience is the best teacher.",
+              "Every challenge is an opportunity."
+            ],
+            "emotional_temperature": {
+              "primary_emotion": "Calm and supportive."
+            },
+            "unique_speech_patterns": "Speaks with a deep, calm, and authoritative tone, often using medical jargon and offering practical advice."
+          }
+        },
+        {
+          "name": "Alex",
+          "age": "27",
+          "role": "Tom's Client",
+          "defining_trait": "Energetic and enthusiastic young professional.",
+          "memorable_voice_hook": "High-pitched and fast-paced.",
+          "narrative_purpose": "Provides a contrast to Tom's more serious clients, bringing energy and enthusiasm to the coaching sessions.",
+          "episodes_appearing": [
+            1,
+            4,
+            7
+          ],
+          "audio_identification_markers": {
+            "verbal_tics": [
+              "That's awesome!",
+              "I can't wait!"
+            ],
+            "catchphrases": [
+              "The sky's the limit!",
+              "Let's make it happen!"
+            ],
+            "emotional_temperature": {
+              "primary_emotion": "Excited and enthusiastic."
+            },
+            "unique_speech_patterns": "Speaks with a high-pitched and fast-paced tone, often using colloquial language and enthusiastic expressions."
+          }
+        },
+        {
+          "name": "Rachel",
+          "age": "30",
+          "role": "Julia's Friend",
+          "defining_trait": "Loyal and supportive friend.",
+          "memorable_voice_hook": "Warm and friendly.",
+          "narrative_purpose": "Provides emotional support and a listening ear for Julia, helping her navigate her personal challenges.",
+          "episodes_appearing": [
+            3,
+            6,
+            9
+          ],
+          "audio_identification_markers": {
+            "verbal_tics": [
+              "I'm here for you.",
+              "You can talk to me."
+            ],
+            "catchphrases": [
+              "You're not alone.",
+              "We'll get through this together."
+            ],
+            "emotional_temperature": {
+              "primary_emotion": "Supportive and caring."
+            },
+            "unique_speech_patterns": "Speaks with a warm and friendly tone, often using supportive and caring language."
+          }
+        },
+        {
+          "name": "Mark",
+          "age": "42",
+          "role": "Tom's Client",
+          "defining_trait": "Stoic and reserved businessman.",
+          "memorable_voice_hook": "Low and measured.",
+          "narrative_purpose": "Provides a contrast to Tom's more expressive clients, bringing a sense of calm and pragmatism to the coaching sessions.",
+          "episodes_appearing": [
+            2,
+            5,
+            8
+          ],
+          "audio_identification_markers": {
+            "verbal_tics": [
+              "Let's be realistic.",
+              "We need to focus on the facts."
+            ],
+            "catchphrases": [
+              "Actions speak louder than words.",
+              "Stay the course."
+            ],
+            "emotional_temperature": {
+              "primary_emotion": "Calm and pragmatic."
+            },
+            "unique_speech_patterns": "Speaks with a low and measured tone, often using formal and pragmatic language."
+          }
+        },
+        {
+          "name": "Emma",
+          "age": "29",
+          "role": "Sarah's Friend",
+          "defining_trait": "Fun-loving and adventurous.",
+          "memorable_voice_hook": "High and energetic.",
+          "narrative_purpose": "Provides a contrast to Sarah's more serious demeanor, bringing a sense of fun and adventure to their interactions.",
+          "episodes_appearing": [
+            1,
+            4,
+            7
+          ],
+          "audio_identification_markers": {
+            "verbal_tics": [
+              "Let's do it!",
+              "That sounds amazing!"
+            ],
+            "catchphrases": [
+              "Life's too short to be serious all the time.",
+              "Let's make some memories!"
+            ],
+            "emotional_temperature": {
+              "primary_emotion": "Energetic and fun-loving."
+            },
+            "unique_speech_patterns": "Speaks with a high and energetic tone, often using colloquial language and enthusiastic expressions."
+          }
+        }
+      ]
+    },
+    "readable_summary": "======================================================================\nSTATION 7: CHARACTER ARCHITECT\n======================================================================\n\nWorking Title: Wrong Number, Right Message\nPrimary Genre: Contemporary Romance\nTarget Age: 25-55\nEpisode Count: 8-12 episodes\nCore Premise: Unknown\n\n----------------------------------------------------------------------\nTIER 1: PROTAGONISTS\n----------------------------------------------------------------------\n\n1. Tom (Age: 35, Role: Morning Motivation Coach)\n   Background: Tom grew up in a low-income family and struggled with self-esteem issues. He turned his life around through self-help and now helps others do the same. He is passionate about his work but often finds himself overextending to prove his worth.\n   Motivations: To help people achieve their best selves and to prove his own worth through his work.\n   Fears: Failure and the fear of not being enough, both professionally and personally.\n   Desires: To find a deeper sense of fulfillment and a meaningful connection.\n   Voice: medium pitch, medium pace\n   Vocabulary: sophisticated but accessible\n   Verbal Tics: You can do it!, Believe in yourself.\n   Catchphrases: Life is a journey, not a destination., Every step forward is progress.\n\n2. Julia (Age: 32, Role: Depressed ER Doctor)\n   Background: Julia grew up in a high-pressure environment, always expected to excel. She is a brilliant doctor but struggles with severe depression and a sense of isolation. Her work is her escape, but it also exacerbates her burnout.\n   Motivations: To find a way to cope with her depression and to connect with others on a deeper level.\n   Fears: Being seen as weak or incapable, both in her personal and professional life.\n   Desires: To find a sense of peace and a meaningful connection.\n   Voice: medium-low pitch, slow pace\n   Vocabulary: sophisticated but accessible\n   Verbal Tics: I just need a moment., I'm okay, really.\n   Catchphrases: Every day is a new chance., We all need a bit of help sometimes.\n\n3. Michael (Age: 40, Role: Tom's Actual Client)\n   Background: Michael is a successful businessman who has achieved everything he thought he wanted but feels unfulfilled. He struggles with a sense of emptiness and a lack of direction. He seeks Tom's help to find meaning in his life.\n   Motivations: To find a deeper sense of purpose and fulfillment.\n   Fears: Feeling like a failure despite his success, and the fear of not knowing what he truly wants.\n   Desires: To find a sense of purpose and a more meaningful life.\n   Voice: low pitch, medium pace\n   Vocabulary: sophisticated but accessible\n   Verbal Tics: I need to think this through., That's a good point.\n   Catchphrases: Success is not just about the destination, but the journey., It's never too late to find your purpose.\n\n----------------------------------------------------------------------\nTIER 2: MAJOR SUPPORTING\n----------------------------------------------------------------------\n\n1. Sarah (Age: 30, Role: Julia's ER Colleague)\n   Backstory: Sarah is a dedicated ER doctor who has been Julia's friend and colleague for several years. She is supportive and caring, often providing a listening ear and a shoulder to lean on.\n   Voice: medium-high pitch, fast pace\n   Story Function: Provides emotional and professional support to Julia, helping her navigate her personal and professional challenges.\n   Relationship to Protagonists: Julia's close friend and colleague\n   Verbal Tics: You can do this., Let's take it one step at a time.\n   Catchphrases: We've got this., You're not alone.\n\n2. Liam (Age: 28, Role: Tom's Colleague)\n   Backstory: Liam is a fellow coach who has known Tom for several years. He is more laid-back and often provides a different perspective on Tom's methods and personal life.\n   Voice: medium pitch, medium pace\n   Story Function: Provides a different perspective and challenges Tom to grow, both professionally and personally.\n   Relationship to Protagonists: Tom's colleague and friend\n   Verbal Tics: You know what I mean?, Just saying.\n   Catchphrases: Sometimes you gotta step back to move forward., Life's too short to be serious all the time.\n\n3. Nina (Age: 35, Role: Julia's Sister)\n   Backstory: Nina is Julia's older sister and a successful lawyer. She is supportive but often overprotective, which sometimes creates tension between them. She is concerned about Julia's well-being and wants to help.\n   Voice: medium-high pitch, fast pace\n   Story Function: Provides a different perspective on Julia's life, sometimes challenging her but ultimately supporting her growth.\n   Relationship to Protagonists: Julia's older sister\n   Verbal Tics: I'm just saying., For your own good.\n   Catchphrases: You're stronger than you think., Sometimes you need to take a stand.\n\n----------------------------------------------------------------------\nTIER 3: RECURRING\n----------------------------------------------------------------------\n\n1. Dr. Patel (Age: 45, Role: Julia's Mentor)\n   Defining Trait: Wise and experienced ER doctor who provides guidance and support.\n   Voice Hook: Deep, calm, and authoritative.\n   Narrative Purpose: Provides professional guidance and emotional support to Julia, helping her navigate the challenges of her job.\n   Episodes Appearing: 2, 5, 8\n   Verbal Tics: You need to take a deep breath., Let's focus on the next step.\n   Catchphrases: Experience is the best teacher., Every challenge is an opportunity.\n\n2. Alex (Age: 27, Role: Tom's Client)\n   Defining Trait: Energetic and enthusiastic young professional.\n   Voice Hook: High-pitched and fast-paced.\n   Narrative Purpose: Provides a contrast to Tom's more serious clients, bringing energy and enthusiasm to the coaching sessions.\n   Episodes Appearing: 1, 4, 7\n   Verbal Tics: That's awesome!, I can't wait!\n   Catchphrases: The sky's the limit!, Let's make it happen!\n\n3. Rachel (Age: 30, Role: Julia's Friend)\n   Defining Trait: Loyal and supportive friend.\n   Voice Hook: Warm and friendly.\n   Narrative Purpose: Provides emotional support and a listening ear for Julia, helping her navigate her personal challenges.\n   Episodes Appearing: 3, 6, 9\n   Verbal Tics: I'm here for you., You can talk to me.\n   Catchphrases: You're not alone., We'll get through this together.\n\n4. Mark (Age: 42, Role: Tom's Client)\n   Defining Trait: Stoic and reserved businessman.\n   Voice Hook: Low and measured.\n   Narrative Purpose: Provides a contrast to Tom's more expressive clients, bringing a sense of calm and pragmatism to the coaching sessions.\n   Episodes Appearing: 2, 5, 8\n   Verbal Tics: Let's be realistic., We need to focus on the facts.\n   Catchphrases: Actions speak louder than words., Stay the course.\n\n5. Emma (Age: 29, Role: Sarah's Friend)\n   Defining Trait: Fun-loving and adventurous.\n   Voice Hook: High and energetic.\n   Narrative Purpose: Provides a contrast to Sarah's more serious demeanor, bringing a sense of fun and adventure to their interactions.\n   Episodes Appearing: 1, 4, 7\n   Verbal Tics: Let's do it!, That sounds amazing!\n   Catchphrases: Life's too short to be serious all the time., Let's make some memories!\n\n======================================================================\nEND OF CHARACTER BIBLE\n======================================================================"
+  }
+}

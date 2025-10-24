@@ -11,33 +11,33 @@
     ]
   },
   "cast_briefing": {
-    "episode_overview": "Opening revelation drives protagonist to action, leading to a series of high-stakes confrontations and revelations.",
-    "emotional_journey": "Tension builds from confusion to determination as the protagonist navigates a web of lies and betrayals.",
+    "episode_overview": "Opening revelation drives protagonist to action, setting the stage for a high-stakes journey of discovery and confrontation.",
+    "emotional_journey": "Tension builds from confusion to determination as the protagonist unravels a complex web of lies and faces the consequences of his actions.",
     "key_scenes": [
       {
         "scene_number": 1,
         "location": "INT. COFFEE SHOP - DAY",
-        "emotional_context": "Marcus senses danger, uncertainty growing as he meets with an informant.",
+        "emotional_context": "Marcus senses danger, uncertainty growing as he overhears a suspicious conversation.",
         "key_moments": [
           "Character discovery",
           "Mounting suspicion"
         ]
       },
       {
-        "scene_number": 3,
-        "location": "INT. ABANDONED WAREHOUSE - NIGHT",
-        "emotional_context": "Marcus confronts a key suspect, emotions are tense and confrontational.",
+        "scene_number": 5,
+        "location": "INT. OFFICE - NIGHT",
+        "emotional_context": "Marcus confronts his colleague, tension reaches a boiling point.",
         "key_moments": [
-          "Revelation of a secret",
-          "Physical confrontation"
+          "Confrontation",
+          "Revelation"
         ]
       },
       {
-        "scene_number": 7,
-        "location": "INT. POLICE STATION - NIGHT",
-        "emotional_context": "Marcus struggles with the consequences of his actions, feeling isolated and betrayed.",
+        "scene_number": 8,
+        "location": "EXT. PARK - DUSK",
+        "emotional_context": "Marcus reflects on the day's events, determination solidifies.",
         "key_moments": [
-          "Internal conflict",
+          "Resolution",
           "Decision-making"
         ]
       }
@@ -52,54 +52,40 @@
         5,
         8
       ],
-      "vocal_characteristics": "Determined, weary, carrying the weight of his mission",
+      "vocal_characteristics": "Determined, weary, carrying burden",
       "key_directions": [
         {
           "scene": 1,
           "emotion": "Anxiety",
-          "delivery": "Nervous energy, glancing around the coffee shop",
-          "note": "Lighter click SFX before dialogue helps establish character tension"
+          "delivery": "Nervous energy, glancing around",
+          "note": "Lighter click SFX before dialogue helps establish character"
         },
         {
-          "scene": 3,
+          "scene": 5,
           "emotion": "Anger",
-          "delivery": "Forceful, confrontational tone",
-          "note": "Heavy breathing and slight edge in voice to convey intensity"
+          "delivery": "Firm, confrontational tone",
+          "note": "Slight pause before final line for impact"
         },
         {
-          "scene": 7,
-          "emotion": "Desperation",
-          "delivery": "Wavering, uncertain, with a hint of vulnerability",
-          "note": "Pauses and breaths to emphasize the weight of his decisions"
+          "scene": 8,
+          "emotion": "Determination",
+          "delivery": "Strong, resolved",
+          "note": "Slower pace, emphasizing key words"
         }
       ]
     },
     {
-      "character": "JEN",
+      "character": "COLLEAGUE",
       "scenes": [
-        2,
-        4,
-        6
+        5
       ],
-      "vocal_characteristics": "Cautious, intelligent, and resourceful",
+      "vocal_characteristics": "Defensive, nervous",
       "key_directions": [
         {
-          "scene": 2,
-          "emotion": "Suspicion",
-          "delivery": "Measuring, careful, with a subtle edge",
-          "note": "Slight hesitation before key words to build tension"
-        },
-        {
-          "scene": 4,
-          "emotion": "Determination",
-          "delivery": "Firm, resolute, with a sense of purpose",
-          "note": "Clear and decisive, with a steady pace"
-        },
-        {
-          "scene": 6,
-          "emotion": "Relief",
-          "delivery": "Relaxed, but still cautious",
-          "note": "Soft smile in the voice, with a hint of lingering tension"
+          "scene": 5,
+          "emotion": "Fear",
+          "delivery": "Rapid, stammering",
+          "note": "Background ambient noise (office sounds) to add realism"
         }
       ]
     }
@@ -109,68 +95,35 @@
       "Lighter click",
       "Door opening",
       "Papers rustling",
-      "Footsteps on concrete",
-      "Phone ringing"
+      "Phone ringing",
+      "Footsteps"
     ],
     "ambient_layers": [
       "Coffee shop chatter",
       "Office ambiance",
       "Distant traffic",
-      "Warehouse echoes",
-      "Police station background noise"
+      "Park ambiance"
     ],
     "music_cues": [
       "Tension theme - 15 seconds",
       "Resolution swell - 8 seconds",
-      "Dramatic underscore - 10 seconds"
+      "Dramatic sting - 2 seconds"
     ],
     "silences": "15 marked, strategically placed for dramatic effect"
   },
   "editor_specifications": {
     "scene_by_scene_assembly_order": [
-      {
-        "scene_number": 1,
-        "start_time": "00:00:00",
-        "end_time": "00:05:30"
-      },
-      {
-        "scene_number": 2,
-        "start_time": "00:05:30",
-        "end_time": "00:10:45"
-      },
-      {
-        "scene_number": 3,
-        "start_time": "00:10:45",
-        "end_time": "00:18:00"
-      },
-      {
-        "scene_number": 4,
-        "start_time": "00:18:00",
-        "end_time": "00:23:15"
-      },
-      {
-        "scene_number": 5,
-        "start_time": "00:23:15",
-        "end_time": "00:30:00"
-      },
-      {
-        "scene_number": 6,
-        "start_time": "00:30:00",
-        "end_time": "00:35:15"
-      },
-      {
-        "scene_number": 7,
-        "start_time": "00:35:15",
-        "end_time": "00:42:00"
-      },
-      {
-        "scene_number": 8,
-        "start_time": "00:42:00",
-        "end_time": "00:45:30"
-      }
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
     ],
     "crossfade_guidelines": "0.5-1.0 second crossfades between scenes",
-    "audio_level_standards": "Dialogue normalized to -6dB, ambience at -12dB, music at -18dB",
+    "audio_level_standards": "Dialogue normalized to -6dB, ambience at -12dB, effects at -18dB",
     "quality_checkpoints": [
       "Scene assembly",
       "Audio balance",
@@ -182,6 +135,6 @@
     "target_format": "MP3, 128kbps, stereo",
     "final_duration": "45:30",
     "quality_standard": "Professional audiobook production quality",
-    "metadata": "ID3 tags with episode title, number, series info, and episode summary"
+    "metadata": "ID3 tags with episode title, number, series info, and artist"
   }
 }

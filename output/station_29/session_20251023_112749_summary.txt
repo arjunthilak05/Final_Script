@@ -1,0 +1,47 @@
+======================================================================
+STATION 29: HEROIC JOURNEY AUDIT SUMMARY
+======================================================================
+
+Session ID: session_20251023_112749
+Analysis Date: 2025-10-24T21:21:25.334360
+Total Episodes: 1
+
+----------------------------------------------------------------------
+EXECUTIVE SUMMARY
+----------------------------------------------------------------------
+This single episode analysis reveals a narrative with contrasting heroic journeys between the two main characters. Tom demonstrates strong heroic qualities with a high agency score of 4.0, showing consistent initiative through his motivational work and value-driven decisions. Conversely, Julia's journey is in a fragile state with an agency score of only 2.0, characterized by passivity and resistance to her circumstances. While the episode establishes an intriguing connection between these characters through Tom's accidental message to Julia, Julia's arc lacks meaningful progression, remaining in the reluctant phase without demonstrating significant growth or active decision-making that would advance her hero's journey.
+
+----------------------------------------------------------------------
+OVERALL HEROIC HEALTH
+----------------------------------------------------------------------
+Average Agency Score: 3.0/5
+Average Heroic Acts: 9.0 per episode
+Average Arc Progress: 1.0/5
+Total Problems Detected: 3
+Total Adjustments: 3
+Calculation Notes: Based on 2 primary characters. Supporting characters not included in agency averages.
+
+----------------------------------------------------------------------
+⚠️  USER VALIDATION REQUIRED
+----------------------------------------------------------------------
+All script adjustments must be reviewed and approved before implementation.
+Pending Approval: 3 adjustments
+Approved: 0 adjustments
+Rejected: 0 adjustments
+
+----------------------------------------------------------------------
+EPISODE BREAKDOWN
+----------------------------------------------------------------------
+
+Episode 1:
+  Characters Analyzed: 2
+  Total Heroic Acts: 9 (4.5 avg per character)
+  Problems Found: 3
+  Adjustments Needed: 3
+  Character Arc Progress:
+    Julia: [■□□□□] Phase 1/5 (Reluctant)
+    Agency Trend: [▼] Score: 2/5
+
+======================================================================
+END OF HEROIC JOURNEY AUDIT
+======================================================================

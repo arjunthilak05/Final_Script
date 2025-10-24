@@ -363,6 +363,28 @@ class Station15DetailedEpisodeOutlining:
         # If we have mixed content, try to extract episodes
         return self._extract_episodes_from_mixed_content(detailed_outlines)
 
+    def _safe_parse_runtime(self, runtime_str: str) -> int:
+        """Safely parse runtime string to extract numeric value in minutes"""
+        if not runtime_str or not isinstance(runtime_str, str):
+            return 0
+        
+        try:
+            # Split by spaces and get the first part
+            parts = runtime_str.split()
+            if not parts:
+                return 0
+            
+            # Try to extract numeric value from the first part
+            first_part = parts[0]
+            # Remove any non-numeric characters except decimal point
+            numeric_str = ''.join(c for c in first_part if c.isdigit() or c == '.')
+            
+            if numeric_str:
+                return int(float(numeric_str))
+            return 0
+        except (ValueError, IndexError, AttributeError):
+            return 0
+
     def _organize_scenes_into_episodes(self, scenes: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Organize flat scene list into proper episode structure"""
         episodes = {}
@@ -390,7 +412,7 @@ class Station15DetailedEpisodeOutlining:
                 "episode_number": episode_number,
                 "episode_title": episode_title,
                 "episode_summary": episode_summary,
-                "total_estimated_runtime": f"{sum(int(scene.get('estimated_runtime', '0').split()[0]) for scene in episode_scenes if scene.get('estimated_runtime', '').split()[0].isdigit())} minutes",
+                "total_estimated_runtime": f"{sum(self._safe_parse_runtime(scene.get('estimated_runtime', '0')) for scene in episode_scenes)} minutes",
                 "scenes": episode_scenes,
                 "episode_arc": self._extract_episode_arc(episode_scenes),
                 "character_emotional_journey": self._extract_character_journeys(episode_scenes),

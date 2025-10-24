@@ -1,0 +1,121 @@
+======================================================================
+STATION 8: WORLD BUILDER
+======================================================================
+
+Working Title: Wrong Number, Right Message
+Primary Genre: Contemporary Romance
+Target Age: 25-55
+Episode Count: 8-12 episodes
+Core Premise: Unknown
+
+----------------------------------------------------------------------
+GEOGRAPHY & SPACES
+----------------------------------------------------------------------
+
+1. Tom's Apartment
+   Sonic Signature: Soft ambient hum of an air conditioner, occasional ticking of a wall clock
+   Ambient Sounds: Distant city noises, occasional footsteps from neighbors, gentle rustling of pages turning
+
+2. Julia's ER
+   Sonic Signature: Intermittent beeping of medical machines, low murmur of conversations
+   Ambient Sounds: Regular footsteps, occasional urgent calls, the sound of rolling carts
+
+3. Michael's Office
+   Sonic Signature: Low hum of computer servers, the sound of typing on a keyboard
+   Ambient Sounds: Occasional phone ringing, low murmur of colleagues, the rustle of papers
+
+4. Sarah's Home
+   Sonic Signature: Warm crackling of a fireplace, the sound of a ticking grandfather clock
+   Ambient Sounds: Soft classical music in the background, the occasional clinking of dishes
+
+5. Coffee Shop
+   Sonic Signature: The sound of a coffee machine, gentle background music
+   Ambient Sounds: Low chatter of patrons, the clinking of cups and saucers, the occasional rustle of newspapers
+
+6. Park
+   Sonic Signature: The sound of birds chirping, distant traffic noise
+   Ambient Sounds: Children playing, the rustle of leaves, the occasional barking dog
+
+7. Tom's Gym
+   Sonic Signature: The sound of weights being lifted, the thud of running on a treadmill
+   Ambient Sounds: Low chatter of patrons, the occasional grunting, the sound of machines moving
+
+8. Julia's Apartment
+   Sonic Signature: The soft hum of a fan, the occasional ticking of a clock
+   Ambient Sounds: Distant city noises, the occasional sound of a car passing by
+
+9. Michael's Home
+   Sonic Signature: The sound of a ticking clock, the occasional sound of a pet moving around
+   Ambient Sounds: Soft background music, the occasional sound of a book being opened or closed
+
+10. Sarah's Office
+   Sonic Signature: The sound of a computer monitor, the occasional sound of a printer
+   Ambient Sounds: Low chatter of colleagues, the occasional sound of a phone ringing
+
+Travel Times & Sounds: Travel between key locations is characterized by the sound of footsteps, the hum of public transportation, and the ambient noise of the city. The sound of doors opening and closing, the rustle of clothing, and the occasional exchange of small talk are common. The transition from one location to another is marked by a gradual shift in ambient sounds, reflecting the change in environment.
+
+----------------------------------------------------------------------
+SOCIAL SYSTEMS
+----------------------------------------------------------------------
+
+Government: The government operates through a democratic system with local and national authorities. Official announcements and public services are well-regulated.
+Associated Sounds: The sound of a gavel, the formal tone of official announcements, the sound of a printing press for official documents
+
+Economy: The economy is mixed, with both private and public sectors. There are bustling markets, corporate offices, and small businesses.
+Economic Sounds: The chime of cash registers, the sound of coins and bills changing hands, the low murmur of market bartering, the sound of printers and copiers in corporate offices
+
+Social Hierarchies: Social classes are defined by education, profession, and income. There is a visible divide between the middle and upper classes, with the lower class often struggling.
+Sonic Representation: Middle and upper classes often have more refined and formal speech patterns, while the lower class may speak more casually and with a regional accent
+
+----------------------------------------------------------------------
+TECHNOLOGY & MAGIC
+----------------------------------------------------------------------
+
+Overview: The world is primarily technology-driven, with advanced communication devices and medical equipment. There is no magical element.
+Sound Design: The sound of smartphones and computers, the beeping of medical machines, the hum of air conditioning and ventilation systems
+Limitations: Technology can malfunction or be inaccessible in certain areas, leading to moments of silence or limited communication
+Prevalence: Smartphones and computers are common, while medical equipment is more specialized and found in hospitals and clinics
+
+----------------------------------------------------------------------
+HISTORY & LORE
+----------------------------------------------------------------------
+
+Key Past Events:
+  1. The Great Economic Boom of the 1990s, which led to significant technological advancements and increased prosperity
+     Sonic Impact: The sound of construction and development, the hum of new technology, the celebratory sounds of community growth
+  2. The Great Recession of the 2000s, which caused economic hardship and social tension
+     Sonic Impact: The sound of protests, the muted sounds of struggling businesses, the quiet of empty streets
+
+Myths & Legends:
+  1. The Legend of the Hidden Treasure, a story of a lost fortune that brings good luck to those who find it
+     Sonic Themes: The sound of a treasure map being unfolded, the whisper of a secret, the chiming of a bell
+
+----------------------------------------------------------------------
+SENSORY PALETTE
+----------------------------------------------------------------------
+
+Audio Cue Library:
+  1. Tom's Apartment - Morning Routine
+     Ambient Sounds: The sound of an alarm clock, the rustle of bed sheets, the sound of a coffee machine brewing
+  2. Julia's ER - Night Shift
+     Ambient Sounds: The beeping of medical machines, the low murmur of conversations, the sound of rolling carts
+  3. Michael's Office - Business Meeting
+     Ambient Sounds: The sound of a computer monitor, the low murmur of colleagues, the occasional sound of a phone ringing
+  4. Sarah's Home - Evening Relaxation
+     Ambient Sounds: The crackling of a fireplace, the sound of a ticking grandfather clock, soft classical music in the background
+  5. Coffee Shop - Morning Rush
+     Ambient Sounds: The sound of a coffee machine, gentle background music, low chatter of patrons
+  6. Park - Early Morning
+     Ambient Sounds: The sound of birds chirping, distant traffic noise, the rustle of leaves
+  7. Tom's Gym - Peak Hours
+     Ambient Sounds: The sound of weights being lifted, the thud of running on a treadmill, low chatter of patrons
+  8. Julia's Apartment - Evening Reflection
+     Ambient Sounds: The soft hum of a fan, the occasional ticking of a clock, distant city noises
+  9. Michael's Home - Quiet Evening
+     Ambient Sounds: The sound of a ticking clock, the occasional sound of a pet moving around, soft background music
+  10. Sarah's Office - Work Break
+     Ambient Sounds: The sound of a computer monitor, the occasional sound of a printer, low chatter of colleagues
+
+======================================================================
+END OF WORLD BIBLE
+======================================================================

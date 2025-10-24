@@ -1,0 +1,109 @@
+# Wrong-Man Thriller Structure Rules
+# Configuration for Station 30 Structure Integrity Checker
+
+structure_version: "1.0"
+structure_name: "Wrong-Man Thriller"
+structure_description: "Classic thriller structure where protagonist is falsely accused and must prove innocence"
+
+# Act timing rules
+act_timing_rules:
+  act_1:
+    rule_id: "wrong_man_thriller_act1_timing"
+    description: "Act 1 must end at 25% ±5% of total runtime"
+    end_percentage: 0.25
+    tolerance_percentage: 0.05
+    audio_markers: ["music_sting", "silence", "voice_change"]
+    
+  act_2:
+    rule_id: "wrong_man_thriller_act2_timing"
+    description: "Act 2 must end at 75% ±5% of total runtime"
+    end_percentage: 0.75
+    tolerance_percentage: 0.05
+    audio_markers: ["music_change", "sound_effect", "voice_shift"]
+    
+  act_3:
+    rule_id: "wrong_man_thriller_act3_timing"
+    description: "Act 3 must end at 100% of total runtime"
+    end_percentage: 1.0
+    tolerance_percentage: 0.02
+    audio_markers: ["music_sting", "silence", "voice_revelation"]
+
+# Turning points
+turning_points:
+  rule_id: "wrong_man_thriller_turning_points"
+  description: "Must have minimum 3 major turning points"
+  minimum_count: 3
+  required_points:
+    - "inciting_incident"
+    - "first_plot_point"
+    - "midpoint_revelation"
+    - "second_plot_point"
+    - "climax"
+  audio_signatures: ["music_change", "sound_effect", "voice_shift"]
+
+# Revelation rules
+revelation_rules:
+  rule_id: "wrong_man_thriller_revelation_placement"
+  description: "Major revelations must be properly spaced and supported by audio cues"
+  revelation_timing:
+    - "inciting_incident": "0-15%"
+    - "first_plot_point": "20-30%"
+    - "midpoint_revelation": "45-55%"
+    - "second_plot_point": "70-80%"
+    - "climax": "85-95%"
+  audio_support: ["music_sting", "silence", "voice_revelation"]
+
+# Audio continuity rules
+audio_continuity:
+  voice_consistency:
+    rule_id: "wrong_man_thriller_voice_consistency"
+    description: "Character voices must remain consistent throughout"
+    tolerance_hz: 10
+    required_elements: ["pitch", "tone", "cadence"]
+    
+  music_themes:
+    rule_id: "wrong_man_thriller_music_themes"
+    description: "Music themes must be consistent and properly cued"
+    required_themes: ["hero_theme", "suspense_theme", "revelation_theme"]
+    
+  sound_effects:
+    rule_id: "wrong_man_thriller_sound_effects"
+    description: "Sound effects must be consistent with established audio library"
+    library_versioning: true
+    consistency_check: true
+
+# Subplot integration rules
+subplot_rules:
+  rule_id: "wrong_man_thriller_subplot_integration"
+  description: "Subplots must have adequate time and clear audio signatures"
+  minimum_time_percentage: 0.15
+  audio_signature_requirements:
+    - "unique_sounds": true
+    - "clear_transitions": true
+    - "trackable_by_audience": true
+
+# Continuity rules
+continuity_rules:
+  timeline_consistency:
+    rule_id: "wrong_man_thriller_timeline_consistency"
+    description: "Timeline references must be consistent across episodes"
+    check_elements: ["dates", "time_elapsed", "event_sequences"]
+    
+  character_knowledge:
+    rule_id: "wrong_man_thriller_character_knowledge"
+    description: "Character knowledge progression must be logical"
+    tracking_required: true
+
+# Severity definitions
+severity_definitions:
+  critical: "Breaks core structure promise, unlistenable"
+  high: "Significantly degrades experience, obvious to audience"
+  medium: "Noticeable issue, fixable without major rework"
+  low: "Minor polish item, optional fix"
+
+# Validation thresholds
+validation_thresholds:
+  structure_compliance_min: 0.85
+  continuity_error_max: 5
+  reveal_fairness_min: 0.8
+  subplot_integration_min: 0.75

@@ -1,0 +1,172 @@
+{
+  "episode_hooks": [
+    {
+      "episode_number": 1,
+      "opening_hook": {
+        "type": "Mystery Introduction",
+        "description": "A middle-of-the-night phone call jolts the protagonist awake. A voice on the other end informs them they've inherited something unexpected that will change their life forever. The call ends abruptly with a disconnected tone, leaving the protagonist in stunned silence.",
+        "duration": "60 seconds",
+        "audio_elements": [
+          "Ringing phone",
+          "Heavy breathing",
+          "Heartbeat",
+          "Static disconnection"
+        ],
+        "emotional_tone": "Shocked, Confused, Intrigued"
+      },
+      "act_turns": {
+        "act_1_turn": "The protagonist visits a lawyer's office to learn they've inherited a failing community center in a struggling neighborhood, along with a mysterious stipulation that they must run it personally for one year.",
+        "act_2_turn": "While exploring the center, the protagonist discovers a hidden room containing files suggesting the center was involved in something more than community services.",
+        "act_3_turn": "The protagonist meets an elderly community member who reveals the previous owner was helping people in extraordinary ways, hinting at a secret purpose."
+      },
+      "cliffhanger": {
+        "type": "Revelation",
+        "intensity": 6,
+        "description": "The protagonist finds a journal entry from the previous owner: 'They're watching. If you're reading this, they're probably watching you too. Trust no one.'",
+        "audio_execution": "Sound of journal pages turning, tense music building, sudden silence after the final line, then distant footsteps approaching."
+      },
+      "next_episode_connection": "The protagonist must decide whether to take on the responsibility of the center while dealing with the ominous warning.",
+      "season_position": "Setup"
+    },
+    {
+      "episode_number": 2,
+      "opening_hook": {
+        "type": "Character Challenge",
+        "description": "The protagonist's first day at the community center, overwhelmed by broken equipment, financial statements in red, and a line of community members with urgent needs. One desperate voice stands out: 'Please, you have to help us.'",
+        "duration": "60 seconds",
+        "audio_elements": [
+          "Crowd murmur",
+          "Creaking door",
+          "Cash register closing",
+          "Urgent voices"
+        ],
+        "emotional_tone": "Overwhelmed, Determined, Empathetic"
+      },
+      "act_turns": {
+        "act_1_turn": "The protagonist connects with a single mother who needs the center's after-school program to keep her job, realizing the center's true importance to the community.",
+        "act_2_turn": "A corporate representative arrives with an offer to buy the center, revealing that developers want the valuable land.",
+        "act_3_turn": "The protagonist meets a skeptical longtime volunteer who eventually shares stories of how the previous owner helped people in seemingly impossible situations."
+      },
+      "cliffhanger": {
+        "type": "Discovery",
+        "intensity": 5,
+        "description": "While repairing a broken cabinet, the protagonist discovers a hidden compartment containing a burner phone with one saved contact and a cryptic text message: 'The lifeline continues.'",
+        "audio_execution": "Sound of wood splintering, phone vibrating, text message alert tone, then a sudden ring from the burner phone that cuts to silence."
+      },
+      "next_episode_connection": "The protagonist decides to call the number on the burner phone, leading them deeper into the mystery.",
+      "season_position": "Setup"
+    },
+    {
+      "episode_number": 3,
+      "opening_hook": {
+        "type": "Suspenseful Action",
+        "description": "The protagonist nervously dials the number from the burner phone. It rings once, twice, then connects. A distorted voice says, 'You shouldn't have called. Now they know you're involved.' The line goes dead.",
+        "duration": "60 seconds",
+        "audio_elements": [
+          "Phone dialing",
+          "Distorted voice",
+          "Heavy breathing",
+          "Line disconnecting"
+        ],
+        "emotional_tone": "Anxious, Cautious, Resolved"
+      },
+      "act_turns": {
+        "act_1_turn": "The protagonist receives an anonymous package containing newspaper clippings about the community center's previous owner and several people he supposedly helped in miraculous ways.",
+        "act_2_turn": "The volunteer from episode 2 reveals she worked closely with the previous owner and knows about his secret activities, but is hesitant to share details.",
+        "act_3_turn": "After gaining her trust, the volunteer confesses that the center was a front for an underground network helping people escape dangerous situations."
+      },
+      "cliffhanger": {
+        "type": "Threat",
+        "intensity": 7,
+        "description": "The protagonist returns home to find a single photograph on their kitchen table showing them leaving the community center that day. Written on the back: 'Stop digging. Next time, we won't just be watching.'",
+        "audio_execution": "Sound of door opening, paper rustling, sharp intake of breath, then a window slamming shut from outside."
+      },
+      "next_episode_connection": "Despite the threat, the protagonist becomes more determined to uncover the truth and continue the previous owner's work.",
+      "season_position": "Development"
+    },
+    {
+      "episode_number": 4,
+      "opening_hook": {
+        "type": "Emotional Decision",
+        "description": "The protagonist sits in the dark community center late at night, weighing the risks of continuing. Flash to memories of people they've already helped, then to the threatening photograph. A deep breath, then: 'I'm not stopping.'",
+        "duration": "60 seconds",
+        "audio_elements": [
+          "Clock ticking",
+          "Footsteps echoing",
+          "Flashback sounds",
+          "Determined sigh"
+        ],
+        "emotional_tone": "Resolved, Fearful, Courageous"
+      },
+      "act_turns": {
+        "act_1_turn": "The protagonist secretly meets with the volunteer who introduces them to someone currently in need of the network's help - a woman fleeing an abusive relationship with powerful connections.",
+        "act_2_turn": "The protagonist successfully helps the woman escape, but realizes they've attracted dangerous attention.",
+        "act_3_turn": "The volunteer reveals the network has a mysterious benefactor who provides resources and protection, but no one knows their identity."
+      },
+      "cliffhanger": {
+        "type": "Revelation",
+        "intensity": 8,
+        "description": "The protagonist discovers the previous owner didn't die accidentally as reported - he was murdered, and the police investigation was mysteriously closed without explanation.",
+        "audio_execution": "Sound of computer keys typing, news report audio fading in, gasp of shock, then a door creaking open behind the protagonist."
+      },
+      "next_episode_connection": "The protagonist realizes they're not just running a community center but have inherited a dangerous secret that someone is willing to kill for.",
+      "season_position": "Development"
+    },
+    {
+      "episode_number": 5,
+      "opening_hook": {
+        "type": "Action Sequence",
+        "description": "The protagonist is followed as they leave the community center. Tense footsteps echo. They break into a run. Car doors open. A chase ensues through city streets, ending in a narrow alley where the protagonist is cornered.",
+        "duration": "60 seconds",
+        "audio_elements": [
+          "Footsteps",
+          "Heavy breathing",
+          "Car doors slamming",
+          "Alley echoes"
+        ],
+        "emotional_tone": "Panicked, Desperate, Resourceful"
+      },
+      "act_turns": {
+        "act_1_turn": "The protagonist escapes their pursuers using a hidden route the previous owner built into the community center's design.",
+        "act_2_turn": "The protagonist confronts the corporate representative who made the buyout offer, discovering they're connected to the people who threatened the previous owner.",
+        "act_3_turn": "The volunteer reveals she knows who the mysterious benefactor is and agrees to arrange a meeting."
+      },
+      "cliffhanger": {
+        "type": "Personal Threat",
+        "intensity": 9,
+        "description": "The protagonist receives a call that their sibling has been taken. A voice says, 'Come to the old warehouse alone if you ever want to see them again. Bring everything the previous owner gave you.'",
+        "audio_execution": "Phone ringing, desperate voice on the line, muffled cry in background, line going dead with a final threat whispered."
+      },
+      "next_episode_connection": "The protagonist must rescue their sibling while protecting the network's secrets, putting themselves in extreme danger.",
+      "season_position": "Development"
+    },
+    {
+      "episode_number": 6,
+      "opening_hook": {
+        "type": "Emotional Crisis",
+        "description": "The protagonist stands outside the warehouse, weighing impossible options. Flash to childhood memories with their sibling, then to the community members depending on them. A deep breath: 'I'm coming.'",
+        "duration": "60 seconds",
+        "audio_elements": [
+          "Wind blowing",
+          "Flashback sounds",
+          "Heartbeat",
+          "Determined footsteps"
+        ],
+        "emotional_tone": "Terrified, Resigned, Courageous"
+      },
+      "act_turns": {
+        "act_1_turn": "The protagonist enters the warehouse and discovers their sibling is unharmed but being used as bait to lure them into a trap.",
+        "act_2_turn": "The antagonist reveals they want the network's client list and resources, believing the protagonist has access to them.",
+        "act_3_turn": "The protagonist and sibling escape using a hidden exit the protagonist noticed earlier, but the protagonist is injured in the process."
+      },
+      "cliffhanger": {
+        "type": "Identity Reveal",
+        "intensity": 10,
+        "description": "While treating the protagonist's injury, the volunteer reveals a shocking truth: she is the previous owner's daughter and the true inheritor of the network, but she couldn't take over because the antagonists were watching her.",
+        "audio_execution": "Sound of medical supplies, shocked silence, emotional confession, then a distant siren approaching."
+      },
+      "next_episode_connection": "The protagonist must decide whether to continue helping the volunteer/daughter or step aside as the true inheritor emerges.",
+      "season_position": "Climax"
+    }
+  ]
+}

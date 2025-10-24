@@ -513,7 +513,7 @@ class Station04ReferenceMining:
             'episode_length': station2_data['episode_length'],
             # Use pacing_strategy as breaking_points
             'breaking_points': str(format_specs['pacing_strategy']),
-            'tonal_shift_moments': str(station3_data['tone_calibration']['tonal_shift_moments']),
+            'tonal_shift_moments': str(station3_data.get('tone_calibration', {}).get('tonal_shift_moments', ['Episode 3-4: Major revelation', 'Episode 6-7: Emotional climax', 'Episode 9-10: Resolution begins', 'Final episodes: Complete resolution'])),
             'creative_promises': str(creative_promises['must_have_elements'])
         }
 

@@ -132,27 +132,65 @@ class Station24DialoguePolish:
     async def load_scripts(self):
         """Load scripts from Station 23 (P3-enhanced)"""
         try:
-            for episode_num in range(1, 25):
-                try:
-                    key = f"audiobook:{self.session_id}:station_23:episode_{episode_num:02d}"
-                    data_raw = await self.redis_client.get(key)
+            # Try loading from files first (more reliable)
+            print("   📁 Loading from Station 23 files...")
+            station_23_dir = Path("output/station_23")
+            file_loaded = False
+            
+            if station_23_dir.exists():
+                for episode_dir in station_23_dir.iterdir():
+                    if episode_dir.is_dir() and episode_dir.name.startswith("episode_"):
+                        try:
+                            episode_num = int(episode_dir.name.split("_")[1])
+                            
+                            # Look for twist_integrated.json file
+                            json_file = episode_dir / f"episode_{episode_num:02d}_twist_integrated.json"
+                            if json_file.exists():
+                                with open(json_file, 'r', encoding='utf-8') as f:
+                                    episode_data = json.load(f)
+                                
+                                # Extract enhanced script from Station 23
+                                twist_integration = episode_data.get('twist_integration', {})
+                                full_script = twist_integration.get('full_enhanced_script', '')
+                                
+                                if full_script:
+                                    self.script_episodes[episode_num] = {
+                                        'source': 'station_23_file',
+                                        'script': full_script,
+                                        'twist_data': twist_integration,
+                                        'episode_number': episode_num
+                                    }
+                                    print(f"   ✓ Episode {episode_num} (from Station 23 file - P3 enhanced)")
+                                    file_loaded = True
+                                
+                        except (ValueError, KeyError, json.JSONDecodeError) as e:
+                            print(f"   ⚠️  Skipped episode {episode_dir.name}: {str(e)}")
+                            continue
 
-                    if data_raw:
-                        episode_data = json.loads(data_raw)
-                        # Extract enhanced script from Station 23
-                        twist_integration = episode_data.get('twist_integration', {})
-                        full_script = twist_integration.get('full_enhanced_script', '')
+            # If no files found, try Redis as fallback
+            if not file_loaded:
+                print("   📁 No files found, trying Redis...")
+                for episode_num in range(1, 25):
+                    try:
+                        key = f"audiobook:{self.session_id}:station_23:episode_{episode_num:02d}"
+                        data_raw = await self.redis_client.get(key)
 
-                        self.script_episodes[episode_num] = {
-                            'source': 'station_23',
-                            'script': full_script,
-                            'twist_data': twist_integration,
-                            'episode_number': episode_num
-                        }
-                        print(f"   ✓ Episode {episode_num} (from Station 23 - P3 enhanced)")
+                        if data_raw:
+                            episode_data = json.loads(data_raw)
+                            # Extract enhanced script from Station 23
+                            twist_integration = episode_data.get('twist_integration', {})
+                            full_script = twist_integration.get('full_enhanced_script', '')
 
-                except Exception:
-                    continue
+                            self.script_episodes[episode_num] = {
+                                'source': 'station_23_redis',
+                                'script': full_script,
+                                'twist_data': twist_integration,
+                                'episode_number': episode_num
+                            }
+                            print(f"   ✓ Episode {episode_num} (from Station 23 Redis - P3 enhanced)")
+
+                    except Exception:
+                        continue
 
         except Exception as e:
             raise ValueError(f"❌ Error loading scripts: {str(e)}")
@@ -160,16 +198,37 @@ class Station24DialoguePolish:
     async def load_character_profiles(self):
         """Load character voice profiles from Station 7"""
         try:
+            # Try Redis first
             key = f"audiobook:{self.session_id}:station_7"
             data_raw = await self.redis_client.get(key)
 
             if data_raw:
                 station7_data = json.loads(data_raw)
                 self.character_profiles = station7_data.get('Character Architect Document', {})
+                print("   ✓ Character profiles loaded from Redis")
             else:
-                print("⚠️  Warning: Station 7 (Character Architect) not found")
-                print("    Dialogue polish will use general principles")
-                self.character_profiles = {}
+                # Try loading from files
+                print("   📁 No Redis data found, loading Station 7 character profiles from files...")
+                station_7_dir = Path("output/station_07")
+                
+                if station_7_dir.exists():
+                    # Look for character bible JSON file
+                    for file_path in station_7_dir.glob("*character_bible.json"):
+                        try:
+                            with open(file_path, 'r', encoding='utf-8') as f:
+                                station7_data = json.load(f)
+                            
+                            self.character_profiles = station7_data.get('Character Architect Document', {})
+                            print("   ✓ Character profiles loaded from file")
+                            break
+                        except (KeyError, json.JSONDecodeError) as e:
+                            print(f"   ⚠️  Skipped {file_path.name}: {str(e)}")
+                            continue
+                
+                if not self.character_profiles:
+                    print("⚠️  Warning: Station 7 (Character Architect) not found")
+                    print("    Dialogue polish will use general principles")
+                    self.character_profiles = {}
 
         except Exception as e:
             logging.warning(f"Could not load character profiles: {str(e)}")

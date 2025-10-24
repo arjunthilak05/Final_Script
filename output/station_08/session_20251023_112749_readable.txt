@@ -1,0 +1,121 @@
+======================================================================
+STATION 8: WORLD BUILDER
+======================================================================
+
+Working Title: The Accidental Lifeline
+Primary Genre: Drama
+Target Age: 28-55
+Episode Count: 8-12 episodes
+Core Premise: Unknown
+
+----------------------------------------------------------------------
+GEOGRAPHY & SPACES
+----------------------------------------------------------------------
+
+1. Tom's Apartment
+   Sonic Signature: Hum of a refrigerator, occasional creaking of old floorboards
+   Ambient Sounds: Distant city noise, occasional traffic, birds chirping in the morning
+
+2. Julia's Office
+   Sonic Signature: Continuous hum of medical equipment, soft beeping of monitors
+   Ambient Sounds: Background chatter of nurses and patients, occasional paging system
+
+3. Sarah's House
+   Sonic Signature: Warm, inviting sounds of a home, fireplace crackling
+   Ambient Sounds: Occasional dog barking, children playing outside, kitchen noises
+
+4. Hospital Hallway
+   Sonic Signature: Squeak of rolling carts, soft footsteps on linoleum
+   Ambient Sounds: Distant medical alarms, conversations, occasional announcements
+
+5. Cafe
+   Sonic Signature: Clatter of dishes, espresso machine hissing, soft music in the background
+   Ambient Sounds: Chatter of patrons, occasional laughter, barista calls
+
+6. Park
+   Sonic Signature: Birds chirping, leaves rustling, distant traffic
+   Ambient Sounds: Children playing, dogs barking, occasional joggers
+
+7. Tom's Office
+   Sonic Signature: Soft hum of a computer, occasional keyboard tapping
+   Ambient Sounds: Distant office chatter, phone ringing, printer sounds
+
+8. Sarah's Clinic
+   Sonic Signature: Soft hum of medical equipment, occasional beeping
+   Ambient Sounds: Background chatter of staff, patient conversations, occasional paging system
+
+9. Hospital Lobby
+   Sonic Signature: Squeak of doors opening and closing, soft hum of HVAC
+   Ambient Sounds: Chatter of visitors, occasional announcements, footsteps on tile
+
+10. Street Corner
+   Sonic Signature: Hustle and bustle of city life, cars passing, occasional sirens
+   Ambient Sounds: Street vendors, people talking, city sounds
+
+Travel Times & Sounds: Descriptions of travel times and sounds between key locations, including journey-specific audio cues
+
+----------------------------------------------------------------------
+SOCIAL SYSTEMS
+----------------------------------------------------------------------
+
+Government: A democratic system with a strong emphasis on healthcare and social services
+Associated Sounds: Gavels in council meetings, official announcements, news broadcasts
+
+Economy: Mixed economy with a strong healthcare sector and a growing tech industry
+Economic Sounds: Currency sounds (coins, paper money), market bartering, trade negotiations, economic activities (construction, tech labs)
+
+Social Hierarchies: Generally egalitarian, with respect for medical professionals and community leaders
+Sonic Representation: Formal speech patterns in medical settings, more casual and warm in community spaces
+
+----------------------------------------------------------------------
+TECHNOLOGY & MAGIC
+----------------------------------------------------------------------
+
+Overview: Advanced medical technology, with a focus on telemedicine and remote patient care
+Sound Design: Beeping of monitors, hum of medical devices, soft chimes for notifications, whirring of robotic assistants
+Limitations: Dependence on reliable internet and power, occasional system glitches
+Prevalence: Common in hospitals and clinics, less common in rural areas
+
+----------------------------------------------------------------------
+HISTORY & LORE
+----------------------------------------------------------------------
+
+Key Past Events:
+  1. The Great Pandemic of 2025, which led to significant advancements in telemedicine
+     Sonic Impact: Increased presence of medical sounds in daily life, more frequent beeping and monitoring sounds
+  2. The founding of the city's main hospital by Dr. Martinez's grandfather in 1950
+     Sonic Impact: Historical recordings of the hospital's opening, echoes of past medical practices in the current soundscape
+
+Myths & Legends:
+  1. The legend of the Healing Tree, which is said to have mystical properties
+     Sonic Themes: Whispering winds, rustling leaves, soft chimes
+
+----------------------------------------------------------------------
+SENSORY PALETTE
+----------------------------------------------------------------------
+
+Audio Cue Library:
+  1. Tom's Apartment - Morning Routine
+     Ambient Sounds: Distant city noise, birds chirping, coffee brewing
+  2. Julia's Office - Patient Visit
+     Ambient Sounds: Continuous hum of medical equipment, soft beeping of monitors
+  3. Sarah's House - Family Dinner
+     Ambient Sounds: Laughter, clatter of dishes, children talking
+  4. Hospital Hallway - Shift Change
+     Ambient Sounds: Squeak of rolling carts, soft footsteps on linoleum
+  5. Cafe - Lunch Rush
+     Ambient Sounds: Clatter of dishes, espresso machine hissing, soft music
+  6. Park - Sunny Afternoon
+     Ambient Sounds: Birds chirping, leaves rustling, children playing
+  7. Tom's Office - Work Hours
+     Ambient Sounds: Soft hum of a computer, occasional keyboard tapping
+  8. Sarah's Clinic - Patient Visit
+     Ambient Sounds: Soft hum of medical equipment, occasional beeping
+  9. Hospital Lobby - Visiting Hours
+     Ambient Sounds: Chatter of visitors, occasional announcements, footsteps on tile
+  10. Street Corner - Evening Rush
+     Ambient Sounds: Hustle and bustle of city life, cars passing, occasional sirens
+
+======================================================================
+END OF WORLD BIBLE
+======================================================================

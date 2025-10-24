@@ -1,0 +1,209 @@
+{
+  "episode_id": 1,
+  "heroic_acts": {
+    "Tom": {
+      "active_choices": [
+        {
+          "decision": "Creates and sends 'The Daily Lift' motivational message",
+          "driving_vs_reacting": "driving/initiating",
+          "consequences": "His message reaches Julia and potentially influences her day",
+          "audio_delivery": "Warm, confident voice with a sense of purpose, gentle morning tone"
+        },
+        {
+          "decision": "Prioritizes personal touch over business scaling",
+          "driving_vs_reacting": "driving/initiating",
+          "consequences": "Maintains his authentic approach to coaching despite growth pressure",
+          "audio_delivery": "Meditative, thoughtful tone showing conviction in his values"
+        }
+      ],
+      "heroic_moments": [
+        {
+          "act_type": "courage_act",
+          "description": "Tom creates daily motivational content to help others, showing commitment to improving lives",
+          "stakes": "His reputation as a coach and the emotional wellbeing of his followers",
+          "audio_signature": "Warm, encouraging tone with purpose. Gentle ambient morning sounds and pen scratching to emphasize daily ritual."
+        },
+        {
+          "act_type": "sacrifice_act",
+          "description": "Tom prioritizes helping people over business growth, valuing impact over profit",
+          "stakes": "Potential business growth and financial success",
+          "audio_signature": "Firm but gentle voice showing conviction. Office background sounds should fade slightly to emphasize this philosophical moment."
+        }
+      ],
+      "growth_demonstrations": [
+        {
+          "skill_lesson": "Effective communication and motivation through daily practice",
+          "character_evolution": "Has developed a consistent system for daily motivation and built a business around helping others",
+          "voice_confidence_change": "Assured and experienced tone, showing someone who has found their calling and purpose"
+        }
+      ]
+    },
+    "Julia": {
+      "active_choices": [
+        {
+          "decision": "Reads the text message from 'The Daily Lift' instead of ignoring it",
+          "driving_vs_reacting": "reacting/following",
+          "consequences": "Exposed to motivational content that resonates despite her confusion",
+          "audio_delivery": "Confused but curious tone, slightly groggy from just waking up"
+        },
+        {
+          "decision": "Avoids helping with the Miller case",
+          "driving_vs_reacting": "driving/initiating",
+          "consequences": "Evades a situation that clearly makes her uncomfortable",
+          "audio_delivery": "Abrupt, defensive tone with underlying anxiety, slightly rushed"
+        }
+      ],
+      "heroic_moments": [
+        {
+          "act_type": "courage_act",
+          "description": "Despite her reluctance, Julia gets out of bed and goes to work, pushing through a difficult time",
+          "stakes": "Her emotional wellbeing and professional responsibilities",
+          "audio_signature": "Heavy sighs and slow movements audible. Voice carries weight and exhaustion but also determination. Rain sounds should be present but fading as she decides to face the day."
+        }
+      ],
+      "growth_demonstrations": [
+        {
+          "skill_lesson": "Beginning to consider the motivational message",
+          "character_evolution": "Shows a small moment of reflection on the message 'smallest step in the right direction'",
+          "voice_confidence_change": "Voice shows a hint of contemplation, with slight softening when she repeats the phrase to herself, indicating potential for future growth"
+        }
+      ]
+    }
+  },
+  "agency_scorecard": {
+    "Tom": {
+      "goal_setting": {
+        "score": 5,
+        "own_goals": "Running 'The Daily Lift' motivational messages and coaching business focused on helping others find their path",
+        "following_others": "Minimal, maintains his personal approach despite suggestions to scale",
+        "audio_manifestation": "Determined, warm, and purposeful voice with conviction about his purpose"
+      },
+      "obstacle_confrontation": {
+        "score": 3,
+        "faces_directly": "Thoughtfully considers business decisions and maintains his approach when discussing scaling",
+        "rescued_situations": "No clear instances of being rescued in the script",
+        "audio_manifestation": "Measured and thoughtful voice when discussing business approaches"
+      },
+      "solution_generation": {
+        "score": 4,
+        "solves_problems": "Creates motivational content that helps others make life changes, as evidenced by Sarah's success",
+        "solutions_given": "Self-generated solutions through his coaching and motivational messages",
+        "audio_manifestation": "Confident and assured voice when discussing solutions and their impact"
+      },
+      "consequence_ownership": {
+        "score": 4,
+        "owns_mistakes": "Takes ownership of his business philosophy and approach",
+        "blames_others": "No tendency to blame others for business decisions",
+        "audio_manifestation": "Calm and assured voice when discussing consequences and business decisions"
+      },
+      "overall_score": 4
+    },
+    "Julia": {
+      "goal_setting": {
+        "score": 2,
+        "own_goals": "Not clearly established in the excerpt, seems to be going through motions at work",
+        "following_others": "Following work routines without personal investment",
+        "audio_manifestation": "Groggy, confused, and resigned voice when discussing her day"
+      },
+      "obstacle_confrontation": {
+        "score": 1,
+        "faces_directly": "Actively avoids confronting obstacles, makes excuses and physically removes herself",
+        "rescued_situations": "Deflects challenges to others (Linda) rather than facing them",
+        "audio_manifestation": "Abrupt and evasive voice when confronted with challenges"
+      },
+      "solution_generation": {
+        "score": 1,
+        "solves_problems": "Doesn't demonstrate solution-generation, deflects problems to others",
+        "solutions_given": "No self-generated solutions shown in the excerpt",
+        "audio_manifestation": "Resigned and lacking confidence voice when faced with problems"
+      },
+      "consequence_ownership": {
+        "score": 2,
+        "owns_mistakes": "Avoids responsibility for tasks she would normally handle",
+        "blames_others": "Makes excuses rather than taking responsibility",
+        "audio_manifestation": "Evasive and heavy voice when dealing with consequences"
+      },
+      "overall_score": 2
+    }
+  },
+  "heroic_arc": {
+    "Julia": {
+      "current_phase": "reluctant",
+      "phase_description": "Julia is resisting her current life circumstances, avoiding responsibilities at work, and showing general reluctance to engage with her day. She's in a state of avoidance and evasion, possibly due to some recent event that has affected her.",
+      "phase_indicators": [
+        "Five more minutes...",
+        "I can't.",
+        "I'm just—swamped. Ask Linda.",
+        "She's been like this all week. Ever since...",
+        "Another day."
+      ],
+      "audio_notes": {
+        "voice_quality": "Groggy when waking, confused when receiving the message, evasive when speaking with colleagues, and heavy sighing throughout",
+        "confidence_level": "hesitant/uncertain",
+        "growth_markers": "Brief moment of reflection after receiving Tom's message: 'Smallest step in the right direction... right.'"
+      },
+      "transformation_progress": {
+        "start_vs_end": "Julia starts the episode reluctant to get out of bed and ends the workday with another heavy sigh, showing she's still in the reluctant phase but with a small seed of change planted by the unexpected message.",
+        "voice_change": "From groggy and confused to slightly more thoughtful but still hesitant, with a moment of reflection when considering the message.",
+        "next_episode_setup": "Voice should maintain its hesitant quality but with potential for slight change as the message continues to resonate with her, possibly showing the beginning of movement toward the learning phase."
+      }
+    }
+  },
+  "problem_flags": [
+    {
+      "type": "Passive Protagonist",
+      "location": "Julia's scene after receiving the text message",
+      "issue": "Julia receives Tom's motivational message by accident (wrong number) and merely reacts to it without making any active choices. She dismisses it and goes through her day without taking any initiative.",
+      "recommended_fix": "Have Julia save the number or screenshot the message, showing a conscious choice to engage with the content rather than passively receiving it. This small action demonstrates agency and sets up her growth arc."
+    },
+    {
+      "type": "Static Character",
+      "location": "Julia's character arc throughout the episode",
+      "issue": "Julia starts the episode reluctant and ends with 'Another day' and a sigh, showing no meaningful change or growth despite being exposed to the motivational message.",
+      "recommended_fix": "Add a final scene where Julia takes a small but meaningful action that reflects the message's impact, such as looking up palliative care resources or making a note to talk to Linda about the Miller case."
+    },
+    {
+      "type": "Inconsistent Competence",
+      "location": "Hospital scene with Dr. Martinez and Nurse Linda",
+      "issue": "The script mentions Julia 'usually handle[s] these so well' regarding Miller cases, but there's no context for why she's now avoiding these responsibilities, making her competence shift feel unexplained.",
+      "recommended_fix": "Add a brief line of dialogue or internal monologue that explains what changed for Julia, creating a clear reason for her current avoidance behavior."
+    }
+  ],
+  "adjustments": [
+    {
+      "type": "Add Active Choice",
+      "current": "JULIA\n(confused)\nWhat the—?\n\n[SFX: FINGERS TAPPING PHONE SCREEN.]\n\nJULIA\nWrong number, I guess.\n\n[SFX: PHONE THUMPS ON MATTRESS. JULIA SITS UP WITH A HEAVY SIGH.]",
+      "recommended": "JULIA\n(confused)\nWhat the—?\n\n[SFX: FINGERS TAPPING PHONE SCREEN. PAUSE. MORE TAPPING.]\n\nJULIA\nWrong number... but interesting timing.\n\n[SFX: PHONE SCREENSHOT SOUND. PHONE THUMPS ON MATTRESS. JULIA SITS UP, SIGHING BUT WITH LESS HEAVINESS.]",
+      "reason": "This change shows Julia actively choosing to engage with the message by saving it, demonstrating agency rather than passive reception. The screenshot sound provides audio evidence of her choice.",
+      "requires_user_approval": true,
+      "approval_status": "pending"
+    },
+    {
+      "type": "Add Learning Moment",
+      "current": "[SFX: QUIET OFFICE AMBIENCE—CLOCK TICKING, KEYBOARD CLACKING SLOWLY.]\n\n[SFX: JULIA SITS HEAVILY IN CHAIR. SIGHS DEEPLY.]\n\nJULIA\n(to herself)\nAnother day.",
+      "recommended": "[SFX: QUIET OFFICE AMBIENCE—CLOCK TICKING, KEYBOARD CLACKING SLOWLY.]\n\n[SFX: JULIA SITS HEAVILY IN CHAIR. PAUSES. TAKES OUT PHONE, UNLOCKS IT.]\n\nJULIA\n(to herself)\nSmallest step... right.\n\n[SFX: KEYBOARD TYPING. SEARCH RESULTS LOADING.]\n\nJULIA\n(softly, with determination)\nOkay. One step.",
+      "reason": "This shows Julia actively reflecting on the message and taking a small action (researching something related to her work), demonstrating the beginning of her growth arc and moving from passive to active.",
+      "requires_user_approval": true,
+      "approval_status": "pending"
+    },
+    {
+      "type": "Track Abilities",
+      "current": "NURSE LINDA\n(concerned)\nJulia, you usually handle these so well.\n\nJULIA\n(evasive)\nI have that report due, remember?",
+      "recommended": "NURSE LINDA\n(concerned)\nJulia, you usually handle these so well.\n\nJULIA\n(evasive, with a touch of pain)\nNot since... not since the Johnson case. I have that report due, remember?",
+      "reason": "This addition provides context for Julia's current behavior, referencing a specific case that affected her, making her competence shift understandable and showing character depth.",
+      "requires_user_approval": true,
+      "approval_status": "pending"
+    }
+  ],
+  "audio_notes": [
+    {
+      "character": "Julia",
+      "note": "When Julia receives the text message, start with a confused, groggy tone that gradually shifts to curiosity. When she decides to screenshot the message, add a slight brightening to her voice to indicate the first spark of interest. For her final scene, use a voice that's still heavy but with a new undertone of determination—less sighing, more purposeful pauses. The rain sounds should gradually fade throughout her scenes, symbolizing her emerging from her emotional storm."
+    },
+    {
+      "character": "Tom",
+      "note": "Tom's voice should maintain its warm, confident quality throughout, serving as an audio contrast to Julia's hesitance. When recording his motivational message, add subtle vocal layering to give it a sense of resonance and importance. The coffee maker sounds in his scenes should be consistent and comforting, establishing his character as grounded and purposeful."
+    }
+  ],
+  "timestamp": "2025-10-24T21:20:55.287351"
+}

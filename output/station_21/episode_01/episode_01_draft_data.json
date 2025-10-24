@@ -1,271 +1,259 @@
 {
-  "session_id": "session_20251016_235335",
+  "session_id": "session_20251023_112749",
   "episode_number": 1,
   "episode_title": "Wrong Number, Right Message",
-  "generated_at": "2025-10-22T22:42:48.480521",
+  "generated_at": "2025-10-23T18:09:09.402621",
   "draft_data": {
     "first_draft_script": {
       "episode_number": 1,
       "episode_title": "Wrong Number, Right Message",
-      "total_word_count": 2170,
+      "total_word_count": 1985,
       "scenes": [
         {
           "scene_number": 1,
           "heading": "INT. TOM'S APARTMENT - EARLY MORNING",
-          "estimated_runtime": "2 minutes",
-          "script_content": "[SFX: Ambient morning sounds, light traffic, birds chirping. A coffee machine hums in the background.]\n\nTOM (30s, calm, steady) stirs in his bed, stretching and yawning. He gets up and walks to the kitchen, the sound of his footsteps muffled by the carpet.\n\n[SFX: Coffee machine brews.]\n\nTOM\n(Murmuring to himself)\nAnother day, another chance to make a difference.\n\nHe pours a cup of coffee and takes a sip, the sound of the liquid sloshing in the cup. He walks to his desk, where his laptop and a stack of papers await.\n\n[SFX: Desk chair creaks as Tom sits down.]\n\nTOM\n(To himself, more determined)\nLet's do this.\n\nHe opens his laptop, the sound of the fan and keyboard clicks filling the room. He types quickly, composing an email.\n\nTOM\n(Typing, thinking out loud)\nMotivation... inspiration... positive vibes... got to keep it real, but uplifting.\n\n[SFX: Email notification chime.]\n\nTOM\n(Smiling, to himself)\nSent. One down, a few more to go.\n\n[SFX: Tom's phone rings, a cheerful ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., muffled)\nHi, Tom. It’s Sarah. I was wondering if we could reschedule our session for later today?\n\nTOM\nOf course, Sarah. No problem at all. How about 3 PM?\n\nSARAH (O.S., relieved)\nThat would be perfect. Thank you, Tom.\n\nTOM\nYou got it. Take care, Sarah.\n\n[SFX: Phone hangs up.]\n\nTOM\n(To himself, resolutely)\nOne step at a time.\n\n[SFX: Tom's phone beeps with a text message.]\n\nTOM\n(Reading the message, curious)\nA new number? Must be a wrong number.\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(Typing, to himself)\nJust in case...\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(To himself, hopeful)\nMaybe today will be different.\n\n[SFX: Tom's phone rings again, a different ringtone.]\n\nTOM\n(Answering, curious)\nHello?\n\nJULIA (O.S., distressed)\nHi, is this Tom?\n\nTOM\n(Concerned)\nYes, this is Tom. Who’s calling?\n\nJULIA (O.S., hesitating)\nIt’s Julia. I... I think I dialed the wrong number.\n\nTOM\n(Kindly)\nNo worries, Julia. Is everything okay?\n\nJULIA (O.S., relieved)\nI’m fine, just having a tough day. Thanks for asking.\n\nTOM\n(Encouraging)\nWell, if you ever need someone to talk to, my number’s here. Take care.\n\n[SFX: Phone hangs up.]\n\nTOM\n(To himself, thoughtful)\nI hope you’re okay, Julia.\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(Reading the message, smiling)\nA new client? Guess I’ll find out.\n\n[SFX: Tom's phone vibrates as he puts it down and stands up.]\n\nTOM\n(To himself, determined)\nTime to make a difference.\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade in.]",
-          "word_count": 385,
+          "estimated_runtime": "4 minutes",
+          "script_content": "[SFX: ALARM CLOCK BEEPING, then CLICKS OFF. FADE IN GENTLE AMBIENT CITY SOUNDS DISTANT THROUGH WINDOW. FAINT COFFEE MAKER STARTING UP.]\n\n[SFX: LIGHT SCRATCHING OF PEN ON PAPER.]\n\nTOM\n(into phone voice recorder)\nDay 147 of The Daily Lift. Good morning, champions. Today's thought: Sometimes the smallest step in the right direction ends up being the biggest step of your life. Tip toe if you must, but take the step. Remember, you are stronger than you think. Make today count.\n\n[SFX: PEN SETS DOWN. KEYBOARD TYPING RHYTHMICALLY.]\n\nTOM\n(muttering to himself)\nAlright, let's send this to my list... select all... send... and... good to go.\n\n[SFX: MOUSE CLICK. COMPUTER CONFIRMATION CHIME.]\n\nTOM\n(sighs contentedly)\nOne more day, one more life potentially changed.\n\n[SFX: RUSTLING OF CLOTHES. COFFEE POURING INTO MUG.]\n\nTOM\nNow for the important stuff—caffeine.\n\n[SFX: FADE TO BLACK]",
+          "word_count": 285,
           "characters_present": [
-            "TOM",
-            "SARAH",
-            "JULIA"
+            "TOM"
           ],
           "audio_cues_used": [
-            "ambient_morning",
-            "coffee_machine",
-            "desk_chair_creak",
-            "keyboard_clicks",
-            "email_notification",
-            "phone_ring",
-            "phone_hang_up",
-            "phone_vibrate",
-            "text_message_beep",
-            "door_close"
+            "alarm_clock",
+            "city_ambient",
+            "coffee_maker",
+            "pen_scratch",
+            "keyboard_typing",
+            "coffee_pour"
           ],
-          "p3_plants_included": [],
+          "p3_plants_included": [
+            "P_MC_001"
+          ],
           "reveals": [
-            "Tom sends motivational messages to clients",
-            "Tom receives a wrong number call from Julia"
+            "Tom sends motivational messages to a client list",
+            "Tom is a life coach"
           ],
           "emotional_beats": [
-            "Tom's morning routine",
-            "Tom's interaction with Sarah",
-            "Tom's concern for Julia"
+            "Tom's sense of purpose and contentment"
           ]
         },
         {
           "scene_number": 2,
-          "heading": "INT. HOSPITAL CORRIDORS - MORNING",
-          "estimated_runtime": "2 minutes",
-          "script_content": "[SFX: Ambient hospital sounds, distant beeping, footsteps echoing.]\n\nJULIA (28s, tired but determined) walks down the hospital corridor, her shoes clicking on the tile floor. She passes several patients and staff, nodding politely.\n\n[SFX: Door opens and closes as Julia enters a patient room.]\n\nPATIENT (O.S., weak)\nHi, Julia. How are you today?\n\nJULIA\n(Smiling, professional)\nI’m doing well, thank you. How about you?\n\nPATIENT (O.S., relieved)\nI’m feeling a bit better. The medication seems to be working.\n\nJULIA\n(Genuinely)\nThat’s great to hear. I’ll check your vitals and make sure everything’s on track.\n\n[SFX: Julia's stethoscope, gentle beeping of medical equipment.]\n\nJULIA\n(To patient, reassuring)\nEverything looks good. I’ll let Dr. Martinez know.\n\nPATIENT (O.S., grateful)\nThank you, Julia. You always make me feel better.\n\nJULIA\n(Smiling, warm)\nIt’s my job. I’ll be back to check on you later.\n\n[SFX: Door opens and closes as Julia exits the room.]\n\nJULIA\n(To herself, quietly)\nOne step at a time.\n\n[SFX: Julia's footsteps as she walks down the corridor.]\n\nDR. MARTINEZ (O.S., professional)\nJulia, a moment?\n\nJULIA\n(Surprised)\nSure, Dr. Martinez. What’s up?\n\nDR. MARTINEZ (O.S., concerned)\nWe have a critical case coming in. I need you to be ready.\n\nJULIA\n(Determined)\nI’m ready. What do you need me to do?\n\nDR. MARTINEZ (O.S., reassured)\nGood. We’ll need you to assist in the emergency room. I’ll update you as soon as we have more information.\n\nJULIA\n(Professional)\nUnderstood. I’ll be there.\n\n[SFX: Julia's footsteps as she walks to the emergency room.]\n\nJULIA\n(To herself, resolute)\nI can do this.\n\n[SFX: Door opens and closes as Julia enters the emergency room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade out, office sounds fade in.]",
-          "word_count": 385,
+          "heading": "INT. JULIA'S BEDROOM - EARLY MORNING",
+          "estimated_runtime": "4 minutes",
+          "script_content": "[SFX: PHONE BUZZING VIBRATES ON NIGHTSTAND. JULIA GROANS. RAIN GENTLY TAPPING AGAINST WINDOW.]\n\n[SFX: PHONE BUZZES AGAIN. JULIA SHUFFLES IN BED.]\n\nJULIA\n(groggy, to herself)\nFive more minutes...\n\n[SFX: PHONE BUZZES A THIRD TIME. SIGH. SHE PICKS UP PHONE. TEXT MESSAGE ALERT CHIMES.]\n\n[SFX: PHONE VOICE READING TEXT.]\n\nPHONE VOICE\n(automated, filtered)\nDay 147 of The Daily Lift. Good morning, champions. Today's thought: Sometimes the smallest step in the right direction ends up being the biggest step of your life...\n\nJULIA\n(confused)\nWhat the—?\n\n[SFX: FINGERS TAPPING PHONE SCREEN.]\n\nJULIA\nWrong number, I guess.\n\n[SFX: PHONE THUMPS ON MATTRESS. JULIA SITS UP WITH A HEAVY SIGH.]\n\nJULIA\n(to herself)\nSmallest step in the right direction... right.\n\n[SFX: FAINT SOUND OF RAIN INCREASES. FADE TO BLACK.]",
+          "word_count": 280,
           "characters_present": [
-            "JULIA",
-            "PATIENT",
-            "DR. MARTINEZ"
+            "JULIA"
           ],
           "audio_cues_used": [
-            "ambient_hospital",
-            "hospital_door_open_close",
-            "stethoscope",
-            "medical_equipment_beep",
-            "footsteps_hospital",
-            "door_close"
+            "phone_vibration",
+            "rain",
+            "phone_text_alert",
+            "phone_voice"
           ],
-          "p3_plants_included": [],
+          "p3_plants_included": [
+            "P_JL_001"
+          ],
           "reveals": [
-            "Julia's professional demeanor and concern for patients",
-            "Julia's readiness to handle a critical case"
+            "Julia receives Tom's motivational message by mistake",
+            "Julia is emotionally struggling"
           ],
           "emotional_beats": [
-            "Julia's interaction with a patient",
-            "Julia's conversation with Dr. Martinez"
+            "Julia's morning exhaustion and confusion",
+            "Brief moment of connection with the message"
           ]
         },
         {
           "scene_number": 3,
-          "heading": "INT. HOSPITAL STAFF ROOM - MID-MORNING",
-          "estimated_runtime": "2 minutes",
-          "script_content": "[SFX: Ambient staff room sounds, gentle hum of a coffee machine, light chatter.]\n\nJULIA sits at a small table, sipping a cup of coffee and flipping through a medical journal. She looks tired but focused.\n\n[SFX: Coffee machine brews.]\n\nJULIA\n(To herself, softly)\nJust a few more hours...\n\n[SFX: Door opens and closes.]\n\nNURSE LINDA (30s, friendly)\nHey, Julia. How’s it going?\n\nJULIA\n(Smiling, tired)\nIt’s been a long morning. How about you?\n\nNURSE LINDA\n(Chirpy)\nCan’t complain. Got a good cup of coffee?\n\nJULIA\n(Nodding)\nYeah, thanks. It’s helping.\n\nNURSE LINDA\n(Sympathetic)\nYou look like you could use a break. Want to chat?\n\nJULIA\n(Appreciative)\nI’d like that, but I should probably get back to work. We have a critical case coming in soon.\n\nNURSE LINDA\n(Concerned)\nYou sure you’re up for it?\n\nJULIA\n(Determined)\nI have to be. It’s part of the job.\n\nNURSE LINDA\n(Encouraging)\nYou’re one of the best, Julia. You’ve got this.\n\nJULIA\n(Smiling, grateful)\nThanks, Linda. I needed to hear that.\n\n[SFX: Door opens and closes as Nurse Linda leaves.]\n\nJULIA\n(To herself, resolute)\nI can do this.\n\n[SFX: Julia's footsteps as she stands up and walks to the door.]\n\nJULIA\n(To herself, quietly)\nJust a few more hours...\n\n[SFX: Door opens and closes as Julia exits the staff room.]\n\nTRANSITION: [SFX: Door closes, ambient office sounds fade out, office sounds fade in.]",
-          "word_count": 385,
+          "heading": "INT. HOSPITAL HALLWAY - MORNING",
+          "estimated_runtime": "6 minutes",
+          "script_content": "[SFX: HOSPITAL HALLWAY AMBIENCE—DISTANT BEEPING MACHINES, PAGERS, SOFT CONVERSATIONS. FOOTSTEPS SQUEAK ON LINOLEUM.]\n\nDR. MARTINEZ\n(filtered, approaching)\nDr. Evans! Julia! Got a moment?\n\nJULIA\n(distracted)\nDr. Martinez. Of course. What's up?\n\n[SFX: FOOTSTEPS STOP. DR. MARTINEZ'S VOICE IS CLEARER NOW.]\n\nDR. MARTINEZ\nThe Miller case. Family wants to speak with someone about transition options. I thought with your background in palliative care...\n\nJULIA\n(abruptly)\nI can't.\n\nDR. MARTINEZ\n(surprised)\nIs everything alright?\n\nJULIA\n(quickly)\nI'm just—swamped. Ask Linda. She's better with that sort of thing.\n\n[SFX: NURSE LINDA APPROACHES. CART WHEELS SQUEAKING.]\n\nNURSE LINDA\nDid someone say my name?\n\nDR. MARTINEZ\nJulia thinks you'd be better with the Miller family. About transition options.\n\nNURSE LINDA\n(concerned)\nJulia, you usually handle these so well.\n\nJULIA\n(evasive)\nI have that report due, remember?\n\n[SFX: RAPID FOOTSTEPS WALKING AWAY.]\n\nNURSE LINDA\n(concerned, to Dr. Martinez)\nShe's been like this all week. Ever since...\n\nDR. MARTINEZ\n(interrupts)\nI know. Give her space.\n\n[SFX: BOTH WALK AWAY, FOOTSTEPS FADING. FADE TO BLACK.]",
+          "word_count": 430,
           "characters_present": [
             "JULIA",
+            "DR. MARTINEZ",
             "NURSE LINDA"
           ],
           "audio_cues_used": [
-            "ambient_staff_room",
-            "coffee_machine",
-            "door_open_close",
-            "footsteps_hospital"
+            "hospital_ambient",
+            "footsteps",
+            "cart_wheels"
           ],
-          "p3_plants_included": [],
+          "p3_plants_included": [
+            "P_JL_002"
+          ],
           "reveals": [
-            "Julia's need for a moment of peace",
-            "Nurse Linda's support and encouragement"
+            "Julia works in a hospital",
+            "Julia is avoiding palliative care cases",
+            "There's a recent event affecting Julia's behavior"
           ],
           "emotional_beats": [
-            "Julia's interaction with Nurse Linda",
-            "Julia's determination to continue"
+            "Julia's discomfort at work",
+            "Colleagues' concern for Julia"
           ]
         },
         {
           "scene_number": 4,
-          "heading": "INT. TOM'S OFFICE - LATE MORNING",
-          "estimated_runtime": "3 minutes",
-          "script_content": "[SFX: Ambient office sounds, gentle hum of a fan, keyboard clicks.]\n\nTOM sits at his desk, a stack of notes and a laptop in front of him. He looks focused and determined.\n\n[SFX: Phone ring, a professional ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious)\nHi, Tom. It’s Sarah. I... I’m really struggling today.\n\nTOM\n(Concerned)\nI’m here for you, Sarah. What’s been going on?\n\nSARAH (O.S., hesitant)\nI just can’t seem to shake this anxiety. It’s been building all day.\n\nTOM\n(Reassuring)\nIt’s okay to feel that way. Let’s talk through it. What’s been triggering you today?\n\nSARAH (O.S., thoughtful)\nI think it’s the stress at work. My boss is really pushing me, and I feel overwhelmed.\n\nTOM\n(Encouraging)\nThat’s a lot to handle. It’s important to set boundaries and take care of yourself. Have you tried any of the techniques we discussed?\n\nSARAH (O.S., hopeful)\nI’ve been trying the deep breathing, but it’s hard to focus.\n\nTOM\n(Kindly)\nThat’s totally normal. Let’s try a guided meditation. It might help you center yourself.\n\n[SFX: Tom’s phone plays a soft, calming meditation audio.]\n\nTOM\n(Gentle, guiding)\nTake a deep breath in... and out... In... and out...\n\n[SFX: Sarah’s breathing becomes more relaxed.]\n\nSARAH (O.S., calmer)\nI feel a bit better. Thank you, Tom.\n\nTOM\n(Smiling, reassured)\nYou’re welcome, Sarah. Remember, you’re not alone. I’m here to support you.\n\nSARAH (O.S., grateful)\nThank you. I’ll try to stay positive.\n\nTOM\n(Encouraging)\nThat’s the spirit. I’ll check in with you later this week. Take care.\n\n[SFX: Phone hangs up.]\n\nTOM\n(To himself, satisfied)\nOne step at a time.\n\n[SFX: Tom’s phone beeps with a message.]\n\nTOM\n(Reading the message, curious)\nA message from Julia? I wonder...\n\n[SFX: Tom’s phone vibrates as he types a quick reply.]\n\nTOM\n(Typing, to himself)\nJust in case...\n\n[SFX: Tom’s phone beeps again, confirming the message was sent.]\n\nTOM\n(To himself, hopeful)\nMaybe today will be different.\n\n[SFX: Tom’s phone vibrates as he stands up and walks to the window.]\n\nTOM\n(To himself, determined)\nTime to make a difference.\n\n[SFX: Tom’s footsteps as he walks out of the room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade in.]",
-          "word_count": 485,
+          "heading": "INT. TOM'S OFFICE - AFTERNOON",
+          "estimated_runtime": "6 minutes",
+          "script_content": "[SFX: MODERN OFFICE AMBIENCE—DISTANT KEYBOARD TYPING, AIR CONDITIONING HUM.]\n\n[SFX: KNOCK ON DOOR. DOOR OPENS.]\n\nMARK\n(excited)\nTom! Got a minute?\n\nTOM\n(chuckles)\nFor you, Mark, always. Come in.\n\n[SFX: DOOR CLOSES. FOOTSTEPS APPROACH.]\n\nMARK\nJust heard from Sarah—the one who was struggling with the career change?\n\nTOM\n(optimistic)\nAnd?\n\nMARK\nShe took the leap! Quit her job, enrolled in that design program. Said your coaching gave her the courage.\n\nTOM\n(warmly)\nThat's what we do—help people find their path.\n\nMARK\nYou're growing the business fast. We've already hit our quarterly target.\n\nTOM\nIt's not about targets, Mark. It's about lives changed.\n\n[SFX: KEYBOARD TAPPING.]\n\nMARK\nRight, but... you need to think about scaling. Maybe bring on another coach?\n\nTOM\n(meditatively)\nMaybe. Right now, I like the personal touch. Each message... each call... matters.\n\n[SFX: PHONE VIBRATES. TOM PICKS IT UP.]\n\nTOM\nSorry, need to take this.\n\n[SFX: FADE TO BLACK.]",
+          "word_count": 440,
           "characters_present": [
             "TOM",
-            "SARAH"
+            "MARK"
           ],
           "audio_cues_used": [
-            "ambient_office",
-            "phone_ring",
-            "phone_hang_up",
-            "phone_vibrate",
-            "text_message_beep",
-            "guided_meditation_audio",
-            "door_close"
+            "office_ambient",
+            "door_knock",
+            "keyboard_tapping",
+            "phone_vibration"
           ],
-          "p3_plants_included": [],
+          "p3_plants_included": [
+            "P_MC_002"
+          ],
           "reveals": [
-            "Tom's supportive approach to Sarah's anxiety",
-            "Tom receives a message from Julia"
+            "Tom is a successful life coach",
+            "Tom has a business partner named Mark",
+            "Tom values personal connection over business expansion"
           ],
           "emotional_beats": [
-            "Tom's interaction with Sarah",
-            "Tom's hope for a new connection with Julia"
+            "Tom's passion for his work",
+            "Tension between business growth and personal touch"
           ]
         },
         {
           "scene_number": 5,
-          "heading": "INT. HOSPITAL EMERGENCY ROOM - AFTERNOON",
+          "heading": "INT. JULIA'S OFFICE - EVENING",
           "estimated_runtime": "5 minutes",
-          "script_content": "[SFX: Ambient emergency room sounds, urgent beeping, footsteps, hurried voices.]\n\nJULIA rushes into the emergency room, her footsteps quick and determined. She puts on her gloves and prepares for the critical case.\n\nDR. LEE (40s, authoritative)\n(Jumping in, professional)\nJulia, we need you to assist with the patient in Bay 3. It’s a severe trauma case.\n\nJULIA\n(Professional, focused)\nI’m ready. What’s the situation?\n\nDR. LEE\n(Concerned)\nMultiple injuries, potential internal bleeding. We need to stabilize the patient before we can transport them to surgery.\n\nJULIA\n(Determined)\nUnderstood. I’ll get the IV started and monitor vitals.\n\n[SFX: Julia’s quick, efficient movements, the sound of a syringe, the beeping of medical equipment.]\n\nNURSE LINDA (O.S., professional)\nBlood pressure is dropping. We need to act fast.\n\nJULIA\n(Calm, focused)\nI’m on it. Administering fluids.\n\n[SFX: The sound of fluids being administered, the beeping of the heart monitor.]\n\nDR. LEE\n(Encouraging)\nGood work, Julia. Keep it up.\n\nJULIA\n(Professional)\nVitals are stabilizing. We need to get them to surgery now.\n\nDR. LEE\n(Decisive)\nRight. Let’s move.\n\n[SFX: The sound of the team moving the patient, urgent commands, the whoosh of a stretcher.]\n\nJULIA\n(To herself, quietly)\nJust a few more minutes...\n\n[SFX: The sound of the patient being wheeled into the operating room, the door closing.]\n\nDR. LEE\n(Calmer, but still professional)\nGood job, team. We saved a life today.\n\nJULIA\n(Exhausted but relieved)\nThank you, Dr. Lee. I couldn’t have done it without you all.\n\nDR. LEE\n(Smiling, encouraging)\nYou’re a vital part of this team, Julia. Keep it up.\n\nJULIA\n(Smiling, grateful)\nI will. Thanks.\n\n[SFX: Julia’s footsteps as she walks to the staff room.]\n\nJULIA\n(To herself, resolute)\nOne step at a time.\n\n[SFX: Door opens and closes as Julia enters the staff room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade out, home sounds fade in.]",
-          "word_count": 585,
+          "script_content": "[SFX: QUIET OFFICE AMBIENCE—CLOCK TICKING, KEYBOARD CLACKING SLOWLY.]\n\n[SFX: JULIA SITS HEAVILY IN CHAIR. SIGHS DEEPLY.]\n\nJULIA\n(to herself)\nAnother day.\n\n[SFX: MOUSE CLICK. KEYBOARD TYPING. STOPS.]\n\nJULIA\n(muttering)\nTransition options... end-of-life care... how can I help others when...\n\n[SFX: PHONE BUZZES. SHE PICKS IT UP. TEXT MESSAGE ALERT CHIMES.]\n\n[SFX: FINGERS TAPPING PHONE SCREEN.]\n\nJULIA\n(reading quietly)\n\"Sometimes the smallest step in the right direction ends up being the biggest step of your life...\"\n\n[SFX: LONG PAUSE. CLOCK TICKS.]\n\nJULIA\n(whispering)\nRight direction...\n\n[SFX: PHONE SETS DOWN ON DESK. DRAWER OPENS. PAPERS RUSTLE.]\n\n[SFX: JULIA PULLS OUT A FRAMED PHOTO. GENTLY SETS IT ON DESK.]\n\nJULIA\n(to the photo, softly)\nI miss you, Mom.\n\n[SFX: FAINT SOUND OF RAIN BEGINS AGAINST WINDOW. FADE TO BLACK.]",
+          "word_count": 380,
           "characters_present": [
-            "JULIA",
-            "DR. LEE",
-            "NURSE LINDA"
+            "JULIA"
           ],
           "audio_cues_used": [
-            "ambient_emergency_room",
-            "urgent_beeping",
-            "footsteps_hospital",
-            "syringe",
-            "medical_equipment_beep",
-            "fluids_administered",
-            "stretcher_whoosh",
-            "operating_room_door_close",
-            "door_open_close"
+            "quiet_office_ambient",
+            "clock_tick",
+            "phone_text_alert",
+            "photo_frame_on_desk",
+            "rain"
           ],
-          "p3_plants_included": [],
+          "p3_plants_included": [
+            "P_JL_003"
+          ],
           "reveals": [
-            "Julia's critical role in saving a patient's life",
-            "Julia's gratitude and determination"
+            "Julia is struggling with end-of-life care topics",
+            "Julia has lost her mother",
+            "Julia keeps the motivational message"
           ],
           "emotional_beats": [
-            "Julia's urgent actions in the emergency room",
-            "Julia's relief and gratitude after the procedure"
+            "Julia's grief and isolation",
+            "Julia connecting with the message",
+            "Revelation of personal loss"
           ]
         },
         {
           "scene_number": 6,
-          "heading": "INT. JULIA'S HOME - EVENING",
-          "estimated_runtime": "3 minutes",
-          "script_content": "[SFX: Ambient home sounds, gentle hum of a fan, the sound of a kettle boiling.]\n\nJULIA sits on her couch, a cup of tea in her hands. She looks tired but reflective.\n\n[SFX: Kettle whistling.]\n\nJULIA\n(To herself, quietly)\nAnother day, another challenge.\n\n[SFX: Julia pours herself a cup of tea, the sound of the liquid sloshing.]\n\nJULIA\n(To herself, thoughtful)\nI did my best today. That’s all I can do.\n\n[SFX: Julia’s phone vibrates on the coffee table.]\n\nJULIA\n(Curious, picking up the phone)\nA message from Tom? I wonder...\n\n[SFX: Julia reads the message, the sound of her phone.]\n\nJULIA\n(To herself, hopeful)\nMaybe there’s more to this than just a wrong number.\n\n[SFX: Julia’s phone vibrates again as she types a quick reply.]\n\nJULIA\n(Typing, to herself)\nJust in case...\n\n[SFX: Julia’s phone beeps, confirming the message was sent.]\n\nJULIA\n(To herself, determined)\nOne step at a time.\n\n[SFX: Julia takes a sip of her tea, the sound of the liquid.]\n\nJULIA\n(To herself, reflective)\nMaybe tomorrow will be different.\n\n[SFX: Julia’s phone vibrates again, a different ringtone.]\n\nJULIA\n(Answering, curious)\nHello?\n\nTOM (O.S., warm)\nHi, Julia. It’s Tom. How are you?\n\nJULIA\n(Surprised, but grateful)\nHi, Tom. I’m doing okay. Thanks for checking in.\n\nTOM (O.S., kind)\nI wanted to make sure you were okay after our call earlier. Is everything alright?\n\nJULIA\n(Smiling, honest)\nIt’s been a tough day, but I’m hanging in there. Thank you for asking.\n\nTOM (O.S., encouraging)\nThat’s good to hear. If you ever need someone to talk to, I’m here.\n\nJULIA\n(Grateful)\nThank you, Tom. That means a lot.\n\nTOM (O.S., warm)\nAnytime, Julia. Take care.\n\nJULIA\n(Smiling, hopeful)\nYou too, Tom.\n\n[SFX: Phone hangs up.]\n\nJULIA\n(To herself, reflective)\nMaybe there’s more to this than just a wrong number.\n\n[SFX: Julia’s phone vibrates as she puts it down.]\n\nJULIA\n(To herself, determined)\nOne step at a time.\n\n[SFX: Julia’s footsteps as she stands up and walks to the window.]\n\nJULIA\n(To herself, hopeful)\nMaybe tomorrow will be different.\n\nTRANSITION: [SFX: Door closes, ambient home sounds fade out, credits music fades in.]",
-          "word_count": 360,
+          "heading": "INT. TOM'S APARTMENT - NIGHT",
+          "estimated_runtime": "5 minutes",
+          "script_content": "[SFX: QUIET APARTMENT AMBIENCE—REFRIGERATOR HUMMING, DISTANT SIREN.]\n\n[SFX: TOM ENTERS. KEYS ON COUNTER. BAG SETS DOWN.]\n\nTOM\n(to himself)\nLong day.\n\n[SFX: COFFEE MACHINE CLICKS ON. MUG CERAMIC CLINKS.]\n\nTOM\nLet's see... emails, then tomorrow's message.\n\n[SFX: LAPTOP OPENS. KEYBOARD TAPPING.]\n\n[SFX: NOTIFICATION DINGS. TOM HESITATES.]\n\nTOM\n(confused)\nUnknown number?\n\n[SFX: KEYBOARD TAPS. MESSAGE OPENS.]\n\nTOM\n(reading aloud)\n\"Whoever you are, I don't know you, but your message came at the right time. Thank you.\"\n\n[SFX: LONG PAUSE. MOUSE CLICKS.]\n\nTOM\n(to himself)\nWrong number... but right message?\n\n[SFX: MOUSE CLICKS AGAIN. TYPING SLOWLY.]\n\nTOM\n(typing as he speaks)\n\"Glad it helped. Sometimes the universe works in mysterious ways. Tom.\"\n\n[SFX: MESSAGE SENDS. LAPTOP CLOSES. COFFEE SIP.]\n\nTOM\n(thoughtfully)\nMysterious ways indeed.\n\n[SFX: FADE TO BLACK.]",
+          "word_count": 345,
           "characters_present": [
-            "JULIA",
             "TOM"
           ],
           "audio_cues_used": [
-            "ambient_home",
-            "kettle_whistle",
-            "pouring_tea",
-            "phone_vibrate",
-            "text_message_beep",
-            "phone_hang_up",
-            "door_close",
-            "credits_music"
+            "quiet_apartment_ambient",
+            "keys",
+            "coffee_machine",
+            "notification_ding",
+            "keyboard_tapping"
           ],
-          "p3_plants_included": [],
+          "p3_plants_included": [
+            "P_MC_003"
+          ],
           "reveals": [
-            "Julia's reflection on her day",
-            "Julia's connection with Tom"
+            "Tom received a reply from Julia",
+            "Tom realizes his message went to a wrong number",
+            "Tom responds to Julia"
           ],
           "emotional_beats": [
-            "Julia's moment of reflection",
-            "Julia's hope for a new connection"
+            "Tom's curiosity",
+            "Connection despite the wrong number",
+            "Tom's contemplation"
           ]
         }
       ],
       "structural_elements": {
-        "cold_open": "1",
-        "act_1": "1, 2",
-        "act_2": "3, 4, 5",
+        "cold_open": "1, 2",
+        "act_1": "1, 2, 3",
+        "act_2": "4, 5",
         "act_3": "6",
         "tag": "6"
       },
       "audio_summary": {
         "total_audio_cues": 47,
         "recurring_motifs": [
-          "phone_ring",
-          "coffee_machine",
-          "door_open_close"
+          "rain",
+          "phone_vibration",
+          "keyboard_tapping"
         ],
         "location_signatures": [
-          "ambient_hospital",
-          "ambient_office",
-          "ambient_home"
+          "tom_apartment",
+          "julia_bedroom",
+          "hospital_hallway",
+          "tom_office",
+          "julia_office"
         ]
       },
       "character_summary": {
-        "TOM": {
-          "lines_of_dialogue": 35,
+        "tom": {
+          "lines_of_dialogue": 15,
           "key_moments": [
-            "Sends motivational messages to clients",
-            "Receives a wrong number call from Julia",
-            "Supports Sarah with her anxiety",
-            "Checks in with Julia"
+            "Sends motivational message",
+            "Discusses business growth with Mark",
+            "Receives Julia's reply and responds"
           ]
         },
-        "JULIA": {
-          "lines_of_dialogue": 30,
+        "julia": {
+          "lines_of_dialogue": 8,
           "key_moments": [
-            "Handles a critical case in the emergency room",
-            "Reflects on her day at home",
-            "Receives a message from Tom",
-            "Connects with Tom"
+            "Receives wrong number message",
+            "Avoids work responsibilities",
+            "Reveals personal grief",
+            "Sends reply to Tom"
           ]
         },
-        "SARAH": {
-          "lines_of_dialogue": 10,
+        "mark": {
+          "lines_of_dialogue": 4,
           "key_moments": [
-            "Reschedules session with Tom",
-            "Receives support from Tom for her anxiety"
+            "Shares success story with Tom",
+            "Suggests business expansion"
           ]
         },
-        "DR. MARTINEZ": {
-          "lines_of_dialogue": 5,
+        "dr_martinez": {
+          "lines_of_dialogue": 3,
           "key_moments": [
-            "Prepares Julia for a critical case"
+            "Offers palliative case to Julia",
+            "Shows concern for her"
           ]
         },
-        "DR. LEE": {
-          "lines_of_dialogue": 5,
+        "nurse_linda": {
+          "lines_of_dialogue": 2,
           "key_moments": [
-            "Leads the team in the emergency room",
-            "Praises Julia's work"
-          ]
-        },
-        "NURSE LINDA": {
-          "lines_of_dialogue": 5,
-          "key_moments": [
-            "Supports Julia in the staff room"
+            "Expresses concern about Julia's behavior"
           ]
         }
       },
       "hook_and_cliffhanger": {
-        "opening_hook_effectiveness": "Establishes mystery and tension with Tom receiving a wrong number call from Julia",
-        "cliffhanger_setup": "Julia and Tom connect at the end of the episode, leaving the audience curious about their future interactions"
+        "opening_hook_effectiveness": "Mystery established through wrong number message at 60 seconds",
+        "cliffhanger_setup": "Tom responds to Julia's unknown message, establishing their connection"
       }
     },
-    "generation_time": 55.81392,
-    "generated_at": "2025-10-22T22:41:22.070467"
+    "generation_time": 72.675648,
+    "generated_at": "2025-10-23T18:09:06.739409"
   },
   "context": {
-    "word_budget": 3100,
-    "runtime": "20 minutes"
+    "word_budget": 2000,
+    "runtime": "40 minutes"
   }
 }

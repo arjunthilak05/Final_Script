@@ -147,42 +147,79 @@ class Station11RuntimePlanner:
         station1_data = await self.redis_client.get(station1_key)
         if station1_data:
             station_data['station_01'] = json.loads(station1_data)
-            print("✅ Station 1 data loaded")
+            print("✅ Station 1 data loaded from Redis")
+        else:
+            # Fallback to file system if not in Redis
+            station1_file = Path(f"output/station_01/{self.session_id}_output.json")
+            if station1_file.exists():
+                with open(station1_file, 'r', encoding='utf-8') as f:
+                    station_data['station_01'] = json.load(f)
+                print("✅ Station 1 data loaded from file")
         
-        # Load Station 2 (Project DNA Builder) - from file since not in Redis
-        station2_file = Path(f"output/station_02/session_{self.session_id}_bible.json")
-        if station2_file.exists():
-            with open(station2_file, 'r', encoding='utf-8') as f:
-                station_data['station_02'] = json.load(f)
-            print("✅ Station 2 data loaded from file")
+        # Load Station 2 (Project DNA Builder)
+        station2_key = f"session:{self.session_id}:station:02:output"
+        station2_data = await self.redis_client.get(station2_key)
+        if station2_data:
+            station_data['station_02'] = json.loads(station2_data)
+            print("✅ Station 2 data loaded from Redis")
+        else:
+            station2_file = Path(f"output/station_02/{self.session_id}_bible.json")
+            if station2_file.exists():
+                with open(station2_file, 'r', encoding='utf-8') as f:
+                    station_data['station_02'] = json.load(f)
+                print("✅ Station 2 data loaded from file")
         
         # Load Station 3 (Age Genre Optimizer)
         station3_key = f"session:{self.session_id}:station:03:style_guide"
         station3_data = await self.redis_client.get(station3_key)
         if station3_data:
             station_data['station_03'] = json.loads(station3_data)
-            print("✅ Station 3 data loaded")
+            print("✅ Station 3 data loaded from Redis")
+        else:
+            station3_file = Path(f"output/station_03/{self.session_id}_style_guide.json")
+            if station3_file.exists():
+                with open(station3_file, 'r', encoding='utf-8') as f:
+                    station_data['station_03'] = json.load(f)
+                print("✅ Station 3 data loaded from file")
         
         # Load Station 4 (Reference Mining)
         station4_key = f"session:{self.session_id}:station:04:output"
         station4_data = await self.redis_client.get(station4_key)
         if station4_data:
             station_data['station_04'] = json.loads(station4_data)
-            print("✅ Station 4 data loaded")
+            print("✅ Station 4 data loaded from Redis")
+        else:
+            station4_file = Path(f"output/station_04/{self.session_id}_output.json")
+            if station4_file.exists():
+                with open(station4_file, 'r', encoding='utf-8') as f:
+                    station_data['station_04'] = json.load(f)
+                print("✅ Station 4 data loaded from file")
         
         # Load Station 4.5 (Narrator Strategy)
         station45_key = f"session:{self.session_id}:station:045:output"
         station45_data = await self.redis_client.get(station45_key)
         if station45_data:
             station_data['station_045'] = json.loads(station45_data)
-            print("✅ Station 4.5 data loaded")
+            print("✅ Station 4.5 data loaded from Redis")
+        else:
+            station45_file = Path(f"output/station_045/{self.session_id}_output.json")
+            if station45_file.exists():
+                with open(station45_file, 'r', encoding='utf-8') as f:
+                    station_data['station_045'] = json.load(f)
+                print("✅ Station 4.5 data loaded from file")
         
         # Load Station 5 (Season Architect)
         station5_key = f"session:{self.session_id}:station:05:output"
         station5_data = await self.redis_client.get(station5_key)
         if station5_data:
             station_data['station_05'] = json.loads(station5_data)
-            print("✅ Station 5 data loaded")
+            print("✅ Station 5 data loaded from Redis")
+        else:
+            station5_file = Path(f"output/station_05/{self.session_id}_output.json")
+            if station5_file.exists():
+                with open(station5_file, 'r', encoding='utf-8') as f:
+                    station_data['station_05'] = json.load(f)
+                print("✅ Station 5 data loaded from file")
         
         return station_data
 

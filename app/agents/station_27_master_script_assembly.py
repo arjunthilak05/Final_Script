@@ -569,7 +569,7 @@ class Station27MasterScriptAssembly:
 
 async def main():
     """Main execution"""
-    session_id = "session_20251016_235335"
+    session_id = input("📋 Enter session ID: ").strip()
 
     station = Station27MasterScriptAssembly(session_id, skip_review=True)
     await station.initialize()

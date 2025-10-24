@@ -2,24 +2,25 @@
 
 ## Scene 1
 
-**INT. COFFEE SHOP - DAY**
+**INT. LIVING ROOM - NIGHT**
 
-*FADE IN:*
+*Fade in:*
 
-**SARA**
-*(sighing)*
-I can't believe we're doing this again.
+**JOHN**
+*(whispering)*
+Is everyone asleep?
 
-**JACK**
-*(excited)*
-Come on, Sara, it'll be fun!
+**LISA**
+Almost. Just waiting for Mom.
 
 ```
-SFX: COFFEE MACHINE HUMMING
+SFX: DOOR CREAKING OPEN
 ```
 
-**SARA**
-*(skeptical)*
-Fun? You call this fun?
+**JOHN**
+*(calm)*
+Let's go, then. We can't afford to wait any longer.
 
-*FADE OUT.*
+*Fade out.*
+
+*End of Episode*

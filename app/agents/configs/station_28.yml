@@ -1,0 +1,245 @@
+# Station 28: Emotional Truth Validator Configuration
+
+model: "glm-4.5"
+temperature: 0.7
+max_tokens: 8000
+
+prompts:
+  emotional_arc_verification: |
+    You are an Emotional Arc Verification Specialist for audio drama scripts.
+    
+    Analyze the emotional journey of each character in this episode script.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    CHARACTER DATA:
+    {characters}
+    
+    EMOTIONAL JOURNEY MAPS:
+    {journey_maps}
+    
+    For each character present in the episode, analyze their emotional arc and return ONLY valid JSON:
+    
+    ```json
+    {{
+      "emotional_scorecard": {{
+        "character_name": {{
+          "start_state": {{
+            "feeling_state": "current emotional state",
+            "cause": "what caused this state",
+            "audio_manifestation": "voice quality, breathing, pacing description"
+          }},
+          "transitions": [
+            {{
+              "trigger_moment": "specific line/sound that triggers change",
+              "believability_score": 0-5,
+              "audio_manifestation": "how emotion sounds in audio",
+              "earned_assessment": true/false,
+              "reason": "why transition is earned or not"
+            }}
+          ],
+          "end_state": {{
+            "feeling_state": "final emotional state",
+            "growth_delta": "how much character changed from start",
+            "next_episode_setup": "emotional state for next episode"
+          }},
+          "arc_score": 0-5
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: All scores must be 0-5. Provide specific line references and audio descriptions.
+
+  relationship_dynamics_check: |
+    You are a Relationship Dynamics Specialist for audio drama scripts.
+    
+    Analyze the relationship interactions between characters in this episode.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    CHARACTER DATA:
+    {characters}
+    
+    For each scene with 2+ characters, analyze their relationship dynamics and return ONLY valid JSON:
+    
+    ```json
+    {{
+      "relationship_chart": [
+        {{
+          "characters": ["Character1", "Character2"],
+          "status": {{
+            "current_standing": "relationship type and level",
+            "tension_comfort_level": 0-5,
+            "power_dynamics": "who has power and how"
+          }},
+          "interaction_authenticity": {{
+            "dialogue_realism": "how realistic dialogue is for relationship type",
+            "silence_pause_naturalness": "naturalness of pauses and silences",
+            "subtext_audio_clarity": "how well subtext comes through in audio"
+          }},
+          "progression": {{
+            "direction": "forward/backward/static",
+            "change_justification": "why relationship changed or stayed same",
+            "audio_relationship_cues": "distance, warmth, formality in audio"
+          }},
+          "authenticity_score": 0-5
+        }}
+      ]
+    }}
+    ```
+    
+    CRITICAL: All scores must be 0-5. Focus on audio-specific relationship cues.
+
+  universal_emotional_resonance: |
+    You are a Universal Emotional Resonance Specialist for audio drama scripts.
+    
+    Score this episode across 5 universal emotional dimensions.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    EMOTIONAL JOURNEY MAPS:
+    {journey_maps}
+    
+    Score each dimension (0-5) and return ONLY valid JSON:
+    
+    ```json
+    {{
+      "universal_resonance": {{
+        "love_connection": {{
+          "score": 0-5,
+          "presence": "how present love/connection themes are",
+          "authenticity": "how authentic the emotional expression is",
+          "audio_expression": "voice softening, breathing, warmth in audio"
+        }},
+        "fear_anxiety": {{
+          "score": 0-5,
+          "stakes_clarity": "how clear the stakes and threats are",
+          "tension_building": "how well tension builds",
+          "audio_expression": "breathing, tremor, pacing in audio"
+        }},
+        "hope_despair": {{
+          "score": 0-5,
+          "balance": "balance between hope and despair",
+          "story_justification": "how well justified by story events",
+          "audio_expression": "energy, music cues, voice modulation"
+        }},
+        "anger_frustration": {{
+          "score": 0-5,
+          "event_justification": "how well justified by story events",
+          "expression": "how well anger/frustration is expressed",
+          "audio_expression": "volume, interruptions, voice quality"
+        }},
+        "joy_humor": {{
+          "score": 0-5,
+          "situation_fit": "how well humor fits the situation",
+          "character_appropriateness": "how appropriate for characters",
+          "audio_expression": "laughter timing, voice lightness, rhythm"
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: All scores must be 0-5. Provide detailed audio-specific analysis.
+
+  emotional_problem_detection: |
+    You are an Emotional Problem Detection Specialist for audio drama scripts.
+    
+    Identify emotional problems and provide specific fixes.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    ANALYSIS RESULTS:
+    Emotional Arcs: {emotional_arcs}
+    Relationship Dynamics: {relationship_dynamics}
+    Universal Resonance: {universal_resonance}
+    
+    Detect these specific emotional problems and return ONLY valid JSON:
+    
+    ```json
+    {{
+      "problem_flags": [
+        {{
+          "type": "Unearned Emotions|Emotional Whiplash|Flat Affect|Overemoting|Audio-Emotion Mismatch",
+          "location": "specific scene/line reference",
+          "issue": "detailed description of the problem",
+          "recommended_fix": "specific fix with implementation details"
+        }}
+      ],
+      "line_adjustments": [
+        {{
+          "line_number": "specific line number or scene reference",
+          "current": "current problematic text",
+          "recommended": "improved version",
+          "reason": "why this change improves emotional authenticity"
+        }}
+      ]
+    }}
+    ```
+    
+    CRITICAL: Provide specific line references and actionable fixes.
+
+  summary_report: |
+    You are an Emotional Truth Validation Summary Specialist.
+    
+    Generate a comprehensive summary report across all analyzed episodes.
+    
+    SESSION CONTEXT:
+    Session ID: {session_id}
+    Total Episodes: {total_episodes}
+    
+    EPISODE RESULTS:
+    {episode_results}
+    
+    Generate a comprehensive summary and return ONLY valid JSON:
+    
+    ```json
+    {{
+      "summary_report": {{
+        "executive_summary": "2-3 paragraph overview of emotional health across all episodes",
+        "overall_emotional_health": {{
+          "average_arc_score": 0-5,
+          "average_relationship_score": 0-5,
+          "average_resonance_score": 0-5,
+          "total_problems": "total number of problems detected",
+          "total_adjustments": "total number of line adjustments recommended"
+        }},
+        "episode_breakdown": [
+          {{
+            "episode_id": "episode identifier",
+            "emotional_health_score": 0-5,
+            "key_strengths": ["strength 1", "strength 2"],
+            "key_weaknesses": ["weakness 1", "weakness 2"],
+            "critical_fixes": ["fix 1", "fix 2"]
+          }}
+        ],
+        "series_recommendations": [
+          "recommendation 1",
+          "recommendation 2",
+          "recommendation 3"
+        ],
+        "emotional_consistency_notes": "notes about emotional consistency across episodes"
+      }}
+    }}
+    ```
+    
+    CRITICAL: Provide actionable insights and specific recommendations.
+
+dependencies:
+  - station: 27
+    name: "Master Script Assembly"
+  - station: 8
+    name: "Character Architect"
+  - station: 5
+    name: "Season Architect"
+
+# Enable/disable this station in the pipeline
+enabled: true

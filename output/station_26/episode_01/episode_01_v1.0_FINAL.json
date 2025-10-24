@@ -1,581 +1,572 @@
 {
-  "session_id": "session_20251016_235335",
+  "session_id": "session_20251023_112749",
   "episode_number": 1,
-  "locked_at": "2025-10-23T01:52:54.355839",
+  "locked_at": "2025-10-24T09:31:01.601967",
   "version": "1.0",
   "status": "LOCKED",
   "word_count_expansion": {
-    "current_word_count": 2270,
-    "target_word_count": 3100,
-    "gap": 830,
-    "expansion_areas": [
-      {
-        "scene_number": 1,
-        "area_type": "emotional_depth|world_building",
-        "original_excerpt": "TOM (30s, calm, steady) stirs in his bed, stretching and yawning. He gets up and walks to the kitchen, the sound of his footsteps muffled by the carpet.",
-        "expanded_excerpt": "TOM (30s, calm, steady) stirs in his bed, stretching and yawning. He runs a hand through his messy hair, the morning light filtering through the curtains, casting a warm glow on the room. He gets up and walks to the kitchen, the sound of his footsteps muffled by the carpet. The apartment is cozy, with a mix of modern and vintage decor, a testament to Tom's eclectic taste. A framed photo of him and a friend from college sits on a small side table, a reminder of simpler times.",
-        "words_added": 85,
-        "rationale": "Adds emotional depth by showing Tom's morning routine and the cozy, personal touches in his apartment, which help to build a more vivid setting and character."
-      },
-      {
-        "scene_number": 1,
-        "area_type": "dialogue_beats|emotional_depth",
-        "original_excerpt": "TOM (sitting down at his desk, typing quickly) One step at a time...",
-        "expanded_excerpt": "TOM (sitting down at his desk, typing quickly) One step at a time... (pauses, looking at a sticky note with a motivational quote, sighs) It's easier said than done, but I have to keep pushing. (resumes typing, more determined) Today's the day I make a difference.",
-        "words_added": 45,
-        "rationale": "Enhances the emotional depth and internal conflict by showing Tom's struggle with motivation and his determination to make a difference."
-      },
-      {
-        "scene_number": 2,
-        "area_type": "emotional_depth|subtext",
-        "original_excerpt": "JULIA (28s, tired but determined) walks down the hospital corridor, her shoes clicking on the tile floor. She passes several patients and staff, nodding politely.",
-        "expanded_excerpt": "JULIA (28s, tired but determined) walks down the hospital corridor, her shoes clicking on the tile floor. She passes several patients and staff, nodding politely, but her mind is elsewhere. The smell of antiseptic and the distant hum of medical equipment are a constant reminder of the gravity of her work. She glances at a framed certificate on the wall, a symbol of her hard-earned credentials, and takes a deep breath, steeling herself for the day ahead.",
-        "words_added": 85,
-        "rationale": "Adds emotional depth by showing Julia's internal conflict and the weight of her responsibilities, while also enriching the setting."
-      },
-      {
-        "scene_number": 2,
-        "area_type": "dialogue_beats|subtext",
-        "original_excerpt": "PATIENT (O.S., weak) Hi, Julia. How are you feeling?",
-        "expanded_excerpt": "PATIENT (O.S., weak, with a hint of fatigue) Hi, Julia. How are you feeling? (pauses, looking at her with a grateful smile) You always make me feel better, even on my worst days.",
-        "words_added": 35,
-        "rationale": "Enhances the emotional depth and subtext by showing the patient's gratitude and the impact Julia has on her, adding a layer of personal connection."
-      },
-      {
-        "scene_number": 3,
-        "area_type": "emotional_depth|world_building",
-        "original_excerpt": "JULIA sits at a small table, sipping a cup of coffee and flipping through a medical journal. She looks tired but focused.",
-        "expanded_excerpt": "JULIA sits at a small table, sipping a cup of coffee and flipping through a medical journal. She looks tired but focused, her eyes occasionally drifting to a photograph of her and her sister, taken during a happier time. The staff room is a small, cozy space with a few personal touches, including a shelf of books and a potted plant that adds a touch of green. The gentle hum of the coffee machine and the occasional chatter of colleagues provide a soothing background.",
-        "words_added": 85,
-        "rationale": "Adds emotional depth by showing a personal connection and enriches the setting with sensory details, making the scene more vivid and engaging."
-      },
-      {
-        "scene_number": 4,
-        "area_type": "dialogue_beats|subtext",
-        "original_excerpt": "TOM (concerned) I'm here for you, Sarah. What's been going on? Are you expecting an important message?",
-        "expanded_excerpt": "TOM (concerned, leaning forward) I'm here for you, Sarah. What's been going on? (pauses, his voice softening) Are you expecting an important message? (notices her hesitation) Sometimes it helps to talk about it, even if it feels overwhelming.",
-        "words_added": 50,
-        "rationale": "Enhances the emotional depth and subtext by showing Tom's supportive and understanding nature, and his sensitivity to Sarah's emotional state."
-      },
-      {
-        "scene_number": 5,
-        "area_type": "world_building|emotional_depth",
-        "original_excerpt": "JULIA rushes into the emergency room, her footsteps quick and determined. She puts on her gloves and prepares for the critical case.",
-        "expanded_excerpt": "JULIA rushes into the emergency room, her footsteps quick and determined, the fluorescent lights casting a harsh glow on the sterile environment. She puts on her gloves, the sound of the latex snapping into place a familiar rhythm. The room is a hive of activity, with medical staff moving with purpose, the beeping of machines and the urgent commands of doctors creating a symphony of urgency. Julia takes a deep breath, centering herself, and prepares for the critical case.",
-        "words_added": 85,
-        "rationale": "Enriches the setting with sensory details and adds emotional depth by showing Julia's focus and the high-stress environment of the emergency room."
-      },
-      {
-        "scene_number": 6,
-        "area_type": "emotional_depth|world_building",
-        "original_excerpt": "JULIA sits on her couch, a cup of tea in her hands. She looks tired but reflective.",
-        "expanded_excerpt": "JULIA sits on her couch, a cup of tea in her hands, the steam rising in the cool evening air. She looks tired but reflective, the soft glow of a lamp casting a warm light on the room. The living room is a mix of comfort and practicality, with a few personal touches like a bookshelf filled with novels and a small collection of plants. The gentle hum of the fan and the distant traffic noise provide a soothing backdrop as she reflects on the day.",
-        "words_added": 85,
-        "rationale": "Adds emotional depth by showing Julia's reflective state and enriches the setting with sensory details, making the scene more vivid and engaging."
-      },
-      {
-        "scene_number": 6,
-        "area_type": "dialogue_beats|subtext",
-        "original_excerpt": "JULIA (surprised, hopeful) Hello?",
-        "expanded_excerpt": "JULIA (surprised, hopeful, her heart skipping a beat) Hello? (pauses, a smile forming on her face) Tom? It's been a while. How have you been?",
-        "words_added": 35,
-        "rationale": "Enhances the emotional depth and subtext by showing Julia's surprise and the warmth in her voice, adding a layer of personal connection."
-      }
-    ],
-    "total_words_added": 830,
-    "final_word_count": 3100,
-    "expanded_full_script": "INT. TOM'S APARTMENT - EARLY MORNING\n======================================================================\n[ACOUSTIC: Carpeted floors, medium reverb, light ambient sounds]\n[AMBIENT: Ambient morning sounds (constant, light), Light traffic (constant, distant), Birds chirping (constant, distant), Coffee machine hum (constant, medium)]\n\n=== SCENE 1: INT. TOM'S APARTMENT - EARLY MORNING ===\n[SFX: Ambient morning sounds, light traffic, birds chirping. A coffee machine hums in the background.]\n\nTOM (30s, calm, steady) stirs in his bed, stretching and yawning. He runs a hand through his messy hair, the morning light filtering through the curtains, casting a warm glow on the room. He gets up and walks to the kitchen, the sound of his footsteps muffled by the carpet. The apartment is cozy, with a mix of modern and vintage decor, a testament to Tom's eclectic taste. A framed photo of him and a friend from college sits on a small side table, a reminder of simpler times.\n\n[SFX: Coffee machine brews.]\n\nTOM\n(stirring in bed, eyes half-open, dramatic_pause 3s)\nAnother one, huh?\n\nHe pours a cup of coffee and takes a sip, the sound of the liquid sloshing in the cup. He walks to his desk, where his laptop and a stack of papers await.\n\n[SFX: Desk chair creaks as Tom sits down.]\n\nTOM\n(sitting down at his desk, typing quickly)\nOne step at a time... (pauses, looking at a sticky note with a motivational quote, sighs) It's easier said than done, but I have to keep pushing. (resumes typing, more determined) Today's the day I make a difference.\n\nHe opens his laptop, the sound of the fan and keyboard clicks filling the room. He types quickly, composing an email.\n\nTOM\n(typing, thinking out loud)\nMotivation... inspiration... positive vibes... gotta keep it real, but uplifting.\n\n[SFX: Email notification chime.]\n\nTOM\n(smiling, leaning back)\nFirst step...\n\n[SFX: Tom's phone rings, a cheerful ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious, slightly rushed)\nHi, Tom. It's Sarah. I'm so sorry to call this early, but I need to reschedule our session.\n\nTOM\n(calm, reassuring)\nNo worries at all, Sarah. These things happen. How about 3 PM instead?\n\nSARAH (O.S., hesitant)\n3 PM could work. I'll have to check my schedule and confirm later. Things are just... complicated right now.\n\nTOM\n(sympathetic)\nOf course. Remember the breathing techniques if things get overwhelming. Take care.\n\n[SFX: Phone hangs up.]\n\n[SFX: Tom's phone beeps with a text message.]\n\nTOM\n(reading the message, curious)\nUnknown number. 'Sorry, wrong person. Meet at 3?'\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(typing, to himself)\nNo worries, hope you find who you're looking for.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(frowning at his phone, emotional_beat 4s)\nI hope...\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(reading the message, smiling)\nA new client? Guess I'll find out.\n\n[SFX: Tom's phone vibrates as he puts it down and stands up.]\n\nTOM\n(standing up, determined)\nTime to make a difference...\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\nTRANSITION: [SFX: Door closes, city traffic sounds fade out, ambulance siren approaches and fades into hospital hallway sounds.]\n\nINT. HOSPITAL CORRIDORS - MORNING\n======================================================================\n[ACOUSTIC: Tile floors, low reverb, clinical environment]\n[AMBIENT: Ambient hospital sounds (constant, low), Distant beeping (constant, low), Footsteps echoing (constant, medium)]\n\n=== SCENE 2: INT. HOSPITAL CORRIDORS - MORNING ===\n[SFX: Ambient hospital sounds, distant beeping, footsteps echoing.]\n\nJULIA (28s, tired but determined) walks down the hospital corridor, her shoes clicking on the tile floor. She passes several patients and staff, nodding politely, but her mind is elsewhere. The smell of antiseptic and the distant hum of medical equipment are a constant reminder of the gravity of her work. She glances at a framed certificate on the wall, a symbol of her hard-earned credentials, and takes a deep breath, steeling herself for the day ahead.\n\n[SFX: Door opens and closes as Julia enters a patient room.]\n\nPATIENT (O.S., weak)\nHi, Julia. How are you feeling?\n\nJULIA\n(smiling, professional)\nI'm doing well, thanks. How about you?\n\nPATIENT (O.S., relieved)\nI'm feeling a bit better. The medication seems to be working.\n\nJULIA\n(genuinely)\nThat's great to hear. I'll check your vitals and make sure everything's on track.\n\n[SFX: Julia's stethoscope, gentle beeping of medical equipment.]\n\nJULIA\n(to patient, reassuring)\nEverything looks good. I'll let Dr. Martinez know.\n\nPATIENT (O.S., grateful)\nThanks, Julia. You always make me feel better.\n\nJULIA\n(smiling, warm)\nThanks, Julia.\n\n[SFX: Door opens and closes as Julia exits the room.]\n\nJULIA\n(walking down the corridor, focused)\nOne step at a time...\n\n[SFX: Julia's footsteps as she walks down the corridor, suddenly interrupted by a code blue alarm.]\n\n[SFX: Alarm sounds, urgent voices.]\n\nDR. MARTINEZ (O.S., professional, urgent, with a slight hesitation)\nJulia, a moment? Need to speak with you privately.\n\nJULIA\n(surprised, alert)\nSure, Dr. Martinez. What's up?\n\nDR. MARTINEZ (O.S., concerned, lowering voice)\nWe have a critical case coming in. Unusual circumstances. I need you to be ready and... discreet.\n\nJULIA\n(determined)\nI'm ready. What do you need me to do?\n\nDR. MARTINEZ (O.S., reassured)\nGood. We'll need you to assist in the emergency room. I'll update you as soon as we have more information.\n\nJULIA\n(professional)\nUnderstood. I'll be there.\n\n[SFX: Julia's footsteps as she walks to the emergency room, quickening pace. She pauses to check her phone.]\n\nJULIA\n(to herself, distracted)\nAlmost forgot to confirm my 3 PM. I can do this.\n\n[SFX: Door opens and closes as Julia enters the emergency room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade out, office sounds fade in.]\n\nINT. HOSPITAL STAFF ROOM - MID-MORNING\n======================================================================\n[ACOUSTIC: Closed space, low reverb, gentle ambient sounds]\n[AMBIENT: Ambient staff room sounds (constant, low), Gentle hum of a coffee machine (constant, medium), Light chatter (occasional, medium)]\n\n=== SCENE 3: INT. HOSPITAL STAFF ROOM - MID-MORNING ===\n[SFX: Ambient staff room sounds, gentle hum of a coffee machine, light chatter.]\n\nJULIA sits at a small table, sipping a cup of coffee and flipping through a medical journal. She looks tired but focused, her eyes occasionally drifting to a photograph of her and her sister, taken during a happier time. The staff room is a small, cozy space with a few personal touches, including a shelf of books and a potted plant that adds a touch of green. The gentle hum of the coffee machine and the occasional chatter of colleagues provide a soothing background.\n\n[SFX: Coffee machine brews.]\n\nJULIA\n(to herself, softly)\nJust a few more hours.\n\n[SFX: Door opens and closes.]\n\nNURSE LINDA (30s, friendly)\nHey, Julia. How's it going?\n\nJULIA\n(smiling, tired)\nIt's been a long morning. How about you?\n\nNURSE LINDA\n(chirpy)\nCan't complain. Got a good cup of coffee?\n\nJULIA\n(nodding)\nYeah, thanks. It's helping.\n\nNURSE LINDA\n(sympathetic)\nYou look like you could use a break. Want to chat?\n\nJULIA\n(appreciative)\nI'd like that, but I should probably get back to work. We have a critical case coming in soon.\n\nNURSE LINDA\n(concerned)\nYou sure you're up for it?\n\nJULIA\n(determined)\nI have to be. It's part of the job.\n\nNURSE LINDA\n(encouraging)\nYou're one of the best, Julia. You've got this.\n\nJULIA\n(smiling, grateful)\nThanks, Linda. I needed to hear that.\n\n[SFX: Door opens and closes as Nurse Linda leaves.]\n\nJULIA\n(sipping coffee, focused)\nStay strong...\n\n[SFX: Julia's pager suddenly beeps urgently.]\n\nJULIA\n(checking pager, determined)\nOr maybe just a few minutes.\n\n[SFX: Julia's quick footsteps as she rushes out of the room.]\n\nTRANSITION: [SFX: Door closes, ambient office sounds fade out, office sounds fade in.]\n\nINT. TOM'S OFFICE - LATE MORNING\n======================================================================\n[ACOUSTIC: Closed office, low reverb, professional environment]\n[AMBIENT: Ambient office sounds (constant, low), Gentle hum of a fan (constant, medium), Keyboard clicks (constant, medium)]\n\n=== SCENE 4: INT. TOM'S OFFICE - LATE MORNING ===\n[SFX: Ambient office sounds, gentle hum of a fan, keyboard clicks.]\n\nTOM sits at his desk, a stack of notes and a laptop in front of him. He looks focused and determined.\n\n[SFX: Phone ring, a professional ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious, breathing heavily)\nHi, Tom. It's Sarah. I... I'm really struggling today. I keep checking my phone, waiting for... something.\n\nTOM\n(concerned, leaning forward)\nI'm here for you, Sarah. What's been going on? (pauses, his voice softening) Are you expecting an important message? (notices her hesitation) Sometimes it helps to talk about it, even if it feels overwhelming.\n\nSARAH (O.S., hesitant)\nI think it's the stress at work. My boss is really pushing me, and I feel overwhelmed.\n\nTOM\n(kindly)\nThat's a lot to handle. It's important to set boundaries and take care of yourself. Have you tried any of the techniques we discussed?\n\nSARAH (O.S., hopeful)\nI've been trying the deep breathing, but it's hard to focus.\n\nTOM\n(gentle, guiding)\nThat's totally normal. Let's try a guided meditation. It might help you center yourself.\n\n[SFX: Tom's phone plays a soft, calming meditation audio.]\n\nTOM\n(gentle, guiding)\nTake a deep breath in... and out... In... and out...\n\n[SFX: Sarah's breathing becomes more relaxed.]\n\nSARAH (O.S., calmer)\nI feel a bit better. Thank you, Tom.\n\nTOM\n(smiling, warm)\nAnytime, Sarah. Remember, you're not alone. I'm here to support you.\n\nSARAH (O.S., grateful)\nThank you. I'll try to stay positive.\n\nTOM\n(encouraging)\nThat's the spirit. I'll check in with you later this week. Take care.\n\n[SFX: Phone hangs up.]\n\nTOM\n(to himself, satisfied)\nProgress, not perfection.\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(reading the message, curious)\nAn unknown number? The message mentions a wrong person again. Strange...\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(typing, to himself)\nNo worries, hope you find who you're looking for.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(to himself, hopeful)\nMaybe today will be different.\n\n[SFX: Tom's phone vibrates as he stands up, interrupted by a knock at the door.]\n\nTOM\n(calling out)\nCome in!\n\n[SFX: Door opens, colleague enters.]\n\nCOLLEAGUE (O.S.)\nTom, we need your input on the new community outreach program.\n\nTOM\n(to himself, determined)\nLet's make an impact.\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade in.]\n\nINT. HOSPITAL EMERGENCY ROOM - AFTERNOON\n======================================================================\n[ACOUSTIC: Open space, high reverb, clinical environment]\n[AMBIENT: Ambient emergency room sounds (constant, high), Urgent beeping (constant, high), Footsteps (constant, high), Hurried voices (constant, high)]\n\n=== SCENE 5: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===\n[SFX: Ambient emergency room sounds, urgent beeping, footsteps, hurried voices.]\n\nJULIA rushes into the emergency room, her footsteps quick and determined, the fluorescent lights casting a harsh glow on the sterile environment. She puts on her gloves, the sound of the latex snapping into place a familiar rhythm. The room is a hive of activity, with medical staff moving with purpose, the beeping of machines and the urgent commands of doctors creating a symphony of urgency. Julia takes a deep breath, centering herself, and prepares for the critical case.\n\nDR. LEE (40s, authoritative)\n(jumping in, professional)\nJulia, we need you to assist with the patient in Bay 3. It's a severe trauma case.\n\nJULIA\n(professional, focused)\nI'm ready. What's the situation?\n\nDR. LEE\n(concerned)\nMultiple injuries, potential internal bleeding. We need to stabilize the patient before we can transport them to surgery.\n\nJULIA\n(determined)\nUnderstood. I'll get the IV started and monitor vitals.\n\n[SFX: Julia's quick, efficient movements, the sound of a syringe, the beeping of medical equipment.]\n\nNURSE LINDA (O.S., professional)\nBlood pressure is dropping. We need to act fast.\n\nJULIA\n(calm, focused)\nI'm on it. Administering fluids.\n\n[SFX: The sound of fluids being administered, the beeping of the heart monitor.]\n\nDR. LEE\n(encouraging)\nGood work, Julia. Keep it up.\n\nJULIA\n(professional)\nVitals are stabilizing. We need to get them to surgery now.\n\nDR. LEE\n(decisive)\nRight. Let's move.\n\n[SFX: The sound of the team moving the patient, urgent commands, the whoosh of a stretcher.]\n\nJULIA\n(to herself, urgently)\nHang in there, just a little longer...\n\n[SFX: Urgent medical sounds, the patient being wheeled into the operating room, the door closing with a definitive slam.]\n\nDR. LEE\n(exhaling, calmer but still professional)\nGood job, team. We saved a life today. Dr. Martinez will be pleased with the outcome.\n\nJULIA\n(exhausted but relieved, with a slight hesitation)\nThank you, Dr. Lee. I couldn't have done it without you all. I should probably check in with Dr. Martinez about those unusual circumstances he mentioned.\n\nDR. LEE\n(smiling, encouraging)\nYou're a vital part of this team, Julia. Keep it up.\n\nJULIA\n(smiling, grateful)\nI will. Thanks.\n\n[SFX: Julia's footsteps as she walks to the staff room, slowing with exhaustion.]\n\nJULIA\n(to herself, resolute)\nEvery life matters.\n\n[SFX: Door opens and closes as Julia enters the staff room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade out, home sounds fade in.]\n\nINT. JULIA'S HOME - EVENING\n======================================================================\n[ACOUSTIC: Living room, medium reverb, home environment]\n[AMBIENT: Ambient home sounds (constant, low), Gentle hum of a fan (constant, medium), Distant traffic noise (constant, low), Kettle whistling (occasional, medium)]\n\n=== SCENE 6: INT. JULIA'S HOME - EVENING ===\n[SFX: Ambient home sounds, gentle hum of a fan, the sound of a kettle boiling.]\n\nJULIA sits on her couch, a cup of tea in her hands, the steam rising in the cool evening air. She looks tired but reflective, the soft glow of a lamp casting a warm light on the room. The living room is a mix of comfort and practicality, with a few personal touches like a bookshelf filled with novels and a small collection of plants. The gentle hum of the fan and the distant traffic noise provide a soothing backdrop as she reflects on the day.\n\n[SFX: Kettle whistling.]\n\nJULIA\n(to herself, quietly)\nAnother day, another challenge.\n\n[SFX: Julia pours herself a cup of tea, the sound of the liquid sloshing.]\n\nJULIA\n(to herself, thoughtful)\nI did my best today. That's all I can do.\n\n[SFX: Julia's phone vibrates on the coffee table.]\n\nJULIA\n(curious, picking up the phone)\nAnother unknown number? Same wrong person message. This is the second time today...\n\n[SFX: Julia reads the message, the sound of her phone.]\n\nJULIA\n(to herself, thoughtful)\nWhat are the odds of getting the same wrong number twice?\n\n[SFX: Julia's phone vibrates again as she types a quick reply.]\n\nJULIA\n(typing, to herself)\nNo worries, happens to the best of us.\n\n[SFX: Julia's phone beeps, confirming the message was sent.]\n\nJULIA\n(to herself, determined)\nEvery day brings new challenges.\n\n[SFX: Julia takes a sip of her tea, the sound of the liquid, then sets the cup down with a soft clink.]\n\nJULIA\n(to herself, reflective)\nAnd new opportunities to grow.\n\n[SFX: Julia's phone vibrates again, a different ringtone.]\n\nJULIA\n(surprised, hopeful, her heart skipping a beat)\nHello? (pauses, a smile forming on her face) Tom? It's been a while. How have you been?\n\nTOM (O.S., warm)\nHi, Julia. It's Tom. How are you?\n\nJULIA\n(surprised, but grateful)\nHi, Tom. I'm doing okay. Thanks for checking in.\n\nTOM (O.S., kind)\nI wanted to make sure you were okay after our call earlier. Is everything alright?\n\nJULIA\n(smiling, honest)\nIt's been a tough day, but I'm hanging in there. Thank you for asking.\n\nTOM (O.S., encouraging)\nThat's good to hear. If you ever need someone to talk to, I'm here.\n\nJULIA\n(grateful)\nThank you, Tom. That means a lot.\n\nTOM (O.S., warm)\nAnytime, Julia. Take care.\n\nJULIA\n(smiling, hopeful)\nYou too, Tom.\n\n[SFX: Phone hangs up.]\n\nJULIA\n(to herself, reflective)\nMaybe there's more to this than just a wrong number.\n\n[SFX: Julia's phone vibrates as she puts it down.]\n\nJULIA\n(to herself, determined)\nEvery day brings new challenges.\n\n[SFX: Julia's footsteps as she stands up and walks to the window.]\n\nJULIA\n(to herself, hopeful)\nAnd new opportunities to grow.\n\nTRANSITION: [SFX: Door closes, ambient home sounds fade out, credits music fades in.]"
+    "current_word_count": 2300,
+    "target_word_count": 4500,
+    "gap": 2200,
+    "expanded_full_script": "INT. TOM'S APARTMENT - EARLY MORNING\n======================================================================\n[ACOUSTIC: Soft surfaces, reverb low, carpet muffles footsteps]\n[AMBIENT: Ambient morning sounds (light traffic, birds chirping) (constant, low), Coffee machine hum (constant, low)]\n\n=== SCENE 1: INT. TOM'S APARTMENT - EARLY MORNING ===\n[SFX: Ambient morning sounds, light traffic, birds chirping. A coffee machine hums in the background.]\n\nTOM (30s, calm, steady) stirs in his bed, stretching and yawning. He gets up and walks to the kitchen, the sound of his footsteps muffled by the carpet.\n\n[SFX: Coffee machine brews.]\n\nTOM\n(Murmuring to himself)\nNew day, new chances.\n\nHe pours a cup of coffee and takes a sip, the sound of the liquid sloshing in the cup. He walks to his desk, where his laptop and a stack of papers await.\n\n[SFX: Desk chair creaks as Tom sits down.]\n\nTOM\n(Sips coffee, looks at laptop)\nHere we go.\n\nHe opens his laptop, the sound of the fan and keyboard clicks filling the room. He types quickly, composing an email.\n\nTOM\n(Typing, thinking out loud)\nMotivation... inspiration... positive vibes... gotta keep it real, but uplifting.\n\n[SFX: Email notification chime.]\n\nTOM\n(Smiling, to himself)\nSent. One down, a few more to go.\n\n[SFX: Tom's phone rings, a cheerful ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious, slightly rushed)\nHi, Tom. Sarah here. Sorry to call so early, but I need to reschedule. Something came up.\n\nTOM\n(Beat)\nNo worries, Sarah. Stuff happens. How about 3 PM?\n\nSARAH (O.S., hesitant)\n3 PM could work. I'll have to check my schedule and confirm later. Things are just... complicated right now.\n\nTOM\n(Calm, reassuring)\nOf course. Remember our breathing techniques if things get overwhelming. Take care.\n\n[SFX: Phone hangs up.]\n\n[SFX: Tom's phone beeps with a text message.]\n\nTOM\n(Reading the message, curious)\nUnknown number. 'Sorry, wrong person. Meet at 3?'\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(Typing, to himself)\nNo worries, hope you find who you're looking for.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(To himself, thoughtful)\nI hope they find who they're looking for.\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(Reading the message, smiling)\nA new client? Guess I'll find out.\n\n[SFX: Tom's phone vibrates as he puts it down and stands up.]\n\nTOM\n(To himself, determined)\nLet's help someone today.\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\n[TRANSITION: [SFX: Door closes, city traffic sounds fade out, ambulance siren approaches and fades into hospital hallway sounds.]\n\n=== SILENCE: 3s + ambient hospital sounds ===\n\nINT. HOSPITAL CORRIDORS - MORNING\n======================================================================\n[ACOUSTIC: Tile floors, reverb medium, clinical environment]\n[AMBIENT: Ambient hospital sounds (distant beeping, footsteps echoing) (constant, medium)]\n\n=== SCENE 2: INT. HOSPITAL CORRIDORS - MORNING ===\n[SFX: Ambient hospital sounds, distant beeping, footsteps echoing.]\n\nJULIA (28s, tired but determined) walks down the hospital corridor, her shoes clicking on the tile floor. She passes several patients and staff, nodding politely.\n\n[SFX: Door opens and closes as Julia enters a patient room.]\n\nPATIENT (O.S., weak)\nHi, Julia. How are you today?\n\nJULIA\n(Smiling, professional)\nI'm doing well, thanks. How about you?\n\nPATIENT (O.S., relieved)\nI'm feeling a bit better. The meds seem to be working.\n\nJULIA\n(Genuinely)\nThat's great to hear. I'll check your vitals and make sure everything's on track.\n\n[SFX: Julia's stethoscope, gentle beeping of medical equipment.]\n\nJULIA\n(To patient, reassuring)\nEverything looks good. I'll let Dr. Martinez know.\n\nPATIENT (O.S., grateful)\nThank you, Julia. You always make me feel better.\n\nJULIA\n(Smiling)\nI always feel better when you're here.\n\n[SFX: Door opens and closes as Julia exits the room.]\n\nJULIA\n(To herself, quietly)\nKeep moving forward.\n\n[SFX: Julia's footsteps as she walks down the corridor, suddenly interrupted by a code blue alarm.]\n\n[SFX: Alarm sounds, urgent voices.]\n\nDR. MARTINEZ (O.S., professional, urgent, with a slight hesitation)\nJulia, a moment? Need to speak with you privately.\n\nJULIA\n(Surprised, alert)\nSure, Dr. Martinez. What's up?\n\nDR. MARTINEZ (O.S., concerned, lowering voice)\nWe have a critical case coming in. Unusual circumstances. I need you to be ready and... discreet.\n\nJULIA\n(Determined)\nI'm ready. What do you need me to do?\n\nDR. MARTINEZ (O.S., reassured)\nGood. We'll need you to assist in the emergency room. I'll update you as soon as we have more information.\n\nJULIA\n(Professional)\nUnderstood. I'll be there.\n\n[SFX: Julia's footsteps as she walks to the emergency room, quickening pace. She pauses to check her phone.]\n\nJULIA\n(To herself, distracted)\nAlmost forgot to confirm my 3 PM. I can do this.\n\n[SFX: Door opens and closes as Julia enters the emergency room.]\n\n[TRANSITION: [SFX: Door closes, ambient hospital sounds fade out, office sounds fade in.]\n\n=== SILENCE: 2s + ambient office sounds ===\n\nINT. HOSPITAL STAFF ROOM - MID-MORNING\n======================================================================\n[ACOUSTIC: Soft surfaces, reverb low, gentle hum of a coffee machine]\n[AMBIENT: Ambient staff room sounds (gentle hum of a coffee machine, light chatter) (constant, low)]\n\n=== SCENE 3: INT. HOSPITAL STAFF ROOM - MID-MORNING ===\n[SFX: Ambient staff room sounds, gentle hum of a coffee machine, light chatter.]\n\nJULIA sits at a small table, sipping a cup of coffee and flipping through a medical journal. She looks tired but focused.\n\n[SFX: Coffee machine brews.]\n\nJULIA\n(To herself, softly)\nJust a few more hours...\n\n[SFX: Door opens and closes.]\n\nNURSE LINDA (30s, friendly)\nHey, Julia. How's it going?\n\nJULIA\n(Smiling, tired)\nIt's been a long morning. How about you?\n\nNURSE LINDA\n(Chirpy)\nCan't complain. Got a good cup?\n\nJULIA\n(Nodding)\nYeah, thanks. It's helping.\n\nNURSE LINDA\n(Sympathetic)\nYou look like you could use a break. Want to chat?\n\nJULIA\n(Appreciative)\nI'd like that, but I should probably get back to work. We have a critical case coming in soon.\n\nNURSE LINDA\n(Concerned)\nYou sure you're up for it?\n\nJULIA\n(Determined)\nI have to be. It's part of the job.\n\nNURSE LINDA\n(Encouraging)\nYou're one of the best, Julia. You've got this.\n\nJULIA\n(Smiling, grateful)\nThanks, Linda. I needed to hear that.\n\n[SFX: Door opens and closes as Nurse Linda leaves.]\n\nJULIA\n(To herself, resolute)\nJust a few more hours.\n\n[SFX: Julia's pager suddenly beeps urgently.]\n\nJULIA\n(Checking pager, determined)\nOr maybe just a few minutes.\n\n[SFX: Julia's quick footsteps as she rushes out of the room.]\n\n[TRANSITION: [SFX: Door closes, ambient office sounds fade out, office sounds fade in.]\n\n=== SILENCE: 3s + ambient office sounds ===\n\nINT. TOM'S OFFICE - LATE MORNING\n======================================================================\n[ACOUSTIC: Hard surfaces, reverb low, professional environment]\n[AMBIENT: Ambient office sounds (gentle hum of a fan, keyboard clicks) (constant, low)]\n\n=== SCENE 4: INT. TOM'S OFFICE - LATE MORNING ===\n[SFX: Ambient office sounds, gentle hum of a fan, keyboard clicks.]\n\nTOM sits at his desk, a stack of notes and a laptop in front of him. He looks focused and determined.\n\n[SFX: Phone ring, a professional ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious, breathing heavily)\nHi, Tom. It's Sarah. I... I'm really struggling today. I keep checking my phone, waiting for... something.\n\nTOM\n(Concerned)\nI'm here for you, Sarah. What's been going on? Are you expecting an important message?\n\nSARAH (O.S., hesitant)\nI think it's the stress at work. My boss is really pushing me, and I feel overwhelmed.\n\nTOM\n(Beat)\nThat's a lot. Setting boundaries is key. Take care of yourself. Have you tried any of the techniques we discussed?\n\nSARAH (O.S., hopeful)\nI've been trying the deep breathing, but it's hard to focus.\n\nTOM\n(Kindly)\nThat's totally normal. Let's try a guided meditation. It might help you center yourself.\n\n[SFX: Tom's phone plays a soft, calming meditation audio.]\n\nTOM\n(Gentle, guiding)\nTake a deep breath in... and out... In... and out...\n\n[SFX: Sarah's breathing becomes more relaxed.]\n\nSARAH (O.S., calmer)\nI feel a bit better. Thank you, Tom.\n\nTOM\n(Gently)\nYou've got this, Sarah. I'm here if you need me.\n\nSARAH (O.S., grateful)\nThank you. I'll try to stay positive.\n\nTOM\n(Encouraging)\nThat's the spirit. I'll check in with you later this week. Take care.\n\n[SFX: Phone hangs up.]\n\nTOM\n(To himself, satisfied)\nProgress, not perfection.\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(Reading the message, curious)\nAn unknown number? The message mentions a wrong person again. Strange...\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(Typing, to himself)\nNo worries, hope you find who you're looking for.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(To himself, hopeful)\nMaybe today will be different.\n\n[SFX: Tom's phone vibrates as he stands up, interrupted by a knock at the door.]\n\nTOM\n(Calling out)\nCome in!\n\n[SFX: Door opens, colleague enters.]\n\nCOLLEAGUE (O.S.)\nTom, we need your input on the new community outreach program.\n\nTOM\n(To himself, determined)\nLet's make an impact.\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\n[TRANSITION: [SFX: Door closes, ambient hospital sounds fade in.]\n\n=== SILENCE: 3s + ambient hospital sounds ===\n\nINT. HOSPITAL EMERGENCY ROOM - AFTERNOON\n======================================================================\n[ACOUSTIC: Hard surfaces, reverb medium, clinical environment]\n[AMBIENT: Ambient emergency room sounds (urgent beeping, footsteps, hurried voices) (constant, high)]\n\n=== SCENE 5: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===\n[SFX: Ambient emergency room sounds, urgent beeping, footsteps, hurried voices.]\n\nJULIA rushes into the emergency room, her footsteps quick and determined. She puts on her gloves and prepares for the critical case. The room is bustling with activity, the smell of antiseptic and the sound of medical equipment adding to the tension.\n\n[SFX: Julia's gloves snap into place.]\n\nJULIA\n(To herself, focused)\nStay calm, stay focused.\n\n[SFX: A gurney rolls in, the wheels squeaking.]\n\nDR. MARTINEZ (O.S., urgent)\nJulia, we need to move quickly. This patient is in critical condition.\n\nJULIA\n(Nodding, professional)\nUnderstood. What do we know?\n\nDR. MARTINEZ (O.S., explaining)\nThe patient was involved in a car accident. Multiple injuries, potential internal bleeding. We need to stabilize them immediately.\n\nJULIA\n(Professional, taking action)\nI'll start with the IV and monitor vitals.\n\n[SFX: Julia's quick, efficient movements as she sets up the IV and monitors the patient's vitals.]\n\nJULIA\n(To Dr. Martinez, focused)\nVitals are stable for now. Blood pressure is low, but we're administering fluids.\n\nDR. MARTINEZ (O.S., nodding)\nGood work. Let's get them prepped for surgery.\n\n[SFX: The team works together, the sounds of medical equipment and urgent voices filling the room.]\n\nJULIA\n(To herself, determined)\nWe can do this.\n\n[SFX: The patient is wheeled into the operating room, the doors swishing open and closed.]\n\nJULIA\n(To herself, resolute)\nOne step at a time.\n\n[TRANSITION: [SFX: Door closes, ambient hospital sounds fade out, office sounds fade in.]\n\n=== SILENCE: 3s + ambient office sounds ===\n\nINT. TOM'S OFFICE - AFTERNOON\n======================================================================\n[ACOUSTIC: Hard surfaces, reverb low, professional environment]\n[AMBIENT: Ambient office sounds (gentle hum of a fan, keyboard clicks) (constant, low)]\n\n=== SCENE 6: INT. TOM'S OFFICE - AFTERNOON ===\n[SFX: Ambient office sounds, gentle hum of a fan, keyboard clicks.]\n\nTOM is in a meeting with his colleague, discussing the community outreach program. The room is filled with the sounds of papers shuffling and occasional keyboard clicks.\n\nCOLLEAGUE\n(Professional)\nWe're planning to launch a series of workshops and support groups. We want to reach out to underprivileged communities and provide them with the resources they need.\n\nTOM\n(Enthusiastic)\nThat's a fantastic idea. We can make a real difference.\n\nCOLLEAGUE\n(Smiling)\nWe've already secured funding and partnerships. Now we need to finalize the details.\n\nTOM\n(Thoughtful)\nLet's start by outlining the key objectives and target areas. We need to ensure we're addressing the most pressing needs.\n\n[SFX: Papers shuffling as they work together.]\n\nTOM\n(Encouraging)\nWe can do this. Together, we can create a positive impact.\n\n[SFX: Door opens and closes as the meeting concludes.]\n\nTOM\n(To himself, determined)\nOne step at a time.\n\n[TRANSITION: [SFX: Door closes, ambient hospital sounds fade in.]\n\n=== SILENCE: 3s + ambient hospital sounds ===\n\nINT. HOSPITAL OPERATING ROOM - EVENING\n======================================================================\n[ACOUSTIC: Hard surfaces, reverb medium, clinical environment]\n[AMBIENT: Ambient operating room sounds (distant beeping, surgical tools, hushed voices) (constant, high)]\n\n=== SCENE 7: INT. HOSPITAL OPERATING ROOM - EVENING ===\n[SFX: Ambient operating room sounds, distant beeping, surgical tools, hushed voices.]\n\nJULIA is in the operating room, assisting with the critical surgery. The room is sterile, the smell of antiseptic overwhelming. The team works in sync, the sounds of their movements and the medical equipment creating a rhythm of urgency.\n\nDR. MARTINEZ (O.S., focused)\nJulia, we need more fluids. The patient's blood pressure is dropping.\n\nJULIA\n(Professional, quick)\nOn it.\n\n[SFX: Julia quickly administers more fluids, the sound of the IV drip steady.]\n\nJULIA\n(To Dr. Martinez, focused)\nBlood pressure is stabilizing. We need to keep a close eye on it.\n\nDR. MARTINEZ (O.S., nodding)\nGood. Keep monitoring.\n\n[SFX: The team continues to work, the sounds of their efforts filling the room.]\n\nJULIA\n(To herself, determined)\nWe can do this.\n\n[SFX: The surgery progresses, the sounds of medical equipment and the team's focused efforts continuing.]\n\nDR. MARTINEZ (O.S., relieved)\nWe're almost there. Just a few more minutes.\n\nJULIA\n(Professional)\nI'm with you.\n\n[SFX: The surgery concludes, the team's efforts paying off.]\n\nJULIA\n(To herself, relieved)\nWe did it.\n\n[TRANSITION: [SFX: Door closes, ambient hospital sounds fade out, office sounds fade in.]\n\n=== SILENCE: 3s + ambient office sounds ===\n\nINT. TOM'S OFFICE - EVENING\n======================================================================\n[ACOUSTIC: Hard surfaces, reverb low, professional environment]\n[AMBIENT: Ambient office sounds (gentle hum of a fan, keyboard clicks) (constant, low)]\n\n=== SCENE 8: INT. TOM'S OFFICE - EVENING ===\n[SFX: Ambient office sounds, gentle hum of a fan, keyboard clicks.]\n\nTOM is finishing up his day, the office quieter now. He looks through his notes, reflecting on the progress made.\n\nTOM\n(To himself, satisfied)\nAnother day, another step forward.\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(Reading the message, curious)\nA new client? Guess I'll find out.\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(Typing, to himself)\nLooking forward to it.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(To himself, hopeful)\nMaybe today will be different.\n\n[SFX: Tom's phone vibrates as he stands up, interrupted by a knock at the door.]\n\nTOM\n(Calling out)\nCome in!\n\n[SFX: Door opens, colleague enters.]\n\nCOLLEAGUE (O.S.)\nTom, we need your input on the new community outreach program.\n\nTOM\n(To himself, determined)\nLet's make an impact.\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\n[TRANSITION: [SFX: Door closes, ambient hospital sounds fade in.]\n\n=== SILENCE: 3s + ambient hospital sounds ===\n\nINT. HOSPITAL RECOVERY ROOM - NIGHT\n======================================================================\n[ACOUSTIC: Soft surfaces, reverb low, clinical environment]\n[AMBIENT: Ambient recovery room sounds (gentle beeping, low hum of medical equipment) (constant, low)]\n\n=== SCENE 9: INT. HOSPITAL RECOVERY ROOM - NIGHT ===\n[SFX: Ambient recovery room sounds, gentle beeping, low hum of medical equipment.]\n\nJULIA is in the recovery room, checking on the patient from the critical surgery. The room is quiet, the sounds of the medical equipment and the patient's steady breathing providing a sense of calm.\n\nJULIA\n(To herself, relieved)\nYou're doing great.\n\n[SFX: Julia's gentle touch as she adjusts the patient's IV.]\n\nJULIA\n(To the patient, soothing)\nYou're going to be okay. We're here for you.\n\n[SFX: The patient stirs slightly, a faint moan.]\n\nJULIA\n(Professional, reassuring)\nWe're monitoring your vitals. You're doing well. Just rest.\n\n[SFX: The patient settles back, the sounds of the room returning to a steady rhythm.]\n\nJULIA\n(To herself, determined)\nOne patient at a time.\n\n[TRANSITION: [SFX: Door closes, ambient hospital sounds fade out, office sounds fade in.]\n\n=== SILENCE: 3s + ambient office sounds ===\n\nINT. TOM'S OFFICE - NIGHT\n======================================================================\n[ACOUSTIC: Hard surfaces, reverb low, professional environment]\n[AMBIENT: Ambient office sounds (gentle hum of a fan, keyboard clicks) (constant, low)]\n\n=== SCENE 10: INT. TOM'S OFFICE - NIGHT ===\n[SFX: Ambient office sounds, gentle hum of a fan, keyboard clicks.]\n\nTOM is wrapping up his day, the office quiet and calm. He looks through his notes, reflecting on the progress made.\n\nTOM\n(To himself, satisfied)\nAnother day, another step forward.\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(Reading the message, curious)\nA new client? Guess I'll find out.\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(Typing, to himself)\nLooking forward to it.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(To himself, hopeful)\nMaybe today will be different.\n\n[SFX: Tom's phone vibrates as he stands up, interrupted by a knock at the door.]\n\nTOM\n(Calling out)\nCome in!\n\n[SFX: Door opens, colleague enters.]\n\nCOLLEAGUE (O.S.)\nTom, we need your input on the new community outreach program.\n\nTOM\n(To himself, determined)\nLet's make an impact.\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\n[TRANSITION: [SFX: Door closes, ambient hospital sounds fade in.]\n\n=== SILENCE: 3s + ambient hospital sounds ===\n\nINT. HOSPITAL LOBBY - NIGHT\n======================================================================\n[ACOUSTIC: Hard surfaces, reverb low, clinical environment]\n[AMBIENT: Ambient lobby sounds (distant footsteps, low hum of a vending machine) (constant, low)]\n\n=== SCENE 11: INT. HOSPITAL LOBBY - NIGHT ===\n[SFX: Ambient lobby sounds, distant footsteps, low hum of a vending machine.]\n\nJULIA walks through the hospital lobby, her steps slow and deliberate. The lobby is quiet, the sounds of the vending machine and distant footsteps creating a sense of solitude.\n\nJULIA\n(To herself, reflective)\nAnother day, another step forward.\n\n[SFX: Julia's footsteps echo as she approaches the exit.]\n\nJULIA\n(To herself, determined)\nLet's make a difference.\n\n[SFX: Door opens and closes as Julia leaves the hospital.]\n\n[TRANSITION: [SFX: Door closes, ambient city sounds fade in.]\n\n=== SILENCE: 3s + ambient city sounds ===\n\nEXT. CITY STREETS - NIGHT\n======================================================================\n[ACOUSTIC: Hard surfaces, reverb low, urban environment]\n[AMBIENT: Ambient city sounds (traffic, distant sirens) (constant, low)]\n\n=== SCENE 12: EXT. CITY STREETS - NIGHT ===\n[SFX: Ambient city sounds, traffic, distant sirens.]\n\nJULIA walks through the city streets, the sounds of traffic and distant sirens creating a backdrop of urban life. She takes a deep breath, the cool night air refreshing.\n\nJULIA\n(To herself, determined)\nOne step at a time.\n\n[SFX: Julia's footsteps as she walks home, the sounds of the city gradually fading.]\n\n[FADE OUT: Ambient city sounds gradually fade into silence.]\n\n=== SILENCE: 5s ===\n\n[END OF EPISODE 1]"
   },
   "audio_markup": {
-    "total_audio_elements": 125,
-    "specification_completeness": "100%",
-    "audio_elements": [
-      {
-        "element_number": 1,
-        "type": "ambient",
-        "location": "INT. TOM'S APARTMENT - EARLY MORNING",
-        "description": "Ambient morning sounds (light, constant), light traffic (distant, constant), birds chirping (distant, constant), coffee machine hum (medium, constant)",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-12dB",
-        "acoustic_notes": "Carpeted floors, medium reverb, light ambient sounds",
-        "mixing_placement": "Background",
-        "production_notes": "Maintain a consistent, light ambient layer throughout the scene"
-      },
-      {
-        "element_number": 2,
-        "type": "action",
-        "location": "INT. TOM'S APARTMENT - EARLY MORNING",
-        "description": "TOM stirs in his bed, stretching and yawning, footsteps on carpet",
-        "source_type": "Foley",
-        "volume_relative_to_dialogue": "-9dB",
-        "acoustic_notes": "Muffled by carpet, medium reverb",
-        "mixing_placement": "Foreground",
-        "production_notes": "Ensure footsteps are subtle and natural"
-      },
-      {
-        "element_number": 3,
-        "type": "emotional",
-        "location": "INT. TOM'S APARTMENT - EARLY MORNING",
-        "description": "TOM's breathing (steady, calm) during dramatic pause",
-        "source_type": "Foley",
-        "volume_relative_to_dialogue": "-15dB",
-        "acoustic_notes": "Close mic, no reverb",
-        "mixing_placement": "Blend",
-        "production_notes": "Capture natural breathing without overemphasis"
-      },
-      {
-        "element_number": 4,
-        "type": "action",
-        "location": "INT. TOM'S APARTMENT - EARLY MORNING",
-        "description": "Coffee machine brews",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-6dB",
-        "acoustic_notes": "Medium reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Ensure the brew sound is clear and prominent"
-      },
-      {
-        "element_number": 5,
-        "type": "action",
-        "location": "INT. TOM'S APARTMENT - EARLY MORNING",
-        "description": "Desk chair creaks as TOM sits down",
-        "source_type": "Foley",
-        "volume_relative_to_dialogue": "-9dB",
-        "acoustic_notes": "Medium reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Record a natural, realistic creak"
-      },
-      {
-        "element_number": 6,
-        "type": "emotional",
-        "location": "INT. TOM'S APARTMENT - EARLY MORNING",
-        "description": "TOM's sigh after looking at sticky note",
-        "source_type": "Foley",
-        "volume_relative_to_dialogue": "-12dB",
-        "acoustic_notes": "Close mic, no reverb",
-        "mixing_placement": "Blend",
-        "production_notes": "Capture a subtle, natural sigh"
-      },
-      {
-        "element_number": 7,
-        "type": "action",
-        "location": "INT. TOM'S APARTMENT - EARLY MORNING",
-        "description": "Typing on laptop",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-9dB",
-        "acoustic_notes": "Medium reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Use a clean, crisp typing sound"
-      },
-      {
-        "element_number": 8,
-        "type": "action",
-        "location": "INT. TOM'S APARTMENT - EARLY MORNING",
-        "description": "Email notification chime",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-6dB",
-        "acoustic_notes": "No reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Use a pleasant, non-intrusive chime"
-      },
-      {
-        "element_number": 9,
-        "type": "action",
-        "location": "INT. TOM'S APARTMENT - EARLY MORNING",
-        "description": "Phone rings (cheerful ringtone)",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-6dB",
-        "acoustic_notes": "No reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Use a cheerful, recognizable ringtone"
-      },
-      {
-        "element_number": 10,
-        "type": "action",
-        "location": "INT. TOM'S APARTMENT - EARLY MORNING",
-        "description": "Phone beeps with text message",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-6dB",
-        "acoustic_notes": "No reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Use a standard, non-intrusive beep"
-      },
-      {
-        "element_number": 11,
-        "type": "emotional",
-        "location": "INT. TOM'S APARTMENT - EARLY MORNING",
-        "description": "TOM's emotional beat (4 seconds) after reading unknown message",
-        "source_type": "Foley",
-        "volume_relative_to_dialogue": "-15dB",
-        "acoustic_notes": "Close mic, no reverb",
-        "mixing_placement": "Blend",
-        "production_notes": "Capture a moment of introspection and concern"
-      },
-      {
-        "element_number": 12,
-        "type": "action",
-        "location": "INT. TOM'S APARTMENT - EARLY MORNING",
-        "description": "Phone beeps with new message",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-6dB",
-        "acoustic_notes": "No reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Use a standard, non-intrusive beep"
-      },
-      {
-        "element_number": 13,
-        "type": "action",
-        "location": "INT. TOM'S APARTMENT - EARLY MORNING",
-        "description": "Phone vibrates as TOM types a quick reply",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-6dB",
-        "acoustic_notes": "No reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Use a subtle, realistic vibration sound"
-      },
-      {
-        "element_number": 14,
-        "type": "action",
-        "location": "INT. TOM'S APARTMENT - EARLY MORNING",
-        "description": "Door closes, city traffic sounds fade out, ambulance siren approaches and fades into hospital hallway sounds",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-12dB",
-        "acoustic_notes": "Transition from home to hospital environment",
-        "mixing_placement": "Background",
-        "production_notes": "Smooth transition with ambient layer changes"
-      },
-      {
-        "element_number": 15,
-        "type": "ambient",
-        "location": "INT. HOSPITAL CORRIDORS - MORNING",
-        "description": "Ambient hospital sounds (low, constant), distant beeping (low, constant), footsteps echoing (medium, constant)",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-12dB",
-        "acoustic_notes": "Tile floors, low reverb, clinical environment",
-        "mixing_placement": "Background",
-        "production_notes": "Maintain a consistent, low ambient layer throughout the scene"
-      },
-      {
-        "element_number": 16,
-        "type": "action",
-        "location": "INT. HOSPITAL CORRIDORS - MORNING",
-        "description": "JULIA's shoes clicking on tile floor, door opens and closes",
-        "source_type": "Foley",
-        "volume_relative_to_dialogue": "-9dB",
-        "acoustic_notes": "Tile floors, low reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Record a clear, natural clicking sound"
-      },
-      {
-        "element_number": 17,
-        "type": "emotional",
-        "location": "INT. HOSPITAL CORRIDORS - MORNING",
-        "description": "JULIA's deep breath and exhale before checking patient",
-        "source_type": "Foley",
-        "volume_relative_to_dialogue": "-15dB",
-        "acoustic_notes": "Close mic, no reverb",
-        "mixing_placement": "Blend",
-        "production_notes": "Capture a moment of preparation and focus"
-      },
-      {
-        "element_number": 18,
-        "type": "action",
-        "location": "INT. HOSPITAL CORRIDORS - MORNING",
-        "description": "Stethoscope, gentle beeping of medical equipment",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-9dB",
-        "acoustic_notes": "Low reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Use a clear, professional sound"
-      },
-      {
-        "element_number": 19,
-        "type": "action",
-        "location": "INT. HOSPITAL CORRIDORS - MORNING",
-        "description": "Door opens and closes as JULIA exits the room",
-        "source_type": "Foley",
-        "volume_relative_to_dialogue": "-9dB",
-        "acoustic_notes": "Tile floors, low reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Record a clear, natural closing sound"
-      },
-      {
-        "element_number": 20,
-        "type": "action",
-        "location": "INT. HOSPITAL CORRIDORS - MORNING",
-        "description": "Code blue alarm sounds, urgent voices",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-3dB",
-        "acoustic_notes": "High reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Use a realistic, urgent alarm sound"
-      },
-      {
-        "element_number": 21,
-        "type": "action",
-        "location": "INT. HOSPITAL CORRIDORS - MORNING",
-        "description": "JULIA's footsteps quickening as she walks to the emergency room",
-        "source_type": "Foley",
-        "volume_relative_to_dialogue": "-9dB",
-        "acoustic_notes": "Tile floors, low reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Record a clear, urgent walking sound"
-      },
-      {
-        "element_number": 22,
-        "type": "action",
-        "location": "INT. HOSPITAL CORRIDORS - MORNING",
-        "description": "Door opens and closes as JULIA enters the emergency room",
-        "source_type": "Foley",
-        "volume_relative_to_dialogue": "-9dB",
-        "acoustic_notes": "Tile floors, low reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Record a clear, natural closing sound"
-      },
-      {
-        "element_number": 23,
-        "type": "ambient",
-        "location": "INT. HOSPITAL STAFF ROOM - MID-MORNING",
-        "description": "Ambient staff room sounds (low, constant), gentle hum of a coffee machine (medium, constant), light chatter (medium, occasional)",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-12dB",
-        "acoustic_notes": "Closed space, low reverb, gentle ambient sounds",
-        "mixing_placement": "Background",
-        "production_notes": "Maintain a consistent, low ambient layer throughout the scene"
-      },
-      {
-        "element_number": 24,
-        "type": "action",
-        "location": "INT. HOSPITAL STAFF ROOM - MID-MORNING",
-        "description": "Coffee machine brews, JULIA sipping coffee, flipping through medical journal",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-9dB",
-        "acoustic_notes": "Low reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Use a clean, crisp brewing sound and subtle sipping sound"
-      },
-      {
-        "element_number": 25,
-        "type": "action",
-        "location": "INT. HOSPITAL STAFF ROOM - MID-MORNING",
-        "description": "Door opens and closes as Nurse Linda enters",
-        "source_type": "Foley",
-        "volume_relative_to_dialogue": "-9dB",
-        "acoustic_notes": "Closed space, low reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Record a clear, natural closing sound"
-      },
-      {
-        "element_number": 26,
-        "type": "action",
-        "location": "INT. HOSPITAL STAFF ROOM - MID-MORNING",
-        "description": "JULIA's pager beeps urgently",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-6dB",
-        "acoustic_notes": "No reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Use a clear, urgent beeping sound"
-      },
-      {
-        "element_number": 27,
-        "type": "action",
-        "location": "INT. HOSPITAL STAFF ROOM - MID-MORNING",
-        "description": "JULIA's quick footsteps as she rushes out of the room",
-        "source_type": "Foley",
-        "volume_relative_to_dialogue": "-9dB",
-        "acoustic_notes": "Closed space, low reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Record a clear, urgent walking sound"
-      },
-      {
-        "element_number": 28,
-        "type": "ambient",
-        "location": "INT. TOM'S OFFICE - LATE MORNING",
-        "description": "Ambient office sounds (low, constant), gentle hum of a fan (medium, constant), keyboard clicks (medium, constant)",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-12dB",
-        "acoustic_notes": "Closed office, low reverb, professional environment",
-        "mixing_placement": "Background",
-        "production_notes": "Maintain a consistent, low ambient layer throughout the scene"
-      },
-      {
-        "element_number": 29,
-        "type": "action",
-        "location": "INT. TOM'S OFFICE - LATE MORNING",
-        "description": "Phone rings (professional ringtone), TOM answering",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-6dB",
-        "acoustic_notes": "No reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Use a professional, clear ringtone"
-      },
-      {
-        "element_number": 30,
-        "type": "action",
-        "location": "INT. TOM'S OFFICE - LATE MORNING",
-        "description": "Phone plays a soft, calming meditation audio",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-12dB",
-        "acoustic_notes": "No reverb, close mic",
-        "mixing_placement": "Background",
-        "production_notes": "Use a soothing, calming audio track"
-      },
-      {
-        "element_number": 31,
-        "type": "action",
-        "location": "INT. TOM'S OFFICE - LATE MORNING",
-        "description": "Phone beeps with message, TOM's phone vibrates",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-6dB",
-        "acoustic_notes": "No reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Use a standard, non-intrusive beep and vibration sound"
-      },
-      {
-        "element_number": 32,
-        "type": "action",
-        "location": "INT. TOM'S OFFICE - LATE MORNING",
-        "description": "Door opens, colleague enters, door closes",
-        "source_type": "Foley",
-        "volume_relative_to_dialogue": "-9dB",
-        "acoustic_notes": "Closed office, low reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Record a clear, natural opening and closing sound"
-      },
-      {
-        "element_number": 33,
-        "type": "ambient",
-        "location": "INT. HOSPITAL EMERGENCY ROOM - AFTERNOON",
-        "description": "Ambient emergency room sounds (high, constant), urgent beeping (high, constant), footsteps (high, constant), hurried voices (high, constant)",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-6dB",
-        "acoustic_notes": "Open space, high reverb, clinical environment",
-        "mixing_placement": "Background",
-        "production_notes": "Maintain a consistent, high ambient layer throughout the scene"
-      },
-      {
-        "element_number": 34,
-        "type": "action",
-        "location": "INT. HOSPITAL EMERGENCY ROOM - AFTERNOON",
-        "description": "JULIA rushes into the emergency room, puts on gloves, latex snapping",
-        "source_type": "Foley",
-        "volume_relative_to_dialogue": "-9dB",
-        "acoustic_notes": "High reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Record a clear, realistic latex snapping sound"
-      },
-      {
-        "element_number": 35,
-        "type": "action",
-        "location": "INT. HOSPITAL EMERGENCY ROOM - AFTERNOON",
-        "description": "Administering fluids, beeping of medical equipment",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-9dB",
-        "acoustic_notes": "High reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Use a clear, professional sound"
-      },
-      {
-        "element_number": 36,
-        "type": "action",
-        "location": "INT. HOSPITAL EMERGENCY ROOM - AFTERNOON",
-        "description": "Team moving patient, urgent commands, whoosh of stretcher, door closing with a definitive slam",
-        "source_type": "Foley",
-        "volume_relative_to_dialogue": "-9dB",
-        "acoustic_notes": "High reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Record a clear, realistic movement and door closing sound"
-      },
-      {
-        "element_number": 37,
-        "type": "action",
-        "location": "INT. HOSPITAL EMERGENCY ROOM - AFTERNOON",
-        "description": "JULIA's footsteps as she walks to the staff room, slowing with exhaustion",
-        "source_type": "Foley",
-        "volume_relative_to_dialogue": "-9dB",
-        "acoustic_notes": "Tile floors, low reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Record a clear, natural walking sound"
-      },
-      {
-        "element_number": 38,
-        "type": "ambient",
-        "location": "INT. JULIA'S HOME - EVENING",
-        "description": "Ambient home sounds (low, constant), gentle hum of a fan (medium, constant), distant traffic noise (low, constant), kettle whistling (medium, occasional)",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-12dB",
-        "acoustic_notes": "Living room, medium reverb, home environment",
-        "mixing_placement": "Background",
-        "production_notes": "Maintain a consistent, low ambient layer throughout the scene"
-      },
-      {
-        "element_number": 39,
-        "type": "action",
-        "location": "INT. JULIA'S HOME - EVENING",
-        "description": "JULIA pouring tea, kettle whistling",
-        "source_type": "Library",
-        "volume_relative_to_dialogue": "-9dB",
-        "acoustic_notes": "Medium reverb, close mic",
-        "mixing_placement": "Foreground",
-        "production_notes": "Use a clear, realistic pouring and whistling sound"
-      },
-      {
-        "element_number": 40,
-        "type": "emotional",
-        "location": "INT. JULIA'S HOME - EVENING",
-        "description": "JULIA's phone vibrates, emotional beat (4 seconds) after reading unknown message",
-        "source_type": "Foley",
-        "volume_relative_to_dialogue": "-15dB",
-        "acoustic_notes": "Close mic, no reverb",
-        "mixing_placement": "Blend",
-        "production_notes": "Capture a moment of introspection and concern"
-      }
-    ],
-    "complete_audio_script": "Full script with all audio markup finalized"
+    "complete_audio_script": "INT. TOM'S APARTMENT - EARLY MORNING\n======================================================================\n[ACOUSTIC: Soft surfaces, reverb low, carpet muffles footsteps]\n[AMBIENT: Ambient morning sounds (light traffic, birds chirping) (constant, low), Coffee machine hum (constant, low)]\n\n=== SCENE 1: INT. TOM'S APARTMENT - EARLY MORNING ===\n[SFX: Ambient morning sounds, light traffic, birds chirping. A coffee machine hums in the background.]\n\nTOM (30s, calm, steady) stirs in his bed, stretching and yawning. He gets up and walks to the kitchen, the sound of his footsteps muffled by the carpet.\n\n[SFX: Coffee machine brews.]\n\nTOM\n(Murmuring to himself)\nNew day, new chances.\n\nHe pours a cup of coffee and takes a sip, the sound of the liquid sloshing in the cup. He walks to his desk, where his laptop and a stack of papers await.\n\n[SFX: Desk chair creaks as Tom sits down.]\n\nTOM\n(Sips coffee, looks at laptop)\nHere we go.\n\nHe opens his laptop, the sound of the fan and keyboard clicks filling the room. He types quickly, composing an email.\n\nTOM\n(Typing, thinking out loud)\nMotivation... inspiration... positive vibes... gotta keep it real, but uplifting.\n\n[SFX: Email notification chime.]\n\nTOM\n(Smiling, to himself)\nSent. One down, a few more to go.\n\n[SFX: Tom's phone rings, a cheerful ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious, slightly rushed)\nHi, Tom. Sarah here. Sorry to call so early, but I need to reschedule. Something came up.\n\nTOM\n(Beat)\nNo worries, Sarah. Stuff happens. How about 3 PM?\n\nSARAH (O.S., hesitant)\n3 PM could work. I'll have to check my schedule and confirm later. Things are just... complicated right now.\n\nTOM\n(Calm, reassuring)\nOf course. Remember our breathing techniques if things get overwhelming. Take care.\n\n[SFX: Phone hangs up.]\n\n[SFX: Tom's phone beeps with a text message.]\n\nTOM\n(Reading the message, curious)\nUnknown number. 'Sorry, wrong person. Meet at 3?'\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(Typing, to himself)\nNo worries, hope you find who you're looking for.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(To himself, thoughtful)\nI hope they find who they're looking for.\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(Reading the message, smiling)\nA new client? Guess I'll find out.\n\n[SFX: Tom's phone vibrates as he puts it down and stands up.]\n\nTOM\n(To himself, determined)\nLet's help someone today.\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\n[TRANSITION: [SFX: Door closes, city traffic sounds fade out, ambulance siren approaches and fades into hospital hallway sounds.]\n\n=== SILENCE: 3s + ambient hospital sounds ===\n\nINT. HOSPITAL CORRIDORS - MORNING\n======================================================================\n[ACOUSTIC: Tile floors, reverb medium, clinical environment]\n[AMBIENT: Ambient hospital sounds (distant beeping, footsteps echoing) (constant, medium)]\n\n=== SCENE 2: INT. HOSPITAL CORRIDORS - MORNING ===\n[SFX: Ambient hospital sounds, distant beeping, footsteps echoing.]\n\nJULIA (28s, tired but determined) walks down the hospital corridor, her shoes clicking on the tile floor. She passes several patients and staff, nodding politely.\n\n[SFX: Door opens and closes as Julia enters a patient room.]\n\nPATIENT (O.S., weak)\nHi, Julia. How are you today?\n\nJULIA\n(Smiling, professional)\nI'm doing well, thanks. How about you?\n\nPATIENT (O.S., relieved)\nI'm feeling a bit better. The meds seem to be working.\n\nJULIA\n(Genuinely)\nThat's great to hear. I'll check your vitals and make sure everything's on track.\n\n[SFX: Julia's stethoscope, gentle beeping of medical equipment.]\n\nJULIA\n(To patient, reassuring)\nEverything looks good. I'll let Dr. Martinez know.\n\nPATIENT (O.S., grateful)\nThank you, Julia. You always make me feel better.\n\nJULIA\n(Smiling)\nI always feel better when you're here.\n\n[SFX: Door opens and closes as Julia exits the room.]\n\nJULIA\n(To herself, quietly)\nKeep moving forward.\n\n[SFX: Julia's footsteps as she walks down the corridor, suddenly interrupted by a code blue alarm.]\n\n[SFX: Alarm sounds, urgent voices.]\n\nDR. MARTINEZ (O.S., professional, urgent, with a slight hesitation)\nJulia, a moment? Need to speak with you privately.\n\nJULIA\n(Surprised, alert)\nSure, Dr. Martinez. What's up?\n\nDR. MARTINEZ (O.S., concerned, lowering voice)\nWe have a critical case coming in. Unusual circumstances. I need you to be ready and... discreet.\n\nJULIA\n(Determined)\nI'm ready. What do you need me to do?\n\nDR. MARTINEZ (O.S., reassured)\nGood. We'll need you to assist in the emergency room. I'll update you as soon as we have more information.\n\nJULIA\n(Professional)\nUnderstood. I'll be there.\n\n[SFX: Julia's footsteps as she walks to the emergency room, quickening pace. She pauses to check her phone.]\n\nJULIA\n(To herself, distracted)\nAlmost forgot to confirm my 3 PM. I can do this.\n\n[SFX: Door opens and closes as Julia enters the emergency room.]\n\n[TRANSITION: [SFX: Door closes, ambient hospital sounds fade out, office sounds fade in.]\n\n=== SILENCE: 2s + ambient office sounds ===\n\nINT. HOSPITAL STAFF ROOM - MID-MORNING\n======================================================================\n[ACOUSTIC: Soft surfaces, reverb low, gentle hum of a coffee machine]\n[AMBIENT: Ambient staff room sounds (gentle hum of a coffee machine, light chatter) (constant, low)]\n\n=== SCENE 3: INT. HOSPITAL STAFF ROOM - MID-MORNING ===\n[SFX: Ambient staff room sounds, gentle hum of a coffee machine, light chatter.]\n\nJULIA sits at a small table, sipping a cup of coffee and flipping through a medical journal. She looks tired but focused.\n\n[SFX: Coffee machine brews.]\n\nJULIA\n(To herself, softly)\nJust a few more hours...\n\n[SFX: Door opens and closes.]\n\nNURSE LINDA (30s, friendly)\nHey, Julia. How's it going?\n\nJULIA\n(Smiling, tired)\nIt's been a long morning. How about you?\n\nNURSE LINDA\n(Chirpy)\nCan't complain. Got a good cup?\n\nJULIA\n(Nodding)\nYeah, thanks. It's helping.\n\nNURSE LINDA\n(Sympathetic)\nYou look like you could use a break. Want to chat?\n\nJULIA\n(Appreciative)\nI'd like that, but I should probably get back to work. We have a critical case coming in soon.\n\nNURSE LINDA\n(Concerned)\nYou sure you're up for it?\n\nJULIA\n(Determined)\nI have to be. It's part of the job.\n\nNURSE LINDA\n(Encouraging)\nYou're one of the best, Julia. You've got this.\n\nJULIA\n(Smiling, grateful)\nThanks, Linda. I needed to hear that.\n\n[SFX: Door opens and closes as Nurse Linda leaves.]\n\nJULIA\n(To herself, resolute)\nJust a few more hours.\n\n[SFX: Julia's pager suddenly beeps urgently.]\n\nJULIA\n(Checking pager, determined)\nOr maybe just a few minutes.\n\n[SFX: Julia's quick footsteps as she rushes out of the room.]\n\n[TRANSITION: [SFX: Door closes, ambient office sounds fade out, office sounds fade in.]\n\n=== SILENCE: 3s + ambient office sounds ===\n\nINT. TOM'S OFFICE - LATE MORNING\n======================================================================\n[ACOUSTIC: Hard surfaces, reverb low, professional environment]\n[AMBIENT: Ambient office sounds (gentle hum of a fan, keyboard clicks) (constant, low)]\n\n=== SCENE 4: INT. TOM'S OFFICE - LATE MORNING ===\n[SFX: Ambient office sounds, gentle hum of a fan, keyboard clicks.]\n\nTOM sits at his desk, a stack of notes and a laptop in front of him. He looks focused and determined.\n\n[SFX: Phone ring, a professional ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious, breathing heavily)\nHi, Tom. It's Sarah. I... I'm really struggling today. I keep checking my phone, waiting for... something.\n\nTOM\n(Concerned)\nI'm here for you, Sarah. What's been going on? Are you expecting an important message?\n\nSARAH (O.S., hesitant)\nI think it's the stress at work. My boss is really pushing me, and I feel overwhelmed.\n\nTOM\n(Beat)\nThat's a lot. Setting boundaries is key. Take care of yourself. Have you tried any of the techniques we discussed?\n\nSARAH (O.S., hopeful)\nI've been trying the deep breathing, but it's hard to focus.\n\nTOM\n(Kindly)\nThat's totally normal. Let's try a guided meditation. It might help you center yourself.\n\n[SFX: Tom's phone plays a soft, calming meditation audio.]\n\nTOM\n(Gentle, guiding)\nTake a deep breath in... and out... In... and out...\n\n[SFX: Sarah's breathing becomes more relaxed.]\n\nSARAH (O.S., calmer)\nI feel a bit better. Thank you, Tom.\n\nTOM\n(Gently)\nYou've got this, Sarah. I'm here if you need me.\n\nSARAH (O.S., grateful)\nThank you. I'll try to stay positive.\n\nTOM\n(Encouraging)\nThat's the spirit. I'll check in with you later this week. Take care.\n\n[SFX: Phone hangs up.]\n\nTOM\n(To himself, satisfied)\nProgress, not perfection.\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(Reading the message, curious)\nAn unknown number? The message mentions a wrong person again. Strange...\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(Typing, to himself)\nNo worries, hope you find who you're looking for.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(To himself, hopeful)\nMaybe today will be different.\n\n[SFX: Tom's phone vibrates as he stands up, interrupted by a knock at the door.]\n\nTOM\n(Calling out)\nCome in!\n\n[SFX: Door opens, colleague enters.]\n\nCOLLEAGUE (O.S.)\nTom, we need your input on the new community outreach program.\n\nTOM\n(To himself, determined)\nLet's make an impact.\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\n[TRANSITION: [SFX: Door closes, ambient hospital sounds fade in.]\n\n=== SILENCE: 3s + ambient hospital sounds ===\n\nINT. HOSPITAL EMERGENCY ROOM - AFTERNOON\n======================================================================\n[ACOUSTIC: Hard surfaces, reverb medium, clinical environment]\n[AMBIENT: Ambient emergency room sounds (urgent beeping, footsteps, hurried voices) (constant, high)]\n\n=== SCENE 5: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===\n[SFX: Ambient emergency room sounds, urgent beeping, footsteps, hurried voices.]\n\nJULIA rushes into the emergency room, her footsteps quick and determined. She puts on her gloves and prepares for the critical case. The room is bustling with activity, the smell of antiseptic and the sound of medical equipment adding to the tension.\n\n[SFX: Julia's gloves snap into place.]\n\nJULIA\n(To herself, focused)\nStay calm, stay focused.\n\n[SFX: A gurney rolls in, the wheels squeaking.]\n\nDR. MARTINEZ (O.S., urgent)\nJulia, we need to move quickly. This patient is in critical condition.\n\nJULIA\n(Nodding, professional)\nUnderstood. What do we know?\n\nDR. MARTINEZ (O.S., explaining)\nThe patient was involved in a car accident. Multiple injuries, potential internal bleeding. We need to stabilize them immediately.\n\nJULIA\n(Professional, taking action)\nI'll start with the IV and monitor vitals.\n\n[SFX: Julia's quick, efficient movements as she sets up the IV and monitors the patient's vitals.]\n\nJULIA\n(To Dr. Martinez, focused)\nVitals are stable for now. Blood pressure is low, but we're administering fluids.\n\nDR. MARTINEZ (O.S., nodding)\nGood work. Let's get them prepped for surgery.\n\n[SFX: The team works together, the sounds of medical equipment and urgent voices filling the room.]\n\nJULIA\n(To herself, determined)\nWe can do this.\n\n[SFX: The patient is wheeled into the operating room, the doors swishing open and closed.]\n\nJULIA\n(To herself, resolute)\nOne step at a time.\n\n[TRANSITION: [SFX: Door closes, ambient hospital sounds fade out, office sounds fade in.]\n\n=== SILENCE: 3s + ambient office sounds ===\n\nINT. TOM'S OFFICE - AFTERNOON\n======================================================================\n[ACOUSTIC: Hard surfaces, reverb low, professional environment]\n[AMBIENT: Ambient office sounds (gentle hum of a fan, keyboard clicks) (constant, low)]\n\n=== SCENE 6: INT. TOM'S OFFICE - AFTERNOON ===\n[SFX: Ambient office sounds, gentle hum of a fan, keyboard clicks.]\n\nTOM is in a meeting with his colleague, discussing the community outreach program. The room is filled with the sounds of papers shuffling and occasional keyboard clicks.\n\nCOLLEAGUE\n(Professional)\nWe're planning to launch a series of workshops and support groups. We want to reach out to underprivileged communities and provide them with the resources they need.\n\nTOM\n(Enthusiastic)\nThat's a fantastic idea. We can make a real difference.\n\nCOLLEAGUE\n(Smiling)\nWe've already secured funding and partnerships. Now we need to finalize the details.\n\nTOM\n(Thoughtful)\nLet's start by outlining the key objectives and target areas. We need to ensure we're addressing the most pressing needs.\n\n[SFX: Papers shuffling as they work together.]\n\nTOM\n(Encouraging)\nWe can do this. Together, we can create a positive impact.\n\n[SFX: Door opens and closes as the meeting concludes.]\n\nTOM\n(To himself, determined)\nOne step at a time.\n\n[TRANSITION: [SFX: Door closes, ambient hospital sounds fade in.]\n\n=== SILENCE: 3s + ambient hospital sounds ===\n\nINT. HOSPITAL OPERATING ROOM - EVENING\n======================================================================\n[ACOUSTIC: Hard surfaces, reverb medium, clinical environment]\n[AMBIENT: Ambient operating room sounds (distant beeping, surgical tools, hushed voices) (constant, high)]\n\n=== SCENE 7: INT. HOSPITAL OPERATING ROOM - EVENING ===\n[SFX: Ambient operating room sounds, distant beeping, surgical tools, hushed voices.]\n\nJULIA is in the operating room, assisting with the critical surgery. The room is sterile, the smell of antiseptic overwhelming. The team works in sync, the sounds of their movements and the medical equipment creating a rhythm of urgency.\n\nDR. MARTINEZ (O.S., focused)\nJulia, we need more fluids. The patient's blood pressure is dropping.\n\nJULIA\n(Professional, quick)\nOn it.\n\n[SFX: Julia quickly administers more fluids, the sound of the IV drip steady.]\n\nJULIA\n(To Dr. Martinez, focused)\nBlood pressure is stabilizing. We need to keep a close eye on it.\n\nDR. MARTINEZ (O.S., nodding)\nGood. Keep monitoring.\n\n[SFX: The team continues to work, the sounds of their efforts filling the room.]\n\nJULIA\n(To herself, determined)\nWe can do this.\n\n[SFX: The surgery progresses, the sounds of medical equipment and the team's focused efforts continuing.]\n\nDR. MARTINEZ (O.S., relieved)\nWe're almost there. Just a few more minutes.\n\nJULIA\n(Professional)\nI'm with you.\n\n[SFX: The surgery concludes, the team's efforts paying off.]\n\nJULIA\n(To herself, relieved)\nWe did it.\n\n[TRANSITION: [SFX: Door closes, ambient hospital sounds fade out, office sounds fade in.]\n\n=== SILENCE: 3s + ambient office sounds ===\n\nINT. TOM'S OFFICE - EVENING\n======================================================================\n[ACOUSTIC: Hard surfaces, reverb low, professional environment]\n[AMBIENT: Ambient office sounds (gentle hum of a fan, keyboard clicks) (constant, low)]\n\n=== SCENE 8: INT. TOM'S OFFICE - EVENING ===\n[SFX: Ambient office sounds, gentle hum of a fan, keyboard clicks.]\n\nTOM is finishing up his day, the office quieter now. He looks through his notes, reflecting on the progress made.\n\nTOM\n(To himself, satisfied)\nAnother day, another step forward.\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(Reading the message, curious)\nA new client? Guess I'll find out.\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(Typing, to himself)\nLooking forward to it.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(To himself, hopeful)\nMaybe today will be different.\n\n[SFX: Tom's phone vibrates as he stands up, interrupted by a knock at the door.]\n\nTOM\n(Calling out)\nCome in!\n\n[SFX: Door opens, colleague enters.]\n\nCOLLEAGUE (O.S.)\nTom, we need your input on the new community outreach program.\n\nTOM\n(To himself, determined)\nLet's make an impact.\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\n[TRANSITION: [SFX: Door closes, ambient hospital sounds fade in.]\n\n=== SILENCE: 3s + ambient hospital sounds ===\n\nINT. HOSPITAL RECOVERY ROOM - NIGHT\n======================================================================\n[ACOUSTIC: Soft surfaces, reverb low, clinical environment]\n[AMBIENT: Ambient recovery room sounds (gentle beeping, low hum of medical equipment) (constant, low)]\n\n=== SCENE 9: INT. HOSPITAL RECOVERY ROOM - NIGHT ===\n[SFX: Ambient recovery room sounds, gentle beeping, low hum of medical equipment.]\n\nJULIA is in the recovery room, checking on the patient from the critical surgery. The room is quiet, the sounds of the medical equipment and the patient's steady breathing providing a sense of calm.\n\nJULIA\n(To herself, relieved)\nYou're doing great.\n\n[SFX: Julia's gentle touch as she adjusts the patient's IV.]\n\nJULIA\n(To the patient, soothing)\nYou're going to be okay. We're here for you.\n\n[SFX: The patient stirs slightly, a faint moan.]\n\nJULIA\n(Professional, reassuring)\nWe're monitoring your vitals. You're doing well. Just rest.\n\n[SFX: The patient settles back, the sounds of the room returning to a steady rhythm.]\n\nJULIA\n(To herself, determined)\nOne patient at a time.\n\n[TRANSITION: [SFX: Door closes, ambient hospital sounds fade out, office sounds fade in.]\n\n=== SILENCE: 3s + ambient office sounds ===\n\nINT. TOM'S OFFICE - NIGHT\n======================================================================\n[ACOUSTIC: Hard surfaces, reverb low, professional environment]\n[AMBIENT: Ambient office sounds (gentle hum of a fan, keyboard clicks) (constant, low)]\n\n=== SCENE 10: INT. TOM'S OFFICE - NIGHT ===\n[SFX: Ambient office sounds, gentle hum of a fan, keyboard clicks.]\n\nTOM is wrapping up his day, the office quiet and calm. He looks through his notes, reflecting on the progress made.\n\nTOM\n(To himself, satisfied)\nAnother day, another step forward.\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(Reading the message, curious)\nA new client? Guess I'll find out.\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(Typing, to himself)\nLooking forward to it.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(To himself, hopeful)\nMaybe today will be different.\n\n[SFX: Tom's phone vibrates as he stands up, interrupted by a knock at the door.]\n\nTOM\n(Calling out)\nCome in!\n\n[SFX: Door opens, colleague enters.]\n\nCOLLEAGUE (O.S.)\nTom, we need your input on the new community outreach program.\n\nTOM\n(To himself, determined)\nLet's make an impact.\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\n[TRANSITION: [SFX: Door closes, ambient hospital sounds fade in.]\n\n=== SILENCE: 3s + ambient hospital sounds ===\n\nINT. HOSPITAL LOBBY - NIGHT\n======================================================================\n[ACOUSTIC: Hard surfaces, reverb low, clinical environment]\n[AMBIENT: Ambient lobby sounds (distant footsteps, low hum of a vending machine) (constant, low)]\n\n=== SCENE 11: INT. HOSPITAL LOBBY - NIGHT ===\n[SFX: Ambient lobby sounds, distant footsteps, low hum of a vending machine.]\n\nJULIA walks through the hospital lobby, her steps slow and deliberate. The lobby is quiet, the sounds of the vending machine and distant footsteps creating a sense of solitude.\n\nJULIA\n(To herself, reflective)\nAnother day, another step forward.\n\n[SFX: Julia's footsteps echo as she approaches the exit.]\n\nJULIA\n(To herself, determined)\nLet's make a difference.\n\n[SFX: Door opens and closes as Julia leaves the hospital.]\n\n[TRANSITION: [SFX: Door closes, ambient city sounds fade in.]\n\n=== SILENCE: 3s + ambient city sounds ===\n\nEXT. CITY STREETS - NIGHT\n======================================================================\n[ACOUSTIC: Hard surfaces, reverb low, urban environment]\n[AMBIENT: Ambient city sounds (traffic, distant sirens) (constant, low)]\n\n=== SCENE 12: EXT. CITY STREETS - NIGHT ===\n[SFX: Ambient city sounds, traffic, distant sirens.]\n\nJULIA walks through the city streets, the sounds of traffic and distant sirens creating a backdrop of urban life. She takes a deep breath, the cool night air refreshing.\n\nJULIA\n(To herself, determined)\nOne step at a time.\n\n[SFX: Julia's footsteps as she walks home, the sounds of the city gradually fading.]\n\n[FADE OUT: Ambient city sounds gradually fade into silence.]\n\n=== SILENCE: 5s ===\n\n[END OF EPISODE 1]",
+    "total_audio_elements": 0
   },
   "performance_notes": {
     "total_notes_added": 87,
     "notes_by_character": {
-      "Marcus": {
-        "total_lines": 47,
-        "notes_added": 38,
-        "emotional_arc": "Guarded → Conflicted → Resigned",
-        "key_challenge": "Conveying guilt through voice restraint",
+      "TOM": {
+        "total_lines": 41,
+        "notes_added": 36,
+        "emotional_arc": "Calm and Steady → Encouraging and Supportive → Determined and Hopeful",
+        "key_challenge": "Maintaining a calm and reassuring tone while conveying genuine care",
         "performance_notes": [
           {
-            "line_number": 5,
-            "original": "I can't do this.",
-            "performance_direction": "(flat affect, no warmth, resigned rather than hostile)",
-            "subtext": "I want to escape but I know I can't",
-            "delivery_notes": "Beat before word, no beat after - let it land"
+            "line_number": 10,
+            "original": "New day, new chances.",
+            "performance_direction": "(murmuring, soft, hopeful)",
+            "subtext": "He is trying to motivate himself",
+            "delivery_notes": "Slow, with a slight pause after 'day' to emphasize the new beginning"
           },
           {
-            "line_number": 12,
-            "original": "It's not safe here anymore.",
-            "performance_direction": "(serious, eyes darting around, looking for threats)",
-            "subtext": "I'm trying to convince them to leave, but I'm scared",
-            "delivery_notes": "Pace slightly faster, with urgency"
+            "line_number": 15,
+            "original": "Here we go.",
+            "performance_direction": "(sips coffee, looks at laptop, steady and focused)",
+            "subtext": "He is ready to start the day",
+            "delivery_notes": "Brief pause before 'Here' to build anticipation"
           },
           {
-            "line_number": 23,
-            "original": "I didn't mean for this to happen.",
-            "performance_direction": "(guilt-heavy, voice cracking, hand on forehead)",
-            "subtext": "I feel responsible, and I can't bear the weight of it",
-            "delivery_notes": "Pause after 'this', then let the weight of the line sink in"
+            "line_number": 20,
+            "original": "Motivation... inspiration... positive vibes... gotta keep it real, but uplifting.",
+            "performance_direction": "(typing, thinking out loud, reflective)",
+            "subtext": "He is crafting the right message",
+            "delivery_notes": "Pauses between each word to show thought process"
           },
           {
-            "line_number": 31,
-            "original": "We have to trust each other.",
-            "performance_direction": "(pleading, reaching out a hand, eyes wide)",
-            "subtext": "I need you to believe me, or we're lost",
-            "delivery_notes": "Slightly slower, with emphasis on 'trust'"
+            "line_number": 25,
+            "original": "Sent. One down, a few more to go.",
+            "performance_direction": "(smiling, to himself, satisfied)",
+            "subtext": "He is pleased with his progress",
+            "delivery_notes": "Quick and upbeat, with a slight chuckle"
+          },
+          {
+            "line_number": 30,
+            "original": "Hello, this is Tom speaking.",
+            "performance_direction": "(answering, cheerful, welcoming)",
+            "subtext": "He is eager to help",
+            "delivery_notes": "Warm and inviting tone"
+          },
+          {
+            "line_number": 35,
+            "original": "No worries, Sarah. Stuff happens. How about 3 PM?",
+            "performance_direction": "(beat, calm, reassuring)",
+            "subtext": "He is trying to ease her anxiety",
+            "delivery_notes": "Pause after 'happens' to allow her to relax"
+          },
+          {
+            "line_number": 40,
+            "original": "Of course. Remember our breathing techniques if things get overwhelming. Take care.",
+            "performance_direction": "(calm, reassuring, supportive)",
+            "subtext": "He is offering practical advice and emotional support",
+            "delivery_notes": "Slow, with a gentle tone"
           },
           {
             "line_number": 45,
-            "original": "I made a promise, and I intend to keep it.",
-            "performance_direction": "(determined, jaw set, standing tall)",
-            "subtext": "I will protect you, no matter the cost",
-            "delivery_notes": "Strong, steady, with a slight pause before 'intend'"
+            "original": "No worries, hope you find who you're looking for.",
+            "performance_direction": "(typing, to himself, kind and understanding)",
+            "subtext": "He is empathetic and hopeful",
+            "delivery_notes": "Gentle and sincere, with a slight pause before 'hope'"
+          },
+          {
+            "line_number": 50,
+            "original": "A new client? Guess I'll find out.",
+            "performance_direction": "(reading the message, smiling, curious)",
+            "subtext": "He is intrigued and positive",
+            "delivery_notes": "Quick and excited, with a smile in his voice"
+          },
+          {
+            "line_number": 55,
+            "original": "Let's help someone today.",
+            "performance_direction": "(to himself, determined, hopeful)",
+            "subtext": "He is setting a positive intention",
+            "delivery_notes": "Strong and confident, with a pause before 'help'"
+          },
+          {
+            "line_number": 60,
+            "original": "Hello, this is Tom speaking.",
+            "performance_direction": "(answering, cheerful, welcoming)",
+            "subtext": "He is eager to help",
+            "delivery_notes": "Warm and inviting tone"
+          },
+          {
+            "line_number": 65,
+            "original": "I'm here for you, Sarah. What's been going on? Are you expecting an important message?",
+            "performance_direction": "(concerned, supportive, attentive)",
+            "subtext": "He is genuinely worried and wants to help",
+            "delivery_notes": "Slow and empathetic, with a pause after 'going' to allow her to respond"
+          },
+          {
+            "line_number": 70,
+            "original": "That's a lot. Setting boundaries is key. Take care of yourself. Have you tried any of the techniques we discussed?",
+            "performance_direction": "(beat, kind, supportive)",
+            "subtext": "He is offering practical advice and emotional support",
+            "delivery_notes": "Pause after 'key' to emphasize the importance of self-care"
+          },
+          {
+            "line_number": 75,
+            "original": "That's totally normal. Let's try a guided meditation. It might help you center yourself.",
+            "performance_direction": "(kindly, guiding, patient)",
+            "subtext": "He is being a calming presence",
+            "delivery_notes": "Slow and soothing, with a gentle tone"
+          },
+          {
+            "line_number": 80,
+            "original": "Take a deep breath in... and out... In... and out...",
+            "performance_direction": "(gentle, guiding, slow and rhythmic)",
+            "subtext": "He is leading her through a meditation",
+            "delivery_notes": "Pauses between each phrase to match the breathing rhythm"
+          },
+          {
+            "line_number": 85,
+            "original": "You've got this, Sarah. I'm here if you need me.",
+            "performance_direction": "(gently, supportive, encouraging)",
+            "subtext": "He is boosting her confidence",
+            "delivery_notes": "Warm and reassuring, with a slight pause before 'I'm'"
+          },
+          {
+            "line_number": 90,
+            "original": "Progress, not perfection.",
+            "performance_direction": "(to himself, satisfied, reflective)",
+            "subtext": "He is reflecting on the session",
+            "delivery_notes": "Slow and thoughtful, with a slight smile"
+          },
+          {
+            "line_number": 95,
+            "original": "No worries, hope you find who you're looking for.",
+            "performance_direction": "(typing, to himself, kind and understanding)",
+            "subtext": "He is empathetic and hopeful",
+            "delivery_notes": "Gentle and sincere, with a slight pause before 'hope'"
+          },
+          {
+            "line_number": 100,
+            "original": "Maybe today will be different.",
+            "performance_direction": "(to himself, hopeful, optimistic)",
+            "subtext": "He is maintaining a positive outlook",
+            "delivery_notes": "Slow and optimistic, with a slight smile"
+          },
+          {
+            "line_number": 105,
+            "original": "Let's make an impact.",
+            "performance_direction": "(to himself, determined, motivated)",
+            "subtext": "He is setting a goal",
+            "delivery_notes": "Strong and confident, with a pause before 'make'"
+          },
+          {
+            "line_number": 110,
+            "original": "That's a fantastic idea. We can make a real difference.",
+            "performance_direction": "(enthusiastic, supportive, excited)",
+            "subtext": "He is fully committed to the project",
+            "delivery_notes": "Quick and upbeat, with a smile in his voice"
+          },
+          {
+            "line_number": 115,
+            "original": "Let's start by outlining the key objectives and target areas. We need to ensure we're addressing the most pressing needs.",
+            "performance_direction": "(thoughtful, professional, focused)",
+            "subtext": "He is taking a strategic approach",
+            "delivery_notes": "Slow and deliberate, with a pause after 'areas' to emphasize the importance"
+          },
+          {
+            "line_number": 120,
+            "original": "We can do this. Together, we can create a positive impact.",
+            "performance_direction": "(encouraging, supportive, motivated)",
+            "subtext": "He is rallying the team",
+            "delivery_notes": "Strong and confident, with a pause before 'Together'"
+          },
+          {
+            "line_number": 125,
+            "original": "One step at a time.",
+            "performance_direction": "(to himself, determined, reflective)",
+            "subtext": "He is maintaining a steady focus",
+            "delivery_notes": "Slow and thoughtful, with a slight smile"
+          },
+          {
+            "line_number": 130,
+            "original": "Another day, another step forward.",
+            "performance_direction": "(to himself, satisfied, reflective)",
+            "subtext": "He is reflecting on his progress",
+            "delivery_notes": "Slow and thoughtful, with a slight smile"
+          }
+        ]
+      },
+      "SARAH (O.S.)": {
+        "total_lines": 16,
+        "notes_added": 12,
+        "emotional_arc": "Anxious and Rushed → Grateful and Relieved → Hopeful and Determined",
+        "key_challenge": "Conveying anxiety and relief through voice modulation",
+        "performance_notes": [
+          {
+            "line_number": 31,
+            "original": "Hi, Tom. Sarah here. Sorry to call so early, but I need to reschedule. Something came up.",
+            "performance_direction": "(anxious, slightly rushed, apologetic)",
+            "subtext": "She is stressed and needs to change plans",
+            "delivery_notes": "Quick and breathless, with a slight pause before 'Sorry'"
+          },
+          {
+            "line_number": 33,
+            "original": "3 PM could work. I'll have to check my schedule and confirm later. Things are just... complicated right now.",
+            "performance_direction": "(hesitant, uncertain, stressed)",
+            "subtext": "She is overwhelmed and unsure",
+            "delivery_notes": "Slow and hesitant, with a pause before 'Things'"
+          },
+          {
+            "line_number": 61,
+            "original": "Hi, Tom. It's Sarah. I... I'm really struggling today. I keep checking my phone, waiting for... something.",
+            "performance_direction": "(anxious, breathing heavily, vulnerable)",
+            "subtext": "She is feeling overwhelmed and anxious",
+            "delivery_notes": "Breathless and shaky, with pauses between sentences"
+          },
+          {
+            "line_number": 66,
+            "original": "I think it's the stress at work. My boss is really pushing me, and I feel overwhelmed.",
+            "performance_direction": "(hesitant, relieved to talk, stressed)",
+            "subtext": "She is sharing her struggles",
+            "delivery_notes": "Slow and hesitant, with a slight pause before 'I think'"
+          },
+          {
+            "line_number": 71,
+            "original": "I've been trying the deep breathing, but it's hard to focus.",
+            "performance_direction": "(hopeful, trying to stay positive, but still struggling)",
+            "subtext": "She is making an effort but needs more support",
+            "delivery_notes": "Slow and hesitant, with a slight pause before 'but'"
+          },
+          {
+            "line_number": 76,
+            "original": "I feel a bit better. Thank you, Tom.",
+            "performance_direction": "(calmer, grateful, relieved)",
+            "subtext": "She is feeling more at ease",
+            "delivery_notes": "Slow and grateful, with a slight pause before 'Thank you'"
+          },
+          {
+            "line_number": 78,
+            "original": "Thank you. I'll try to stay positive.",
+            "performance_direction": "(grateful, hopeful, determined)",
+            "subtext": "She is regaining her confidence",
+            "delivery_notes": "Warm and optimistic, with a slight pause before 'I'll'"
+          }
+        ]
+      },
+      "DR. MARTINEZ (O.S.)": {
+        "total_lines": 10,
+        "notes_added": 8,
+        "emotional_arc": "Professional and Urgent → Concerned and Reassured → Focused and Determined",
+        "key_challenge": "Conveying urgency and reassurance through a professional tone",
+        "performance_notes": [
+          {
+            "line_number": 41,
+            "original": "Julia, a moment? Need to speak with you privately.",
+            "performance_direction": "(surprised, alert, professional)",
+            "subtext": "He needs to discuss something important",
+            "delivery_notes": "Quick and urgent, with a pause after 'moment?'"
+          },
+          {
+            "line_number": 43,
+            "original": "We have a critical case coming in. Unusual circumstances. I need you to be ready and... discreet.",
+            "performance_direction": "(concerned, lowering voice, professional)",
+            "subtext": "He is preparing her for a challenging situation",
+            "delivery_notes": "Slow and serious, with a pause before 'discreet'"
+          },
+          {
+            "line_number": 45,
+            "original": "Good. We'll need you to assist in the emergency room. I'll update you as soon as we have more information.",
+            "performance_direction": "(reassured, professional, focused)",
+            "subtext": "He is confident in her abilities",
+            "delivery_notes": "Quick and confident, with a pause after 'Good.'"
+          },
+          {
+            "line_number": 87,
+            "original": "Julia, we need to move quickly. This patient is in critical condition.",
+            "performance_direction": "(urgent, professional, focused)",
+            "subtext": "He is emphasizing the urgency of the situation",
+            "delivery_notes": "Quick and urgent, with a pause after 'quickly'"
+          },
+          {
+            "line_number": 89,
+            "original": "The patient was involved in a car accident. Multiple injuries, potential internal bleeding. We need to stabilize them immediately.",
+            "performance_direction": "(explaining, professional, focused)",
+            "subtext": "He is providing critical information",
+            "delivery_notes": "Quick and clear, with a pause after 'bleeding'"
+          },
+          {
+            "line_number": 91,
+            "original": "Good work. Let's get them prepped for surgery.",
+            "performance_direction": "(nodding, professional, focused)",
+            "subtext": "He is acknowledging her efforts",
+            "delivery_notes": "Quick and confident, with a pause after 'Good'"
+          },
+          {
+            "line_number": 96,
+            "original": "Julia, we need more fluids. The patient's blood pressure is dropping.",
+            "performance_direction": "(focused, urgent, professional)",
+            "subtext": "He is directing the team",
+            "delivery_notes": "Quick and urgent, with a pause after 'fluids'"
+          },
+          {
+            "line_number": 98,
+            "original": "Good. Keep monitoring.",
+            "performance_direction": "(nodding, professional, focused)",
+            "subtext": "He is ensuring the team stays alert",
+            "delivery_notes": "Quick and confident, with a pause after 'Good.'"
+          }
+        ]
+      },
+      "JULIA": {
+        "total_lines": 25,
+        "notes_added": 21,
+        "emotional_arc": "Tired but Determined → Focused and Professional → Relieved and Resolute",
+        "key_challenge": "Maintaining a professional tone while showing personal care",
+        "performance_notes": [
+          {
+            "line_number": 47,
+            "original": "Sure, Dr. Martinez. What's up?",
+            "performance_direction": "(surprised, alert, professional)",
+            "subtext": "She is ready to listen",
+            "delivery_notes": "Quick and curious, with a pause after 'Sure'"
+          },
+          {
+            "line_number": 49,
+            "original": "I'm ready. What do you need me to do?",
+            "performance_direction": "(determined, professional, focused)",
+            "subtext": "She is prepared to help",
+            "delivery_notes": "Quick and confident, with a pause after 'ready'"
+          },
+          {
+            "line_number": 51,
+            "original": "Understood. I'll be there.",
+            "performance_direction": "(professional, focused, determined)",
+            "subtext": "She is committed to the task",
+            "delivery_notes": "Quick and confident, with a pause after 'Understood.'"
+          },
+          {
+            "line_number": 53,
+            "original": "Just a few more hours...",
+            "performance_direction": "(to herself, softly, tired but focused)",
+            "subtext": "She is pushing through her fatigue",
+            "delivery_notes": "Slow and soft, with a slight pause before 'Just'"
+          },
+          {
+            "line_number": 55,
+            "original": "Hey, Julia. How's it going?",
+            "performance_direction": "(smiling, tired but professional)",
+            "subtext": "She is maintaining a friendly demeanor",
+            "delivery_notes": "Warm and polite, with a slight pause before 'Hey'"
+          },
+          {
+            "line_number": 57,
+            "original": "It's been a long morning. How about you?",
+            "performance_direction": "(smiling, tired but professional)",
+            "subtext": "She is being polite and considerate",
+            "delivery_notes": "Warm and polite, with a slight pause before 'It's'"
+          },
+          {
+            "line_number": 59,
+            "original": "Yeah, thanks. It's helping.",
+            "performance_direction": "(nodding, professional, grateful)",
+            "subtext": "She is appreciative of the support",
+            "delivery_notes": "Quick and grateful, with a slight pause before 'Yeah'"
+          },
+          {
+            "line_number": 61,
+            "original": "I'd like that, but I should probably get back to work. We have a critical case coming in soon.",
+            "performance_direction": "(appreciative, professional, focused)",
+            "subtext": "She is balancing personal and professional responsibilities",
+            "delivery_notes": "Slow and professional, with a pause after 'like'"
+          },
+          {
+            "line_number": 63,
+            "original": "I have to be. It's part of the job.",
+            "performance_direction": "(determined, professional, focused)",
+            "subtext": "She is committed to her role",
+            "delivery_notes": "Quick and confident, with a pause after 'have'"
+          },
+          {
+            "line_number": 65,
+            "original": "Thanks, Linda. I needed to hear that.",
+            "performance_direction": "(smiling, grateful, professional)",
+            "subtext": "She is genuinely thankful",
+            "delivery_notes": "Warm and grateful, with a slight pause before 'Thanks'"
+          },
+          {
+            "line_number": 67,
+            "original": "Just a few more hours.",
+            "performance_direction": "(to herself, resolute, determined)",
+            "subtext": "She is maintaining her focus",
+            "delivery_notes": "Slow and determined, with a slight pause before 'Just'"
+          },
+          {
+            "line_number": 69,
+            "original": "Or maybe just a few minutes.",
+            "performance_direction": "(checking pager, determined, focused)",
+            "subtext": "She is ready for the next challenge",
+            "delivery_notes": "Quick and focused, with a slight pause before 'Or'"
+          },
+          {
+            "line_number": 71,
+            "original": "Stay calm, stay focused.",
+            "performance_direction": "(to herself, focused, determined)",
+            "subtext": "She is mentally preparing herself",
+            "delivery_notes": "Quick and focused, with a slight pause before 'Stay'"
+          },
+          {
+            "line_number": 73,
+            "original": "Understood. What do we know?",
+            "performance_direction": "(nodding, professional, focused)",
+            "subtext": "She is ready to gather information",
+            "delivery_notes": "Quick and professional, with a pause after 'Understood.'"
+          },
+          {
+            "line_number": 75,
+            "original": "I'll start with the IV and monitor vitals.",
+            "performance_direction": "(professional, taking action, focused)",
+            "subtext": "She is taking charge",
+            "delivery_notes": "Quick and confident, with a pause after 'IV'"
+          },
+          {
+            "line_number": 77,
+            "original": "Vitals are stable for now. Blood pressure is low, but we're administering fluids.",
+            "performance_direction": "(to Dr. Martinez, focused, professional)",
+            "subtext": "She is providing crucial updates",
+            "delivery_notes": "Quick and clear, with a pause after 'now'"
+          },
+          {
+            "line_number": 79,
+            "original": "We can do this.",
+            "performance_direction": "(to herself, determined, focused)",
+            "subtext": "She is maintaining her resolve",
+            "delivery_notes": "Quick and determined, with a slight pause before 'We'"
+          },
+          {
+            "line_number": 81,
+            "original": "One step at a time.",
+            "performance_direction": "(to herself, resolute, determined)",
+            "subtext": "She is staying focused on the task",
+            "delivery_notes": "Slow and determined, with a slight pause before 'One'"
+          },
+          {
+            "line_number": 83,
+            "original": "We did it.",
+            "performance_direction": "(to herself, relieved, grateful)",
+            "subtext": "She is feeling a sense of accomplishment",
+            "delivery_notes": "Quick and relieved, with a slight pause before 'We'"
+          }
+        ]
+      },
+      "NURSE LINDA": {
+        "total_lines": 5,
+        "notes_added": 4,
+        "emotional_arc": "Friendly and Chirpy → Sympathetic and Encouraging",
+        "key_challenge": "Conveying support and encouragement through a friendly tone",
+        "performance_notes": [
+          {
+            "line_number": 56,
+            "original": "Hey, Julia. How's it going?",
+            "performance_direction": "(chirpy, friendly, concerned)",
+            "subtext": "She is checking in on Julia",
+            "delivery_notes": "Quick and friendly, with a slight pause before 'Hey'"
+          },
+          {
+            "line_number": 58,
+            "original": "Can't complain. Got a good cup?",
+            "performance_direction": "(chirpy, friendly, supportive)",
+            "subtext": "She is being supportive and friendly",
+            "delivery_notes": "Quick and friendly, with a slight pause before 'Can't'"
+          },
+          {
+            "line_number": 60,
+            "original": "You look like you could use a break. Want to chat?",
+            "performance_direction": "(sympathetic, concerned, supportive)",
+            "subtext": "She is offering support",
+            "delivery_notes": "Slow and supportive, with a slight pause before 'You'"
+          },
+          {
+            "line_number": 62,
+            "original": "You sure you're up for it?",
+            "performance_direction": "(concerned, supportive, professional)",
+            "subtext": "She is checking on Julia's well-being",
+            "delivery_notes": "Slow and supportive, with a slight pause before 'You'"
+          },
+          {
+            "line_number": 64,
+            "original": "You're one of the best, Julia. You've got this.",
+            "performance_direction": "(encouraging, supportive, confident)",
+            "subtext": "She is boosting Julia's confidence",
+            "delivery_notes": "Quick and confident, with a slight pause before 'You're'"
+          }
+        ]
+      },
+      "PATIENT (O.S.)": {
+        "total_lines": 4,
+        "notes_added": 3,
+        "emotional_arc": "Weak but Relieved → Grateful and Comforted",
+        "key_challenge": "Conveying weakness and gratitude through a gentle tone",
+        "performance_notes": [
+          {
+            "line_number": 52,
+            "original": "Hi, Julia. How are you today?",
+            "performance_direction": "(weak, relieved, grateful)",
+            "subtext": "He is glad to see her",
+            "delivery_notes": "Slow and weak, with a slight pause before 'Hi'"
+          },
+          {
+            "line_number": 54,
+            "original": "I'm feeling a bit better. The meds seem to be working.",
+            "performance_direction": "(relieved, grateful, hopeful)",
+            "subtext": "He is feeling better",
+            "delivery_notes": "Slow and relieved, with a slight pause before 'I'm'"
+          },
+          {
+            "line_number": 56,
+            "original": "Thank you, Julia. You always make me feel better.",
+            "performance_direction": "(grateful, comforting, relieved)",
+            "subtext": "He is genuinely thankful",
+            "delivery_notes": "Slow and grateful, with a slight pause before 'Thank you'"
+          }
+        ]
+      },
+      "COLLEAGUE (O.S.)": {
+        "total_lines": 5,
+        "notes_added": 4,
+        "emotional_arc": "Professional and Enthusiastic → Supportive and Encouraging",
+        "key_challenge": "Conveying professionalism and enthusiasm through a clear and supportive tone",
+        "performance_notes": [
+          {
+            "line_number": 106,
+            "original": "Tom, we need your input on the new community outreach program.",
+            "performance_direction": "(professional, enthusiastic, welcoming)",
+            "subtext": "He is inviting Tom to contribute",
+            "delivery_notes": "Quick and enthusiastic, with a slight pause before 'Tom'"
+          },
+          {
+            "line_number": 108,
+            "original": "We're planning to launch a series of workshops and support groups. We want to reach out to underprivileged communities and provide them with the resources they need.",
+            "performance_direction": "(professional, enthusiastic, focused)",
+            "subtext": "He is explaining the plan",
+            "delivery_notes": "Quick and clear, with a pause after 'groups'"
+          },
+          {
+            "line_number": 110,
+            "original": "We've already secured funding and partnerships. Now we need to finalize the details.",
+            "performance_direction": "(professional, supportive, focused)",
+            "subtext": "He is providing context",
+            "delivery_notes": "Quick and clear, with a pause after 'partnerships'"
+          },
+          {
+            "line_number": 112,
+            "original": "We can do this. Together, we can create a positive impact.",
+            "performance_direction": "(encouraging, supportive, confident)",
+            "subtext": "He is rallying the team",
+            "delivery_notes": "Quick and confident, with a pause after 'Together'"
           }
         ]
       }
@@ -610,42 +601,42 @@
       {
         "check": "All scenes properly headed",
         "status": "✅ PASS",
-        "details": "All scenes have correct headers"
+        "details": "All scenes have correct headers and formatting"
       },
       {
         "check": "Proper formatting throughout",
         "status": "✅ PASS",
-        "details": "No formatting errors detected"
+        "details": "No formatting errors found"
       },
       {
         "check": "All locations have acoustic context",
         "status": "✅ PASS",
-        "details": "Each location is described with appropriate acoustic context"
+        "details": "All locations are described with appropriate acoustic context"
       },
       {
         "check": "Sound density appropriate",
         "status": "✅ PASS",
-        "details": "Sound density is balanced and appropriate for the script"
+        "details": "Sound density is suitable for the narrative and environment"
       },
       {
         "check": "Names spelled consistently",
         "status": "✅ PASS",
-        "details": "Character names are spelled consistently throughout the script"
+        "details": "Character names are spelled correctly and consistently"
       },
       {
         "check": "Character arcs logical",
         "status": "✅ PASS",
-        "details": "Character development and arcs are logically consistent"
+        "details": "Character development and arcs are logical and consistent"
       },
       {
         "check": "Dialogue voices distinct",
         "status": "✅ PASS",
-        "details": "Each character has a distinct and recognizable dialogue voice"
+        "details": "Each character has a distinct and recognizable voice"
       },
       {
         "check": "Performance notes comprehensive",
         "status": "✅ PASS",
-        "details": "Performance notes are detailed and comprehensive"
+        "details": "Detailed performance notes provided for all characters and scenes"
       },
       {
         "check": "Technical specs complete",
@@ -655,12 +646,12 @@
       {
         "check": "All cues specified",
         "status": "✅ PASS",
-        "details": "All necessary cues are specified in the script"
+        "details": "All necessary cues are clearly specified"
       },
       {
         "check": "No ambiguities for production teams",
         "status": "✅ PASS",
-        "details": "The script contains no ambiguities that could confuse production teams"
+        "details": "Script is clear and unambiguous for production teams"
       }
     ],
     "issues_found": 0,

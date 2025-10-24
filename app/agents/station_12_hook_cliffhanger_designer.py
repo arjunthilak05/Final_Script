@@ -143,7 +143,7 @@ class Station12HookCliffhangerDesigner:
         station_data = {}
         
         # Load Station 1 (Seed Processor)
-        station1_key = f"session:{self.session_id}:station:01:output"
+        station1_key = f"audiobook:{self.session_id}:station_01"
         station1_data = await self.redis_client.get(station1_key)
         if station1_data:
             station_data['station_01'] = json.loads(station1_data)
@@ -157,35 +157,35 @@ class Station12HookCliffhangerDesigner:
             print("✅ Station 2 data loaded from file")
         
         # Load Station 3 (Age Genre Optimizer)
-        station3_key = f"session:{self.session_id}:station:03:style_guide"
+        station3_key = f"audiobook:{self.session_id}:station_03"
         station3_data = await self.redis_client.get(station3_key)
         if station3_data:
             station_data['station_03'] = json.loads(station3_data)
             print("✅ Station 3 data loaded")
         
         # Load Station 4 (Reference Mining)
-        station4_key = f"session:{self.session_id}:station:04:output"
+        station4_key = f"audiobook:{self.session_id}:station_04"
         station4_data = await self.redis_client.get(station4_key)
         if station4_data:
             station_data['station_04'] = json.loads(station4_data)
             print("✅ Station 4 data loaded")
         
         # Load Station 4.5 (Narrator Strategy)
-        station45_key = f"session:{self.session_id}:station:045:output"
+        station45_key = f"audiobook:{self.session_id}:station_045"
         station45_data = await self.redis_client.get(station45_key)
         if station45_data:
             station_data['station_045'] = json.loads(station45_data)
             print("✅ Station 4.5 data loaded")
         
         # Load Station 5 (Season Architect)
-        station5_key = f"session:{self.session_id}:station:05:output"
+        station5_key = f"audiobook:{self.session_id}:station_05"
         station5_data = await self.redis_client.get(station5_key)
         if station5_data:
             station_data['station_05'] = json.loads(station5_data)
             print("✅ Station 5 data loaded")
         
         # Load Station 11 (Runtime Planning)
-        station11_key = f"session:{self.session_id}:station:11:output"
+        station11_key = f"audiobook:{self.session_id}:station_11"
         station11_data = await self.redis_client.get(station11_key)
         if station11_data:
             station_data['station_11'] = json.loads(station11_data)
@@ -210,14 +210,18 @@ class Station12HookCliffhangerDesigner:
         # From Station 2
         if 'station_02' in station_data:
             station2 = station_data['station_02']
-            inputs['primary_genre'] = station2.get('genre_tone', {}).get('primary_genre', 'Unknown')
-            inputs['target_age'] = station2.get('audience_profile', {}).get('primary_age_range', 'Unknown')
+            # Station 2 doesn't have primary_genre or target_age - these come from Station 3
         
         # From Station 3
         if 'station_03' in station_data:
             station3 = station_data['station_03']
+            chosen_blend = station3.get('chosen_blend_details', {})
+            inputs['primary_genre'] = chosen_blend.get('primary_genre', 'Unknown')
             inputs['chosen_genre_blend'] = station3.get('chosen_blend', 'Unknown')
             inputs['tone_calibration'] = station3.get('tone_calibration', {})
+            
+            age_guidelines = station3.get('age_guidelines', {})
+            inputs['target_age'] = age_guidelines.get('target_age_range', 'Unknown')
         
         # From Station 4.5
         if 'station_045' in station_data:
@@ -346,7 +350,7 @@ class Station12HookCliffhangerDesigner:
         """Store the hook and cliffhanger design data in Redis"""
         print("💾 Storing in Redis...")
         
-        redis_key = f"session:{self.session_id}:station:12:output"
+        redis_key = f"audiobook:{self.session_id}:station_12"
         await self.redis_client.set(redis_key, json.dumps(hook_cliffhanger_data))
         
         print("✅ Data stored in Redis")

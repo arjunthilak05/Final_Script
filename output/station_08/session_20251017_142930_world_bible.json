@@ -1,0 +1,230 @@
+{
+  "World Bible Document": {
+    "session_id": "session_20251017_142930",
+    "timestamp": "2025-10-17T16:51:32.422205",
+    "working_title": "Wrong Number, Right Message",
+    "primary_genre": "Contemporary Romance",
+    "target_age": "25-55",
+    "episode_count": "8-12 episodes",
+    "episode_length": "35-45 min each",
+    "story_complexity": "Unknown",
+    "tone": "The audio narrative carefully balances dark moments of depression and conflict with light moments of connection and humor through a nuanced approach. Dark moments are characterized by minimal sound design, lower vocal registers, and dissonant musical elements, but are never allowed to dominate for extended periods. Light moments feature warmer musical tones, more dynamic vocal performances, and richer environmental sounds. The balance shifts progressively across episodes, with early installments weighted toward darkness (60/40 dark/light), middle episodes achieving equilibrium (50/50), and final episodes leaning toward light (40/60 dark/light). This progression reflects the characters' emotional journeys while maintaining authentic dramatic tension throughout.",
+    "core_premise": "Unknown",
+    "world_bible": {
+      "project_overview": {
+        "working_title": "Wrong Number, Right Message",
+        "primary_genre": "Contemporary Romance",
+        "target_age": "25-55",
+        "episode_count": "8-12 episodes",
+        "core_premise": "Unknown"
+      },
+      "Geography_Spaces": {
+        "key_locations": [
+          {
+            "name": "Tom's Apartment",
+            "sonic_signature": "Soft ambient hum of an air conditioner, occasional ticking of a wall clock",
+            "ambient_sounds": "Distant city noises, occasional footsteps from neighbors, gentle rustling of pages turning",
+            "acoustic_properties": "Slightly muffled due to thick walls, low reverb",
+            "weather_patterns": "Rain against the window panes, occasional gusts of wind",
+            "how_space_sounds_different": "Quieter and more intimate during the night, busier and more vibrant during the day"
+          },
+          {
+            "name": "Julia's ER",
+            "sonic_signature": "Intermittent beeping of medical machines, low murmur of conversations",
+            "ambient_sounds": "Regular footsteps, occasional urgent calls, the sound of rolling carts",
+            "acoustic_properties": "Echoy due to hard surfaces, high reverb in open areas",
+            "weather_patterns": "None, but the sound of air conditioning is constant",
+            "how_space_sounds_different": "More chaotic during night shifts, calmer during day shifts"
+          },
+          {
+            "name": "Michael's Office",
+            "sonic_signature": "Low hum of computer servers, the sound of typing on a keyboard",
+            "ambient_sounds": "Occasional phone ringing, low murmur of colleagues, the rustle of papers",
+            "acoustic_properties": "Moderate reverb, slightly echoey in the open-plan area",
+            "weather_patterns": "None, but the sound of ventilation is constant",
+            "how_space_sounds_different": "Busier and more energetic during work hours, quieter and more relaxed during breaks"
+          },
+          {
+            "name": "Sarah's Home",
+            "sonic_signature": "Warm crackling of a fireplace, the sound of a ticking grandfather clock",
+            "ambient_sounds": "Soft classical music in the background, the occasional clinking of dishes",
+            "acoustic_properties": "Warm and rich, with a slight muffle due to carpeting and furniture",
+            "weather_patterns": "Rain against the window, occasional gusts of wind",
+            "how_space_sounds_different": "More cozy and intimate during the evening, lighter and more open during the day"
+          },
+          {
+            "name": "Coffee Shop",
+            "sonic_signature": "The sound of a coffee machine, gentle background music",
+            "ambient_sounds": "Low chatter of patrons, the clinking of cups and saucers, the occasional rustle of newspapers",
+            "acoustic_properties": "Moderate reverb, slightly echoey in the open space",
+            "weather_patterns": "None, but the sound of the door opening and closing is frequent",
+            "how_space_sounds_different": "Busier and more lively during peak hours, quieter and more relaxed during off-peak times"
+          },
+          {
+            "name": "Park",
+            "sonic_signature": "The sound of birds chirping, distant traffic noise",
+            "ambient_sounds": "Children playing, the rustle of leaves, the occasional barking dog",
+            "acoustic_properties": "Open and natural, with a slight echo in open areas",
+            "weather_patterns": "Bird calls in the morning, rain and wind in the evening",
+            "how_space_sounds_different": "More peaceful and serene during the early morning, busier and more active during the afternoon"
+          },
+          {
+            "name": "Tom's Gym",
+            "sonic_signature": "The sound of weights being lifted, the thud of running on a treadmill",
+            "ambient_sounds": "Low chatter of patrons, the occasional grunting, the sound of machines moving",
+            "acoustic_properties": "Echoey due to hard surfaces, high reverb in open areas",
+            "weather_patterns": "None, but the sound of ventilation is constant",
+            "how_space_sounds_different": "More intense and energetic during peak hours, quieter and more relaxed during off-peak times"
+          },
+          {
+            "name": "Julia's Apartment",
+            "sonic_signature": "The soft hum of a fan, the occasional ticking of a clock",
+            "ambient_sounds": "Distant city noises, the occasional sound of a car passing by",
+            "acoustic_properties": "Slightly muffled due to thick walls, low reverb",
+            "weather_patterns": "Rain against the window, occasional gusts of wind",
+            "how_space_sounds_different": "Quieter and more introspective during the night, more vibrant and active during the day"
+          },
+          {
+            "name": "Michael's Home",
+            "sonic_signature": "The sound of a ticking clock, the occasional sound of a pet moving around",
+            "ambient_sounds": "Soft background music, the occasional sound of a book being opened or closed",
+            "acoustic_properties": "Warm and rich, with a slight muffle due to carpeting and furniture",
+            "weather_patterns": "Rain against the window, occasional gusts of wind",
+            "how_space_sounds_different": "More cozy and relaxed during the evening, lighter and more open during the day"
+          },
+          {
+            "name": "Sarah's Office",
+            "sonic_signature": "The sound of a computer monitor, the occasional sound of a printer",
+            "ambient_sounds": "Low chatter of colleagues, the occasional sound of a phone ringing",
+            "acoustic_properties": "Moderate reverb, slightly echoey in the open-plan area",
+            "weather_patterns": "None, but the sound of ventilation is constant",
+            "how_space_sounds_different": "Busier and more focused during work hours, quieter and more relaxed during breaks"
+          }
+        ],
+        "travel_times": "Travel between key locations is characterized by the sound of footsteps, the hum of public transportation, and the ambient noise of the city. The sound of doors opening and closing, the rustle of clothing, and the occasional exchange of small talk are common. The transition from one location to another is marked by a gradual shift in ambient sounds, reflecting the change in environment."
+      },
+      "Social_Systems": {
+        "government_authority": {
+          "description": "The government operates through a democratic system with local and national authorities. Official announcements and public services are well-regulated.",
+          "associated_sounds": "The sound of a gavel, the formal tone of official announcements, the sound of a printing press for official documents"
+        },
+        "economic_structure": {
+          "description": "The economy is mixed, with both private and public sectors. There are bustling markets, corporate offices, and small businesses.",
+          "sounds": "The chime of cash registers, the sound of coins and bills changing hands, the low murmur of market bartering, the sound of printers and copiers in corporate offices"
+        },
+        "social_hierarchies": {
+          "description": "Social classes are defined by education, profession, and income. There is a visible divide between the middle and upper classes, with the lower class often struggling.",
+          "sonic_representation": "Middle and upper classes often have more refined and formal speech patterns, while the lower class may speak more casually and with a regional accent"
+        },
+        "cultural_norms": {
+          "key_customs": "Family gatherings, community events, and local festivals are important. There is a strong emphasis on personal and professional relationships.",
+          "associated_sounds": "The sound of laughter and conversation during family meals, the clinking of glasses at community events, the sound of live music and fireworks during festivals"
+        }
+      },
+      "Technology_Magic": {
+        "overview": "The world is primarily technology-driven, with advanced communication devices and medical equipment. There is no magical element.",
+        "sound_design": "The sound of smartphones and computers, the beeping of medical machines, the hum of air conditioning and ventilation systems",
+        "limitations": "Technology can malfunction or be inaccessible in certain areas, leading to moments of silence or limited communication",
+        "prevalence": "Smartphones and computers are common, while medical equipment is more specialized and found in hospitals and clinics"
+      },
+      "History_Lore": {
+        "key_past_events": [
+          {
+            "event": "The Great Economic Boom of the 1990s, which led to significant technological advancements and increased prosperity",
+            "sonic_impact": "The sound of construction and development, the hum of new technology, the celebratory sounds of community growth"
+          },
+          {
+            "event": "The Great Recession of the 2000s, which caused economic hardship and social tension",
+            "sonic_impact": "The sound of protests, the muted sounds of struggling businesses, the quiet of empty streets"
+          }
+        ],
+        "knowledge_levels": {
+          "common_knowledge": "Everyone knows about the economic cycles and the impact on their daily lives, reflected in the sounds of everyday conversations and news reports",
+          "secrets": "Some individuals have knowledge of hidden economic strategies and political maneuvers, often whispered in hushed tones"
+        },
+        "influence_on_present": "The economic cycles have left a lasting impact on the soundscape, with echoes of past prosperity and the recurring motifs of economic struggles",
+        "myths_legends": [
+          {
+            "story": "The Legend of the Hidden Treasure, a story of a lost fortune that brings good luck to those who find it",
+            "sonic_themes": "The sound of a treasure map being unfolded, the whisper of a secret, the chiming of a bell"
+          }
+        ]
+      },
+      "Sensory_Palette": {
+        "audio_cue_library": [
+          {
+            "location_situation": "Tom's Apartment - Morning Routine",
+            "ambient_sounds": "The sound of an alarm clock, the rustle of bed sheets, the sound of a coffee machine brewing",
+            "distinctive_noises": "The sound of stretching, the clinking of a coffee mug",
+            "acoustic_properties": "Slightly muffled due to thick walls, low reverb",
+            "recurring_audio_elements": "The sound of the morning news on the radio, the occasional chirping of birds outside"
+          },
+          {
+            "location_situation": "Julia's ER - Night Shift",
+            "ambient_sounds": "The beeping of medical machines, the low murmur of conversations, the sound of rolling carts",
+            "distinctive_noises": "The sound of a pager, the urgent call of a nurse",
+            "acoustic_properties": "Echoy due to hard surfaces, high reverb in open areas",
+            "recurring_audio_elements": "The sound of a clock ticking, the occasional sound of a door opening and closing"
+          },
+          {
+            "location_situation": "Michael's Office - Business Meeting",
+            "ambient_sounds": "The sound of a computer monitor, the low murmur of colleagues, the occasional sound of a phone ringing",
+            "distinctive_noises": "The sound of a pen clicking, the rustle of papers being shuffled",
+            "acoustic_properties": "Moderate reverb, slightly echoey in the open-plan area",
+            "recurring_audio_elements": "The sound of a printer, the occasional sound of footsteps"
+          },
+          {
+            "location_situation": "Sarah's Home - Evening Relaxation",
+            "ambient_sounds": "The crackling of a fireplace, the sound of a ticking grandfather clock, soft classical music in the background",
+            "distinctive_noises": "The sound of a book being opened, the clinking of dishes",
+            "acoustic_properties": "Warm and rich, with a slight muffle due to carpeting and furniture",
+            "recurring_audio_elements": "The sound of a cat purring, the occasional sound of a car passing by"
+          },
+          {
+            "location_situation": "Coffee Shop - Morning Rush",
+            "ambient_sounds": "The sound of a coffee machine, gentle background music, low chatter of patrons",
+            "distinctive_noises": "The sound of a coffee cup being placed on a saucer, the rustle of a newspaper",
+            "acoustic_properties": "Moderate reverb, slightly echoey in the open space",
+            "recurring_audio_elements": "The sound of the door opening and closing, the occasional sound of laughter"
+          },
+          {
+            "location_situation": "Park - Early Morning",
+            "ambient_sounds": "The sound of birds chirping, distant traffic noise, the rustle of leaves",
+            "distinctive_noises": "The sound of a jogger's footsteps, the occasional barking dog",
+            "acoustic_properties": "Open and natural, with a slight echo in open areas",
+            "recurring_audio_elements": "The sound of a child playing, the occasional sound of a bird flying by"
+          },
+          {
+            "location_situation": "Tom's Gym - Peak Hours",
+            "ambient_sounds": "The sound of weights being lifted, the thud of running on a treadmill, low chatter of patrons",
+            "distinctive_noises": "The sound of a grunting workout, the sound of a machine moving",
+            "acoustic_properties": "Echoey due to hard surfaces, high reverb in open areas",
+            "recurring_audio_elements": "The sound of a clock ticking, the occasional sound of a door opening and closing"
+          },
+          {
+            "location_situation": "Julia's Apartment - Evening Reflection",
+            "ambient_sounds": "The soft hum of a fan, the occasional ticking of a clock, distant city noises",
+            "distinctive_noises": "The sound of a book being opened, the clinking of a glass",
+            "acoustic_properties": "Slightly muffled due to thick walls, low reverb",
+            "recurring_audio_elements": "The sound of a pet moving around, the occasional sound of a car passing by"
+          },
+          {
+            "location_situation": "Michael's Home - Quiet Evening",
+            "ambient_sounds": "The sound of a ticking clock, the occasional sound of a pet moving around, soft background music",
+            "distinctive_noises": "The sound of a book being opened, the clinking of a glass",
+            "acoustic_properties": "Warm and rich, with a slight muffle due to carpeting and furniture",
+            "recurring_audio_elements": "The sound of a pet purring, the occasional sound of a car passing by"
+          },
+          {
+            "location_situation": "Sarah's Office - Work Break",
+            "ambient_sounds": "The sound of a computer monitor, the occasional sound of a printer, low chatter of colleagues",
+            "distinctive_noises": "The sound of a pen clicking, the rustle of papers being shuffled",
+            "acoustic_properties": "Moderate reverb, slightly echoey in the open-plan area",
+            "recurring_audio_elements": "The sound of a clock ticking, the occasional sound of a door opening and closing"
+          }
+        ]
+      }
+    },
+    "readable_summary": "======================================================================\nSTATION 8: WORLD BUILDER\n======================================================================\n\nWorking Title: Wrong Number, Right Message\nPrimary Genre: Contemporary Romance\nTarget Age: 25-55\nEpisode Count: 8-12 episodes\nCore Premise: Unknown\n\n----------------------------------------------------------------------\nGEOGRAPHY & SPACES\n----------------------------------------------------------------------\n\n1. Tom's Apartment\n   Sonic Signature: Soft ambient hum of an air conditioner, occasional ticking of a wall clock\n   Ambient Sounds: Distant city noises, occasional footsteps from neighbors, gentle rustling of pages turning\n\n2. Julia's ER\n   Sonic Signature: Intermittent beeping of medical machines, low murmur of conversations\n   Ambient Sounds: Regular footsteps, occasional urgent calls, the sound of rolling carts\n\n3. Michael's Office\n   Sonic Signature: Low hum of computer servers, the sound of typing on a keyboard\n   Ambient Sounds: Occasional phone ringing, low murmur of colleagues, the rustle of papers\n\n4. Sarah's Home\n   Sonic Signature: Warm crackling of a fireplace, the sound of a ticking grandfather clock\n   Ambient Sounds: Soft classical music in the background, the occasional clinking of dishes\n\n5. Coffee Shop\n   Sonic Signature: The sound of a coffee machine, gentle background music\n   Ambient Sounds: Low chatter of patrons, the clinking of cups and saucers, the occasional rustle of newspapers\n\n6. Park\n   Sonic Signature: The sound of birds chirping, distant traffic noise\n   Ambient Sounds: Children playing, the rustle of leaves, the occasional barking dog\n\n7. Tom's Gym\n   Sonic Signature: The sound of weights being lifted, the thud of running on a treadmill\n   Ambient Sounds: Low chatter of patrons, the occasional grunting, the sound of machines moving\n\n8. Julia's Apartment\n   Sonic Signature: The soft hum of a fan, the occasional ticking of a clock\n   Ambient Sounds: Distant city noises, the occasional sound of a car passing by\n\n9. Michael's Home\n   Sonic Signature: The sound of a ticking clock, the occasional sound of a pet moving around\n   Ambient Sounds: Soft background music, the occasional sound of a book being opened or closed\n\n10. Sarah's Office\n   Sonic Signature: The sound of a computer monitor, the occasional sound of a printer\n   Ambient Sounds: Low chatter of colleagues, the occasional sound of a phone ringing\n\nTravel Times & Sounds: Travel between key locations is characterized by the sound of footsteps, the hum of public transportation, and the ambient noise of the city. The sound of doors opening and closing, the rustle of clothing, and the occasional exchange of small talk are common. The transition from one location to another is marked by a gradual shift in ambient sounds, reflecting the change in environment.\n\n----------------------------------------------------------------------\nSOCIAL SYSTEMS\n----------------------------------------------------------------------\n\nGovernment: The government operates through a democratic system with local and national authorities. Official announcements and public services are well-regulated.\nAssociated Sounds: The sound of a gavel, the formal tone of official announcements, the sound of a printing press for official documents\n\nEconomy: The economy is mixed, with both private and public sectors. There are bustling markets, corporate offices, and small businesses.\nEconomic Sounds: The chime of cash registers, the sound of coins and bills changing hands, the low murmur of market bartering, the sound of printers and copiers in corporate offices\n\nSocial Hierarchies: Social classes are defined by education, profession, and income. There is a visible divide between the middle and upper classes, with the lower class often struggling.\nSonic Representation: Middle and upper classes often have more refined and formal speech patterns, while the lower class may speak more casually and with a regional accent\n\n----------------------------------------------------------------------\nTECHNOLOGY & MAGIC\n----------------------------------------------------------------------\n\nOverview: The world is primarily technology-driven, with advanced communication devices and medical equipment. There is no magical element.\nSound Design: The sound of smartphones and computers, the beeping of medical machines, the hum of air conditioning and ventilation systems\nLimitations: Technology can malfunction or be inaccessible in certain areas, leading to moments of silence or limited communication\nPrevalence: Smartphones and computers are common, while medical equipment is more specialized and found in hospitals and clinics\n\n----------------------------------------------------------------------\nHISTORY & LORE\n----------------------------------------------------------------------\n\nKey Past Events:\n  1. The Great Economic Boom of the 1990s, which led to significant technological advancements and increased prosperity\n     Sonic Impact: The sound of construction and development, the hum of new technology, the celebratory sounds of community growth\n  2. The Great Recession of the 2000s, which caused economic hardship and social tension\n     Sonic Impact: The sound of protests, the muted sounds of struggling businesses, the quiet of empty streets\n\nMyths & Legends:\n  1. The Legend of the Hidden Treasure, a story of a lost fortune that brings good luck to those who find it\n     Sonic Themes: The sound of a treasure map being unfolded, the whisper of a secret, the chiming of a bell\n\n----------------------------------------------------------------------\nSENSORY PALETTE\n----------------------------------------------------------------------\n\nAudio Cue Library:\n  1. Tom's Apartment - Morning Routine\n     Ambient Sounds: The sound of an alarm clock, the rustle of bed sheets, the sound of a coffee machine brewing\n  2. Julia's ER - Night Shift\n     Ambient Sounds: The beeping of medical machines, the low murmur of conversations, the sound of rolling carts\n  3. Michael's Office - Business Meeting\n     Ambient Sounds: The sound of a computer monitor, the low murmur of colleagues, the occasional sound of a phone ringing\n  4. Sarah's Home - Evening Relaxation\n     Ambient Sounds: The crackling of a fireplace, the sound of a ticking grandfather clock, soft classical music in the background\n  5. Coffee Shop - Morning Rush\n     Ambient Sounds: The sound of a coffee machine, gentle background music, low chatter of patrons\n  6. Park - Early Morning\n     Ambient Sounds: The sound of birds chirping, distant traffic noise, the rustle of leaves\n  7. Tom's Gym - Peak Hours\n     Ambient Sounds: The sound of weights being lifted, the thud of running on a treadmill, low chatter of patrons\n  8. Julia's Apartment - Evening Reflection\n     Ambient Sounds: The soft hum of a fan, the occasional ticking of a clock, distant city noises\n  9. Michael's Home - Quiet Evening\n     Ambient Sounds: The sound of a ticking clock, the occasional sound of a pet moving around, soft background music\n  10. Sarah's Office - Work Break\n     Ambient Sounds: The sound of a computer monitor, the occasional sound of a printer, low chatter of colleagues\n\n======================================================================\nEND OF WORLD BIBLE\n======================================================================"
+  }
+}

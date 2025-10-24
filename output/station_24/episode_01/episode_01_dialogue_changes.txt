@@ -1,12 +1,12 @@
 ======================================================================
 EPISODE 1 DIALOGUE POLISH - COMPARISON REPORT
 ======================================================================
-Generated: 2025-10-23 01:08:52
-Session: session_20251016_235335
+Generated: 2025-10-24 09:01:46
+Session: session_20251023_112749
 
 NATURAL SPEECH ANALYSIS:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  Unnatural instances found: 14
+  Unnatural instances found: 16
 
 CHARACTER VOICE VALIDATION:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -14,7 +14,7 @@ CHARACTER VOICE VALIDATION:
 
 SUBTEXT ENHANCEMENT:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  Current subtext level: 4/10
+  Current subtext level: 3/10
   Target subtext level: 7-8/10
 
 DIALOGUE POLISH RESULTS:

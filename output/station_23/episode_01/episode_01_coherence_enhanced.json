@@ -1,0 +1,56 @@
+{
+  "session_id": "session_20251023_112749",
+  "episode_number": 1,
+  "validated_at": "2025-10-23T22:17:46.313292",
+  "story_coherence_check": {
+    "episode_number": 1,
+    "coherence_score": "9/10",
+    "story_logic": {
+      "status": "valid",
+      "assessment": "Events follow logically from character motivations. The wrong number message serves as an effective catalyst connecting the two storylines."
+    },
+    "character_consistency": {
+      "consistent_characters": [
+        "Tom",
+        "Julia"
+      ],
+      "authenticity": "genuine"
+    },
+    "emotional_authenticity": {
+      "earned_moments": 6,
+      "emotional_arc": "believable",
+      "assessment": "All emotional beats are earned through character interaction and backstory reveals, particularly Julia's grief over her mother."
+    },
+    "issues_found": [],
+    "recommendations": [
+      "Story is coherent and emotionally authentic",
+      "Consider clarifying how Julia received the message (wrong number vs. signed up by someone else) in future episodes"
+    ]
+  },
+  "coherence_enhancements": {
+    "episode_number": 1,
+    "total_changes": 2,
+    "enhancement_type": "minimal_targeted_fixes",
+    "enhancements": [
+      {
+        "enhancement_number": 1,
+        "scene_number": 2,
+        "type": "add_motivation",
+        "original_content": "JULIA\n(confused, annoyed)\nWhat the—? Who is this?\n\n[SFX: FINGERS RAPIDLY TAPPING PHONE SCREEN.]\n\nJULIA\nWrong number. Must be spam.",
+        "enhanced_content": "JULIA\n(confused, annoyed)\nWhat the—? Who is this?\n\n[SFX: FINGERS RAPIDLY TAPPING PHONE SCREEN.]\n\nJULIA\nWrong number. Must be spam. I don't recognize this contact at all.",
+        "reason": "Clarifies Julia's motivation for dismissing the message as spam"
+      },
+      {
+        "enhancement_number": 2,
+        "scene_number": 6,
+        "type": "enhance_emotion",
+        "original_content": "TOM\n(to himself)\nWrong number... but right message?\n\n[SFX: MOUSE CLICKS AGAIN. TYPING SLOWLY.]",
+        "enhanced_content": "TOM\n(to himself)\nWrong number... but right message?\n\n[SFX: BRIEF PAUSE. TOM SMILES THOUGHTFULLY. MOUSE CLICKS AGAIN. TYPING SLOWLY.]",
+        "reason": "Enhances Tom's emotional response to the meaningful connection"
+      }
+    ],
+    "full_enhanced_script": "=== SCENE 1: INT. TOM'S APARTMENT - EARLY MORNING ===\n[SFX: ALARM CLOCK BEEPING, then CLICKS OFF. FADE IN GENTLE AMBIENT CITY SOUNDS DISTANT THROUGH WINDOW. FAINT COFFEE MAKER STARTING UP.]\n\n[SFX: LIGHT SCRATCHING OF PEN ON PAPER.]\n\nTOM\n(into phone voice recorder)\nDay 147 of The Daily Lift. Good morning, champions. Today's thought: Sometimes the smallest step in the right direction ends up being the biggest step of your life. Tip toe if you must, but take the step. Remember, you are stronger than you think. Make today count.\n\n[SFX: PEN SETS DOWN. KEYBOARD TYPING RHYTHMICALLY.]\n\nTOM\n(muttering to himself)\nAlright, let's send this to my list... select all... send... and... good to go.\n\n[SFX: MOUSE CLICK. COMPUTER CONFIRMATION CHIME.]\n\nTOM\n(sighs contentedly)\nOne more day, one more life potentially changed.\n\n[SFX: RUSTLING OF CLOTHES. COFFEE POURING INTO MUG.]\n\nTOM\nNow for the important stuff—caffeine.\n\n[SFX: FADE TO BLACK]\n\n=== SCENE 2: INT. JULIA'S BEDROOM - EARLY MORNING ===\n[SFX: PHONE BUZZING VIBRATES ON NIGHTSTAND. JULIA GROANS. RAIN GENTLY TAPPING AGAINST WINDOW.]\n\n[SFX: PHONE BUZZES AGAIN. JULIA SHUFFLES IN BED. HAND SLAPS NIGHTSTAND SEARCHING FOR PHONE.]\n\nJULIA\n(groggy, to herself)\nFive more minutes...\n\n[SFX: PHONE BUZZES A THIRD TIME. LOUDER. JULIA JERKS UPRIGHT. SHE GRABS PHONE. TEXT MESSAGE ALERT CHIMES.]\n\n[SFX: PHONE VOICE READING TEXT.]\n\nPHONE VOICE\n(automated, filtered)\nDay 147 of The Daily Lift. Good morning, champions. Today's thought: Sometimes the smallest step in the right direction ends up being the biggest step of your life...\n\nJULIA\n(confused, annoyed)\nWhat the—? Who is this?\n\n[SFX: FINGERS RAPIDLY TAPPING PHONE SCREEN.]\n\nJULIA\nWrong number. Must be spam. I don't recognize this contact at all.\n\n[SFX: PHONE THUMPS ON MATTRESS. JULIA SWINGS LEGS OUT OF BED, FEET PADDING ON FLOOR.]\n\nJULIA\n(to herself, thoughtful)\nSmallest step in the right direction... right. If only it were that simple.\n\n[SFX: FAINT SOUND OF RAIN MIXES WITH ALARM CLOCK BEEPING. FADE TO BLACK.]\n\n=== SCENE 3: INT. HOSPITAL HALLWAY - MORNING ===\n[SFX: HOSPITAL HALLWAY AMBIENCE—DISTANT BEEPING MACHINES, PAGERS, SOFT CONVERSATIONS. FOOTSTEPS SQUEAK ON LINOLEUM.]\n\nDR. MARTINEZ\n(filtered, approaching)\nDr. Evans! Julia! Got a moment?\n\nJULIA\n(distracted)\nDr. Martinez. Of course. What's up?\n\n[SFX: FOOTSTEPS STOP. MEDICAL CART PASSES BY. DR. MARTINEZ'S VOICE IS CLEARER NOW.]\n\nDR. MARTINEZ\nThe Miller case. Family wants to speak with someone about transition options. I thought with your background in palliative care...\n\nJULIA\n(abruptly, voice tight)\nI can't.\n\nDR. MARTINEZ\n(surprised)\nIs everything alright?\n\nJULIA\n(quickly, avoiding eye contact)\nI'm just—swamped with paperwork. Ask Linda. She's better with that sort of thing.\n\n[SFX: BRIEF PAUSE. PAGER BEEPS IN DISTANCE. NURSE LINDA APPROACHES. CART WHEELS SQUEAKING.]\n\nNURSE LINDA\nDid someone say my name?\n\nDR. MARTINEZ\nJulia thinks you'd be better with the Miller family. About transition options.\n\nNURSE LINDA\n(concerned)\nJulia, you usually handle these so well.\n\nJULIA\n(evasive, voice tightening)\nI have that report due, remember? The one that's already late?\n\n[SFX: RAPID FOOTSTEPS WALKING AWAY. DOOR SWINGS SHARPLY SHUT.]\n\nNURSE LINDA\n(concerned, to Dr. Martinez)\nShe's been like this all week. Ever since her mother...\n\nDR. MARTINEZ\n(gently)\nI know. Give her space. She'll come around when she's ready.\n\n[SFX: BOTH WALK AWAY, FOOTSTEPS FADING. INTERCOM PAGES DOCTOR. FADE TO BLACK.]\n\n=== SCENE 4: INT. TOM'S OFFICE - AFTERNOON ===\n[SFX: MODERN OFFICE AMBIENCE—DISTANT KEYBOARD TYPING, AIR CONDITIONING HUM.]\n\n[SFX: KNOCK ON DOOR. DOOR OPENS.]\n\nMARK\n(excited)\nTom! Got a minute?\n\nTOM\n(chuckles)\nFor you, Mark, always. Come in.\n\n[SFX: DOOR CLOSES. FOOTSTEPS APPROACH.]\n\nMARK\nJust heard from Sarah—the one who was struggling with the career change?\n\nTOM\n(optimistic)\nAnd?\n\nMARK\nShe took the leap! Quit her job, enrolled in that design program. Said your coaching gave her the courage.\n\nTOM\n(warmly)\nThat's what we do—help people find their path.\n\nMARK\nYou're growing the business fast. We've already hit our quarterly target.\n\nTOM\nIt's not about targets, Mark. It's about lives changed.\n\n[SFX: KEYBOARD TAPPING.]\n\nMARK\nRight, but... you need to think about scaling. Maybe bring on another coach?\n\nTOM\n(meditatively)\nMaybe. Right now, I like the personal touch. Each message... each call... matters.\n\n[SFX: PHONE VIBRATES. TOM PICKS IT UP.]\n\nTOM\nSorry, need to take this.\n\n[SFX: FADE TO BLACK.]\n\n=== SCENE 5: INT. JULIA'S OFFICE - EVENING ===\n[SFX: QUIET OFFICE AMBIENCE—CLOCK TICKING RHYTHMICALLY, KEYBOARD CLACKING SLOWLY.]\n\n[SFX: JULIA SITS HEAVILY IN CHAIR. CHAIR SQUEAKS UNDER WEIGHT. DEEP SIGH.]\n\nJULIA\n(to herself)\nAnother day.\n\n[SFX: MOUSE CLICK. KEYBOARD TYPING RAPIDLY THEN SLOWLY. STOPS.]\n\nJULIA\n(muttering)\nTransition options... end-of-life care... how can I help others when I can't even—\n\n[SFX: PHONE BUZZES INSISTENTLY. SHE STARTLES, THEN PICKS IT UP. TEXT MESSAGE ALERT CHIMES.]\n\n[SFX: FINGERS TAPPING PHONE SCREEN. DEEP BREATH.]\n\nJULIA\n(reading quietly, then with emphasis)\n\"Sometimes the smallest step in the right direction ends up being the biggest step of your life...\"\n\n[SFX: BRIEF PAUSE. CLOCK TICKS LOUDLY.]\n\nJULIA\n(whispering)\nRight direction...\n\n[SFX: PHONE SETS DOWN ON DESK WITH SOFT THUD. PAUSE. DRAWER OPENS WITH SQUEAK. PAPERS RUSTLE.]\n\n[SFX: JULIA PULLS OUT A FRAMED PHOTO. FINGERS TRACING FRAME. GENTLY SETS IT ON DESK.]\n\nJULIA\n(to the photo, voice breaking slightly)\nI miss you, Mom. Every day gets a little harder, not easier.\n\n[SFX: JULIA CLEARS THROAT. TEARDROP HITS DESK. WIND HOWLS OUTSIDE WINDOW. FADE TO BLACK.]\n\n=== SCENE 6: INT. TOM'S APARTMENT - NIGHT ===\n[SFX: QUIET APARTMENT AMBIENCE—REFRIGERATOR HUMMING, DISTANT SIREN.]\n\n[SFX: TOM ENTERS. KEYS ON COUNTER. BAG SETS DOWN.]\n\nTOM\n(to himself)\nLong day.\n\n[SFX: COFFEE MACHINE CLICKS ON. MUG CERAMIC CLINKS.]\n\nTOM\nLet's see... emails, then tomorrow's message.\n\n[SFX: LAPTOP OPENS. KEYBOARD TAPPING.]\n\n[SFX: NOTIFICATION DINGS. TOM HESITATES.]\n\nTOM\n(confused)\nUnknown number?\n\n[SFX: KEYBOARD TAPS. MESSAGE OPENS.]\n\nTOM\n(reading aloud)\n\"Whoever you are, I don't know you, but your message came at the right time. Thank you.\"\n\n[SFX: LONG PAUSE. MOUSE CLICKS.]\n\nTOM\n(to himself)\nWrong number... but right message?\n\n[SFX: BRIEF PAUSE. TOM SMILES THOUGHTFULLY. MOUSE CLICKS AGAIN. TYPING SLOWLY.]\n\nTOM\n(typing as he speaks)\n\"Glad it helped. Sometimes the universe works in mysterious ways. Tom.\"\n\n[SFX: MESSAGE SENDS. LAPTOP CLOSES. COFFEE SIP.]\n\nTOM\n(thoughtfully)\nMysterious ways indeed.\n\n[SFX: FADE TO BLACK.]",
+    "preservation_status": "Original story and character arc fully preserved",
+    "summary": "Minimal coherence improvements while maintaining narrative integrity"
+  }
+}

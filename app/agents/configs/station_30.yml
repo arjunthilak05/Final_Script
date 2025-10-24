@@ -1,0 +1,391 @@
+# Station 30: Narrative Structure Integrity Checker Configuration
+
+station_name: "Station 30: Narrative Structure Integrity Checker"
+description: "Validates completed episode scripts for structural integrity and narrative coherence. Analyzes structure adherence, reveal mechanism execution, subplot integration, and cross-episode continuity using dynamic rule loading based on Station 5 structure choice."
+model: "anthropic/claude-3.5-sonnet"
+temperature: 0.7
+max_tokens: 16384
+
+# Dependencies
+dependencies: [5, 10]
+
+# Structure validation configuration
+structure_templates_path: "configs/structure_rules/"
+
+# Validation thresholds
+validation_thresholds:
+  structure_compliance_min: 0.85
+  continuity_error_max: 5
+  reveal_fairness_min: 0.8
+  subplot_integration_min: 0.75
+
+# Output configuration
+output_format: "json"
+require_user_validation: true
+
+prompts:
+  structure_adherence_validation: |
+    **TASK 1: STRUCTURE ADHERENCE VALIDATION**
+
+    **Episode Context:**
+    - Episode ID: {episode_id}
+    - Selected Structure: {selected_structure}
+    - Episode Structure Requirements: {episode_structure}
+    - Structure Validation Rules: {structure_rules}
+    - Audio Marker Rules: {audio_marker_rules}
+
+    **Episode Content:**
+    {episode_content}
+
+    **Your Task:**
+    Validate that the episode adheres to the selected narrative structure. Check act/beat timing, audio structure markers, and structure-specific rules.
+
+    **VALIDATION REQUIREMENTS:**
+
+    1. **Act/Beat Timing**: Verify act breaks, turning points, and pacing match structure template
+    2. **Audio Structure Markers**: Check audio cues (music stings, silence) mark structural points
+    3. **Structure-Specific Rules**: Apply validation based on selected structure (3-Act, Mystery Box, Time Loop, etc.)
+
+    **Output Format:** Return ONLY valid JSON:
+    {{
+      "structure_compliance_report": {{
+        "overall_score": 4.2,
+        "status": "compliant|non_compliant|partially_compliant",
+        "violations": [
+          {{
+            "type": "act_timing|beat_timing|audio_marker|structure_rule",
+            "severity": "critical|high|medium|low",
+            "description": "Specific violation description",
+            "location": "Episode timestamp or scene reference",
+            "recommended_fix": "Specific fix recommendation",
+            "audio_impact": "How this affects audio experience"
+          }}
+        ],
+        "compliance_details": {{
+          "act_breaks": {{
+            "required": true,
+            "found": true,
+            "timing_accuracy": 0.95,
+            "audio_markers_present": true
+          }},
+          "turning_points": {{
+            "required_count": 3,
+            "found_count": 3,
+            "properly_spaced": true,
+            "audio_signatures": ["music_change", "sound_effect"]
+          }},
+          "pacing": {{
+            "energy_progression": "appropriate",
+            "variation_present": true,
+            "audio_support": true
+          }}
+        }},
+        "audio_structure_analysis": {{
+          "structure_markers": [
+            {{
+              "marker_type": "act_break|turning_point|revelation",
+              "timestamp": "00:15:30",
+              "audio_cue": "music_sting",
+              "effectiveness": "high|medium|low"
+            }}
+          ],
+          "missing_markers": [],
+          "audio_continuity": "consistent|inconsistent"
+        }}
+      }}
+    }}
+
+    **Requirements:**
+    - Analyze every structural element for compliance
+    - Check audio markers are present and effective
+    - Provide specific violation details with timestamps
+    - Recommend concrete fixes for each violation
+    - Return ONLY valid JSON
+
+  reveal_mechanism_check: |
+    **TASK 2: REVEAL MECHANISM CHECK**
+
+    **Episode Context:**
+    - Episode ID: {episode_id}
+    - Reveal Taxonomy: {reveal_taxonomy}
+    - Reveal Methods: {reveal_methods}
+    - Plant/Proof/Payoff Grid: {plant_proof_payoff}
+
+    **Episode Content:**
+    {episode_content}
+
+    **Your Task:**
+    Validate reveal style execution. Check information flow, audio reveal quality, and fairness.
+
+    **VALIDATION REQUIREMENTS:**
+
+    1. **Information Flow**: Verify plants before payoffs, proofs support claims, info released per plan
+    2. **Audio Reveal Quality**: Check clarity of reveal sounds, misdirection effectiveness, audience followability
+    3. **Fairness Test**: Ensure clues are hearable, audience could theoretically solve, red herrings balanced
+
+    **Output Format:** Return ONLY valid JSON:
+    {{
+      "reveal_mechanism_scorecard": {{
+        "fairness_rating": 4.5,
+        "clue_audibility": "excellent|good|fair|poor",
+        "information_flow_score": 4.2,
+        "audio_reveal_quality": 4.0,
+        "fairness_issues": [
+          {{
+            "type": "unfair_clue|hidden_information|audio_unclear|timing_off",
+            "severity": "critical|high|medium|low",
+            "description": "Specific fairness issue",
+            "location": "Episode timestamp or scene reference",
+            "recommended_fix": "Specific fix recommendation",
+            "audience_impact": "How this affects audience experience"
+          }}
+        ],
+        "plant_proof_payoff_analysis": {{
+          "plants_found": 3,
+          "plants_required": 3,
+          "proofs_present": true,
+          "payoffs_effective": true,
+          "timing_appropriate": true
+        }},
+        "audio_reveal_analysis": {{
+          "reveal_clarity": "clear|unclear|confusing",
+          "audio_support": "excellent|good|fair|poor",
+          "misdirection_effectiveness": "effective|ineffective",
+          "audience_followability": "easy|moderate|difficult"
+        }},
+        "fair_play_assessment": {{
+          "all_clues_hearable": true,
+          "audience_could_solve": true,
+          "red_herrings_fair": true,
+          "no_arbitrary_withholding": true,
+          "overall_fairness": "excellent|good|fair|poor"
+        }}
+      }}
+    }}
+
+    **Requirements:**
+    - Check every reveal for fairness and audio quality
+    - Verify plant/proof/payoff structure is maintained
+    - Ensure audio clues are actually hearable
+    - Flag any unfair practices or hidden information
+    - Return ONLY valid JSON
+
+  subplot_integration_analysis: |
+    **TASK 3: SUBPLOT INTEGRATION ANALYSIS**
+
+    **Episode Context:**
+    - Episode ID: {episode_id}
+    - Episode Structure: {episode_structure}
+    - Subplot Focus: {subplot_focus}
+
+    **Episode Content:**
+    {episode_content}
+
+    **Your Task:**
+    Track all subplots. Check presence, audio signatures, and resolution progress.
+
+    **VALIDATION REQUIREMENTS:**
+
+    1. **Presence Check**: Each subplot gets adequate time, no dropped threads, no overcrowding
+    2. **Audio Signatures**: Unique sounds per subplot, clear transitions, trackable by audience
+    3. **Resolution Tracking**: Verify progress toward resolution, appropriateness, satisfaction level
+
+    **Output Format:** Return ONLY valid JSON:
+    {{
+      "subplot_tracking_chart": {{
+        "integration_score": 4.3,
+        "subplot_coverage": "adequate|insufficient|excessive",
+        "audio_signature_quality": "excellent|good|fair|poor",
+        "issues": [
+          {{
+            "type": "dropped_thread|overcrowding|audio_confusion|resolution_pacing",
+            "severity": "critical|high|medium|low",
+            "description": "Specific subplot issue",
+            "location": "Episode timestamp or scene reference",
+            "recommended_fix": "Specific fix recommendation",
+            "subplot_affected": "Subplot name or identifier"
+          }}
+        ],
+        "subplot_analysis": [
+          {{
+            "subplot_name": "Subplot identifier",
+            "time_allocation": "adequate|insufficient|excessive",
+            "audio_signature": "unique|confusing|missing",
+            "resolution_progress": "appropriate|too_fast|too_slow",
+            "audience_trackability": "easy|moderate|difficult",
+            "satisfaction_level": "high|medium|low"
+          }}
+        ],
+        "audio_transition_analysis": {{
+          "transitions_clear": true,
+          "subplot_signatures_distinct": true,
+          "audience_confusion_points": [],
+          "audio_continuity": "consistent|inconsistent"
+        }},
+        "resolution_tracking": {{
+          "appropriate_pacing": true,
+          "no_rushed_resolutions": true,
+          "satisfying_conclusions": true,
+          "setup_payoff_balance": "balanced|imbalanced"
+        }}
+      }}
+    }}
+
+    **Requirements:**
+    - Track every subplot mentioned in episode structure
+    - Check audio signatures are unique and clear
+    - Verify resolution pacing is appropriate
+    - Flag any dropped threads or overcrowding
+    - Return ONLY valid JSON
+
+  cross_episode_continuity: |
+    **TASK 4: CROSS-EPISODE CONTINUITY**
+
+    **Episode Context:**
+    - Episode ID: {episode_id}
+    - All Episodes Data: {all_episodes}
+
+    **Episode Content:**
+    {episode_content}
+
+    **Your Task:**
+    Validate series coherence. Check fact consistency, audio continuity, and promise fulfillment.
+
+    **VALIDATION REQUIREMENTS:**
+
+    1. **Fact Consistency**: Character knowledge, timeline logic, world rules maintained
+    2. **Audio Continuity**: Character voices, location sounds, music motifs consistent
+    3. **Promise Fulfillment**: Setup elements pay off, genre promises kept, tone maintained
+
+    **Output Format:** Return ONLY valid JSON:
+    {{
+      "continuity_issue_list": {{
+        "continuity_score": 4.1,
+        "consistency_status": "consistent|inconsistent|mixed",
+        "issues": [
+          {{
+            "type": "fact_inconsistency|audio_inconsistency|promise_broken|timeline_error",
+            "severity": "critical|high|medium|low",
+            "description": "Specific continuity issue",
+            "location": "Episode timestamp or scene reference",
+            "conflicting_episode": "Episode that conflicts",
+            "recommended_fix": "Specific fix recommendation",
+            "impact_on_series": "How this affects overall series"
+          }}
+        ],
+        "fact_consistency_check": {{
+          "character_knowledge_consistent": true,
+          "timeline_logic_maintained": true,
+          "world_rules_consistent": true,
+          "fact_inconsistencies": []
+        }},
+        "audio_continuity_check": {{
+          "character_voices_consistent": true,
+          "location_sounds_consistent": true,
+          "music_motifs_consistent": true,
+          "audio_inconsistencies": []
+        }},
+        "promise_fulfillment_check": {{
+          "setup_elements_pay_off": true,
+          "genre_promises_kept": true,
+          "tone_maintained": true,
+          "broken_promises": []
+        }},
+        "series_coherence_assessment": {{
+          "overall_coherence": "excellent|good|fair|poor",
+          "major_inconsistencies": 0,
+          "minor_inconsistencies": 2,
+          "series_integrity": "maintained|compromised"
+        }}
+      }}
+    }}
+
+    **Requirements:**
+    - Check every fact against previous episodes
+    - Verify audio elements remain consistent
+    - Ensure promises made in earlier episodes are kept
+    - Flag any inconsistencies with specific episode references
+    - Return ONLY valid JSON
+
+  summary_report: |
+    **SUMMARY REPORT GENERATION**
+
+    **Context:**
+    - Session ID: {session_id}
+    - Total Episodes: {total_episodes}
+    - Selected Structure: {selected_structure}
+    - Reveal Elements: {reveal_elements}
+
+    **Episode Results:**
+    {episode_results}
+
+    **Your Task:**
+    Generate comprehensive summary report across all episodes with overall validation health and recommendations.
+
+    **Output Format:** Return ONLY valid JSON:
+    {{
+      "summary_report": {{
+        "executive_summary": "Overall assessment of structure integrity across all episodes",
+        "overall_validation_health": "excellent|good|fair|poor",
+        "average_structure_score": 4.2,
+        "average_reveal_score": 4.1,
+        "average_subplot_score": 4.0,
+        "average_continuity_score": 4.3,
+        "total_issues": 12,
+        "critical_issues": 2,
+        "high_issues": 3,
+        "medium_issues": 5,
+        "low_issues": 2,
+        "episode_breakdown": [
+          {{
+            "episode_id": "episode_01",
+            "structure_score": 4.5,
+            "reveal_score": 4.2,
+            "subplot_score": 4.0,
+            "continuity_score": 4.3,
+            "total_issues": 3,
+            "status": "compliant|non_compliant|partially_compliant"
+          }}
+        ],
+        "structure_compliance_summary": {{
+          "most_common_violations": ["act_timing", "audio_markers"],
+          "compliance_rate": 0.85,
+          "structure_health": "good|fair|poor"
+        }},
+        "reveal_mechanism_summary": {{
+          "fairness_rating": 4.1,
+          "most_common_issues": ["clue_audibility", "timing"],
+          "overall_fairness": "good|fair|poor"
+        }},
+        "subplot_integration_summary": {{
+          "integration_quality": "good|fair|poor",
+          "most_common_issues": ["audio_signatures", "resolution_pacing"],
+          "overall_integration": "good|fair|poor"
+        }},
+        "continuity_summary": {{
+          "consistency_rate": 0.92,
+          "most_common_issues": ["fact_inconsistency", "audio_inconsistency"],
+          "series_integrity": "maintained|compromised"
+        }},
+        "recommendations": [
+          "Specific recommendations for improvement",
+          "Priority fixes for critical issues",
+          "General suggestions for series health"
+        ],
+        "next_steps": [
+          "Immediate actions required",
+          "Follow-up validation needed",
+          "Production considerations"
+        ]
+      }}
+    }}
+
+    **Requirements:**
+    - Provide comprehensive analysis across all episodes
+    - Identify patterns in violations and issues
+    - Give specific recommendations for improvement
+    - Assess overall series health and integrity
+    - Return ONLY valid JSON
+
+# Enable/disable this station in the pipeline
+enabled: true

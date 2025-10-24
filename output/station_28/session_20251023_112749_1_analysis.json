@@ -1,0 +1,33 @@
+{
+  "episode_id": 1,
+  "emotional_scorecard": {
+    "emotional_scorecard": {},
+    "relationship_chart": [],
+    "universal_resonance": {},
+    "problem_flags": [
+      {
+        "type": "Placeholder Content",
+        "location": "Entire Episode",
+        "issue": "Script contains only placeholder text",
+        "recommended_fix": "Run Station 27 to generate actual episode scripts"
+      }
+    ],
+    "line_adjustments": []
+  },
+  "relationship_chart": {
+    "relationship_chart": []
+  },
+  "universal_resonance": {
+    "universal_resonance": {}
+  },
+  "problem_flags": [
+    {
+      "type": "Placeholder Content",
+      "location": "Entire Episode",
+      "issue": "Script contains only placeholder text",
+      "recommended_fix": "Run Station 27 to generate actual episode scripts"
+    }
+  ],
+  "line_adjustments": [],
+  "timestamp": "2025-10-24T21:17:46.497014"
+}

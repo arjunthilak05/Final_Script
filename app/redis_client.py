@@ -45,6 +45,13 @@ class RedisClient:
         if self.redis:
             return await self.redis.exists(key)
         return False
+    
+    async def keys(self, pattern: str):
+        """Get keys matching pattern from Redis"""
+        if self.redis:
+            keys = await self.redis.keys(pattern)
+            return [key.decode('utf-8') if isinstance(key, bytes) else key for key in keys]
+        return []
 
 
 # Global Redis client instance

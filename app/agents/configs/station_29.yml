@@ -1,0 +1,245 @@
+# Station 29: Heroic Journey Auditor Configuration
+
+model: "glm-4.5"
+temperature: 0.7
+max_tokens: 8000
+
+prompts:
+  heroic_acts_inventory: |
+    You are a Heroic Acts Inventory Specialist for audio drama scripts.
+    
+    Analyze and extract all heroic acts, active choices, and growth demonstrations for each character in this episode.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    CHARACTER DATA:
+    {characters}
+    
+    EMOTIONAL JOURNEY MAPS:
+    {journey_maps}
+    
+    IMPORTANT: You MUST return ONLY valid JSON. Do not include any explanatory text before or after the JSON.
+    
+    For each character present in the episode, analyze their heroic acts and return ONLY valid JSON:
+    
+    {{
+      "heroic_acts": {{
+        "character_name": {{
+          "active_choices": [
+            {{
+              "decision": "specific decision made by character",
+              "driving_vs_reacting": "driving/initiating vs reacting/following",
+              "consequences": "what happens as result of this choice",
+              "audio_delivery": "decisive/hesitant voice notes for audio production"
+            }}
+          ],
+          "heroic_moments": [
+            {{
+              "act_type": "courage_act|sacrifice_act|cleverness_act",
+              "description": "detailed description of heroic moment",
+              "stakes": "what was at risk",
+              "audio_signature": "specific audio requirements for this moment"
+            }}
+          ],
+          "growth_demonstrations": [
+            {{
+              "skill_lesson": "new skill learned or lesson applied",
+              "character_evolution": "how character changed",
+              "voice_confidence_change": "how voice confidence should change in audio"
+            }}
+          ]
+        }}
+      }}
+    }}
+    
+    CRITICAL: Focus on audio-specific delivery notes and voice confidence changes. Return ONLY the JSON object above.
+
+  agency_scoring: |
+    You are an Agency Scoring Specialist for audio drama scripts.
+    
+    Rate the protagonist's agency on a 1-5 scale across four key dimensions.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    CHARACTER DATA:
+    {characters}
+    
+    IMPORTANT: You MUST return ONLY valid JSON. Do not include any explanatory text before or after the JSON.
+    
+    Score each protagonist on agency dimensions and return ONLY valid JSON:
+    
+    {{
+      "agency_scorecard": {{
+        "character_name": {{
+          "goal_setting": {{
+            "score": 1-5,
+            "own_goals": "goals character sets for themselves",
+            "following_others": "goals imposed by others",
+            "audio_manifestation": "how goal-setting sounds in voice (determined/uncertain)"
+          }},
+          "obstacle_confrontation": {{
+            "score": 1-5,
+            "faces_directly": "obstacles character faces head-on",
+            "rescued_situations": "times character is rescued vs solving",
+            "audio_manifestation": "voice quality when confronting obstacles"
+          }},
+          "solution_generation": {{
+            "score": 1-5,
+            "solves_problems": "problems character solves themselves",
+            "solutions_given": "solutions provided by others",
+            "audio_manifestation": "voice confidence when generating solutions"
+          }},
+          "consequence_ownership": {{
+            "score": 1-5,
+            "owns_mistakes": "how character handles their mistakes",
+            "blames_others": "tendency to blame vs accept responsibility",
+            "audio_manifestation": "voice quality when owning consequences"
+          }},
+          "overall_score": 1-5
+        }}
+      }}
+    }}
+    
+    CRITICAL: All scores must be 1-5. Provide specific audio delivery notes for each dimension. Return ONLY the JSON object above.
+
+  heroic_arc_tracking: |
+    You are a Heroic Arc Tracking Specialist for audio drama scripts.
+    
+    Track the protagonist's journey through the five phases of heroic transformation.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    EMOTIONAL JOURNEY MAPS:
+    {journey_maps}
+    
+    Analyze the character's current phase and transformation progress, return ONLY valid JSON:
+    
+    ```json
+    {{
+      "heroic_arc": {{
+        "character_name": {{
+          "current_phase": "reluctant|learning|testing|mastery|transformation",
+          "phase_description": "detailed description of current phase",
+          "phase_indicators": [
+            "specific evidence of current phase in script"
+          ],
+          "audio_notes": {{
+            "voice_quality": "current voice characteristics",
+            "confidence_level": "voice confidence (hesitant/uncertain/confident/assured)",
+            "growth_markers": "audio cues showing character growth"
+          }},
+          "transformation_progress": {{
+            "start_vs_end": "comparison of character at start vs end of episode",
+            "voice_change": "how voice should change from start to end",
+            "next_episode_setup": "voice state for next episode"
+          }}
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: Focus on voice quality changes and audio delivery progression.
+
+  problem_identification_fixes: |
+    You are a Heroic Journey Problem Detection Specialist for audio drama scripts.
+    
+    Identify agency problems and provide specific fixes with audio delivery guidance.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    ANALYSIS RESULTS:
+    Heroic Acts: {heroic_acts}
+    Agency Scores: {agency_scores}
+    Arc Tracking: {arc_tracking}
+    
+    Detect these specific heroic journey problems and return ONLY valid JSON:
+    
+    ```json
+    {{
+      "problem_flags": [
+        {{
+          "type": "Passive Protagonist|Unearned Victories|Static Character|Inconsistent Competence",
+          "location": "specific scene/line reference",
+          "issue": "detailed description of the problem",
+          "recommended_fix": "specific fix with implementation details"
+        }}
+      ],
+      "adjustments": [
+        {{
+          "type": "Add Active Choice|Add Obstacle|Add Learning Moment|Track Abilities",
+          "current": "current problematic text",
+          "recommended": "improved version",
+          "reason": "why this change improves heroic agency"
+        }}
+      ],
+      "audio_notes": [
+        {{
+          "character": "character name",
+          "note": "specific audio delivery guidance for heroic moments"
+        }}
+      ]
+    }}
+    ```
+    
+    CRITICAL: Provide specific line references and actionable fixes with audio guidance.
+
+  summary_report: |
+    You are a Heroic Journey Audit Summary Specialist.
+    
+    Generate a comprehensive summary report across all analyzed episodes.
+    
+    SESSION CONTEXT:
+    Session ID: {session_id}
+    Total Episodes: {total_episodes}
+    
+    EPISODE RESULTS:
+    {episode_results}
+    
+    CALCULATED METRICS:
+    {calculated_metrics}
+    
+    IMPORTANT: You MUST return ONLY valid JSON. Do not include any explanatory text before or after the JSON.
+    
+    Generate a comprehensive summary and return ONLY valid JSON:
+    
+    {{
+      "summary_report": {{
+        "executive_summary": "2-3 paragraph overview of heroic journey health across all episodes",
+        "episode_breakdown": [
+          {{
+            "episode_id": "episode identifier",
+            "heroic_health_score": 0-5,
+            "key_strengths": ["strength 1", "strength 2"],
+            "key_weaknesses": ["weakness 1", "weakness 2"],
+            "critical_fixes": ["fix 1", "fix 2"]
+          }}
+        ],
+        "series_recommendations": [
+          "recommendation 1",
+          "recommendation 2",
+          "recommendation 3"
+        ],
+        "heroic_consistency_notes": "notes about heroic consistency across episodes"
+      }}
+    }}
+    
+    CRITICAL: Provide actionable insights and specific recommendations for heroic journey improvement. Return ONLY the JSON object above.
+
+dependencies:
+  - station: 27
+    name: "Master Script Assembly"
+  - station: 7
+    name: "Character Architect"
+  - station: 5
+    name: "Season Architect"
+
+# Enable/disable this station in the pipeline
+enabled: true

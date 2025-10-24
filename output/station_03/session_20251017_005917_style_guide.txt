@@ -1,0 +1,85 @@
+============================================================
+AGE/GENRE STYLE GUIDE
+============================================================
+
+PROJECT TITLE: Mistaken Motivation
+Session ID: session_20251017_005917
+Created: 2025-10-17T01:19:20.061946
+Input Type: synopsis
+
+Scale: MINI
+Episodes: 3-6 episodes
+Length: 15-25 min each
+Primary Genre: Contemporary Fiction
+Target Age: 30-50
+Content Rating: PG
+
+------------------------------------------------------------
+ORIGINAL SEED:
+------------------------------------------------------------
+For one year, morning motivation coach Tom has been texting daily inspirational messages to what he thinks is his client’s number. Julia, a depressed ER doctor, has been receiving them, and they’ve saved her life multiple times. She never corrects the mistake, and Tom’s messages become her lifeline. When Tom’s actual client complains about never receiving messages, he realizes his mistake. He tracks down the wrong number to apologize, finding Julia on the worst day of her life. Their meeting reveals that Julia has been anonymously funding Tom’s coaching business to help others like these messages helped her.
+
+------------------------------------------------------------
+1. AGE-APPROPRIATE GUIDELINES
+------------------------------------------------------------
+Target Age: 30-50
+Content Rating: PG with justification: Content may contain mild thematic elements and brief language that some listeners might find sensitive, but remains appropriate for adult audiences without graphic depictions
+Violence Level: MINIMAL
+Emotional Intensity: MODERATE
+
+Action Scene Limits:
+  • Action sequences should be minimal and brief, serving character development rather than plot advancement
+  • Physical conflicts should be implied rather than explicitly detailed, focusing on emotional aftermath
+  • No sustained action sequences exceeding 90 seconds in duration
+
+Emotional Boundaries:
+  • Depression should be portrayed with sensitivity and nuance, avoiding prolonged hopelessness without counterbalance of hope
+  • Emotional climaxes should be interspersed with moments of relief or lighter content to prevent listener fatigue
+  • Professional crisis scenarios should avoid overly technical jargon that might alienate listeners or break emotional engagement
+
+Sound Restrictions:
+  • Avoid jarring or sudden loud noises that could startle listeners, especially during emotional scenes
+  • Limit dissonant or atonal musical scoring during scenes depicting depression to prevent exacerbating negative emotional response
+  • Avoid repetitive sound effects that might become irritating during extended listening sessions
+
+------------------------------------------------------------
+2. GENRE BLEND OPTIONS
+------------------------------------------------------------
+
+[✓] OPTION A: Contemporary Fiction + Light Romance
+    Enhancement: The blend of Contemporary Fiction with Light Romance enhances the heartfelt and poignant tone descriptors by introducing intimate character relationships that evolve naturally. This combination allows for emotional vulnerability while maintaining the uplifting quality through relationship growth and understanding. The drama elements are supported through relationship conflicts and resolutions, while the inspirational aspect emerges through characters learning to love and accept themselves and others.
+
+[ ] OPTION B: Contemporary Fiction + Gentle Mystery
+    Enhancement: Blending Contemporary Fiction with Gentle Mystery introduces subtle tension and curiosity that enhances the drama elements while maintaining the heartfelt and inspirational tone. This combination creates intrigue through personal mysteries (family secrets, unanswered questions, past events) rather than crime or violence. The poignant quality emerges as characters uncover truths about themselves and others, while the uplifting aspect comes from the resolution of these mysteries and the personal growth that follows.
+
+[ ] OPTION C: Contemporary Fiction + Narrative Self-Help
+    Enhancement: The combination of Contemporary Fiction with Narrative Self-Help elements creates a unique blend that delivers the heartfelt, uplifting, and poignant tone through characters who are actively working on personal growth. This enhances the inspirational aspect by embedding genuine self-discovery and life lessons within an engaging narrative. The drama emerges from internal conflicts and the challenges of personal transformation, while the poignant quality comes from authentic moments of insight and change. This blend speaks directly to listeners in their 30s-50s who may be reflecting on their own life journeys.
+
+CHOSEN: Option A
+
+------------------------------------------------------------
+3. TONE CALIBRATION
+------------------------------------------------------------
+Chosen Blend: Contemporary Fiction + Light Romance
+
+Episode Progression:
+  • Episode 1-2: Establish the initial bittersweet tone, introduce characters dealing with depression and professional crisis, with subtle hints of hope. The light romance elements begin to emerge as characters first interact.
+  • Episode 3-4: Deepen the emotional vulnerability as characters begin to open up to each other. The tone shifts toward more intimate connection while still acknowledging the heavier themes. The romance develops naturally through shared experiences.
+  • Episodes 5-6: Move toward resolution and hope as characters find healing through their connection. The tone becomes more uplifting while maintaining the poignant, bittersweet quality that acknowledges past struggles.
+
+Tonal Shift Moments:
+  1. Key moment 1: When the main characters first have a meaningful conversation that reveals their shared struggles - shifting from isolation to connection
+  2. Key moment 2: When a professional crisis reaches its lowest point, but the romantic interest provides unexpected support - shifting from despair to hope
+  3. Key moment 3: When characters have their first major conflict that threatens their budding relationship - shifting from harmony to tension
+  4. Key moment 4: When characters make a vulnerable confession that deepens their connection - shifting from guardedness to intimacy
+
+Audio Tone Techniques:
+  • Music technique: Use of piano-based melodies with minor chords for bittersweet moments, gradually incorporating warmer strings as hope and connection develop
+  • Voice technique: Narration tempo that slows during emotional moments with softer timbre, then brightens with slightly quicker pace during hopeful scenes
+  • Sound design technique: Use of ambient sounds (rain, city noise) to reflect isolation, gradually transitioning to shared spaces (cafes, parks) as connection builds
+  • Pacing technique: Deliberate pauses after emotional revelations, allowing moments to land, with quicker pacing during moments of discovery and joy
+  • Silence technique: Strategic use of complete silence for 2-3 seconds following significant emotional moments to create impact and reflection
+
+Light/Dark Balance:
+  The audiobook balances heavier themes of depression and professional crisis with moments of hope and connection through careful audio design. Darker moments feature sparser musical accompaniment, deeper voice tones, and isolating soundscapes, while lighter moments incorporate brighter musical notes, warmer vocal performances, and richer environmental sounds. The balance evolves throughout, with early episodes weighted slightly toward the darker themes (60% dark, 40% light), middle episodes achieving balance (50/50), and final episodes leaning into hope and resolution (40% dark, 60% light).
+

@@ -1,242 +1,178 @@
 {
-  "session_id": "session_20251016_235335",
+  "session_id": "session_20251023_112749",
   "episode_number": 1,
-  "polished_at": "2025-10-23T01:08:52.636258",
+  "polished_at": "2025-10-24T09:01:46.127319",
   "natural_speech_analysis": {
     "unnatural_instances": [
       {
         "issue_number": 1,
-        "issue_type": "too_formal",
+        "issue_type": "no_contractions",
         "scene_number": 1,
-        "character": "Tom",
-        "current_line": "Motivation... inspiration... positive vibes... got to keep it real, but uplifting.",
-        "problem": "Too formal - real people use more natural language and contractions",
-        "character_note": "Tom is calm, steady, 30s",
+        "character": "TOM",
+        "current_line": "New day, new opportunities.",
+        "problem": "Lacks contractions and sounds a bit formal.",
+        "character_note": "Tom is calm and steady, 30s",
         "suggested_fixes": [
-          "Motivation... inspiration... positive vibes... gotta keep it real, but uplifting.",
-          "Motivation... inspiration... positive vibes... got to keep it real, but stay positive.",
-          "Motivation... inspiration... positive vibes... need to keep it real, but uplifting."
+          "New day, new chances.",
+          "New day, new possibilities.",
+          "New day, new stuff."
         ],
-        "best_fix": "Motivation... inspiration... positive vibes... gotta keep it real, but uplifting.",
-        "reasoning": "Uses a contraction and sounds more natural and casual"
+        "best_fix": "New day, new chances.",
+        "reasoning": "Uses a more casual term and sounds natural."
       },
       {
         "issue_number": 2,
         "issue_type": "no_contractions",
         "scene_number": 1,
-        "character": "Sarah (O.S.)",
-        "current_line": "Hi, Tom. It is Sarah. I am so sorry to call this early, but I need to reschedule our session.",
-        "problem": "No contractions - real people use contractions in casual speech",
-        "character_note": "Sarah is anxious, slightly rushed",
+        "character": "TOM",
+        "current_line": "Motivation... inspiration... positive vibes... got to keep it real, but uplifting.",
+        "problem": "Lacks contractions and is a bit too formal for a monologue.",
+        "character_note": "Tom is calm and steady, 30s",
         "suggested_fixes": [
-          "Hi, Tom. It's Sarah. I'm so sorry to call this early, but I need to reschedule our session.",
-          "Hi, Tom. It's Sarah. Sorry to call so early, but I need to reschedule our session.",
-          "Hi, Tom. It's Sarah. Really sorry to call this early, but I gotta reschedule our session."
+          "Motivation... inspiration... positive vibes... gotta keep it real, but uplifting.",
+          "Motivation... inspiration... positive vibes... got to keep it real, but keep it light.",
+          "Motivation... inspiration... positive vibes... got to stay real, but positive."
         ],
-        "best_fix": "Hi, Tom. It's Sarah. I'm so sorry to call this early, but I need to reschedule our session.",
-        "reasoning": "Uses contractions and sounds more natural and rushed"
+        "best_fix": "Motivation... inspiration... positive vibes... gotta keep it real, but uplifting.",
+        "reasoning": "Uses a contraction and sounds more natural for a monologue."
       },
       {
         "issue_number": 3,
-        "issue_type": "too_formal",
+        "issue_type": "complete_sentences",
         "scene_number": 1,
-        "character": "Tom",
-        "current_line": "Of course. Remember our breathing techniques if things get overwhelming. Take care.",
-        "problem": "Too formal - real people use more casual language and contractions",
-        "character_note": "Tom is calm, steady, 30s",
+        "character": "SARAH",
+        "current_line": "Hi, Tom. It's Sarah. I'm so sorry to call this early, but I need to reschedule our session. Something... unexpected came up.",
+        "problem": "Sounds too formal and uses complete sentences.",
+        "character_note": "Sarah is anxious and rushed, 30s",
         "suggested_fixes": [
-          "Of course. Remember the breathing techniques if things get overwhelming. Take care.",
-          "Of course. Remember the breathing stuff if things get overwhelming. Take care.",
-          "Of course. Remember the breathing exercises if things get rough. Take care."
+          "Hi, Tom. Sarah here. Sorry to call so early, but I need to reschedule. Something came up.",
+          "Hi, Tom. Sarah. Sorry to call so early, but I need to reschedule. Something's up.",
+          "Hi, Tom. Sarah. Sorry to call so early, but I need to reschedule. Something unexpected."
         ],
-        "best_fix": "Of course. Remember the breathing techniques if things get overwhelming. Take care.",
-        "reasoning": "Slightly less formal, but still professional and calming"
+        "best_fix": "Hi, Tom. Sarah here. Sorry to call so early, but I need to reschedule. Something came up.",
+        "reasoning": "Shorter, more fragmented, and sounds more natural for someone in a hurry."
       },
       {
         "issue_number": 4,
         "issue_type": "complete_sentences",
         "scene_number": 1,
-        "character": "Tom",
-        "current_line": "I hope they're okay.",
-        "problem": "Complete sentences - real people often speak in fragments",
-        "character_note": "Tom is calm, steady, 30s",
+        "character": "TOM",
+        "current_line": "No worries at all, Sarah. These things happen. How about 3 PM instead?",
+        "problem": "Sounds too formal and uses complete sentences.",
+        "character_note": "Tom is calm and steady, 30s",
         "suggested_fixes": [
-          "Hope they're okay.",
-          "Hope they're alright.",
-          "Wish they're okay."
+          "No worries, Sarah. Stuff happens. How about 3 PM?",
+          "No prob, Sarah. Things come up. 3 PM work?",
+          "No worries, Sarah. How about 3 PM?"
         ],
-        "best_fix": "Hope they're okay.",
-        "reasoning": "Shorter and more natural, maintaining the character's reflective tone"
+        "best_fix": "No worries, Sarah. Stuff happens. How about 3 PM?",
+        "reasoning": "More casual, uses contractions, and sounds natural."
       },
       {
         "issue_number": 5,
-        "issue_type": "too_formal",
+        "issue_type": "no_contractions",
         "scene_number": 2,
-        "character": "Patient (O.S.)",
-        "current_line": "Hi, Julia. How are you today?",
-        "problem": "Too formal - real people use more casual greetings",
-        "character_note": "Patient is weak",
-        "suggested_fixes": [
-          "Hi, Julia. How are you?",
-          "Hey, Julia. How's it going?",
-          "Hi, Julia. How are you feeling?"
-        ],
-        "best_fix": "Hi, Julia. How are you feeling?",
-        "reasoning": "More natural and fitting for a patient's state"
-      },
-      {
-        "issue_number": 6,
-        "issue_type": "too_formal",
-        "scene_number": 2,
-        "character": "Julia",
+        "character": "JULIA",
         "current_line": "I'm doing well, thank you. How about you?",
-        "problem": "Too formal - real people use more casual language",
+        "problem": "Lacks contractions and sounds a bit formal.",
         "character_note": "Julia is tired but determined, 28s",
         "suggested_fixes": [
           "I'm doing well, thanks. How about you?",
-          "I'm doing okay, thanks. How are you?",
+          "I'm doing well, thanks. You?",
           "I'm good, thanks. How are you?"
         ],
         "best_fix": "I'm doing well, thanks. How about you?",
-        "reasoning": "More natural and professional, but less formal"
+        "reasoning": "Uses a contraction and sounds more natural."
+      },
+      {
+        "issue_number": 6,
+        "issue_type": "complete_sentences",
+        "scene_number": 2,
+        "character": "PATIENT",
+        "current_line": "I'm feeling a bit better. The medication seems to be working.",
+        "problem": "Sounds too formal and uses complete sentences.",
+        "character_note": "Patient is weak, 50s",
+        "suggested_fixes": [
+          "I'm feeling a bit better. The meds seem to be working.",
+          "I'm feeling better. The meds are working.",
+          "I'm feeling better. Must be the meds."
+        ],
+        "best_fix": "I'm feeling a bit better. The meds seem to be working.",
+        "reasoning": "More casual and sounds natural."
       },
       {
         "issue_number": 7,
-        "issue_type": "complete_sentences",
+        "issue_type": "no_contractions",
         "scene_number": 3,
-        "character": "Julia",
-        "current_line": "Just a few more hours...",
-        "problem": "Complete sentences - real people often speak in fragments",
-        "character_note": "Julia is tired but focused, 28s",
+        "character": "NURSE LINDA",
+        "current_line": "Can't complain. Got a good cup of coffee?",
+        "problem": "Lacks contractions and sounds a bit formal.",
+        "character_note": "Nurse Linda is friendly, 30s",
         "suggested_fixes": [
-          "Just a few more hours.",
-          "Few more hours.",
-          "Just a bit more."
+          "Can't complain. Got a good cup of coffee?",
+          "Can't complain. Got a good cup of coffee?",
+          "Can't complain. Got a good cup?"
         ],
-        "best_fix": "Just a few more hours.",
-        "reasoning": "Shorter and more natural, maintaining the character's tired but focused state"
+        "best_fix": "Can't complain. Got a good cup?",
+        "reasoning": "Uses a contraction and sounds more natural."
       },
       {
         "issue_number": 8,
         "issue_type": "no_contractions",
         "scene_number": 4,
-        "character": "Sarah (O.S.)",
-        "current_line": "I think it is the stress at work. My boss is really pushing me, and I feel overwhelmed.",
-        "problem": "No contractions - real people use contractions in casual speech",
-        "character_note": "Sarah is anxious, breathing heavily",
+        "character": "TOM",
+        "current_line": "That is a lot to handle. It is important to set boundaries and take care of yourself.",
+        "problem": "Lacks contractions and sounds too formal.",
+        "character_note": "Tom is calm and steady, 30s",
         "suggested_fixes": [
-          "I think it's the stress at work. My boss is really pushing me, and I feel overwhelmed.",
-          "I think it's the stress at work. My boss is pushing me, and I feel overwhelmed.",
-          "I think it's the stress at work. My boss is really pushing me, and I'm feeling overwhelmed."
+          "That's a lot to handle. It's important to set boundaries and take care of yourself.",
+          "That's a lot. Setting boundaries is key. Take care of yourself.",
+          "That's a lot. Boundaries are important. Take care."
         ],
-        "best_fix": "I think it's the stress at work. My boss is really pushing me, and I feel overwhelmed.",
-        "reasoning": "Uses contractions and sounds more natural and stressed"
+        "best_fix": "That's a lot. Setting boundaries is key. Take care of yourself.",
+        "reasoning": "Uses contractions, is more casual, and sounds natural."
       },
       {
         "issue_number": 9,
-        "issue_type": "too_formal",
-        "scene_number": 4,
-        "character": "Tom",
-        "current_line": "That is a lot to handle. It is important to set boundaries and take care of yourself.",
-        "problem": "Too formal - real people use more casual language and contractions",
-        "character_note": "Tom is calm, steady, 30s",
+        "issue_type": "complete_sentences",
+        "scene_number": 5,
+        "character": "DR. LEE",
+        "current_line": "Julia, we need you to assist with the patient in Bay 3. It is a severe trauma case.",
+        "problem": "Sounds too formal and uses complete sentences.",
+        "character_note": "Dr. Lee is authoritative, 40s",
         "suggested_fixes": [
-          "That's a lot to handle. It's important to set boundaries and take care of yourself.",
-          "That's a lot to deal with. Setting boundaries and taking care of yourself is important.",
-          "That's a lot. You need to set boundaries and take care of yourself."
+          "Julia, we need you in Bay 3. Severe trauma case.",
+          "Julia, we need you in Bay 3. It's a severe trauma.",
+          "Julia, we need you in Bay 3. Bad trauma case."
         ],
-        "best_fix": "That's a lot to handle. It's important to set boundaries and take care of yourself.",
-        "reasoning": "Uses contractions and sounds more natural and supportive"
+        "best_fix": "Julia, we need you in Bay 3. Severe trauma case.",
+        "reasoning": "More direct, uses a contraction, and sounds natural."
       },
       {
         "issue_number": 10,
-        "issue_type": "complete_sentences",
-        "scene_number": 4,
-        "character": "Tom",
-        "current_line": "Progress, not perfection.",
-        "problem": "Complete sentences - real people often speak in fragments",
-        "character_note": "Tom is calm, steady, 30s",
-        "suggested_fixes": [
-          "Progress, not perfection.",
-          "Progress, not perfect.",
-          "Progress, not perfection."
-        ],
-        "best_fix": "Progress, not perfection.",
-        "reasoning": "Shorter and more natural, maintaining the character's reflective tone"
-      },
-      {
-        "issue_number": 11,
-        "issue_type": "complete_sentences",
-        "scene_number": 5,
-        "character": "Julia",
-        "current_line": "I should probably check in with Dr. Martinez about those unusual circumstances he mentioned.",
-        "problem": "Complete sentences - real people often speak in fragments",
-        "character_note": "Julia is exhausted but relieved, 28s",
-        "suggested_fixes": [
-          "Should check in with Dr. Martinez about those unusual circumstances.",
-          "Need to check in with Dr. Martinez about those unusual circumstances.",
-          "Gotta check in with Dr. Martinez about those unusual circumstances."
-        ],
-        "best_fix": "Should check in with Dr. Martinez about those unusual circumstances.",
-        "reasoning": "Shorter and more natural, maintaining the character's exhausted but focused state"
-      },
-      {
-        "issue_number": 12,
-        "issue_type": "too_formal",
+        "issue_type": "no_contractions",
         "scene_number": 6,
-        "character": "Julia",
-        "current_line": "Another day, another challenge.",
-        "problem": "Too formal - real people use more casual language",
+        "character": "JULIA",
+        "current_line": "Another day, another challenge. I did my best today. That is all I can do.",
+        "problem": "Lacks contractions and sounds too formal.",
         "character_note": "Julia is tired but reflective, 28s",
         "suggested_fixes": [
-          "Another day, another challenge.",
-          "Another day, another tough challenge.",
-          "Another day, another tough one."
+          "Another day, another challenge. Did my best today. That's all I can do.",
+          "Another day, another challenge. Did my best. That's it.",
+          "Another day, another challenge. Did my best. That's all."
         ],
-        "best_fix": "Another day, another challenge.",
-        "reasoning": "Maintains the reflective tone but is more natural"
-      },
-      {
-        "issue_number": 13,
-        "issue_type": "complete_sentences",
-        "scene_number": 6,
-        "character": "Julia",
-        "current_line": "I did my best today. That is all I can do.",
-        "problem": "Complete sentences - real people often speak in fragments",
-        "character_note": "Julia is tired but reflective, 28s",
-        "suggested_fixes": [
-          "I did my best today. That's all I can do.",
-          "I did my best today. That's all I can manage.",
-          "I did my best today. That's all I can do."
-        ],
-        "best_fix": "I did my best today. That's all I can do.",
-        "reasoning": "Shorter and more natural, maintaining the character's reflective tone"
-      },
-      {
-        "issue_number": 14,
-        "issue_type": "too_formal",
-        "scene_number": 6,
-        "character": "Julia",
-        "current_line": "Maybe there is more to this than just a wrong number.",
-        "problem": "Too formal - real people use more casual language",
-        "character_note": "Julia is tired but reflective, 28s",
-        "suggested_fixes": [
-          "Maybe there's more to this than just a wrong number.",
-          "Maybe there's more to this.",
-          "Maybe there's more to this than just a mix-up."
-        ],
-        "best_fix": "Maybe there's more to this than just a wrong number.",
-        "reasoning": "Uses a contraction and sounds more natural and reflective"
+        "best_fix": "Another day, another challenge. Did my best today. That's all I can do.",
+        "reasoning": "Uses contractions and sounds more natural."
       }
     ],
     "principles_violated": {
-      "use_contractions": 8,
+      "use_contractions": 7,
       "speak_in_fragments": 6,
       "allow_interruptions": 0,
-      "include_pauses": 0,
-      "avoid_exposition": 0
+      "include_pauses": 2,
+      "avoid_exposition": 1
     },
-    "total_issues": 14
+    "total_issues": 16
   },
   "voice_validation": {
     "voice_distinction_test": {
@@ -249,171 +185,81 @@
     "character_consistency": []
   },
   "subtext_analysis": {
-    "current_subtext_level": "4/10",
+    "current_subtext_level": "3/10",
     "target_subtext_level": "7-8/10",
     "on_the_nose_examples": [
       {
         "scene_number": 1,
-        "current_dialogue": "TOM: New day, new opportunities.",
-        "problem": "Direct statement of positive attitude. Lacks depth.",
-        "subtext_version": "TOM: (stirring in bed, eyes half-open) \"Another one, huh?\"",
-        "what_it_means": "Tom is trying to motivate himself, but he's tired.",
-        "why_better": "Audience infers his fatigue and resolve from his tone and context.",
+        "current_dialogue": "TOM: (To himself, more determined) Let's do this.",
+        "problem": "States intention directly. No layers. Boring.",
+        "subtext_version": "TOM: (Sips coffee, looks at laptop) \"Here we go.\"",
+        "what_it_means": "I'm ready to start my day, but it's a big challenge.",
+        "why_better": "Audience infers from context + coffee + laptop",
         "technique_used": "action_instead_of_words"
       },
       {
         "scene_number": 1,
-        "current_dialogue": "TOM: Let's do this.",
-        "problem": "Direct statement of determination. Lacks nuance.",
-        "subtext_version": "TOM: (sitting down at his desk, typing quickly) \"One step at a time...\"",
-        "what_it_means": "Tom is determined but acknowledges the challenge ahead.",
-        "why_better": "Audience infers his determination and the magnitude of his task.",
-        "technique_used": "action_instead_of_words"
-      },
-      {
-        "scene_number": 1,
-        "current_dialogue": "TOM: Sent. One down, a few more to go.",
-        "problem": "Direct statement of progress and remaining tasks. Lacks depth.",
-        "subtext_version": "TOM: (smiling, leaning back) \"First step...\"",
-        "what_it_means": "Tom is making progress but knows there's more to do.",
-        "why_better": "Audience infers his satisfaction and ongoing commitment.",
-        "technique_used": "action_instead_of_words"
-      },
-      {
-        "scene_number": 1,
-        "current_dialogue": "TOM: I hope they're okay.",
-        "problem": "Direct statement of concern. Lacks subtlety.",
-        "subtext_version": "TOM: (frowning at his phone) \"I hope...\"",
-        "what_it_means": "Tom is genuinely concerned but hesitant to express it fully.",
-        "why_better": "Audience infers his concern and the complexity of the situation.",
-        "technique_used": "action_instead_of_words"
-      },
-      {
-        "scene_number": 1,
-        "current_dialogue": "TOM: Let's help someone today.",
-        "problem": "Direct statement of intention. Lacks depth.",
-        "subtext_version": "TOM: (standing up, determined) \"Time to make a difference...\"",
-        "what_it_means": "Tom is ready to face the day with a sense of purpose.",
-        "why_better": "Audience infers his resolve and the challenges ahead.",
+        "current_dialogue": "TOM: (To himself, thoughtful) I hope they're okay.",
+        "problem": "States concern directly. No layers. Boring.",
+        "subtext_version": "TOM: (Checks phone, frowns) \"I hope they find who they're looking for.\"",
+        "what_it_means": "I'm worried about the person who texted.",
+        "why_better": "Audience infers from context + facial expression + action",
         "technique_used": "action_instead_of_words"
       },
       {
         "scene_number": 2,
-        "current_dialogue": "PATIENT: You always make me feel better.",
-        "problem": "Direct statement of gratitude. Lacks nuance.",
-        "subtext_version": "PATIENT: (smiling, relieved) \"Thanks, Julia.\"",
-        "what_it_means": "The patient is genuinely grateful but also acknowledges the ongoing struggle.",
-        "why_better": "Audience infers the patient's gratitude and the ongoing nature of their condition.",
-        "technique_used": "action_instead_of_words"
-      },
-      {
-        "scene_number": 2,
-        "current_dialogue": "JULIA: Keep moving forward.",
-        "problem": "Direct statement of determination. Lacks depth.",
-        "subtext_version": "JULIA: (walking down the corridor, focused) \"One step at a time...\"",
-        "what_it_means": "Julia is determined but acknowledges the challenges ahead.",
-        "why_better": "Audience infers her resolve and the ongoing nature of her work.",
-        "technique_used": "action_instead_of_words"
-      },
-      {
-        "scene_number": 2,
-        "current_dialogue": "DR. MARTINEZ: I need you to be ready and... discreet.",
-        "problem": "Direct statement of expectation. Lacks subtlety.",
-        "subtext_version": "DR. MARTINEZ: (lowering his voice) \"We need you, Julia.\"",
-        "what_it_means": "Dr. Martinez is emphasizing the importance and sensitivity of the case.",
-        "why_better": "Audience infers the gravity and complexity of the situation.",
-        "technique_used": "action_instead_of_words"
+        "current_dialogue": "PATIENT: (Grateful) Thank you, Julia. You always make me feel better.",
+        "problem": "States gratitude directly. No layers. Boring.",
+        "subtext_version": "PATIENT: (Smiling) \"I always feel better when you're here.\"",
+        "what_it_means": "I trust you and appreciate your presence.",
+        "why_better": "Audience infers from context + smile + phrasing",
+        "technique_used": "double_meaning"
       },
       {
         "scene_number": 3,
-        "current_dialogue": "JULIA: I can do this.",
-        "problem": "Direct statement of determination. Lacks depth.",
-        "subtext_version": "JULIA: (sipping coffee, focused) \"Stay strong...\"",
-        "what_it_means": "Julia is determined but acknowledges the challenges ahead.",
-        "why_better": "Audience infers her resolve and the ongoing nature of her work.",
+        "current_dialogue": "JULIA: (To herself, resolute) I can do this.",
+        "problem": "States determination directly. No layers. Boring.",
+        "subtext_version": "JULIA: (Sips coffee, looks at phone) \"Just a few more hours.\"",
+        "what_it_means": "I'm tired, but I have to keep going.",
+        "why_better": "Audience infers from context + coffee + phone",
         "technique_used": "action_instead_of_words"
       },
       {
         "scene_number": 4,
-        "current_dialogue": "TOM: You're welcome, Sarah.",
-        "problem": "Direct statement of reassurance. Lacks nuance.",
-        "subtext_version": "TOM: (smiling, warm) \"Anytime, Sarah.\"",
-        "what_it_means": "Tom is genuinely supportive but also acknowledges the ongoing struggle.",
-        "why_better": "Audience infers his support and the ongoing nature of Sarah's challenges.",
-        "technique_used": "action_instead_of_words"
-      },
-      {
-        "scene_number": 4,
-        "current_dialogue": "TOM: Progress, not perfection.",
-        "problem": "Direct statement of philosophy. Lacks depth.",
-        "subtext_version": "TOM: (sitting back, satisfied) \"One step at a time...\"",
-        "what_it_means": "Tom is satisfied with the progress but acknowledges the ongoing nature of the work.",
-        "why_better": "Audience infers his satisfaction and the ongoing challenges.",
-        "technique_used": "action_instead_of_words"
-      },
-      {
-        "scene_number": 4,
-        "current_dialogue": "TOM: Maybe today will be different.",
-        "problem": "Direct statement of hope. Lacks nuance.",
-        "subtext_version": "TOM: (standing up, hopeful) \"Time to find out...\"",
-        "what_it_means": "Tom is hopeful but acknowledges the uncertainty.",
-        "why_better": "Audience infers his hope and the ongoing nature of the situation.",
-        "technique_used": "action_instead_of_words"
+        "current_dialogue": "TOM: (Smiling, reassured) You're welcome, Sarah. Remember, you're not alone. I'm here to support you.",
+        "problem": "States reassurance and support directly. No layers. Boring.",
+        "subtext_version": "TOM: (Gently) \"You've got this, Sarah. I'm here if you need me.\"",
+        "what_it_means": "I believe in you, and I'll be here to help.",
+        "why_better": "Audience infers from context + tone + phrasing",
+        "technique_used": "double_meaning"
       },
       {
         "scene_number": 5,
-        "current_dialogue": "JULIA: Every life matters.",
-        "problem": "Direct statement of belief. Lacks depth.",
-        "subtext_version": "JULIA: (exhaling, relieved) \"We did it...\"",
-        "what_it_means": "Julia is relieved but acknowledges the ongoing nature of her work.",
-        "why_better": "Audience infers her relief and the ongoing challenges.",
+        "current_dialogue": "DR. LEE: (Smiling, encouraging) Good job, team. We saved a life today. Dr. Martinez will be pleased with the outcome.",
+        "problem": "States praise and satisfaction directly. No layers. Boring.",
+        "subtext_version": "DR. LEE: (Nods, professional) \"Good work, team. We did it.\"",
+        "what_it_means": "We saved a life, and that's what matters.",
+        "why_better": "Audience infers from context + nod + professional tone",
         "technique_used": "action_instead_of_words"
       },
       {
         "scene_number": 6,
-        "current_dialogue": "JULIA: I did my best today. That's all I can do.",
-        "problem": "Direct statement of self-reflection. Lacks nuance.",
-        "subtext_version": "JULIA: (sipping tea, reflective) \"Another day...\"",
-        "what_it_means": "Julia is reflecting on her day but acknowledges the ongoing nature of her work.",
-        "why_better": "Audience infers her reflection and the ongoing challenges.",
-        "technique_used": "action_instead_of_words"
-      },
-      {
-        "scene_number": 6,
-        "current_dialogue": "JULIA: Maybe there's more to this than just a wrong number.",
-        "problem": "Direct statement of suspicion. Lacks subtlety.",
-        "subtext_version": "JULIA: (smiling, hopeful) \"Interesting...\"",
-        "what_it_means": "Julia is intrigued but cautious about the repeated wrong number.",
-        "why_better": "Audience infers her curiosity and the potential deeper meaning.",
-        "technique_used": "action_instead_of_words"
-      },
-      {
-        "scene_number": 6,
-        "current_dialogue": "JULIA: Every day brings new challenges.",
-        "problem": "Direct statement of philosophy. Lacks depth.",
-        "subtext_version": "JULIA: (standing up, determined) \"Time to face them...\"",
-        "what_it_means": "Julia is determined but acknowledges the ongoing nature of her work.",
-        "why_better": "Audience infers her determination and the ongoing challenges.",
-        "technique_used": "action_instead_of_words"
-      },
-      {
-        "scene_number": 6,
-        "current_dialogue": "TOM: If you ever need someone to talk to, I'm here.",
-        "problem": "Direct statement of support. Lacks nuance.",
-        "subtext_version": "TOM: (warm, sincere) \"I'm here, Julia.\"",
-        "what_it_means": "Tom is offering genuine support but also acknowledging the ongoing nature of their connection.",
-        "why_better": "Audience infers his support and the potential deeper connection.",
+        "current_dialogue": "JULIA: (To herself, determined) Every day brings new challenges.",
+        "problem": "States determination directly. No layers. Boring.",
+        "subtext_version": "JULIA: (Sips tea, looks out window) \"Another day, another challenge.\"",
+        "what_it_means": "I'm ready for whatever comes next.",
+        "why_better": "Audience infers from context + tea + window",
         "technique_used": "action_instead_of_words"
       }
     ],
     "subtext_techniques_current": {
-      "evasion": 2,
+      "evasion": 1,
       "deflection": 1,
       "silence": 0,
-      "action_instead": 16,
-      "double_meaning": 0,
+      "action_instead": 4,
+      "double_meaning": 2,
       "interruption": 0,
-      "over_explanation": 1
+      "over_explanation": 0
     },
     "subtext_techniques_target": {
       "evasion": 5,
@@ -424,7 +270,7 @@
       "interruption": 3,
       "over_explanation": 2
     },
-    "total_opportunities": 30
+    "total_opportunities": 18
   },
   "dialogue_polished_script": {
     "total_changes": 23,
@@ -439,197 +285,183 @@
       {
         "scene_number": 1,
         "heading": "INT. TOM'S APARTMENT - EARLY MORNING",
-        "polished_script_content": "=== SCENE 1: INT. TOM'S APARTMENT - EARLY MORNING ===\n[SFX: Ambient morning sounds, light traffic, birds chirping. A coffee machine hums in the background.]\n\nTOM (30s, calm, steady) stirs in his bed, stretching and yawning. He gets up and walks to the kitchen, the sound of his footsteps muffled by the carpet.\n\n[SFX: Coffee machine brews.]\n\nTOM\n(stirring in bed, eyes half-open)\nAnother one, huh?\n\nHe pours a cup of coffee and takes a sip, the sound of the liquid sloshing in the cup. He walks to his desk, where his laptop and a stack of papers await.\n\n[SFX: Desk chair creaks as Tom sits down.]\n\nTOM\n(sitting down at his desk, typing quickly)\nOne step at a time...\n\nHe opens his laptop, the sound of the fan and keyboard clicks filling the room. He types quickly, composing an email.\n\nTOM\n(typing, thinking out loud)\nMotivation... inspiration... positive vibes... gotta keep it real, but uplifting.\n\n[SFX: Email notification chime.]\n\nTOM\n(smiling, leaning back)\nFirst step...\n\n[SFX: Tom's phone rings, a cheerful ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious, slightly rushed)\nHi, Tom. It's Sarah. I'm so sorry to call this early, but I need to reschedule our session.\n\nTOM\n(calm, reassuring)\nNo worries at all, Sarah. These things happen. How about 3 PM instead?\n\nSARAH (O.S., hesitant)\n3 PM could work. I'll have to check my schedule and confirm later. Things are just... complicated right now.\n\nTOM\n(sympathetic)\nOf course. Remember the breathing techniques if things get overwhelming. Take care.\n\n[SFX: Phone hangs up.]\n\n[SFX: Tom's phone beeps with a text message.]\n\nTOM\n(reading the message, curious)\nUnknown number. 'Sorry, wrong person. Meet at 3?'\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(typing, to himself)\nNo worries, hope you find who you're looking for.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(frowning at his phone)\nI hope...\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(reading the message, smiling)\nA new client? Guess I'll find out.\n\n[SFX: Tom's phone vibrates as he puts it down and stands up.]\n\nTOM\n(standing up, determined)\nTime to make a difference...\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\nTRANSITION: [SFX: Door closes, city traffic sounds fade out, ambulance siren approaches and fades into hospital hallway sounds.]",
+        "polished_script_content": "=== SCENE 1: INT. TOM'S APARTMENT - EARLY MORNING ===\n[SFX: Ambient morning sounds, light traffic, birds chirping. A coffee machine hums in the background.]\n\nTOM (30s, calm, steady) stirs in his bed, stretching and yawning. He gets up and walks to the kitchen, the sound of his footsteps muffled by the carpet.\n\n[SFX: Coffee machine brews.]\n\nTOM\n(Murmuring to himself)\nNew day, new chances.\n\nHe pours a cup of coffee and takes a sip, the sound of the liquid sloshing in the cup. He walks to his desk, where his laptop and a stack of papers await.\n\n[SFX: Desk chair creaks as Tom sits down.]\n\nTOM\n(Sips coffee, looks at laptop)\nHere we go.\n\nHe opens his laptop, the sound of the fan and keyboard clicks filling the room. He types quickly, composing an email.\n\nTOM\n(Typing, thinking out loud)\nMotivation... inspiration... positive vibes... gotta keep it real, but uplifting.\n\n[SFX: Email notification chime.]\n\nTOM\n(Smiling, to himself)\nSent. One down, a few more to go.\n\n[SFX: Tom's phone rings, a cheerful ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious, slightly rushed)\nHi, Tom. Sarah here. Sorry to call so early, but I need to reschedule. Something came up.\n\nTOM\n(Beat)\nNo worries, Sarah. Stuff happens. How about 3 PM?\n\nSARAH (O.S., hesitant)\n3 PM could work. I'll have to check my schedule and confirm later. Things are just... complicated right now.\n\nTOM\n(Calm, reassuring)\nOf course. Remember our breathing techniques if things get overwhelming. Take care.\n\n[SFX: Phone hangs up.]\n\n[SFX: Tom's phone beeps with a text message.]\n\nTOM\n(Reading the message, curious)\nUnknown number. 'Sorry, wrong person. Meet at 3?'\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(Typing, to himself)\nNo worries, hope you find who you're looking for.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(To himself, thoughtful)\nI hope they find who they're looking for.\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(Reading the message, smiling)\nA new client? Guess I'll find out.\n\n[SFX: Tom's phone vibrates as he puts it down and stands up.]\n\nTOM\n(To himself, determined)\nLet's help someone today.\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\nTRANSITION: [SFX: Door closes, city traffic sounds fade out, ambulance siren approaches and fades into hospital hallway sounds.]",
         "changes_in_scene": [
-          {
-            "line_number": 3,
-            "character": "TOM",
-            "original": "New day, new opportunities.",
-            "polished": "(stirring in bed, eyes half-open) Another one, huh?",
-            "change_type": "subtext",
-            "improvement": "Adds subtext, shows character's internal reflection"
-          },
-          {
-            "line_number": 6,
-            "character": "TOM",
-            "original": "Let's do this.",
-            "polished": "(sitting down at his desk, typing quickly) One step at a time...",
-            "change_type": "subtext",
-            "improvement": "Adds subtext, shows character's determination"
-          },
-          {
-            "line_number": 10,
-            "character": "TOM",
-            "original": "Motivation... inspiration... positive vibes... got to keep it real, but uplifting.",
-            "polished": "Motivation... inspiration... positive vibes... gotta keep it real, but uplifting.",
-            "change_type": "natural_speech",
-            "improvement": "Uses contractions, more natural"
-          },
           {
             "line_number": 13,
             "character": "TOM",
-            "original": "Sent. One down, a few more to go.",
-            "polished": "(smiling, leaning back) First step...",
-            "change_type": "subtext",
-            "improvement": "Adds subtext, shows character's satisfaction"
-          },
-          {
-            "line_number": 18,
-            "character": "SARAH (O.S.)",
-            "original": "Hi, Tom. It is Sarah. I am so sorry to call this early, but I need to reschedule our session.",
-            "polished": "Hi, Tom. It's Sarah. I'm so sorry to call this early, but I need to reschedule our session.",
+            "original": "New day, new opportunities.",
+            "polished": "New day, new chances.",
             "change_type": "natural_speech",
-            "improvement": "Uses contractions, more natural"
+            "improvement": "More natural, shorter"
           },
           {
-            "line_number": 21,
+            "line_number": 16,
             "character": "TOM",
-            "original": "Of course. Remember our breathing techniques if things get overwhelming. Take care.",
-            "polished": "Of course. Remember the breathing techniques if things get overwhelming. Take care.",
-            "change_type": "natural_speech",
-            "improvement": "More natural, removes unnecessary words"
+            "original": "Let's do this.",
+            "polished": "Here we go.",
+            "change_type": "subtext",
+            "improvement": "More subtext, shows hesitation"
           },
           {
             "line_number": 26,
             "character": "TOM",
-            "original": "I hope they're okay.",
-            "polished": "(frowning at his phone) I hope...",
-            "change_type": "subtext",
-            "improvement": "Adds subtext, shows character's concern"
+            "original": "Motivation... inspiration... positive vibes... got to keep it real, but uplifting.",
+            "polished": "Motivation... inspiration... positive vibes... gotta keep it real, but uplifting.",
+            "change_type": "natural_speech",
+            "improvement": "More natural, uses contraction"
           },
           {
-            "line_number": 29,
+            "line_number": 40,
+            "character": "SARAH",
+            "original": "Hi, Tom. It's Sarah. I'm so sorry to call this early, but I need to reschedule our session. Something... unexpected came up.",
+            "polished": "Hi, Tom. Sarah here. Sorry to call so early, but I need to reschedule. Something came up.",
+            "change_type": "natural_speech",
+            "improvement": "More natural, shorter"
+          },
+          {
+            "line_number": 44,
             "character": "TOM",
-            "original": "Let's help someone today.",
-            "polished": "(standing up, determined) Time to make a difference...",
+            "original": "No worries at all, Sarah. These things happen. How about 3 PM instead?",
+            "polished": "No worries, Sarah. Stuff happens. How about 3 PM?",
+            "change_type": "natural_speech",
+            "improvement": "More natural, shorter"
+          },
+          {
+            "line_number": 58,
+            "character": "TOM",
+            "original": "I hope they're okay.",
+            "polished": "I hope they find who they're looking for.",
             "change_type": "subtext",
-            "improvement": "Adds subtext, shows character's resolve"
+            "improvement": "More subtext, shows concern"
           }
         ]
       },
       {
         "scene_number": 2,
         "heading": "INT. HOSPITAL CORRIDORS - MORNING",
-        "polished_script_content": "=== SCENE 2: INT. HOSPITAL CORRIDORS - MORNING ===\n[SFX: Ambient hospital sounds, distant beeping, footsteps echoing.]\n\nJULIA (28s, tired but determined) walks down the hospital corridor, her shoes clicking on the tile floor. She passes several patients and staff, nodding politely.\n\n[SFX: Door opens and closes as Julia enters a patient room.]\n\nPATIENT (O.S., weak)\nHi, Julia. How are you today?\n\nJULIA\n(smiling, professional)\nI'm doing well, thanks. How about you?\n\nPATIENT (O.S., relieved)\nI'm feeling a bit better. The medication seems to be working.\n\nJULIA\n(genuinely)\nThat's great to hear. I'll check your vitals and make sure everything's on track.\n\n[SFX: Julia's stethoscope, gentle beeping of medical equipment.]\n\nJULIA\n(to patient, reassuring)\nEverything looks good. I'll let Dr. Martinez know.\n\nPATIENT (O.S., grateful)\nThanks, Julia. You always make me feel better.\n\nJULIA\n(smiling, warm)\nThanks, Julia.\n\n[SFX: Door opens and closes as Julia exits the room.]\n\nJULIA\n(walking down the corridor, focused)\nOne step at a time...\n\n[SFX: Julia's footsteps as she walks down the corridor, suddenly interrupted by a code blue alarm.]\n\n[SFX: Alarm sounds, urgent voices.]\n\nDR. MARTINEZ (O.S., professional, urgent, with a slight hesitation)\nJulia, a moment? Need to speak with you privately.\n\nJULIA\n(surprised, alert)\nSure, Dr. Martinez. What's up?\n\nDR. MARTINEZ (O.S., concerned, lowering voice)\nWe have a critical case coming in. Unusual circumstances. I need you to be ready and... discreet.\n\nJULIA\n(determined)\nI'm ready. What do you need me to do?\n\nDR. MARTINEZ (O.S., reassured)\nGood. We'll need you to assist in the emergency room. I'll update you as soon as we have more information.\n\nJULIA\n(professional)\nUnderstood. I'll be there.\n\n[SFX: Julia's footsteps as she walks to the emergency room, quickening pace. She pauses to check her phone.]\n\nJULIA\n(to herself, distracted)\nAlmost forgot to confirm my 3 PM. I can do this.\n\n[SFX: Door opens and closes as Julia enters the emergency room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade out, office sounds fade in.]",
+        "polished_script_content": "=== SCENE 2: INT. HOSPITAL CORRIDORS - MORNING ===\n[SFX: Ambient hospital sounds, distant beeping, footsteps echoing.]\n\nJULIA (28s, tired but determined) walks down the hospital corridor, her shoes clicking on the tile floor. She passes several patients and staff, nodding politely.\n\n[SFX: Door opens and closes as Julia enters a patient room.]\n\nPATIENT (O.S., weak)\nHi, Julia. How are you today?\n\nJULIA\n(Smiling, professional)\nI'm doing well, thanks. How about you?\n\nPATIENT (O.S., relieved)\nI'm feeling a bit better. The meds seem to be working.\n\nJULIA\n(Genuinely)\nThat's great to hear. I'll check your vitals and make sure everything's on track.\n\n[SFX: Julia's stethoscope, gentle beeping of medical equipment.]\n\nJULIA\n(To patient, reassuring)\nEverything looks good. I'll let Dr. Martinez know.\n\nPATIENT (O.S., grateful)\nThank you, Julia. You always make me feel better.\n\nJULIA\n(Smiling)\nI always feel better when you're here.\n\n[SFX: Door opens and closes as Julia exits the room.]\n\nJULIA\n(To herself, quietly)\nKeep moving forward.\n\n[SFX: Julia's footsteps as she walks down the corridor, suddenly interrupted by a code blue alarm.]\n\n[SFX: Alarm sounds, urgent voices.]\n\nDR. MARTINEZ (O.S., professional, urgent, with a slight hesitation)\nJulia, a moment? Need to speak with you privately.\n\nJULIA\n(Surprised, alert)\nSure, Dr. Martinez. What's up?\n\nDR. MARTINEZ (O.S., concerned, lowering voice)\nWe have a critical case coming in. Unusual circumstances. I need you to be ready and... discreet.\n\nJULIA\n(Determined)\nI'm ready. What do you need me to do?\n\nDR. MARTINEZ (O.S., reassured)\nGood. We'll need you to assist in the emergency room. I'll update you as soon as we have more information.\n\nJULIA\n(Professional)\nUnderstood. I'll be there.\n\n[SFX: Julia's footsteps as she walks to the emergency room, quickening pace. She pauses to check her phone.]\n\nJULIA\n(To herself, distracted)\nAlmost forgot to confirm my 3 PM. I can do this.\n\n[SFX: Door opens and closes as Julia enters the emergency room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade out, office sounds fade in.]",
         "changes_in_scene": [
           {
-            "line_number": 4,
-            "character": "PATIENT (O.S.)",
-            "original": "Hi, Julia. How are you today?",
-            "polished": "Hi, Julia. How are you feeling?",
-            "change_type": "natural_speech",
-            "improvement": "More natural, fits the context"
-          },
-          {
-            "line_number": 7,
+            "line_number": 12,
             "character": "JULIA",
             "original": "I'm doing well, thank you. How about you?",
             "polished": "I'm doing well, thanks. How about you?",
             "change_type": "natural_speech",
-            "improvement": "Uses contractions, more natural"
+            "improvement": "More natural, shorter"
           },
           {
-            "line_number": 12,
-            "character": "PATIENT (O.S.)",
-            "original": "Thank you, Julia. You always make me feel better.",
-            "polished": "Thanks, Julia. You always make me feel better.",
+            "line_number": 16,
+            "character": "PATIENT",
+            "original": "I'm feeling a bit better. The medication seems to be working.",
+            "polished": "I'm feeling a bit better. The meds seem to be working.",
             "change_type": "natural_speech",
-            "improvement": "Uses contractions, more natural"
+            "improvement": "More natural, shorter"
           },
           {
-            "line_number": 14,
-            "character": "JULIA",
-            "original": "Keep moving forward.",
-            "polished": "(walking down the corridor, focused) One step at a time...",
+            "line_number": 24,
+            "character": "PATIENT",
+            "original": "Thank you, Julia. You always make me feel better.",
+            "polished": "I always feel better when you're here.",
             "change_type": "subtext",
-            "improvement": "Adds subtext, shows character's determination"
-          },
-          {
-            "line_number": 17,
-            "character": "DR. MARTINEZ (O.S.)",
-            "original": "I need you to be ready and... discreet.",
-            "polished": "(lowering his voice) We need you, Julia.",
-            "change_type": "subtext",
-            "improvement": "Adds subtext, shows character's urgency and trust"
+            "improvement": "More subtext, shows deeper connection"
           }
         ]
       },
       {
         "scene_number": 3,
         "heading": "INT. HOSPITAL STAFF ROOM - MID-MORNING",
-        "polished_script_content": "=== SCENE 3: INT. HOSPITAL STAFF ROOM - MID-MORNING ===\n[SFX: Ambient staff room sounds, gentle hum of a coffee machine, light chatter.]\n\nJULIA sits at a small table, sipping a cup of coffee and flipping through a medical journal. She looks tired but focused.\n\n[SFX: Coffee machine brews.]\n\nJULIA\n(to herself, softly)\nJust a few more hours.\n\n[SFX: Door opens and closes.]\n\nNURSE LINDA (30s, friendly)\nHey, Julia. How's it going?\n\nJULIA\n(smiling, tired)\nIt's been a long morning. How about you?\n\nNURSE LINDA\n(chirpy)\nCan't complain. Got a good cup of coffee?\n\nJULIA\n(nodding)\nYeah, thanks. It's helping.\n\nNURSE LINDA\n(sympathetic)\nYou look like you could use a break. Want to chat?\n\nJULIA\n(appreciative)\nI'd like that, but I should probably get back to work. We have a critical case coming in soon.\n\nNURSE LINDA\n(concerned)\nYou sure you're up for it?\n\nJULIA\n(determined)\nI have to be. It's part of the job.\n\nNURSE LINDA\n(encouraging)\nYou're one of the best, Julia. You've got this.\n\nJULIA\n(smiling, grateful)\nThanks, Linda. I needed to hear that.\n\n[SFX: Door opens and closes as Nurse Linda leaves.]\n\nJULIA\n(sipping coffee, focused)\nStay strong...\n\n[SFX: Julia's pager suddenly beeps urgently.]\n\nJULIA\n(checking pager, determined)\nOr maybe just a few minutes.\n\n[SFX: Julia's quick footsteps as she rushes out of the room.]\n\nTRANSITION: [SFX: Door closes, ambient office sounds fade out, office sounds fade in.]",
+        "polished_script_content": "=== SCENE 3: INT. HOSPITAL STAFF ROOM - MID-MORNING ===\n[SFX: Ambient staff room sounds, gentle hum of a coffee machine, light chatter.]\n\nJULIA sits at a small table, sipping a cup of coffee and flipping through a medical journal. She looks tired but focused.\n\n[SFX: Coffee machine brews.]\n\nJULIA\n(To herself, softly)\nJust a few more hours...\n\n[SFX: Door opens and closes.]\n\nNURSE LINDA (30s, friendly)\nHey, Julia. How's it going?\n\nJULIA\n(Smiling, tired)\nIt's been a long morning. How about you?\n\nNURSE LINDA\n(Chirpy)\nCan't complain. Got a good cup?\n\nJULIA\n(Nodding)\nYeah, thanks. It's helping.\n\nNURSE LINDA\n(Sympathetic)\nYou look like you could use a break. Want to chat?\n\nJULIA\n(Appreciative)\nI'd like that, but I should probably get back to work. We have a critical case coming in soon.\n\nNURSE LINDA\n(Concerned)\nYou sure you're up for it?\n\nJULIA\n(Determined)\nI have to be. It's part of the job.\n\nNURSE LINDA\n(Encouraging)\nYou're one of the best, Julia. You've got this.\n\nJULIA\n(Smiling, grateful)\nThanks, Linda. I needed to hear that.\n\n[SFX: Door opens and closes as Nurse Linda leaves.]\n\nJULIA\n(To herself, resolute)\nJust a few more hours.\n\n[SFX: Julia's pager suddenly beeps urgently.]\n\nJULIA\n(Checking pager, determined)\nOr maybe just a few minutes.\n\n[SFX: Julia's quick footsteps as she rushes out of the room.]\n\nTRANSITION: [SFX: Door closes, ambient office sounds fade out, office sounds fade in.]",
         "changes_in_scene": [
           {
-            "line_number": 5,
-            "character": "JULIA",
-            "original": "Just a few more hours...",
-            "polished": "Just a few more hours.",
+            "line_number": 12,
+            "character": "NURSE LINDA",
+            "original": "Can't complain. Got a good cup of coffee?",
+            "polished": "Can't complain. Got a good cup?",
             "change_type": "natural_speech",
-            "improvement": "More natural, removes unnecessary ellipsis"
+            "improvement": "More natural, shorter"
           },
           {
-            "line_number": 19,
+            "line_number": 24,
             "character": "JULIA",
             "original": "I can do this.",
-            "polished": "(sipping coffee, focused) Stay strong...",
+            "polished": "Just a few more hours.",
             "change_type": "subtext",
-            "improvement": "Adds subtext, shows character's resilience"
+            "improvement": "More subtext, shows fatigue"
           }
         ]
       },
       {
         "scene_number": 4,
         "heading": "INT. TOM'S OFFICE - LATE MORNING",
-        "polished_script_content": "=== SCENE 4: INT. TOM'S OFFICE - LATE MORNING ===\n[SFX: Ambient office sounds, gentle hum of a fan, keyboard clicks.]\n\nTOM sits at his desk, a stack of notes and a laptop in front of him. He looks focused and determined.\n\n[SFX: Phone ring, a professional ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious, breathing heavily)\nHi, Tom. It's Sarah. I... I'm really struggling today. I keep checking my phone, waiting for... something.\n\nTOM\n(concerned)\nI'm here for you, Sarah. What's been going on? Are you expecting an important message?\n\nSARAH (O.S., hesitant)\nI think it's the stress at work. My boss is really pushing me, and I feel overwhelmed.\n\nTOM\n(kindly)\nThat's a lot to handle. It's important to set boundaries and take care of yourself. Have you tried any of the techniques we discussed?\n\nSARAH (O.S., hopeful)\nI've been trying the deep breathing, but it's hard to focus.\n\nTOM\n(gentle, guiding)\nThat's totally normal. Let's try a guided meditation. It might help you center yourself.\n\n[SFX: Tom's phone plays a soft, calming meditation audio.]\n\nTOM\n(gentle, guiding)\nTake a deep breath in... and out... In... and out...\n\n[SFX: Sarah's breathing becomes more relaxed.]\n\nSARAH (O.S., calmer)\nI feel a bit better. Thank you, Tom.\n\nTOM\n(smiling, warm)\nAnytime, Sarah. Remember, you're not alone. I'm here to support you.\n\nSARAH (O.S., grateful)\nThank you. I'll try to stay positive.\n\nTOM\n(encouraging)\nThat's the spirit. I'll check in with you later this week. Take care.\n\n[SFX: Phone hangs up.]\n\nTOM\n(to himself, satisfied)\nProgress, not perfection.\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(reading the message, curious)\nAn unknown number? The message mentions a wrong person again. Strange...\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(typing, to himself)\nNo worries, hope you find who you're looking for.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(to himself, hopeful)\nMaybe today will be different.\n\n[SFX: Tom's phone vibrates as he stands up, interrupted by a knock at the door.]\n\nTOM\n(calling out)\nCome in!\n\n[SFX: Door opens, colleague enters.]\n\nCOLLEAGUE (O.S.)\nTom, we need your input on the new community outreach program.\n\nTOM\n(to himself, determined)\nLet's make an impact.\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade in.]",
+        "polished_script_content": "=== SCENE 4: INT. TOM'S OFFICE - LATE MORNING ===\n[SFX: Ambient office sounds, gentle hum of a fan, keyboard clicks.]\n\nTOM sits at his desk, a stack of notes and a laptop in front of him. He looks focused and determined.\n\n[SFX: Phone ring, a professional ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious, breathing heavily)\nHi, Tom. It's Sarah. I... I'm really struggling today. I keep checking my phone, waiting for... something.\n\nTOM\n(Concerned)\nI'm here for you, Sarah. What's been going on? Are you expecting an important message?\n\nSARAH (O.S., hesitant)\nI think it's the stress at work. My boss is really pushing me, and I feel overwhelmed.\n\nTOM\n(Beat)\nThat's a lot. Setting boundaries is key. Take care of yourself. Have you tried any of the techniques we discussed?\n\nSARAH (O.S., hopeful)\nI've been trying the deep breathing, but it's hard to focus.\n\nTOM\n(Kindly)\nThat's totally normal. Let's try a guided meditation. It might help you center yourself.\n\n[SFX: Tom's phone plays a soft, calming meditation audio.]\n\nTOM\n(Gentle, guiding)\nTake a deep breath in... and out... In... and out...\n\n[SFX: Sarah's breathing becomes more relaxed.]\n\nSARAH (O.S., calmer)\nI feel a bit better. Thank you, Tom.\n\nTOM\n(Gently)\nYou've got this, Sarah. I'm here if you need me.\n\nSARAH (O.S., grateful)\nThank you. I'll try to stay positive.\n\nTOM\n(Encouraging)\nThat's the spirit. I'll check in with you later this week. Take care.\n\n[SFX: Phone hangs up.]\n\nTOM\n(To himself, satisfied)\nProgress, not perfection.\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(Reading the message, curious)\nAn unknown number? The message mentions a wrong person again. Strange...\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(Typing, to himself)\nNo worries, hope you find who you're looking for.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(To himself, hopeful)\nMaybe today will be different.\n\n[SFX: Tom's phone vibrates as he stands up, interrupted by a knock at the door.]\n\nTOM\n(Calling out)\nCome in!\n\n[SFX: Door opens, colleague enters.]\n\nCOLLEAGUE (O.S.)\nTom, we need your input on the new community outreach program.\n\nTOM\n(To himself, determined)\nLet's make an impact.\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade in.]",
         "changes_in_scene": [
           {
-            "line_number": 7,
-            "character": "SARAH (O.S.)",
-            "original": "I think it is the stress at work. My boss is really pushing me, and I feel overwhelmed.",
-            "polished": "I think it's the stress at work. My boss is really pushing me, and I feel overwhelmed.",
-            "change_type": "natural_speech",
-            "improvement": "Uses contractions, more natural"
-          },
-          {
-            "line_number": 10,
+            "line_number": 14,
             "character": "TOM",
             "original": "That is a lot to handle. It is important to set boundaries and take care of yourself.",
-            "polished": "That's a lot to handle. It's important to set boundaries and take care of yourself.",
+            "polished": "That's a lot. Setting boundaries is key. Take care of yourself.",
             "change_type": "natural_speech",
-            "improvement": "Uses contractions, more natural"
+            "improvement": "More natural, shorter"
           },
           {
-            "line_number": 17,
+            "line_number": 24,
             "character": "TOM",
-            "original": "You're welcome, Sarah.",
-            "polished": "(smiling, warm) Anytime, Sarah.",
+            "original": "You're welcome, Sarah. Remember, you're not alone. I'm here to support you.",
+            "polished": "You've got this, Sarah. I'm here if you need me.",
             "change_type": "subtext",
-            "improvement": "Adds subtext, shows character's warmth and support"
-          },
-          {
-            "line_number": 20,
-            "character": "TOM",
-            "original": "Progress, not perfection.",
-            "polished": "Progress, not perfection.",
-            "change_type": "natural_speech",
-            "improvement": "Kept as is, already natural and concise"
+            "improvement": "More subtext, shows deeper support"
           }
         ]
       },
       {
         "scene_number": 5,
         "heading": "INT. HOSPITAL EMERGENCY ROOM - AFTERNOON",
-        "polished_script_content": "=== SCENE 5: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===\n[SFX: Ambient emergency room sounds, urgent beeping, footsteps, hurried voices.]\n\nJULIA rushes into the emergency room, her footsteps quick and determined. She puts on her gloves and prepares for the critical case.\n\nDR. LEE (40s, authoritative)\n(jumping in, professional)\nJulia, we need you to assist with the patient in Bay 3. It's a severe trauma case.\n\nJULIA\n(professional, focused)\nI'm ready. What's the situation?\n\nDR. LEE\n(concerned)\nMultiple injuries, potential internal bleeding. We need to stabilize the patient before we can transport them to surgery.\n\nJULIA\n(determined)\nUnderstood. I'll get the IV started and monitor vitals.\n\n[SFX: Julia's quick, efficient movements, the sound of a syringe, the beeping of medical equipment.]\n\nNURSE LINDA (O.S., professional)\nBlood pressure is dropping. We need to act fast.\n\nJULIA\n(calm, focused)\nI'm on it. Administering fluids.\n\n[SFX: The sound of fluids being administered, the beeping of the heart monitor.]\n\nDR. LEE\n(encouraging)\nGood work, Julia. Keep it up.\n\nJULIA\n(professional)\nVitals are stabilizing. We need to get them to surgery now.\n\nDR. LEE\n(decisive)\nRight. Let's move.\n\n[SFX: The sound of the team moving the patient, urgent commands, the whoosh of a stretcher.]\n\nJULIA\n(to herself, urgently)\nHang in there, just a little longer...\n\n[SFX: Urgent medical sounds, the patient being wheeled into the operating room, the door closing with a definitive slam.]\n\nDR. LEE\n(exhaling, calmer but still professional)\nGood job, team. We saved a life today. Dr. Martinez will be pleased with the outcome.\n\nJULIA\n(exhausted but relieved, with a slight hesitation)\nThank you, Dr. Lee. I couldn't have done it without you all. I should probably check in with Dr. Martinez about those unusual circumstances he mentioned.\n\nDR. LEE\n(smiling, encouraging)\nYou're a vital part of this team, Julia. Keep it up.\n\nJULIA\n(smiling, grateful)\nI will. Thanks.\n\n[SFX: Julia's footsteps as she walks to the staff room, slowing with exhaustion.]\n\nJULIA\n(to herself, resolute)\nEvery life matters.\n\n[SFX: Door opens and closes as Julia enters the staff room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade out, home sounds fade in.]",
-        "changes_in_scene": []
+        "polished_script_content": "=== SCENE 5: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===\n[SFX: Ambient emergency room sounds, urgent beeping, footsteps, hurried voices.]\n\nJULIA rushes into the emergency room, her footsteps quick and determined. She puts on her gloves and prepares for the critical case.\n\nDR. LEE (40s, authoritative)\n(Jumping in, professional)\nJulia, we need you in Bay 3. Severe trauma case.\n\nJULIA\n(Professional, focused)\nI'm ready. What's the situation?\n\nDR. LEE\n(Concerned)\nMultiple injuries, potential internal bleeding. We need to stabilize the patient before we can transport them to surgery.\n\nJULIA\n(Determined)\nUnderstood. I'll get the IV started and monitor vitals.\n\n[SFX: Julia's quick, efficient movements, the sound of a syringe, the beeping of medical equipment.]\n\nNURSE LINDA (O.S., professional)\nBlood pressure is dropping. We need to act fast.\n\nJULIA\n(Calm, focused)\nI'm on it. Administering fluids.\n\n[SFX: The sound of fluids being administered, the beeping of the heart monitor.]\n\nDR. LEE\n(Encouraging)\nGood work, team. We did it.\n\nJULIA\n(Exhausted but relieved, with a slight hesitation)\nThank you, Dr. Lee. I couldn't have done it without you all. I should probably check in with Dr. Martinez about those unusual circumstances he mentioned.\n\nDR. LEE\n(Smiling, professional)\nYou're a vital part of this team, Julia. Keep it up.\n\nJULIA\n(Smiling, grateful)\nI will. Thanks.\n\n[SFX: Julia's footsteps as she walks to the staff room, slowing with exhaustion.]\n\nJULIA\n(To herself, resolute)\nEvery life matters.\n\n[SFX: Door opens and closes as Julia enters the staff room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade out, home sounds fade in.]",
+        "changes_in_scene": [
+          {
+            "line_number": 8,
+            "character": "DR. LEE",
+            "original": "Julia, we need you to assist with the patient in Bay 3. It is a severe trauma case.",
+            "polished": "Julia, we need you in Bay 3. Severe trauma case.",
+            "change_type": "natural_speech",
+            "improvement": "More natural, shorter"
+          },
+          {
+            "line_number": 20,
+            "character": "DR. LEE",
+            "original": "Good job, team. We saved a life today. Dr. Martinez will be pleased with the outcome.",
+            "polished": "Good work, team. We did it.",
+            "change_type": "subtext",
+            "improvement": "More subtext, shows professional satisfaction"
+          }
+        ]
       },
       {
         "scene_number": 6,
         "heading": "INT. JULIA'S HOME - EVENING",
-        "polished_script_content": "=== SCENE 6: INT. JULIA'S HOME - EVENING ===\n[SFX: Ambient home sounds, gentle hum of a fan, the sound of a kettle boiling.]\n\nJULIA sits on her couch, a cup of tea in her hands. She looks tired but reflective.\n\n[SFX: Kettle whistling.]\n\nJULIA\n(to herself, quietly)\nAnother day, another challenge.\n\n[SFX: Julia pours herself a cup of tea, the sound of the liquid sloshing.]\n\nJULIA\n(to herself, thoughtful)\nI did my best today. That's all I can do.\n\n[SFX: Julia's phone vibrates on the coffee table.]\n\nJULIA\n(curious, picking up the phone)\nAnother unknown number? Same wrong person message. This is the second time today...\n\n[SFX: Julia reads the message, the sound of her phone.]\n\nJULIA\n(to herself, thoughtful)\nWhat are the odds of getting the same wrong number twice?\n\n[SFX: Julia's phone vibrates again as she types a quick reply.]\n\nJULIA\n(typing, to herself)\nNo worries, happens to the best of us.\n\n[SFX: Julia's phone beeps, confirming the message was sent.]\n\nJULIA\n(to herself, determined)\nEvery day brings new challenges.\n\n[SFX: Julia takes a sip of her tea, the sound of the liquid, then sets the cup down with a soft clink.]\n\nJULIA\n(to herself, reflective)\nAnd new opportunities to grow.\n\n[SFX: Julia's phone vibrates again, a different ringtone.]\n\nJULIA\n(surprised, hopeful)\nHello?\n\nTOM (O.S., warm)\nHi, Julia. It's Tom. How are you?\n\nJULIA\n(surprised, but grateful)\nHi, Tom. I'm doing okay. Thanks for checking in.\n\nTOM (O.S., kind)\nI wanted to make sure you were okay after our call earlier. Is everything alright?\n\nJULIA\n(smiling, honest)\nIt's been a tough day, but I'm hanging in there. Thank you for asking.\n\nTOM (O.S., encouraging)\nThat's good to hear. If you ever need someone to talk to, I'm here.\n\nJULIA\n(grateful)\nThank you, Tom. That means a lot.\n\nTOM (O.S., warm)\nAnytime, Julia. Take care.\n\nJULIA\n(smiling, hopeful)\nYou too, Tom.\n\n[SFX: Phone hangs up.]\n\nJULIA\n(to herself, reflective)\nMaybe there's more to this than just a wrong number.\n\n[SFX: Julia's phone vibrates as she puts it down.]\n\nJULIA\n(to herself, determined)\nEvery day brings new challenges.\n\n[SFX: Julia's footsteps as she stands up and walks to the window.]\n\nJULIA\n(to herself, hopeful)\nAnd new opportunities to grow.\n\nTRANSITION: [SFX: Door closes, ambient home sounds fade out, credits music fades in.]",
-        "changes_in_scene": []
+        "polished_script_content": "=== SCENE 6: INT. JULIA'S HOME - EVENING ===\n[SFX: Ambient home sounds, gentle hum of a fan, the sound of a kettle boiling.]\n\nJULIA sits on her couch, a cup of tea in her hands. She looks tired but reflective.\n\n[SFX: Kettle whistling.]\n\nJULIA\n(To herself, quietly)\nAnother day, another challenge.\n\n[SFX: Julia pours herself a cup of tea, the sound of the liquid sloshing.]\n\nJULIA\n(To herself, thoughtful)\nDid my best today. That's all I can do.\n\n[SFX: Julia's phone vibrates on the coffee table.]\n\nJULIA\n(Curious, picking up the phone)\nAnother unknown number? Same wrong person message. This is the second time today...\n\n[SFX: Julia reads the message, the sound of her phone.]\n\nJULIA\n(To herself, thoughtful)\nWhat are the odds of getting the same wrong number twice?\n\n[SFX: Julia's phone vibrates again as she types a quick reply.]\n\nJULIA\n(Typing, to herself)\nNo worries, happens to the best of us.\n\n[SFX: Julia's phone beeps, confirming the message was sent.]\n\nJULIA\n(To herself, determined)\nAnother day, another challenge.\n\n[SFX: Julia's phone vibrates again, a different ringtone.]\n\nJULIA\n(Surprised, hopeful)\nHello?\n\nTOM (O.S., warm)\nHi, Julia. It's Tom. How are you?\n\nJULIA\n(Surprised, but grateful)\nHi, Tom. I'm doing okay. Thanks for checking in.\n\nTOM (O.S., kind)\nI wanted to make sure you were okay after our call earlier. Is everything alright?\n\nJULIA\n(Smiling, honest)\nIt's been a tough day, but I'm hanging in there. Thank you for asking.\n\nTOM (O.S., encouraging)\nThat's good to hear. If you ever need someone to talk to, I'm here.\n\nJULIA\n(Grateful)\nThank you, Tom. That means a lot.\n\nTOM (O.S., warm)\nAnytime, Julia. Take care.\n\nJULIA\n(Smiling, hopeful)\nYou too, Tom.\n\n[SFX: Phone hangs up.]\n\nJULIA\n(To herself, reflective)\nMaybe there's more to this than just a wrong number.\n\n[SFX: Julia's phone vibrates as she puts it down.]\n\nJULIA\n(To herself, determined)\nAnother day, another challenge.\n\n[SFX: Julia's footsteps as she stands up and walks to the window.]\n\nJULIA\n(To herself, hopeful)\nAnd new opportunities to grow.\n\nTRANSITION: [SFX: Door closes, ambient home sounds fade out, credits music fades in.]",
+        "changes_in_scene": [
+          {
+            "line_number": 12,
+            "character": "JULIA",
+            "original": "Another day, another challenge. I did my best today. That is all I can do.",
+            "polished": "Another day, another challenge. Did my best today. That's all I can do.",
+            "change_type": "natural_speech",
+            "improvement": "More natural, shorter"
+          },
+          {
+            "line_number": 32,
+            "character": "JULIA",
+            "original": "Every day brings new challenges.",
+            "polished": "Another day, another challenge.",
+            "change_type": "subtext",
+            "improvement": "More subtext, shows reflection"
+          }
+        ]
       }
     ],
-    "complete_polished_script": "=== SCENE 1: INT. TOM'S APARTMENT - EARLY MORNING ===\n[SFX: Ambient morning sounds, light traffic, birds chirping. A coffee machine hums in the background.]\n\nTOM (30s, calm, steady) stirs in his bed, stretching and yawning. He gets up and walks to the kitchen, the sound of his footsteps muffled by the carpet.\n\n[SFX: Coffee machine brews.]\n\nTOM\n(stirring in bed, eyes half-open)\nAnother one, huh?\n\nHe pours a cup of coffee and takes a sip, the sound of the liquid sloshing in the cup. He walks to his desk, where his laptop and a stack of papers await.\n\n[SFX: Desk chair creaks as Tom sits down.]\n\nTOM\n(sitting down at his desk, typing quickly)\nOne step at a time...\n\nHe opens his laptop, the sound of the fan and keyboard clicks filling the room. He types quickly, composing an email.\n\nTOM\n(typing, thinking out loud)\nMotivation... inspiration... positive vibes... gotta keep it real, but uplifting.\n\n[SFX: Email notification chime.]\n\nTOM\n(smiling, leaning back)\nFirst step...\n\n[SFX: Tom's phone rings, a cheerful ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious, slightly rushed)\nHi, Tom. It's Sarah. I'm so sorry to call this early, but I need to reschedule our session.\n\nTOM\n(calm, reassuring)\nNo worries at all, Sarah. These things happen. How about 3 PM instead?\n\nSARAH (O.S., hesitant)\n3 PM could work. I'll have to check my schedule and confirm later. Things are just... complicated right now.\n\nTOM\n(sympathetic)\nOf course. Remember the breathing techniques if things get overwhelming. Take care.\n\n[SFX: Phone hangs up.]\n\n[SFX: Tom's phone beeps with a text message.]\n\nTOM\n(reading the message, curious)\nUnknown number. 'Sorry, wrong person. Meet at 3?'\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(typing, to himself)\nNo worries, hope you find who you're looking for.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(frowning at his phone)\nI hope...\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(reading the message, smiling)\nA new client? Guess I'll find out.\n\n[SFX: Tom's phone vibrates as he puts it down and stands up.]\n\nTOM\n(standing up, determined)\nTime to make a difference...\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\nTRANSITION: [SFX: Door closes, city traffic sounds fade out, ambulance siren approaches and fades into hospital hallway sounds.]\n\n=== SCENE 2: INT. HOSPITAL CORRIDORS - MORNING ===\n[SFX: Ambient hospital sounds, distant beeping, footsteps echoing.]\n\nJULIA (28s, tired but determined) walks down the hospital corridor, her shoes clicking on the tile floor. She passes several patients and staff, nodding politely.\n\n[SFX: Door opens and closes as Julia enters a patient room.]\n\nPATIENT (O.S., weak)\nHi, Julia. How are you feeling?\n\nJULIA\n(smiling, professional)\nI'm doing well, thanks. How about you?\n\nPATIENT (O.S., relieved)\nI'm feeling a bit better. The medication seems to be working.\n\nJULIA\n(genuinely)\nThat's great to hear. I'll check your vitals and make sure everything's on track.\n\n[SFX: Julia's stethoscope, gentle beeping of medical equipment.]\n\nJULIA\n(to patient, reassuring)\nEverything looks good. I'll let Dr. Martinez know.\n\nPATIENT (O.S., grateful)\nThanks, Julia. You always make me feel better.\n\nJULIA\n(smiling, warm)\nThanks, Julia.\n\n[SFX: Door opens and closes as Julia exits the room.]\n\nJULIA\n(walking down the corridor, focused)\nOne step at a time...\n\n[SFX: Julia's footsteps as she walks down the corridor, suddenly interrupted by a code blue alarm.]\n\n[SFX: Alarm sounds, urgent voices.]\n\nDR. MARTINEZ (O.S., professional, urgent, with a slight hesitation)\nJulia, a moment? Need to speak with you privately.\n\nJULIA\n(surprised, alert)\nSure, Dr. Martinez. What's up?\n\nDR. MARTINEZ (O.S., concerned, lowering voice)\nWe have a critical case coming in. Unusual circumstances. I need you to be ready and... discreet.\n\nJULIA\n(determined)\nI'm ready. What do you need me to do?\n\nDR. MARTINEZ (O.S., reassured)\nGood. We'll need you to assist in the emergency room. I'll update you as soon as we have more information.\n\nJULIA\n(professional)\nUnderstood. I'll be there.\n\n[SFX: Julia's footsteps as she walks to the emergency room, quickening pace. She pauses to check her phone.]\n\nJULIA\n(to herself, distracted)\nAlmost forgot to confirm my 3 PM. I can do this.\n\n[SFX: Door opens and closes as Julia enters the emergency room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade out, office sounds fade in.]\n\n=== SCENE 3: INT. HOSPITAL STAFF ROOM - MID-MORNING ===\n[SFX: Ambient staff room sounds, gentle hum of a coffee machine, light chatter.]\n\nJULIA sits at a small table, sipping a cup of coffee and flipping through a medical journal. She looks tired but focused.\n\n[SFX: Coffee machine brews.]\n\nJULIA\n(to herself, softly)\nJust a few more hours.\n\n[SFX: Door opens and closes.]\n\nNURSE LINDA (30s, friendly)\nHey, Julia. How's it going?\n\nJULIA\n(smiling, tired)\nIt's been a long morning. How about you?\n\nNURSE LINDA\n(chirpy)\nCan't complain. Got a good cup of coffee?\n\nJULIA\n(nodding)\nYeah, thanks. It's helping.\n\nNURSE LINDA\n(sympathetic)\nYou look like you could use a break. Want to chat?\n\nJULIA\n(appreciative)\nI'd like that, but I should probably get back to work. We have a critical case coming in soon.\n\nNURSE LINDA\n(concerned)\nYou sure you're up for it?\n\nJULIA\n(determined)\nI have to be. It's part of the job.\n\nNURSE LINDA\n(encouraging)\nYou're one of the best, Julia. You've got this.\n\nJULIA\n(smiling, grateful)\nThanks, Linda. I needed to hear that.\n\n[SFX: Door opens and closes as Nurse Linda leaves.]\n\nJULIA\n(sipping coffee, focused)\nStay strong...\n\n[SFX: Julia's pager suddenly beeps urgently.]\n\nJULIA\n(checking pager, determined)\nOr maybe just a few minutes.\n\n[SFX: Julia's quick footsteps as she rushes out of the room.]\n\nTRANSITION: [SFX: Door closes, ambient office sounds fade out, office sounds fade in.]\n\n=== SCENE 4: INT. TOM'S OFFICE - LATE MORNING ===\n[SFX: Ambient office sounds, gentle hum of a fan, keyboard clicks.]\n\nTOM sits at his desk, a stack of notes and a laptop in front of him. He looks focused and determined.\n\n[SFX: Phone ring, a professional ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious, breathing heavily)\nHi, Tom. It's Sarah. I... I'm really struggling today. I keep checking my phone, waiting for... something.\n\nTOM\n(concerned)\nI'm here for you, Sarah. What's been going on? Are you expecting an important message?\n\nSARAH (O.S., hesitant)\nI think it's the stress at work. My boss is really pushing me, and I feel overwhelmed.\n\nTOM\n(kindly)\nThat's a lot to handle. It's important to set boundaries and take care of yourself. Have you tried any of the techniques we discussed?\n\nSARAH (O.S., hopeful)\nI've been trying the deep breathing, but it's hard to focus.\n\nTOM\n(gentle, guiding)\nThat's totally normal. Let's try a guided meditation. It might help you center yourself.\n\n[SFX: Tom's phone plays a soft, calming meditation audio.]\n\nTOM\n(gentle, guiding)\nTake a deep breath in... and out... In... and out...\n\n[SFX: Sarah's breathing becomes more relaxed.]\n\nSARAH (O.S., calmer)\nI feel a bit better. Thank you, Tom.\n\nTOM\n(smiling, warm)\nAnytime, Sarah. Remember, you're not alone. I'm here to support you.\n\nSARAH (O.S., grateful)\nThank you. I'll try to stay positive.\n\nTOM\n(encouraging)\nThat's the spirit. I'll check in with you later this week. Take care.\n\n[SFX: Phone hangs up.]\n\nTOM\n(to himself, satisfied)\nProgress, not perfection.\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(reading the message, curious)\nAn unknown number? The message mentions a wrong person again. Strange...\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(typing, to himself)\nNo worries, hope you find who you're looking for.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(to himself, hopeful)\nMaybe today will be different.\n\n[SFX: Tom's phone vibrates as he stands up, interrupted by a knock at the door.]\n\nTOM\n(calling out)\nCome in!\n\n[SFX: Door opens, colleague enters.]\n\nCOLLEAGUE (O.S.)\nTom, we need your input on the new community outreach program.\n\nTOM\n(to himself, determined)\nLet's make an impact.\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade in.]\n\n=== SCENE 5: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===\n[SFX: Ambient emergency room sounds, urgent beeping, footsteps, hurried voices.]\n\nJULIA rushes into the emergency room, her footsteps quick and determined. She puts on her gloves and prepares for the critical case.\n\nDR. LEE (40s, authoritative)\n(jumping in, professional)\nJulia, we need you to assist with the patient in Bay 3. It's a severe trauma case.\n\nJULIA\n(professional, focused)\nI'm ready. What's the situation?\n\nDR. LEE\n(concerned)\nMultiple injuries, potential internal bleeding. We need to stabilize the patient before we can transport them to surgery.\n\nJULIA\n(determined)\nUnderstood. I'll get the IV started and monitor vitals.\n\n[SFX: Julia's quick, efficient movements, the sound of a syringe, the beeping of medical equipment.]\n\nNURSE LINDA (O.S., professional)\nBlood pressure is dropping. We need to act fast.\n\nJULIA\n(calm, focused)\nI'm on it. Administering fluids.\n\n[SFX: The sound of fluids being administered, the beeping of the heart monitor.]\n\nDR. LEE\n(encouraging)\nGood work, Julia. Keep it up.\n\nJULIA\n(professional)\nVitals are stabilizing. We need to get them to surgery now.\n\nDR. LEE\n(decisive)\nRight. Let's move.\n\n[SFX: The sound of the team moving the patient, urgent commands, the whoosh of a stretcher.]\n\nJULIA\n(to herself, urgently)\nHang in there, just a little longer...\n\n[SFX: Urgent medical sounds, the patient being wheeled into the operating room, the door closing with a definitive slam.]\n\nDR. LEE\n(exhaling, calmer but still professional)\nGood job, team. We saved a life today. Dr. Martinez will be pleased with the outcome.\n\nJULIA\n(exhausted but relieved, with a slight hesitation)\nThank you, Dr. Lee. I couldn't have done it without you all. I should probably check in with Dr. Martinez about those unusual circumstances he mentioned.\n\nDR. LEE\n(smiling, encouraging)\nYou're a vital part of this team, Julia. Keep it up.\n\nJULIA\n(smiling, grateful)\nI will. Thanks.\n\n[SFX: Julia's footsteps as she walks to the staff room, slowing with exhaustion.]\n\nJULIA\n(to herself, resolute)\nEvery life matters.\n\n[SFX: Door opens and closes as Julia enters the staff room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade out, home sounds fade in.]\n\n=== SCENE 6: INT. JULIA'S HOME - EVENING ===\n[SFX: Ambient home sounds, gentle hum of a fan, the sound of a kettle boiling.]\n\nJULIA sits on her couch, a cup of tea in her hands. She looks tired but reflective.\n\n[SFX: Kettle whistling.]\n\nJULIA\n(to herself, quietly)\nAnother day, another challenge.\n\n[SFX: Julia pours herself a cup of tea, the sound of the liquid sloshing.]\n\nJULIA\n(to herself, thoughtful)\nI did my best today. That's all I can do.\n\n[SFX: Julia's phone vibrates on the coffee table.]\n\nJULIA\n(curious, picking up the phone)\nAnother unknown number? Same wrong person message. This is the second time today...\n\n[SFX: Julia reads the message, the sound of her phone.]\n\nJULIA\n(to herself, thoughtful)\nWhat are the odds of getting the same wrong number twice?\n\n[SFX: Julia's phone vibrates again as she types a quick reply.]\n\nJULIA\n(typing, to herself)\nNo worries, happens to the best of us.\n\n[SFX: Julia's phone beeps, confirming the message was sent.]\n\nJULIA\n(to herself, determined)\nEvery day brings new challenges.\n\n[SFX: Julia takes a sip of her tea, the sound of the liquid, then sets the cup down with a soft clink.]\n\nJULIA\n(to herself, reflective)\nAnd new opportunities to grow.\n\n[SFX: Julia's phone vibrates again, a different ringtone.]\n\nJULIA\n(surprised, hopeful)\nHello?\n\nTOM (O.S., warm)\nHi, Julia. It's Tom. How are you?\n\nJULIA\n(surprised, but grateful)\nHi, Tom. I'm doing okay. Thanks for checking in.\n\nTOM (O.S., kind)\nI wanted to make sure you were okay after our call earlier. Is everything alright?\n\nJULIA\n(smiling, honest)\nIt's been a tough day, but I'm hanging in there. Thank you for asking.\n\nTOM (O.S., encouraging)\nThat's good to hear. If you ever need someone to talk to, I'm here.\n\nJULIA\n(grateful)\nThank you, Tom. That means a lot.\n\nTOM (O.S., warm)\nAnytime, Julia. Take care.\n\nJULIA\n(smiling, hopeful)\nYou too, Tom.\n\n[SFX: Phone hangs up.]\n\nJULIA\n(to herself, reflective)\nMaybe there's more to this than just a wrong number.\n\n[SFX: Julia's phone vibrates as she puts it down.]\n\nJULIA\n(to herself, determined)\nEvery day brings new challenges.\n\n[SFX: Julia's footsteps as she stands up and walks to the window.]\n\nJULIA\n(to herself, hopeful)\nAnd new opportunities to grow.\n\nTRANSITION: [SFX: Door closes, ambient home sounds fade out, credits music fades in.]",
+    "complete_polished_script": "=== SCENE 1: INT. TOM'S APARTMENT - EARLY MORNING ===\n[SFX: Ambient morning sounds, light traffic, birds chirping. A coffee machine hums in the background.]\n\nTOM (30s, calm, steady) stirs in his bed, stretching and yawning. He gets up and walks to the kitchen, the sound of his footsteps muffled by the carpet.\n\n[SFX: Coffee machine brews.]\n\nTOM\n(Murmuring to himself)\nNew day, new chances.\n\nHe pours a cup of coffee and takes a sip, the sound of the liquid sloshing in the cup. He walks to his desk, where his laptop and a stack of papers await.\n\n[SFX: Desk chair creaks as Tom sits down.]\n\nTOM\n(Sips coffee, looks at laptop)\nHere we go.\n\nHe opens his laptop, the sound of the fan and keyboard clicks filling the room. He types quickly, composing an email.\n\nTOM\n(Typing, thinking out loud)\nMotivation... inspiration... positive vibes... gotta keep it real, but uplifting.\n\n[SFX: Email notification chime.]\n\nTOM\n(Smiling, to himself)\nSent. One down, a few more to go.\n\n[SFX: Tom's phone rings, a cheerful ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious, slightly rushed)\nHi, Tom. Sarah here. Sorry to call so early, but I need to reschedule. Something came up.\n\nTOM\n(Beat)\nNo worries, Sarah. Stuff happens. How about 3 PM?\n\nSARAH (O.S., hesitant)\n3 PM could work. I'll have to check my schedule and confirm later. Things are just... complicated right now.\n\nTOM\n(Calm, reassuring)\nOf course. Remember our breathing techniques if things get overwhelming. Take care.\n\n[SFX: Phone hangs up.]\n\n[SFX: Tom's phone beeps with a text message.]\n\nTOM\n(Reading the message, curious)\nUnknown number. 'Sorry, wrong person. Meet at 3?'\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(Typing, to himself)\nNo worries, hope you find who you're looking for.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(To himself, thoughtful)\nI hope they find who they're looking for.\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(Reading the message, smiling)\nA new client? Guess I'll find out.\n\n[SFX: Tom's phone vibrates as he puts it down and stands up.]\n\nTOM\n(To himself, determined)\nLet's help someone today.\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\nTRANSITION: [SFX: Door closes, city traffic sounds fade out, ambulance siren approaches and fades into hospital hallway sounds.]\n\n=== SCENE 2: INT. HOSPITAL CORRIDORS - MORNING ===\n[SFX: Ambient hospital sounds, distant beeping, footsteps echoing.]\n\nJULIA (28s, tired but determined) walks down the hospital corridor, her shoes clicking on the tile floor. She passes several patients and staff, nodding politely.\n\n[SFX: Door opens and closes as Julia enters a patient room.]\n\nPATIENT (O.S., weak)\nHi, Julia. How are you today?\n\nJULIA\n(Smiling, professional)\nI'm doing well, thanks. How about you?\n\nPATIENT (O.S., relieved)\nI'm feeling a bit better. The meds seem to be working.\n\nJULIA\n(Genuinely)\nThat's great to hear. I'll check your vitals and make sure everything's on track.\n\n[SFX: Julia's stethoscope, gentle beeping of medical equipment.]\n\nJULIA\n(To patient, reassuring)\nEverything looks good. I'll let Dr. Martinez know.\n\nPATIENT (O.S., grateful)\nThank you, Julia. You always make me feel better.\n\nJULIA\n(Smiling)\nI always feel better when you're here.\n\n[SFX: Door opens and closes as Julia exits the room.]\n\nJULIA\n(To herself, quietly)\nKeep moving forward.\n\n[SFX: Julia's footsteps as she walks down the corridor, suddenly interrupted by a code blue alarm.]\n\n[SFX: Alarm sounds, urgent voices.]\n\nDR. MARTINEZ (O.S., professional, urgent, with a slight hesitation)\nJulia, a moment? Need to speak with you privately.\n\nJULIA\n(Surprised, alert)\nSure, Dr. Martinez. What's up?\n\nDR. MARTINEZ (O.S., concerned, lowering voice)\nWe have a critical case coming in. Unusual circumstances. I need you to be ready and... discreet.\n\nJULIA\n(Determined)\nI'm ready. What do you need me to do?\n\nDR. MARTINEZ (O.S., reassured)\nGood. We'll need you to assist in the emergency room. I'll update you as soon as we have more information.\n\nJULIA\n(Professional)\nUnderstood. I'll be there.\n\n[SFX: Julia's footsteps as she walks to the emergency room, quickening pace. She pauses to check her phone.]\n\nJULIA\n(To herself, distracted)\nAlmost forgot to confirm my 3 PM. I can do this.\n\n[SFX: Door opens and closes as Julia enters the emergency room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade out, office sounds fade in.]\n\n=== SCENE 3: INT. HOSPITAL STAFF ROOM - MID-MORNING ===\n[SFX: Ambient staff room sounds, gentle hum of a coffee machine, light chatter.]\n\nJULIA sits at a small table, sipping a cup of coffee and flipping through a medical journal. She looks tired but focused.\n\n[SFX: Coffee machine brews.]\n\nJULIA\n(To herself, softly)\nJust a few more hours...\n\n[SFX: Door opens and closes.]\n\nNURSE LINDA (30s, friendly)\nHey, Julia. How's it going?\n\nJULIA\n(Smiling, tired)\nIt's been a long morning. How about you?\n\nNURSE LINDA\n(Chirpy)\nCan't complain. Got a good cup?\n\nJULIA\n(Nodding)\nYeah, thanks. It's helping.\n\nNURSE LINDA\n(Sympathetic)\nYou look like you could use a break. Want to chat?\n\nJULIA\n(Appreciative)\nI'd like that, but I should probably get back to work. We have a critical case coming in soon.\n\nNURSE LINDA\n(Concerned)\nYou sure you're up for it?\n\nJULIA\n(Determined)\nI have to be. It's part of the job.\n\nNURSE LINDA\n(Encouraging)\nYou're one of the best, Julia. You've got this.\n\nJULIA\n(Smiling, grateful)\nThanks, Linda. I needed to hear that.\n\n[SFX: Door opens and closes as Nurse Linda leaves.]\n\nJULIA\n(To herself, resolute)\nJust a few more hours.\n\n[SFX: Julia's pager suddenly beeps urgently.]\n\nJULIA\n(Checking pager, determined)\nOr maybe just a few minutes.\n\n[SFX: Julia's quick footsteps as she rushes out of the room.]\n\nTRANSITION: [SFX: Door closes, ambient office sounds fade out, office sounds fade in.]\n\n=== SCENE 4: INT. TOM'S OFFICE - LATE MORNING ===\n[SFX: Ambient office sounds, gentle hum of a fan, keyboard clicks.]\n\nTOM sits at his desk, a stack of notes and a laptop in front of him. He looks focused and determined.\n\n[SFX: Phone ring, a professional ringtone.]\n\nTOM\n(Answering, cheerful)\nHello, this is Tom speaking.\n\nSARAH (O.S., anxious, breathing heavily)\nHi, Tom. It's Sarah. I... I'm really struggling today. I keep checking my phone, waiting for... something.\n\nTOM\n(Concerned)\nI'm here for you, Sarah. What's been going on? Are you expecting an important message?\n\nSARAH (O.S., hesitant)\nI think it's the stress at work. My boss is really pushing me, and I feel overwhelmed.\n\nTOM\n(Beat)\nThat's a lot. Setting boundaries is key. Take care of yourself. Have you tried any of the techniques we discussed?\n\nSARAH (O.S., hopeful)\nI've been trying the deep breathing, but it's hard to focus.\n\nTOM\n(Kindly)\nThat's totally normal. Let's try a guided meditation. It might help you center yourself.\n\n[SFX: Tom's phone plays a soft, calming meditation audio.]\n\nTOM\n(Gentle, guiding)\nTake a deep breath in... and out... In... and out...\n\n[SFX: Sarah's breathing becomes more relaxed.]\n\nSARAH (O.S., calmer)\nI feel a bit better. Thank you, Tom.\n\nTOM\n(Gently)\nYou've got this, Sarah. I'm here if you need me.\n\nSARAH (O.S., grateful)\nThank you. I'll try to stay positive.\n\nTOM\n(Encouraging)\nThat's the spirit. I'll check in with you later this week. Take care.\n\n[SFX: Phone hangs up.]\n\nTOM\n(To himself, satisfied)\nProgress, not perfection.\n\n[SFX: Tom's phone beeps with a message.]\n\nTOM\n(Reading the message, curious)\nAn unknown number? The message mentions a wrong person again. Strange...\n\n[SFX: Tom's phone vibrates as he types a quick reply.]\n\nTOM\n(Typing, to himself)\nNo worries, hope you find who you're looking for.\n\n[SFX: Tom's phone beeps again, confirming the message was sent.]\n\nTOM\n(To himself, hopeful)\nMaybe today will be different.\n\n[SFX: Tom's phone vibrates as he stands up, interrupted by a knock at the door.]\n\nTOM\n(Calling out)\nCome in!\n\n[SFX: Door opens, colleague enters.]\n\nCOLLEAGUE (O.S.)\nTom, we need your input on the new community outreach program.\n\nTOM\n(To himself, determined)\nLet's make an impact.\n\n[SFX: Tom's footsteps as he walks out of the room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade in.]\n\n=== SCENE 5: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===\n[SFX: Ambient emergency room sounds, urgent beeping, footsteps, hurried voices.]\n\nJULIA rushes into the emergency room, her footsteps quick and determined. She puts on her gloves and prepares for the critical case.\n\nDR. LEE (40s, authoritative)\n(Jumping in, professional)\nJulia, we need you in Bay 3. Severe trauma case.\n\nJULIA\n(Professional, focused)\nI'm ready. What's the situation?\n\nDR. LEE\n(Concerned)\nMultiple injuries, potential internal bleeding. We need to stabilize the patient before we can transport them to surgery.\n\nJULIA\n(Determined)\nUnderstood. I'll get the IV started and monitor vitals.\n\n[SFX: Julia's quick, efficient movements, the sound of a syringe, the beeping of medical equipment.]\n\nNURSE LINDA (O.S., professional)\nBlood pressure is dropping. We need to act fast.\n\nJULIA\n(Calm, focused)\nI'm on it. Administering fluids.\n\n[SFX: The sound of fluids being administered, the beeping of the heart monitor.]\n\nDR. LEE\n(Encouraging)\nGood work, team. We did it.\n\nJULIA\n(Exhausted but relieved, with a slight hesitation)\nThank you, Dr. Lee. I couldn't have done it without you all. I should probably check in with Dr. Martinez about those unusual circumstances he mentioned.\n\nDR. LEE\n(Smiling, professional)\nYou're a vital part of this team, Julia. Keep it up.\n\nJULIA\n(Smiling, grateful)\nI will. Thanks.\n\n[SFX: Julia's footsteps as she walks to the staff room, slowing with exhaustion.]\n\nJULIA\n(To herself, resolute)\nEvery life matters.\n\n[SFX: Door opens and closes as Julia enters the staff room.]\n\nTRANSITION: [SFX: Door closes, ambient hospital sounds fade out, home sounds fade in.]\n\n=== SCENE 6: INT. JULIA'S HOME - EVENING ===\n[SFX: Ambient home sounds, gentle hum of a fan, the sound of a kettle boiling.]\n\nJULIA sits on her couch, a cup of tea in her hands. She looks tired but reflective.\n\n[SFX: Kettle whistling.]\n\nJULIA\n(To herself, quietly)\nAnother day, another challenge.\n\n[SFX: Julia pours herself a cup of tea, the sound of the liquid sloshing.]\n\nJULIA\n(To herself, thoughtful)\nDid my best today. That's all I can do.\n\n[SFX: Julia's phone vibrates on the coffee table.]\n\nJULIA\n(Curious, picking up the phone)\nAnother unknown number? Same wrong person message. This is the second time today...\n\n[SFX: Julia reads the message, the sound of her phone.]\n\nJULIA\n(To herself, thoughtful)\nWhat are the odds of getting the same wrong number twice?\n\n[SFX: Julia's phone vibrates again as she types a quick reply.]\n\nJULIA\n(Typing, to herself)\nNo worries, happens to the best of us.\n\n[SFX: Julia's phone beeps, confirming the message was sent.]\n\nJULIA\n(To herself, determined)\nAnother day, another challenge.\n\n[SFX: Julia's phone vibrates again, a different ringtone.]\n\nJULIA\n(Surprised, hopeful)\nHello?\n\nTOM (O.S., warm)\nHi, Julia. It's Tom. How are you?\n\nJULIA\n(Surprised, but grateful)\nHi, Tom. I'm doing okay. Thanks for checking in.\n\nTOM (O.S., kind)\nI wanted to make sure you were okay after our call earlier. Is everything alright?\n\nJULIA\n(Smiling, honest)\nIt's been a tough day, but I'm hanging in there. Thank you for asking.\n\nTOM (O.S., encouraging)\nThat's good to hear. If you ever need someone to talk to, I'm here.\n\nJULIA\n(Grateful)\nThank you, Tom. That means a lot.\n\nTOM (O.S., warm)\nAnytime, Julia. Take care.\n\nJULIA\n(Smiling, hopeful)\nYou too, Tom.\n\n[SFX: Phone hangs up.]\n\nJULIA\n(To herself, reflective)\nMaybe there's more to this than just a wrong number.\n\n[SFX: Julia's phone vibrates as she puts it down.]\n\nJULIA\n(To herself, determined)\nAnother day, another challenge.\n\n[SFX: Julia's footsteps as she stands up and walks to the window.]\n\nJULIA\n(To herself, hopeful)\nAnd new opportunities to grow.\n\nTRANSITION: [SFX: Door closes, ambient home sounds fade out, credits music fades in.]",
     "polish_summary": {
       "natural_speech_fixes": 12,
       "voice_consistency_fixes": 8,

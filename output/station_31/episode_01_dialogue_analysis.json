@@ -1,0 +1,243 @@
+{
+  "episode": 1,
+  "analysis_timestamp": "2025-10-27T02:38:19.050979",
+  "results": {
+    "speakability": {
+      "speakability_analysis": {
+        "tongue_twisters": [],
+        "breath_point_issues": [
+          {
+            "location": "Scene 1, Tom",
+            "word_count": 28,
+            "current_text": "Motivation... inspiration... positive vibes... gotta keep it real, but uplifting.",
+            "problem": "Multiple pauses make timing and breath control tricky",
+            "suggested_revision": "Motivation [BREATH] inspiration [BREATH] positive vibes... [BREATH] gotta keep it real, but uplifting."
+          }
+        ],
+        "rhythm_issues": [
+          {
+            "location": "Scene 1, Sarah",
+            "current_text": "Sorry to call so early, but I need to reschedule. Something came up.",
+            "issue": "Feels slightly formal for an anxious, rushed character",
+            "suggested_fix": "Sorry for calling this early - I've gotta reschedule. Something just came up."
+          },
+          {
+            "location": "Scene 1, Tom",
+            "current_text": "Unknown number. 'Sorry, wrong person. Meet at 3?'",
+            "issue": "Unnatural construction when reading a message",
+            "suggested_fix": "Huh, unknown number... They say 'Sorry, wrong person. Meet at 3?'"
+          }
+        ],
+        "total_issues": {
+          "critical": 0,
+          "moderate": 2,
+          "minor": 1
+        }
+      }
+    },
+    "naturalness": {
+      "naturalness_scoring": {
+        "Tom": {
+          "vocabulary_appropriateness": {
+            "score": 4,
+            "age_appropriate": true,
+            "education_level_match": "matches character background",
+            "era_appropriate": true,
+            "anachronisms": [],
+            "examples_good": [
+              "No worries, Sarah. Stuff happens.",
+              "Let's help someone today."
+            ],
+            "examples_problematic": []
+          },
+          "sentence_structure": {
+            "score": 4,
+            "varied_lengths": true,
+            "word_count_range": "2-12 words",
+            "complexity_level": "appropriate",
+            "issues": [],
+            "fix_examples": []
+          },
+          "filler_words": {
+            "score": 3,
+            "filler_count": 0,
+            "assessment": "underused",
+            "suggestions": [
+              "Add 'um' or 'well' occasionally for more natural self-talk"
+            ]
+          },
+          "interruptions_overlaps": {
+            "score": 4,
+            "interruption_count": 0,
+            "assessment": "natural conversation flow",
+            "examples": [
+              "Appropriate pause after Sarah's call"
+            ]
+          },
+          "overall_naturalness": 4,
+          "summary": "Tom's dialogue is generally natural, with appropriate vocabulary and sentence structure. Could use more filler words in self-talk moments."
+        },
+        "Sarah": {
+          "vocabulary_appropriateness": {
+            "score": 4,
+            "age_appropriate": true,
+            "education_level_match": "matches character background",
+            "era_appropriate": true,
+            "anachronisms": [],
+            "examples_good": [
+              "Sorry to call so early",
+              "Things are just... complicated right now"
+            ],
+            "examples_problematic": []
+          },
+          "sentence_structure": {
+            "score": 5,
+            "varied_lengths": true,
+            "word_count_range": "3-10 words",
+            "complexity_level": "appropriate",
+            "issues": [],
+            "fix_examples": []
+          },
+          "filler_words": {
+            "score": 5,
+            "filler_count": 1,
+            "assessment": "natural",
+            "suggestions": []
+          },
+          "interruptions_overlaps": {
+            "score": 4,
+            "interruption_count": 0,
+            "assessment": "natural hesitation patterns",
+            "examples": [
+              "Appropriate hesitation with '...'"
+            ]
+          },
+          "overall_naturalness": 4,
+          "summary": "Sarah's brief dialogue is very natural, showing appropriate anxiety and hesitation patterns."
+        }
+      }
+    },
+    "identity": {
+      "identity_clarity": {
+        "speaker_identification_test": {
+          "total_lines_tested": 14,
+          "clearly_identifiable": 12,
+          "unclear_lines": [
+            {
+              "text": "No worries, hope you find who you're looking for.",
+              "could_be": [
+                "Tom",
+                "Sarah"
+              ],
+              "problem": "Generic polite response without character markers",
+              "fix": "Add Tom's therapist voice: 'No worries - these mix-ups happen. I hope you connect with whoever you're trying to reach.'"
+            },
+            {
+              "text": "3 PM could work.",
+              "could_be": [
+                "Tom",
+                "Sarah"
+              ],
+              "problem": "Too brief and generic",
+              "fix": "Add character context: 'That time slot at 3 PM is open in my calendar.'"
+            }
+          ],
+          "identification_rate": "85%"
+        },
+        "voice_distinction": {
+          "Tom": {
+            "verbal_tics": [
+              "Talking to himself",
+              "Calm affirmations"
+            ],
+            "speech_pattern": "Measured, therapeutic, self-reflective",
+            "unique_phrases": [
+              "New day, new chances",
+              "Let's help someone today"
+            ],
+            "distinctiveness_score": 8,
+            "recommendations": "Add more therapeutic language when speaking to Sarah"
+          },
+          "Sarah": {
+            "verbal_tics": [
+              "Hesitation",
+              "Anxiety markers"
+            ],
+            "speech_pattern": "Rushed, uncertain, apologetic",
+            "unique_phrases": [
+              "Sorry to call so early",
+              "Things are just... complicated"
+            ],
+            "distinctiveness_score": 7,
+            "recommendations": "Include more verbal stumbles to emphasize anxiety"
+          }
+        },
+        "context_clues": {
+          "relationships_clear": true,
+          "locations_clear": true,
+          "time_period_clear": true
+        },
+        "overall_identity_clarity": 8
+      }
+    },
+    "subtext": {
+      "subtext_analysis": {
+        "excellent_subtext": [
+          {
+            "scene": "Scene 1, Sarah & Tom phone call",
+            "line": "Things are just... complicated right now.",
+            "surface_meaning": "Sarah is busy and needs to reschedule",
+            "underlying_meaning": "Sarah is experiencing anxiety/crisis but isn't ready to discuss it",
+            "withheld_information": "The true nature of her emotional state and what triggered it",
+            "subtext_strength": 9,
+            "audio_cues": "hesitant tone, pause before 'complicated', rushed delivery"
+          }
+        ],
+        "adequate_subtext": [
+          {
+            "scene": "Tom's apartment",
+            "line": "New day, new chances.",
+            "surface": "Generic morning motivation",
+            "underlying": "Tom actively choosing optimism despite prior challenges",
+            "subtext_strength": 6,
+            "notes": "Could be stronger with context of previous difficulties"
+          },
+          {
+            "scene": "Tom's apartment",
+            "line": "Let's help someone today.",
+            "surface": "Simple statement of purpose",
+            "underlying": "Tom finds meaning through helping others, possibly due to past experiences",
+            "subtext_strength": 5,
+            "notes": "Good but could layer in more complexity"
+          }
+        ],
+        "weak_subtext": [
+          {
+            "scene": "Tom's apartment",
+            "line": "I hope they find who they're looking for.",
+            "problem": "Too on-the-nose, directly states thoughts",
+            "subtext_strength": 3,
+            "fix": "[Tom glances at his phone, then the empty chair across his desk]",
+            "reason": "Shows rather than tells his empathy and possible loneliness"
+          }
+        ],
+        "overall_subtext_score": 7,
+        "strengths": [
+          "Strong character establishment through morning routine",
+          "Excellent anxiety/crisis subtext in Sarah's dialogue",
+          "Good use of pauses and audio cues to convey meaning"
+        ],
+        "weaknesses": [
+          "Some internal dialogue too explicit",
+          "Could use more layered meanings in casual conversations",
+          "Some emotional states directly stated rather than implied"
+        ],
+        "recommendations": [
+          "Replace some of Tom's self-talk with environmental sounds and actions",
+          "Add more conflicting subtextual elements to create tension",
+          "Layer in hints about Tom's past through subtle references rather than direct statements"
+        ]
+      }
+    }
+  }
+}

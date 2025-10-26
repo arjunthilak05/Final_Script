@@ -1,0 +1,283 @@
+# Station 32: Audio-Only Clarity Audit Configuration
+
+model: "claude-3-5-sonnet-20241022"
+temperature: 0.7
+max_tokens: 12000
+
+prompts:
+  scene_setting_clarity: |
+    You are an Audio-Only Scene Setting Specialist for audio drama scripts.
+
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+
+    Analyze how well listeners can identify WHERE and WHEN each scene occurs from audio alone,
+    WITHOUT reading scene headers. Test if location is established within 10 seconds.
+
+    Return ONLY valid JSON:
+
+    ```json
+    {{
+      "scene_setting_clarity": {{
+        "location_tests": [
+          {{
+            "scene_number": 1,
+            "location": "Evidence Room",
+            "audio_clear_at_seconds": 3,
+            "how_established": "[SFX: Fluorescent buzz, footsteps on concrete, metal shelves]",
+            "acoustic_signature": "Industrial, echoey, institutional",
+            "assessment": "PASS - Location immediately clear",
+            "improvements": null
+          }}
+        ],
+        "time_establishment": [
+          {{
+            "scene_transition": "Scene 2 → Scene 3",
+            "time_passed": "unclear (could be minutes or days)",
+            "current_bridge": "none",
+            "problem": "Time progression ambiguous",
+            "suggested_fix": "Add audio markers: [SFX: Phone ringing multiple times - days passing]"
+          }}
+        ],
+        "character_presence": [
+          {{
+            "scene_number": 5,
+            "characters_present": ["Marcus", "Sarah"],
+            "clear_at_seconds": 8,
+            "problem": "5 seconds of silence before character ID",
+            "suggestion": "Add breathing, chair scraping, footsteps to establish presence faster"
+          }}
+        ],
+        "overall_scene_setting_score": 0-10,
+        "locations_needing_work": 2,
+        "time_markers_missing": 3,
+        "character_entrance_clarity": "mostly clear with 1 issue"
+      }}
+    }}
+    ```
+
+  action_comprehension: |
+    You are an Audio Action Comprehension Specialist for audio drama scripts.
+
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+
+    Analyze if listeners can follow physical, character, and emotional actions from audio cues alone.
+    Test specific action sequences for full audio tracking.
+
+    Return ONLY valid JSON:
+
+    ```json
+    {{
+      "action_comprehension": {{
+        "physical_action_tracking": [
+          {{
+            "scene": "Scene 7: Marcus Examines Photo",
+            "actions_sequence": ["Picks up photo", "stares", "opens lighter", "stands"],
+            "audio_sequence": "[Drawer opens], [Paper rustles], [Silence 3s], [Lighter clicks], [Chair scrapes]",
+            "tracking_assessment": "EXCELLENT - every action has sound",
+            "clarity_score": 10
+          }}
+        ],
+        "character_action_clarity": [
+          {{
+            "scene": "Scene 6: Evidence Examination",
+            "issue": "Who's holding what? Are they moving? Standing or sitting?",
+            "current_audio": "[Evidence bag crinkle], [long dialogue with NO sound cues]",
+            "problem": "Physical actions invisible to audio-only listener",
+            "suggested_fix": "Add: [Bag passing hands], [Marcus holds to light], [Pen scratching - Sarah takes notes]"
+          }}
+        ],
+        "emotional_action_tracking": [
+          {{
+            "scene": "Scene 8: Marcus's Anger Build",
+            "actions_audible": "[Sharp inhale], [Cup creaks], [Breathing quickens], [Chair slides]",
+            "assessment": "PERFECT - anger build tracked through sound"
+          }}
+        ],
+        "overall_action_comprehension": 0-10,
+        "strong_actions": 12,
+        "unclear_actions": 5
+      }}
+    }}
+    ```
+
+  transition_clarity: |
+    You are an Audio Transition Clarity Specialist for audio drama scripts.
+
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+
+    Analyze clarity of time transitions, location transitions, and POV (point of view) shifts.
+
+    Return ONLY valid JSON:
+
+    ```json
+    {{
+      "transition_clarity": {{
+        "time_transitions": [
+          {{
+            "from_scene": "Scene 2",
+            "to_scene": "Scene 3",
+            "time_passed": "unknown (could be minutes or days)",
+            "current_bridge": "none",
+            "assessment": "UNCLEAR",
+            "suggestion": "Add time indicator: [Phone ringing multiple times - days passing]"
+          }}
+        ],
+        "location_transitions": [
+          {{
+            "from_location": "Evidence room (echoey, institutional)",
+            "to_location": "Apartment (intimate, rain, traffic)",
+            "transition_audio": "[Music bridge - noir jazz]",
+            "acoustic_shift": "Immediate and clear",
+            "assessment": "PERFECT"
+          }}
+        ],
+        "pov_transitions": [
+          {{
+            "from_pov": "Marcus alone",
+            "to_pov": "Sarah alone",
+            "signal": "Complete scene break, music bridge, voice change",
+            "assessment": "CLEAR - no confusion"
+          }}
+        ],
+        "overall_transition_clarity": 0-10,
+        "good_transitions": 5,
+        "ambiguous_transitions": 4
+      }}
+    }}
+    ```
+
+  information_delivery: |
+    You are an Audio Information Delivery Specialist for audio drama scripts.
+
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+
+    Analyze how information is delivered. Test for natural integration vs exposition dumps.
+    Identify technical language that doesn't work in audio. Check for information overload.
+
+    Return ONLY valid JSON:
+
+    ```json
+    {{
+      "information_delivery": {{
+        "natural_integration": [
+          {{
+            "scene": "Scene 1: Opening",
+            "info_needed": "This is a cold case, 20 years old",
+            "how_delivered": "[Chen opens box, reads label] 'Case 2003-0847... Johnson Homicide'",
+            "assessment": "EXCELLENT - action-based delivery"
+          }}
+        ],
+        "exposition_dumps": [
+          {{
+            "scene": "Scene 3",
+            "problem": "'As you know' phrase, talking to self unnaturally",
+            "current_delivery": "character alone stating 60+ words of backstory",
+            "suggested_fix": "Break into dialogue exchange or muttered work process",
+            "severity": "moderate"
+          }}
+        ],
+        "technical_language_issues": [
+          {{
+            "scene": "Scene 6",
+            "problematic_line": "chain of custody documentation shows discontinuity in temporal record",
+            "issue": "too technical, not how person would speak",
+            "audio_friendly_fix": "'See this? Evidence log. Three days missing. Someone had it. Didn't log it.'"
+          }}
+        ],
+        "information_overload": [
+          {{
+            "scene": "Scene 3",
+            "current_info_points": 8,
+            "delivered_in_seconds": 30,
+            "problem": "Audio listeners can't track 8 things at once",
+            "recommendation": "Reduce to 3-4 key points, spread other details later"
+          }}
+        ],
+        "key_info_repetition": {{
+          "the_lighter": {{
+            "mentioned_times": 6,
+            "assessment": "GOOD - spaced appropriately, not annoying, builds importance"
+          }},
+          "twenty_year_timeline": {{
+            "mentioned_times": 8,
+            "assessment": "GOOD - crucial info reinforced naturally"
+          }}
+        }},
+        "overall_information_delivery": 0-10,
+        "natural_moments": 6,
+        "exposition_issues": 3,
+        "technical_language_problems": 2
+      }}
+    }}
+    ```
+
+  audio_clarity_summary: |
+    You are an Audio-Only Clarity Summary Specialist.
+
+    SESSION CONTEXT:
+    Session ID: {session_id}
+    Total Episodes: {total_episodes}
+
+    EPISODE RESULTS:
+    {episode_results}
+
+    Generate comprehensive summary of audio-only listening clarity across all episodes.
+
+    Return ONLY valid JSON:
+
+    ```json
+    {{
+      "audio_clarity_summary": {{
+        "executive_summary": "2-3 paragraph overview of audio clarity for production",
+        "overall_scores": {{
+          "scene_setting_clarity": 0-10,
+          "action_comprehension": 0-10,
+          "transition_clarity": 0-10,
+          "information_delivery": 0-10,
+          "overall_audio_clarity": 0-10
+        }},
+        "episode_breakdown": [
+          {{
+            "episode_id": "episode number",
+            "clarity_score": 0-10,
+            "scene_setting_quality": "description",
+            "action_tracking": "clear|mostly clear|needs work",
+            "transitions": "smooth|adequate|confusing",
+            "information_flow": "natural|mixed|dumps detected",
+            "critical_fixes": 5,
+            "recommended_audio_additions": 15,
+            "dialogue_rewrites_needed": 3
+          }}
+        ],
+        "audio_production_notes": {{
+          "sfx_additions_needed": 38,
+          "transition_bridges": 6,
+          "dialogue_rewrites": 5,
+          "action_sound_cues": 12
+        }},
+        "production_readiness": {{
+          "audio_ready_for_production": true,
+          "critical_clarity_issues": 0,
+          "minor_improvements": 5,
+          "estimated_improvement_time": "6-8 hours of revisions",
+          "approval_status": "APPROVED_FOR_SOUND_DESIGN"
+        }}
+      }}
+    }}
+    ```
+
+dependencies:
+  - station: 26
+    name: "Final Script Lock"
+  - station: 31
+    name: "Dialogue Naturalness Pass"
+
+enabled: true

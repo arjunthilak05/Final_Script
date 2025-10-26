@@ -1,0 +1,300 @@
+# Station 31: Dialogue Naturalness Pass Configuration
+
+model: "claude-3-5-sonnet-20241022"
+temperature: 0.7
+max_tokens: 12000
+
+prompts:
+  speakability_check: |
+    You are a Voice Acting Speakability Specialist for audio drama scripts.
+
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+
+    CHARACTER DATA:
+    {characters}
+
+    Analyze the speakability of every character's dialogue for voice actors. Detect:
+    1. TONGUE TWISTERS - difficult consonant combinations
+    2. BREATH POINT ISSUES - sentences too long without natural breaks
+    3. RHYTHM ISSUES - unnatural word order or formal construction
+
+    Return ONLY valid JSON:
+
+    ```json
+    {{
+      "speakability_analysis": {{
+        "tongue_twisters": [
+          {{
+            "location": "Scene X, Character name line",
+            "current_text": "exact problematic line",
+            "issue_description": "what makes it hard to say",
+            "severity": "critical|moderate|minor",
+            "suggested_fix": "revised line that's easier to speak"
+          }}
+        ],
+        "breath_point_issues": [
+          {{
+            "location": "Scene X, Character name",
+            "word_count": 35,
+            "current_text": "current problematic dialogue",
+            "problem": "too long without natural break point",
+            "suggested_revision": "revised with [BREATH] markers for natural delivery"
+          }}
+        ],
+        "rhythm_issues": [
+          {{
+            "location": "Scene X, Character name",
+            "current_text": "unnatural word order",
+            "issue": "sounds written not spoken, formal inversion",
+            "suggested_fix": "natural speaking version"
+          }}
+        ],
+        "total_issues": {{
+          "critical": 0,
+          "moderate": 0,
+          "minor": 0
+        }}
+      }}
+    }}
+    ```
+
+  naturalness_scoring: |
+    You are a Dialogue Naturalness Scoring Specialist for audio drama scripts.
+
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+
+    CHARACTER DATA:
+    {characters}
+
+    Analyze dialogue naturalness for each character on these dimensions:
+    - Vocabulary appropriateness (age, education, era, anachronisms)
+    - Sentence structure (varied lengths, appropriate complexity)
+    - Filler words (natural speech patterns)
+    - Interruptions/overlaps (realistic conversation flow)
+
+    Return ONLY valid JSON:
+
+    ```json
+    {{
+      "naturalness_scoring": {{
+        "character_name": {{
+          "vocabulary_appropriateness": {{
+            "score": 0-5,
+            "age_appropriate": true/false,
+            "education_level_match": "matches character background",
+            "era_appropriate": true/false,
+            "anachronisms": ["list any out-of-place terms"],
+            "examples_good": ["example 1", "example 2"],
+            "examples_problematic": [
+              {{
+                "text": "problematic line",
+                "issue": "not how this character would speak",
+                "fix": "more natural version"
+              }}
+            ]
+          }},
+          "sentence_structure": {{
+            "score": 0-5,
+            "varied_lengths": true/false,
+            "word_count_range": "3-15 words",
+            "complexity_level": "appropriate|too_formal|too_simple",
+            "issues": ["list any problematic patterns"],
+            "fix_examples": [
+              {{
+                "current": "overly formal construction",
+                "revised": "more natural version"
+              }}
+            ]
+          }},
+          "filler_words": {{
+            "score": 0-5,
+            "filler_count": 2,
+            "assessment": "underused|natural|overused",
+            "suggestions": ["add 'um' in vulnerable moments", "add 'like' for energy"]
+          }},
+          "interruptions_overlaps": {{
+            "score": 0-5,
+            "interruption_count": 3,
+            "assessment": "natural conversation flow",
+            "examples": ["when character cuts off others", "examples of overlap"]
+          }},
+          "overall_naturalness": 0-5,
+          "summary": "brief assessment of character's dialogue naturalness"
+        }}
+      }}
+    }}
+    ```
+
+  identity_clarity_check: |
+    You are a Voice Identity Clarity Specialist for audio drama scripts.
+
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+
+    CHARACTER DATA:
+    {characters}
+
+    Test if listeners can identify speakers from dialogue alone (without character names).
+    Analyze voice distinction and generic lines that could apply to multiple characters.
+
+    Return ONLY valid JSON:
+
+    ```json
+    {{
+      "identity_clarity": {{
+        "speaker_identification_test": {{
+          "total_lines_tested": 20,
+          "clearly_identifiable": 17,
+          "unclear_lines": [
+            {{
+              "text": "generic dialogue line",
+              "could_be": ["Character A", "Character B"],
+              "problem": "no character-specific voice marker",
+              "fix": "revised to be character-specific"
+            }}
+          ],
+          "identification_rate": "85%"
+        }},
+        "voice_distinction": {{
+          "character_name": {{
+            "verbal_tics": ["tic 1", "tic 2"],
+            "speech_pattern": "description of how they talk",
+            "unique_phrases": ["phrase 1", "phrase 2"],
+            "distinctiveness_score": 0-10,
+            "recommendations": "suggestions to make more distinct"
+          }}
+        }},
+        "context_clues": {{
+          "relationships_clear": true/false,
+          "locations_clear": true/false,
+          "time_period_clear": true/false
+        }},
+        "overall_identity_clarity": 0-10
+      }}
+    }}
+    ```
+
+  subtext_verification: |
+    You are a Dialogue Subtext Specialist for audio drama scripts.
+
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+
+    CHARACTER DATA:
+    {characters}
+
+    Analyze the subtext (what's NOT said) in key dialogue exchanges.
+    Verify that emotional layers are present and not too obvious.
+
+    Return ONLY valid JSON:
+
+    ```json
+    {{
+      "subtext_analysis": {{
+        "excellent_subtext": [
+          {{
+            "scene": "Scene X, characters A & B",
+            "line": "character dialogue",
+            "surface_meaning": "what is literally said",
+            "underlying_meaning": "what is really meant",
+            "withheld_information": "what is NOT being said",
+            "subtext_strength": 0-10,
+            "audio_cues": "voice quality, pauses, tone that carries subtext"
+          }}
+        ],
+        "adequate_subtext": [
+          {{
+            "scene": "location",
+            "line": "dialogue",
+            "surface": "literal meaning",
+            "underlying": "hidden meaning",
+            "subtext_strength": 0-10,
+            "notes": "assessment"
+          }}
+        ],
+        "weak_subtext": [
+          {{
+            "scene": "location",
+            "line": "dialogue",
+            "problem": "too obvious, tells instead of implies",
+            "subtext_strength": 0-4,
+            "fix": "revised version that's more subtle",
+            "reason": "why revision improves it"
+          }}
+        ],
+        "overall_subtext_score": 0-10,
+        "strengths": ["strength 1", "strength 2"],
+        "weaknesses": ["weakness 1", "weakness 2"],
+        "recommendations": ["recommendation 1", "recommendation 2"]
+      }}
+    }}
+    ```
+
+  dialogue_summary_report: |
+    You are a Dialogue Quality Summary Specialist.
+
+    SESSION CONTEXT:
+    Session ID: {session_id}
+    Total Episodes: {total_episodes}
+
+    EPISODE RESULTS:
+    {episode_results}
+
+    Generate a comprehensive summary of dialogue naturalness across all episodes.
+
+    Return ONLY valid JSON:
+
+    ```json
+    {{
+      "dialogue_summary": {{
+        "executive_summary": "2-3 paragraph overview of dialogue quality",
+        "overall_scores": {{
+          "average_speakability": 0-5,
+          "average_naturalness": 0-5,
+          "average_identity_clarity": 0-10,
+          "average_subtext": 0-10,
+          "overall_dialogue_quality": 0-10
+        }},
+        "episode_breakdown": [
+          {{
+            "episode_id": "episode number",
+            "dialogue_health_score": 0-10,
+            "key_strengths": ["strength 1"],
+            "issues_found": 5,
+            "critical_fixes": 2,
+            "recommendations": ["rec 1"]
+          }}
+        ],
+        "voice_actor_guidance": {{
+          "character_name": {{
+            "voice_profile": "description of how to voice them",
+            "emotional_arc": "emotional journey across episode",
+            "key_challenges": ["challenge 1"],
+            "performance_tips": ["tip 1"]
+          }}
+        }},
+        "production_readiness": {{
+          "ready_for_recording": true,
+          "critical_rewrites_needed": 0,
+          "minor_adjustments": 3,
+          "approval_status": "APPROVED_FOR_VOICE_RECORDING"
+        }}
+      }}
+    }}
+    ```
+
+dependencies:
+  - station: 26
+    name: "Final Script Lock"
+  - station: 7
+    name: "Character Architect"
+  - station: 8
+    name: "World Builder"
+
+enabled: true

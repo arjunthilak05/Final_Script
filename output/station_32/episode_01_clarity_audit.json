@@ -1,0 +1,176 @@
+{
+  "episode": 1,
+  "audit_timestamp": "2025-10-27T02:35:24.634949",
+  "results": {
+    "scene_setting": {
+      "scene_setting_clarity": {
+        "location_tests": [
+          {
+            "scene_number": 1,
+            "location": "Apartment Interior",
+            "audio_clear_at_seconds": 2,
+            "how_established": "[AMBIENT: Morning sounds (traffic, birds), Coffee machine hum], [ACOUSTIC: Soft surfaces, carpet muffles steps]",
+            "acoustic_signature": "Residential, soft surfaces, morning ambience",
+            "assessment": "PASS - Location quickly established through ambient sounds",
+            "improvements": "Could add window opening sound to reinforce indoor/outdoor boundary"
+          }
+        ],
+        "time_establishment": [
+          {
+            "scene_transition": "Scene 1 \u2192 Scene 2",
+            "time_passed": "Immediate continuation",
+            "current_bridge": "Door closes, traffic fades, ambulance siren transitions to hospital",
+            "problem": null,
+            "suggested_fix": null
+          }
+        ],
+        "character_presence": [
+          {
+            "scene_number": 1,
+            "characters_present": [
+              "Tom"
+            ],
+            "clear_at_seconds": 3,
+            "problem": null,
+            "suggestion": null
+          }
+        ],
+        "overall_scene_setting_score": 8,
+        "locations_needing_work": 0,
+        "time_markers_missing": 0,
+        "character_entrance_clarity": "very clear"
+      }
+    },
+    "actions": {
+      "action_comprehension": {
+        "physical_action_tracking": [
+          {
+            "scene": "Scene 1: Tom's Morning",
+            "actions_sequence": [
+              "Gets up from bed",
+              "Walks to kitchen",
+              "Pours coffee",
+              "Walks to desk",
+              "Sits down",
+              "Types on laptop"
+            ],
+            "audio_sequence": "[Stretching sounds], [Muffled footsteps], [Liquid pouring], [Muffled steps], [Chair creaks], [Keyboard clicks]",
+            "tracking_assessment": "GOOD - Most actions have clear audio cues",
+            "clarity_score": 8
+          }
+        ],
+        "character_action_clarity": [
+          {
+            "scene": "Scene 1: Phone Call",
+            "issue": "Tom's physical reactions during call not fully tracked",
+            "current_audio": "[Phone rings], [Dialogue], [Phone hangs up]",
+            "problem": "Missing movement/reaction sounds during call",
+            "suggested_fix": "Add: [Chair shifts as Tom sits up], [Papers rustle as he checks schedule]"
+          }
+        ],
+        "emotional_action_tracking": [
+          {
+            "scene": "Scene 1: Tom's Mood Progression",
+            "actions_audible": "[Calm morning sounds], [Cheerful phone greeting], [Reassuring tone to Sarah], [Curious about text], [Determined final line]",
+            "assessment": "GOOD - Emotional journey clear through voice and pacing"
+          }
+        ],
+        "overall_action_comprehension": 7,
+        "strong_actions": 8,
+        "unclear_actions": 2
+      }
+    },
+    "transitions": {
+      "transition_clarity": {
+        "time_transitions": [
+          {
+            "from_scene": "Scene 1 - Tom's Apartment Morning",
+            "to_scene": "Scene 2 - Hospital Corridors",
+            "time_passed": "Immediate/Same morning",
+            "current_bridge": "[SFX: Door closes, city traffic sounds fade out, ambulance siren approaches and fades into hospital hallway sounds.]",
+            "assessment": "CLEAR",
+            "suggestion": "Bridge works well, clearly indicates immediate transition to new location"
+          }
+        ],
+        "location_transitions": [
+          {
+            "from_location": "Tom's Apartment (carpeted, intimate)",
+            "to_location": "Hospital Corridors (tile floors, clinical)",
+            "transition_audio": "Door close + ambulance siren bridge",
+            "acoustic_shift": "Well defined - soft/muffled to hard/echoing surfaces",
+            "assessment": "EXCELLENT"
+          }
+        ],
+        "pov_transitions": [
+          {
+            "from_pov": "Tom",
+            "to_pov": "Not shown in excerpt",
+            "signal": "Clear scene break with acoustic environment change",
+            "assessment": "CLEAR"
+          }
+        ],
+        "overall_transition_clarity": 9,
+        "good_transitions": 3,
+        "ambiguous_transitions": 0
+      }
+    },
+    "information": {
+      "information_delivery": {
+        "natural_integration": [
+          {
+            "scene": "Scene 1: Tom's Apartment",
+            "info_needed": "Tom's profession involves helping people",
+            "how_delivered": "Through natural dialogue with Sarah and his self-talk about 'helping someone today'",
+            "assessment": "GOOD - revealed organically through actions and dialogue"
+          },
+          {
+            "scene": "Scene 1: Tom's Apartment",
+            "info_needed": "Tom's personality/demeanor",
+            "how_delivered": "Through his calm responses and self-talk about positivity",
+            "assessment": "GOOD - shown through actions rather than stated"
+          }
+        ],
+        "exposition_dumps": [
+          {
+            "scene": "Scene 1",
+            "problem": "Describing the room and setup feels forced",
+            "current_delivery": "Narration about desk, laptop and papers awaiting",
+            "suggested_fix": "Reveal through natural interaction with objects",
+            "severity": "mild"
+          }
+        ],
+        "technical_language_issues": [
+          {
+            "scene": "Scene 1",
+            "problematic_line": "[ACOUSTIC: Soft surfaces, reverb low, carpet muffles footsteps]",
+            "issue": "Technical direction doesn't translate to audio",
+            "audio_friendly_fix": "Keep technical notes separate from script dialogue"
+          }
+        ],
+        "information_overload": [
+          {
+            "scene": "Scene 1 Opening",
+            "current_info_points": 5,
+            "delivered_in_seconds": 30,
+            "problem": "Too many setup details front-loaded",
+            "recommendation": "Space out room description and character introduction"
+          }
+        ],
+        "key_info_repetition": {
+          "tom_helps_people": {
+            "mentioned_times": 3,
+            "assessment": "GOOD - reinforced naturally through different contexts"
+          },
+          "mysterious_text": {
+            "mentioned_times": 2,
+            "assessment": "GOOD - builds intrigue without overemphasis"
+          }
+        },
+        "overall_information_delivery": 7,
+        "natural_moments": 8,
+        "exposition_issues": 2,
+        "technical_language_problems": 1
+      }
+    }
+  }
+}

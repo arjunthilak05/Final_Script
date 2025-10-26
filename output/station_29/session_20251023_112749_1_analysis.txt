@@ -1,0 +1,162 @@
+======================================================================
+STATION 29: HEROIC JOURNEY AUDIT
+======================================================================
+
+Episode ID: 1
+Analysis Date: 2025-10-24T21:20:55.287351
+Session ID: session_20251023_112749
+
+----------------------------------------------------------------------
+HEROIC ACTS INVENTORY
+----------------------------------------------------------------------
+
+Character: Tom
+Active Choices:
+  1. Creates and sends 'The Daily Lift' motivational message
+     Audio: Warm, confident voice with a sense of purpose, gentle morning tone
+  2. Prioritizes personal touch over business scaling
+     Audio: Meditative, thoughtful tone showing conviction in his values
+Heroic Moments:
+  1. courage_act: Tom creates daily motivational content to help others, showing commitment to improving lives
+     Audio: Warm, encouraging tone with purpose. Gentle ambient morning sounds and pen scratching to emphasize daily ritual.
+  2. sacrifice_act: Tom prioritizes helping people over business growth, valuing impact over profit
+     Audio: Firm but gentle voice showing conviction. Office background sounds should fade slightly to emphasize this philosophical moment.
+Growth Demonstrations:
+  1. Effective communication and motivation through daily practice
+     Voice Change: Assured and experienced tone, showing someone who has found their calling and purpose
+
+
+Character: Julia
+Active Choices:
+  1. Reads the text message from 'The Daily Lift' instead of ignoring it
+     Audio: Confused but curious tone, slightly groggy from just waking up
+  2. Avoids helping with the Miller case
+     Audio: Abrupt, defensive tone with underlying anxiety, slightly rushed
+Heroic Moments:
+  1. courage_act: Despite her reluctance, Julia gets out of bed and goes to work, pushing through a difficult time
+     Audio: Heavy sighs and slow movements audible. Voice carries weight and exhaustion but also determination. Rain sounds should be present but fading as she decides to face the day.
+Growth Demonstrations:
+  1. Beginning to consider the motivational message
+     Voice Change: Voice shows a hint of contemplation, with slight softening when she repeats the phrase to herself, indicating potential for future growth
+
+----------------------------------------------------------------------
+AGENCY SCORECARD
+----------------------------------------------------------------------
+
+Character: Tom
+Goal Setting: {'score': 5, 'own_goals': "Running 'The Daily Lift' motivational messages and coaching business focused on helping others find their path", 'following_others': 'Minimal, maintains his personal approach despite suggestions to scale', 'audio_manifestation': 'Determined, warm, and purposeful voice with conviction about his purpose'}/5
+Obstacle Confrontation: {'score': 3, 'faces_directly': 'Thoughtfully considers business decisions and maintains his approach when discussing scaling', 'rescued_situations': 'No clear instances of being rescued in the script', 'audio_manifestation': 'Measured and thoughtful voice when discussing business approaches'}/5
+Solution Generation: {'score': 4, 'solves_problems': "Creates motivational content that helps others make life changes, as evidenced by Sarah's success", 'solutions_given': 'Self-generated solutions through his coaching and motivational messages', 'audio_manifestation': 'Confident and assured voice when discussing solutions and their impact'}/5
+Consequence Ownership: {'score': 4, 'owns_mistakes': 'Takes ownership of his business philosophy and approach', 'blames_others': 'No tendency to blame others for business decisions', 'audio_manifestation': 'Calm and assured voice when discussing consequences and business decisions'}/5
+Overall Agency Score: 4/5
+
+
+Character: Julia
+Goal Setting: {'score': 2, 'own_goals': 'Not clearly established in the excerpt, seems to be going through motions at work', 'following_others': 'Following work routines without personal investment', 'audio_manifestation': 'Groggy, confused, and resigned voice when discussing her day'}/5
+Obstacle Confrontation: {'score': 1, 'faces_directly': 'Actively avoids confronting obstacles, makes excuses and physically removes herself', 'rescued_situations': 'Deflects challenges to others (Linda) rather than facing them', 'audio_manifestation': 'Abrupt and evasive voice when confronted with challenges'}/5
+Solution Generation: {'score': 1, 'solves_problems': "Doesn't demonstrate solution-generation, deflects problems to others", 'solutions_given': 'No self-generated solutions shown in the excerpt', 'audio_manifestation': 'Resigned and lacking confidence voice when faced with problems'}/5
+Consequence Ownership: {'score': 2, 'owns_mistakes': 'Avoids responsibility for tasks she would normally handle', 'blames_others': 'Makes excuses rather than taking responsibility', 'audio_manifestation': 'Evasive and heavy voice when dealing with consequences'}/5
+Overall Agency Score: 2/5
+
+----------------------------------------------------------------------
+HEROIC ARC TRACKING
+----------------------------------------------------------------------
+
+Character: Julia
+Current Phase: reluctant
+Phase Description: Julia is resisting her current life circumstances, avoiding responsibilities at work, and showing general reluctance to engage with her day. She's in a state of avoidance and evasion, possibly due to some recent event that has affected her.
+Audio Notes: {'voice_quality': 'Groggy when waking, confused when receiving the message, evasive when speaking with colleagues, and heavy sighing throughout', 'confidence_level': 'hesitant/uncertain', 'growth_markers': "Brief moment of reflection after receiving Tom's message: 'Smallest step in the right direction... right.'"}
+Transformation Progress: {'start_vs_end': "Julia starts the episode reluctant to get out of bed and ends the workday with another heavy sigh, showing she's still in the reluctant phase but with a small seed of change planted by the unexpected message.", 'voice_change': 'From groggy and confused to slightly more thoughtful but still hesitant, with a moment of reflection when considering the message.', 'next_episode_setup': 'Voice should maintain its hesitant quality but with potential for slight change as the message continues to resonate with her, possibly showing the beginning of movement toward the learning phase.'}
+
+----------------------------------------------------------------------
+PROBLEM FLAGS
+----------------------------------------------------------------------
+1. Passive Protagonist
+   Location: Julia's scene after receiving the text message
+   Issue: Julia receives Tom's motivational message by accident (wrong number) and merely reacts to it without making any active choices. She dismisses it and goes through her day without taking any initiative.
+   Fix: Have Julia save the number or screenshot the message, showing a conscious choice to engage with the content rather than passively receiving it. This small action demonstrates agency and sets up her growth arc.
+
+2. Static Character
+   Location: Julia's character arc throughout the episode
+   Issue: Julia starts the episode reluctant and ends with 'Another day' and a sigh, showing no meaningful change or growth despite being exposed to the motivational message.
+   Fix: Add a final scene where Julia takes a small but meaningful action that reflects the message's impact, such as looking up palliative care resources or making a note to talk to Linda about the Miller case.
+
+3. Inconsistent Competence
+   Location: Hospital scene with Dr. Martinez and Nurse Linda
+   Issue: The script mentions Julia 'usually handle[s] these so well' regarding Miller cases, but there's no context for why she's now avoiding these responsibilities, making her competence shift feel unexplained.
+   Fix: Add a brief line of dialogue or internal monologue that explains what changed for Julia, creating a clear reason for her current avoidance behavior.
+
+----------------------------------------------------------------------
+RECOMMENDED ADJUSTMENTS
+----------------------------------------------------------------------
+1. Add Active Choice
+   Current: JULIA
+(confused)
+What the—?
+
+[SFX: FINGERS TAPPING PHONE SCREEN.]
+
+JULIA
+Wrong number, I guess.
+
+[SFX: PHONE THUMPS ON MATTRESS. JULIA SITS UP WITH A HEAVY SIGH.]
+   Recommended: JULIA
+(confused)
+What the—?
+
+[SFX: FINGERS TAPPING PHONE SCREEN. PAUSE. MORE TAPPING.]
+
+JULIA
+Wrong number... but interesting timing.
+
+[SFX: PHONE SCREENSHOT SOUND. PHONE THUMPS ON MATTRESS. JULIA SITS UP, SIGHING BUT WITH LESS HEAVINESS.]
+   Reason: This change shows Julia actively choosing to engage with the message by saving it, demonstrating agency rather than passive reception. The screenshot sound provides audio evidence of her choice.
+
+2. Add Learning Moment
+   Current: [SFX: QUIET OFFICE AMBIENCE—CLOCK TICKING, KEYBOARD CLACKING SLOWLY.]
+
+[SFX: JULIA SITS HEAVILY IN CHAIR. SIGHS DEEPLY.]
+
+JULIA
+(to herself)
+Another day.
+   Recommended: [SFX: QUIET OFFICE AMBIENCE—CLOCK TICKING, KEYBOARD CLACKING SLOWLY.]
+
+[SFX: JULIA SITS HEAVILY IN CHAIR. PAUSES. TAKES OUT PHONE, UNLOCKS IT.]
+
+JULIA
+(to herself)
+Smallest step... right.
+
+[SFX: KEYBOARD TYPING. SEARCH RESULTS LOADING.]
+
+JULIA
+(softly, with determination)
+Okay. One step.
+   Reason: This shows Julia actively reflecting on the message and taking a small action (researching something related to her work), demonstrating the beginning of her growth arc and moving from passive to active.
+
+3. Track Abilities
+   Current: NURSE LINDA
+(concerned)
+Julia, you usually handle these so well.
+
+JULIA
+(evasive)
+I have that report due, remember?
+   Recommended: NURSE LINDA
+(concerned)
+Julia, you usually handle these so well.
+
+JULIA
+(evasive, with a touch of pain)
+Not since... not since the Johnson case. I have that report due, remember?
+   Reason: This addition provides context for Julia's current behavior, referencing a specific case that affected her, making her competence shift understandable and showing character depth.
+
+----------------------------------------------------------------------
+AUDIO DELIVERY NOTES
+----------------------------------------------------------------------
+1. Julia: When Julia receives the text message, start with a confused, groggy tone that gradually shifts to curiosity. When she decides to screenshot the message, add a slight brightening to her voice to indicate the first spark of interest. For her final scene, use a voice that's still heavy but with a new undertone of determination—less sighing, more purposeful pauses. The rain sounds should gradually fade throughout her scenes, symbolizing her emerging from her emotional storm.
+2. Tom: Tom's voice should maintain its warm, confident quality throughout, serving as an audio contrast to Julia's hesitance. When recording his motivational message, add subtle vocal layering to give it a sense of resonance and importance. The coffee maker sounds in his scenes should be consistent and comforting, establishing his character as grounded and purposeful.
+======================================================================
+END OF HEROIC JOURNEY ANALYSIS
+======================================================================

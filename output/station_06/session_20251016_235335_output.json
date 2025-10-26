@@ -1,0 +1,56 @@
+{
+  "Master Style Guide Document": {
+    "session_id": "session_20251016_235335",
+    "timestamp": "2025-10-18T14:42:07.999718",
+    "working_title": "The Accidental Lifeline",
+    "primary_genre": "Drama",
+    "target_age": "25-45",
+    "episode_count": "3-6 episodes",
+    "episode_length": "15-25 min each",
+    "narrator_strategy": "With Narrator",
+    "master_style_guide": {
+      "language_rules": {
+        "vocabulary_level": "Sophisticated but accessible, avoiding overly technical or esoteric terms (age-appropriate for 25-45 year olds with diverse backgrounds)",
+        "sentence_complexity": "Clear and well-structured sentences that avoid overly complex or convoluted narratives to ensure comprehension and engagement",
+        "technical_term_handling": "Minimize technical medical or coaching terminology; when necessary, provide context through dialogue or narration to ensure understanding",
+        "narrator_voice_guidelines": "Warm, expressive, with authentic emotional range and ability to convey vulnerability. The narrator should use a warm, inviting tone to convey romantic and hopeful moments, and a more serious, somber tone during tense and dramatic scenes.",
+        "age_appropriate_language": "No explicit sexual content, graphic violence, or extreme profanity (PG rating maintained). Content suitable for general audiences with parental guidance.",
+        "genre_specific_terminology": "Incorporate terminology related to motivation, personal growth, and emotional well-being that aligns with drama and romance genres",
+        "example_vocabulary": {
+          "use": [
+            "resilience",
+            "connection",
+            "reflection",
+            "authentic",
+            "compassion",
+            "transformation"
+          ],
+          "avoid": [
+            "graphic medical procedures",
+            "explicit trauma descriptions",
+            "extreme profanity",
+            "sexual explicitness"
+          ]
+        }
+      },
+      "dialect_accent_map": {
+        "character_voice_distinctions": "Tom should have a warm, motivational speaking style with clear articulation. Julia's voice should carry the weight of her professional role as an ER doctor but soften during personal moments. Sarah should have a distinct, professional client voice. Dr. Martinez should have a confident, authoritative medical professional tone.",
+        "regional_markers": "Set in a contemporary urban environment with neutral, standard accents reflecting professional diversity in a bustling city hospital setting. Avoid strong regional accents that might distract from the emotional content.",
+        "pronunciation_guide": {
+          "character_names": {
+            "Tom": "Tahm",
+            "Julia": "Joo-lee-ah",
+            "Sarah": "Sair-ah",
+            "Dr. Martinez": "Doc-ter Mar-TEE-nez"
+          },
+          "locations": {
+            "Hospital ER": "Hos-pih-tol Ee-Ahr",
+            "Coaching Office": "Koh-ching Aw-fis",
+            "Café": "Kah-fay"
+          }
+        }
+      }
+    },
+    "readable_summary": "======================================================================\nSTATION 6: MASTER STYLE GUIDE BUILDER\n======================================================================\n\nWorking Title: The Accidental Lifeline\nPrimary Genre: Drama\nTarget Age: 25-45\nEpisode Count: 3-6 episodes\nEpisode Length: 15-25 min each\nNarrator Strategy: With Narrator\n\n----------------------------------------------------------------------\nLANGUAGE RULES\n----------------------------------------------------------------------\n\nVocabulary Level: Sophisticated but accessible, avoiding overly technical or esoteric terms (age-appropriate for 25-45 year olds with diverse backgrounds)\nSentence Complexity: Clear and well-structured sentences that avoid overly complex or convoluted narratives to ensure comprehension and engagement\nTechnical Term Handling: Minimize technical medical or coaching terminology; when necessary, provide context through dialogue or narration to ensure understanding\nNarrator Voice Guidelines: Warm, expressive, with authentic emotional range and ability to convey vulnerability. The narrator should use a warm, inviting tone to convey romantic and hopeful moments, and a more serious, somber tone during tense and dramatic scenes.\nAge Appropriate Language: No explicit sexual content, graphic violence, or extreme profanity (PG rating maintained). Content suitable for general audiences with parental guidance.\nGenre Specific Terminology: Incorporate terminology related to motivation, personal growth, and emotional well-being that aligns with drama and romance genres\n\nExample Vocabulary:\n  Words to Use: resilience, connection, reflection, authentic, compassion, transformation\n  Words to Avoid: graphic medical procedures, explicit trauma descriptions, extreme profanity, sexual explicitness\n\n----------------------------------------------------------------------\nDIALECT/ACCENT MAP\n----------------------------------------------------------------------\n\nCharacter Voice Distinctions: Tom should have a warm, motivational speaking style with clear articulation. Julia's voice should carry the weight of her professional role as an ER doctor but soften during personal moments. Sarah should have a distinct, professional client voice. Dr. Martinez should have a confident, authoritative medical professional tone.\nRegional Markers: Set in a contemporary urban environment with neutral, standard accents reflecting professional diversity in a bustling city hospital setting. Avoid strong regional accents that might distract from the emotional content.\n\nPronunciation Guide:\n  Character Names:\n    Tom: Tahm\n    Julia: Joo-lee-ah\n    Sarah: Sair-ah\n    Dr. Martinez: Doc-ter Mar-TEE-nez\n  Locations:\n    Hospital ER: Hos-pih-tol Ee-Ahr\n    Coaching Office: Koh-ching Aw-fis\n    Café: Kah-fay\nVoice Casting Notes: N/A\nAccent Consistency Rules: N/A\n\n======================================================================\nEND OF MASTER STYLE GUIDE\n======================================================================"
+  }
+}

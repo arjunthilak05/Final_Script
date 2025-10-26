@@ -1,0 +1,56 @@
+============================================================
+STATION 1: SEED PROCESSOR OUTPUT
+============================================================
+
+Session ID: session_20251016_230814
+Timestamp: 2025-10-16T23:10:24.812986
+Input Type: one-liner
+
+------------------------------------------------------------
+ORIGINAL SEED:
+------------------------------------------------------------
+king is a king
+
+------------------------------------------------------------
+CHOSEN SCALE: OPTION A
+------------------------------------------------------------
+Type: MINI
+Episodes: 3-6 episodes
+Length: 15-25 min each
+Word Count: 15,000-30,000 total
+Best For: contained stories, single mystery, limited cast
+Justification: The seed 'king is a king' suggests a focused exploration of identity and leadership that could be effectively contained in a mini-series format. A shorter run would allow for a concise examination of what truly defines a king without unnecessary complexity.
+
+------------------------------------------------------------
+WORKING TITLES:
+------------------------------------------------------------
+  [ ] 1. The Crown Within
+  [✓] 2. Royal Blood
+  [ ] 3. King by Nature
+
+CHOSEN: Royal Blood
+
+------------------------------------------------------------
+INITIAL EXPANSION:
+------------------------------------------------------------
+
+Core Premise:
+King Alexander must reconcile his personal identity with the weight of the crown after discovering a family secret that challenges his legitimacy to the throne. As political forces conspire against him, he must determine what truly makes a king worthy of ruling. The story explores whether kingship is defined by birthright, character, or the ability to lead through crisis.
+
+Central Conflict:
+King Alexander faces a brewing rebellion led by those who question his right to rule, forcing him to prove his worthiness beyond mere bloodline. As external threats to the kingdom mount, he must navigate treacherous political waters while staying true to his vision of leadership. The ultimate question becomes whether a king is defined by his title or by his actions in protecting his people.
+
+Episode Rationale:
+An 8-12 episode structure allows for thorough character development of King Alexander and those around him as he faces challenges to his rule. This length provides enough space to explore political intrigue, personal growth, and kingdom-wide threats without becoming overly complex. Each episode can focus on different aspects of kingship while building toward a satisfying resolution of the central conflict.
+
+Breaking Points:
+  1. Episode 3 ending: Evidence surfaces suggesting King Alexander may not be the rightful heir, throwing the kingdom into turmoil.
+  2. Episode 6 ending: A trusted advisor betrays King Alexander, leaving him isolated as enemies close in.
+  3. Episode 9 ending: Kingdom-wide rebellion begins, forcing the king to flee or make a desperate stand.
+  4. Episode 12 ending: King Alexander must make the ultimate sacrifice to prove his worthiness and save his kingdom.
+
+Main Characters:
+  • King Alexander
+  • Queen Eleanor
+  • Lord Marcus
+  • Princess Isabella

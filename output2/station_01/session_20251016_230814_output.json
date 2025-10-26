@@ -1,0 +1,36 @@
+{
+  "original_seed": "king is a king",
+  "seed_type": "one-liner",
+  "chosen_option": "A",
+  "option_details": {
+    "type": "MINI",
+    "episode_count": "3-6 episodes",
+    "episode_length": "15-25 min each",
+    "word_count": "15,000-30,000 total",
+    "best_for": "contained stories, single mystery, limited cast",
+    "justification": "The seed 'king is a king' suggests a focused exploration of identity and leadership that could be effectively contained in a mini-series format. A shorter run would allow for a concise examination of what truly defines a king without unnecessary complexity."
+  },
+  "working_titles": [
+    "The Crown Within",
+    "Royal Blood",
+    "King by Nature"
+  ],
+  "chosen_title": "Royal Blood",
+  "core_premise": "King Alexander must reconcile his personal identity with the weight of the crown after discovering a family secret that challenges his legitimacy to the throne. As political forces conspire against him, he must determine what truly makes a king worthy of ruling. The story explores whether kingship is defined by birthright, character, or the ability to lead through crisis.",
+  "central_conflict": "King Alexander faces a brewing rebellion led by those who question his right to rule, forcing him to prove his worthiness beyond mere bloodline. As external threats to the kingdom mount, he must navigate treacherous political waters while staying true to his vision of leadership. The ultimate question becomes whether a king is defined by his title or by his actions in protecting his people.",
+  "episode_rationale": "An 8-12 episode structure allows for thorough character development of King Alexander and those around him as he faces challenges to his rule. This length provides enough space to explore political intrigue, personal growth, and kingdom-wide threats without becoming overly complex. Each episode can focus on different aspects of kingship while building toward a satisfying resolution of the central conflict.",
+  "breaking_points": [
+    "Episode 3 ending: Evidence surfaces suggesting King Alexander may not be the rightful heir, throwing the kingdom into turmoil.",
+    "Episode 6 ending: A trusted advisor betrays King Alexander, leaving him isolated as enemies close in.",
+    "Episode 9 ending: Kingdom-wide rebellion begins, forcing the king to flee or make a desperate stand.",
+    "Episode 12 ending: King Alexander must make the ultimate sacrifice to prove his worthiness and save his kingdom."
+  ],
+  "main_characters": [
+    "King Alexander",
+    "Queen Eleanor",
+    "Lord Marcus",
+    "Princess Isabella"
+  ],
+  "session_id": "session_20251016_230814",
+  "timestamp": "2025-10-16T23:10:24.812986"
+}

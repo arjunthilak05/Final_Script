@@ -1,0 +1,119 @@
+{
+  "working_title": "Royal Blood",
+  "original_seed": "king is a king",
+  "seed_type": "one-liner",
+  "scale_type": "MINI",
+  "episode_count": "3-6 episodes",
+  "episode_length": "15-25 min each",
+  "world_setting": {
+    "time_period": "Medieval period, set in a kingdom reminiscent of 14th century Europe, a time of grand castles, feudal systems, and frequent political strife",
+    "primary_location": "The Royal Castle of Eldoria, a grand and imposing structure with stone walls and towering spires",
+    "setting_type": "Realistic Historical",
+    "atmosphere": "A blend of regal solemnity and underlying tension, with moments of personal introspection and political drama",
+    "key_locations": [
+      "The Great Hall: Echoes of footsteps and the distant murmur of courtiers, punctuated by the sound of heavy wooden doors opening and closing",
+      "The King's Study: The soft crackle of a fireplace, the rustle of parchment, and the occasional quill scratching on paper",
+      "The Castle Courtyard: The clatter of horses' hooves, the clang of swords during training, and the distant calls of guards on the walls"
+    ],
+    "historical_context": "The kingdom of Eldoria is in a period of relative peace following a long and brutal war. However, old alliances are fraying, and new threats are emerging. The discovery of King Alexander's questionable lineage has reignited old feuds and sparked a brewing rebellion.",
+    "cultural_elements": [
+      "Feudal System: The kingdom is structured around a feudal system, with lords and vassals owing fealty to the king",
+      "Chivalric Code: Knights and nobles adhere to a strict code of honor and chivalry, which often influences their actions and decisions",
+      "Courtly Love: Romantic and chivalrous relationships are common among the nobility, adding layers of intrigue and personal drama"
+    ]
+  },
+  "format_specifications": {
+    "series_type": "Mini",
+    "episode_count": "3-6 episodes",
+    "episode_length": "15-25 min each",
+    "season_structure": "Each episode focuses on different aspects of kingship while building toward a satisfying resolution of the central conflict.",
+    "pacing_strategy": "An 8-12 episode structure allows for thorough character development of King Alexander and those around him as he faces challenges to his rule. This length provides enough space to explore political intrigue, personal growth, and kingdom-wide threats without becoming overly complex.",
+    "narrative_structure": "The story explores whether kingship is defined by birthright, character, or the ability to lead through crisis, with each episode delving into specific challenges and character interactions that build toward the central conflict."
+  },
+  "genre_tone": {
+    "primary_genre": "Political Drama",
+    "secondary_genres": [
+      "Historical Fiction",
+      "Fantasy"
+    ],
+    "tone_descriptors": [
+      "Intense",
+      "Reflective",
+      "Suspenseful"
+    ],
+    "mood_profile": "A somber and tense atmosphere with moments of introspection and high-stakes political maneuvering, set against the backdrop of a kingdom on the brink of crisis.",
+    "genre_conventions": [
+      "Courtly intrigue and political machinations",
+      "Thematic exploration of power and legitimacy"
+    ]
+  },
+  "creative_promises": {
+    "must_have_elements": [
+      "A pivotal family secret that challenges King Alexander's legitimacy to the throne.",
+      "Political intrigue and a brewing rebellion led by those who question King Alexander's right to rule.",
+      "Personal and character growth of King Alexander as he navigates the challenges of leadership and personal identity."
+    ],
+    "must_avoid_elements": [
+      "Overly complex subplots that detract from the central conflict and character arcs.",
+      "Unnecessary romantic subplots that overshadow the political and personal struggles.",
+      "Excessive exposition that slows down the narrative pace."
+    ],
+    "unique_selling_points": [
+      "A deep exploration of the moral and ethical dimensions of leadership, questioning whether kingship is defined by birthright, character, or the ability to lead through crisis.",
+      "Dynamic and well-developed characters, including King Alexander, Queen Eleanor, Lord Marcus, and Princess Isabella, each with their own motivations and conflicts.",
+      "A gripping blend of political intrigue, personal drama, and kingdom-wide threats that keep listeners engaged and invested in the outcome of the story."
+    ]
+  },
+  "audience_profile": {
+    "primary_age_range": "25-45",
+    "target_demographics": [
+      "History Enthusiasts",
+      "Fantasy Literature Fans"
+    ],
+    "core_interests": [
+      "Medieval History",
+      "Political Intrigue",
+      "Character Development"
+    ],
+    "listening_context": "Commuting and Evening Relaxation",
+    "content_preferences": [
+      "Dramatic Narration",
+      "Engaging Dialogue"
+    ]
+  },
+  "production_constraints": {
+    "content_rating": "PG-13",
+    "budget_tier": "Medium Budget",
+    "technical_requirements": [
+      "High-quality audio recording equipment",
+      "Professional voice actors for main characters"
+    ],
+    "content_restrictions": [
+      "No explicit violence",
+      "No adult themes or language"
+    ],
+    "distribution_channels": [
+      "Audible",
+      "Spotify"
+    ]
+  },
+  "creative_team": {
+    "required_roles": [
+      "Head Writer",
+      "Character Development Specialist",
+      "Political Intrigue Consultant"
+    ],
+    "specialized_skills": [
+      "Scriptwriting for Short Series",
+      "Historical Research"
+    ],
+    "team_structure": "The team is organized with a Head Writer overseeing the overall narrative and structure, a Character Development Specialist focusing on the depth and growth of King Alexander and other key characters, and a Political Intrigue Consultant to ensure the political elements are realistic and engaging. Additional writers and researchers support these roles.",
+    "collaboration_style": "The team works in a highly collaborative environment, with regular brainstorming sessions and detailed feedback loops. Each episode is reviewed by the entire team to ensure consistency and depth. The Head Writer facilitates these sessions and makes final decisions on creative direction.",
+    "key_partnerships": [
+      "Historical Consultant",
+      "Cultural Advisor"
+    ]
+  },
+  "session_id": "session_20251016_230814",
+  "timestamp": "2025-10-16T23:14:05.904558"
+}

@@ -1,0 +1,384 @@
+{
+  "session_id": "session_20251023_112749",
+  "timestamp": "20251023_173041",
+  "project_title": "The Accidental Lifeline",
+  "episode_count": "8-12 episodes",
+  "blueprint_data": {
+    "simple_episode_blueprints": [
+      {
+        "episode_number": 1,
+        "episode_title": "Wrong Number",
+        "simple_summary": "Tom, a dedicated life coach, begins his day by sending motivational messages to his client Sarah, unaware that he's been sending them to the wrong number. Julia, a burned-out ER doctor struggling with depression, receives these messages and finds them to be the only bright spot in her day. The episode establishes both characters in their respective environments - Tom in his cozy apartment and Julia in the sterile, chaotic hospital - showing their contrasting lives and emotional states. As they both navigate their challenging days, they unknowingly share a connection through these messages, setting up the central premise of the series.",
+        "character_arcs": [
+          {
+            "character_name": "Tom",
+            "goal": "To help his client Sarah find motivation and purpose through daily messages",
+            "obstacle": "Unbeknownst to him, his messages aren't reaching their intended recipient",
+            "growth": "Tom's commitment to helping others is established, though his methods will be tested"
+          },
+          {
+            "character_name": "Julia",
+            "goal": "To survive another difficult day at work while battling depression",
+            "obstacle": "Emotional exhaustion and the high-stress environment of the ER",
+            "growth": "Julia discovers an unexpected source of strength and hope in Tom's messages"
+          }
+        ],
+        "story_connections": [
+          "Establishes the core premise of the accidental connection between Tom and Julia",
+          "Sets up the mystery of why Sarah isn't receiving messages",
+          "Introduces the key settings and supporting characters"
+        ],
+        "key_beats": [
+          "Tom sends his morning motivational message to the wrong number",
+          "Julia receives the message and finds comfort in it",
+          "We see both characters' daily struggles and emotional states"
+        ],
+        "emotional_tone": "Hopeful yet melancholic",
+        "cliffhanger_note": "Julia receives another message from Tom that speaks directly to her struggles, making her wonder if somehow he knows her."
+      },
+      {
+        "episode_number": 2,
+        "episode_title": "A Lifeline",
+        "simple_summary": "Julia's dependence on Tom's messages deepens as she faces a particularly grueling shift at the hospital. A traumatic case triggers memories of past professional failures, intensifying her depression. Meanwhile, Tom notices some inconsistencies in his client Sarah's responses but dismisses them as Sarah having an off week. We see Julia beginning to find small moments of strength through Tom's words, reciting them to herself during difficult moments. The episode explores the impact of these messages on both characters' daily lives, with Julia finding them increasingly essential for her mental health, while Tom remains oblivious to their profound effect on a stranger.",
+        "character_arcs": [
+          {
+            "character_name": "Julia",
+            "goal": "To get through a particularly challenging shift at the hospital",
+            "obstacle": "A traumatic medical case that triggers her professional insecurities",
+            "growth": "Julia begins to actively rely on Tom's messages as emotional support"
+          },
+          {
+            "character_name": "Tom",
+            "goal": "To maintain his coaching practice and help his clients",
+            "obstacle": "Subtle inconsistencies in Sarah's responses that hint at the messaging error",
+            "growth": "Tom's confidence in his methods is maintained, though seeds of doubt are planted"
+          }
+        ],
+        "story_connections": [
+          "Deepens Julia's emotional dependence on Tom's messages",
+          "Sets up the revelation that Tom is messaging the wrong person",
+          "Introduces Julia's professional struggles that will be explored throughout the series"
+        ],
+        "key_beats": [
+          "Julia faces a difficult case at the hospital",
+          "Tom sends another message that resonates deeply with Julia",
+          "Julia begins to suspect Tom might be more than just a random coach"
+        ],
+        "emotional_tone": "Tense and emotional",
+        "cliffhanger_note": "Julia makes her first anonymous donation to Tom's coaching business, feeling compelled to support the person who has unknowingly saved her."
+      },
+      {
+        "episode_number": 3,
+        "episode_title": "The Discovery",
+        "simple_summary": "Tom's actual client Sarah calls him, frustrated that she hasn't received any messages in weeks, leading Tom to discover he's been sending messages to the wrong number all this time. Simultaneously, Julia experiences a breakthrough at work, directly applying advice from Tom's messages to save a patient's life, reinforcing her belief in their connection. Tom becomes increasingly concerned about who has been receiving his messages and the potential impact this mistake might have had. The episode builds tension as both characters grapple with revelations - Tom about his professional error, and Julia about the miraculous coincidence of receiving exactly the right messages at the right time.",
+        "character_arcs": [
+          {
+            "character_name": "Tom",
+            "goal": "To understand how the messaging error occurred and who has been receiving his messages",
+            "obstacle": "The technical mystery of the wrong number and ethical concerns about privacy",
+            "growth": "Tom's professional confidence is shaken, forcing him to question his methods"
+          },
+          {
+            "character_name": "Julia",
+            "goal": "To apply Tom's advice to a challenging medical situation",
+            "obstacle": "The high-stakes environment of the ER and her own self-doubt",
+            "growth": "Julia gains professional confidence through implementing Tom's motivational advice"
+          }
+        ],
+        "story_connections": [
+          "Reveals the core conflict of the wrong number messaging",
+          "Shows Julia's growing investment in Tom's guidance",
+          "Sets up Tom's investigation into who has been receiving his messages"
+        ],
+        "key_beats": [
+          "Sarah calls Tom about not receiving messages",
+          "Tom discovers he's been messaging the wrong number",
+          "Julia successfully applies Tom's advice to save a patient"
+        ],
+        "emotional_tone": "Surprising and tense",
+        "cliffhanger_note": "Tom decides he must find out who has been receiving his messages, concerned about the potential impact of his words on a stranger."
+      },
+      {
+        "episode_number": 4,
+        "episode_title": "Tracing the Connection",
+        "simple_summary": "Tom begins his investigation to trace the wrong number, initially focusing on technical solutions but soon becoming personally invested in understanding the recipient. He reflects on the content of his messages, wondering how they might have impacted an unknown person. Julia continues to draw strength from Tom's words, sharing them with her colleague Dr. Martinez who questions the wisdom of depending on advice from an unknown source. We see flashbacks to Tom's past struggles that inform his coaching philosophy, adding depth to his character. The episode explores the growing mystery and ethical dilemma as Tom becomes increasingly determined to find the person who has been receiving his messages.",
+        "character_arcs": [
+          {
+            "character_name": "Tom",
+            "goal": "To identify the person who has been receiving his messages",
+            "obstacle": "Technical barriers and ethical concerns about privacy",
+            "growth": "Tom's motivation shifts from professional to personal as he becomes invested in the unknown recipient"
+          },
+          {
+            "character_name": "Julia",
+            "goal": "To defend the value of Tom's messages to her skeptical colleague",
+            "obstacle": "Dr. Martinez's concerns about Julia's dependence on unknown advice",
+            "growth": "Julia becomes more confident in the positive impact of the messages on her life"
+          }
+        ],
+        "story_connections": [
+          "Advances Tom's investigation into the wrong number",
+          "Explores Julia's professional relationships and how they're affected by her connection to Tom",
+          "Provides backstory for Tom's coaching philosophy"
+        ],
+        "key_beats": [
+          "Tom attempts to trace the wrong number through technical means",
+          "Julia shares Tom's messages with Dr. Martinez",
+          "Flashbacks reveal Tom's personal struggles that inform his coaching"
+        ],
+        "emotional_tone": "Investigative and reflective",
+        "cliffhanger_note": "Tom discovers a clue that suggests the recipient might be in the medical field, narrowing his search."
+      },
+      {
+        "episode_number": 5,
+        "episode_title": "The Anonymous Benefactor",
+        "simple_summary": "Tom makes significant progress in his investigation, discovering that the wrong number belongs to someone in the city's medical community. Meanwhile, he notices unusual financial activity in his business account, with anonymous donations that seem connected to the messaging error. Julia makes another substantial anonymous donation to Tom's business, feeling increasingly invested in supporting the person who has helped her. Tom's colleague Mark questions the ethics of accepting anonymous funds, creating tension between them. The episode builds toward the revelation of Julia's financial support, adding another layer to the mysterious connection between these two strangers.",
+        "character_arcs": [
+          {
+            "character_name": "Tom",
+            "goal": "To understand the anonymous donations and identify the recipient",
+            "obstacle": "Ethical concerns about privacy and the mysterious nature of the donations",
+            "growth": "Tom's investigation becomes more personal as he realizes the depth of the connection"
+          },
+          {
+            "character_name": "Julia",
+            "goal": "To support Tom's business while maintaining her anonymity",
+            "obstacle": "The ethical dilemma of her actions and the emotional investment involved",
+            "growth": "Julia becomes more proactive in supporting what she values, despite the secrecy"
+          }
+        ],
+        "story_connections": [
+          "Reveals Julia's anonymous support of Tom's business",
+          "Narrows Tom's search to the medical community",
+          "Creates tension between Tom and his colleague Mark"
+        ],
+        "key_beats": [
+          "Tom discovers the recipient might be in medicine",
+          "Tom notices unusual financial activity in his business account",
+          "Julia makes another anonymous donation to Tom's business"
+        ],
+        "emotional_tone": "Mysterious and tense",
+        "cliffhanger_note": "Tom discovers that the anonymous donations and the wrong number are connected, realizing that the person receiving his messages is also supporting his business."
+      },
+      {
+        "episode_number": 6,
+        "episode_title": "The Closing Gap",
+        "simple_summary": "Tom narrows his search to City General Hospital, where Julia works, creating a sense of impending discovery. Julia faces a critical medical emergency that tests her newfound confidence, with Tom's latest message providing the exact guidance she needs in the moment. Sarah, Tom's actual client, becomes increasingly frustrated with the lack of communication and threatens to end their coaching relationship. The episode builds parallel tension as both characters' professional lives reach crisis points, unaware of how closely connected their struggles are. Tom's determination to find the recipient intensifies as he realizes the potential impact his messages have had.",
+        "character_arcs": [
+          {
+            "character_name": "Tom",
+            "goal": "To identify the specific person at City General who has been receiving his messages",
+            "obstacle": "The size of the hospital and privacy concerns that limit his investigation",
+            "growth": "Tom's sense of responsibility toward the unknown recipient deepens"
+          },
+          {
+            "character_name": "Julia",
+            "goal": "To handle a major medical emergency at the hospital",
+            "obstacle": "The high-stakes situation and her lingering self-doubt",
+            "growth": "Julia fully embraces the confidence Tom's messages have given her"
+          }
+        ],
+        "story_connections": [
+          "Brings Tom physically closer to discovering Julia",
+          "Creates a crisis in Julia's professional life that Tom's messages help resolve",
+          "Raises the stakes with Sarah threatening to end her coaching relationship"
+        ],
+        "key_beats": [
+          "Tom narrows his search to City General Hospital",
+          "Julia faces a critical medical emergency",
+          "Sarah threatens to end her coaching relationship with Tom"
+        ],
+        "emotional_tone": "Tense and urgent",
+        "cliffhanger_note": "Tom arrives at City General Hospital, believing he's close to identifying the recipient, while Julia is dealing with the aftermath of the medical emergency, making their paths likely to cross soon."
+      },
+      {
+        "episode_number": 7,
+        "episode_title": "The First Meeting",
+        "simple_summary": "Tom visits City General Hospital, following clues that lead him closer to the recipient. He has a brief, unrecognizing encounter with Julia in a hospital hallway, where she helps him find his way to the administration office. Julia is drawn to his voice, finding it familiar without understanding why. The episode explores Julia's improved professional demeanor and confidence, which colleagues attribute to a mysterious change in her attitude. Tom's investigation hits a roadblock when hospital administration cites privacy concerns, forcing him to reconsider his approach. The tension builds as the two characters come within inches of discovering their connection without realizing it.",
+        "character_arcs": [
+          {
+            "character_name": "Tom",
+            "goal": "To identify the recipient despite hospital privacy restrictions",
+            "obstacle": "Bureaucratic barriers and ethical concerns about privacy",
+            "growth": "Tom develops a more nuanced understanding of the ethical implications of his investigation"
+          },
+          {
+            "character_name": "Julia",
+            "goal": "To maintain her professional confidence while helping a lost visitor",
+            "obstacle": "A nagging sense of familiarity about Tom's voice that she can't place",
+            "growth": "Julia's professional transformation becomes more pronounced and noticeable to others"
+          }
+        ],
+        "story_connections": [
+          "Brings Tom and Julia into physical proximity without revealing their connection",
+          "Shows Julia's professional transformation becoming evident to her colleagues",
+          "Creates a new obstacle for Tom's investigation in the form of hospital privacy policies"
+        ],
+        "key_beats": [
+          "Tom and Julia have a brief encounter in the hospital hallway",
+          "Tom's investigation is blocked by hospital privacy policies",
+          "Julia's colleagues notice her improved professional demeanor"
+        ],
+        "emotional_tone": "Anticipatory and tense",
+        "cliffhanger_note": "Julia mentions to Dr. Martinez about the familiar-sounding man she helped in the hallway, while Tom decides to try a different approach to identify the recipient."
+      },
+      {
+        "episode_number": 8,
+        "episode_title": "The Connection Revealed",
+        "simple_summary": "Tom changes tactics, creating a motivational workshop at the hospital that he hopes will draw out the recipient. Julia attends, initially unaware that the speaker is the same person whose messages have transformed her life. As Tom speaks, Julia recognizes the voice and the familiar phrases that have guided her through difficult moments. The revelation hits her during the workshop, creating an emotional climax. Tom notices Julia's reaction and begins to suspect she might be the person he's been searching for. The episode builds to a powerful moment of mutual discovery as both characters realize the profound impact they've had on each other's lives without ever meeting.",
+        "character_arcs": [
+          {
+            "character_name": "Tom",
+            "goal": "To identify the recipient through a hospital workshop",
+            "obstacle": "The challenge of making a connection without revealing his true purpose",
+            "growth": "Tom's approach shifts from investigation to creating opportunities for connection"
+          },
+          {
+            "character_name": "Julia",
+            "goal": "To attend a potentially helpful workshop for professional development",
+            "obstacle": "The emotional shock of discovering the source of her lifeline messages",
+            "growth": "Julia transitions from being a passive recipient to an active participant in her own transformation"
+          }
+        ],
+        "story_connections": [
+          "Creates the moment of mutual discovery between Tom and Julia",
+          "Resolves the mystery of the wrong number messaging",
+          "Sets up the direct relationship between the two characters"
+        ],
+        "key_beats": [
+          "Tom creates a workshop at the hospital",
+          "Julia attends the workshop and recognizes Tom's voice",
+          "Both characters realize their connection"
+        ],
+        "emotional_tone": "Revelatory and emotional",
+        "cliffhanger_note": "Tom and Julia finally speak directly after the workshop, both overwhelmed by the discovery of their connection and its profound impact on both their lives."
+      },
+      {
+        "episode_number": 9,
+        "episode_title": "The Aftermath",
+        "simple_summary": "Tom and Julia have their first real conversation, processing the shock of their discovery and sharing their respective experiences. Julia explains how Tom's messages helped her through severe depression and professional burnout, while Tom shares his journey of trying to find her. They navigate the awkward transition from anonymous connection to direct relationship, with both characters grappling with the changed dynamic. Sarah, Tom's actual client, finally receives a proper explanation and decides to continue their coaching relationship. The episode explores the challenges of transitioning from an idealized anonymous connection to a real relationship with all its complexities and imperfections.",
+        "character_arcs": [
+          {
+            "character_name": "Tom",
+            "goal": "To understand the full impact of his messages on Julia's life",
+            "obstacle": "The emotional weight of responsibility and the changed dynamic of their relationship",
+            "growth": "Tom gains deeper insight into the power of his words and their real-world impact"
+          },
+          {
+            "character_name": "Julia",
+            "goal": "To explain her journey and express gratitude to Tom",
+            "obstacle": "The vulnerability of sharing her struggles and the awkwardness of the new dynamic",
+            "growth": "Julia becomes more open about her mental health journey and takes ownership of her healing"
+          }
+        ],
+        "story_connections": [
+          "Resolves the mystery and establishes direct communication between Tom and Julia",
+          "Provides closure for Sarah's storyline as Tom's client",
+          "Sets up the new dynamic between Tom and Julia as they navigate their relationship"
+        ],
+        "key_beats": [
+          "Tom and Julia have their first real conversation",
+          "Julia shares how Tom's messages helped her through depression",
+          "Sarah receives an explanation from Tom and decides to continue coaching"
+        ],
+        "emotional_tone": "Vulnerable and reflective",
+        "cliffhanger_note": "Julia reveals that she's been funding Tom's business anonymously, adding another layer to their complex connection that Tom must process."
+      },
+      {
+        "episode_number": 10,
+        "episode_title": "Building a New Foundation",
+        "simple_summary": "Tom and Julia attempt to establish a new relationship based on their shared history but with direct communication. They face challenges as the idealized anonymous connection gives way to the reality of two imperfect people getting to know each other. Julia struggles with the fear that Tom's direct coaching might not have the same impact as the anonymous messages, while Tom worries about maintaining the authenticity that made his messages so effective. Sarah returns to her role as Tom's client, with their coaching relationship strengthened by the recent challenges. The episode explores the transition from accidental lifeline to intentional relationship, with both characters learning to navigate this new territory.",
+        "character_arcs": [
+          {
+            "character_name": "Tom",
+            "goal": "To adapt his coaching style for Julia while maintaining its effectiveness",
+            "obstacle": "The pressure of direct coaching and the changed dynamic",
+            "growth": "Tom develops a more nuanced approach to coaching that accounts for personal connection"
+          },
+          {
+            "character_name": "Julia",
+            "goal": "To maintain the benefits of Tom's guidance in their new dynamic",
+            "obstacle": "The challenge of separating the idealized anonymous connection from reality",
+            "growth": "Julia learns to take more ownership of her healing process rather than relying solely on Tom's guidance"
+          }
+        ],
+        "story_connections": [
+          "Explores the transition from anonymous to direct relationship between Tom and Julia",
+          "Strengthens Sarah's role as Tom's client",
+          "Develops the themes of authenticity and intentional connection"
+        ],
+        "key_beats": [
+          "Tom and Julia attempt to establish their new relationship",
+          "Julia worries that direct coaching won't be as effective",
+          "Sarah returns as Tom's client with a strengthened relationship"
+        ],
+        "emotional_tone": "Hopeful but challenging",
+        "cliffhanger_note": "Julia faces a major professional crisis that tests her newfound independence from Tom's guidance, forcing both to confront the limitations of their evolving relationship."
+      },
+      {
+        "episode_number": 11,
+        "episode_title": "The Test of Independence",
+        "simple_summary": "Julia faces a critical medical emergency that tests her ability to function without relying on Tom's direct guidance. As she navigates the crisis, she discovers that the internalized lessons from his messages have become part of her own professional toolkit. Tom must resist the urge to intervene directly, trusting that he's equipped Julia with what she needs. Sarah achieves a breakthrough in her coaching sessions, applying Tom's methods to her own challenges. The episode explores the theme of independence and the process of internalizing guidance rather than depending on external support. Both characters face tests of their growth, discovering whether their transformation is sustainable.",
+        "character_arcs": [
+          {
+            "character_name": "Tom",
+            "goal": "To trust in Julia's ability to handle challenges without his direct intervention",
+            "obstacle": "The urge to help and the fear that she might not be ready",
+            "growth": "Tom learns to step back and trust in the effectiveness of his coaching"
+          },
+          {
+            "character_name": "Julia",
+            "goal": "To handle a major professional crisis independently",
+            "obstacle": "The temptation to rely on Tom's guidance and her lingering self-doubt",
+            "growth": "Julia discovers that she has internalized Tom's lessons and can apply them independently"
+          }
+        ],
+        "story_connections": [
+          "Tests Julia's independence and the sustainability of her growth",
+          "Shows progress in Sarah's coaching journey",
+          "Develops the theme of internalized learning versus external dependence"
+        ],
+        "key_beats": [
+          "Julia faces a critical medical emergency",
+          "Tom resists the urge to intervene directly",
+          "Sarah achieves a breakthrough in her coaching"
+        ],
+        "emotional_tone": "Tense but ultimately empowering",
+        "cliffhanger_note": "Julia successfully handles the crisis, proving to herself and Tom that she has truly internalized his guidance, but she realizes she needs to define her own path forward independent of his influence."
+      },
+      {
+        "episode_number": 12,
+        "episode_title": "The Accidental Lifeline",
+        "simple_summary": "Tom and Julia reflect on their unexpected journey and the transformation they've both undergone. Julia decides to pursue additional training in mental health support for medical professionals, building on her own experience to help others. Tom considers expanding his practice to include support for healthcare workers, inspired by Julia's journey. They establish a new relationship based on mutual respect and shared purpose rather than dependency. The episode concludes with both characters finding closure in their accidental connection while embracing the intentional paths they've chosen. Sarah continues her coaching journey with newfound confidence. The series ends with a sense of hopeful new beginnings, all stemming from the simple mistake of a wrong number.",
+        "character_arcs": [
+          {
+            "character_name": "Tom",
+            "goal": "To define his new relationship with Julia and his future coaching direction",
+            "obstacle": "Balancing professional boundaries with personal connection",
+            "growth": "Tom finds a new purpose inspired by Julia's journey"
+          },
+          {
+            "character_name": "Julia",
+            "goal": "To chart her own path forward while maintaining her connection with Tom",
+            "obstacle": "Defining her independence while acknowledging the role Tom played in her transformation",
+            "growth": "Julia embraces her role as a helper to others based on her own healing journey"
+          }
+        ],
+        "story_connections": [
+          "Provides closure for the main characters' journeys",
+          "Shows the continued growth of Sarah as a client",
+          "Resolves the themes of accidental connection and intentional growth"
+        ],
+        "key_beats": [
+          "Julia decides to pursue training in mental health support",
+          "Tom considers expanding his practice to help healthcare workers",
+          "Tom and Julia establish their new relationship based on mutual respect"
+        ],
+        "emotional_tone": "Hopeful and reflective",
+        "cliffhanger_note": "The series concludes with a sense of new beginnings, as both characters embrace the paths forward that were inspired by their accidental connection."
+      }
+    ],
+    "series_arc_summary": "The Accidental Lifeline follows the journey of Tom, a life coach, and Julia, an ER doctor struggling with depression, who become connected when Tom accidentally sends motivational messages to Julia's number instead of his client's. The series explores how this mistake becomes a transformative force in both their lives, as Julia finds strength in the messages while Tom becomes increasingly invested in identifying the unknown recipient. Their eventual discovery of each other leads to a complex exploration of dependency, independence, and intentional connection. The series ultimately shows how accidental connections can inspire intentional growth, with both characters finding new purpose in helping others based on their shared experience.",
+    "character_journey_summary": "Tom begins as a confident life coach whose professional world is shaken when he discovers his messages have been reaching the wrong person. His journey evolves from professional investigator to personally invested guide, ultimately finding new purpose in helping healthcare workers. Julia transforms from a burned-out, depressed doctor dependent on anonymous messages to an empowered professional who internalizes guidance and finds new purpose in helping others with mental health challenges. Both characters evolve from an accidental, idealized connection to a real, imperfect relationship based on mutual respect and shared purpose, demonstrating sustainable growth that goes beyond their initial dependency dynamic."
+  }
+}

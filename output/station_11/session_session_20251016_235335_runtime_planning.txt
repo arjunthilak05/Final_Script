@@ -1,0 +1,129 @@
+================================================================================
+STATION 11: RUNTIME PLANNING - COMPREHENSIVE OUTPUT
+================================================================================
+
+Session ID: session_20251016_235335
+Generated: 2025-10-18 23:55:36
+
+EPISODE BREAKDOWN
+----------------------------------------
+
+Episode 1:
+  Total Runtime: 20 minutes
+  Segment Allocation:
+    Teaser Cold Open: 2 minutes
+    Act 1: 6 minutes
+    Act 2: 8 minutes
+    Act 3: 3 minutes
+    Tag Credits: 1 minutes
+  Word Budget:
+    Total Words: 3100
+    Words/Minute: 155
+    Dialogue: 60%
+    Narration: 40%
+  Pacing Type: standard
+  Special Notes: Establishing emotional depth and gentle optimism. Introduction of main characters and their initial interactions.
+
+Episode 2:
+  Total Runtime: 20 minutes
+  Segment Allocation:
+    Teaser Cold Open: 2 minutes
+    Act 1: 6 minutes
+    Act 2: 8 minutes
+    Act 3: 3 minutes
+    Tag Credits: 1 minutes
+  Word Budget:
+    Total Words: 3100
+    Words/Minute: 155
+    Dialogue: 60%
+    Narration: 40%
+  Pacing Type: standard
+  Special Notes: Continued tone establishment with a midpoint shift to more emotionally charged interactions between main characters.
+
+Episode 3:
+  Total Runtime: 20 minutes
+  Segment Allocation:
+    Teaser Cold Open: 1.5 minutes
+    Act 1: 6 minutes
+    Act 2: 9 minutes
+    Act 3: 2.5 minutes
+    Tag Credits: 1 minutes
+  Word Budget:
+    Total Words: 3300
+    Words/Minute: 165
+    Dialogue: 65%
+    Narration: 35%
+  Pacing Type: fast
+  Special Notes: Increased emotional intensity with heightened tension as characters face challenges. Midpoint shift to vulnerable and introspective mood.
+
+Episode 4:
+  Total Runtime: 20 minutes
+  Segment Allocation:
+    Teaser Cold Open: 2 minutes
+    Act 1: 6 minutes
+    Act 2: 8 minutes
+    Act 3: 3 minutes
+    Tag Credits: 1 minutes
+  Word Budget:
+    Total Words: 3100
+    Words/Minute: 155
+    Dialogue: 60%
+    Narration: 40%
+  Pacing Type: standard
+  Special Notes: Further development of emotional intensity with a climax of dramatic tension as main conflict reaches its peak.
+
+Episode 5:
+  Total Runtime: 20 minutes
+  Segment Allocation:
+    Teaser Cold Open: 2.5 minutes
+    Act 1: 6 minutes
+    Act 2: 7 minutes
+    Act 3: 3.5 minutes
+    Tag Credits: 1 minutes
+  Word Budget:
+    Total Words: 2900
+    Words/Minute: 145
+    Dialogue: 55%
+    Narration: 45%
+  Pacing Type: slow
+  Special Notes: High emotional stakes with moments of reflection. Characters experience significant turning points with strategic silences for emotional impact.
+
+Episode 6:
+  Total Runtime: 20 minutes
+  Segment Allocation:
+    Teaser Cold Open: 2 minutes
+    Act 1: 6 minutes
+    Act 2: 8 minutes
+    Act 3: 3 minutes
+    Tag Credits: 1 minutes
+  Word Budget:
+    Total Words: 3100
+    Words/Minute: 155
+    Dialogue: 60%
+    Narration: 40%
+  Pacing Type: standard
+  Special Notes: Resolution with emotional catharsis and hopeful optimism. Heartwarming conclusion that provides emotional satisfaction.
+
+
+SERIES TOTALS
+----------------------------------------
+Total Runtime: 120 minutes
+Total Word Count: 18600
+Average Pace: 155 words per minute
+Variation Range: 145-165 words per minute
+
+
+PACING VARIATION
+----------------------------------------
+Fast Episodes: [3]
+Slow Episodes: [5]
+Standard Episodes: [1, 2, 4, 6]
+Special Format Episodes: []
+
+
+PRODUCTION NOTES
+----------------------------------------
+Recording Schedule: 2 episodes per recording session
+Estimated Production Time: 4-5 weeks
+Voice Actor Requirements: At least 2 main characters with supporting cast
+Sfx Complexity: Moderate - emphasis on emotional atmosphere with strategic use of silence

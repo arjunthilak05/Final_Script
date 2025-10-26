@@ -1,0 +1,66 @@
+============================================================
+AGE/GENRE STYLE GUIDE
+============================================================
+
+PROJECT TITLE: The Accidental Lifeline
+Session ID: session_20251023_112749
+Created: 2025-10-23T11:34:22.754883
+Input Type: synopsis
+
+Scale: STANDARD
+Episodes: 8-12 episodes
+Length: 35-45 min each
+Primary Genre: Drama
+Target Age: 28-55
+Content Rating: PG
+
+------------------------------------------------------------
+ORIGINAL SEED:
+------------------------------------------------------------
+For one year, morning motivation coach Tom has been unknowingly texting daily inspirational messages to the wrong number. His words reach Julia, a depressed ER doctor struggling to stay afloat amid the chaos of her life. Each message becomes her silent lifeline—brief moments of calm cutting through the noise of the hospital and her own despair. Tom’s voice echoes in her mind, guiding her through dark days, while she never corrects the mistake, afraid to lose the only thing keeping her grounded. When Tom’s actual client complains about never receiving messages, he discovers the error and tracks down the unknown recipient to apologize. On the worst day of Julia’s life, their paths finally cross, and Tom realizes the profound impact his words have had. In a touching twist, he learns that Julia has been anonymously funding his coaching business all along—hoping to help others find the same strength his accidental messages once gave her.
+
+------------------------------------------------------------
+1. AGE-APPROPRIATE GUIDELINES
+------------------------------------------------------------
+Target Age: 28-55
+Content Rating: PG with justification - Content suitable for adult listeners but without explicit material, excessive violence, or graphic depictions. The emotional darkness is present but balanced with hopeful elements.
+Violence Level: MILD
+Emotional Intensity: MODERATE
+
+Action Scene Limits:
+  • Physical confrontations should be brief and not graphically detailed in sound design
+  • Action sequences should focus on emotional impact rather than physical violence
+  • Limit intense sound effects to prevent listener fatigue, keeping sequences under 3 minutes
+
+Emotional Boundaries:
+  • Depictions of despair and emotional darkness should be counterbalanced with hopeful elements within each chapter
+  • Character trauma can be explored but avoid graphic descriptions of abuse or self-harm in audio format
+  • Emotional catharsis should be earned through character development rather than through shocking revelations
+
+Sound Restrictions:
+  • Limit jarring or sudden high-pitched sounds that may cause auditory discomfort
+  • Avoid excessive use of dissonant or chaotic soundscapes during emotional darkness to prevent listener distress
+  • Restrict graphic bodily injury sounds (crunching bones, tearing flesh) even during action sequences
+
+------------------------------------------------------------
+2. GENRE BLEND OPTIONS
+------------------------------------------------------------
+
+[✓] OPTION A: Drama + Romance
+    Enhancement: The emotional core of Drama is amplified by Romance elements, creating heightened stakes through intimate relationships. The poignant and introspective tones of the project naturally align with romantic development, allowing characters to reveal vulnerabilities through their connections. This blend creates an emotional journey where personal growth intersects with relationship dynamics, making the dramatic moments more impactful when they involve loved ones.
+
+[ ] OPTION B: Drama + Contemporary Fiction
+    Enhancement: Contemporary Fiction grounds Drama in relatable modern contexts, making character struggles more immediate and authentic for the target audience. This blend emphasizes everyday challenges and societal issues that resonate with listeners aged 28-55, allowing the dramatic tension to emerge from realistic scenarios. The introspective and uplifting tones work together to create stories that acknowledge life's difficulties while offering hope through authentic human experiences.
+
+[ ] OPTION C: Drama + Psychological Thriller
+    Enhancement: Psychological Thriller elements intensify Drama by adding layers of internal conflict and tension beneath surface interactions. This blend leverages the introspective tone to explore characters' inner lives and hidden motivations, creating a narrative where external conflicts mirror psychological struggles. The poignant and uplifting aspects emerge as characters confront their own demons, making personal victories more meaningful and dramatic revelations more impactful.
+
+CHOSEN: Option A
+
+------------------------------------------------------------
+3. TONE CALIBRATION
+------------------------------------------------------------
+Chosen Blend: Drama + Romance
+
+Episode Progression:
+

@@ -1,0 +1,634 @@
+# Station 10: Narrative Reveal Strategy Configuration
+
+station_name: "Station 10: Narrative Reveal Strategy"
+description: "Designs complete information flow architecture for audio drama. Analyzes all story elements from previous stations and creates reveal taxonomy, plant/proof/payoff grid, red herring strategy, and fairness analysis using 45-method reveal catalog."
+model: "anthropic/claude-3.5-sonnet"
+temperature: 0.7
+max_tokens: 16384
+
+# Input configuration
+input:
+  required_stations:
+    - station: 1
+      name: "Seed Processor"
+    - station: 2
+      name: "Project DNA Builder"
+    - station: 3
+      name: "Age Genre Optimizer"
+    - station: 4
+      name: "Reference Mining"
+    - station: 5
+      name: "Season Architect"
+    - station: 6
+      name: "Master Style Guide"
+    - station: 7
+      name: "Chapter Architect"
+    - station: 8
+      name: "World Builder"
+    - station: 9
+      name: "World Building System"
+
+# Output configuration
+output:
+  directory: "output/station_10"
+  json_filename: "{session_id}_reveal_matrix.json"
+  readable_filename: "{session_id}_reveal_strategy.txt"
+  p3_grid_csv: "{session_id}_plant_proof_payoff_grid.csv"
+  method_catalog: "{session_id}_reveal_method_catalog.txt"
+
+prompts:
+  task_1_reveal_taxonomy: |
+    **TASK 1: REVEAL TAXONOMY CLASSIFICATION**
+
+    **Project Context:**
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - Format: {episode_count} episodes, {episode_length} each
+    - Story Complexity: {story_complexity}
+    - Core Premise: {core_premise}
+
+    **Complete Story Context from Previous Stations:**
+    {complete_story_context}
+
+    **Your Task:**
+    Analyze ALL story information from previous stations and classify every piece of information into a reveal taxonomy based on WHEN and HOW the audience should learn it.
+
+    **CRITICAL REQUIREMENTS:**
+    1. Identify EVERY significant story element (characters, relationships, secrets, mysteries, backstories, conflicts)
+    2. Classify each element into one of four categories:
+       - MUST KNOW BY EPISODE X (Critical plot points required for story comprehension)
+       - SHOULD SUSPECT BY EPISODE Y (Clued revelations audience should piece together)
+       - CAN DISCOVER IN EPISODE Z (Subtle clues for attentive listeners)
+       - NEVER EXPLICITLY STATED (Ambiguous elements left to interpretation)
+    3. For audio drama: Specify HOW each element is revealed through sound
+    4. Map character knowledge vs audience knowledge positioning
+    5. Identify which elements are audio-only (no dialogue needed)
+
+    **Output Format:** Return ONLY valid JSON with this EXACT structure:
+    {{
+      "reveal_taxonomy": {{
+        "must_know_by_episode": {{
+          "episode_1": [
+            {{
+              "element": "Specific story information",
+              "category": "character_foundation|plot_critical|world_rule|relationship",
+              "audio_signature": "How this sounds in audio (voice, sfx, ambience)",
+              "why_critical": "Why audience must know this now"
+            }}
+          ],
+          "episode_3": [...],
+          "episode_5": [...]
+        }},
+        "should_suspect_by_episode": {{
+          "episode_2": [
+            {{
+              "element": "Story information to suspect",
+              "clue_type": "behavioral|visual|audio_pattern|dialogue_subtext",
+              "audio_execution": "How clues sound (hesitations, sound cues)",
+              "confirmation_episode": 5,
+              "fair_play": true
+            }}
+          ]
+        }},
+        "can_discover_in_episode": {{
+          "episode_2": [
+            {{
+              "element": "Subtle detail",
+              "plant_type": "background_sound|ambient_detail|quick_line|sound_motif",
+              "audio_execution": "Specific audio implementation",
+              "payoff_episode": 7,
+              "relisten_value": "high|medium|low"
+            }}
+          ]
+        }},
+        "never_explicitly_stated": [
+          {{
+            "element": "Ambiguous story element",
+            "reason_for_ambiguity": "Why leaving this open",
+            "audio_implications": "How ambiguity sounds",
+            "audience_interpretation_range": "Possible interpretations"
+          }}
+        ],
+        "character_knowledge_grid": [
+          {{
+            "character_name": "Character Name",
+            "knows_from_start": ["List of what they know from beginning"],
+            "learns_episode_X": ["What they learn when"],
+            "never_learns": ["What they never discover"],
+            "audience_vs_character": "ahead|behind|parallel"
+          }}
+        ],
+        "total_information_units": 0,
+        "critical_reveals": 0,
+        "clued_discoveries": 0,
+        "subtle_plants": 0,
+        "ambiguous_elements": 0
+      }}
+    }}
+
+    **Requirements:**
+    - Analyze every character, relationship, plot point, mystery element
+    - Be comprehensive - miss nothing significant from previous stations
+    - Every episode 1-{total_episodes} should have entries
+    - Audio execution must be specific and producible
+    - Return ONLY valid JSON - no explanatory text
+
+  task_2_reveal_methods: |
+    **TASK 2: REVEAL METHOD SELECTION FROM 45-METHOD CATALOG**
+
+    **Project Context:**
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - Format: {episode_count} episodes
+
+    **Reveal Taxonomy Generated:**
+    {reveal_taxonomy_summary}
+
+    **Your Task:**
+    Select the most effective reveal methods from the 45-METHOD CATALOG below for each major revelation in the story. Match reveal style to story moment.
+
+    **45-METHOD REVEAL CATALOG:**
+
+    #1. BREADCRUMB DRIP: Information revealed in tiny fragments leading to next
+    Audio: Incomplete sound cues that gain meaning when combined
+
+    #2. MINI-TWIST RHYTHM: Frequent small reversals shift expectations
+    Audio: Sound meaning changes with context
+
+    #3. DRAMATIC IRONY: Audience knows, character doesn't
+    Audio: Music/sound cues signal danger character can't hear
+
+    #4. DRAMATIC QUESTION: "Will they discover?" drives suspense
+    Audio: Question repeated in different acoustic contexts
+
+    #5. MYSTERY BOX: Central unanswered question
+    Audio: Mystery sound motif recurs until solved
+
+    #6. COLD OPEN HOOK: Start with dramatic moment, explain later
+    Audio: Intense sound sequence, then rewind
+
+    #7. IN MEDIAS RES: Start mid-action, catch up later
+    Audio: Action sounds first, exposition after
+
+    #8. EFFECT→CAUSE: Show result, work backwards to cause
+    Audio: Reverse chronology via sound design
+
+    #9. FLASHBACK WEB: Non-linear past reveals
+    Audio: Younger voices, period sounds
+
+    #10. FLASH-FORWARD TEASE: Future glimpse creates questions
+    Audio: Future sound then present
+
+    #11. PARALLEL REVEAL: Two storylines mirror each other
+    Audio: Cross-cutting between sonic environments
+
+    #12. RASHOMON CONTRADICTION: Same event, multiple perspectives
+    Audio: Same moment with different acoustic emphasis
+
+    #13. UNRELIABLE NARRATOR: Narrator's truth questioned
+    Audio: Voice quality changes when lying
+
+    #14. TICKING CLOCK: Deadline creates urgency
+    Audio: Literal or metaphorical clock sounds
+
+    #15. COUNTDOWN STRUCTURE: Number decreases episode by episode
+    Audio: Countdown announcements
+
+    #16. CALENDAR REVEAL: Dates/anniversaries trigger reveals
+    Audio: Calendar pages, date announcements
+
+    #17. FOUND FOOTAGE: Discovered recordings reveal truth
+    Audio: Recording quality, device sounds
+
+    #18. MOCKUMENTARY INTERVIEW: Characters interviewed about events
+    Audio: Interview acoustics, different recording spaces
+
+    #19. EPISTOLARY REVEAL: Letters/messages reveal story
+    Audio: Voice reading letters, paper sounds
+
+    #20. SURVEILLANCE AUDIO: Eavesdropping reveals secrets
+    Audio: Bugged room ambience, recording artifacts
+
+    #21. DREAM/VISION SEQUENCE: Subconscious reveals truth
+    Audio: Surreal soundscape, echo, distortion
+
+    #22. PROPHECY/PREMONITION: Future predicted, slowly comes true
+    Audio: Whispered prophecy that gains clarity
+
+    #23. DETECTIVE PUZZLE: Clues presented for audience to solve
+    Audio: Fair-play sound clues
+
+    #24. LOCKED ROOM MYSTERY: Impossible crime to solve
+    Audio: Door locks, sealed room ambience
+
+    #25. FAIR-PLAY MYSTERY: All clues available to solve
+    Audio: Distinct sounds for each clue
+
+    #26. RED HERRING GARDEN: Multiple false leads
+    Audio: Suspicious sounds that mislead
+
+    #27. MACGUFFIN CHASE: Object everyone wants
+    Audio: Object has signature sound
+
+    #28. HIDDEN IDENTITY: Someone isn't who they seem
+    Audio: Voice patterns, accent slips
+
+    #29. SECRET RELATIONSHIP: Connection between characters hidden
+    Audio: Familiar interaction sounds
+
+    #30. OVERHEARD CONVERSATION: Eavesdropping reveals plot
+    Audio: Distance/muffling creates partial info
+
+    #31. MISUNDERSTOOD CONVERSATION: Partial info misleads
+    Audio: Hear half a phone call
+
+    #32. DRAMATIC ENTRANCE: Character arrives with revelation
+    Audio: Door slam, footsteps, dramatic music sting
+
+    #33. DEATHBED CONFESSION: Final truth revealed
+    Audio: Weak voice, hospital sounds, flat line
+
+    #34. OBJECT SPEAKS: Item reveals its history
+    Audio: Flashback triggered by object sound
+
+    #35. ENVIRONMENT TELLS STORY: Location reveals past
+    Audio: Acoustic archaeology of space
+
+    #36. EMOTIONAL BREAKTHROUGH: Feeling reveals truth
+    Audio: Voice breaking, breath, silence
+
+    #37. PHYSICAL EVIDENCE: Object proves truth
+    Audio: Evidence bag sounds, forensic audio
+
+    #38. PHOTOGRAPH/RECORDING: Frozen moment analyzed
+    Audio: Photo rustle, zoom sounds, recording playback
+
+    #39. SCAR/MARK: Physical proof of past
+    Audio: Character reaction to seeing/touching
+
+    #40. NEWSPAPER/DOCUMENT: Written record reveals
+    Audio: Paper sounds, reading aloud
+
+    #41. WITNESS TESTIMONY: Someone saw it happen
+    Audio: Courtroom acoustics or informal setting
+
+    #42. EXPERT ANALYSIS: Specialist explains meaning
+    Audio: Authority voice, technical sounds
+
+    #43. CHILD'S PERSPECTIVE: Innocent reveals adult secret
+    Audio: Child voice, play sounds
+
+    #44. ANIMAL BEHAVIOR: Pet reveals character truth
+    Audio: Animal sounds show familiarity/fear
+
+    #45. SILENCE SPEAKS: What's NOT said reveals truth
+    Audio: Pointed absence of expected sound
+
+    **Output Format:** Return ONLY valid JSON:
+    {{
+      "reveal_methods": [
+        {{
+          "revelation_id": "unique_id",
+          "revelation": "What is being revealed",
+          "method_number": 8,
+          "method_name": "Effect→Cause (Backwards Reveal)",
+          "why_selected": "Why this method fits this revelation",
+          "audio_execution": "Specific audio implementation",
+          "audience_positioning": "Do they discover before/with/after character?",
+          "episode_revealed": 5,
+          "episode_first_clue": 1,
+          "relisten_impact": "How this changes on second listen"
+        }}
+      ],
+      "method_distribution": {{
+        "Breadcrumb Drip": 2,
+        "Fair-Play Mystery": 4,
+        "Backwards Reveal": 1
+      }},
+      "audio_execution_styles": {{
+        "voice_pattern_matching": 3,
+        "sound_recontextualization": 5,
+        "acoustic_memory_triggers": 2
+      }}
+    }}
+
+    **Requirements:**
+    - Select method for EVERY major revelation (usually 10-20 for a series)
+    - Match method to genre and story needs
+    - Ensure variety - don't overuse one method
+    - Audio execution must be specific and producible
+    - Return ONLY valid JSON
+
+  task_3_plant_proof_payoff: |
+    **TASK 3: PLANT/PROOF/PAYOFF GRID GENERATION**
+
+    **Project Context:**
+    - Working Title: {working_title}
+    - Format: {episode_count} episodes
+
+    **Reveal Methods Selected:**
+    {reveal_methods_summary}
+
+    **Your Task:**
+    Create a comprehensive PLANT/PROOF/PAYOFF grid for every major revelation. This is the production blueprint for information flow.
+
+    **PLANT/PROOF/PAYOFF METHODOLOGY:**
+
+    **PLANT** = Set up the information early
+    - Appears innocuous on first listen
+    - Becomes significant in retrospect
+    - Multiple plants per revelation (redundancy)
+    - Audio-specific plants (sounds, not just dialogue)
+
+    **PROOF** = Evidence that connects plant to revelation
+    - Callback to plant
+    - New information that adds meaning
+    - Can be visual, audio, or dialogue
+    - "Aha!" moment for attentive audience
+
+    **PAYOFF** = The revelation itself
+    - Explicit confirmation
+    - Recontextualizes all previous plants
+    - Emotional/narrative impact
+    - High relisten value
+
+    **Output Format:** Return ONLY valid JSON:
+    {{
+      "plant_proof_payoff_grid": [
+        {{
+          "revelation_id": "unique_id",
+          "revelation": "What is being revealed",
+          "plants": [
+            {{
+              "plant_id": "P_XX_001",
+              "episode": 1,
+              "scene": 3,
+              "moment": "Specific moment description",
+              "audio": "Exact audio description (voice, sfx, music)",
+              "dialogue": "Exact line if any" or null,
+              "visibility": "subtle|moderate|obvious",
+              "relisten_impact": "How this plant reads after knowing payoff"
+            }}
+          ],
+          "proofs": [
+            {{
+              "proof_id": "PR_XX_001",
+              "episode": 3,
+              "scene": 7,
+              "moment": "Evidence moment",
+              "audio": "Audio cue that proves connection",
+              "dialogue": "Dialogue if relevant",
+              "evidence_type": "physical|audio_match|pattern|behavioral",
+              "connects_to_plants": ["P_XX_001", "P_XX_002"]
+            }}
+          ],
+          "payoff": {{
+            "payoff_id": "PY_XX_001",
+            "episode": 5,
+            "scene": 4,
+            "moment": "Revelation moment",
+            "audio": "Audio execution of payoff",
+            "dialogue": "Key revelation line",
+            "impact": "How this changes story understanding",
+            "recontextualizes": "What previous moments now mean differently",
+            "relisten_value": "high|medium|low"
+          }}
+        }}
+      ],
+      "grid_statistics": {{
+        "total_plants": 0,
+        "total_proofs": 0,
+        "total_payoffs": 0,
+        "average_plants_per_revelation": 0,
+        "audio_only_plants": 0,
+        "plants_by_episode": {{}}
+      }}
+    }}
+
+    **Requirements:**
+    - Create P3 grid for EVERY major revelation (10-30 typically)
+    - Minimum 2-3 plants per revelation (redundancy)
+    - Plants must feel natural, not forced
+    - Proofs must logically connect plants to payoffs
+    - Audio execution must be specific
+    - Return ONLY valid JSON
+
+  task_4_red_herrings: |
+    **TASK 4: RED HERRING & MISDIRECTION STRATEGY**
+
+    **Project Context:**
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - Format: {episode_count} episodes
+
+    **Story Elements:**
+    {story_elements_summary}
+
+    **Your Task:**
+    Design believable false leads (red herrings) that misdirect the audience without being cheap or unfair. Good red herrings have logical foundations and satisfying debunks.
+
+    **RED HERRING PRINCIPLES:**
+    1. Must be BELIEVABLE - audience should reasonably suspect them
+    2. Must have LOGICAL FOUNDATION - motive, means, opportunity
+    3. Must be FAIR when debunked - clues were there all along
+    4. Should ADD to story - not just waste time
+    5. Debunk should be SATISFYING - "Oh, that makes sense!"
+
+    **Types of Red Herrings:**
+    - False Suspect: Character seems guilty but isn't
+    - Misdirection Plot: Storyline that seems important but isn't
+    - Object MacGuffin: Item seems important but isn't
+    - False Revelation: Information seems true but gets contradicted
+    - Timing Misdirection: Event seems connected but isn't
+
+    **Output Format:** Return ONLY valid JSON:
+    {{
+      "red_herrings": [
+        {{
+          "red_herring_id": "RH_001",
+          "title": "Brief descriptive name",
+          "type": "false_suspect|misdirection_plot|false_revelation|timing_trick",
+          "target": "Character name or plot element",
+          "introduced_episode": 2,
+          "audio_signature": "How this sounds (suspicious music, voice quality)",
+          "believability_factors": [
+            "Why audience should believe this",
+            "Supporting evidence"
+          ],
+          "suspicious_moments": [
+            {{
+              "episode": 2,
+              "scene": 3,
+              "moment": "What seems suspicious",
+              "audio": "How suspicion is conveyed"
+            }}
+          ],
+          "debunked_episode": 6,
+          "debunk_method": "How false lead is revealed",
+          "debunk_audio": "Audio execution of debunk",
+          "fair_play_clues": [
+            "Clues that it wasn't true"
+          ],
+          "audience_reaction": "Expected emotional response",
+          "adds_to_story": "How this enriches narrative"
+        }}
+      ],
+      "misdirection_timeline": {{
+        "episode_1": ["Active red herrings"],
+        "episode_2": ["Active red herrings"]
+      }},
+      "red_herring_stats": {{
+        "total_red_herrings": 0,
+        "average_duration": "X episodes",
+        "false_suspects": 0,
+        "misdirection_plots": 0
+      }}
+    }}
+
+    **Requirements:**
+    - Design 3-7 major red herrings for full series
+    - Each must have complete arc (intro → suspicion → debunk)
+    - Stagger timing - don't debunk all at once
+    - Ensure all are fair and logical
+    - Audio execution must be specific
+    - Return ONLY valid JSON
+
+  task_5_fairness_check: |
+    **TASK 5: FAIRNESS CHECK & SOLVABILITY ANALYSIS**
+
+    **Project Context:**
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+
+    **Complete Reveal Strategy:**
+    {complete_reveal_strategy}
+
+    **Your Task:**
+    Analyze the complete reveal strategy for fairness, solvability, and audience respect. This ensures the story rewards attention without requiring omniscience.
+
+    **ANALYSIS DIMENSIONS:**
+
+    1. **SOLVABILITY**: Could a smart, attentive audience theoretically figure this out before it's revealed?
+    2. **RELISTEN VALUE**: Do earlier moments gain new meaning after revelations?
+    3. **CLUE FINDABILITY**: Are clues hearable and fair, or hidden/cheap?
+    4. **HIDDEN VS VISIBLE BALANCE**: Is information distribution appropriate?
+    5. **FAIR PLAY PRINCIPLES**: Are mystery conventions respected?
+
+    **FAIR PLAY PRINCIPLES (for Mystery/Thriller genres):**
+    - All clues presented before reveals
+    - No information withheld arbitrarily
+    - Detective and audience have same tools
+    - No deus ex machina solutions
+    - Reveals feel earned, not arbitrary
+
+    **Output Format:** Return ONLY valid JSON:
+    {{
+      "fairness_check": {{
+        "solvability_analysis": {{
+          "overall_verdict": "yes_theoretically_solvable|partially_solvable|no_requires_revelation",
+          "revelation_solvability": [
+            {{
+              "revelation": "Revelation name",
+              "solvable_by_episode": 3,
+              "revealed_in_episode": 5,
+              "required_clues": ["List of clues needed to solve"],
+              "difficulty": "easy|medium|hard|impossible",
+              "fair_play": true,
+              "reasoning": "Why this is solvable or not"
+            }}
+          ],
+          "solvability_tiers": {{
+            "easy": 0,
+            "medium": 0,
+            "hard": 0,
+            "ambiguous": 0
+          }}
+        }},
+        "relisten_value_analysis": {{
+          "overall_rating": "exceptional|high|medium|low",
+          "recontextualized_moments": [
+            {{
+              "moment": "Specific scene/line",
+              "first_listen_meaning": "What it seems initially",
+              "relisten_meaning": "What it means after revelation",
+              "impact": "high|medium|low"
+            }}
+          ],
+          "rewatchability_score": 0.0,
+          "easter_eggs": 0,
+          "face_palm_moments": 0
+        }},
+        "clue_findability": {{
+          "all_clues_hearable": true,
+          "audio_only_clues": 0,
+          "hidden_in_mix": 0,
+          "clearly_presented": 0,
+          "requires_keen_ear": 0,
+          "unfair_hiding": 0
+        }},
+        "information_balance": {{
+          "distribution": {{
+            "obvious": 0.0,
+            "visible": 0.0,
+            "hidden": 0.0,
+            "obscure": 0.0
+          }},
+          "by_episode": [
+            {{
+              "episode": 1,
+              "obvious": 0.40,
+              "visible": 0.35,
+              "hidden": 0.20,
+              "obscure": 0.05
+            }}
+          ],
+          "balance_verdict": "well_balanced|too_easy|too_obscure"
+        }},
+        "fair_play_adherence": {{
+          "all_clues_before_reveals": true,
+          "no_arbitrary_withholding": true,
+          "red_herrings_logical": true,
+          "audience_has_tools": true,
+          "reveals_feel_earned": true,
+          "no_deus_ex_machina": true,
+          "character_knowledge_fair": true,
+          "audio_clues_fair": true
+        }},
+        "overall_fairness_rating": 5,
+        "rating_explanation": "Why this rating (1-5 stars)",
+        "recommendations": [
+          "Suggested improvements if any"
+        ]
+      }}
+    }}
+
+    **Requirements:**
+    - Analyze every major revelation for solvability
+    - Check all red herrings for fairness
+    - Ensure audio clues are actually hearable
+    - Provide specific recommendations if issues found
+    - Be honest - fail if truly unfair
+    - Return ONLY valid JSON
+
+dependencies:
+  - station: 1
+    name: "Seed Processor"
+  - station: 2
+    name: "Project DNA Builder"
+  - station: 3
+    name: "Age Genre Optimizer"
+  - station: 4
+    name: "Reference Mining"
+  - station: 5
+    name: "Season Architect"
+  - station: 6
+    name: "Master Style Guide"
+  - station: 7
+    name: "Chapter Architect"
+  - station: 8
+    name: "World Builder"
+  - station: 9
+    name: "World Building System"
+
+# Enable/disable this station in the pipeline
+enabled: true

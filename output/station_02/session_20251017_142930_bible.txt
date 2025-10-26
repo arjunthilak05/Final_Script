@@ -1,0 +1,149 @@
+============================================================
+PROJECT BIBLE
+============================================================
+
+PROJECT TITLE: Wrong Number, Right Message
+Session ID: session_20251017_142930
+Created: 2025-10-17T14:33:33.987632
+Input Type: synopsis
+
+Scale: STANDARD
+Episodes: 8-12 episodes
+Length: 35-45 min each
+
+------------------------------------------------------------
+ORIGINAL SEED:
+------------------------------------------------------------
+For one year, morning motivation coach Tom has been texting daily inspirational messages to what he thinks is his client’s number. Julia, a depressed ER doctor, has been receiving them, and they’ve saved her life multiple times. She never corrects the mistake, and Tom’s messages become her lifeline. When Tom’s actual client complains about never receiving messages, he realizes his mistake. He tracks down the wrong number to apologize, finding Julia on the worst day of her life. Their meeting reveals that Julia has been anonymously funding Tom’s coaching business to help others like these messages helped her.
+
+------------------------------------------------------------
+1. WORLD & SETTING
+------------------------------------------------------------
+Time Period: Contemporary (2020s), post-pandemic era where digital communication has become even more central to human connection, with increased awareness of mental health challenges but also greater isolation
+Primary Location: Portland, Oregon - a city known for its focus on wellness, progressive values, and quality healthcare facilities, providing an ideal backdrop for both Tom's coaching business and Julia's medical career
+Setting Type: Realistic Contemporary
+Atmosphere: A juxtaposition of clinical detachment and warm encouragement, moving from isolation and depression toward hope and human connection, with underlying themes of resilience and unexpected kindness
+Historical Context: Set in the wake of global challenges that have heightened awareness of mental health struggles while simultaneously creating new pathways for connection. The rise of telehealth, online coaching, and digital wellness communities has transformed how people seek and receive support, making the accidental connection between Tom and Julia both uniquely modern and timeless in its emotional impact.
+
+Key Locations:
+  • Tom's home office/coaching space: Acoustic signature includes soft instrumental background music, gentle keyboard tapping, the quiet hum of recording equipment, and the muffled sounds of a peaceful residential neighborhood outside
+  • The ER hospital where Julia works: Acoustic signature features the distinctive sounds of medical equipment - beeping monitors, paging systems, hurried footsteps on polished floors, hushed urgent conversations, and the controlled chaos of emergency medicine
+  • A local coffee shop where Tom and Julia eventually meet: Acoustic signature includes ambient chatter, the rhythmic hissing of espresso machines, clinking ceramic cups, soft indie music playing through speakers, and the comforting background noise of a community gathering space
+
+Cultural Elements:
+  • The contemporary wellness industry and the culture of self-improvement that Tom represents, with its emphasis on daily habits, positive mindset, and personal growth
+  • The high-pressure, emotionally demanding culture of emergency medicine that Julia navigates, including professional burnout, compassion fatigue, and the emotional toll of life-and-death decisions
+  • The modern phenomenon of digital connections and anonymous support networks, exploring how technology can both isolate us and create profound human connections in unexpected ways
+
+------------------------------------------------------------
+2. FORMAT SPECIFICATIONS
+------------------------------------------------------------
+Series Type: Standard
+Episode Count: 8-12
+Episode Length: 35-45 min each
+Season Structure: Single season of 8-12 episodes
+Pacing Strategy: Character-driven pacing with gradual development of parallel storylines before convergence
+Narrative Structure: Dual narrative structure following separate character journeys that eventually converge, with the mistaken text messages as the connecting thread
+
+------------------------------------------------------------
+3. GENRE & TONE
+------------------------------------------------------------
+Primary Genre: Contemporary Romance
+Secondary Genres: Drama, Inspirational Fiction
+Tone: Heartwarming, Uplifting, Poignant
+Mood Profile: The story balances emotional depth with hopefulness, exploring themes of depression and isolation while ultimately emphasizing human connection, kindness, and healing. The mood evolves from melancholy to connection, creating an emotionally resonant experience that acknowledges life's difficulties while celebrating unexpected moments of grace.
+
+Genre Conventions:
+  • Accidental connection bringing protagonists together
+  • Emotional growth arcs for both main characters
+  • Revelation of hidden depths and secrets
+  • Thematic exploration of how people impact each other's lives
+  • Professional settings creating realistic obstacles to connection
+
+------------------------------------------------------------
+4. CREATIVE PROMISES
+------------------------------------------------------------
+Must-Have Elements:
+  ✓ The gradual evolution of Tom's text messages from simple motivation to becoming Julia's lifeline, showing their profound impact through specific crisis moments
+  ✓ The powerful and emotionally charged first meeting between Tom and Julia, highlighting their different expectations and the revelation of Julia's anonymous funding
+  ✓ Exploration of Julia's high-stress ER environment juxtaposed with her internal struggle, demonstrating how Tom's messages helped her navigate both professional and personal challenges
+
+Must-Avoid Elements:
+  ✗ Portraying depression as something that can be 'fixed' by inspirational messages alone, without acknowledging the complexity of mental health treatment
+  ✗ Reducing Julia to a passive recipient of help rather than showing her strength, competence as a doctor, and active role in her own journey
+  ✗ Creating an overly romanticized narrative that ignores the ethical boundaries and professional implications of Tom's mistake
+
+Unique Selling Points:
+  ★ A nuanced exploration of how anonymous kindness creates an unexpected bond between two strangers, challenging our understanding of connection in the digital age
+  ★ The narrative twist that reveals Julia has been funding Tom's business, creating a powerful circular narrative of giving and receiving
+  ★ Raw, authentic portrayals of both the sender's and receiver's perspectives, showing how the same words can have vastly different meanings depending on one's life circumstances
+
+------------------------------------------------------------
+5. AUDIENCE PROFILE
+------------------------------------------------------------
+Age Range: 25-55
+Demographics: Women 25-45, Healthcare Professionals, Personal Development Enthusiasts
+Listening Context: During commutes or downtime for immersive emotional storytelling
+
+Core Interests:
+  • Mental Health Awareness
+  • Personal Growth
+  • Medical Dramas
+
+Content Preferences:
+  • Character-driven narratives
+  • Emotionally resonant stories
+  • Balanced drama with hopeful elements
+
+------------------------------------------------------------
+6. PRODUCTION CONSTRAINTS
+------------------------------------------------------------
+Content Rating: PG-13
+Budget Tier: Medium Budget
+
+Technical Requirements:
+  • Multiple voice actors for main and supporting characters
+  • Sound design for ER environments and text message notifications
+  • Audio processing for voice clarity and emotional tone
+
+Content Restrictions:
+  • Avoid graphic depictions of medical procedures or self-harm
+  • Limit explicit language considering the professional settings
+  • Ensure respectful portrayal of depression and mental health struggles
+
+Distribution Channels:
+  • Audiobook subscription services
+  • Digital audiobook retailers
+  • Library distribution platforms
+
+------------------------------------------------------------
+7. CREATIVE TEAM
+------------------------------------------------------------
+Team Structure: Hierarchical structure with Showrunner at the top, supported by Head Writer who oversees a team of Episode Writers. Script Editor works across all episodes for consistency. Medical and Mental Health Consultants serve as advisors throughout the writing process. Dialogue Coach and Character Development Specialist work directly with writers to ensure authentic character voices and growth.
+Collaboration Style: Writers' room approach with collaborative brainstorming for episode arcs and character development. Regular check-ins with consultants to ensure authentic representation of medical environments and mental health struggles. Script Editor maintains continuity across episodes. Team employs a balance between individual episode assignments and group sessions to maintain consistent tone while allowing for creative diversity.
+
+Required Roles:
+  • Showrunner
+  • Head Writer
+  • Episode Writer
+  • Script Editor
+  • Medical Consultant
+  • Mental Health Consultant
+  • Dialogue Coach
+  • Character Development Specialist
+
+Specialized Skills:
+  • Dramedy Writing
+  • Character-driven Storytelling
+  • Medical Drama Authenticity
+  • Mental Health Representation
+  • Episodic Structure Design
+  • Emotional Pacing
+  • Text Message Integration in Narrative
+
+Key Partnerships:
+  • Showrunner-Head Writer partnership for overall vision
+  • Episode Writers-Character Development Specialist for deep character exploration
+  • Writing Team-Medical/Mental Health Consultants for authentic representation
+  • Script Editor-Dialogue Coach for consistent character voices
+

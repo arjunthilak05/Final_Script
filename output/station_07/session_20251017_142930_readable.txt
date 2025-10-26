@@ -1,0 +1,119 @@
+======================================================================
+STATION 7: CHARACTER ARCHITECT
+======================================================================
+
+Working Title: Wrong Number, Right Message
+Primary Genre: Contemporary Romance
+Target Age: 25-55
+Episode Count: 8-12 episodes
+Core Premise: Unknown
+
+----------------------------------------------------------------------
+TIER 1: PROTAGONISTS
+----------------------------------------------------------------------
+
+1. Tom (Age: 35, Role: Morning Motivation Coach)
+   Background: Tom grew up in a low-income family and struggled with self-esteem issues. He turned his life around through self-help and now helps others do the same. He is passionate about his work but often finds himself overextending to prove his worth.
+   Motivations: To help people achieve their best selves and to prove his own worth through his work.
+   Fears: Failure and the fear of not being enough, both professionally and personally.
+   Desires: To find a deeper sense of fulfillment and a meaningful connection.
+   Voice: medium pitch, medium pace
+   Vocabulary: sophisticated but accessible
+   Verbal Tics: You can do it!, Believe in yourself.
+   Catchphrases: Life is a journey, not a destination., Every step forward is progress.
+
+2. Julia (Age: 32, Role: Depressed ER Doctor)
+   Background: Julia grew up in a high-pressure environment, always expected to excel. She is a brilliant doctor but struggles with severe depression and a sense of isolation. Her work is her escape, but it also exacerbates her burnout.
+   Motivations: To find a way to cope with her depression and to connect with others on a deeper level.
+   Fears: Being seen as weak or incapable, both in her personal and professional life.
+   Desires: To find a sense of peace and a meaningful connection.
+   Voice: medium-low pitch, slow pace
+   Vocabulary: sophisticated but accessible
+   Verbal Tics: I just need a moment., I'm okay, really.
+   Catchphrases: Every day is a new chance., We all need a bit of help sometimes.
+
+3. Michael (Age: 40, Role: Tom's Actual Client)
+   Background: Michael is a successful businessman who has achieved everything he thought he wanted but feels unfulfilled. He struggles with a sense of emptiness and a lack of direction. He seeks Tom's help to find meaning in his life.
+   Motivations: To find a deeper sense of purpose and fulfillment.
+   Fears: Feeling like a failure despite his success, and the fear of not knowing what he truly wants.
+   Desires: To find a sense of purpose and a more meaningful life.
+   Voice: low pitch, medium pace
+   Vocabulary: sophisticated but accessible
+   Verbal Tics: I need to think this through., That's a good point.
+   Catchphrases: Success is not just about the destination, but the journey., It's never too late to find your purpose.
+
+----------------------------------------------------------------------
+TIER 2: MAJOR SUPPORTING
+----------------------------------------------------------------------
+
+1. Sarah (Age: 30, Role: Julia's ER Colleague)
+   Backstory: Sarah is a dedicated ER doctor who has been Julia's friend and colleague for several years. She is supportive and caring, often providing a listening ear and a shoulder to lean on.
+   Voice: medium-high pitch, fast pace
+   Story Function: Provides emotional and professional support to Julia, helping her navigate her personal and professional challenges.
+   Relationship to Protagonists: Julia's close friend and colleague
+   Verbal Tics: You can do this., Let's take it one step at a time.
+   Catchphrases: We've got this., You're not alone.
+
+2. Liam (Age: 28, Role: Tom's Colleague)
+   Backstory: Liam is a fellow coach who has known Tom for several years. He is more laid-back and often provides a different perspective on Tom's methods and personal life.
+   Voice: medium pitch, medium pace
+   Story Function: Provides a different perspective and challenges Tom to grow, both professionally and personally.
+   Relationship to Protagonists: Tom's colleague and friend
+   Verbal Tics: You know what I mean?, Just saying.
+   Catchphrases: Sometimes you gotta step back to move forward., Life's too short to be serious all the time.
+
+3. Nina (Age: 35, Role: Julia's Sister)
+   Backstory: Nina is Julia's older sister and a successful lawyer. She is supportive but often overprotective, which sometimes creates tension between them. She is concerned about Julia's well-being and wants to help.
+   Voice: medium-high pitch, fast pace
+   Story Function: Provides a different perspective on Julia's life, sometimes challenging her but ultimately supporting her growth.
+   Relationship to Protagonists: Julia's older sister
+   Verbal Tics: I'm just saying., For your own good.
+   Catchphrases: You're stronger than you think., Sometimes you need to take a stand.
+
+----------------------------------------------------------------------
+TIER 3: RECURRING
+----------------------------------------------------------------------
+
+1. Dr. Patel (Age: 45, Role: Julia's Mentor)
+   Defining Trait: Wise and experienced ER doctor who provides guidance and support.
+   Voice Hook: Deep, calm, and authoritative.
+   Narrative Purpose: Provides professional guidance and emotional support to Julia, helping her navigate the challenges of her job.
+   Episodes Appearing: 2, 5, 8
+   Verbal Tics: You need to take a deep breath., Let's focus on the next step.
+   Catchphrases: Experience is the best teacher., Every challenge is an opportunity.
+
+2. Alex (Age: 27, Role: Tom's Client)
+   Defining Trait: Energetic and enthusiastic young professional.
+   Voice Hook: High-pitched and fast-paced.
+   Narrative Purpose: Provides a contrast to Tom's more serious clients, bringing energy and enthusiasm to the coaching sessions.
+   Episodes Appearing: 1, 4, 7
+   Verbal Tics: That's awesome!, I can't wait!
+   Catchphrases: The sky's the limit!, Let's make it happen!
+
+3. Rachel (Age: 30, Role: Julia's Friend)
+   Defining Trait: Loyal and supportive friend.
+   Voice Hook: Warm and friendly.
+   Narrative Purpose: Provides emotional support and a listening ear for Julia, helping her navigate her personal challenges.
+   Episodes Appearing: 3, 6, 9
+   Verbal Tics: I'm here for you., You can talk to me.
+   Catchphrases: You're not alone., We'll get through this together.
+
+4. Mark (Age: 42, Role: Tom's Client)
+   Defining Trait: Stoic and reserved businessman.
+   Voice Hook: Low and measured.
+   Narrative Purpose: Provides a contrast to Tom's more expressive clients, bringing a sense of calm and pragmatism to the coaching sessions.
+   Episodes Appearing: 2, 5, 8
+   Verbal Tics: Let's be realistic., We need to focus on the facts.
+   Catchphrases: Actions speak louder than words., Stay the course.
+
+5. Emma (Age: 29, Role: Sarah's Friend)
+   Defining Trait: Fun-loving and adventurous.
+   Voice Hook: High and energetic.
+   Narrative Purpose: Provides a contrast to Sarah's more serious demeanor, bringing a sense of fun and adventure to their interactions.
+   Episodes Appearing: 1, 4, 7
+   Verbal Tics: Let's do it!, That sounds amazing!
+   Catchphrases: Life's too short to be serious all the time., Let's make some memories!
+
+======================================================================
+END OF CHARACTER BIBLE
+======================================================================

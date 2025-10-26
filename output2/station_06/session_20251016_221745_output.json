@@ -1,0 +1,58 @@
+{
+  "Master Style Guide Document": {
+    "session_id": "session_20251016_221745",
+    "timestamp": "2025-10-18T21:25:14.798182",
+    "working_title": "Royal Blood",
+    "primary_genre": "Political Drama",
+    "target_age": "25-45",
+    "episode_count": "3-6 episodes",
+    "episode_length": "15-25 min each",
+    "narrator_strategy": "With Narrator",
+    "master_style_guide": {
+      "language_rules": {
+        "vocabulary_level": "Advanced, with a mix of formal and conversational language to reflect the political and personal dynamics",
+        "sentence_complexity": "Sentences and concepts should be sophisticated but clear, avoiding overly convoluted structures that might detract from the narrative flow",
+        "technical_term_handling": "Use historically accurate medieval and political terminology with contextual explanation through dialogue or narrator exposition when necessary",
+        "narrator_voice_guidelines": "Clear, measured, with a touch of gravitas; able to shift subtly between serious moments and lighter ones; capable of conveying authority when needed",
+        "age_appropriate_language": "Avoid explicit sexual content, detailed depictions of violence, and overly graphic descriptions of injury or death. Maintain PG-13 content rating with mature themes handled subtly",
+        "genre_specific_terminology": "Incorporate period-appropriate political and feudal terminology (e.g., 'fealty', 'vassal', 'chivalry') with natural integration into dialogue and narration",
+        "example_vocabulary": {
+          "use": [
+            "sovereign",
+            "allegiance",
+            "dynasty",
+            "treachery",
+            "counsel",
+            "monarchy"
+          ],
+          "avoid": [
+            "explicit sexual terms",
+            "graphic violence descriptions",
+            "modern slang",
+            "overly complex political jargon without explanation"
+          ]
+        }
+      },
+      "dialect_accent_map": {
+        "character_voice_distinctions": "King Alexander: Authoritative, measured tone with slight royal inflection; Queen Eleanor: Refined, articulate with underlying strength; Lord Marcus: Commanding but less formal than royalty; Princess Isabella: Youthful but with regal training showing in formal speech",
+        "regional_markers": "Northern regions: Slightly harsher consonants, quicker speech patterns; Southern regions: Softer vowels, more measured pace; Courtly speech: More formalized, with specific honorifics and titles used consistently",
+        "pronunciation_guide": {
+          "character_names": {
+            "Alexander": "Al-ex-AN-der",
+            "Eleanor": "EL-a-nor",
+            "Marcus": "MAR-cus",
+            "Isabella": "Is-a-BEL-la"
+          },
+          "locations": {
+            "Eldoria": "El-DO-ri-a",
+            "Great Hall": "Great Hall (standard pronunciation)",
+            "Castle Courtyard": "Castle COURT-yard"
+          }
+        },
+        "voice_casting_notes": "Cast actors who can maintain consistent accents throughout performances, with ability to shift between formal court speech and more intimate private conversations. Royal characters should have distinctive but not overly exaggerated aristocratic speech patterns",
+        "accent_consistency_rules": "Maintain consistent regional markers for each character throughout all episodes. Characters should not adopt regional accents outside their established background unless specifically justified by the narrative"
+      }
+    },
+    "readable_summary": "======================================================================\nSTATION 6: MASTER STYLE GUIDE BUILDER\n======================================================================\n\nWorking Title: Royal Blood\nPrimary Genre: Political Drama\nTarget Age: 25-45\nEpisode Count: 3-6 episodes\nEpisode Length: 15-25 min each\nNarrator Strategy: With Narrator\n\n----------------------------------------------------------------------\nLANGUAGE RULES\n----------------------------------------------------------------------\n\nVocabulary Level: Advanced, with a mix of formal and conversational language to reflect the political and personal dynamics\nSentence Complexity: Sentences and concepts should be sophisticated but clear, avoiding overly convoluted structures that might detract from the narrative flow\nTechnical Term Handling: Use historically accurate medieval and political terminology with contextual explanation through dialogue or narrator exposition when necessary\nNarrator Voice Guidelines: Clear, measured, with a touch of gravitas; able to shift subtly between serious moments and lighter ones; capable of conveying authority when needed\nAge Appropriate Language: Avoid explicit sexual content, detailed depictions of violence, and overly graphic descriptions of injury or death. Maintain PG-13 content rating with mature themes handled subtly\nGenre Specific Terminology: Incorporate period-appropriate political and feudal terminology (e.g., 'fealty', 'vassal', 'chivalry') with natural integration into dialogue and narration\n\nExample Vocabulary:\n  Words to Use: sovereign, allegiance, dynasty, treachery, counsel, monarchy\n  Words to Avoid: explicit sexual terms, graphic violence descriptions, modern slang, overly complex political jargon without explanation\n\n----------------------------------------------------------------------\nDIALECT/ACCENT MAP\n----------------------------------------------------------------------\n\nCharacter Voice Distinctions: King Alexander: Authoritative, measured tone with slight royal inflection; Queen Eleanor: Refined, articulate with underlying strength; Lord Marcus: Commanding but less formal than royalty; Princess Isabella: Youthful but with regal training showing in formal speech\nRegional Markers: Northern regions: Slightly harsher consonants, quicker speech patterns; Southern regions: Softer vowels, more measured pace; Courtly speech: More formalized, with specific honorifics and titles used consistently\n\nPronunciation Guide:\n  Character Names:\n    Alexander: Al-ex-AN-der\n    Eleanor: EL-a-nor\n    Marcus: MAR-cus\n    Isabella: Is-a-BEL-la\n  Locations:\n    Eldoria: El-DO-ri-a\n    Great Hall: Great Hall (standard pronunciation)\n    Castle Courtyard: Castle COURT-yard\nVoice Casting Notes: Cast actors who can maintain consistent accents throughout performances, with ability to shift between formal court speech and more intimate private conversations. Royal characters should have distinctive but not overly exaggerated aristocratic speech patterns\nAccent Consistency Rules: Maintain consistent regional markers for each character throughout all episodes. Characters should not adopt regional accents outside their established background unless specifically justified by the narrative\n\n======================================================================\nEND OF MASTER STYLE GUIDE\n======================================================================"
+  }
+}

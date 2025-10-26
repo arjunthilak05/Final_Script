@@ -1,0 +1,556 @@
+{
+  "session_id": "auto_20251024_101740",
+  "start_time": "2025-10-24T10:17:40.661787",
+  "end_time": "2025-10-24T10:17:40.662123",
+  "total_stations": 28,
+  "completed_stations": [],
+  "failed_stations": [],
+  "success_rate": 0.0,
+  "station_details": {
+    "1": {
+      "name": "Seed Processor",
+      "status": "pending",
+      "dependencies": []
+    },
+    "2": {
+      "name": "Project DNA Builder",
+      "status": "pending",
+      "dependencies": [
+        1
+      ]
+    },
+    "3": {
+      "name": "Age/Genre Optimizer",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2
+      ]
+    },
+    "4": {
+      "name": "Reference Mining",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3
+      ]
+    },
+    "4.5": {
+      "name": "Narrator Strategy Designer",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "5": {
+      "name": "Season Architect",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5
+      ]
+    },
+    "6": {
+      "name": "Master Style Guide Builder",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5
+      ]
+    },
+    "7": {
+      "name": "Character Architect",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6
+      ]
+    },
+    "8": {
+      "name": "World Builder",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7
+      ]
+    },
+    "9": {
+      "name": "World Building System",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    "10": {
+      "name": "Narrative Reveal Strategy",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "11": {
+      "name": "Runtime Planner",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    "12": {
+      "name": "Hook & Cliffhanger Designer",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    "13": {
+      "name": "Multi-World Timeline Manager",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    "14": {
+      "name": "Simple Episode Blueprint",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    "15": {
+      "name": "Detailed Episode Outlining",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    "16": {
+      "name": "Canon Check",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    "17": {
+      "name": "Dialect Planning",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    },
+    "18": {
+      "name": "Evergreen Check",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    "19": {
+      "name": "Procedure Check",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    },
+    "20": {
+      "name": "Geography & Transit",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
+    },
+    "21": {
+      "name": "First Draft",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    "22": {
+      "name": "Momentum Check",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    "23": {
+      "name": "Twist Integration",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ]
+    },
+    "24": {
+      "name": "Dialogue Polish",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ]
+    },
+    "25": {
+      "name": "Audio Optimization",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    },
+    "26": {
+      "name": "Final Script Lock",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ]
+    },
+    "27": {
+      "name": "Master Script Assembly",
+      "status": "pending",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ]
+    }
+  }
+}

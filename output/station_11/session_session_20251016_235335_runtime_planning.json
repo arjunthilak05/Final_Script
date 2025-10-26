@@ -1,0 +1,153 @@
+{
+  "runtime_planning_grid": {
+    "episode_breakdown": [
+      {
+        "episode_number": 1,
+        "total_runtime_target": "20 minutes",
+        "segment_allocation": {
+          "teaser_cold_open": "2 minutes",
+          "act_1": "6 minutes",
+          "act_2": "8 minutes",
+          "act_3": "3 minutes",
+          "tag_credits": "1 minutes"
+        },
+        "word_budget": {
+          "spoken_words_per_minute": 155,
+          "total_words": 3100,
+          "dialogue_percentage": 60,
+          "narration_percentage": 40,
+          "sfx_silence_allowance": "15%"
+        },
+        "pacing_type": "standard",
+        "special_notes": "Establishing emotional depth and gentle optimism. Introduction of main characters and their initial interactions."
+      },
+      {
+        "episode_number": 2,
+        "total_runtime_target": "20 minutes",
+        "segment_allocation": {
+          "teaser_cold_open": "2 minutes",
+          "act_1": "6 minutes",
+          "act_2": "8 minutes",
+          "act_3": "3 minutes",
+          "tag_credits": "1 minutes"
+        },
+        "word_budget": {
+          "spoken_words_per_minute": 155,
+          "total_words": 3100,
+          "dialogue_percentage": 60,
+          "narration_percentage": 40,
+          "sfx_silence_allowance": "15%"
+        },
+        "pacing_type": "standard",
+        "special_notes": "Continued tone establishment with a midpoint shift to more emotionally charged interactions between main characters."
+      },
+      {
+        "episode_number": 3,
+        "total_runtime_target": "20 minutes",
+        "segment_allocation": {
+          "teaser_cold_open": "1.5 minutes",
+          "act_1": "6 minutes",
+          "act_2": "9 minutes",
+          "act_3": "2.5 minutes",
+          "tag_credits": "1 minutes"
+        },
+        "word_budget": {
+          "spoken_words_per_minute": 165,
+          "total_words": 3300,
+          "dialogue_percentage": 65,
+          "narration_percentage": 35,
+          "sfx_silence_allowance": "10%"
+        },
+        "pacing_type": "fast",
+        "special_notes": "Increased emotional intensity with heightened tension as characters face challenges. Midpoint shift to vulnerable and introspective mood."
+      },
+      {
+        "episode_number": 4,
+        "total_runtime_target": "20 minutes",
+        "segment_allocation": {
+          "teaser_cold_open": "2 minutes",
+          "act_1": "6 minutes",
+          "act_2": "8 minutes",
+          "act_3": "3 minutes",
+          "tag_credits": "1 minutes"
+        },
+        "word_budget": {
+          "spoken_words_per_minute": 155,
+          "total_words": 3100,
+          "dialogue_percentage": 60,
+          "narration_percentage": 40,
+          "sfx_silence_allowance": "15%"
+        },
+        "pacing_type": "standard",
+        "special_notes": "Further development of emotional intensity with a climax of dramatic tension as main conflict reaches its peak."
+      },
+      {
+        "episode_number": 5,
+        "total_runtime_target": "20 minutes",
+        "segment_allocation": {
+          "teaser_cold_open": "2.5 minutes",
+          "act_1": "6 minutes",
+          "act_2": "7 minutes",
+          "act_3": "3.5 minutes",
+          "tag_credits": "1 minutes"
+        },
+        "word_budget": {
+          "spoken_words_per_minute": 145,
+          "total_words": 2900,
+          "dialogue_percentage": 55,
+          "narration_percentage": 45,
+          "sfx_silence_allowance": "20%"
+        },
+        "pacing_type": "slow",
+        "special_notes": "High emotional stakes with moments of reflection. Characters experience significant turning points with strategic silences for emotional impact."
+      },
+      {
+        "episode_number": 6,
+        "total_runtime_target": "20 minutes",
+        "segment_allocation": {
+          "teaser_cold_open": "2 minutes",
+          "act_1": "6 minutes",
+          "act_2": "8 minutes",
+          "act_3": "3 minutes",
+          "tag_credits": "1 minutes"
+        },
+        "word_budget": {
+          "spoken_words_per_minute": 155,
+          "total_words": 3100,
+          "dialogue_percentage": 60,
+          "narration_percentage": 40,
+          "sfx_silence_allowance": "15%"
+        },
+        "pacing_type": "standard",
+        "special_notes": "Resolution with emotional catharsis and hopeful optimism. Heartwarming conclusion that provides emotional satisfaction."
+      }
+    ],
+    "series_totals": {
+      "total_runtime": "120 minutes",
+      "total_word_count": "18600",
+      "average_pace": "155 words per minute",
+      "variation_range": "145-165 words per minute"
+    },
+    "pacing_variation": {
+      "fast_episodes": [
+        3
+      ],
+      "slow_episodes": [
+        5
+      ],
+      "standard_episodes": [
+        1,
+        2,
+        4,
+        6
+      ],
+      "special_format_episodes": []
+    },
+    "production_notes": {
+      "recording_schedule": "2 episodes per recording session",
+      "estimated_production_time": "4-5 weeks",
+      "voice_actor_requirements": "At least 2 main characters with supporting cast",
+      "sfx_complexity": "Moderate - emphasis on emotional atmosphere with strategic use of silence"
+    }
+  }
+}

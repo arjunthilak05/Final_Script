@@ -1,0 +1,121 @@
+# Station 11: Runtime Planning Configuration
+
+station_name: "Station 11: Runtime Planning"
+description: "Establishes episode parameters, word budgets, pacing variation, and series totals for audio episodes. Creates comprehensive runtime planning grid."
+model: "glm-4.5"
+temperature: 0.7
+max_tokens: 4096
+
+prompts:
+  runtime_planning_analysis: |
+    **Role:** You are the Runtime Planner for audio episodes. Your task is to establish comprehensive episode parameters and create a detailed runtime planning grid.
+
+    **Project Data:**
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - Target Age: {target_age}
+    - Episode Count: {episode_count}
+    - Episode Length: {episode_length}
+    - Season Structure: {season_structure}
+    - Narrator Strategy: {narrator_strategy}
+    - Chosen Genre Blend: {chosen_genre_blend}
+    - Tone Calibration: {tone_calibration}
+
+    **Instructions:**
+
+    1. **Episode Breakdown:**
+       * For each episode, define the total runtime target
+       * Allocate segments: Teaser/Cold Open, Act 1, Act 2, Act 3, Tag/Credits
+       * Specify exact minutes for each segment
+       * Consider the season structure and pacing from Station 5
+
+    2. **Word Budgets:**
+       * Calculate spoken words per minute (typical 150-160 for audio)
+       * Determine total words per episode
+       * Establish dialogue vs narration ratio based on narrator strategy
+       * Allocate SFX/silence allowance
+
+    3. **Pacing Variation:**
+       * Identify fast episodes (high word count)
+       * Identify slow episodes (more silence/SFX)
+       * Define standard episodes
+       * Plan special format episodes
+
+    4. **Series Totals:**
+       * Calculate total runtime across all episodes
+       * Calculate total word count
+       * Determine average pace
+       * Define variation range
+
+    **Output Format:** Your entire response MUST be a single, valid JSON object. The root key should be `runtime_planning_grid`.
+
+    **Requirements:**
+    - Base calculations on the episode count and length from Station 1
+    - Consider the season structure from Station 5
+    - Account for narrator strategy from Station 4.5
+    - Ensure realistic pacing for audio-only format
+    - Provide detailed breakdown for each episode
+    - Return ONLY valid JSON - no explanatory text before or after
+
+    **Expected JSON Structure:**
+    {{
+        "runtime_planning_grid": {{
+            "episode_breakdown": [
+                {{
+                    "episode_number": 1,
+                    "total_runtime_target": "35 minutes",
+                    "segment_allocation": {{
+                        "teaser_cold_open": "3 minutes",
+                        "act_1": "10 minutes",
+                        "act_2": "15 minutes",
+                        "act_3": "5 minutes",
+                        "tag_credits": "2 minutes"
+                    }},
+                    "word_budget": {{
+                        "spoken_words_per_minute": 155,
+                        "total_words": 5425,
+                        "dialogue_percentage": 70,
+                        "narration_percentage": 30,
+                        "sfx_silence_allowance": "15%"
+                    }},
+                    "pacing_type": "standard",
+                    "special_notes": "Character introduction episode"
+                }}
+            ],
+            "series_totals": {{
+                "total_runtime": "420 minutes",
+                "total_word_count": "65100",
+                "average_pace": "155 words per minute",
+                "variation_range": "140-170 words per minute"
+            }},
+            "pacing_variation": {{
+                "fast_episodes": [3, 8, 15, 22],
+                "slow_episodes": [5, 12, 18],
+                "standard_episodes": [1, 2, 4, 6, 7, 9, 10, 11, 13, 14, 16, 17, 19, 20, 21, 23, 24],
+                "special_format_episodes": [7, 14, 21]
+            }},
+            "production_notes": {{
+                "recording_schedule": "2-3 episodes per recording session",
+                "estimated_production_time": "6-8 weeks",
+                "voice_actor_requirements": "Based on character count",
+                "sfx_complexity": "Moderate - location-based ambience"
+            }}
+        }}
+    }}
+
+dependencies:
+  - station: 1
+    name: "Seed Processor"
+  - station: 2
+    name: "Project DNA Builder"
+  - station: 3
+    name: "Age Genre Optimizer"
+  - station: 4
+    name: "Reference Mining & Seed Extraction"
+  - station: 4.5
+    name: "Narrator Strategy Designer"
+  - station: 5
+    name: "Season Architect"
+
+# Enable/disable this station in the pipeline
+enabled: true

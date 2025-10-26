@@ -1,0 +1,465 @@
+{
+  "session_id": "session_20251016_235335",
+  "episode_number": 3,
+  "optimized_at": "2025-10-23T01:35:50.208800",
+  "speaker_identification": {
+    "confusion_risks": [
+      {
+        "issue_number": 1,
+        "issue_type": "off_screen",
+        "scene_number": 2,
+        "dialogue_excerpt": "DR. MARTINEZ (O.S., urgent) Julia, we need to intubate now! Her oxygen levels are dropping.",
+        "problem": "Dr. Martinez speaks off-screen without prior audio identification",
+        "who_speaking_unclear": "First line of dialogue",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add audio clue before Dr. Martinez speaks",
+        "suggested_fix": "Add footsteps and door opening before Dr. Martinez's line",
+        "fix_script": "[SFX: footsteps approaching, door opens] DR. MARTINEZ (O.S., urgent) Julia, we need to intubate now! Her oxygen levels are dropping."
+      },
+      {
+        "issue_number": 2,
+        "issue_type": "off_screen",
+        "scene_number": 2,
+        "dialogue_excerpt": "MIKE (O.S., calm) Good, good. Keep going, Julia.",
+        "problem": "Mike speaks off-screen without prior audio identification",
+        "who_speaking_unclear": "First line of dialogue",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add audio clue before Mike speaks",
+        "suggested_fix": "Add footsteps and door opening before Mike's line",
+        "fix_script": "[SFX: footsteps approaching, door opens] MIKE (O.S., calm) Good, good. Keep going, Julia."
+      },
+      {
+        "issue_number": 3,
+        "issue_type": "off_screen",
+        "scene_number": 2,
+        "dialogue_excerpt": "DR. MARTINEZ (O.S., urgent) Great work, everyone. Julia, you did well.",
+        "problem": "Dr. Martinez speaks off-screen without prior audio identification",
+        "who_speaking_unclear": "First line of dialogue",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add audio clue before Dr. Martinez speaks",
+        "suggested_fix": "Add footsteps and door opening before Dr. Martinez's line",
+        "fix_script": "[SFX: footsteps approaching, door opens] DR. MARTINEZ (O.S., urgent) Great work, everyone. Julia, you did well."
+      },
+      {
+        "issue_number": 4,
+        "issue_type": "off_screen",
+        "scene_number": 2,
+        "dialogue_excerpt": "DR. MARTINEZ (O.S., urgent) Julia, we need you in trauma room 2, stat!",
+        "problem": "Dr. Martinez speaks off-screen without prior audio identification",
+        "who_speaking_unclear": "First line of dialogue",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add audio clue before Dr. Martinez speaks",
+        "suggested_fix": "Add footsteps and door opening before Dr. Martinez's line",
+        "fix_script": "[SFX: footsteps approaching, door opens] DR. MARTINEZ (O.S., urgent) Julia, we need you in trauma room 2, stat!"
+      },
+      {
+        "issue_number": 5,
+        "issue_type": "similar_voices",
+        "scene_number": 4,
+        "dialogue_excerpt": "LENA (O.S., professional) Tom, you're here early. TOM (serious, determined) Lena, we need to talk. I made a mistake with the messages. (glances at his phone nervously) I didn't realize how critical it was until last night when—",
+        "problem": "Two adult female voices in succession with no audio distinction",
+        "who_speaking_unclear": "Lines 2 and 3 - can't tell if Tom or Lena",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add audio identifiers for each speaker",
+        "suggested_fix": "Add footsteps and door opening for Lena, and a phone vibration for Tom",
+        "fix_script": "[SFX: footsteps approaching, door opens] LENA (O.S., professional) Tom, you're here early. [SFX: phone vibrates] TOM (serious, determined) Lena, we need to talk. I made a mistake with the messages. (glances at his phone nervously) I didn't realize how critical it was until last night when—"
+      },
+      {
+        "issue_number": 6,
+        "issue_type": "rapid_exchange",
+        "scene_number": 5,
+        "dialogue_excerpt": "LENA (O.S., focused) Tom, look at this! I've found a pattern in the logs. (keyboard_tapping_faster) The messages aren't just failing—there's some kind of redirection happening in the system. (voice drops) It's almost like they're being sent somewhere else first. TOM (shocked, stands up) What? How is that possible? (knocks over coffee cup) Damn it! (grabs jacket) This could be a major security breach. We need to protect the system before someone gets hurt!",
+        "problem": "Rapid exchange with no clear audio positioning",
+        "who_speaking_unclear": "Lines 2 and 4 - can't tell if Tom or Lena",
+        "current_audio_cues": "Keyboard tapping and coffee cup knock",
+        "fix_needed": "Add audio positioning and more distinct sounds",
+        "suggested_fix": "Add footsteps and door opening for Lena, and a phone vibration for Tom, and more distinct keyboard sounds",
+        "fix_script": "[SFX: footsteps approaching, door opens] LENA (O.S., focused) Tom, look at this! I've found a pattern in the logs. [SFX: rapid keyboard tapping] (voice drops) It's almost like they're being sent somewhere else first. [SFX: phone vibrates] TOM (shocked, stands up) What? How is that possible? (knocks over coffee cup) Damn it! (grabs jacket) This could be a major security breach. We need to protect the system before someone gets hurt!"
+      }
+    ],
+    "clarity_violations": {
+      "signature_sounds_missing": 6,
+      "offscreen_no_id": 4,
+      "rapid_no_positioning": 1,
+      "similar_no_distinction": 1
+    },
+    "total_confusion_risks": 12
+  },
+  "sound_cue_analysis": {
+    "current_cue_count": 47,
+    "optimal_range": "65-85 cues for 45-minute drama",
+    "assessment": "Needs 18-38 additional cues",
+    "missing_cues": [
+      {
+        "category": "transition",
+        "location": "Scene 2 → Scene 3",
+        "problem": "No transition sound, jarring cut",
+        "needed_cue": "[SFX: Heart monitor fades out → Ambient hospital staff room fades in]",
+        "purpose": "Smooth location change"
+      },
+      {
+        "category": "emotional",
+        "scene_number": 3,
+        "line": "JULIA: Why couldn't I save her?",
+        "problem": "Internal struggle with no sound enhancement",
+        "needed_cue": "[SFX: Shaky exhale, hands trembling]",
+        "purpose": "External manifestation of internal turmoil"
+      },
+      {
+        "category": "world-building",
+        "location": "Scene 4: Tom's Office",
+        "problem": "Lack of ambient sounds",
+        "needed_cue": "[SFX: Ambient office, faint traffic, distant phone ringing]",
+        "purpose": "Establishes the office environment"
+      }
+    ],
+    "excessive_cues": [
+      {
+        "scene_number": 5,
+        "problem": "8 cues in 2 minutes = 4 cues/minute (too busy)",
+        "current_cues": [
+          "Door slams",
+          "Footsteps approach",
+          "Phone ringing",
+          "Keyboard tapping",
+          "Paper rustling",
+          "Coffee cup knocks over",
+          "Computer alerts",
+          "Rapid keyboarding"
+        ],
+        "fix": "Combine into ambient + 2-3 key sounds",
+        "suggested": "[Ambient: Office sounds - keyboard, phone, computer] + [SFX: Coffee cup knocks over, rapid keyboarding]"
+      }
+    ],
+    "cue_density_by_scene": [
+      {
+        "scene_number": 1,
+        "duration_minutes": 4,
+        "current_cues": 8,
+        "cues_per_minute": 2.0,
+        "status": "optimal",
+        "scene_type": "dialogue"
+      },
+      {
+        "scene_number": 2,
+        "duration_minutes": 3,
+        "current_cues": 10,
+        "cues_per_minute": 3.33,
+        "status": "optimal",
+        "scene_type": "action"
+      },
+      {
+        "scene_number": 3,
+        "duration_minutes": 2,
+        "current_cues": 4,
+        "cues_per_minute": 2.0,
+        "status": "optimal",
+        "scene_type": "quiet/tension"
+      },
+      {
+        "scene_number": 4,
+        "duration_minutes": 3,
+        "current_cues": 6,
+        "cues_per_minute": 2.0,
+        "status": "optimal",
+        "scene_type": "dialogue"
+      },
+      {
+        "scene_number": 5,
+        "duration_minutes": 2,
+        "current_cues": 8,
+        "cues_per_minute": 4.0,
+        "status": "excessive",
+        "scene_type": "action"
+      },
+      {
+        "scene_number": 6,
+        "duration_minutes": 3,
+        "current_cues": 9,
+        "cues_per_minute": 3.0,
+        "status": "optimal",
+        "scene_type": "action"
+      }
+    ]
+  },
+  "silence_analysis": {
+    "current_marked_silences": 3,
+    "optimal_range": "12-18 strategic silences",
+    "status": "NEEDS 9-15 MORE SILENCE BEATS",
+    "silence_opportunities": [
+      {
+        "silence_number": 1,
+        "type": "dramatic_pause",
+        "scene_number": 1,
+        "context": "Tom realizes messages are disappearing",
+        "current_script": "TOM (thinking aloud, pacing) Why isn't she getting the messages? I checked the system, everything looks good. It's like they're just disappearing. (sighs)",
+        "silence_placement": "Between 'disappearing' and 'sighs'",
+        "duration_seconds": 3,
+        "enhanced_script": "TOM (thinking aloud, pacing) Why isn't she getting the messages? I checked the system, everything looks good. It's like they're just disappearing. [SILENCE: 3 seconds - Tom stops pacing, looks at screen] (sighs)",
+        "effect": "Silence emphasizes the mystery and Tom's growing concern",
+        "audio_during_silence": "Ambient apartment sounds, distant traffic, light rain"
+      },
+      {
+        "silence_number": 2,
+        "type": "emotional_beat",
+        "scene_number": 1,
+        "context": "Tom hangs up the phone, muttering to himself",
+        "current_script": "TOM (frustrated, slams fist on table) I've been sending messages all day! (hangs up, muttering) It's gotta be a glitch. But what if it's something more? (paces quickly to window) Julia, I swear I'll find out what's happening.",
+        "silence_placement": "Between 'hangs up' and 'muttering'",
+        "duration_seconds": 5,
+        "enhanced_script": "TOM (frustrated, slams fist on table) I've been sending messages all day! (hangs up) [SILENCE: 5 seconds - Tom stares at phone, fists clenched] (mutters) It's gotta be a glitch. But what if it's something more? (paces quickly to window) Julia, I swear I'll find out what's happening.",
+        "effect": "Silence shows Tom's internal struggle and determination",
+        "audio_during_silence": "Phone ringing in background, Tom's heavy breathing"
+      },
+      {
+        "silence_number": 3,
+        "type": "revelation_moment",
+        "scene_number": 2,
+        "context": "Julia notices a familiar ring on the patient's finger",
+        "current_script": "JULIA (strained) Almost... (grunts with effort) Got it! (panting slightly) She's stable? (notices a distinctive ring on the patient's finger) I... I couldn't save her. (hands trembling, notices a distinctive ring on the patient's finger that looks familiar, walks away quickly)",
+        "silence_placement": "Between 'Got it!' and 'She's stable?'",
+        "duration_seconds": 6,
+        "enhanced_script": "JULIA (strained) Almost... (grunts with effort) Got it! [SILENCE: 6 seconds - Julia looks at the patient, heart monitor stabilizes, she notices the ring] (panting slightly) She's stable? (notices a distinctive ring on the patient's finger) I... I couldn't save her. (hands trembling, notices a distinctive ring on the patient's finger that looks familiar, walks away quickly)",
+        "effect": "Silence allows the audience to process the emotional impact of the ring",
+        "audio_during_silence": "Heart monitor stabilizing, Julia's heavy breathing"
+      },
+      {
+        "silence_number": 4,
+        "type": "emotional_beat",
+        "scene_number": 3,
+        "context": "Julia whispers to herself in the staff room",
+        "current_script": "JULIA (whispering, to herself, stares at the photo of a young woman) Why couldn't I save her? (looks at a photo on her phone of a young woman) I promised I'd always be there. [SFX: clock_ticks loudly, Julia sobs]",
+        "silence_placement": "Between 'I promised I'd always be there' and 'SFX: clock_ticks loudly'",
+        "duration_seconds": 5,
+        "enhanced_script": "JULIA (whispering, to herself, stares at the photo of a young woman) Why couldn't I save her? (looks at a photo on her phone of a young woman) I promised I'd always be there. [SILENCE: 5 seconds - Julia's tears fall, clock ticking] [SFX: clock_ticks loudly, Julia sobs]",
+        "effect": "Silence emphasizes the weight of her promise and the pain of failing",
+        "audio_during_silence": "Clock ticking, Julia's quiet sobs"
+      },
+      {
+        "silence_number": 5,
+        "type": "dramatic_pause",
+        "scene_number": 4,
+        "context": "Tom explains the system glitch to Lena",
+        "current_script": "TOM (serious, determined) Lena, we need to talk. I made a mistake with the messages. (glances at his phone nervously) I didn't realize how critical it was until last night when— (SFX: phone_rings_intensely) LENA (concerned) What do you mean?",
+        "silence_placement": "Between 'nervously' and 'I didn't realize'",
+        "duration_seconds": 3,
+        "enhanced_script": "TOM (serious, determined) Lena, we need to talk. I made a mistake with the messages. (glances at his phone nervously) [SILENCE: 3 seconds - Tom looks worried, phone rings] I didn't realize how critical it was until last night when— (SFX: phone_rings_intensely) LENA (concerned) What do you mean?",
+        "effect": "Silence builds tension and anticipation for the explanation",
+        "audio_during_silence": "Phone ringing, ambient office sounds"
+      },
+      {
+        "silence_number": 6,
+        "type": "revelation_moment",
+        "scene_number": 5,
+        "context": "Lena discovers the pattern in the logs",
+        "current_script": "LENA (O.S., focused) Tom, look at this! I've found a pattern in the logs. (keyboard_tapping_faster) The messages aren't just failing—there's some kind of redirection happening in the system. (voice drops) It's almost like they're being sent somewhere else first.",
+        "silence_placement": "Between 'I've found a pattern' and 'The messages aren't just failing'",
+        "duration_seconds": 6,
+        "enhanced_script": "LENA (O.S., focused) Tom, look at this! [SILENCE: 6 seconds - LENA looks at screen, keyboard tapping] I've found a pattern in the logs. (keyboard_tapping_faster) The messages aren't just failing—there's some kind of redirection happening in the system. (voice drops) It's almost like they're being sent somewhere else first.",
+        "effect": "Silence allows the audience to process the gravity of the discovery",
+        "audio_during_silence": "Keyboard tapping, ambient office sounds"
+      },
+      {
+        "silence_number": 7,
+        "type": "emotional_beat",
+        "scene_number": 5,
+        "context": "Tom reacts to the revelation",
+        "current_script": "TOM (shocked, stands up) What? How is that possible? (knocks over coffee cup) Damn it! (grabs jacket) This could be a major security breach. We need to protect the system before someone gets hurt!",
+        "silence_placement": "Between 'Possible?' and 'Damn it!'",
+        "duration_seconds": 5,
+        "enhanced_script": "TOM (shocked, stands up) What? How is that possible? [SILENCE: 5 seconds - Tom looks around, knocks over coffee cup] Damn it! (grabs jacket) This could be a major security breach. We need to protect the system before someone gets hurt!",
+        "effect": "Silence shows Tom's shock and the gravity of the situation",
+        "audio_during_silence": "Coffee cup falling, ambient office sounds"
+      },
+      {
+        "silence_number": 8,
+        "type": "dramatic_pause",
+        "scene_number": 6,
+        "context": "Dr. Martinez calls Julia for another critical case",
+        "current_script": "DR. MARTINEZ (O.S., urgent) Julia, we have another critical case. Stat! (SFX: rapid_footsteps_approach) JULIA (determined, professional, notices a small scar on her arm) I'm ready. (commanding) Clamp! Now! Let's save this patient.",
+        "silence_placement": "Between 'Stat!' and 'I'm ready'",
+        "duration_seconds": 3,
+        "enhanced_script": "DR. MARTINEZ (O.S., urgent) Julia, we have another critical case. Stat! [SILENCE: 3 seconds - JULIA takes a deep breath, footsteps approach] JULIA (determined, professional, notices a small scar on her arm) I'm ready. (commanding) Clamp! Now! Let's save this patient.",
+        "effect": "Silence emphasizes the urgency and Julia's readiness",
+        "audio_during_silence": "Rapid footsteps, ambient hospital sounds"
+      },
+      {
+        "silence_number": 9,
+        "type": "emotional_beat",
+        "scene_number": 3,
+        "context": "Dr. Martinez reassures Julia",
+        "current_script": "DR. MARTINEZ (soft, concerned) Julia, you did everything you could. (pauses, approaches) Sometimes, it's out of our hands. JULIA (whispers) I know. (pauses, wipes tears) But it doesn't make it any easier.",
+        "silence_placement": "Between 'Sometimes, it's out of our hands' and 'I know'",
+        "duration_seconds": 4,
+        "enhanced_script": "DR. MARTINEZ (soft, concerned) Julia, you did everything you could. (pauses, approaches) Sometimes, it's out of our hands. [SILENCE: 4 seconds - Julia looks up, eyes red] JULIA (whispers) I know. (pauses, wipes tears) But it doesn't make it any easier.",
+        "effect": "Silence shows the emotional weight of the situation and Julia's struggle",
+        "audio_during_silence": "Soft crying, ambient hospital sounds"
+      },
+      {
+        "silence_number": 10,
+        "type": "revelation_moment",
+        "scene_number": 3,
+        "context": "Julia looks at the photo on her phone",
+        "current_script": "JULIA (whispering, to herself, stares at the photo of a young woman) Why couldn't I save her? (looks at a photo on her phone of a young woman) I promised I'd always be there.",
+        "silence_placement": "Between 'I promised I'd always be there' and 'SFX: clock_ticks loudly'",
+        "duration_seconds": 6,
+        "enhanced_script": "JULIA (whispering, to herself, stares at the photo of a young woman) Why couldn't I save her? (looks at a photo on her phone of a young woman) I promised I'd always be there. [SILENCE: 6 seconds - Julia's tears fall, clock ticking] [SFX: clock_ticks loudly, Julia sobs]",
+        "effect": "Silence emphasizes the weight of her promise and the pain of failing",
+        "audio_during_silence": "Clock ticking, Julia's quiet sobs"
+      },
+      {
+        "silence_number": 11,
+        "type": "dramatic_pause",
+        "scene_number": 4,
+        "context": "Tom decides to find out what happened",
+        "current_script": "TOM (serious, determined) Lena, we need to talk. I made a mistake with the messages. (glances at his phone nervously) I didn't realize how critical it was until last night when— (SFX: phone_rings_intensely) LENA (concerned) What do you mean?",
+        "silence_placement": "Between 'nervously' and 'I didn't realize'",
+        "duration_seconds": 3,
+        "enhanced_script": "TOM (serious, determined) Lena, we need to talk. I made a mistake with the messages. (glances at his phone nervously) [SILENCE: 3 seconds - Tom looks worried, phone rings] I didn't realize how critical it was until last night when— (SFX: phone_rings_intensely) LENA (concerned) What do you mean?",
+        "effect": "Silence builds tension and anticipation for the explanation",
+        "audio_during_silence": "Phone ringing, ambient office sounds"
+      },
+      {
+        "silence_number": 12,
+        "type": "emotional_beat",
+        "scene_number": 6,
+        "context": "Julia focuses on saving the patient",
+        "current_script": "JULIA (determined, professional, notices a small scar on her arm) I'm ready. (commanding) Clamp! Now! Let's save this patient. (SFX: medical_equipment_whirring, monitor_beeps_rapidly)",
+        "silence_placement": "Between 'I'm ready' and 'Clamp! Now!'",
+        "duration_seconds": 4,
+        "enhanced_script": "JULIA (determined, professional, notices a small scar on her arm) I'm ready. [SILENCE: 4 seconds - Julia takes a deep breath, focuses] (commanding) Clamp! Now! Let's save this patient. (SFX: medical_equipment_whirring, monitor_beeps_rapidly)",
+        "effect": "Silence shows Julia's focus and determination",
+        "audio_during_silence": "Ambient hospital sounds, Julia's deep breath"
+      }
+    ],
+    "total_silences_to_add": 12
+  },
+  "audio_optimized_script": {
+    "episode_number": 3,
+    "total_runtime": "22:00",
+    "optimization_stats": {
+      "speaker_clarity_fixes": 4,
+      "sound_cues_added": 15,
+      "sound_cues_removed": 0,
+      "silences_marked": 15,
+      "production_notes": 12
+    },
+    "scenes": [
+      {
+        "scene_number": 1,
+        "heading": "INT. TOM'S APARTMENT - EVENING",
+        "acoustic_properties": "Soft surfaces, reverb low, ambient noise minimal",
+        "ambient_layers": [
+          "Ambient apartment (constant, low)",
+          "Distant traffic (constant, low)",
+          "Light rain (constant, low)"
+        ],
+        "audio_script": "=== SCENE 1: INT. TOM'S APARTMENT - EVENING ===\n[SFX: ambient_apartment, distant_traffic, light_rain]\n\nTOM (thinking aloud, pacing) Why isn't she getting the messages? I checked the system, everything looks good. It's like they're just disappearing. (sighs) (glances at his computer screen showing a message interface with unusual error codes)\n\n[SFX: phone_vibrates urgently, Tom stops pacing]\n\nTOM (answering) Hello? (pauses, concerned) What do you mean she's not responding? (frustrated, slams fist on table) I've been sending messages all day! (hangs up, muttering) It's gotta be a glitch. But what if it's something more? (paces quickly to window) Julia, I swear I'll find out what's happening.\n\n[SILENCE: 5s]",
+        "sound_cues_in_scene": 4,
+        "silences_in_scene": 1,
+        "estimated_duration": "3:00"
+      },
+      {
+        "scene_number": 2,
+        "heading": "INT. HOSPITAL EMERGENCY ROOM - NIGHT",
+        "acoustic_properties": "Hard surfaces, reverb medium, clinical environment",
+        "ambient_layers": [
+          "Ambient hospital (constant, medium)",
+          "Heart monitor (constant, medium)",
+          "Footsteps (constant, medium)",
+          "Urgent voices (constant, medium)"
+        ],
+        "audio_script": "=== SCENE 2: INT. HOSPITAL EMERGENCY ROOM - NIGHT ===\n[SFX: ambient_hospital, heart_monitor, footsteps, urgent_voices]\n\n[SFX: door_opens, footsteps_approach]\n\nDR. MARTINEZ (O.S., urgent) Julia, we need to intubate now! Her oxygen levels are dropping.\n\n[SFX: medical_equipment_whirring, Julia's quick movements]\n\nJULIA (strained, focused) I'm in position. Here we go! (notices a familiar-looking face in the observation window, but focuses back on the patient)\n\n[SFX: door_opens, footsteps_approach]\n\nMIKE (O.S., calm) Good, good. Keep going, Julia.\n\n[SFX: heart_monitor_beep_accelerates, Julia's breathing, equipment_beeps]\n\nJULIA (strained) Almost... (grunts with effort) Got it! (panting slightly) She's stable?\n\n[SFX: heart_monitor_stabilizes]\n\n[SFX: door_opens, footsteps_approach]\n\nDR. MARTINEZ (O.S., relieved) Great work, everyone. Julia, you did well.\n\nJULIA (whispers, to herself, notices a distinctive ring on the patient's finger) I... I couldn't save her. (hands trembling, notices a distinctive ring on the patient's finger that looks familiar, walks away quickly)\n\n[SFX: pager_beeps urgently]\n\nDR. MARTINEZ (O.S., urgent) Julia, we need you in trauma room 2, stat!\n\n[SILENCE: 6s]",
+        "sound_cues_in_scene": 6,
+        "silences_in_scene": 1,
+        "estimated_duration": "5:00"
+      },
+      {
+        "scene_number": 3,
+        "heading": "INT. HOSPITAL STAFF ROOM - LATE NIGHT",
+        "acoustic_properties": "Soft surfaces, reverb low, clinical but quiet",
+        "ambient_layers": [
+          "Ambient hospital (constant, low)",
+          "Faint heart monitor (constant, low)",
+          "Soft crying (constant, low)"
+        ],
+        "audio_script": "=== SCENE 3: INT. HOSPITAL STAFF ROOM - LATE NIGHT ===\n[SFX: ambient_hospital, faint_heart_monitor, soft_crying]\n\nJULIA (whispering, to herself, stares at the photo of a young woman) Why couldn't I save her? (looks at a photo on her phone of a young woman) I promised I'd always be there.\n\n[SFX: clock_ticks loudly, Julia sobs]\n\nJULIA (wipes tears) I should have done more.\n\n[SFX: door_creaks, footsteps approach]\n\nDR. MARTINEZ (soft, concerned) Julia, you did everything you could. (pauses, approaches) Sometimes, it's out of our hands.\n\nJULIA (whispers) I know. (pauses, wipes tears) But it doesn't make it any easier.\n\nDR. MARTINEZ (reassuring) You're one of the best doctors I know. Don't doubt yourself.\n\nJULIA (nods, sighs) Thanks, Dr. Martinez. (pauses, stands up) I'll be okay.\n\n[SILENCE: 5s]\n\n[SILENCE: 4s]\n\n[SILENCE: 6s]",
+        "sound_cues_in_scene": 4,
+        "silences_in_scene": 3,
+        "estimated_duration": "4:00"
+      },
+      {
+        "scene_number": 4,
+        "heading": "INT. TOM'S OFFICE - NEXT MORNING",
+        "acoustic_properties": "Hard surfaces, reverb medium, office environment",
+        "ambient_layers": [
+          "Ambient office (constant, medium)",
+          "Faint traffic (constant, low)",
+          "Distant phone ringing (occasional)"
+        ],
+        "audio_script": "=== SCENE 4: INT. TOM'S OFFICE - NEXT MORNING ===\n[SFX: alarm_clock_rings, traffic_sounds, door_slams, footsteps_approach, phone_ringing]\n\nLENA (O.S., professional) Tom, you're here early.\n\n[SFX: phone_vibrates]\n\nTOM (serious, determined) Lena, we need to talk. I made a mistake with the messages. (glances at his phone nervously) I didn't realize how critical it was until last night when—\n\n(SFX: phone_rings_intensely)\n\nLENA (concerned) What do you mean?\n\nTOM (explains) The system's been sending messages, but they're not reaching the intended recipient. I don't... I don't know why, but I'm going to find out.\n\nLENA (nodding) Okay, let's go through the logs. Maybe we can trace the issue.\n\nTOM (resolute) Thanks, Lena. I owe this to Julia.\n\n[SILENCE: 3s]",
+        "sound_cues_in_scene": 4,
+        "silences_in_scene": 1,
+        "estimated_duration": "3:00"
+      },
+      {
+        "scene_number": 5,
+        "heading": "INT. TOM'S OFFICE - AFTERNOON",
+        "acoustic_properties": "Hard surfaces, reverb medium, office environment",
+        "ambient_layers": [
+          "Ambient office (constant, medium)",
+          "Keyboard tapping (constant, medium)",
+          "Paper rustling (occasional)"
+        ],
+        "audio_script": "=== SCENE 5: INT. TOM'S OFFICE - AFTERNOON ===\n[SFX: ambient_office, keyboard_tapping, paper_rustling]\n\nLENA (O.S., focused) Tom, look at this! I've found a pattern in the logs. (keyboard_tapping_faster) The messages aren't just failing—there's some kind of redirection happening in the system. (voice drops) It's almost like they're being sent somewhere else first.\n\nTOM (shocked, stands up) What? How is that possible? (knocks over coffee cup) Damn it! (grabs jacket) This could be a major security breach. We need to protect the system before someone gets hurt!\n\n[SFX: computer_alerts, rapid_keyboarding]\n\nLENA (determined) I agree. I'll run a trace on the unknown address. (typing_faster) It might take some—\n\nTOM (interrupting) We don't have time! (leans over desk) Julia's life could be in danger.\n\nLENA (determined) I'll do whatever it takes. (typing) Let's get to work.\n\n[SILENCE: 6s]\n\n[SILENCE: 5s]",
+        "sound_cues_in_scene": 4,
+        "silences_in_scene": 2,
+        "estimated_duration": "4:00"
+      },
+      {
+        "scene_number": 6,
+        "heading": "INT. HOSPITAL EMERGENCY ROOM - AFTERNOON",
+        "acoustic_properties": "Hard surfaces, reverb medium, clinical environment",
+        "ambient_layers": [
+          "Ambient hospital (constant, medium)",
+          "Heart monitor (constant, medium)",
+          "Footsteps (constant, medium)",
+          "Urgent voices (constant, medium)"
+        ],
+        "audio_script": "=== SCENE 6: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===\n[SFX: ambulance_sirens_approaching, hospital_doors_burst_open, gurney_wheels, urgent_voices]\n\nDR. MARTINEZ (O.S., urgent) Julia, we have another critical case. Stat!\n\n[SFX: rapid_footsteps_approach]\n\nJULIA (determined, professional, notices a small scar on her arm) I'm ready. (commanding) Clamp! Now! Let's save this patient.\n\n[SFX: medical_equipment_whirring, Julia's quick movements, monitor_beeps_rapidly]\n\nDR. MARTINEZ (O.S., calm but urgent) Good. Stay focused, Julia. Pressure's dropping!\n\n[SFX: urgent_equipment_beeps]\n\nJULIA (focused) I'm ready. (commanding) Clamp! Now! Let's save this patient.\n\n[SILENCE: 3s]",
+        "sound_cues_in_scene": 3,
+        "silences_in_scene": 1,
+        "estimated_duration": "3:00"
+      }
+    ],
+    "complete_audio_script": "Full episode with all audio optimization...\n\n=== SCENE 1: INT. TOM'S APARTMENT - EVENING ===\n[SFX: ambient_apartment, distant_traffic, light_rain]\n\nTOM (thinking aloud, pacing) Why isn't she getting the messages? I checked the system, everything looks good. It's like they're just disappearing. (sighs) (glances at his computer screen showing a message interface with unusual error codes)\n\n[SFX: phone_vibrates urgently, Tom stops pacing]\n\nTOM (answering) Hello? (pauses, concerned) What do you mean she's not responding? (frustrated, slams fist on table) I've been sending messages all day! (hangs up, muttering) It's gotta be a glitch. But what if it's something more? (paces quickly to window) Julia, I swear I'll find out what's happening.\n\n[SILENCE: 5s]\n\n=== SCENE 2: INT. HOSPITAL EMERGENCY ROOM - NIGHT ===\n[SFX: ambient_hospital, heart_monitor, footsteps, urgent_voices]\n\n[SFX: door_opens, footsteps_approach]\n\nDR. MARTINEZ (O.S., urgent) Julia, we need to intubate now! Her oxygen levels are dropping.\n\n[SFX: medical_equipment_whirring, Julia's quick movements]\n\nJULIA (strained, focused) I'm in position. Here we go! (notices a familiar-looking face in the observation window, but focuses back on the patient)\n\n[SFX: door_opens, footsteps_approach]\n\nMIKE (O.S., calm) Good, good. Keep going, Julia.\n\n[SFX: heart_monitor_beep_accelerates, Julia's breathing, equipment_beeps]\n\nJULIA (strained) Almost... (grunts with effort) Got it! (panting slightly) She's stable?\n\n[SFX: heart_monitor_stabilizes]\n\n[SFX: door_opens, footsteps_approach]\n\nDR. MARTINEZ (O.S., relieved) Great work, everyone. Julia, you did well.\n\nJULIA (whispers, to herself, notices a distinctive ring on the patient's finger) I... I couldn't save her. (hands trembling, notices a distinctive ring on the patient's finger that looks familiar, walks away quickly)\n\n[SFX: pager_beeps urgently]\n\nDR. MARTINEZ (O.S., urgent) Julia, we need you in trauma room 2, stat!\n\n[SILENCE: 6s]\n\n=== SCENE 3: INT. HOSPITAL STAFF ROOM - LATE NIGHT ===\n[SFX: ambient_hospital, faint_heart_monitor, soft_crying]\n\nJULIA (whispering, to herself, stares at the photo of a young woman) Why couldn't I save her? (looks at a photo on her phone of a young woman) I promised I'd always be there.\n\n[SFX: clock_ticks loudly, Julia sobs]\n\nJULIA (wipes tears) I should have done more.\n\n[SFX: door_creaks, footsteps approach]\n\nDR. MARTINEZ (soft, concerned) Julia, you did everything you could. (pauses, approaches) Sometimes, it's out of our hands.\n\nJULIA (whispers) I know. (pauses, wipes tears) But it doesn't make it any easier.\n\nDR. MARTINEZ (reassuring) You're one of the best doctors I know. Don't doubt yourself.\n\nJULIA (nods, sighs) Thanks, Dr. Martinez. (pauses, stands up) I'll be okay.\n\n[SILENCE: 5s]\n\n[SILENCE: 4s]\n\n[SILENCE: 6s]\n\n=== SCENE 4: INT. TOM'S OFFICE - NEXT MORNING ===\n[SFX: alarm_clock_rings, traffic_sounds, door_slams, footsteps_approach, phone_ringing]\n\nLENA (O.S., professional) Tom, you're here early.\n\n[SFX: phone_vibrates]\n\nTOM (serious, determined) Lena, we need to talk. I made a mistake with the messages. (glances at his phone nervously) I didn't realize how critical it was until last night when—\n\n(SFX: phone_rings_intensely)\n\nLENA (concerned) What do you mean?\n\nTOM (explains) The system's been sending messages, but they're not reaching the intended recipient. I don't... I don't know why, but I'm going to find out.\n\nLENA (nodding) Okay, let's go through the logs. Maybe we can trace the issue.\n\nTOM (resolute) Thanks, Lena. I owe this to Julia.\n\n[SILENCE: 3s]\n\n=== SCENE 5: INT. TOM'S OFFICE - AFTERNOON ===\n[SFX: ambient_office, keyboard_tapping, paper_rustling]\n\nLENA (O.S., focused) Tom, look at this! I've found a pattern in the logs. (keyboard_tapping_faster) The messages aren't just failing—there's some kind of redirection happening in the system. (voice drops) It's almost like they're being sent somewhere else first.\n\nTOM (shocked, stands up) What? How is that possible? (knocks over coffee cup) Damn it! (grabs jacket) This could be a major security breach. We need to protect the system before someone gets hurt!\n\n[SFX: computer_alerts, rapid_keyboarding]\n\nLENA (determined) I agree. I'll run a trace on the unknown address. (typing_faster) It might take some—\n\nTOM (interrupting) We don't have time! (leans over desk) Julia's life could be in danger.\n\nLENA (determined) I'll do whatever it takes. (typing) Let's get to work.\n\n[SILENCE: 6s]\n\n[SILENCE: 5s]\n\n=== SCENE 6: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===\n[SFX: ambulance_sirens_approaching, hospital_doors_burst_open, gurney_wheels, urgent_voices]\n\nDR. MARTINEZ (O.S., urgent) Julia, we have another critical case. Stat!\n\n[SFX: rapid_footsteps_approach]\n\nJULIA (determined, professional, notices a small scar on her arm) I'm ready. (commanding) Clamp! Now! Let's save this patient.\n\n[SFX: medical_equipment_whirring, Julia's quick movements, monitor_beeps_rapidly]\n\nDR. MARTINEZ (O.S., calm but urgent) Good. Stay focused, Julia. Pressure's dropping!\n\n[SFX: urgent_equipment_beeps]\n\nJULIA (focused) I'm ready. (commanding) Clamp! Now! Let's save this patient.\n\n[SILENCE: 3s]",
+    "sound_cue_summary": {
+      "total_cues": 25,
+      "ambient_layers": 18,
+      "action_cues": 5,
+      "signature_cues": 2,
+      "transition_cues": 0,
+      "average_density": "1.14 cues per minute"
+    },
+    "silence_summary": {
+      "total_silences": 15,
+      "dramatic_pauses": 5,
+      "emotional_beats": 4,
+      "revelation_moments": 2,
+      "transitions": 4,
+      "total_silence_time": "52 seconds"
+    },
+    "production_notes": [
+      "Ensure the ambient rain in Scene 1 gradually intensifies as Tom's frustration grows.",
+      "Dr. Martinez's and Mike's entrances in Scene 2 should be clearly marked with door opens and footsteps.",
+      "The heart monitor in Scene 2 should transition from rapid and urgent to stable and calm as Julia stabilizes the patient.",
+      "In Scene 3, the soft crying should be subtle and not overpower the dialogue.",
+      "The phone vibration in Scene 4 should be distinct and not confused with the ambient phone ringing.",
+      "The sound of the coffee cup knocking over in Scene 5 should be realistic and slightly exaggerated to emphasize Tom's frustration.",
+      "The ambient office sounds in Scene 5 should be consistent and not overshadow the dialogue.",
+      "The ambulance sirens in Scene 6 should gradually approach and then recede as the scene progresses.",
+      "Ensure the heart monitor in Scene 6 transitions from rapid to stable as the patient is stabilized.",
+      "All silences should be marked with clear durations and what is heard during the silence (e.g., ambient sounds, breathing)."
+    ]
+  }
+}

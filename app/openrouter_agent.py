@@ -28,13 +28,18 @@ class OpenRouterAgent:
             "grok-4": "x-ai/grok-4-fast:free",
             "llama-3b": "meta-llama/llama-3.2-3b-instruct:free",
             "gpt-4o": "openai/gpt-4o-2024-08-06",
-            "claude-3-haiku": "anthropic/claude-3-haiku"
+            "claude-3-haiku": "anthropic/claude-3-haiku",
+            "glm-4.5": "z-ai/glm-4.5"
         }
     
     async def process_message(self, user_input: str, model_name: str = "qwen-72b", max_tokens: int = 3000) -> str:
         """Process a user message using OpenRouter with rate limiting and retry logic"""
         max_retries = 3
         base_delay = 2.0  # Base delay in seconds
+        
+        # Check if API key is set
+        if not self.api_key:
+            raise Exception("OpenRouter API key is not set. Please set OPENROUTER_API_KEY environment variable.")
         
         for attempt in range(max_retries):
             try:
@@ -83,20 +88,23 @@ class OpenRouterAgent:
                     
                     response.raise_for_status()
                     result = response.json()
-                    return result["choices"][0]["message"]["content"]
+                    if "choices" in result and result["choices"]:
+                        return result["choices"][0]["message"]["content"]
+                    else:
+                        raise Exception("No choices in API response")
                 
             except httpx.HTTPStatusError as e:
                 if e.response.status_code == 429 and attempt < max_retries - 1:
                     continue  # Retry on rate limit
                 else:
-                    return f"I'm sorry, I encountered an error: {str(e)}"
+                    raise Exception(f"OpenRouter API error: {str(e)}")
             except Exception as e:
                 if attempt < max_retries - 1:
                     continue  # Retry on other errors
                 else:
-                    return f"I'm sorry, I encountered an error: {str(e)}"
+                    raise Exception(f"OpenRouter API error: {str(e)}")
         
-        return f"I'm sorry, I encountered an error after {max_retries} attempts"
+        raise Exception(f"OpenRouter API failed after {max_retries} attempts")
     
     def _get_system_message(self, model_name: str) -> str:
         """Get appropriate system message for each model"""
@@ -106,7 +114,8 @@ class OpenRouterAgent:
             "grok-4": "You are Grok-4, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses.",
             "llama-3b": "You are Llama 3.2 3B, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses.",
             "gpt-4o": "You are GPT-4o, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses.",
-            "claude-3-haiku": "You are Claude 3 Haiku, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses."
+            "claude-3-haiku": "You are Claude 3 Haiku, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses.",
+            "glm-4.5": "You are GLM-4.5, an advanced AI assistant with excellent reasoning capabilities. Provide helpful, accurate, and detailed responses."
         }
         return system_messages.get(model_name, "You are a helpful AI assistant. Return ONLY valid JSON as requested.")
     

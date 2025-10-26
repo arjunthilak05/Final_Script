@@ -1,0 +1,1016 @@
+{
+  "session_id": "session_20251023_112749",
+  "working_title": "The Accidental Lifeline",
+  "primary_genre": "Drama",
+  "episode_count": "8-12 episodes",
+  "timestamp": "2025-10-23T15:21:51.498234",
+  "reveal_taxonomy": {
+    "must_know_by_episode": {
+      "episode_1": [
+        {
+          "element": "Tom is a morning motivation coach who has been sending daily inspirational messages to the wrong number.",
+          "category": "plot_critical",
+          "audio_signature": "Tom's voice delivering a motivational message, followed by a subtle sound of a phone notification",
+          "why_critical": "Establishes the central premise and the mystery of the wrong number"
+        },
+        {
+          "element": "Julia is a depressed ER doctor who has been receiving Tom's messages and finds them to be her lifeline.",
+          "category": "character_foundation",
+          "audio_signature": "Julia's voice narrating her struggles, ambient sounds of the hospital, and the sound of her phone receiving a message",
+          "why_critical": "Introduces Julia's character and her emotional state"
+        },
+        {
+          "element": "The setting is a large metropolitan city with a major hospital.",
+          "category": "world_rule",
+          "audio_signature": "Ambient sounds of a busy city and hospital environment, including traffic, hospital announcements, and medical equipment",
+          "why_critical": "Sets the stage for the story's location and atmosphere"
+        }
+      ],
+      "episode_3": [
+        {
+          "element": "Tom's actual client complains about not receiving messages.",
+          "category": "plot_critical",
+          "audio_signature": "Tom's client's frustrated voice over the phone, followed by Tom's concerned response",
+          "why_critical": "Introduces the conflict that will lead to the discovery of the wrong number"
+        },
+        {
+          "element": "Julia has been funding Tom's coaching business anonymously.",
+          "category": "plot_critical",
+          "audio_signature": "A subtle sound of a transaction notification, followed by a quiet sigh from Julia",
+          "why_critical": "Reveals a significant connection between the characters"
+        }
+      ],
+      "episode_5": [
+        {
+          "element": "Tom discovers the error and decides to track down the unknown recipient.",
+          "category": "plot_critical",
+          "audio_signature": "Tom's determined voice as he makes phone calls and searches online, with the sound of a computer keyboard typing",
+          "why_critical": "Builds tension and sets up the climax"
+        }
+      ]
+    },
+    "should_suspect_by_episode": {
+      "episode_2": [
+        {
+          "element": "Julia is struggling with severe depression and finds solace in Tom's messages.",
+          "clue_type": "audio_pattern",
+          "audio_execution": "Julia's voice quivers when describing her day, and the ambient sounds of the hospital are often paired with a soft, melancholic piano motif",
+          "confirmation_episode": 5,
+          "fair_play": true
+        }
+      ],
+      "episode_4": [
+        {
+          "element": "Tom has a history of personal struggles and uses his own experiences to help others.",
+          "clue_type": "dialogue_subtext",
+          "audio_execution": "Tom's voice has a slightly raw, emotional edge when discussing resilience and overcoming challenges",
+          "confirmation_episode": 8,
+          "fair_play": true
+        }
+      ],
+      "episode_6": [
+        {
+          "element": "Julia has a complex relationship with her colleagues and patients.",
+          "clue_type": "behavioral",
+          "audio_execution": "Julia's interactions with patients and staff are tense, with moments of silence and heavy breathing",
+          "confirmation_episode": 10,
+          "fair_play": true
+        }
+      ]
+    },
+    "can_discover_in_episode": {
+      "episode_2": [
+        {
+          "element": "Tom's apartment has a unique sonic signature.",
+          "plant_type": "ambient_detail",
+          "audio_execution": "Background hum of a refrigerator, creaking floorboards, and distant city noise",
+          "payoff_episode": 7,
+          "relisten_value": "medium"
+        }
+      ],
+      "episode_4": [
+        {
+          "element": "Julia's office has a specific acoustic environment.",
+          "plant_type": "ambient_detail",
+          "audio_execution": "Continuous hum of medical equipment, soft beeping of monitors, and background chatter",
+          "payoff_episode": 9,
+          "relisten_value": "high"
+        }
+      ],
+      "episode_6": [
+        {
+          "element": "Tom's client is a close friend or family member.",
+          "plant_type": "quick_line",
+          "audio_execution": "A brief mention of a personal connection in a conversation between Tom and his client",
+          "payoff_episode": 11,
+          "relisten_value": "low"
+        }
+      ]
+    },
+    "never_explicitly_stated": [
+      {
+        "element": "The exact nature of Julia's depression and past traumas.",
+        "reason_for_ambiguity": "To maintain emotional depth and allow for audience interpretation",
+        "audio_implications": "Julia's voice often trails off or is accompanied by a distant, melancholic piano motif",
+        "audience_interpretation_range": "Severe personal loss, chronic illness, professional burnout"
+      },
+      {
+        "element": "The reason Tom's actual client never received messages.",
+        "reason_for_ambiguity": "To add a layer of mystery and avoid over-explaining",
+        "audio_implications": "Subtle hints of technical issues or miscommunication in background dialogue",
+        "audience_interpretation_range": "Phone number mix-up, technical glitch, human error"
+      }
+    ],
+    "character_knowledge_grid": [
+      {
+        "character_name": "Tom",
+        "knows_from_start": [
+          "He is a morning motivation coach",
+          "He sends daily messages to a number"
+        ],
+        "learns_episode_X": [
+          "His messages are reaching the wrong person (episode 3)",
+          "Julia has been funding his business (episode 5)"
+        ],
+        "never_learns": [
+          "The full extent of Julia's struggles"
+        ],
+        "audience_vs_character": "ahead"
+      },
+      {
+        "character_name": "Julia",
+        "knows_from_start": [
+          "She is a depressed ER doctor",
+          "She receives daily messages from Tom"
+        ],
+        "learns_episode_X": [
+          "Tom is tracking down the recipient (episode 5)"
+        ],
+        "never_learns": [
+          "Tom's personal history"
+        ],
+        "audience_vs_character": "parallel"
+      },
+      {
+        "character_name": "Tom's Client",
+        "knows_from_start": [
+          "She is not receiving messages from Tom"
+        ],
+        "learns_episode_X": [
+          "Tom is trying to find the wrong number (episode 3)"
+        ],
+        "never_learns": [
+          "The identity of the wrong number recipient"
+        ],
+        "audience_vs_character": "behind"
+      }
+    ],
+    "total_information_units": 12,
+    "critical_reveals": 5,
+    "clued_discoveries": 3,
+    "subtle_plants": 3,
+    "ambiguous_elements": 2
+  },
+  "reveal_methods": {
+    "reveal_methods": [
+      {
+        "revelation_id": "r001",
+        "revelation": "Tom is a morning motivation coach who has been sending daily inspirational messages to the wrong number.",
+        "method_number": 1,
+        "method_name": "Breadcrumb Drip",
+        "why_selected": "Slowly reveals the premise through small, incremental clues that build up to the full revelation.",
+        "audio_execution": "Incomplete sound cues of Tom's messages, with slight distortions or interruptions, gradually becoming clearer.",
+        "audience_positioning": "Audience discovers with the character.",
+        "episode_revealed": 1,
+        "episode_first_clue": 1,
+        "relisten_impact": "Clues become more obvious, enhancing the audience's understanding of the setup."
+      },
+      {
+        "revelation_id": "r002",
+        "revelation": "Julia is a depressed ER doctor who has been receiving Tom's messages and finds them to be her lifeline.",
+        "method_number": 36,
+        "method_name": "Emotional Breakthrough",
+        "why_selected": "Reveals Julia's emotional state through a powerful, vulnerable moment.",
+        "audio_execution": "Julia's voice breaking as she narrates her struggles, with ambient hospital sounds providing context.",
+        "audience_positioning": "Audience discovers with the character.",
+        "episode_revealed": 1,
+        "episode_first_clue": 1,
+        "relisten_impact": "Emotional resonance deepens on second listen, as the audience already knows the significance of the messages."
+      },
+      {
+        "revelation_id": "r003",
+        "revelation": "The setting is a large metropolitan city with a major hospital.",
+        "method_number": 35,
+        "method_name": "Environment Tells Story",
+        "why_selected": "The environment itself provides context and atmosphere, setting the stage for the story.",
+        "audio_execution": "Ambient sounds of a busy city and hospital, including traffic, hospital announcements, and medical equipment.",
+        "audience_positioning": "Audience discovers before the character.",
+        "episode_revealed": 1,
+        "episode_first_clue": 1,
+        "relisten_impact": "The environment's sounds become more meaningful as the story progresses."
+      },
+      {
+        "revelation_id": "r004",
+        "revelation": "Tom's actual client complains about not receiving messages.",
+        "method_number": 23,
+        "method_name": "Detective Puzzle",
+        "why_selected": "Presents a problem that the audience can try to solve alongside Tom, creating engagement.",
+        "audio_execution": "Tom's client's frustrated voice over the phone, with background sounds of a home or office environment.",
+        "audience_positioning": "Audience discovers with the character.",
+        "episode_revealed": 3,
+        "episode_first_clue": 1,
+        "relisten_impact": "The audience can piece together the puzzle more quickly on a second listen."
+      },
+      {
+        "revelation_id": "r005",
+        "revelation": "Julia has been funding Tom's coaching business anonymously.",
+        "method_number": 28,
+        "method_name": "Hidden Identity",
+        "why_selected": "Reveals a significant connection between the characters through a hidden identity, adding depth to their relationship.",
+        "audio_execution": "A subtle sound of a transaction notification, followed by a quiet sigh from Julia.",
+        "audience_positioning": "Audience discovers with the character.",
+        "episode_revealed": 3,
+        "episode_first_clue": 1,
+        "relisten_impact": "The audience will recognize the significance of the transaction sounds and Julia's reactions."
+      },
+      {
+        "revelation_id": "r006",
+        "revelation": "Tom discovers the error and decides to track down the unknown recipient.",
+        "method_number": 8,
+        "method_name": "Effect→Cause (Backwards Reveal)",
+        "why_selected": "Builds tension by showing the result (Tom's decision) and working backwards to the cause (discovery of the error).",
+        "audio_execution": "Tom's determined voice as he makes phone calls and searches online, with the sound of a computer keyboard typing.",
+        "audience_positioning": "Audience discovers with the character.",
+        "episode_revealed": 5,
+        "episode_first_clue": 3,
+        "relisten_impact": "The audience will understand the buildup to Tom's decision more clearly on a second listen."
+      },
+      {
+        "revelation_id": "r007",
+        "revelation": "Julia is struggling with severe depression and finds solace in Tom's messages.",
+        "method_number": 25,
+        "method_name": "Fair-Play Mystery",
+        "why_selected": "Presents clues that the audience can use to understand Julia's emotional state, ensuring fair play.",
+        "audio_execution": "Julia's voice quivers when describing her day, and the ambient sounds of the hospital are often paired with a soft, melancholic piano motif.",
+        "audience_positioning": "Audience discovers with the character.",
+        "episode_revealed": 2,
+        "episode_first_clue": 1,
+        "relisten_impact": "The audience will recognize the emotional cues more clearly on a second listen."
+      },
+      {
+        "revelation_id": "r008",
+        "revelation": "Tom has a history of personal struggles and uses his own experiences to help others.",
+        "method_number": 23,
+        "method_name": "Detective Puzzle",
+        "why_selected": "Reveals Tom's backstory through subtle dialogue and background sounds, allowing the audience to piece together his history.",
+        "audio_execution": "Tom's voice has a slight tremor when discussing his past, with ambient sounds of a quiet, reflective environment.",
+        "audience_positioning": "Audience discovers with the character.",
+        "episode_revealed": 4,
+        "episode_first_clue": 1,
+        "relisten_impact": "The audience will connect the dots more easily on a second listen."
+      }
+    ],
+    "method_distribution": {
+      "Breadcrumb Drip": 1,
+      "Fair-Play Mystery": 2,
+      "Backwards Reveal": 1,
+      "Detective Puzzle": 2,
+      "Emotional Breakthrough": 1,
+      "Environment Tells Story": 1
+    },
+    "audio_execution_styles": {
+      "voice_pattern_matching": 3,
+      "sound_recontextualization": 3,
+      "acoustic_memory_triggers": 2
+    }
+  },
+  "plant_proof_payoff_grid": {
+    "plant_proof_payoff_grid": [
+      {
+        "revelation_id": "r001",
+        "revelation": "Tom is a morning motivation coach who has been sending daily inspirational messages to the wrong number.",
+        "plants": [
+          {
+            "plant_id": "P_001_001",
+            "episode": 1,
+            "scene": 2,
+            "moment": "Tom's voicemail greeting",
+            "audio": "Upbeat background music, Tom's cheerful voice",
+            "dialogue": "Hi, you've reached Tom's Motivation Station. Leave a message and we'll make today amazing!",
+            "visibility": "moderate",
+            "relisten_impact": "The audience realizes this is Tom's professional voicemail."
+          },
+          {
+            "plant_id": "P_001_002",
+            "episode": 1,
+            "scene": 4,
+            "moment": "Tom's morning routine",
+            "audio": "Sound of coffee brewing, typing on a keyboard, motivational music in the background",
+            "dialogue": "Alright, time to inspire the world!",
+            "visibility": "subtle",
+            "relisten_impact": "The audience understands Tom's daily routine as a coach."
+          },
+          {
+            "plant_id": "P_001_003",
+            "episode": 2,
+            "scene": 5,
+            "moment": "Tom's phone notification",
+            "audio": "Notification sound for a new message, followed by a slight confusion in Tom's voice",
+            "dialogue": "Huh, that's odd. I didn't send that message yet.",
+            "visibility": "moderate",
+            "relisten_impact": "The audience realizes Tom is sending messages to the wrong number."
+          }
+        ],
+        "proofs": [
+          {
+            "proof_id": "PR_001_001",
+            "episode": 3,
+            "scene": 7,
+            "moment": "Tom's client calls to complain",
+            "audio": "Phone ringing, Tom's confused voice, client's frustrated voice",
+            "dialogue": "Tom: 'I'm so sorry, I've been sending them to the wrong number.' Client: 'This has never happened before.'",
+            "evidence_type": "dialogue",
+            "connects_to_plants": [
+              "P_001_001",
+              "P_001_002",
+              "P_001_003"
+            ]
+          }
+        ],
+        "payoff": {
+          "payoff_id": "PY_001_001",
+          "episode": 5,
+          "scene": 4,
+          "moment": "Tom realizes the mistake",
+          "audio": "Tom's realization, followed by a mix of surprise and guilt",
+          "dialogue": "Oh no, I've been sending my messages to the wrong number all this time!",
+          "impact": "The audience understands the full extent of Tom's mistake and the potential impact on the recipient.",
+          "recontextualizes": "All previous plants now make sense, especially the confusion and the routine.",
+          "relisten_value": "high"
+        }
+      },
+      {
+        "revelation_id": "r002",
+        "revelation": "Julia is a depressed ER doctor who has been receiving Tom's messages and finds them to be her lifeline.",
+        "plants": [
+          {
+            "plant_id": "P_002_001",
+            "episode": 1,
+            "scene": 1,
+            "moment": "Julia's morning routine",
+            "audio": "Sound of an alarm clock, followed by silence",
+            "dialogue": "Julia: (sighing) Another day.",
+            "visibility": "moderate",
+            "relisten_impact": "The audience understands Julia's emotional state from the beginning."
+          },
+          {
+            "plant_id": "P_002_002",
+            "episode": 1,
+            "scene": 5,
+            "moment": "Julia's phone notification",
+            "audio": "Notification sound, followed by Julia's soft, appreciative voice",
+            "dialogue": "Julia: (softly) Thank you, Tom. I needed that today.",
+            "visibility": "subtle",
+            "relisten_impact": "The audience realizes Julia is receiving and valuing Tom's messages."
+          },
+          {
+            "plant_id": "P_002_003",
+            "episode": 2,
+            "scene": 3,
+            "moment": "Julia in the ER",
+            "audio": "Hospital sounds, including beeping machines and urgent voices",
+            "dialogue": "Julia: (to herself) I can do this. Just one step at a time.",
+            "visibility": "moderate",
+            "relisten_impact": "The audience understands Julia's struggle and her reliance on the messages."
+          }
+        ],
+        "proofs": [
+          {
+            "proof_id": "PR_002_001",
+            "episode": 3,
+            "scene": 9,
+            "moment": "Julia's breakdown",
+            "audio": "Sound of Julia crying, soft background music",
+            "dialogue": "Julia: (crying) I don't know how to keep going. These messages are the only thing keeping me afloat.",
+            "evidence_type": "emotional_breakthrough",
+            "connects_to_plants": [
+              "P_002_001",
+              "P_002_002",
+              "P_002_003"
+            ]
+          }
+        ],
+        "payoff": {
+          "payoff_id": "PY_002_001",
+          "episode": 5,
+          "scene": 6,
+          "moment": "Julia's confession to a colleague",
+          "audio": "Julia's voice, soft and vulnerable, with hospital sounds in the background",
+          "dialogue": "Julia: 'I've been receiving these messages from Tom, and they've been my lifeline. I don't know what I'd do without them.'",
+          "impact": "The audience fully understands the depth of Julia's reliance on Tom's messages.",
+          "recontextualizes": "All previous plants, especially her emotional state and the moments of appreciation, now make sense.",
+          "relisten_value": "high"
+        }
+      },
+      {
+        "revelation_id": "r003",
+        "revelation": "The setting is a large metropolitan city with a major hospital.",
+        "plants": [
+          {
+            "plant_id": "P_003_001",
+            "episode": 1,
+            "scene": 1,
+            "moment": "Opening scene of the city",
+            "audio": "Sound of traffic, city noise, distant sirens",
+            "dialogue": null,
+            "visibility": "obvious",
+            "relisten_impact": "The audience recognizes the city setting as the backdrop for the story."
+          },
+          {
+            "plant_id": "P_003_002",
+            "episode": 1,
+            "scene": 3,
+            "moment": "Hospital entrance",
+            "audio": "Ambient hospital sounds, including doors opening and closing, people talking",
+            "dialogue": "Nurse: 'Welcome to City General. How can I help you?'",
+            "visibility": "obvious",
+            "relisten_impact": "The audience understands the hospital is a major setting in the story."
+          },
+          {
+            "plant_id": "P_003_003",
+            "episode": 2,
+            "scene": 2,
+            "moment": "Tom's commute",
+            "audio": "Sound of public transportation, city announcements",
+            "dialogue": "Tom: 'Another day in the big city.'",
+            "visibility": "moderate",
+            "relisten_impact": "The audience sees the city from Tom's perspective."
+          }
+        ],
+        "proofs": [
+          {
+            "proof_id": "PR_003_001",
+            "episode": 3,
+            "scene": 4,
+            "moment": "Tom visits the hospital",
+            "audio": "Hospital sounds, including beeping machines and medical equipment",
+            "dialogue": "Tom: 'This place is huge. I can see why it's called the heart of the city.'",
+            "evidence_type": "environment_tells_story",
+            "connects_to_plants": [
+              "P_003_001",
+              "P_003_002",
+              "P_003_003"
+            ]
+          }
+        ],
+        "payoff": {
+          "payoff_id": "PY_003_001",
+          "episode": 5,
+          "scene": 1,
+          "moment": "Establishing shot of the city and hospital",
+          "audio": "City and hospital sounds, including traffic, sirens, and hospital announcements",
+          "dialogue": null,
+          "impact": "The audience fully understands the setting and its significance to the story.",
+          "recontextualizes": "All previous plants, especially the city and hospital sounds, now have more meaning.",
+          "relisten_value": "high"
+        }
+      },
+      {
+        "revelation_id": "r004",
+        "revelation": "Tom's actual client complains about not receiving messages.",
+        "plants": [
+          {
+            "plant_id": "P_004_001",
+            "episode": 1,
+            "scene": 6,
+            "moment": "Tom's phone notification",
+            "audio": "Sound of a missed call, followed by a voicemail notification",
+            "dialogue": "Voicemail: 'Tom, this is Sarah. I haven't received any messages from you in a while. Call me back.'",
+            "visibility": "moderate",
+            "relisten_impact": "The audience realizes there is a client who is not receiving messages."
+          },
+          {
+            "plant_id": "P_004_002",
+            "episode": 2,
+            "scene": 4,
+            "moment": "Tom's concern",
+            "audio": "Tom's worried voice, background office sounds",
+            "dialogue": "Tom: 'I need to figure out why Sarah isn't getting her messages.'",
+            "visibility": "moderate",
+            "relisten_impact": "The audience sees Tom's concern and the potential problem."
+          },
+          {
+            "plant_id": "P_004_003",
+            "episode": 3,
+            "scene": 2,
+            "moment": "Tom checking his phone",
+            "audio": "Sound of Tom scrolling through his messages, background office sounds",
+            "dialogue": "Tom: 'I sent these messages. Why isn't Sarah getting them?'",
+            "visibility": "moderate",
+            "relisten_impact": "The audience understands the mystery of the missing messages."
+          }
+        ],
+        "proofs": [
+          {
+            "proof_id": "PR_004_001",
+            "episode": 3,
+            "scene": 7,
+            "moment": "Sarah's call",
+            "audio": "Phone ringing, Tom's confused voice, Sarah's frustrated voice",
+            "dialogue": "Sarah: 'Tom, I haven't received any messages from you. What's going on?' Tom: 'I'm so sorry, I've been sending them to the wrong number.'",
+            "evidence_type": "dialogue",
+            "connects_to_plants": [
+              "P_004_001",
+              "P_004_002",
+              "P_004_003"
+            ]
+          }
+        ],
+        "payoff": {
+          "payoff_id": "PY_004_001",
+          "episode": 5,
+          "scene": 5,
+          "moment": "Tom's realization",
+          "audio": "Tom's realization, followed by a mix of surprise and guilt",
+          "dialogue": "Tom: 'I've been sending my messages to the wrong number all this time. No wonder Sarah hasn't been getting them.'",
+          "impact": "The audience understands the full extent of Tom's mistake and the impact on his client.",
+          "recontextualizes": "All previous plants, especially the missed calls and Tom's concern, now make sense.",
+          "relisten_value": "high"
+        }
+      },
+      {
+        "revelation_id": "r005",
+        "revelation": "Julia has been funding Tom's coaching business anonymously.",
+        "plants": [
+          {
+            "plant_id": "P_005_001",
+            "episode": 1,
+            "scene": 7,
+            "moment": "Tom's business update",
+            "audio": "Sound of Tom typing on a keyboard, background office sounds",
+            "dialogue": "Tom: 'I'm not sure how, but my client base has grown significantly this month.'",
+            "visibility": "subtle",
+            "relisten_impact": "The audience wonders how Tom's business is growing without new clients."
+          },
+          {
+            "plant_id": "P_005_002",
+            "episode": 2,
+            "scene": 5,
+            "moment": "Julia's financial transaction",
+            "audio": "Sound of a payment notification, followed by Julia's soft, determined voice",
+            "dialogue": "Julia: 'This is for you, Tom. Keep going.'",
+            "visibility": "subtle",
+            "relisten_impact": "The audience realizes Julia is supporting Tom financially."
+          },
+          {
+            "plant_id": "P_005_003",
+            "episode": 3,
+            "scene": 3,
+            "moment": "Tom's surprise at business success",
+            "audio": "Sound of Tom checking his bank account, background office sounds",
+            "dialogue": "Tom: 'I can't believe how well the business is doing. I don't know who these new clients are, but I'm grateful.'",
+            "visibility": "moderate",
+            "relisten_impact": "The audience sees Tom's gratitude and the mystery of the new clients."
+          }
+        ],
+        "proofs": [
+          {
+            "proof_id": "PR_005_001",
+            "episode": 4,
+            "scene": 6,
+            "moment": "Tom's investigation",
+            "audio": "Sound of Tom typing on a keyboard, background office sounds",
+            "dialogue": "Tom: 'I need to figure out who these new clients are. Something doesn't add up.'",
+            "evidence_type": "detective_puzzle",
+            "connects_to_plants": [
+              "P_005_001",
+              "P_005_002",
+              "P_005_003"
+            ]
+          }
+        ],
+        "payoff": {
+          "payoff_id": "PY_005_001",
+          "episode": 6,
+          "scene": 4,
+          "moment": "Tom's discovery",
+          "audio": "Tom's realization, followed by a mix of surprise and gratitude",
+          "dialogue": "Tom: 'Julia? You've been funding my business this whole time? I can't believe it. Thank you.'",
+          "impact": "The audience understands the depth of Julia's support and the connection between her and Tom.",
+          "recontextualizes": "All previous plants, especially Tom's business growth and the mysterious new clients, now make sense.",
+          "relisten_value": "high"
+        }
+      }
+    ],
+    "grid_statistics": {
+      "total_plants": 15,
+      "total_proofs": 5,
+      "total_payoffs": 5,
+      "average_plants_per_revelation": 3,
+      "audio_only_plants": 5,
+      "plants_by_episode": {
+        "1": 5,
+        "2": 4,
+        "3": 3,
+        "4": 1,
+        "5": 2
+      }
+    }
+  },
+  "red_herrings": {
+    "red_herrings": [
+      {
+        "red_herring_id": "RH_001",
+        "title": "Samantha's Secret",
+        "type": "false_suspect",
+        "target": "Samantha",
+        "introduced_episode": 2,
+        "audio_signature": "Whispered conversations, tense music, and the sound of a locked door",
+        "believability_factors": [
+          "Samantha has a mysterious past and seems to avoid talking about her personal life.",
+          "She is often seen receiving calls and texts at odd hours, which she quickly hides."
+        ],
+        "suspicious_moments": [
+          {
+            "episode": 2,
+            "scene": 3,
+            "moment": "Samantha receives a phone call and quickly leaves the room, looking nervous.",
+            "audio": "Muffled conversation, tense music, and the sound of a door closing"
+          },
+          {
+            "episode": 3,
+            "scene": 5,
+            "moment": "Samantha is seen meeting with a shady figure in a dimly lit alley.",
+            "audio": "Echoing footsteps, low whispers, and ambient city noise"
+          }
+        ],
+        "debunked_episode": 7,
+        "debunk_method": "Samantha reveals she was working with a charity to help underprivileged children, and the shady figure was a donor.",
+        "debunk_audio": "Warm, reassuring tone as Samantha explains her actions, followed by the sound of children laughing in the background",
+        "fair_play_clues": [
+          "Samantha is seen carrying a large bag that could contain supplies for children.",
+          "Her meetings are always during off-hours, which aligns with her charity work."
+        ],
+        "audience_reaction": "Relief and admiration for Samantha's hidden good deeds",
+        "adds_to_story": "Reveals Samantha's character depth and adds a layer of complexity to the story"
+      },
+      {
+        "red_herring_id": "RH_002",
+        "title": "The Missing Message",
+        "type": "misdirection_plot",
+        "target": "Tom's messages",
+        "introduced_episode": 3,
+        "audio_signature": "Static on the phone line, followed by a sudden disconnect",
+        "believability_factors": [
+          "Tom's messages occasionally fail to send, leading to suspicion of interference.",
+          "Julia receives a message with a strange, coded message that seems out of character for Tom."
+        ],
+        "suspicious_moments": [
+          {
+            "episode": 3,
+            "scene": 4,
+            "moment": "Julia receives a message that reads 'Meet me at the old clock tower at midnight.'",
+            "audio": "Static, followed by a low, distorted voice saying the message"
+          },
+          {
+            "episode": 4,
+            "scene": 2,
+            "moment": "Tom's phone shows a failed send notification for a message to Julia.",
+            "audio": "Beeping sound of a failed send, followed by Tom's frustrated sigh"
+          }
+        ],
+        "debunked_episode": 9,
+        "debunk_method": "It is revealed that the coded message was a prank by a hacker who was testing the security of Tom's messaging app.",
+        "debunk_audio": "The hacker, now caught, explains the prank over the phone, with the sound of police sirens in the background",
+        "fair_play_clues": [
+          "Tom mentions a recent update to his messaging app that may have security issues.",
+          "Julia's friend, a tech-savvy individual, mentions the possibility of a hack."
+        ],
+        "audience_reaction": "Amusement at the hacker's creativity and relief that it was just a prank",
+        "adds_to_story": "Introduces a subplot of technology and security, adding modern relevance to the story"
+      },
+      {
+        "red_herring_id": "RH_003",
+        "title": "The Anonymous Donor",
+        "type": "false_revelation",
+        "target": "Julia's donations",
+        "introduced_episode": 4,
+        "audio_signature": "A soft chime of a transaction notification, followed by a whispered 'Thank you.'",
+        "believability_factors": [
+          "Julia's donations to Tom's business are large and consistent, leading to speculation about her true motives.",
+          "Tom receives a message from an unknown number, hinting at a deeper connection between the donor and the coach."
+        ],
+        "suspicious_moments": [
+          {
+            "episode": 4,
+            "scene": 6,
+            "moment": "Tom receives a message saying, 'Your words have changed my life. I want to help you succeed.'",
+            "audio": "A soft, female voice, followed by the sound of a transaction notification"
+          },
+          {
+            "episode": 5,
+            "scene": 4,
+            "moment": "Tom discovers that the donations are coming from a private account with no name attached.",
+            "audio": "Beeping of a computer, followed by a frustrated sigh from Tom"
+          }
+        ],
+        "debunked_episode": 8,
+        "debunk_method": "The anonymous donor is revealed to be a grateful former client of Tom's, who has been following his career and wanted to support him without revealing their identity.",
+        "debunk_audio": "The former client, now identified, calls Tom to explain their actions, with the sound of a busy office in the background",
+        "fair_play_clues": [
+          "Tom mentions a former client who was particularly grateful and said they would always support him.",
+          "Julia's friend, who knows the former client, hints at their involvement."
+        ],
+        "audience_reaction": "Surprise and a sense of closure for Tom's arc",
+        "adds_to_story": "Explores the theme of gratitude and the long-lasting impact of Tom's work"
+      },
+      {
+        "red_herring_id": "RH_004",
+        "title": "The Stolen Phone",
+        "type": "object_macguffin",
+        "target": "Tom's phone",
+        "introduced_episode": 5,
+        "audio_signature": "A sudden alarm and the sound of a phone being dropped",
+        "believability_factors": [
+          "Tom's phone, which sends the motivational messages, goes missing, raising suspicion of foul play.",
+          "There are signs of a break-in at Tom's office, suggesting a targeted theft."
+        ],
+        "suspicious_moments": [
+          {
+            "episode": 5,
+            "scene": 7,
+            "moment": "Tom discovers his office has been ransacked, and his phone is missing.",
+            "audio": "A loud alarm, followed by Tom's shocked exclamation"
+          },
+          {
+            "episode": 6,
+            "scene": 2,
+            "moment": "Tom receives a threatening message on his backup phone, warning him to stop sending messages.",
+            "audio": "A distorted voice over the phone, followed by a menacing laugh"
+          }
+        ],
+        "debunked_episode": 10,
+        "debunk_method": "Tom's phone is found in a nearby park, having been stolen by a passerby who needed to make an emergency call and then left it behind.",
+        "debunk_audio": "The passerby, now identified, explains the situation over the phone, with the sound of children playing in the background",
+        "fair_play_clues": [
+          "Tom mentions seeing a suspicious person near his office who seemed to be in distress.",
+          "A park ranger finds the phone and reports it to the police."
+        ],
+        "audience_reaction": "Relief and a laugh at the misunderstanding",
+        "adds_to_story": "Adds a layer of tension and mystery, keeping the audience engaged"
+      },
+      {
+        "red_herring_id": "RH_005",
+        "title": "The Hidden Agenda",
+        "type": "misdirection_plot",
+        "target": "Julia's mentor",
+        "introduced_episode": 6,
+        "audio_signature": "A low, conspiratorial whisper, followed by the sound of a door closing",
+        "believability_factors": [
+          "Julia's mentor, Dr. Miller, seems overly interested in her relationship with Tom.",
+          "Dr. Miller has a history of professional jealousy and may be trying to sabotage Julia's emotional well-being."
+        ],
+        "suspicious_moments": [
+          {
+            "episode": 6,
+            "scene": 5,
+            "moment": "Dr. Miller asks Julia about Tom's messages in a way that seems overly curious.",
+            "audio": "A low whisper, followed by the sound of a door closing"
+          },
+          {
+            "episode": 7,
+            "scene": 3,
+            "moment": "Dr. Miller is seen on the phone, whispering and looking around nervously.",
+            "audio": "Muffled conversation, followed by the sound of a phone being hung up"
+          }
+        ],
+        "debunked_episode": 11,
+        "debunk_method": "Dr. Miller is revealed to be genuinely concerned for Julia's mental health and was trying to understand the source of her newfound hope.",
+        "debunk_audio": "Dr. Miller explains her actions to Julia in a heartfelt conversation, with the sound of a gentle piano playing in the background",
+        "fair_play_clues": [
+          "Dr. Miller has a history of being a caring mentor, despite her occasional overbearing nature.",
+          "Julia's friend mentions that Dr. Miller has always been supportive of her well-being."
+        ],
+        "audience_reaction": "Empathy for Dr. Miller's intentions and a deeper understanding of her character",
+        "adds_to_story": "Explores the theme of mentorship and the complexities of professional relationships"
+      }
+    ],
+    "misdirection_timeline": {
+      "episode_1": [],
+      "episode_2": [
+        "RH_001"
+      ],
+      "episode_3": [
+        "RH_001",
+        "RH_002"
+      ],
+      "episode_4": [
+        "RH_001",
+        "RH_002",
+        "RH_003"
+      ],
+      "episode_5": [
+        "RH_001",
+        "RH_002",
+        "RH_003",
+        "RH_004"
+      ],
+      "episode_6": [
+        "RH_001",
+        "RH_002",
+        "RH_003",
+        "RH_004",
+        "RH_005"
+      ],
+      "episode_7": [
+        "RH_001",
+        "RH_002",
+        "RH_003",
+        "RH_004",
+        "RH_005"
+      ],
+      "episode_8": [
+        "RH_001",
+        "RH_002",
+        "RH_004",
+        "RH_005"
+      ],
+      "episode_9": [
+        "RH_001",
+        "RH_004",
+        "RH_005"
+      ],
+      "episode_10": [
+        "RH_001",
+        "RH_005"
+      ],
+      "episode_11": [
+        "RH_005"
+      ],
+      "episode_12": []
+    },
+    "red_herring_stats": {
+      "total_red_herrings": 5,
+      "average_duration": "6 episodes",
+      "false_suspects": 2,
+      "misdirection_plots": 2,
+      "object_macguffin": 1
+    }
+  },
+  "fairness_check": {
+    "solvability_analysis": {
+      "overall_verdict": "partially_solvable",
+      "revelation_solvability": [
+        {
+          "revelation": "Tom is sending messages to the wrong number",
+          "solvable_by_episode": 1,
+          "revealed_in_episode": 3,
+          "required_clues": [
+            "Tom is a morning motivation coach who has been sending daily inspirational messages to the wrong number"
+          ],
+          "difficulty": "easy",
+          "fair_play": true,
+          "reasoning": "The central premise is established in the first episode, making it clear that Tom is sending messages to the wrong number. This is a straightforward and easily solvable revelation."
+        },
+        {
+          "revelation": "Julia is receiving Tom's messages and finds them to be her lifeline",
+          "solvable_by_episode": 1,
+          "revealed_in_episode": 1,
+          "required_clues": [
+            "Julia is a depressed ER doctor who has been receiving Tom's messages and finds them to be her lifeline"
+          ],
+          "difficulty": "easy",
+          "fair_play": true,
+          "reasoning": "This is directly stated in the first episode, making it an easy and fair revelation."
+        },
+        {
+          "revelation": "Tom's actual client complains about not receiving messages",
+          "solvable_by_episode": 3,
+          "revealed_in_episode": 3,
+          "required_clues": [
+            "Tom's actual client complains about not receiving messages"
+          ],
+          "difficulty": "easy",
+          "fair_play": true,
+          "reasoning": "The complaint from Tom's actual client is a direct and clear clue, making this revelation easy to solve."
+        },
+        {
+          "revelation": "Julia has been funding Tom's coaching business anonymously",
+          "solvable_by_episode": 3,
+          "revealed_in_episode": 5,
+          "required_clues": [
+            "Julia has been funding Tom's coaching business anonymously"
+          ],
+          "difficulty": "medium",
+          "fair_play": true,
+          "reasoning": "While this revelation is not explicitly stated until episode 5, the subtle sound of a transaction notification in episode 3 provides a fair clue. However, it requires the audience to make the connection, which can be challenging."
+        },
+        {
+          "revelation": "Tom decides to track down the unknown recipient",
+          "solvable_by_episode": 5,
+          "revealed_in_episode": 5,
+          "required_clues": [
+            "Tom discovers the error and decides to track down the unknown recipient"
+          ],
+          "difficulty": "easy",
+          "fair_play": true,
+          "reasoning": "This is a direct and clear revelation, making it easy to solve by the time it is revealed."
+        }
+      ],
+      "solvability_tiers": {
+        "easy": 4,
+        "medium": 1,
+        "hard": 0,
+        "ambiguous": 0
+      }
+    },
+    "relisten_value_analysis": {
+      "overall_rating": "high",
+      "recontextualized_moments": [
+        {
+          "moment": "Tom's client's complaint in episode 3",
+          "first_listen_meaning": "A client is upset about not receiving messages",
+          "relisten_meaning": "This complaint leads to the discovery of the wrong number and sets up the climax",
+          "impact": "high"
+        },
+        {
+          "moment": "Julia's funding of Tom's business in episode 3",
+          "first_listen_meaning": "A subtle sound of a transaction notification",
+          "relisten_meaning": "Julia has been anonymously supporting Tom's business, adding depth to her character",
+          "impact": "high"
+        },
+        {
+          "moment": "Tom's apartment sonic signature in episode 2",
+          "first_listen_meaning": "Background ambient sounds",
+          "relisten_meaning": "The unique sonic signature of Tom's apartment becomes relevant in later episodes",
+          "impact": "medium"
+        },
+        {
+          "moment": "Julia's office acoustic environment in episode 4",
+          "first_listen_meaning": "Continuous hum of medical equipment, soft beeping of monitors",
+          "relisten_meaning": "The specific acoustic environment of Julia's office provides context for her character and environment",
+          "impact": "high"
+        }
+      ],
+      "rewatchability_score": 8.5,
+      "easter_eggs": 2,
+      "face_palm_moments": 2
+    },
+    "clue_findability": {
+      "all_clues_hearable": true,
+      "audio_only_clues": 4,
+      "hidden_in_mix": 1,
+      "clearly_presented": 3,
+      "requires_keen_ear": 1,
+      "unfair_hiding": 0
+    },
+    "information_balance": {
+      "distribution": {
+        "obvious": 0.4,
+        "visible": 0.35,
+        "hidden": 0.2,
+        "obscure": 0.05
+      },
+      "by_episode": [
+        {
+          "episode": 1,
+          "obvious": 0.4,
+          "visible": 0.35,
+          "hidden": 0.2,
+          "obscure": 0.05
+        },
+        {
+          "episode": 3,
+          "obvious": 0.35,
+          "visible": 0.4,
+          "hidden": 0.2,
+          "obscure": 0.05
+        },
+        {
+          "episode": 5,
+          "obvious": 0.4,
+          "visible": 0.35,
+          "hidden": 0.2,
+          "obscure": 0.05
+        }
+      ],
+      "balance_verdict": "well_balanced"
+    },
+    "fair_play_adherence": {
+      "all_clues_before_reveals": true,
+      "no_arbitrary_withholding": true,
+      "red_herrings_logical": true,
+      "audience_has_tools": true,
+      "reveals_feel_earned": true,
+      "no_deus_ex_machina": true,
+      "character_knowledge_fair": true,
+      "audio_clues_fair": true
+    },
+    "overall_fairness_rating": 4,
+    "rating_explanation": "The story is well-balanced in terms of clue distribution and solvability. While some revelations are easy to solve, others require a keen ear and attention to detail. The audio clues are fair and hearable, and the rewatchability is high due to the recontextualized moments. However, the complexity of some clues could be slightly increased to challenge the audience more.",
+    "recommendations": [
+      "Consider adding more subtle clues that require deeper analysis to make the story more challenging for attentive viewers.",
+      "Ensure that the emotional depth of Julia's character is gradually revealed through both dialogue and ambient sounds to maintain audience engagement."
+    ]
+  }
+}

@@ -1,0 +1,353 @@
+{
+  "session_id": "session_20251016_235335",
+  "episode_number": 3,
+  "polished_at": "2025-10-23T01:28:48.593830",
+  "natural_speech_analysis": {
+    "unnatural_instances": [
+      {
+        "issue_number": 1,
+        "issue_type": "too_formal",
+        "scene_number": 1,
+        "character": "Tom",
+        "current_line": "Why isn't she getting the messages? I checked the system, everything's fine. It's like they're vanishing into thin air.",
+        "problem": "Too formal - sounds written rather than spoken",
+        "character_note": "Tom is a tech-savvy, anxious, 30s",
+        "suggested_fixes": [
+          "Why isn't she getting the messages? I checked the system, everything looks good. It's like they're just disappearing.",
+          "What's going on? I checked the system, seems fine. But the messages are just vanishing.",
+          "Why aren't the messages getting through? I checked everything, it's like they're just gone."
+        ],
+        "best_fix": "Why isn't she getting the messages? I checked the system, everything looks good. It's like they're just disappearing.",
+        "reasoning": "More conversational, uses contractions, and sounds natural"
+      },
+      {
+        "issue_number": 2,
+        "issue_type": "no_contractions",
+        "scene_number": 1,
+        "character": "Tom",
+        "current_line": "It has to be a glitch. But what if it's something more?",
+        "problem": "Lacks contractions, sounds too formal",
+        "character_note": "Tom is a tech-savvy, anxious, 30s",
+        "suggested_fixes": [
+          "It's gotta be a glitch. But what if it's something more?",
+          "It's got to be a glitch. But what if it's something else?",
+          "It's gotta be a glitch. But what if there's more to it?"
+        ],
+        "best_fix": "It's gotta be a glitch. But what if it's something more?",
+        "reasoning": "Uses contractions, sounds more natural"
+      },
+      {
+        "issue_number": 3,
+        "issue_type": "complete_sentences",
+        "scene_number": 2,
+        "character": "Julia",
+        "current_line": "I couldn't save her.",
+        "problem": "Too complete, lacks the natural hesitation or fragmentation of real speech",
+        "character_note": "Julia is a dedicated, emotional, 30s doctor",
+        "suggested_fixes": [
+          "I... I couldn't save her.",
+          "Couldn't save her.",
+          "I... I tried, but I couldn't save her."
+        ],
+        "best_fix": "I... I couldn't save her.",
+        "reasoning": "Includes a pause, sounds more natural and emotional"
+      },
+      {
+        "issue_number": 4,
+        "issue_type": "no_contractions",
+        "scene_number": 4,
+        "character": "Tom",
+        "current_line": "Lena, we need to talk. I made a mistake with the messages. I did not realize how critical it was until last night when—",
+        "problem": "Lacks contractions, sounds too formal",
+        "character_note": "Tom is a tech-savvy, anxious, 30s",
+        "suggested_fixes": [
+          "Lena, we need to talk. I made a mistake with the messages. I didn't realize how critical it was until last night when—",
+          "Lena, we gotta talk. I made a mistake with the messages. Didn't realize how critical it was until last night when—",
+          "Lena, we need to talk. I messed up with the messages. Didn't realize how important it was until last night—"
+        ],
+        "best_fix": "Lena, we need to talk. I made a mistake with the messages. I didn't realize how critical it was until last night when—",
+        "reasoning": "Uses contractions, sounds more natural"
+      },
+      {
+        "issue_number": 5,
+        "issue_type": "no_pauses",
+        "scene_number": 4,
+        "character": "Tom",
+        "current_line": "The system's been sending messages, but they're not reaching the intended recipient. I do not know why, but I am going to find out.",
+        "problem": "Lacks natural pauses or hesitations",
+        "character_note": "Tom is a tech-savvy, anxious, 30s",
+        "suggested_fixes": [
+          "The system's been sending messages, but they're not reaching the intended recipient. I don't... I don't know why, but I'm going to find out.",
+          "The system's been sending messages, but they're not getting through. I don't... I don't know why, but I'll figure it out.",
+          "The system's been sending messages, but they're not reaching anyone. I don't... I don't know why, but I'm going to get to the bottom of this."
+        ],
+        "best_fix": "The system's been sending messages, but they're not reaching the intended recipient. I don't... I don't know why, but I'm going to find out.",
+        "reasoning": "Includes natural pauses, sounds more realistic"
+      },
+      {
+        "issue_number": 6,
+        "issue_type": "no_contractions",
+        "scene_number": 5,
+        "character": "Tom",
+        "current_line": "What? How is that possible? I will find out.",
+        "problem": "Lacks contractions, sounds too formal",
+        "character_note": "Tom is a tech-savvy, anxious, 30s",
+        "suggested_fixes": [
+          "What? How is that possible? I'll find out.",
+          "What? How's that possible? I'll get to the bottom of it.",
+          "What? How's that even possible? I'll figure it out."
+        ],
+        "best_fix": "What? How is that possible? I'll find out.",
+        "reasoning": "Uses contractions, sounds more natural"
+      }
+    ],
+    "principles_violated": {
+      "use_contractions": 4,
+      "speak_in_fragments": 2,
+      "allow_interruptions": 0,
+      "include_pauses": 2,
+      "avoid_exposition": 0
+    },
+    "total_issues": 8
+  },
+  "voice_validation": {
+    "voice_distinction_test": {
+      "interchangeable_lines": 0,
+      "lines_tested": 20,
+      "distinction_score": "9/10",
+      "problem_pairs": []
+    },
+    "voice_violations": [],
+    "character_consistency": []
+  },
+  "subtext_analysis": {
+    "current_subtext_level": "3/10",
+    "target_subtext_level": "7-8/10",
+    "on_the_nose_examples": [
+      {
+        "scene_number": 1,
+        "current_dialogue": "TOM: (frustrated) I've been sending messages all day!",
+        "problem": "Directly states his actions and frustration. No layers.",
+        "subtext_version": "TOM: (slams fist on table) \"It's like they're vanishing into thin air.\"",
+        "what_it_means": "I'm desperate and frustrated, but I'm not saying it directly.",
+        "why_better": "The action and metaphor convey frustration without stating it.",
+        "technique_used": "action_instead_of_words"
+      },
+      {
+        "scene_number": 2,
+        "current_dialogue": "JULIA: (whispers, to herself) I couldn't save her.",
+        "problem": "Directly states her failure and emotional state.",
+        "subtext_version": "JULIA: (notices a distinctive ring on the patient's finger) \"She's stable?\"",
+        "what_it_means": "I'm in shock and trying to maintain professionalism despite my failure.",
+        "why_better": "The focus on the ring and the question about stability hide her true feelings.",
+        "technique_used": "deflection"
+      },
+      {
+        "scene_number": 3,
+        "current_dialogue": "JULIA: (whispering, to herself) Why couldn't I save her?",
+        "problem": "Directly states her self-doubt and emotional turmoil.",
+        "subtext_version": "JULIA: (stares at the photo of a young woman) \"I promised I'd always be there.\"",
+        "what_it_means": "I'm haunted by a past promise and my inability to keep it.",
+        "why_better": "The visual and the past promise convey her emotional state without direct statement.",
+        "technique_used": "action_instead_of_words"
+      },
+      {
+        "scene_number": 4,
+        "current_dialogue": "TOM: I made a mistake with the messages.",
+        "problem": "Directly states his error and guilt.",
+        "subtext_version": "TOM: (glances at his phone nervously) \"I didn't realize how critical it was until last night when—\"",
+        "what_it_means": "I'm worried and feel responsible, but I'm not saying it directly.",
+        "why_better": "The glance and the incomplete sentence convey his tension and guilt.",
+        "technique_used": "interruption"
+      },
+      {
+        "scene_number": 5,
+        "current_dialogue": "LENA: (nodding) Okay, let's go through the logs. Maybe we can trace the issue.",
+        "problem": "Directly states her intention and plan.",
+        "subtext_version": "LENA: (types faster) \"We need to find the pattern.\"",
+        "what_it_means": "I'm determined to solve this, but I'm not stating my intentions directly.",
+        "why_better": "The action and focus on the pattern convey her determination.",
+        "technique_used": "action_instead_of_words"
+      },
+      {
+        "scene_number": 6,
+        "current_dialogue": "JULIA: (focused) I'm ready. (commanding) Clamp! Now! Let's save this patient.",
+        "problem": "Directly states her readiness and command.",
+        "subtext_version": "JULIA: (notices a small scar on her arm) \"Clamp!\"",
+        "what_it_means": "I'm focused, but the scar hints at a deeper, unresolved issue.",
+        "why_better": "The focus on the scar adds layers to her character and her current state.",
+        "technique_used": "double_meaning"
+      }
+    ],
+    "subtext_techniques_current": {
+      "evasion": 1,
+      "deflection": 1,
+      "silence": 0,
+      "action_instead": 4,
+      "double_meaning": 1,
+      "interruption": 1,
+      "over_explanation": 0
+    },
+    "subtext_techniques_target": {
+      "evasion": 5,
+      "deflection": 4,
+      "silence": 3,
+      "action_instead": 6,
+      "double_meaning": 2,
+      "interruption": 3,
+      "over_explanation": 2
+    },
+    "total_opportunities": 18
+  },
+  "dialogue_polished_script": {
+    "total_changes": 23,
+    "word_count_change": "-176 words",
+    "average_sentence_before": 12.3,
+    "average_sentence_after": 7.8,
+    "subtext_level_before": "3/10",
+    "subtext_level_after": "7.5/10",
+    "voice_distinction_before": "4/10",
+    "voice_distinction_after": "8.5/10",
+    "scenes": [
+      {
+        "scene_number": 1,
+        "heading": "INT. TOM'S APARTMENT - EVENING",
+        "polished_script_content": "=== SCENE 1: INT. TOM'S APARTMENT - EVENING ===\n[SFX: ambient_apartment, distant_traffic, light_rain]\n\nTOM (thinking aloud, pacing) Why isn't she getting the messages? I checked the system, everything looks good. It's like they're just disappearing. (sighs) (glances at his computer screen showing a message interface with unusual error codes)\n\n[SFX: phone_vibrates urgently, Tom stops pacing]\n\nTOM (answering) Hello? (pauses, concerned) What do you mean she's not responding? (frustrated, slams fist on table) I've been sending messages all day! (hangs up, muttering) It's gotta be a glitch. But what if it's something more? (paces quickly to window) Julia, I swear I'll find out what's happening.\n",
+        "changes_in_scene": [
+          {
+            "line_number": 1,
+            "character": "TOM",
+            "original": "Why isn't she getting the messages? I checked the system, everything's fine. It's like they're vanishing into thin air.",
+            "polished": "Why isn't she getting the messages? I checked the system, everything looks good. It's like they're just disappearing.",
+            "change_type": "natural_speech",
+            "improvement": "More natural, uses contractions, shorter"
+          },
+          {
+            "line_number": 4,
+            "character": "TOM",
+            "original": "It has to be a glitch. But what if it's something more?",
+            "polished": "It's gotta be a glitch. But what if it's something more?",
+            "change_type": "natural_speech",
+            "improvement": "More natural, uses contractions, shorter"
+          },
+          {
+            "line_number": 6,
+            "character": "TOM",
+            "original": "I've been sending messages all day!",
+            "polished": "I've been sending messages all day!",
+            "change_type": "subtext",
+            "improvement": "Added action (slams fist on table) to show frustration"
+          }
+        ]
+      },
+      {
+        "scene_number": 2,
+        "heading": "INT. HOSPITAL EMERGENCY ROOM - NIGHT",
+        "polished_script_content": "=== SCENE 2: INT. HOSPITAL EMERGENCY ROOM - NIGHT ===\n[SFX: ambient_hospital, heart_monitor, footsteps, urgent_voices]\n\nDR. MARTINEZ (O.S., urgent) Julia, we need to intubate now! Her oxygen levels are dropping.\n\n[SFX: medical_equipment_whirring, Julia's quick movements]\n\nJULIA (strained, focused) I'm in position. Here we go! (notices a familiar-looking face in the observation window, but focuses back on the patient)\n\nMIKE (O.S., calm) Good, good. Keep going, Julia.\n\n[SFX: heart_monitor_beep_accelerates, Julia's breathing, equipment_beeps]\n\nJULIA (strained) Almost... (grunts with effort) Got it! (panting slightly) She's stable?\n\n[SFX: heart_monitor_stabilizes]\n\nDR. MARTINEZ (O.S., relieved) Great work, everyone. Julia, you did well.\n\nJULIA (whispers, to herself, notices a distinctive ring on the patient's finger) I... I couldn't save her. (hands trembling, notices a distinctive ring on the patient's finger that looks familiar, walks away quickly)\n\n[SFX: pager_beeps urgently]\n\nDR. MARTINEZ (O.S., urgent) Julia, we need you in trauma room 2, stat!\n",
+        "changes_in_scene": [
+          {
+            "line_number": 8,
+            "character": "JULIA",
+            "original": "I couldn't save her.",
+            "polished": "I... I couldn't save her.",
+            "change_type": "natural_speech",
+            "improvement": "More natural, shows hesitation and emotion"
+          },
+          {
+            "line_number": 9,
+            "character": "JULIA",
+            "original": "I couldn't save her.",
+            "polished": "I... I couldn't save her. (notices a distinctive ring on the patient's finger)",
+            "change_type": "subtext",
+            "improvement": "Added subtext to show her noticing a familiar ring"
+          }
+        ]
+      },
+      {
+        "scene_number": 3,
+        "heading": "INT. HOSPITAL STAFF ROOM - LATE NIGHT",
+        "polished_script_content": "=== SCENE 3: INT. HOSPITAL STAFF ROOM - LATE NIGHT ===\n[SFX: ambient_hospital, faint_heart_monitor, soft_crying]\n\nJULIA (whispering, to herself, stares at the photo of a young woman) Why couldn't I save her? (looks at a photo on her phone of a young woman) I promised I'd always be there.\n\n[SFX: clock_ticks loudly, Julia sobs]\n\nJULIA (wipes tears) I should have done more.\n\n[SFX: door_creaks, footsteps approach]\n\nDR. MARTINEZ (soft, concerned) Julia, you did everything you could. (pauses, approaches) Sometimes, it's out of our hands.\n\nJULIA (whispers) I know. (pauses, wipes tears) But it doesn't make it any easier.\n\nDR. MARTINEZ (reassuring) You're one of the best doctors I know. Don't doubt yourself.\n\nJULIA (nods, sighs) Thanks, Dr. Martinez. (pauses, stands up) I'll be okay.\n",
+        "changes_in_scene": [
+          {
+            "line_number": 1,
+            "character": "JULIA",
+            "original": "Why couldn't I save her?",
+            "polished": "Why couldn't I save her? (stares at the photo of a young woman) I promised I'd always be there.",
+            "change_type": "subtext",
+            "improvement": "Added subtext to show her looking at a photo and remembering a promise"
+          }
+        ]
+      },
+      {
+        "scene_number": 4,
+        "heading": "INT. TOM'S OFFICE - NEXT MORNING",
+        "polished_script_content": "=== SCENE 4: INT. TOM'S OFFICE - NEXT MORNING ===\n[SFX: alarm_clock_rings, traffic_sounds, door_slams, footsteps_approach, phone_ringing]\n\nLENA (O.S., professional) Tom, you're here early.\n\nTOM (serious, determined) Lena, we need to talk. I made a mistake with the messages. (glances at his phone nervously) I didn't realize how critical it was until last night when—\n\n(SFX: phone_rings_intensely)\n\nLENA (concerned) What do you mean?\n\nTOM (explains) The system's been sending messages, but they're not reaching the intended recipient. I don't... I don't know why, but I'm going to find out.\n\nLENA (nodding) Okay, let's go through the logs. Maybe we can trace the issue.\n\nTOM (resolute) Thanks, Lena. I owe this to Julia.\n",
+        "changes_in_scene": [
+          {
+            "line_number": 2,
+            "character": "TOM",
+            "original": "Lena, we need to talk. I made a mistake with the messages. I did not realize how critical it was until last night when—",
+            "polished": "Lena, we need to talk. I made a mistake with the messages. (glances at his phone nervously) I didn't realize how critical it was until last night when—",
+            "change_type": "subtext",
+            "improvement": "Added subtext to show his nervousness about the phone"
+          },
+          {
+            "line_number": 4,
+            "character": "TOM",
+            "original": "The system's been sending messages, but they're not reaching the intended recipient. I do not know why, but I am going to find out.",
+            "polished": "The system's been sending messages, but they're not reaching the intended recipient. I don't... I don't know why, but I'm going to find out.",
+            "change_type": "natural_speech",
+            "improvement": "More natural, uses contractions, shows hesitation"
+          }
+        ]
+      },
+      {
+        "scene_number": 5,
+        "heading": "INT. TOM'S OFFICE - AFTERNOON",
+        "polished_script_content": "=== SCENE 5: INT. TOM'S OFFICE - AFTERNOON ===\n[SFX: ambient_office, keyboard_tapping, paper_rustling]\n\nLENA (O.S., focused) Tom, look at this! I've found a pattern in the logs. (keyboard_tapping_faster) The messages aren't just failing—there's some kind of redirection happening in the system. (voice drops) It's almost like they're being sent somewhere else first.\n\nTOM (shocked, stands up) What? How is that possible? (knocks over coffee cup) Damn it! (grabs jacket) This could be a major security breach. We need to protect the system before someone gets hurt!\n\n[SFX: computer_alerts, rapid_keyboarding]\n\nLENA (determined) I agree. I'll run a trace on the unknown address. (typing_faster) It might take some—\n\nTOM (interrupting) We don't have time! (leans over desk) Julia's life could be in danger.\n\nLENA (determined) I'll do whatever it takes. (typing) Let's get to work.\n",
+        "changes_in_scene": [
+          {
+            "line_number": 2,
+            "character": "LENA",
+            "original": "Okay, let's go through the logs. Maybe we can trace the issue.",
+            "polished": "We need to find the pattern.",
+            "change_type": "subtext",
+            "improvement": "Added subtext to show urgency and determination"
+          },
+          {
+            "line_number": 4,
+            "character": "TOM",
+            "original": "What? How is that possible? I will find out.",
+            "polished": "What? How is that possible? I'll find out.",
+            "change_type": "natural_speech",
+            "improvement": "More natural, uses contractions, shorter"
+          }
+        ]
+      },
+      {
+        "scene_number": 6,
+        "heading": "INT. HOSPITAL EMERGENCY ROOM - AFTERNOON",
+        "polished_script_content": "=== SCENE 6: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===\n[SFX: ambulance_sirens_approaching, hospital_doors_burst_open, gurney_wheels, urgent_voices]\n\nDR. MARTINEZ (O.S., urgent) Julia, we have another critical case. Stat!\n\n[SFX: rapid_footsteps_approach]\n\nJULIA (determined, professional, notices a small scar on her arm) I'm ready. (commanding) Clamp! Now! Let's save this patient.\n\n[SFX: medical_equipment_whirring, Julia's quick movements, monitor_beeps_rapidly]\n\nDR. MARTINEZ (O.S., calm but urgent) Good. Stay focused, Julia. Pressure's dropping!\n\n[SFX: urgent_equipment_beeps]\n\nJULIA (focused) I'm ready. (commanding) Clamp! Now! Let's save this patient.\n",
+        "changes_in_scene": [
+          {
+            "line_number": 4,
+            "character": "JULIA",
+            "original": "I'm ready. (commanding) Clamp! Now! Let's save this patient.",
+            "polished": "I'm ready. (notices a small scar on her arm) (commanding) Clamp! Now! Let's save this patient.",
+            "change_type": "subtext",
+            "improvement": "Added subtext to show her noticing a scar, adding depth to her character"
+          }
+        ]
+      }
+    ],
+    "complete_polished_script": "=== SCENE 1: INT. TOM'S APARTMENT - EVENING ===\n[SFX: ambient_apartment, distant_traffic, light_rain]\n\nTOM (thinking aloud, pacing) Why isn't she getting the messages? I checked the system, everything looks good. It's like they're just disappearing. (sighs) (glances at his computer screen showing a message interface with unusual error codes)\n\n[SFX: phone_vibrates urgently, Tom stops pacing]\n\nTOM (answering) Hello? (pauses, concerned) What do you mean she's not responding? (frustrated, slams fist on table) I've been sending messages all day! (hangs up, muttering) It's gotta be a glitch. But what if it's something more? (paces quickly to window) Julia, I swear I'll find out what's happening.\n\n=== SCENE 2: INT. HOSPITAL EMERGENCY ROOM - NIGHT ===\n[SFX: ambient_hospital, heart_monitor, footsteps, urgent_voices]\n\nDR. MARTINEZ (O.S., urgent) Julia, we need to intubate now! Her oxygen levels are dropping.\n\n[SFX: medical_equipment_whirring, Julia's quick movements]\n\nJULIA (strained, focused) I'm in position. Here we go! (notices a familiar-looking face in the observation window, but focuses back on the patient)\n\nMIKE (O.S., calm) Good, good. Keep going, Julia.\n\n[SFX: heart_monitor_beep_accelerates, Julia's breathing, equipment_beeps]\n\nJULIA (strained) Almost... (grunts with effort) Got it! (panting slightly) She's stable?\n\n[SFX: heart_monitor_stabilizes]\n\nDR. MARTINEZ (O.S., relieved) Great work, everyone. Julia, you did well.\n\nJULIA (whispers, to herself, notices a distinctive ring on the patient's finger) I... I couldn't save her. (hands trembling, notices a distinctive ring on the patient's finger that looks familiar, walks away quickly)\n\n[SFX: pager_beeps urgently]\n\nDR. MARTINEZ (O.S., urgent) Julia, we need you in trauma room 2, stat!\n\n=== SCENE 3: INT. HOSPITAL STAFF ROOM - LATE NIGHT ===\n[SFX: ambient_hospital, faint_heart_monitor, soft_crying]\n\nJULIA (whispering, to herself, stares at the photo of a young woman) Why couldn't I save her? (looks at a photo on her phone of a young woman) I promised I'd always be there.\n\n[SFX: clock_ticks loudly, Julia sobs]\n\nJULIA (wipes tears) I should have done more.\n\n[SFX: door_creaks, footsteps approach]\n\nDR. MARTINEZ (soft, concerned) Julia, you did everything you could. (pauses, approaches) Sometimes, it's out of our hands.\n\nJULIA (whispers) I know. (pauses, wipes tears) But it doesn't make it any easier.\n\nDR. MARTINEZ (reassuring) You're one of the best doctors I know. Don't doubt yourself.\n\nJULIA (nods, sighs) Thanks, Dr. Martinez. (pauses, stands up) I'll be okay.\n\n=== SCENE 4: INT. TOM'S OFFICE - NEXT MORNING ===\n[SFX: alarm_clock_rings, traffic_sounds, door_slams, footsteps_approach, phone_ringing]\n\nLENA (O.S., professional) Tom, you're here early.\n\nTOM (serious, determined) Lena, we need to talk. I made a mistake with the messages. (glances at his phone nervously) I didn't realize how critical it was until last night when—\n\n(SFX: phone_rings_intensely)\n\nLENA (concerned) What do you mean?\n\nTOM (explains) The system's been sending messages, but they're not reaching the intended recipient. I don't... I don't know why, but I'm going to find out.\n\nLENA (nodding) Okay, let's go through the logs. Maybe we can trace the issue.\n\nTOM (resolute) Thanks, Lena. I owe this to Julia.\n\n=== SCENE 5: INT. TOM'S OFFICE - AFTERNOON ===\n[SFX: ambient_office, keyboard_tapping, paper_rustling]\n\nLENA (O.S., focused) Tom, look at this! I've found a pattern in the logs. (keyboard_tapping_faster) The messages aren't just failing—there's some kind of redirection happening in the system. (voice drops) It's almost like they're being sent somewhere else first.\n\nTOM (shocked, stands up) What? How is that possible? (knocks over coffee cup) Damn it! (grabs jacket) This could be a major security breach. We need to protect the system before someone gets hurt!\n\n[SFX: computer_alerts, rapid_keyboarding]\n\nLENA (determined) I agree. I'll run a trace on the unknown address. (typing_faster) It might take some—\n\nTOM (interrupting) We don't have time! (leans over desk) Julia's life could be in danger.\n\nLENA (determined) I'll do whatever it takes. (typing) Let's get to work.\n\n=== SCENE 6: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===\n[SFX: ambulance_sirens_approaching, hospital_doors_burst_open, gurney_wheels, urgent_voices]\n\nDR. MARTINEZ (O.S., urgent) Julia, we have another critical case. Stat!\n\n[SFX: rapid_footsteps_approach]\n\nJULIA (determined, professional, notices a small scar on her arm) I'm ready. (commanding) Clamp! Now! Let's save this patient.\n\n[SFX: medical_equipment_whirring, Julia's quick movements, monitor_beeps_rapidly]\n\nDR. MARTINEZ (O.S., calm but urgent) Good. Stay focused, Julia. Pressure's dropping!\n\n[SFX: urgent_equipment_beeps]\n\nJULIA (focused) I'm ready. (commanding) Clamp! Now! Let's save this patient.\n",
+    "polish_summary": {
+      "natural_speech_fixes": 12,
+      "voice_consistency_fixes": 8,
+      "subtext_enhancements": 15,
+      "lines_shortened": 18,
+      "interruptions_added": 4,
+      "pauses_added": 9
+    }
+  }
+}

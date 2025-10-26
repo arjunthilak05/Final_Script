@@ -1,0 +1,111 @@
+======================================================================
+STATION 7: CHARACTER ARCHITECT
+======================================================================
+
+Working Title: The Accidental Lifeline
+Primary Genre: Drama
+Target Age: 28-55
+Episode Count: 8-12 episodes
+Core Premise: Unknown
+
+----------------------------------------------------------------------
+TIER 1: PROTAGONISTS
+----------------------------------------------------------------------
+
+1. Tom (Age: 35-45, Role: Life Coach)
+   Background: Tom has a background in psychology and has worked as a life coach for over a decade. He is known for his ability to connect with people and help them overcome personal challenges.
+   Motivations: To help others find their purpose and improve their lives
+   Fears: Fear of failure and losing his ability to connect with clients
+   Desires: To create a lasting impact on his clients and build a successful coaching practice
+   Voice: medium pitch, medium pace
+   Vocabulary: adult-appropriate, accessible
+   Verbal Tics: Imagine, Think about, You can do this
+   Catchphrases: Let's find your path, Believe in yourself
+
+2. Julia (Age: 30-40, Role: Emergency Room Nurse)
+   Background: Julia has been working in the ER for several years. She is dedicated to her job but has become increasingly weary due to the constant stress and emotional toll.
+   Motivations: To find a balance between her work and personal life
+   Fears: Fear of burnout and losing her passion for nursing
+   Desires: To reconnect with her sense of purpose and joy in helping others
+   Voice: medium pitch, medium pace
+   Vocabulary: professional, accessible
+   Verbal Tics: Alright, let's focus, I need to stay calm, We can handle this
+   Catchphrases: Stay strong, You're doing great
+
+3. Sarah (Age: 30-40, Role: Corporate Executive)
+   Background: Sarah is a high-powered executive in a fast-paced corporate environment. She is driven and successful but feels unfulfilled and disconnected from her personal life.
+   Motivations: To find a balance between her career and personal life
+   Fears: Fear of losing her position and status
+   Desires: To find deeper meaning and connection in her life
+   Voice: medium pitch, fast pace
+   Vocabulary: business-like, direct
+   Verbal Tics: Let's get to the point, Bottom line, We need to move forward
+   Catchphrases: Stay focused, Keep pushing
+
+----------------------------------------------------------------------
+TIER 2: MAJOR SUPPORTING
+----------------------------------------------------------------------
+
+1. Dr. Martinez (Age: 45-55, Role: Julia's Colleague)
+   Backstory: Dr. Martinez is a seasoned physician with a deep understanding of both medical and psychological aspects of patient care. She has a warm and supportive relationship with Julia.
+   Voice: medium pitch, medium pace
+   Story Function: Provides guidance and support to Julia, advancing her character development and professional growth
+   Relationship to Protagonists: Mentor and colleague to Julia, Respected professional with Tom
+   Verbal Tics: You know, In my experience, Let's think about
+   Catchphrases: Stay strong, Julia, We're in this together
+
+2. Mark (Age: 30-40, Role: Tom's Colleague)
+   Backstory: Mark is a fellow life coach who has a more conventional approach to coaching. He and Tom have a friendly but competitive relationship.
+   Voice: medium pitch, medium pace
+   Story Function: Challenges Tom's methods and beliefs, leading to growth and new insights
+   Relationship to Protagonists: Colleague and friendly rival to Tom
+   Verbal Tics: I believe, In my opinion, Let's consider
+   Catchphrases: Stay focused, Believe in what you do
+
+3. Lena (Age: 25-35, Role: Sarah's Assistant)
+   Backstory: Lena is a young and ambitious assistant who looks up to Sarah as a role model. She is dedicated to her job but is beginning to question her own career path.
+   Voice: medium-high pitch, medium pace
+   Story Function: Provides a contrast to Sarah's career-driven mindset, highlighting the importance of personal fulfillment
+   Relationship to Protagonists: Assistant to Sarah, Seeking guidance from Tom
+   Verbal Tics: I'll take care of it, Please let me know, I can handle this
+   Catchphrases: I'm here for you, We can do this
+
+----------------------------------------------------------------------
+TIER 3: RECURRING
+----------------------------------------------------------------------
+
+1. Nurse Linda (Age: 40-50, Role: ER Nurse)
+   Defining Trait: Seasoned and reliable
+   Voice Hook: Warm and reassuring
+   Narrative Purpose: Provides support and practical advice to Julia
+   Episodes Appearing: 2, 4, 6, 8
+   Verbal Tics: Just take a deep breath, You got this
+   Catchphrases: Stay calm, Let's do this
+
+2. Coach Emily (Age: 35-45, Role: Life Coach)
+   Defining Trait: Energetic and enthusiastic
+   Voice Hook: High-pitched and motivational
+   Narrative Purpose: Provides a contrasting coaching style to Tom
+   Episodes Appearing: 3, 5, 7
+   Verbal Tics: Let's go!, You can do it!
+   Catchphrases: Stay positive, Keep pushing
+
+3. Dr. Patel (Age: 45-55, Role: Hospital Administrator)
+   Defining Trait: Practical and no-nonsense
+   Voice Hook: Authoritative and direct
+   Narrative Purpose: Provides a bureaucratic perspective on hospital operations
+   Episodes Appearing: 2, 4, 6, 8
+   Verbal Tics: We need to, Let's be clear, This is important
+   Catchphrases: Stay focused, We have a job to do
+
+4. Sarah's Mother (Age: 60-70, Role: Sarah's Family Member)
+   Defining Trait: Supportive and caring
+   Voice Hook: Warm and maternal
+   Narrative Purpose: Provides a family perspective on Sarah's life
+   Episodes Appearing: 3, 5, 7
+   Verbal Tics: I'm proud of you, You're doing great, Don't forget to take care of yourself
+   Catchphrases: I love you, You can do anything
+
+======================================================================
+END OF CHARACTER BIBLE
+======================================================================

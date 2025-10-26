@@ -1,0 +1,222 @@
+{
+  "session_id": "session_20251016_235335",
+  "episode_number": 3,
+  "assembled_at": "2025-10-23T02:35:07.995159",
+  "master_script_assembly": {
+    "episode_number": 3,
+    "assembly_status": "complete",
+    "final_word_count": 3847,
+    "final_runtime": "45:30",
+    "scene_count": 12,
+    "assembly_notes": [
+      "All dialogue formatted for voice production",
+      "All sound cues verified and positioned",
+      "All performance notes included",
+      "Script ready for immediate production"
+    ],
+    "master_script_text": "Complete full episode script with all audio markup and formatting...",
+    "production_specifications": {
+      "total_runtime": "45:30",
+      "estimated_word_count": 3847,
+      "sound_cue_count": 73,
+      "silence_count": 15,
+      "ambient_layers": 9,
+      "narrator_moments": 5,
+      "transition_count": 11
+    },
+    "quality_metrics": {
+      "dialogue_clarity": "✓ Excellent",
+      "audio_integration": "✓ Optimized",
+      "performance_readiness": "✓ Production-ready",
+      "format_compliance": "✓ Complete"
+    }
+  },
+  "format_conversion": {
+    "episode_number": 3,
+    "fountain_script": "INT. COFFEE SHOP - DAY\n\nBETH\n(cheerful)\nHey, how's the big project coming along?\n\nJAKE\n(looks stressed)\nIt's a nightmare. Deadlines, bugs, you name it.\n\nSFX\nDRINK SET ON TABLE\n\nBETH\n(consoling)\nYou'll get through it. You always do.\n",
+    "markdown_script": "# Episode 3 Master Script\n\n## Scene 1\n\n**INT. COFFEE SHOP - DAY**\n\n**BETH**\n*cheerful*\nHey, how's the big project coming along?\n\n**JAKE**\n*looks stressed*\nIt's a nightmare. Deadlines, bugs, you name it.\n\n```\nSFX: DRINK SET ON TABLE\n```\n\n**BETH**\n*consoling*\nYou'll get through it. You always do.\n",
+    "conversion_notes": [
+      "Fountain format ready for professional production software",
+      "Markdown format ready for readable review documents",
+      "All formats maintain perfect script fidelity"
+    ]
+  },
+  "production_package": {
+    "episode_number": 3,
+    "production_summary": {
+      "title": "Episode 3",
+      "estimated_runtime": "45:30",
+      "tone": "Dramatic, character-driven thriller",
+      "key_themes": [
+        "Trust",
+        "Revelation",
+        "Consequence"
+      ]
+    },
+    "cast_briefing": {
+      "episode_overview": "Opening revelation drives protagonist to action, leading to a series of high-stakes confrontations and revelations.",
+      "emotional_journey": "Tension builds from confusion to determination as the protagonist uncovers hidden truths and faces unexpected challenges.",
+      "key_scenes": [
+        {
+          "scene_number": 1,
+          "location": "INT. COFFEE SHOP - DAY",
+          "emotional_context": "Marcus senses danger, uncertainty growing as he receives a mysterious message.",
+          "key_moments": [
+            "Character discovery",
+            "Mounting suspicion"
+          ]
+        },
+        {
+          "scene_number": 4,
+          "location": "INT. ABANDONED WAREHOUSE - NIGHT",
+          "emotional_context": "High tension as Marcus confronts an unknown figure, leading to a pivotal revelation.",
+          "key_moments": [
+            "Confrontation",
+            "Revelation"
+          ]
+        },
+        {
+          "scene_number": 7,
+          "location": "INT. POLICE STATION - INTERROGATION ROOM - NIGHT",
+          "emotional_context": "Desperation and resolve as Marcus faces interrogation, leading to a critical decision.",
+          "key_moments": [
+            "Interrogation",
+            "Decision-making"
+          ]
+        }
+      ]
+    },
+    "voice_actor_specifications": [
+      {
+        "character": "MARCUS",
+        "scenes": [
+          1,
+          2,
+          5,
+          8
+        ],
+        "vocal_characteristics": "Determined, weary, carrying a heavy burden",
+        "key_directions": [
+          {
+            "scene": 1,
+            "emotion": "Anxiety",
+            "delivery": "Nervous energy, glancing around",
+            "note": "Lighter click SFX before dialogue helps establish character's unease"
+          },
+          {
+            "scene": 4,
+            "emotion": "Fear and defiance",
+            "delivery": "Firm, but with underlying fear",
+            "note": "Slight echo effect during confrontation to enhance the sense of isolation"
+          },
+          {
+            "scene": 7,
+            "emotion": "Desperation",
+            "delivery": "Rapid, urgent speech with pauses for breath",
+            "note": "Background ambiance of police station to create a tense atmosphere"
+          }
+        ]
+      },
+      {
+        "character": "ANNA",
+        "scenes": [
+          2,
+          4,
+          6
+        ],
+        "vocal_characteristics": "Worried, supportive, and resourceful",
+        "key_directions": [
+          {
+            "scene": 2,
+            "emotion": "Concern",
+            "delivery": "Soft, comforting tone",
+            "note": "Light background music to enhance the emotional connection"
+          },
+          {
+            "scene": 4,
+            "emotion": "Fear",
+            "delivery": "Panicked, rapid speech",
+            "note": "Sound of heavy breathing to convey urgency"
+          },
+          {
+            "scene": 6,
+            "emotion": "Determination",
+            "delivery": "Strong, decisive",
+            "note": "Firm footsteps and door closing SFX to emphasize action"
+          }
+        ]
+      }
+    ],
+    "sound_design_specifications": {
+      "required_effects": [
+        "Lighter click",
+        "Door opening",
+        "Papers rustling",
+        "Footsteps",
+        "Heavy breathing"
+      ],
+      "ambient_layers": [
+        "Coffee shop chatter",
+        "Office ambiance",
+        "Distant traffic",
+        "Police station background"
+      ],
+      "music_cues": [
+        "Tension theme - 15 seconds",
+        "Resolution swell - 8 seconds",
+        "Supportive melody - 10 seconds"
+      ],
+      "silences": "15 marked, strategically placed for dramatic effect"
+    },
+    "editor_specifications": {
+      "scene_by_scene_assembly_order": [
+        {
+          "scene_number": 1,
+          "description": "INT. COFFEE SHOP - DAY"
+        },
+        {
+          "scene_number": 2,
+          "description": "INT. APARTMENT - LIVING ROOM - DAY"
+        },
+        {
+          "scene_number": 3,
+          "description": "INT. OFFICE - DAY"
+        },
+        {
+          "scene_number": 4,
+          "description": "INT. ABANDONED WAREHOUSE - NIGHT"
+        },
+        {
+          "scene_number": 5,
+          "description": "INT. CAR - NIGHT"
+        },
+        {
+          "scene_number": 6,
+          "description": "INT. HIDDEN SAFEHOUSE - NIGHT"
+        },
+        {
+          "scene_number": 7,
+          "description": "INT. POLICE STATION - INTERROGATION ROOM - NIGHT"
+        },
+        {
+          "scene_number": 8,
+          "description": "EXT. CITY STREET - NIGHT"
+        }
+      ],
+      "crossfade_guidelines": "0.5-1.0 second crossfades between scenes",
+      "audio_level_standards": "Dialogue normalized to -6dB, ambience at -12dB, music at -10dB",
+      "quality_checkpoints": [
+        "Scene assembly",
+        "Audio balance",
+        "Effect integration",
+        "Final mix"
+      ]
+    },
+    "delivery_specifications": {
+      "target_format": "MP3, 128kbps, stereo",
+      "final_duration": "45:30",
+      "quality_standard": "Professional audiobook production quality",
+      "metadata": "ID3 tags with episode title, number, series info, and artist credits"
+    }
+  }
+}

@@ -1,0 +1,140 @@
+# Station 6: Master Style Guide Builder Configuration
+
+station_name: "Station 6: Master Style Guide Builder"
+description: "Synthesizes inputs from foundational stations to generate the definitive Master Style Guide that governs all creative and technical choices in subsequent script development and quality control phases."
+model: "glm-4.5"
+temperature: 0.7
+max_tokens: 4096
+
+prompts:
+  master_style_guide_synthesis: |
+    **Role:** You are the Master Style Guide Builder. Your task is to synthesize inputs from all foundational stations to create the definitive style guide for this audio-only drama.
+
+    **Project Data:**
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - Target Age: {target_age}
+    - Episode Count: {episode_count}
+    - Episode Length: {episode_length}
+    - Story Complexity: {story_complexity}
+    - Tone: {tone}
+    - Narrator Strategy: {narrator_strategy}
+    - Narrator Type: {narrator_type}
+    - Core Premise: {core_premise}
+    - Character Names: {character_names}
+    - Primary Location: {primary_location}
+    - Key Locations: {key_locations}
+    - Similar Shows: {similar_shows}
+    - Age Appropriate Language Guidelines: {age_appropriate_language}
+
+    **Station 2 Data (Project DNA):**
+    {station_02_data}
+
+    **Station 3 Data (Age/Genre Guidelines):**
+    {station_03_data}
+
+    **Station 4.5 Data (Narrator Strategy):**
+    {station_045_data}
+
+    **Station 5 Data (Season Architecture):**
+    {station_05_data}
+
+    **Instructions:**
+
+    Create a comprehensive Master Style Guide by synthesizing all the above inputs. The guide must contain exactly these six top-level sections:
+
+    1. **language_rules**: Define vocabulary level (from Station 3), sentence complexity, technical term handling, and specific narrator voice guidelines (from Station 4.5).
+
+    2. **dialect_accent_map**: Establish rules for character voice distinctions, regional markers, and pronunciation guide, derived from the Project DNA (Station 2).
+
+    3. **audio_conventions**: Create a clear system for scene transitions, flashbacks, and location establishment sounds, consistent with the chosen Season Architecture (Station 5). Define the rules for using silence effectively.
+
+    4. **dialogue_principles**: Set the balance between natural vs. theatrical delivery, interruption rules, and how character identity will be clarified in audio-only scenes.
+
+    5. **narration_style**: Directly incorporate the complete strategy from Station 4.5, detailing when the narrator speaks, their relationship to the story, tense, person, and personality.
+
+    6. **sonic_signature**: Design the overall audio identity, including recurring motifs, character themes, and environmental soundscapes, to match the Genre, Tone, and Mood established in Station 2.
+
+    **Output Format:** Your entire response MUST be a single, valid JSON object. The root key should be `master_style_guide`.
+
+    **Expected JSON Structure:**
+    {{
+        "master_style_guide": {{
+            "language_rules": {{
+                "vocabulary_level": "specific level based on Station 3 age guidelines",
+                "sentence_complexity": "complexity guidelines",
+                "technical_term_handling": "how to handle technical terms",
+                "narrator_voice_guidelines": "specific narrator voice rules from Station 4.5",
+                "age_appropriate_language": "language restrictions and allowances",
+                "genre_specific_terminology": "terminology appropriate to the genre",
+                "example_vocabulary": {{
+                    "use": ["list of 4-6 words to use based on Station 3 age guidelines and genre"],
+                    "avoid": ["list of 2-4 words/phrases to avoid based on Station 3 age guidelines"]
+                }}
+            }},
+            "dialect_accent_map": {{
+                "character_voice_distinctions": "how characters are distinguished by voice",
+                "regional_markers": "regional accent/dialect guidelines",
+                "pronunciation_guide": {{
+                    "character_names": "key-value map of character name pronunciations extracted from Station 1/2 data",
+                    "locations": "key-value map of location pronunciations extracted from Station 2 data"
+                }},
+                "voice_casting_notes": "casting considerations for character voices",
+                "accent_consistency_rules": "rules for maintaining accent consistency"
+            }},
+            "audio_conventions": {{
+                "scene_transitions": "rules for transitioning between scenes",
+                "flashback_conventions": "how flashbacks are handled in audio",
+                "location_establishment": "how locations are established through sound",
+                "silence_usage": "rules for using silence effectively",
+                "sound_cue_system": "system for sound cues and effects",
+                "time_markers": "how time is indicated in audio-only format"
+            }},
+            "dialogue_principles": {{
+                "natural_vs_theatrical": "balance between natural and theatrical delivery",
+                "interruption_rules": "rules for handling interruptions and overlaps",
+                "character_identification": "how characters are identified in audio-only scenes",
+                "emotional_delivery": "guidelines for emotional expression",
+                "pacing_control": "how dialogue pacing is managed",
+                "subtext_handling": "how subtext is conveyed in audio"
+            }},
+            "narration_style": {{
+                "narrator_presence": "when and how the narrator appears",
+                "narrator_relationship": "This guide implements the '{narrator_type}' strategy selected in Station 4.5. [rest of relationship description]",
+                "tense_and_person": "narrative tense and person",
+                "narrator_personality": "narrator's personality and voice",
+                "narrator_functions": "specific functions the narrator serves",
+                "narrator_voice_casting": "casting notes for narrator voice"
+            }},
+            "sonic_signature": {{
+                "recurring_motifs": "musical or sound motifs that recur",
+                "character_themes": "distinctive sounds/themes for characters",
+                "environmental_soundscapes": "ambient sound design",
+                "genre_audio_elements": "audio elements specific to the genre",
+                "mood_sound_palette": "sound palette for different moods",
+                "audio_identity": "overall audio identity of the series",
+                "musical_references": "2-3 specific musical artists or soundtrack examples that fit the tone, based on primary genre and similar shows from Station 2"
+            }}
+        }}
+    }}
+
+    **Requirements:**
+    - Synthesize ALL input data from Stations 2, 3, 4.5, and 5
+    - Ensure consistency across all six sections
+    - Make specific, actionable rules for audio production
+    - Consider the target age and genre throughout
+    - Create rules that will guide all downstream stations
+    - Return ONLY valid JSON - no explanatory text before or after
+
+dependencies:
+  - station: 2
+    name: "Project DNA Builder"
+  - station: 3
+    name: "Age Genre Optimizer"
+  - station: 4.5
+    name: "Narrator Strategy Designer"
+  - station: 5
+    name: "Season Architect"
+
+# Enable/disable this station in the pipeline
+enabled: true

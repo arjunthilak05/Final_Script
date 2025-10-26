@@ -17,8 +17,9 @@ reportlab>=4.0.7
 
 # Core Python
 pydantic>=2.7.4
+pydantic-settings>=2.0.0
 python-dotenv>=1.0.0
-asyncio-compat>=0.1.0
+# asyncio-compat>=0.1.0  # Package doesn't exist
 
 # Development
 typing-extensions>=4.0.0

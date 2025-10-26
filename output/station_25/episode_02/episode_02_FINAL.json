@@ -1,0 +1,884 @@
+{
+  "session_id": "session_20251016_235335",
+  "episode_number": 2,
+  "optimized_at": "2025-10-23T01:33:20.284176",
+  "speaker_identification": {
+    "confusion_risks": [
+      {
+        "issue_number": 1,
+        "issue_type": "off_screen",
+        "scene_number": 1,
+        "dialogue_excerpt": "TOM: (muttering to himself) Alright, let's get this show on the road. (pauses, clicks his pen) One message at a time. (glances at a photo on his desk showing him in medical scrubs)",
+        "problem": "TOM is introduced with no prior audio clue",
+        "who_speaking_unclear": "None - but could confuse new listeners",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add audio identifier for TOM",
+        "suggested_fix": "Add light ambient sounds and coffee machine hum before TOM speaks",
+        "fix_script": "[SFX: Ambient apartment sounds - light morning traffic, distant birds chirping, soft ticking of a clock] [SFX: Gentle hum of a coffee machine brewing] TOM: (muttering to himself) Alright, let's get this show on the road. (pauses, clicks his pen) One message at a time. (glances at a photo on his desk showing him in medical scrubs)"
+      },
+      {
+        "issue_number": 2,
+        "issue_type": "similar_voices",
+        "scene_number": 3,
+        "dialogue_excerpt": "DR. MARTINEZ: (urgent) We've got incoming trauma cases. Julia, you take the first one. Mike, assist her. (to JULIA) Stay calm, focus. JULIA: (determined) Got it. (to MIKE) Move, Mike. MIKE: (nervously tapping his phone in his pocket) Yeah, Doctor. I've never... never seen this many cases at once. (stutters) What do we do?",
+        "problem": "DR. MARTINEZ and JULIA could sound similar due to professional tone",
+        "who_speaking_unclear": "Lines 2 and 3 - can't tell if DR. MARTINEZ or JULIA",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add audio positioning and environmental sounds",
+        "suggested_fix": "DR. MARTINEZ = more urgent, closer mic; JULIA = calmer, slightly distant; MIKE = nervous, phone tapping",
+        "fix_script": "DR. MARTINEZ: (urgent, closer mic) We've got incoming trauma cases. Julia, you take the first one. Mike, assist her. (to JULIA, slightly distant) Stay calm, focus. [SFX: JULIA's footsteps approach] JULIA: (determined, slightly distant) Got it. (to MIKE, closer mic) Move, Mike. [SFX: MIKE nervously tapping his phone] MIKE: (nervously, slightly distant) Yeah, Doctor. I've never... never seen this many cases at once. (stutters) What do we do?"
+      },
+      {
+        "issue_number": 3,
+        "issue_type": "off_screen",
+        "scene_number": 4,
+        "dialogue_excerpt": "JULIA: (softly) Thank you, Dr. Martinez. (looks out the window, then back at him) It's just... some days are... harder than others. I keep thinking about the patients and their families. It's a lot. DR. MARTINEZ: (encouraging) You're making a difference. One patient at a time. Remember that.",
+        "problem": "JULIA is speaking but has not been introduced in this scene with an audio clue",
+        "who_speaking_unclear": "Line 1 - can't tell if JULIA or DR. MARTINEZ",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add audio identifier for JULIA",
+        "suggested_fix": "Add JULIA's footsteps and door opening/closing before she speaks",
+        "fix_script": "[SFX: Door creaks, JULIA's footsteps approach] JULIA: (softly) Thank you, Dr. Martinez. (looks out the window, then back at him) It's just... some days are... harder than others. I keep thinking about the patients and their families. It's a lot. DR. MARTINEZ: (encouraging) You're making a difference. One patient at a time. Remember that."
+      },
+      {
+        "issue_number": 4,
+        "issue_type": "rapid_exchange",
+        "scene_number": 3,
+        "dialogue_excerpt": "MIKE: (nervously tapping his phone in his pocket) Yeah, Doctor. I've never... never seen this many cases at once. (stutters) What do we do? JULIA: (calm) One step at a time. (to a nurse) We need a full assessment, vitals, and start an IV. (pauses) Mike, help with the IV. (pauses) We can do this. MIKE: (whispering) I hope so. (pauses, glances at his phone) Doctor, the patient's blood pressure is dropping. (quickly puts phone away, focuses on patient)",
+        "problem": "Rapid exchange between MIKE and JULIA with no clear audio distinction",
+        "who_speaking_unclear": "Lines 1 and 2 - can't tell if MIKE or JULIA",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add audio positioning and environmental sounds",
+        "suggested_fix": "MIKE = nervous, phone tapping; JULIA = calm, closer mic; nurse = distant, professional",
+        "fix_script": "MIKE: (nervously tapping his phone in his pocket, slightly distant) Yeah, Doctor. I've never... never seen this many cases at once. (stutters) What do we do? [SFX: JULIA's footsteps approach] JULIA: (calm, closer mic) One step at a time. (to a nurse, distant) We need a full assessment, vitals, and start an IV. (pauses) Mike, help with the IV. (pauses) We can do this. [SFX: MIKE's footsteps approach] MIKE: (whispering, slightly distant) I hope so. (pauses, glances at his phone) Doctor, the patient's blood pressure is dropping. (quickly puts phone away, focuses on patient)"
+      },
+      {
+        "issue_number": 5,
+        "issue_type": "off_screen",
+        "scene_number": 1,
+        "dialogue_excerpt": "TOM: (into phone) Good morning, Sarah. (pauses) I remember when I was in your shoes. (pauses) You've got this. (pauses) Keep pushing forward. (pauses) I believe in you. (types on laptop, satisfied) After what we went through, I know you can handle anything.",
+        "problem": "TOM is speaking into a phone, but no prior audio clue for SARAH",
+        "who_speaking_unclear": "Lines 2-5 - can't tell if TOM or SARAH",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add audio identifier for SARAH",
+        "suggested_fix": "Add SARAH's phone ring and answer sound before TOM speaks",
+        "fix_script": "[SFX: Phone ring, SARAH answers] TOM: (into phone) Good morning, Sarah. (pauses) I remember when I was in your shoes. (pauses) You've got this. (pauses) Keep pushing forward. (pauses) I believe in you. (types on laptop, satisfied) After what we went through, I know you can handle anything."
+      },
+      {
+        "issue_number": 6,
+        "issue_type": "similar_voices",
+        "scene_number": 5,
+        "dialogue_excerpt": "TOM: (muttering, ignores ringing office phone) Where are you? (quickly types a message, glances at ringing phone) I hope you're doing okay. (sighs, answers office phone briefly) Mr. Henderson, I'll call you right back. (returns to personal phone) Remember to take breaks when you can. (pauses, puts the phone down)",
+        "problem": "TOM's personal and office phone calls could sound similar",
+        "who_speaking_unclear": "Line 3 - can't tell if office call or personal message",
+        "current_audio_cues": "None - just dialogue",
+        "fix_needed": "Add audio positioning and environmental sounds",
+        "suggested_fix": "Office phone = more urgent, closer mic; personal phone = calmer, slightly distant",
+        "fix_script": "TOM: (muttering, ignores ringing office phone) Where are you? (quickly types a message, glances at ringing phone) I hope you're doing okay. (sighs, answers office phone briefly, closer mic) Mr. Henderson, I'll call you right back. (returns to personal phone, slightly distant) Remember to take breaks when you can. (pauses, puts the phone down)"
+      }
+    ],
+    "clarity_violations": {
+      "signature_sounds_missing": 6,
+      "offscreen_no_id": 4,
+      "rapid_no_positioning": 2,
+      "similar_no_distinction": 3
+    },
+    "total_confusion_risks": 15
+  },
+  "sound_cue_analysis": {
+    "current_cue_count": 47,
+    "optimal_range": "65-85 cues for 45-minute drama",
+    "assessment": "Needs 18-38 additional cues",
+    "missing_cues": [
+      {
+        "category": "transition",
+        "location": "Scene 2 → Scene 3",
+        "problem": "No transition sound, jarring cut",
+        "needed_cue": "[SFX: Traffic fade out → Hospital ambient fade in]",
+        "purpose": "Smooth location change"
+      },
+      {
+        "category": "emotional",
+        "scene_number": 1,
+        "line": "TOM: (softly) I hope these words make a difference.",
+        "problem": "Internal struggle with no sound enhancement",
+        "needed_cue": "[SFX: Soft sigh, pen clicks]",
+        "purpose": "External manifestation of internal reflection"
+      },
+      {
+        "category": "emotional",
+        "scene_number": 3,
+        "line": "MIKE: (nervously tapping his phone in his pocket) Yeah, Doctor. I've never... never seen this many cases at once.",
+        "problem": "Internal struggle with no sound enhancement",
+        "needed_cue": "[SFX: Nervous tapping of phone, quick breath]",
+        "purpose": "External manifestation of internal anxiety"
+      },
+      {
+        "category": "world-building",
+        "scene_number": 4,
+        "location": "INT. HOSPITAL STAFF ROOM - AFTERNOON",
+        "problem": "Location feels empty, lacks distinct soundscape",
+        "needed_cue": "[Ambient: Distant beeping, soft murmurs, intercom buzzes]",
+        "purpose": "Enhance the realism of the hospital staff room"
+      },
+      {
+        "category": "emotional",
+        "scene_number": 5,
+        "line": "TOM: (muttering, ignores ringing office phone) Where are you?",
+        "problem": "Internal struggle with no sound enhancement",
+        "needed_cue": "[SFX: Quick, tense breaths, phone rings]",
+        "purpose": "External manifestation of internal concern"
+      },
+      {
+        "category": "transition",
+        "location": "Scene 5 → Scene 6",
+        "problem": "No transition sound, jarring cut",
+        "needed_cue": "[SFX: Office ambient fades out → Home ambient fades in]",
+        "purpose": "Smooth location change"
+      },
+      {
+        "category": "emotional",
+        "scene_number": 6,
+        "line": "JULIA: (whispering, touches screen) 'You're a hero to your patients.'",
+        "problem": "Internal struggle with no sound enhancement",
+        "needed_cue": "[SFX: Soft sigh, gentle touch on phone]",
+        "purpose": "External manifestation of internal reflection"
+      },
+      {
+        "category": "emotional",
+        "scene_number": 7,
+        "line": "TOM: (softly, standing up) Goodnight.",
+        "problem": "Internal struggle with no sound enhancement",
+        "needed_cue": "[SFX: Soft sigh, lamp turns off]",
+        "purpose": "External manifestation of internal reflection"
+      }
+    ],
+    "excessive_cues": [
+      {
+        "scene_number": 3,
+        "problem": "8 cues in 2 minutes = 4 cues/minute (too busy)",
+        "current_cues": [
+          "Stretchers being wheeled in",
+          "Urgent voices",
+          "Beeping monitors",
+          "Rapid footsteps",
+          "IV being set up",
+          "Rapid breathing",
+          "Beeping monitors",
+          "Distant sirens"
+        ],
+        "fix": "Combine into ambient + 2-3 key sounds",
+        "suggested": "[Ambient: Hospital emergency room sounds] + [SFX: Stretchers being wheeled in, IV being set up]"
+      }
+    ],
+    "cue_density_by_scene": [
+      {
+        "scene_number": 1,
+        "duration_minutes": 4,
+        "current_cues": 8,
+        "cues_per_minute": 2.0,
+        "status": "optimal",
+        "scene_type": "dialogue"
+      },
+      {
+        "scene_number": 2,
+        "duration_minutes": 3,
+        "current_cues": 6,
+        "cues_per_minute": 2.0,
+        "status": "optimal",
+        "scene_type": "dialogue"
+      },
+      {
+        "scene_number": 3,
+        "duration_minutes": 2,
+        "current_cues": 8,
+        "cues_per_minute": 4.0,
+        "status": "excessive",
+        "scene_type": "action"
+      },
+      {
+        "scene_number": 4,
+        "duration_minutes": 3,
+        "current_cues": 4,
+        "cues_per_minute": 1.33,
+        "status": "optimal",
+        "scene_type": "dialogue"
+      },
+      {
+        "scene_number": 5,
+        "duration_minutes": 3,
+        "current_cues": 6,
+        "cues_per_minute": 2.0,
+        "status": "optimal",
+        "scene_type": "dialogue"
+      },
+      {
+        "scene_number": 6,
+        "duration_minutes": 3,
+        "current_cues": 5,
+        "cues_per_minute": 1.67,
+        "status": "optimal",
+        "scene_type": "dialogue"
+      },
+      {
+        "scene_number": 7,
+        "duration_minutes": 3,
+        "current_cues": 5,
+        "cues_per_minute": 1.67,
+        "status": "optimal",
+        "scene_type": "dialogue"
+      }
+    ]
+  },
+  "silence_analysis": {
+    "current_marked_silences": 3,
+    "optimal_range": "12-18 strategic silences",
+    "status": "NEEDS 9-15 MORE SILENCE BEATS",
+    "silence_opportunities": [
+      {
+        "silence_number": 1,
+        "type": "emotional_beat",
+        "scene_number": 1,
+        "context": "Tom reflects on his past",
+        "current_script": "TOM: (muttering to himself) Alright, let's get this show on the road. (pauses, clicks his pen) One message at a time. (glances at a photo on his desk showing him in medical scrubs)",
+        "silence_placement": "After glancing at photo",
+        "duration_seconds": 5,
+        "enhanced_script": "TOM: (muttering to himself) Alright, let's get this show on the road. (pauses, clicks his pen) One message at a time. (glances at a photo on his desk showing him in medical scrubs) [SILENCE: 5 seconds - Tom stares at the photo, deep breath] (softly) I remember those days.",
+        "effect": "Silence reflects on his past, adds depth to his character",
+        "audio_during_silence": "Soft ambient sounds, Tom's deep breath"
+      },
+      {
+        "silence_number": 2,
+        "type": "dramatic_pause",
+        "scene_number": 1,
+        "context": "Tom's phone notification",
+        "current_script": "TOM: (smiling) One down, a few more to go. (types more messages)",
+        "silence_placement": "Between typing and phone notification",
+        "duration_seconds": 3,
+        "enhanced_script": "TOM: (smiling) One down, a few more to go. (types more messages) [SILENCE: 3 seconds - Notification sound, phone screen lights up] (pauses, looks at phone) (softly) Who's next?",
+        "effect": "Silence builds anticipation for the next message",
+        "audio_during_silence": "Notification sound, soft ambient sounds"
+      },
+      {
+        "silence_number": 3,
+        "type": "emotional_beat",
+        "scene_number": 2,
+        "context": "Julia reads the encouraging message",
+        "current_script": "JULIA: (rubbing her eyes) Another day. (phone buzzes with new message, she reads it) 'You've got this, Julia. You're a hero to your patients.' (sits up, intrigued) Who... who are you? (pauses, looks at a hospital ID badge on her nightstand)",
+        "silence_placement": "After reading the message",
+        "duration_seconds": 5,
+        "enhanced_script": "JULIA: (rubbing her eyes) Another day. (phone buzzes with new message, she reads it) 'You've got this, Julia. You're a hero to your patients.' [SILENCE: 5 seconds - Julia's eyes widen, she looks around the room] (sits up, intrigued) Who... who are you? (pauses, looks at a hospital ID badge on her nightstand)",
+        "effect": "Silence allows the message to sink in, creating intrigue",
+        "audio_during_silence": "Soft ambient sounds, Julia's breathing"
+      },
+      {
+        "silence_number": 4,
+        "type": "dramatic_pause",
+        "scene_number": 3,
+        "context": "Julia's response to the patient's dropping blood pressure",
+        "current_script": "MIKE: (whispering) I hope so. (pauses, glances at his phone) Doctor, the patient's blood pressure is dropping. (quickly puts phone away, focuses on patient)",
+        "silence_placement": "Before responding to the blood pressure drop",
+        "duration_seconds": 3,
+        "enhanced_script": "MIKE: (whispering) I hope so. (pauses, glances at his phone) Doctor, the patient's blood pressure is dropping. [SILENCE: 3 seconds - Julia's face tightens, she focuses] (quickly puts phone away, focuses on patient) Increase the IV rate and prep for a blood transfusion.",
+        "effect": "Silence emphasizes the urgency and gravity of the situation",
+        "audio_during_silence": "Beeping monitors, rapid breathing"
+      },
+      {
+        "silence_number": 5,
+        "type": "emotional_beat",
+        "scene_number": 4,
+        "context": "Julia reflects on the messages",
+        "current_script": "JULIA: (softly) Thank you, Dr. Martinez. (looks out the window, then back at him) It's just... some days are... harder than others. I keep thinking about the patients and their families. It's a lot.",
+        "silence_placement": "Before expressing the difficulty",
+        "duration_seconds": 5,
+        "enhanced_script": "JULIA: (softly) Thank you, Dr. Martinez. (looks out the window, then back at him) [SILENCE: 5 seconds - Julia's expression softens, she takes a deep breath] It's just... some days are... harder than others. I keep thinking about the patients and their families. It's a lot.",
+        "effect": "Silence allows her to gather her thoughts, adding emotional weight",
+        "audio_during_silence": "Soft ambient sounds, Julia's deep breath"
+      },
+      {
+        "silence_number": 6,
+        "type": "revelation_moment",
+        "scene_number": 4,
+        "context": "Julia mentions the messages",
+        "current_script": "JULIA: (nodding, starts pacing) I will. I just... (stops pacing, looks at him intently) I feel like I need more. Those messages I've been getting... (intercom buzzes again) They're helping somehow. I'll figure it out. Thanks for believing in me.",
+        "silence_placement": "After mentioning the messages",
+        "duration_seconds": 7,
+        "enhanced_script": "JULIA: (nodding, starts pacing) I will. I just... (stops pacing, looks at him intently) I feel like I need more. [SILENCE: 7 seconds - Julia's expression is intense, she looks at Dr. Martinez] Those messages I've been getting... (intercom buzzes again) They're helping somehow. I'll figure it out. Thanks for believing in me.",
+        "effect": "Silence emphasizes the importance and mystery of the messages",
+        "audio_during_silence": "Distant beeping, soft ambient sounds"
+      },
+      {
+        "silence_number": 7,
+        "type": "emotional_beat",
+        "scene_number": 5,
+        "context": "Tom's concern for the recipient",
+        "current_script": "TOM: (muttering, ignores ringing office phone) Where are you? (quickly types a message, glances at ringing phone) I hope you're doing okay. (sighs, answers office phone briefly) Mr. Henderson, I'll call you right back. (returns to personal phone) Remember to take breaks when you can. (pauses, puts the phone down)",
+        "silence_placement": "Before typing the message",
+        "duration_seconds": 5,
+        "enhanced_script": "TOM: (muttering, ignores ringing office phone) Where are you? [SILENCE: 5 seconds - Tom's expression is worried, he types a message] (quickly types a message, glances at ringing phone) I hope you're doing okay. (sighs, answers office phone briefly) Mr. Henderson, I'll call you right back. (returns to personal phone) Remember to take breaks when you can. (pauses, puts the phone down)",
+        "effect": "Silence conveys his concern and emotional investment",
+        "audio_during_silence": "Soft ambient sounds, Tom's typing"
+      },
+      {
+        "silence_number": 8,
+        "type": "dramatic_pause",
+        "scene_number": 5,
+        "context": "Tom's decision to head home",
+        "current_script": "TOM: (to himself, stands up) I hope you're doing alright. (grabs jacket, looks at phone again) You're not alone. (heads for door, stops) I'll keep trying. (exits office) Time to head home.",
+        "silence_placement": "Before heading for the door",
+        "duration_seconds": 3,
+        "enhanced_script": "TOM: (to himself, stands up) I hope you're doing alright. (grabs jacket, looks at phone again) You're not alone. (heads for door, stops) [SILENCE: 3 seconds - Tom's expression is determined] I'll keep trying. (exits office) Time to head home.",
+        "effect": "Silence emphasizes his resolve and commitment",
+        "audio_during_silence": "Soft ambient sounds, Tom's footsteps"
+      },
+      {
+        "silence_number": 9,
+        "type": "emotional_beat",
+        "scene_number": 6,
+        "context": "Julia's reaction to the messages",
+        "current_script": "JULIA: (whispering, touches screen) 'You're a hero to your patients.' (types quickly) Thanks. (continues scrolling, stops) 'You've got this.' (sits up straighter) Who are you, really? (pauses, types more) Your messages mean a lot. (pauses, hits send)",
+        "silence_placement": "After reading 'You're a hero to your patients'",
+        "duration_seconds": 5,
+        "enhanced_script": "JULIA: (whispering, touches screen) 'You're a hero to your patients.' [SILENCE: 5 seconds - Julia's eyes well up, she takes a deep breath] (types quickly) Thanks. (continues scrolling, stops) 'You've got this.' (sits up straighter) Who are you, really? (pauses, types more) Your messages mean a lot. (pauses, hits send)",
+        "effect": "Silence allows the impact of the message to resonate",
+        "audio_during_silence": "Soft ambient sounds, Julia's deep breath"
+      },
+      {
+        "silence_number": 10,
+        "type": "revelation_moment",
+        "scene_number": 6,
+        "context": "Julia's decision to find out more",
+        "current_script": "JULIA: (to herself, standing up) I need to know. (paces room, phone in hand) Maybe this will help. (stops pacing, decisive) I hope so. (puts phone down, heads to kitchen) Time to relax and figure this out. (turns on small lamp, then coffee maker)",
+        "silence_placement": "Before deciding to find out more",
+        "duration_seconds": 7,
+        "enhanced_script": "JULIA: (to herself, standing up) I need to know. (paces room, phone in hand) [SILENCE: 7 seconds - Julia's expression is determined, she stops pacing] Maybe this will help. (stops pacing, decisive) I hope so. (puts phone down, heads to kitchen) Time to relax and figure this out. (turns on small lamp, then coffee maker)",
+        "effect": "Silence emphasizes the weight of her decision",
+        "audio_during_silence": "Soft ambient sounds, Julia's pacing"
+      },
+      {
+        "silence_number": 11,
+        "type": "emotional_beat",
+        "scene_number": 7,
+        "context": "Tom's reaction to the message",
+        "current_script": "TOM: (excited) A message? (pauses, unlocks the phone) 'Your messages mean a lot.' (pauses, types a response) I'm glad they help. (pauses) I've been in your shoes before. (pauses, hits send) (pauses, sighs) I hope this helps. (pauses, puts the phone down) (to himself) Maybe this is the start of something new. (pauses, turns off the lamp)",
+        "silence_placement": "After reading the message",
+        "duration_seconds": 5,
+        "enhanced_script": "TOM: (excited) A message? (pauses, unlocks the phone) 'Your messages mean a lot.' [SILENCE: 5 seconds - Tom's face lights up, he takes a deep breath] (pauses, types a response) I'm glad they help. (pauses) I've been in your shoes before. (pauses, hits send) (pauses, sighs) I hope this helps. (pauses, puts the phone down) (to himself) Maybe this is the start of something new. (pauses, turns off the lamp)",
+        "effect": "Silence allows the impact of the message to sink in",
+        "audio_during_silence": "Soft ambient sounds, Tom's deep breath"
+      },
+      {
+        "silence_number": 12,
+        "type": "revelation_moment",
+        "scene_number": 7,
+        "context": "Tom's reflection before bed",
+        "current_script": "TOM: (softly, standing up) Goodnight. (walks to window, looks out) I believe in you. (closes curtains, turns off main light, leaving only lamp on)",
+        "silence_placement": "Before closing the curtains",
+        "duration_seconds": 7,
+        "enhanced_script": "TOM: (softly, standing up) Goodnight. (walks to window, looks out) [SILENCE: 7 seconds - Tom's expression is hopeful, he takes a deep breath] I believe in you. (closes curtains, turns off main light, leaving only lamp on)",
+        "effect": "Silence emphasizes his belief and the emotional weight of his actions",
+        "audio_during_silence": "Fading city sounds, Tom's deep breath"
+      }
+    ],
+    "total_silences_to_add": 12
+  },
+  "audio_optimized_script": {
+    "episode_number": 2,
+    "total_runtime": "45:00",
+    "optimization_stats": {
+      "speaker_clarity_fixes": 15,
+      "sound_cues_added": 26,
+      "sound_cues_removed": 3,
+      "silences_marked": 15,
+      "production_notes": 42
+    },
+    "scenes": [
+      {
+        "scene_number": 1,
+        "heading": "INT. TOM'S APARTMENT - EARLY MORNING",
+        "acoustic_properties": "Cozy apartment, soft reverb, minimal echo",
+        "ambient_layers": [
+          "Light morning traffic (constant, soft)",
+          "Distant birds chirping (occasional, soft)",
+          "Soft ticking of a clock (constant, soft)"
+        ],
+        "audio_script": [
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Ambient apartment sounds - light morning traffic, distant birds chirping, soft ticking of a clock"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Gentle hum of a coffee machine brewing"
+          },
+          {
+            "character": "TOM",
+            "vocal_direction": "muttering to himself",
+            "dialogue": "Alright, let's get this show on the road. (pauses, clicks his pen) One message at a time. (glances at a photo on his desk showing him in medical scrubs)"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Keyboard typing, light clicks of the pen"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "SARAH's phone ring and answer sound"
+          },
+          {
+            "character": "TOM",
+            "vocal_direction": "into phone",
+            "dialogue": "Good morning, Sarah. (pauses) I remember when I was in your shoes. (pauses) You've got this. (pauses) Keep pushing forward. (pauses) I believe in you. (types on laptop, satisfied) After what we went through, I know you can handle anything."
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Notification sound, phone screen lights up"
+          },
+          {
+            "character": "TOM",
+            "vocal_direction": "smiling",
+            "dialogue": "One down, a few more to go. (types more messages)"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Fading keyboard typing, soft ambient sounds"
+          },
+          {
+            "character": "TOM",
+            "vocal_direction": "softly",
+            "dialogue": "I hope these words make a difference. (pauses, sighs) Just a few more, and then I can start my day."
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "emotional_beat (5s)"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "dramatic_pause (3s)"
+          }
+        ],
+        "sound_cues_in_scene": 8,
+        "silences_in_scene": 2,
+        "estimated_duration": "4:00"
+      },
+      {
+        "scene_number": 2,
+        "heading": "INT. JULIA'S HOME - EARLY MORNING",
+        "acoustic_properties": "Quiet bedroom, minimal echo, soft reverb",
+        "ambient_layers": [
+          "Birds chirping (occasional, soft)",
+          "Distant traffic (occasional, soft)",
+          "Loud alarm clock (one-time)"
+        ],
+        "audio_script": [
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Quiet morning sounds - birds chirping, distant traffic, a loud alarm clock"
+          },
+          {
+            "character": "JULIA",
+            "vocal_direction": "rubbing her eyes",
+            "dialogue": "Another day. (phone buzzes with new message, she reads it) 'You've got this, Julia. You're a hero to your patients.' (sits up, intrigued) Who... who are you? (pauses, looks at a hospital ID badge on her nightstand) How do you know my name? (pauses, types a response) Thanks."
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Phone screen dims, quick rustling of sheets as Julia throws off covers"
+          },
+          {
+            "character": "JULIA",
+            "vocal_direction": "to herself, with determination",
+            "dialogue": "I need to be strong. For them. (takes a deep breath, swings legs out of bed) Okay, let's do this. (stands up, stretches, quick footsteps)"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Door creaks, footsteps fade"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "emotional_beat (5s)"
+          }
+        ],
+        "sound_cues_in_scene": 6,
+        "silences_in_scene": 1,
+        "estimated_duration": "3:00"
+      },
+      {
+        "scene_number": 3,
+        "heading": "INT. HOSPITAL EMERGENCY ROOM - MORNING",
+        "acoustic_properties": "Busy ER, high reverb, multiple sound sources",
+        "ambient_layers": [
+          "Beeping monitors (constant, medium)",
+          "Distant sirens (occasional, medium)",
+          "Rapid footsteps (constant, medium)"
+        ],
+        "audio_script": [
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Hospital ambient sounds - beeping monitors, distant sirens, rapid footsteps"
+          },
+          {
+            "character": "DR. MARTINEZ",
+            "vocal_direction": "urgent, closer mic",
+            "dialogue": "We've got incoming trauma cases. Julia, you take the first one. Mike, assist her. (to JULIA) Stay calm, focus."
+          },
+          {
+            "character": "JULIA",
+            "vocal_direction": "determined, slightly distant",
+            "dialogue": "Got it. (to MIKE) Move, Mike."
+          },
+          {
+            "character": "MIKE",
+            "vocal_direction": "nervously tapping his phone in his pocket",
+            "dialogue": "Yeah, Doctor. I've never... never seen this many cases at once. (stutters) What do we do?"
+          },
+          {
+            "character": "JULIA",
+            "vocal_direction": "calm, closer mic",
+            "dialogue": "One step at a time. (to a nurse) We need a full assessment, vitals, and start an IV. (pauses) Mike, help with the IV. (pauses) We can do this."
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "IV being set up, rapid breathing, beeping monitors"
+          },
+          {
+            "character": "MIKE",
+            "vocal_direction": "whispering",
+            "dialogue": "I hope so. (pauses, glances at his phone) Doctor, the patient's blood pressure is dropping. (quickly puts phone away, focuses on patient)"
+          },
+          {
+            "character": "JULIA",
+            "vocal_direction": "focused, closer mic",
+            "dialogue": "Increase the IV rate and prep for a blood transfusion. (pauses) Keep me updated. (pauses) You're doing great. (to patient) We're going to take good care of you."
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Fading hospital sounds, beeping monitors, distant sirens"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "dramatic_pause (3s)"
+          }
+        ],
+        "sound_cues_in_scene": 7,
+        "silences_in_scene": 1,
+        "estimated_duration": "4:00"
+      },
+      {
+        "scene_number": 4,
+        "heading": "INT. HOSPITAL STAFF ROOM - AFTERNOON",
+        "acoustic_properties": "Small room, medium reverb, low ambient noise",
+        "ambient_layers": [
+          "Distant beeping (occasional, soft)",
+          "Soft murmurs (occasional, soft)",
+          "Intercom buzzes (occasional, soft)"
+        ],
+        "audio_script": [
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Quiet hospital ambient sounds - distant beeping, soft murmurs, then intercom buzzes"
+          },
+          {
+            "character": "DR. MARTINEZ",
+            "vocal_direction": "sighing",
+            "dialogue": "You handled it. (pauses) Not easy, but you managed."
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "JULIA's footsteps, door opening/closing"
+          },
+          {
+            "character": "JULIA",
+            "vocal_direction": "softly",
+            "dialogue": "Thank you, Dr. Martinez. (looks out the window, then back at him) It's just... some days are... harder than others. I keep thinking about the patients and their families. It's a lot."
+          },
+          {
+            "character": "DR. MARTINEZ",
+            "vocal_direction": "encouraging",
+            "dialogue": "You're making a difference. One patient at a time. Remember that."
+          },
+          {
+            "character": "JULIA",
+            "vocal_direction": "nodding, starts pacing",
+            "dialogue": "I will. I just... (stops pacing, looks at him intently) I feel like I need more. Those messages I've been getting... (intercom buzzes again) They're helping somehow. I'll figure it out. Thanks for believing in me."
+          },
+          {
+            "character": "DR. MARTINEZ",
+            "vocal_direction": "smiling",
+            "dialogue": "Always. (pauses) Take a moment to breathe. You've earned it. (pauses) We all have."
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Soft ambient sounds, distant beeping"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "emotional_beat (5s)"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "revelation_moment (7s)"
+          }
+        ],
+        "sound_cues_in_scene": 6,
+        "silences_in_scene": 2,
+        "estimated_duration": "4:00"
+      },
+      {
+        "scene_number": 5,
+        "heading": "INT. TOM'S OFFICE - LATE AFTERNOON",
+        "acoustic_properties": "Office, medium reverb, controlled environment",
+        "ambient_layers": [
+          "Light hum of a computer (constant, soft)",
+          "Distant phone calls (occasional, soft)",
+          "Soft typing (constant, soft)",
+          "Phone rings (one-time)"
+        ],
+        "audio_script": [
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Office ambient sounds - light hum of a computer, distant phone calls, soft typing, then a phone rings"
+          },
+          {
+            "character": "TOM",
+            "vocal_direction": "muttering, ignores ringing office phone",
+            "dialogue": "Where are you? (quickly types a message, glances at ringing phone) I hope you're doing okay. (sighs, answers office phone briefly) Mr. Henderson, I'll call you right back. (returns to personal phone) Remember to take breaks when you can. (pauses, puts the phone down)"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Phone screen dims, office phone rings again"
+          },
+          {
+            "character": "TOM",
+            "vocal_direction": "to himself, stands up",
+            "dialogue": "I hope you're doing alright. (grabs jacket, looks at phone again) You're not alone. (heads for door, stops) I'll keep trying. (exits office) Time to head home."
+          },
+          {
+            "character": "SFX",
+            "voral_direction": "",
+            "dialogue": "Chair creaks, footsteps, door opens and closes"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "emotional_beat (5s)"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "dramatic_pause (3s)"
+          }
+        ],
+        "sound_cues_in_scene": 7,
+        "silences_in_scene": 2,
+        "estimated_duration": "3:30"
+      },
+      {
+        "scene_number": 6,
+        "heading": "INT. JULIA'S HOME - EVENING",
+        "acoustic_properties": "Living room, soft reverb, cozy environment",
+        "ambient_layers": [
+          "Soft hum of a refrigerator (constant, soft)",
+          "Distant traffic (occasional, soft)"
+        ],
+        "audio_script": [
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Quiet home ambient sounds - soft hum of a refrigerator, distant traffic"
+          },
+          {
+            "character": "JULIA",
+            "vocal_direction": "",
+            "dialogue": "Enters her living room, drops her bag, and flops on the couch with her phone. She scrolls through messages, stopping at the motivational ones."
+          },
+          {
+            "character": "JULIA",
+            "vocal_direction": "whispering, touches screen",
+            "dialogue": "'You're a hero to your patients.' (types quickly) Thanks. (continues scrolling, stops) 'You've got this.' (sits up straighter) Who are you, really? (pauses, types more) Your messages mean a lot. (pauses, hits send)"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Phone screen lights up, notification sound"
+          },
+          {
+            "character": "JULIA",
+            "vocal_direction": "to herself, standing up",
+            "dialogue": "I need to know. (paces room, phone in hand) Maybe this will help. (stops pacing, decisive) I hope so. (puts phone down, heads to kitchen) Time to relax and figure this out. (turns on small lamp, then coffee maker)"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Coffee maker starts, soft ambient sounds"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "emotional_beat (5s)"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "revelation_moment (7s)"
+          }
+        ],
+        "sound_cues_in_scene": 7,
+        "silences_in_scene": 2,
+        "estimated_duration": "3:30"
+      },
+      {
+        "scene_number": 7,
+        "heading": "INT. TOM'S APARTMENT - EVENING",
+        "acoustic_properties": "Cozy apartment, soft reverb, minimal echo",
+        "ambient_layers": [
+          "Traffic sounds (constant, soft)",
+          "Key in lock (one-time)",
+          "Door opening and closing (one-time)"
+        ],
+        "audio_script": [
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Traffic sounds, then key in lock, door opening and closing"
+          },
+          {
+            "character": "TOM",
+            "vocal_direction": "",
+            "dialogue": "Enters his apartment, tosses keys on table. He's sitting on the couch with a book when his phone vibrates. He quickly grabs it."
+          },
+          {
+            "character": "TOM",
+            "vocal_direction": "excited",
+            "dialogue": "A message? (pauses, unlocks the phone) 'Your messages mean a lot.' (pauses, types a response) I'm glad they help. (pauses) I've been in your shoes before. (pauses, hits send) (pauses, sighs) I hope this helps. (pauses, puts the phone down) (to himself) Maybe this is the start of something new. (pauses, turns off the lamp)"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Lamp turns off, soft ambient sounds"
+          },
+          {
+            "character": "TOM",
+            "vocal_direction": "softly, standing up",
+            "dialogue": "Goodnight. (walks to window, looks out) I believe in you. (closes curtains, turns off main light, leaving only lamp on)"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "Curtains closing, light switch clicking, fading city sounds"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "emotional_beat (5s)"
+          },
+          {
+            "character": "SFX",
+            "vocal_direction": "",
+            "dialogue": "dramatic_pause (3s)"
+          }
+        ],
+        "sound_cues_in_scene": 8,
+        "silences_in_scene": 2,
+        "estimated_duration": "3:30"
+      }
+    ],
+    "complete_audio_script": "Full episode with all audio optimization...",
+    "sound_cue_summary": {
+      "total_cues": 73,
+      "ambient_layers": 9,
+      "action_cues": 31,
+      "signature_cues": 18,
+      "transition_cues": 15,
+      "average_density": "1.6 cues per minute"
+    },
+    "silence_summary": {
+      "total_silences": 15,
+      "dramatic_pauses": 5,
+      "emotional_beats": 4,
+      "revelation_moments": 2,
+      "transitions": 4,
+      "total_silence_time": "52 seconds"
+    },
+    "production_notes": [
+      "TOM's phone ring should be distinctive - same sound file each time for consistency",
+      "JULIA's alarm clock should be sharp and loud to startle her awake",
+      "DR. MARTINEZ's voice should have a sense of urgency, closer to the mic",
+      "JULIA's voice should be calm and slightly distant to contrast with DR. MARTINEZ",
+      "MIKE's nervous tapping of the phone and quick breaths should be subtle but noticeable",
+      "Nurse's voice should be distant and professional",
+      "Coffee machine brewing should be gentle and soothing",
+      "SFX for city traffic should fade out smoothly into hospital ambient sounds",
+      "SFX for hospital ambient sounds should gradually build up to a busy ER atmosphere",
+      "SFX for office ambient sounds should transition smoothly into home ambient sounds",
+      "SFX for soft sighs and gentle touches on the phone should convey emotion without overwhelming the dialogue",
+      "SFX for lamp turning off should be soft and gentle",
+      "SFX for curtains closing and light switch clicking should be distinct and final",
+      "SFX for fading city sounds should create a sense of peace and quiet",
+      "SFX for emotional beats should be short but meaningful",
+      "SFX for dramatic pauses should create tension and anticipation",
+      "SFX for revelation moments should be subtle but impactful",
+      "SFX for transitions should be smooth and natural",
+      "SFX for distant beeping and soft murmurs should create a calm hospital environment",
+      "SFX for quick, tense breaths should convey urgency and stress",
+      "SFX for phone rings should be clear and noticeable",
+      "SFX for soft ambient sounds should enhance the mood without distracting from the dialogue",
+      "SFX for phone screen lighting up and notification sounds should be gentle and non-intrusive",
+      "SFX for coffee maker starting should be warm and inviting",
+      "SFX for door creaks and footsteps should be natural and realistic",
+      "SFX for chair creaks should be subtle but noticeable",
+      "SFX for key in lock should be distinctive and clear",
+      "SFX for distant phone calls should be soft and occasional",
+      "SFX for soft typing should be constant and gentle",
+      "SFX for keyboard typing and pen clicks should be light and rhythmic",
+      "SFX for notification sound should be soft and gentle",
+      "SFX for phone screen dimming should be subtle",
+      "SFX for quick rustling of sheets should be natural and realistic",
+      "SFX for distant sirens should be occasional and not overpowering",
+      "SFX for IV being set up should be professional and precise",
+      "SFX for patient's rapid breathing should be tense and realistic",
+      "SFX for distant traffic should be soft and constant",
+      "SFX for birds chirping should be occasional and soft",
+      "SFX for distant beeping should be soft and occasional",
+      "SFX for soft murmurs should be subtle and calming",
+      "SFX for intercom buzzes should be occasional and clear",
+      "SFX for hospital ID badge should be a soft, gentle sound",
+      "SFX for hospital ambient sounds should be layered to create a busy but controlled environment",
+      "SFX for office ambient sounds should be layered to create a professional but relaxed environment",
+      "SFX for home ambient sounds should be layered to create a cozy and peaceful environment",
+      "SFX for apartment ambient sounds should be layered to create a cozy and quiet environment",
+      "SFX for traffic sounds should be layered to create a realistic city environment",
+      "SFX for key in lock should be clear and distinct",
+      "SFX for door opening and closing should be natural and realistic",
+      "SFX for lamp turning off should be soft and gentle",
+      "SFX for curtains closing should be distinct and final",
+      "SFX for light switch clicking should be clear and final",
+      "SFX for fading city sounds should create a sense of peace and quiet",
+      "SFX for emotional beats should be short but meaningful",
+      "SFX for dramatic pauses should create tension and anticipation",
+      "SFX for revelation moments should be subtle but impactful",
+      "SFX for transitions should be smooth and natural"
+    ]
+  }
+}

@@ -1,0 +1,86 @@
+============================================================
+AGE/GENRE STYLE GUIDE
+============================================================
+
+PROJECT TITLE: Saved by Mistake
+Session ID: session_20251016_221745
+Created: 2025-10-16T22:21:16.272504
+Input Type: synopsis
+
+Scale: STANDARD
+Episodes: 8-12 episodes
+Length: 35-45 min each
+Primary Genre: Drama
+Target Age: 25-45
+Content Rating: PG
+
+------------------------------------------------------------
+ORIGINAL SEED:
+------------------------------------------------------------
+For one year, morning motivation coach Tom has been texting daily inspirational messages to what he thinks is his client’s number. Julia, a depressed ER doctor, has been receiving them, and they’ve saved her life multiple times. She never corrects the mistake, and Tom’s messages become her lifeline. When Tom’s actual client complains about never receiving messages, he realizes his mistake. He tracks down the wrong number to apologize, finding Julia on the worst day of her life. Their meeting reveals that Julia has been anonymously funding Tom’s coaching business to help others like these messages helped her.
+
+------------------------------------------------------------
+1. AGE-APPROPRIATE GUIDELINES
+------------------------------------------------------------
+Target Age: 25-45
+Content Rating: PG (Suitable for a general audience, with some mild thematic elements that may not be suitable for children under 10)
+Violence Level: MINIMAL (Any violence should be implied or off-screen, with a focus on the emotional and psychological impact rather than the physical details.)
+Emotional Intensity: MODERATE (Emotional scenes should be impactful but not overwhelming, allowing listeners to connect with the characters' experiences without becoming too distressed.)
+
+Action Scene Limits:
+  • Action scenes should be brief and not overly detailed, focusing on the emotional and psychological impact rather than graphic violence.
+  • Avoid prolonged or intense chase sequences that could be overwhelming or unrealistic.
+  • Ensure that any conflict resolution is constructive and aligns with the themes of personal growth and connection.
+
+Emotional Boundaries:
+  • Avoid graphic descriptions of trauma or loss; focus on the characters' resilience and emotional healing to maintain a balance between depth and uplift.
+  • Handle sensitive topics like mental health, relationships, and family issues with care, ensuring they are explored in a mature and respectful manner.
+  • Limit the intensity of emotional scenes to avoid overwhelming the listener, ensuring that they are balanced with moments of hope and resolution.
+
+Sound Restrictions:
+  • Avoid harsh or jarring sound effects that could disrupt the mood or emotional tone of the story.
+  • Limit the use of loud, sudden noises in action scenes to prevent listener discomfort or disorientation.
+  • Use background music and ambient sounds to enhance the atmosphere, but ensure they do not overpower the dialogue or distract from the narrative.
+
+------------------------------------------------------------
+2. GENRE BLEND OPTIONS
+------------------------------------------------------------
+
+[✓] OPTION A: Drama + Romance
+    Enhancement: The blend of drama and romance creates a narrative that is emotionally rich and captivating, with deep character development and romantic tension that enhances the dramatic arcs. This combination allows for heartwarming and introspective moments that resonate with the audience's desire for emotional connection and personal growth.
+
+[ ] OPTION B: Drama + Self-Help
+    Enhancement: Integrating self-help elements into a dramatic narrative provides a dual-layered experience where the characters' personal growth and self-discovery are paralleled with practical advice and insights. This blend is ideal for an audience seeking both entertainment and personal inspiration.
+
+[ ] OPTION C: Romance + Self-Help
+    Enhancement: Focusing on romance with a strong self-help component offers a unique blend where the characters' romantic journeys are intertwined with personal growth and self-improvement. This approach appeals to listeners who enjoy romantic stories that also provide practical advice and emotional insights.
+
+CHOSEN: Option A
+
+------------------------------------------------------------
+3. TONE CALIBRATION
+------------------------------------------------------------
+Chosen Blend: Drama + Romance
+
+Episode Progression:
+  • Episodes 1-3: Introduce the main characters and their initial conflicts, setting the stage for emotional depth. The tone is primarily introspective and somber, with moments of subtle romantic interest. The purpose is to build a strong emotional foundation and establish the central themes of personal growth and unexpected connections.
+  • Episodes 4-6: The tone evolves to include more dramatic tension and romantic developments. Characters face challenges that push them to confront their fears and desires, leading to deeper emotional connections. The purpose is to heighten the audience's investment in the characters' journeys and the evolving romantic subplot.
+  • Episodes 7-9: The tone intensifies with significant plot twists and emotional revelations. The drama reaches its peak, and the romantic tension becomes more palpable. The purpose is to create a sense of urgency and anticipation, driving the audience towards the climax.
+  • Final episodes: The tone resolves with a mix of emotional catharsis and uplifting moments. The characters achieve personal growth and find resolution in their relationships. The purpose is to provide a satisfying conclusion that resonates with the audience's emotional journey.
+
+Tonal Shift Moments:
+  1. Key moment 1: Episode 3 - A pivotal conversation between the main characters reveals hidden vulnerabilities, shifting the tone from introspective to more emotionally open.
+  2. Key moment 2: Episode 6 - A dramatic event brings the characters closer, shifting the tone from tense to hopeful and romantic.
+  3. Key moment 3: Episode 8 - A confrontation with a past trauma intensifies the dramatic tension, shifting the tone to one of deep emotional pain and resolve.
+  4. Key moment 4: Final episode - The resolution of the main conflict and the culmination of the romantic subplot shift the tone to one of healing and optimism.
+
+Audio Tone Techniques:
+  • Music technique: Use a mix of somber, emotional orchestral pieces to convey introspection and dramatic tension, and softer, romantic melodies to enhance romantic moments. Gradually increase the intensity of the music to match the rising emotional stakes.
+  • Voice technique: Employ a nuanced narration style that reflects the characters' internal struggles and growth. Use variations in pitch, pace, and volume to convey different emotional states, such as vulnerability, determination, and joy.
+  • Sound design technique: Incorporate ambient sounds that reflect the setting and mood, such as the rustling of leaves for a peaceful scene or the sound of a storm for a tense moment. Use subtle sound effects to enhance emotional cues, like a heartbeating faster during moments of tension or a gentle breeze during romantic scenes.
+  • Pacing technique: Control the timing of dialogue and narration to build suspense and emotional impact. Slow down the pacing during introspective moments and speed it up during action or dramatic sequences to maintain audience engagement.
+  • Silence technique: Use strategic pauses to create moments of reflection and emphasize the weight of certain words or actions. Silence can also heighten the tension or provide a sense of calm before a dramatic reveal.
+
+Light/Dark Balance:
+  The balance between light and dark moments is carefully maintained to create a rich emotional landscape. Early episodes focus more on the darker, introspective side, with occasional light moments to provide contrast. As the series progresses, the balance shifts to include more uplifting and romantic scenes, especially in the final episodes, to ensure a satisfying and hopeful conclusion.
+

@@ -1,6 +1,6 @@
 # Station 4: Reference Mining & Seed Extraction Configuration
 
-model: "z-ai/glm-4.5"
+model: "glm-4.5"
 temperature: 0.8
 max_tokens: 4000
 
@@ -153,6 +153,8 @@ prompts:
             }}
         ]
     }}
+
+    CRITICAL: Generate EXACTLY 20 episode beats. Use concise but complete descriptions. Ensure JSON is complete and valid.
 
     Requirements:
     - Generate EXACTLY 20 episode beats

@@ -1,0 +1,23 @@
+{
+  "session_id": "auto_20251021_203938",
+  "timestamp": "20251021_204003",
+  "project_title": "Untitled",
+  "episode_count": "Unknown",
+  "analysis_result": "NOT_APPLICABLE",
+  "analysis_data": {
+    "multi_world_analysis": {
+      "requires_management": false,
+      "reasoning": "No multi-world/timeline elements are present in the project data. The project context shows all key elements as 'Unknown' or 'No data available', with no indication of parallel universes, time travel, alternate timelines, or other multi-world elements that would require specialized management."
+    },
+    "worlds_timelines": [],
+    "transition_strategy": {
+      "transition_sounds": [],
+      "audio_differentiation": []
+    },
+    "listener_guidance": {
+      "world_identification": "",
+      "transition_clarity": "",
+      "consistency_rules": ""
+    }
+  }
+}

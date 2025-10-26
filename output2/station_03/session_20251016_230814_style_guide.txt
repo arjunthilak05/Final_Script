@@ -1,0 +1,86 @@
+============================================================
+AGE/GENRE STYLE GUIDE
+============================================================
+
+PROJECT TITLE: Royal Blood
+Session ID: session_20251016_230814
+Created: 2025-10-16T23:16:16.310489
+Input Type: one-liner
+
+Scale: MINI
+Episodes: 3-6 episodes
+Length: 15-25 min each
+Primary Genre: Political Drama
+Target Age: 25-45
+Content Rating: PG-13
+
+------------------------------------------------------------
+ORIGINAL SEED:
+------------------------------------------------------------
+king is a king
+
+------------------------------------------------------------
+1. AGE-APPROPRIATE GUIDELINES
+------------------------------------------------------------
+Target Age: 25-45
+Content Rating: PG-13 due to mature themes, some violence, and tense political content
+Violence Level: MILD
+Emotional Intensity: MODERATE
+
+Action Scene Limits:
+  • No graphic depictions of violence; focus on the tension and strategy rather than physical detail
+  • Limit the frequency of action scenes to no more than one per chapter to maintain a balance with the political and emotional content
+  • Avoid prolonged or repetitive action sequences to prevent desensitization and maintain the somber tone
+
+Emotional Boundaries:
+  • Avoid explicit descriptions of trauma or suffering; hint at emotional pain through character reactions and dialogue (to maintain the somber and tense atmosphere without overwhelming the listener)
+  • Limit the intensity and duration of emotionally distressing scenes to prevent listener fatigue; these scenes should serve the narrative and character development
+  • Avoid overly graphic descriptions of personal loss or tragedy; focus on the broader implications and the characters' resilience
+
+Sound Restrictions:
+  • Avoid harsh or jarring sound effects that could break the somber mood; use subtle and atmospheric sounds to enhance the setting
+  • Limit the use of loud or sudden noises in action scenes to prevent startling the listener; focus on the tension and suspense through pacing and narration
+  • Avoid continuous background music that could overwhelm the dialogue; use music sparingly to highlight key moments or shifts in mood
+
+------------------------------------------------------------
+2. GENRE BLEND OPTIONS
+------------------------------------------------------------
+
+[✓] OPTION A: Political Drama + Historical Fiction
+    Enhancement: The blend of Political Drama with Historical Fiction provides a rich, immersive experience by grounding the political conflicts in a historically accurate setting. This combination allows for deep character development and a nuanced exploration of power dynamics within a specific era, enhancing the authenticity and emotional depth of the narrative.
+
+[ ] OPTION B: Fantasy + Political Drama
+    Enhancement: Blending Fantasy with Political Drama creates a world where magical elements influence political power and conflict. This combination allows for creative exploration of themes such as corruption, loyalty, and the abuse of power, all set against a backdrop of mystical and fantastical elements.
+
+[ ] OPTION C: Political Drama + Fantasy
+    Enhancement: This blend places the political drama in a fantasy world, allowing for a fresh take on familiar themes of power, politics, and conflict. The fantasy setting adds a layer of unpredictability and wonder, making the political struggles more engaging and imaginative.
+
+CHOSEN: Option A
+
+------------------------------------------------------------
+3. TONE CALIBRATION
+------------------------------------------------------------
+Chosen Blend: Political Drama + Historical Fiction
+
+Episode Progression:
+  • Episode 1-2: The tone is somber and tense, establishing the historical setting and the political landscape. The narration introduces key characters and their motivations, setting the stage for the upcoming conflict. The purpose is to ground the audience in the world and build a sense of impending crisis.
+  • Episode 3-4: The tone evolves to include moments of introspection and subtle political maneuvering. Characters begin to reveal their true intentions, and the stakes become clearer. The purpose is to deepen the audience's understanding of the characters and the complex power dynamics at play.
+  • Episodes 5-6 (if applicable): The tone intensifies as the crisis reaches a critical point. High-stakes confrontations and betrayals come to the forefront, with a heightened sense of urgency. The purpose is to keep the audience on the edge of their seats and fully engaged in the narrative.
+  • Final episode: The tone resolves with a mix of resolution and reflection. The crisis is addressed, and the aftermath is explored, providing closure while leaving room for contemplation. The purpose is to provide a satisfying conclusion while maintaining the emotional depth of the story.
+
+Tonal Shift Moments:
+  1. Key moment 1: In Episode 2, a secretive meeting between key political figures reveals a hidden plot, shifting the tone from introductory to one of heightened tension and suspicion.
+  2. Key moment 2: In Episode 3, a character's personal revelation during a moment of introspection shifts the tone to a more emotional and reflective one, adding depth to the political intrigue.
+  3. Key moment 3: In Episode 4, a public event or announcement escalates the political conflict, shifting the tone to one of open confrontation and immediate danger.
+  4. Key moment 4: In the Final episode, a climactic confrontation followed by a reflective scene shifts the tone from intense action to a sense of resolution and aftermath.
+
+Audio Tone Techniques:
+  • Music technique: Use a blend of somber, orchestral music with occasional dissonant notes to convey the tense and historical atmosphere. Increase the tempo and intensity as the political stakes rise, and use softer, more reflective melodies during moments of introspection.
+  • Voice technique: The narrator should adopt a measured, serious tone with subtle shifts in pitch and pace to reflect the emotional and political climate. Characters' voices should convey their distinct personalities and motivations, with key figures having more authoritative and nuanced delivery.
+  • Sound design technique: Incorporate ambient sounds that reflect the historical setting, such as the rustle of parchment, the clinking of armor, and the distant sounds of a bustling medieval city. Use sound effects sparingly to highlight important moments, such as the sound of a door slamming during a confrontation.
+  • Pacing technique: Vary the pacing to match the tone of each scene. Slower, more deliberate pacing for introspective moments, and faster, more urgent pacing during high-stakes political maneuvers. Use pauses and silences to build tension and emphasize key lines.
+  • Silence technique: Strategic use of silence can create a sense of anticipation and tension. Pauses before and after significant revelations or decisions can heighten the impact of the narrative.
+
+Light/Dark Balance:
+  The balance between light and dark moments is carefully maintained throughout the series. Dark moments, such as political betrayals and tense confrontations, are balanced with lighter moments of character reflection, historical exposition, and subtle comedic relief. This balance ensures that the audience remains engaged without becoming overwhelmed by the intensity of the plot.
+

@@ -1,0 +1,128 @@
+================================================================================
+STATION 17: DIALECT PLANNING - COMPREHENSIVE VOICE ANALYSIS REPORT
+================================================================================
+
+Session ID: session_20251016_235335
+Generated: 20251019_032539
+Project: The Accidental Lifeline
+
+============================================================
+DIALECT PLANNING SUMMARY
+============================================================
+Overall Status: PASS_WITH_WARNINGS
+Total Issues Found: 5
+Voice Consistency Issues: 1
+Age Appropriateness Issues: 1
+Dialect Consistency Issues: 1
+Audio Clarity Issues: 1
+
+============================================================
+CHARACTER VOICE CONSISTENCY ANALYSIS
+============================================================
+Status: PASS_WITH_WARNINGS
+
+CHARACTER: Unknown Character
+Voice Status: FAIL
+Voice Signature Analysis:
+  Pitch: not_defined
+  Pace: not_defined
+  Vocabulary: not_defined
+  Speech Patterns: not_defined
+  Verbal Tics: not_defined
+Issues Found:
+  - voice_inconsistency: Character information not available in Character Bible
+    Severity: critical
+    Location: Character Bible
+    Recommendation: Develop comprehensive Character Bible with detailed voice signatures for all characters
+Voice Direction Notes: Character voice direction cannot be determined without character information
+
+============================================================
+AGE APPROPRIATENESS ANALYSIS
+============================================================
+Status: FAIL
+Target Age: Unknown
+
+Issues Found:
+  - vocabulary_too_complex: Target age range not defined, making age-appropriate language assessment impossible
+    Severity: critical
+    Location: Project Context
+    Recommendation: Define target age range to establish appropriate vocabulary, sentence complexity, and content guidelines
+
+Language Guidelines: Cannot establish language guidelines without knowing target age range
+
+============================================================
+DIALECT CONSISTENCY ANALYSIS
+============================================================
+Status: PASS_WITH_WARNINGS
+
+Issues Found:
+  - regional_dialect_inconsistency: No world building information available to determine cultural or regional dialect requirements
+    Severity: warning
+    Location: World Building
+    Recommendation: Develop World Building documentation to establish cultural and regional speech patterns
+
+Dialect Guidelines: Dialect guidelines cannot be established without world building information
+
+============================================================
+AUDIO CLARITY ANALYSIS
+============================================================
+Status: PASS_WITH_WARNINGS
+
+Issues Found:
+  - speaker_identification_difficult: Without character voices defined, speaker identification planning cannot be completed
+    Severity: warning
+    Location: Character Bible
+    Recommendation: Define distinct voice characteristics for each character to ensure clear speaker identification in audio-only format
+
+Audio Guidelines: Ensure all characters have distinctive vocal characteristics including pitch, pace, and speech patterns for clear audio identification
+
+============================================================
+GENRE APPROPRIATENESS ANALYSIS
+============================================================
+Status: FAIL
+Genre: Unknown
+
+Issues Found:
+  - tone_inconsistency: Primary genre not defined, making genre-appropriate language assessment impossible
+    Severity: critical
+    Location: Project Context
+    Recommendation: Define primary genre to establish appropriate language style, tone, and vocabulary
+
+Genre Guidelines: Genre guidelines cannot be established without knowing the primary genre
+
+============================================================
+VOICE DIRECTION RECOMMENDATIONS
+============================================================
+CHARACTER VOICE NOTES:
+
+Character: Placeholder Character
+Voice Description: Voice characteristics to be defined based on Character Bible
+Speech Patterns: Speech patterns to be established during character development
+Key Phrases: To be determined
+Emotional Range: To be defined in Character Bible
+Audio Notes: Each character must have distinct vocal characteristics for audio identification
+
+Casting Guidelines: Cast voice actors who can maintain consistent character voices across all episodes and create distinct character differentiations
+
+Production Notes: Record voice reference samples for each character to ensure consistency across all episodes
+
+============================================================
+RECOMMENDATIONS
+============================================================
+IMMEDIATE FIXES REQUIRED:
+  • Develop comprehensive Character Bible with detailed voice signatures for all characters
+  • Define target age range for age-appropriate language assessment
+  • Establish primary genre for genre-appropriate language guidelines
+
+SUGGESTED IMPROVEMENTS:
+  • Create detailed World Building documentation to establish cultural and regional speech patterns
+  • Develop episode outlines to assess dialogue and voice consistency needs
+
+MINOR ADJUSTMENTS:
+  • Consider narrator strategy and how it will interact with character voices
+  • Plan for voice actor direction sessions to establish character voices
+
+============================================================
+VALIDATION NOTES
+============================================================
+Comprehensive dialect planning cannot be completed without essential project elements including Character Bible, World Building, episode outlines, defined target age, and established genre. These foundational elements must be developed before meaningful voice consistency and dialect planning can occur.

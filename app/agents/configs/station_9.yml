@@ -1,0 +1,543 @@
+# Station 9: World Building System Configuration
+
+station_name: "Station 9: World Building System"
+description: "Comprehensive world building system that generates detailed locations with sonic signatures, social systems with audio manifestations, technology systems with sound profiles, historical timeline with audio integration, and complete audio cue library (150+ sounds) for audio production."
+model: "anthropic/claude-3.5-sonnet"
+temperature: 0.7
+max_tokens: 16384
+
+# Input configuration
+input:
+  project_bible_path: "output/station_02/{session_id}_bible.json"
+  style_guide_path: "output/station_06/{session_id}_master_style_guide.json"
+  world_bible_path: "output/station_08/{session_id}_world_bible.json"
+
+# Output configuration
+output:
+  directory: "output/station_09"
+  json_filename: "{session_id}_world_building_system.json"
+  readable_filename: "{session_id}_world_building_readable.txt"
+  audio_cues_csv: "{session_id}_audio_cues.csv"
+  cue_reference: "{session_id}_audio_cue_reference.txt"
+
+prompts:
+  task_1_geography: |
+    **TASK 1: GEOGRAPHY & SPACES GENERATION**
+
+    **Project Context:**
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - Core Premise: {core_premise}
+    - Target Age: {target_age}
+    - Tone: {tone}
+
+    **World Foundation from Station 8:**
+    {world_foundation}
+
+    **Project Bible Context:**
+    {project_bible_context}
+
+    **Your Task:**
+    Generate 5-10 key locations with complete sonic signatures for audio drama production.
+
+    **Critical Requirements:**
+    1. Each location MUST have distinctive audio characteristics
+    2. Focus on how locations SOUND, not just how they look
+    3. Include ambient sound layers (constant, periodic, random)
+    4. Define acoustic properties (reverb, echo, sound dampening)
+    5. Describe how weather affects sound in each location
+    6. Specify travel times between locations with journey sounds
+    7. Make each location instantly recognizable by sound alone
+
+    **Output Format:** Return ONLY valid JSON with this EXACT structure:
+    {{
+      "geography_spaces": {{
+        "key_locations": [
+          {{
+            "location_id": "loc_001",
+            "name": "Location Name",
+            "description": "Detailed description focusing on physical space and audio environment",
+            "sonic_signature": {{
+              "ambient_layer_1": "Constant background sound (e.g., traffic hum at 40dB)",
+              "ambient_layer_2": "Periodic sounds (e.g., clock ticking every 1 second)",
+              "ambient_layer_3": "Random environmental sounds (e.g., distant sirens every 3-8 min)",
+              "ambient_layer_4": "Weather-dependent sounds",
+              "ambient_layer_5": "Interior/activity sounds"
+            }},
+            "distinctive_sounds": [
+              "Unique identifying sound 1",
+              "Unique identifying sound 2"
+            ],
+            "acoustic_properties": {{
+              "reverb_time": "0.5s (small room) or 2s (hallway) or 5s+ (outdoor)",
+              "frequency_response": "Description of how frequencies behave",
+              "sound_dampening": "What absorbs or reflects sound",
+              "spatial_characteristics": "How sound moves through space"
+            }},
+            "weather_impact": "How rain, wind, fog affect soundscape",
+            "time_variations": {{
+              "day_vs_night": "How location sounds different at different times",
+              "empty_vs_full": "How occupancy changes acoustics"
+            }},
+            "emotional_tone": "What this location should make listeners feel",
+            "story_function": "Why this location is important to narrative"
+          }}
+        ],
+        "travel_times_and_sounds": [
+          {{
+            "from_location": "Location A",
+            "to_location": "Location B",
+            "travel_time": "15 minutes by car",
+            "journey_sounds": "Car engine, traffic, radio, arrival cue",
+            "acoustic_transition": "How sound changes during travel"
+          }}
+        ]
+      }}
+    }}
+
+    **Requirements:**
+    - Generate exactly 5-10 locations (use story needs to determine count)
+    - Each location must be essential to the narrative
+    - All locations must have unique sonic identities
+    - Include complete travel time matrix between key locations
+    - Return ONLY valid JSON - no explanatory text before or after
+
+  task_2_social_systems: |
+    **TASK 2: SOCIAL SYSTEMS WITH AUDIO MANIFESTATIONS**
+
+    **Project Context:**
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - Core Premise: {core_premise}
+    - World Type: {world_type}
+
+    **Generated Locations:**
+    {generated_locations}
+
+    **Your Task:**
+    Generate social systems with specific audio manifestations and sound design elements.
+
+    **Critical Audio-First Requirements:**
+    1. Every social structure must have SOUND implications
+    2. Hierarchy = different speech patterns, volumes, acoustics
+    3. Economic class = different environmental sounds, voice qualities
+    4. Authority = specific audio cues and acoustic spaces
+    5. Cultural norms = distinctive soundscapes and music
+
+    **Output Format:** Return ONLY valid JSON with this EXACT structure:
+    {{
+      "social_systems": {{
+        "government_authority": {{
+          "structure": "Description of power structure",
+          "power_dynamics": "Who has authority and how it flows",
+          "audio_manifestations": [
+            "How rank is conveyed through voice/tone/speaking style",
+            "Acoustic spaces that denote authority (offices, courtrooms)",
+            "Specific sound cues for official actions"
+          ],
+          "speech_patterns_by_rank": {{
+            "high_authority": "Speaking style, pace, tone characteristics",
+            "middle_authority": "Speaking style, pace, tone characteristics",
+            "low_authority": "Speaking style, pace, tone characteristics"
+          }},
+          "official_sounds": [
+            "Gavels, stamps, official announcements, sirens, badges"
+          ]
+        }},
+        "economic_structure": {{
+          "description": "How economy works in this world",
+          "class_indicators_through_sound": {{
+            "wealthy": "Environmental sounds, voice quality, acoustic spaces",
+            "middle_class": "Environmental sounds, voice quality, acoustic spaces",
+            "working_class": "Environmental sounds, voice quality, acoustic spaces"
+          }},
+          "economic_activities_sounds": [
+            "Money transactions, market sounds, work environments"
+          ],
+          "economic_tensions_audio": "How class conflict sounds different"
+        }},
+        "social_hierarchies": {{
+          "hierarchy_levels": [
+            {{
+              "level": "Top tier",
+              "description": "Who they are",
+              "audio_profile": "How they sound and where they're heard"
+            }}
+          ],
+          "respect_audio_cues": "How respect/disrespect is shown through sound",
+          "social_mobility_sounds": "Audio changes when status changes"
+        }},
+        "cultural_norms": {{
+          "key_customs": [
+            {{
+              "custom": "Cultural practice description",
+              "associated_sounds": "Specific sounds for this custom",
+              "frequency": "How often it occurs",
+              "participation_sounds": "Different sounds for different participants"
+            }}
+          ],
+          "dialogue_sound_patterns": {{
+            "formality_spectrum": "How formal vs informal speech sounds",
+            "cultural_greetings": "Standard greeting sounds/phrases",
+            "taboo_sounds": "What sounds are avoided or forbidden"
+          }},
+          "trust_distrust_acoustics": "How trust changes acoustic space/volume"
+        }}
+      }}
+    }}
+
+    **Requirements:**
+    - Every element must have specific audio implications
+    - Connect social structures to actual soundscapes
+    - Make hierarchy audible through sound design
+    - Return ONLY valid JSON - no explanatory text
+
+  task_3_technology: |
+    **TASK 3: TECHNOLOGY/MAGIC SYSTEMS WITH SOUND PROFILES**
+
+    **Project Context:**
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - Setting Type: {setting_type}
+    - Time Period: {time_period}
+    - Core Premise: {core_premise}
+
+    **Generated Social Systems:**
+    {social_systems_summary}
+
+    **CRITICAL GENRE CONSTRAINTS:**
+    - Primary Genre is: {primary_genre}
+    - Setting Type is: {setting_type}
+
+    **YOU MUST FOLLOW THESE RULES:**
+    - If genre is "Drama", "Romance", "Thriller", "Mystery", or "Crime" AND setting is "Realistic Contemporary" or "Present day":
+      → ONLY generate REALISTIC, CURRENTLY-EXISTING technology (smartphones, cars, computers, medical equipment, etc.)
+      → DO NOT generate sci-fi technology (brain implants, teleportation, nanites, etc.)
+      → DO NOT generate magic or fantasy elements
+    - If genre is "Fantasy" or setting includes "Fantasy/Magical":
+      → Generate magic systems with sound profiles
+    - If genre is "Sci-Fi" or setting includes "Future/Sci-Fi":
+      → Generate speculative technology appropriate to the setting
+    - If genre is "Historical":
+      → Only use period-appropriate technology for that time period
+
+    **Your Task:**
+    Generate technology or magic systems with complete sound design profiles that are APPROPRIATE FOR THE GENRE AND SETTING.
+
+    **Critical Sound Design Requirements:**
+    1. Every technology/magic has a UNIQUE sound signature
+    2. Different tech levels = different sound qualities
+    3. Common tech = familiar sounds, rare tech = exotic sounds
+    4. Malfunctions have distinctive audio cues
+    5. Usage creates specific acoustic patterns
+    6. ALL technology MUST match the genre and setting type
+
+    **Output Format:** Return ONLY valid JSON with this EXACT structure:
+    {{
+      "technology_magic_systems": {{
+        "setting_type": "Contemporary/Fantasy/Sci-Fi/Historical",
+        "available_systems": [
+          {{
+            "system_id": "tech_001",
+            "name": "Technology/Magic Name",
+            "type": "Communication/Transportation/Combat/Utility/Magic",
+            "how_it_works": "Functional description",
+            "sound_signature": {{
+              "activation_sound": "What it sounds like to turn on/activate",
+              "idle_sound": "Constant background hum/presence",
+              "operation_sound": "Active use sounds",
+              "deactivation_sound": "Shutdown/end sound",
+              "malfunction_sound": "What failure sounds like"
+            }},
+            "acoustic_properties": {{
+              "frequency_range": "High/mid/low frequency characteristics",
+              "volume_level": "How loud (dB estimate)",
+              "sound_quality": "Mechanical/organic/magical/digital",
+              "spatial_behavior": "Does sound emanate/echo/penetrate"
+            }},
+            "prevalence": "Common/Uncommon/Rare/Unique",
+            "limitations": "What constrains its use",
+            "story_use": "How this affects narrative and character actions",
+            "character_familiarity": "Who knows how to use it and how that sounds"
+          }}
+        ],
+        "period_specific_tech": {{
+          "modern_exists": ["List of current-era technology"],
+          "outdated_present": ["Old tech still in use"],
+          "audio_contrast": "How old vs new tech sounds different"
+        }},
+        "sound_design_notes": "Overall philosophy for tech sounds in this world"
+      }}
+    }}
+
+    **Requirements:**
+    - Generate 5-10 key technologies/magical systems
+    - Each must have complete sound profile
+    - Sounds must be describable to audio team
+    - Account for prevalence (common = more detail)
+    - Return ONLY valid JSON
+
+  task_4_history: |
+    **TASK 4: HISTORY & LORE WITH AUDIO INTEGRATION**
+
+    **Project Context:**
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - Setting Type: {setting_type}
+    - Time Period: {time_period}
+    - Core Premise: {core_premise}
+    - World Type: {world_type}
+
+    **Generated World Elements:**
+    {world_elements_summary}
+
+    **CRITICAL GENRE CONSTRAINTS:**
+    - Primary Genre is: {primary_genre}
+    - Setting Type is: {setting_type}
+    - Time Period is: {time_period}
+
+    **YOU MUST FOLLOW THESE RULES:**
+    - If genre is "Drama", "Romance", "Thriller", "Mystery", or "Crime" AND setting is "Realistic Contemporary" or "Present day":
+      → Focus on PERSONAL HISTORY of characters (past relationships, life events, childhood memories)
+      → DO NOT create fictional historical events (power outages, inventions, city events)
+      → Reference only REAL historical events if needed (9/11, COVID, economic events)
+      → Keep timeline focused on characters' backstories (10-50 years ago for adult characters)
+    - If genre is "Fantasy":
+      → Create mythologies, legends, ancient wars, magical discoveries
+    - If genre is "Sci-Fi":
+      → Create technological breakthroughs, space exploration, AI emergence
+    - If genre is "Historical":
+      → Use real historical events and accurate period details
+
+    **Your Task:**
+    Generate historical timeline and mythology with sonic themes and audio integration that are APPROPRIATE FOR THE GENRE AND SETTING.
+
+    **Critical Audio Integration Requirements:**
+    1. Past events affect PRESENT soundscape
+    2. Myths/legends have specific audio motifs (only for Fantasy/Sci-Fi)
+    3. History creates acoustic "echoes" in current story
+    4. Characters reference history = specific sound cues
+    5. Flashbacks have period-specific audio design
+    6. ALL historical content MUST match the genre and setting
+
+    **Output Format:** Return ONLY valid JSON with this EXACT structure:
+    {{
+      "history_lore": {{
+        "timeline": [
+          {{
+            "time_period": "X years ago or specific date",
+            "event_name": "Name of historical event",
+            "what_happened": "Detailed description of event",
+            "common_knowledge": "What everyone knows about this",
+            "secrets": "Hidden truths about this event",
+            "affects_present": "How this shapes current story/world",
+            "audio_manifestations": {{
+              "how_spoken_about": "Tone/reverence/fear when mentioned",
+              "sonic_impact_on_present": "Sounds that exist because of this event",
+              "flashback_audio_design": "How to sound-design memories of this",
+              "associated_audio_motif": "Musical/sound theme for this event"
+            }},
+            "character_connections": "Which characters lived through or were affected by this"
+          }}
+        ],
+        "myths_legends": [
+          {{
+            "myth_name": "Name of myth/legend",
+            "story": "The tale itself",
+            "truth_level": "True/Partially True/False",
+            "cultural_importance": "Why people tell this story",
+            "sonic_themes": {{
+              "audio_motif": "Musical or sound pattern associated with this myth",
+              "how_its_told": "Storytelling audio style (whispered, sung, dramatic)",
+              "environmental_sounds": "Where/when this story is told and ambient sounds",
+              "listener_reactions": "How audience responds sonically"
+            }},
+            "story_relevance": "How this myth connects to main narrative"
+          }}
+        ],
+        "common_vs_secret_knowledge": {{
+          "what_everyone_knows": "Public history and how it's spoken",
+          "what_few_know": "Secret truths",
+          "how_secrets_sound_different": "Audio cues when lies vs truth spoken"
+        }},
+        "acoustic_echoes": "How history literally echoes in present soundscape"
+      }}
+    }}
+
+    **Requirements:**
+    - Generate 3-7 key historical events
+    - Create 2-5 myths/legends relevant to story
+    - Every element must affect present audio design
+    - Include specific sound motifs and themes
+    - Return ONLY valid JSON
+
+  task_5_sensory_palette: |
+    **TASK 5: SENSORY PALETTE - COMPLETE AUDIO CUE LIBRARY**
+
+    **Project Context:**
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - All Generated World Elements
+
+    **Complete World Context:**
+    {complete_world_summary}
+
+    **Your Task:**
+    Generate comprehensive audio cue library (150+ unique sounds) for complete audio production.
+
+    **Critical Production Requirements:**
+    1. Catalog EVERY sound mentioned in previous tasks
+    2. Add location-specific ambient profiles
+    3. Include character-specific sound signatures
+    4. Define recurring series identity sounds
+    5. Map emotional states to audio patterns
+    6. Provide acoustic templates for scene types
+    7. Create complete reference for sound designers
+
+    **Output Format:** Return ONLY valid JSON with this EXACT structure:
+    {{
+      "sensory_palette": {{
+        "location_ambient_profiles": [
+          {{
+            "location_name": "Location Name",
+            "ambient_layers": {{
+              "layer_1_constant": "Always present sound",
+              "layer_2_periodic": "Regular rhythmic sounds",
+              "layer_3_random": "Irregular environmental sounds",
+              "layer_4_weather": "Weather-dependent sounds",
+              "layer_5_activity": "Sounds from activities/people"
+            }},
+            "acoustic_profile": "Reverb, frequency response, spatial characteristics",
+            "emotional_tone": "What this soundscape makes you feel"
+          }}
+        ],
+        "character_sound_signatures": [
+          {{
+            "character_name": "Character Name",
+            "distinctive_sounds": [
+              "Personal habit sound (lighter click, pen tap)",
+              "Movement sounds (footsteps, breathing)",
+              "Voice characteristics (gravelly, smooth, nervous)"
+            ],
+            "signature_sound": "THE sound that identifies this character",
+            "emotional_variations": "How sounds change with emotion"
+          }}
+        ],
+        "recurring_series_identity_sounds": [
+          {{
+            "sound_name": "The Rain (or recurring element)",
+            "purpose": "Why this sound repeats throughout series",
+            "variations": [
+              "Light drizzle - contemplation scenes",
+              "Heavy rain - emotional climax",
+              "Thunder - revelation moments"
+            ],
+            "frequency": "How often it appears (% of scenes)",
+            "emotional_function": "What it signals to listener"
+          }}
+        ],
+        "emotional_audio_mapping": [
+          {{
+            "emotion": "Tension",
+            "audio_techniques": [
+              "Increase ambient noise layers",
+              "Tighten reverb (spaces feel smaller)",
+              "Add breathing sounds",
+              "Silence before revelations",
+              "Low frequency rumble (subliminal)"
+            ]
+          }},
+          {{
+            "emotion": "Relief",
+            "audio_techniques": [
+              "Open up acoustic space",
+              "Single clean sound element",
+              "Music enters subtly",
+              "Character sighs/laughter"
+            ]
+          }},
+          {{
+            "emotion": "Danger",
+            "audio_techniques": [
+              "Low frequency rumble",
+              "Heartbeat in sound design",
+              "Approaching footsteps",
+              "Environmental sounds become threatening"
+            ]
+          }},
+          {{
+            "emotion": "Revelation",
+            "audio_techniques": [
+              "Sound drops out momentarily",
+              "Single clear sound (gasp, paper rustle)",
+              "Extended reverb (time slows)",
+              "Music sting after beat"
+            ]
+          }}
+        ],
+        "scene_type_acoustic_templates": [
+          {{
+            "scene_type": "Interrogation Room",
+            "reverb": "0.3s (dead, uncomfortable)",
+            "frequency": "Cut lows (thin, harsh)",
+            "featured_sounds": "Breathing, metal chair scrapes",
+            "psychology": "Claustrophobic, no escape"
+          }},
+          {{
+            "scene_type": "Outdoor Crime Scene",
+            "reverb": "3-5s (open, exposed)",
+            "frequency": "Natural full range",
+            "featured_sounds": "Wind, police tape flutter",
+            "psychology": "Vulnerability, isolation"
+          }},
+          {{
+            "scene_type": "Car Conversations",
+            "reverb": "0.2s (intimate space)",
+            "frequency": "Natural with engine undertone",
+            "featured_sounds": "Engine, radio, traffic outside",
+            "psychology": "Moving confessional"
+          }},
+          {{
+            "scene_type": "Phone Calls",
+            "reverb": "Split (each location different)",
+            "frequency": "Telephonic filtering on remote speaker",
+            "featured_sounds": "Background reveals location",
+            "psychology": "Distance/connection paradox"
+          }}
+        ],
+        "complete_sound_effects_library": [
+          {{
+            "sfx_id": "SFX_001",
+            "category": "Location Ambient/Character/Object/Action/Emotional",
+            "sound_name": "Descriptive name",
+            "description": "Detailed sound description",
+            "location_context": "Where this sound occurs",
+            "frequency_content": "High/Mid/Low frequency range",
+            "dynamic_range": "dB level estimate",
+            "reverb_characteristics": "Reverb/echo properties",
+            "emotional_association": "What feeling this evokes",
+            "story_function": "Narrative purpose of this sound",
+            "production_notes": "How to create/source this sound"
+          }}
+        ]
+      }}
+    }}
+
+    **Requirements:**
+    - Generate 150+ unique catalogued sounds
+    - Include all locations, characters, emotions
+    - Provide production-ready descriptions
+    - Tag every sound with metadata
+    - Make this usable by sound design team
+    - Return ONLY valid JSON
+
+dependencies:
+  - station: 2
+    name: "Project DNA Builder"
+  - station: 6
+    name: "Master Style Guide Builder"
+  - station: 8
+    name: "World Builder"
+
+# Enable/disable this station in the pipeline
+enabled: true

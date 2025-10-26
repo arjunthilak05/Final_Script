@@ -1,0 +1,6 @@
+Category,Status,Issues Found,Voice Issues,Age Issues,Dialect Issues,Audio Issues
+Character Voice Consistency,PASS_WITH_WARNINGS,1,1,0,0,0
+Age Appropriateness,FAIL,1,0,1,0,0
+Dialect Consistency,PASS_WITH_WARNINGS,1,0,0,1,0
+Audio Clarity,PASS_WITH_WARNINGS,1,0,0,0,1
+Genre Appropriateness,FAIL,1,0,0,0,0

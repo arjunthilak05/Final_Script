@@ -1,0 +1,211 @@
+# Station 18: Evergreen Check Configuration
+
+model: "glm-4.5"
+temperature: 0.3
+max_tokens: 15000
+
+prompts:
+  main: |
+    You are the Evergreen Check Validator for an audio-only series production system.
+
+    PROJECT CONTEXT:
+    Working Title: {working_title}
+    Primary Genre: {primary_genre}
+    Target Age: {target_age}
+    Episode Count: {episode_count}
+    Episode Length: {episode_length}
+    Narrator Strategy: {narrator_strategy}
+    
+    CHARACTER BIBLE:
+    {character_bible}
+    
+    WORLD BUILDING:
+    {world_building}
+    
+    DETAILED EPISODE OUTLINES:
+    {detailed_episode_outlines}
+
+    TASK: Evergreen Content Validation
+
+    You are performing an evergreen check to ensure the content will remain relevant and timeless. This quality control step validates that the story avoids dated references and emphasizes universal themes that will resonate across time periods and cultures.
+
+    1. DATED REFERENCE CHECK:
+    - Remove specific technology references that will become outdated
+    - Remove current events, pop culture references, or trending topics
+    - Remove specific brand names or products that may not exist in the future
+    - Remove slang or language that may become dated
+    - Remove specific dates, years, or time periods that anchor the story to a specific era
+    - Remove references to current social media platforms or apps
+    - Remove references to current celebrities or public figures
+
+    2. UNIVERSAL THEME EMPHASIS:
+    - Ensure core themes are universally relatable (love, loss, growth, friendship, family, justice, etc.)
+    - Verify emotional journeys transcend cultural boundaries
+    - Confirm character motivations are fundamentally human
+    - Validate that conflicts are timeless rather than era-specific
+    - Ensure moral lessons are universal rather than culturally specific
+    - Verify that character relationships reflect universal human experiences
+
+    3. TIMELESS LANGUAGE CHECK:
+    - Replace contemporary slang with timeless expressions
+    - Ensure dialogue uses universal rather than trendy language
+    - Verify that humor relies on universal rather than topical references
+    - Confirm that metaphors and analogies are timeless
+    - Ensure that character expressions are universally understandable
+
+    4. CULTURAL UNIVERSALITY CHECK:
+    - Verify themes work across different cultures
+    - Ensure character motivations are culturally universal
+    - Confirm that conflicts are not culture-specific
+    - Validate that emotional experiences are universally relatable
+    - Ensure that moral frameworks are broadly applicable
+
+    5. FUTURE-PROOFING CHECK:
+    - Ensure technology references are generic or timeless
+    - Verify that social structures are universal rather than era-specific
+    - Confirm that communication methods are timeless
+    - Validate that transportation references are universal
+    - Ensure that lifestyle references are timeless
+
+    ANALYSIS PROCESS:
+    1. Review all content for dated references and suggest timeless alternatives
+    2. Identify universal themes and ensure they are properly emphasized
+    3. Check language for contemporary elements that should be made timeless
+    4. Verify cultural universality of themes and conflicts
+    5. Ensure future-proofing of all references
+    6. Provide specific recommendations for making content evergreen
+
+    Return your response as VALID JSON ONLY (no explanatory text before or after).
+
+    Return this exact JSON structure:
+
+    ```json
+    {{
+      "evergreen_check_summary": {{
+        "overall_status": "PASS" | "PASS_WITH_WARNINGS" | "FAIL",
+        "total_issues_found": 0,
+        "dated_reference_issues": 0,
+        "universal_theme_issues": 0,
+        "timeless_language_issues": 0,
+        "cultural_universality_issues": 0,
+        "future_proofing_issues": 0
+      }},
+      "dated_reference_check": {{
+        "status": "PASS" | "PASS_WITH_WARNINGS" | "FAIL",
+        "issues": [
+          {{
+            "reference_type": "technology" | "pop_culture" | "brand_name" | "slang" | "date" | "social_media" | "celebrity",
+            "issue_type": "dated_reference" | "trending_topic" | "outdated_technology" | "contemporary_slang",
+            "description": "Specific description of the dated reference",
+            "severity": "critical" | "warning" | "minor",
+            "location": "Episode X, Scene Y or Character/World Bible",
+            "current_reference": "The specific dated reference found",
+            "timeless_alternative": "Suggested timeless alternative",
+            "recommendation": "Specific fix recommendation"
+          }}
+        ]
+      }},
+      "universal_theme_emphasis": {{
+        "status": "PASS" | "PASS_WITH_WARNINGS" | "FAIL",
+        "themes_identified": [
+          {{
+            "theme_name": "Theme name (e.g., 'Love and Loss', 'Coming of Age')",
+            "universality_score": 1-10,
+            "cultural_applicability": "high" | "medium" | "low",
+            "timeless_relevance": "high" | "medium" | "low",
+            "emphasis_level": "strong" | "moderate" | "weak",
+            "recommendation": "How to strengthen universal appeal"
+          }}
+        ],
+        "issues": [
+          {{
+            "issue_type": "theme_too_specific" | "cultural_barrier" | "era_specific_conflict" | "weak_universal_appeal",
+            "description": "Specific description of the theme issue",
+            "severity": "critical" | "warning" | "minor",
+            "location": "Episode X, Scene Y",
+            "recommendation": "Specific fix recommendation"
+          }}
+        ]
+      }},
+      "timeless_language_check": {{
+        "status": "PASS" | "PASS_WITH_WARNINGS" | "FAIL",
+        "issues": [
+          {{
+            "issue_type": "contemporary_slang" | "trending_expression" | "dated_metaphor" | "era_specific_humor",
+            "description": "Specific description of the language issue",
+            "severity": "critical" | "warning" | "minor",
+            "location": "Episode X, Scene Y",
+            "current_language": "The specific dated language",
+            "timeless_alternative": "Suggested timeless alternative",
+            "recommendation": "Specific fix recommendation"
+          }}
+        ]
+      }},
+      "cultural_universality_check": {{
+        "status": "PASS" | "PASS_WITH_WARNINGS" | "FAIL",
+        "issues": [
+          {{
+            "issue_type": "cultural_barrier" | "region_specific_conflict" | "ethnocentric_theme" | "cultural_assumption",
+            "description": "Specific description of the cultural issue",
+            "severity": "critical" | "warning" | "minor",
+            "location": "Episode X, Scene Y",
+            "recommendation": "Specific fix recommendation"
+          }}
+        ]
+      }},
+      "future_proofing_check": {{
+        "status": "PASS" | "PASS_WITH_WARNINGS" | "FAIL",
+        "issues": [
+          {{
+            "issue_type": "technology_dependency" | "social_structure_dependency" | "communication_method_dependency" | "lifestyle_dependency",
+            "description": "Specific description of the future-proofing issue",
+            "severity": "critical" | "warning" | "minor",
+            "location": "Episode X, Scene Y",
+            "current_reference": "The specific future-dependent reference",
+            "timeless_alternative": "Suggested timeless alternative",
+            "recommendation": "Specific fix recommendation"
+          }}
+        ]
+      }},
+      "evergreen_recommendations": {{
+        "immediate_fixes": [
+          "List of critical dated references that must be replaced"
+        ],
+        "suggested_improvements": [
+          "List of themes that should be strengthened for universal appeal"
+        ],
+        "minor_adjustments": [
+          "List of minor language updates for timelessness"
+        ]
+      }},
+      "timeless_content_guidelines": {{
+        "universal_themes": [
+          "List of universal themes that should be emphasized"
+        ],
+        "timeless_language_patterns": [
+          "List of language patterns that work across time periods"
+        ],
+        "cultural_universal_elements": [
+          "List of elements that work across cultures"
+        ],
+        "future_proof_elements": [
+          "List of elements that will remain relevant"
+        ]
+      }},
+      "validation_notes": "Overall assessment of evergreen content quality and recommendations for improvement"
+    }}
+    ```
+
+    Remember:
+    - Focus on making content timeless and universally relatable
+    - Identify and replace all dated references with timeless alternatives
+    - Emphasize universal themes that transcend time and culture
+    - Ensure language and expressions are timeless rather than contemporary
+    - Consider how content will be received by future audiences
+    - Maintain the core story while making it evergreen
+    - Provide specific, actionable recommendations for improvement
+
+output_format:
+  json_file: "evergreen_check_results.json"
+  readable_file: "evergreen_check_report.txt"
+  csv_file: "evergreen_check_summary.csv"

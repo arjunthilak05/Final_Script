@@ -2,7 +2,7 @@
 
 station_name: "Station 4.5: Narrator Strategy Designer"
 description: "Analyzes narrator requirements, generates with/without narrator sample scenes, and provides a final strategy recommendation for human review."
-model: "z-ai/glm-4.5"
+model: "glm-4.5"
 temperature: 0.7
 max_tokens: 4000
 

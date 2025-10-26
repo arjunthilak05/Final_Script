@@ -1,0 +1,153 @@
+# Station 8: World Builder Configuration
+
+station_name: "Station 8: World Builder"
+description: "Constructs the World Bible, a detailed, audio-focused guide to the story's setting, systems, and history, which serves as a foundational document for sound design and narrative consistency."
+model: "anthropic/claude-3.5-sonnet"
+temperature: 0.7
+max_tokens: 8192
+
+# Input configuration
+input:
+  project_bible_path: "output/station_02/{session_id}_bible.json"
+  character_bible_path: "output/station_07/{session_id}_character_bible.json"
+  
+# Output configuration  
+output:
+  directory: "output/station_08"
+  json_filename: "{session_id}_world_bible.json"
+  readable_filename: "{session_id}_readable.txt"
+
+prompts:
+  world_bible_construction: |
+    **Role:** You are the World Builder for audio drama production. Your task is to construct a comprehensive World Bible by analyzing the Project Bible and Character Bible to create a detailed, audio-focused guide to the story's setting, systems, and history.
+
+    **Project Data:**
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - Target Age: {target_age}
+    - Episode Count: {episode_count}
+    - Episode Length: {episode_length}
+    - Story Complexity: {story_complexity}
+    - Tone: {tone}
+    - Core Premise: {core_premise}
+    - Main Characters: {main_characters}
+
+    **Project Bible Summary:**
+    {project_bible_summary}
+
+    **Character Bible Summary:**
+    {character_bible_summary}
+
+    **Instructions:**
+
+    Create a comprehensive World Bible that functions as an audio cue library. This document will serve as a foundational reference for sound design and narrative consistency throughout the audio production.
+
+    **Critical Audio-First Requirements:**
+    Every element must be designed with audio production in mind. Focus on:
+    1. **Sonic Signatures**: Distinctive sounds that identify locations, technologies, and events
+    2. **Ambient Soundscapes**: Background audio that establishes atmosphere
+    3. **Acoustic Properties**: How different spaces sound (echo, reverb, muffling)
+    4. **Audio Cues**: Specific sounds that signal different activities, emotions, or events
+    5. **Sound Design Elements**: Detailed descriptions of how things sound
+
+    **Output Format:** Your entire response MUST be a single, valid JSON object. The root key should be `world_bible`.
+
+    **Expected JSON Structure:**
+    {{
+        "world_bible": {{
+            "project_overview": {{
+                "working_title": "{working_title}",
+                "primary_genre": "{primary_genre}",
+                "target_age": "{target_age}",
+                "episode_count": "{episode_count}",
+                "core_premise": "{core_premise}"
+            }},
+            "Geography_Spaces": {{
+                "key_locations": [
+                    {{
+                        "name": "Location Name",
+                        "sonic_signature": "Distinctive sound that identifies this location",
+                        "ambient_sounds": "Background sounds that establish atmosphere",
+                        "acoustic_properties": "How sound behaves in this space (echo, reverb, muffling)",
+                        "weather_patterns": "Weather-related sounds and their frequency",
+                        "how_space_sounds_different": "How this space sounds when empty vs. full, day vs. night"
+                    }}
+                ],
+                "travel_times": "Descriptions of travel times and sounds between key locations, including journey-specific audio cues"
+            }},
+            "Social_Systems": {{
+                "government_authority": {{
+                    "description": "How government/authority works in this world",
+                    "associated_sounds": "Specific sounds (gavels, proclamations, official announcements, etc.)"
+                }},
+                "economic_structure": {{
+                    "description": "How the economy functions",
+                    "sounds": "Currency sounds, market bartering, trade negotiations, economic activities"
+                }},
+                "social_hierarchies": {{
+                    "description": "Social classes and their relationships",
+                    "sonic_representation": "How different classes sound in dialogue (formal vs. informal speech patterns)"
+                }},
+                "cultural_norms": {{
+                    "key_customs": "Important cultural practices and traditions",
+                    "associated_sounds": "Sounds that accompany these customs and traditions"
+                }}
+            }},
+            "Technology_Magic": {{
+                "overview": "What technology or magic exists and how it works",
+                "sound_design": "Specific sounds for various technologies or magical elements",
+                "limitations": "What are the constraints and limitations",
+                "prevalence": "Notes on what is common vs. rare and how that affects its sound design"
+            }},
+            "History_Lore": {{
+                "key_past_events": [
+                    {{
+                        "event": "Description of pivotal historical event",
+                        "sonic_impact": "How this event affects the current soundscape"
+                    }}
+                ],
+                "knowledge_levels": {{
+                    "common_knowledge": "What everyone knows and how it sounds",
+                    "secrets": "Hidden knowledge and its audio representation"
+                }},
+                "influence_on_present": "How history affects the current soundscape (echoes, recurring motifs for legends)",
+                "myths_legends": [
+                    {{
+                        "story": "Key myth or legend",
+                        "sonic_themes": "Audio motifs and themes associated with this story"
+                    }}
+                ]
+            }},
+            "Sensory_Palette": {{
+                "audio_cue_library": [
+                    {{
+                        "location_situation": "Specific location or situation",
+                        "ambient_sounds": "Background audio for this context",
+                        "distinctive_noises": "Unique sounds that occur here",
+                        "acoustic_properties": "How sound behaves in this environment",
+                        "recurring_audio_elements": "Sounds that repeat or cycle in this context"
+                    }}
+                ]
+            }}
+        }}
+    }}
+
+    **Requirements:**
+    - Create 5-10 key locations with detailed audio descriptions
+    - Design comprehensive social systems with associated sounds
+    - Define technology/magic systems with specific sound design
+    - Develop rich history/lore with sonic themes
+    - Build extensive sensory palette for audio production
+    - Ensure all elements support the genre, tone, and target age
+    - Focus on audio-first world-building for sound design teams
+    - Return ONLY valid JSON - no explanatory text before or after
+    - Include exactly the structure specified above
+
+dependencies:
+  - station: 2
+    name: "Project DNA Builder"
+  - station: 7
+    name: "Character Architect"
+
+# Enable/disable this station in the pipeline
+enabled: true

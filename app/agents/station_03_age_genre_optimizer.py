@@ -22,6 +22,7 @@ from app.openrouter_agent import OpenRouterAgent
 from app.redis_client import RedisClient
 from app.agents.config_loader import load_station_config
 from app.agents.json_extractor import extract_json
+from app.agents.title_validator import TitleValidator
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -67,6 +68,16 @@ class Station03AgeGenreOptimizer:
         await self.redis.initialize()
         logger.info("✅ Station 3 initialized")
 
+    async def load_station1_data(self, session_id: str) -> Dict:
+        """Load Station 1 output from Redis"""
+        key = f"audiobook:{session_id}:station_01"
+        data_str = await self.redis.get(key)
+        
+        if not data_str:
+            raise ValueError(f"❌ No Station 1 data found for session {session_id}")
+        
+        return json.loads(data_str)
+
     async def load_station2_data(self, session_id: str) -> Dict:
         """Load Station 2 output from Redis"""
         print(f"\n📥 Loading Project Bible from Station 2...")
@@ -88,13 +99,15 @@ class Station03AgeGenreOptimizer:
         print(f'✅ Loaded: "{title}" ({content_rating}, {primary_genre})')
         return data
 
-    def display_project_summary(self, station2_data: Dict):
-        """Display project summary from Station 2"""
+    def display_project_summary(self, station1_data: Dict, station2_data: Dict):
+        """Display project summary from Station 2 with bulletproof title"""
         print("\n" + "="*60)
         print("📋 PROJECT SUMMARY FROM STATION 2")
         print("="*60)
 
-        title = station2_data.get('working_title', 'Unknown')
+        # Use bulletproof title extraction
+        title = TitleValidator.extract_bulletproof_title(station1_data, station2_data)
+        print(TitleValidator.format_title_for_display(title, "Station 3"))
         scale_type = station2_data.get('scale_type', 'Unknown')
         episode_count = station2_data.get('episode_count', 'Unknown')
         episode_length = station2_data.get('episode_length', 'Unknown')
@@ -559,9 +572,10 @@ class Station03AgeGenreOptimizer:
             print("🎬 STATION 3: AGE & GENRE OPTIMIZER")
             print("="*60)
 
-            # Load Station 2 data
+            # Load Station 1 and Station 2 data for bulletproof title handling
+            station1_data = await self.load_station1_data(session_id)
             station2_data = await self.load_station2_data(session_id)
-            self.display_project_summary(station2_data)
+            self.display_project_summary(station1_data, station2_data)
 
             # Step 1: Generate age guidelines (auto)
             age_guidelines = await self.generate_age_guidelines(station2_data)
@@ -585,7 +599,7 @@ class Station03AgeGenreOptimizer:
             genre_tone = station2_data.get('genre_tone', {})
 
             style_guide = StyleGuide(
-                working_title=station2_data.get('working_title', 'Unknown'),
+                working_title=TitleValidator.extract_bulletproof_title(station1_data, station2_data),
                 original_seed=station2_data.get('original_seed', 'N/A'),
                 seed_type=station2_data.get('seed_type', 'N/A'),
                 scale_type=station2_data.get('scale_type', 'Unknown'),

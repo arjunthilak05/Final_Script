@@ -1,0 +1,225 @@
+# Station 7: Character Architect Configuration
+
+station_name: "Station 7: Character Architect"
+description: "Creates detailed character profiles across three tiers for audio drama production, focusing on voice signatures, audio identification markers, and character arcs."
+model: "anthropic/claude-3.5-sonnet"
+temperature: 0.7
+max_tokens: 8192
+
+# Input configuration
+input:
+  project_bible_path: "output/station_02/{session_id}_bible.json"
+  master_style_guide_path: "output/station_06/{session_id}_output.json"
+  
+# Output configuration  
+output:
+  directory: "output/station_07"
+  json_filename: "{session_id}_character_bible.json"
+  readable_filename: "{session_id}_readable.txt"
+
+# Character tier configuration
+character_tiers:
+  tier_1_protagonists:
+    count: 3
+    description: "Main protagonists with full psychological profiles, voice signatures, complete character arcs, key relationships, and secret/revelation timeline"
+  tier_2_major_supporting:
+    count: 5
+    description: "Major supporting characters with relevant backstory, distinct voice, episode-specific arc, and story function"
+  tier_3_recurring:
+    count: 10
+    description: "Recurring characters with single defining trait, memorable voice hook, and narrative purpose"
+
+prompts:
+  character_architecture_analysis: |
+    **Role:** You are the Character Architect for audio drama production. Your task is to create a comprehensive Character Bible by analyzing the Project Bible and generating detailed character profiles across three tiers, with special emphasis on audio identification markers for an audio-only format.
+
+    **Project Data:**
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - Target Age: {target_age}
+    - Episode Count: {episode_count}
+    - Episode Length: {episode_length}
+    - Story Complexity: {story_complexity}
+    - Tone: {tone}
+    - Narrator Strategy: {narrator_strategy}
+    - Core Premise: {core_premise}
+    - Main Characters from Station 1: {main_characters}
+
+    **Project Bible Summary:**
+    {project_bible_summary}
+
+    **Master Style Guide Summary (from Station 6):**
+    {master_style_guide_summary}
+
+    **Instructions:**
+
+    Create a comprehensive Character Bible with three tiers of characters. For ALL characters, you must define specific audio identification markers (verbal tics, catchphrases, emotional temperature) as this is non-negotiable for an audio-only format. ALL character voices and dialogue must strictly conform to the Master Style Guide rules for voice, dialogue, and sound.
+
+    **Tier 1: Protagonists (1-3 characters)**
+    For each protagonist, provide:
+    - **Full psychological profile**: Background, motivations, fears, desires, personality traits
+    - **Voice signature**: Pitch (high/medium/low), pace (fast/medium/slow), vocabulary style, speech patterns
+    - **Complete character arc**: Beginning state, key growth moments, end state
+    - **Key relationships**: Important connections to other characters
+    - **Secret/revelation timeline**: When secrets are revealed, to whom, and impact
+    - **Audio identification markers**: Verbal tics, catchphrases, emotional responses, unique speech patterns
+
+    **Tier 2: Major Supporting (3-5 characters)**
+    For each major supporting character, provide:
+    - **Relevant backstory**: Key background elements that affect the story
+    - **Distinct voice**: Voice characteristics that differentiate them
+    - **Episode-specific arc**: How they develop throughout the season
+    - **Story function**: Their role in advancing plot or character development
+    - **Audio identification markers**: Unique speech patterns, emotional expressions, verbal habits
+
+    **Tier 3: Recurring (5-10 characters)**
+    For each recurring character, provide:
+    - **Single defining trait**: One memorable characteristic
+    - **Memorable voice hook**: Distinctive vocal element
+    - **Narrative purpose**: Why they appear in the story
+    - **Audio identification markers**: Simple but distinctive vocal characteristics
+
+    **Critical Audio Requirements:**
+    Every character MUST have:
+    1. **Verbal Tics**: Repeated phrases, speech patterns, or word choices
+    2. **Emotional Temperature**: How they express different emotions vocally
+    3. **Voice Signature**: Pitch, pace, and vocabulary that makes them instantly recognizable
+    4. **Catchphrases**: Memorable phrases they use (1-3 per character)
+    5. **Speech Patterns**: Unique ways of speaking (formal/informal, complex/simple, etc.)
+
+    **Output Format:** Your entire response MUST be a single, valid JSON object. The root key should be `character_bible`.
+
+    **Expected JSON Structure:**
+    {{
+        "character_bible": {{
+            "project_overview": {{
+                "working_title": "{working_title}",
+                "primary_genre": "{primary_genre}",
+                "target_age": "{target_age}",
+                "episode_count": "{episode_count}",
+                "core_premise": "{core_premise}"
+            }},
+            "tier_1_protagonists": [
+                {{
+                    "name": "Character Name",
+                    "age": "Age or age range",
+                    "role": "Primary role in story",
+                    "psychological_profile": {{
+                        "background": "Key background information",
+                        "motivations": "Primary and secondary motivations",
+                        "fears": "Core fears and anxieties",
+                        "desires": "What they want most",
+                        "personality_traits": ["trait1", "trait2", "trait3"],
+                        "internal_conflicts": "Internal struggles and contradictions"
+                    }},
+                    "voice_signature": {{
+                        "pitch": "high/medium/low",
+                        "pace": "fast/medium/slow",
+                        "vocabulary_style": "formal/informal/technical/colloquial",
+                        "speech_patterns": "How they structure sentences and thoughts"
+                    }},
+                    "character_arc": {{
+                        "beginning_state": "Starting emotional/psychological state",
+                        "key_growth_moments": ["moment1", "moment2", "moment3"],
+                        "end_state": "Final emotional/psychological state",
+                        "transformation": "How they change throughout the story"
+                    }},
+                    "key_relationships": {{
+                        "allies": ["character1", "character2"],
+                        "enemies": ["character1", "character2"],
+                        "family": ["character1", "character2"],
+                        "romantic": "romantic interest if applicable"
+                    }},
+                    "secret_revelation_timeline": [
+                        {{
+                            "episode_range": "Episodes X-Y",
+                            "secret": "What secret is revealed",
+                            "to_whom": "Who learns the secret",
+                            "impact": "Consequences of revelation"
+                        }}
+                    ],
+                    "audio_identification_markers": {{
+                        "verbal_tics": ["tick1", "tick2", "tick3"],
+                        "catchphrases": ["phrase1", "phrase2"],
+                        "emotional_temperature": {{
+                            "anger": "How they sound when angry",
+                            "fear": "How they sound when afraid",
+                            "joy": "How they sound when happy",
+                            "sadness": "How they sound when sad"
+                        }},
+                        "unique_speech_patterns": "Distinctive ways of speaking"
+                    }}
+                }}
+            ],
+            "tier_2_major_supporting": [
+                {{
+                    "name": "Character Name",
+                    "age": "Age or age range",
+                    "role": "Supporting role in story",
+                    "relevant_backstory": "Key background that affects the story",
+                    "distinct_voice": {{
+                        "pitch": "high/medium/low",
+                        "pace": "fast/medium/slow",
+                        "vocabulary_style": "formal/informal/technical/colloquial",
+                        "speech_patterns": "How they structure sentences"
+                    }},
+                    "episode_specific_arc": {{
+                        "early_episodes": "How they appear in early episodes",
+                        "middle_episodes": "Development in middle episodes",
+                        "late_episodes": "Role in later episodes"
+                    }},
+                    "story_function": "How they advance plot or character development",
+                    "relationship_to_protagonists": ["Concise description of their relationship to protagonist(s)"],
+                    "audio_identification_markers": {{
+                        "verbal_tics": ["tick1", "tick2"],
+                        "catchphrases": ["phrase1", "phrase2"],
+                        "emotional_temperature": {{
+                            "anger": "How they sound when angry",
+                            "fear": "How they sound when afraid",
+                            "joy": "How they sound when happy",
+                            "sadness": "How they sound when sad"
+                        }},
+                        "unique_speech_patterns": "Distinctive ways of speaking"
+                    }}
+                }}
+            ],
+            "tier_3_recurring": [
+                {{
+                    "name": "Character Name",
+                    "age": "Age or age range",
+                    "role": "Recurring role in story",
+                    "defining_trait": "Single memorable characteristic",
+                    "memorable_voice_hook": "Distinctive vocal element",
+                    "narrative_purpose": "Why they appear in the story",
+                    "episodes_appearing": [2, 6],
+                    "audio_identification_markers": {{
+                        "verbal_tics": ["tick1"],
+                        "catchphrases": ["phrase1"],
+                        "emotional_temperature": {{
+                            "primary_emotion": "Their most common emotional expression"
+                        }},
+                        "unique_speech_patterns": "Simple distinctive speaking pattern"
+                    }}
+                }}
+            ]
+        }}
+    }}
+
+    **Requirements:**
+    - Create characters that fit the genre, tone, and target age
+    - Ensure all characters have distinct audio identification markers
+    - Make characters serve the story and each other
+    - Consider the narrator strategy when creating character voices
+    - Return ONLY valid JSON - no explanatory text before or after
+    - Include exactly the number of characters specified in the tier configuration
+
+dependencies:
+  - station: 1
+    name: "Seed Processor"
+  - station: 2
+    name: "Project DNA Builder"
+  - station: 6
+    name: "Master Style Guide Builder"
+
+# Enable/disable this station in the pipeline
+enabled: true

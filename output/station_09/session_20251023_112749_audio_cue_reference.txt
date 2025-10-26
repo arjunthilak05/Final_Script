@@ -1,0 +1,81 @@
+======================================================================
+AUDIO CUE QUICK REFERENCE
+======================================================================
+
+LOCATION AMBIENT PROFILES:
+----------------------------------------------------------------------
+
+Hospital ER:
+  • layer_1_constant: Hum of fluorescent lights, steady beeping of monitors
+  • layer_2_periodic: Intercom announcements, paging messages
+  • layer_3_random: Footsteps, rolling carts, murmured conversations
+  • layer_4_weather: Rain tapping on windows, wind gusts
+  • layer_5_activity: Doctors and nurses moving quickly, patients being wheeled in and out
+
+Tom's Coaching Studio:
+  • layer_1_constant: Soft background music, computer hum
+  • layer_2_periodic: Keyboard typing, mouse clicks
+  • layer_3_random: Occasional paper rustling, light coughing
+  • layer_4_weather: Rain tapping on windows, light wind
+  • layer_5_activity: Tom moving around the room, adjusting equipment
+
+Julia's Apartment:
+  • layer_1_constant: Light hum of a refrigerator, distant traffic
+  • layer_2_periodic: Clock ticking, occasional footsteps
+  • layer_3_random: Paper rustling, light movement sounds
+  • layer_4_weather: Rain tapping on windows, light wind
+  • layer_5_activity: Julia moving around the apartment, occasional door opening/closing
+
+Interrogation Room:
+  • layer_1_constant: Hum of fluorescent lights, faint air conditioning
+  • layer_2_periodic: Intercom beeps, occasional door buzz
+  • layer_3_random: Footsteps, chair scraping
+  • layer_4_weather: None
+  • layer_5_activity: Detectives moving around, suspect shifting in chair
+
+Outdoor Crime Scene:
+  • layer_1_constant: Wind, distant traffic
+  • layer_2_periodic: Police radio chatter, police sirens
+  • layer_3_random: Leaves rustling, people talking in hushed tones
+  • layer_4_weather: Rain tapping on ground, wind gusts
+  • layer_5_activity: Police officers moving around, crime scene tape fluttering
+
+Car Conversations:
+  • layer_1_constant: Engine hum, road noise
+  • layer_2_periodic: Radio music, occasional car horn
+  • layer_3_random: Passing cars, occasional bumps
+  • layer_4_weather: Rain tapping on roof, wind gusts
+  • layer_5_activity: Characters talking, occasional laughter or sighs
+
+CHARACTER SOUND SIGNATURES:
+----------------------------------------------------------------------
+
+Tom:
+  Signature: Pen click
+  • Clicking of a pen, tapping fingers on desk
+  • Smooth, confident footsteps
+  • Warm, reassuring voice
+
+Julia:
+  Signature: Keyboard typing
+  • Light tapping of a keyboard, rustling of papers
+  • Light, quick footsteps
+  • Soft, thoughtful voice
+
+Detective Smith:
+  Signature: Notebook thump
+  • Heavy footsteps, thumping of a notebook
+  • Gravelly, authoritative voice
+  • Occasional cough or throat clearing
+
+RECURRING SERIES IDENTITY SOUNDS:
+----------------------------------------------------------------------
+
+The Rain:
+  Purpose: Recurring element to set the mood and connect scenes
+  Frequency: 50% of scenes
+  • Light drizzle - contemplation scenes
+  • Heavy rain - emotional climax
+  • Thunder - revelation moments
+
+======================================================================

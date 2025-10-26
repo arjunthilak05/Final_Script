@@ -1,0 +1,63 @@
+======================================================================
+EPISODE 3 MOMENTUM CHECK - CHANGE REPORT
+======================================================================
+Generated: 2025-10-23 00:24:51
+Session: session_20251016_235335
+
+PACING ANALYSIS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Slow Sections: 0
+  Rushed Transitions: 0
+  Dead Air Moments: 0
+
+REPETITION ANALYSIS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Repeated Words/Phrases: 0
+  Structural Patterns: 0
+
+ENERGY FLOW ANALYSIS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Energy Problems: 0
+  Balance: N/A
+
+CHANGES MADE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Total Changes: 12
+
+1. [ENERGY_BOOST] Scene 1
+   
+
+2. [RHYTHM] Scene 2
+   
+
+3. [ENERGY_BOOST] Scene 2
+   
+
+4. [TIMING] Scene 3
+   
+
+5. [TRANSITION] Scene 4
+   
+
+6. [ENERGY_BOOST] Scene 4
+   
+
+7. [RHYTHM] Scene 5
+   
+
+8. [ENERGY_BOOST] Scene 5
+   
+
+9. [TIMING] Scene 5
+   
+
+10. [TRANSITION] Scene 6
+   
+
+11. [RHYTHM] Scene 6
+   
+
+12. [ENERGY_BOOST] Scene 6
+   
+
+======================================================================

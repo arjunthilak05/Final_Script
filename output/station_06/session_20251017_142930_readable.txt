@@ -1,0 +1,93 @@
+======================================================================
+STATION 6: MASTER STYLE GUIDE BUILDER
+======================================================================
+
+Working Title: Wrong Number, Right Message
+Primary Genre: Contemporary Romance
+Target Age: 25-55
+Episode Count: 8-12 episodes
+Episode Length: 35-45 min each
+Narrator Strategy: With Narrator
+
+----------------------------------------------------------------------
+LANGUAGE RULES
+----------------------------------------------------------------------
+
+Vocabulary Level: Sophisticated but accessible vocabulary that reflects adult experiences without requiring specialized knowledge
+Sentence Complexity: Varied sentence structure with a mix of shorter, impactful sentences for emotional moments and longer, more complex sentences for reflective or narrative passages. Technical concepts should be explained through context rather than jargon.
+Technical Term Handling: Medical terminology should be used accurately but explained through context or narrator clarification when necessary. Wellness and coaching terminology should remain accessible to general audiences. Technical terms related to digital communication should be presented in commonly understood language.
+Narrator Voice Guidelines: Warm, versatile, with excellent emotional range and ability to shift between lower registers for dark moments and brighter tones for lighter moments. The narrator should maintain a consistent, professional tone while conveying emotional nuance through subtle vocal shifts.
+Age Appropriate Language: PG-13 content with no explicit sexual content, graphic violence, hate speech, promotion of self-harm, or substance abuse glorification. Complex emotional and psychological concepts should be presented clearly with sufficient context and development.
+Genre Specific Terminology: Romance genre conventions should be reflected through emotionally resonant language that balances authenticity with hope. Medical settings should use appropriate terminology while remaining accessible. Digital communication should be portrayed realistically but not excessively technical.
+
+Example Vocabulary:
+  Words to Use: resilience, connection, vulnerability, compassion, authenticity, mindfulness
+  Words to Avoid: explicit sexual terms, graphic violence descriptions, hate speech, self-harm glorification
+
+----------------------------------------------------------------------
+DIALECT/ACCENT MAP
+----------------------------------------------------------------------
+
+Character Voice Distinctions: Tom should have a warm, encouraging vocal quality with clear articulation reflecting his coaching background. Julia's voice should carry emotional weight with moments of weariness that gradually brighten. Michael's voice should be distinct from Tom's, with more casual inflections. Sarah should have a professional but warm vocal quality reflecting her medical background and supportive role.
+Regional Markers: Portland, Oregon setting suggests Pacific Northwest speech patterns - generally neutral American accents with subtle regional influences. Characters should avoid strong regional stereotypes in favor of authentic Pacific Northwest vocal qualities characterized by relaxed articulation and moderate pacing.
+
+Pronunciation Guide:
+  Character Names:
+    Tom: /tɒm/
+    Julia: /ˈdʒuːliə/
+    Michael: /ˈmaɪkəl/
+    Sarah: /ˈsɛərə/
+  Locations:
+    Portland: /ˈpɔːrtlənd/
+    Oregon: /ˈɒrɪɡən/
+Voice Casting Notes: Cast voices that reflect the characters' professional backgrounds while maintaining authentic emotional range. Tom's voice should convey warmth and motivation. Julia's voice should reflect her medical professionalism and emotional journey. Supporting characters should have distinct vocal qualities that complement but don't overshadow the main characters.
+Accent Consistency Rules: Each character should maintain consistent vocal qualities throughout the series, with emotional variations that reflect character development rather than accent changes. The narrator should maintain consistent vocal qualities regardless of the emotional tone of scenes.
+
+----------------------------------------------------------------------
+AUDIO CONVENTIONS
+----------------------------------------------------------------------
+
+Scene Transitions: Transitions between primary locations (Tom's office, ER, coffee shop) should use distinctive sound bridges that establish the new location before dialogue begins. Time transitions should be indicated by narrator or subtle sound cues like changing ambient traffic patterns or time-of-day environmental shifts.
+Flashback Conventions: Flashbacks should be introduced with a subtle audio cue (such as a brief musical motif or sound filter) and may include slightly different vocal processing to create temporal distance. The narrator should provide context for flashbacks when they occur.
+Location Establishment: Each primary location has a distinctive acoustic signature that should be established before dialogue: Tom's office with soft instrumental music and keyboard tapping, the ER with medical equipment sounds and hurried footsteps, the coffee shop with ambient chatter and espresso machines. Location transitions should be clear but smooth.
+Silence Usage: Strategic pauses should be used after emotional revelations to allow listeners to absorb impact. Early episodes use silence to emphasize isolation and emptiness, while later episodes employ brief silences before moments of connection to heighten emotional impact. Silence should never be complete but should include minimal ambient sound to maintain audio presence.
+Sound Cue System: Text message notifications should have a distinctive, consistent sound. Character-specific musical motifs should evolve with their emotional development. Environmental sounds should intensify during moments of tension and soften during intimate moments. Sound cues should follow the progressive tone shift from dark to light across episodes.
+Time Markers: Time should be indicated through narrator statements, environmental sounds (such as morning birdsong or evening city ambience), or contextual dialogue. Significant time jumps should be clearly established by the narrator.
+
+----------------------------------------------------------------------
+DIALOGUE PRINCIPLES
+----------------------------------------------------------------------
+
+Natural vs Theatrical: Dialogue should lean toward naturalistic delivery with authentic pauses and hesitations, particularly in emotional scenes. Professional settings (ER, coaching sessions) may include more structured delivery that reflects the characters' work personas. The overall balance should favor authenticity while ensuring clarity in audio-only format.
+Interruption Rules: Interruptions should be used sparingly to maximize impact during emotional moments. When used, they should be clearly mixed to ensure both voices remain intelligible. The narrator may clarify complex interruptions if necessary.
+Character Identification: Characters should be identified through a combination of voice distinctiveness, contextual dialogue, and occasional narrator clarification. In scenes with multiple characters, each should have a consistent position in the audio mix, with the narrator providing clarification if confusion might arise.
+Emotional Delivery: Vocal performances should reflect the emotional journey of each character, with early episodes featuring more restrained delivery that gradually becomes more expressive. Emotional intensity should build naturally within scenes, with peaks aligned with the episode's overall energy level.
+Pacing Control: Early episodes should feature more deliberate pacing with longer pauses to reflect emotional stagnation. As the relationship develops, pacing should become more dynamic with varied tempo that matches emotional energy. Romantic scenes should include natural pauses that allow emotional moments to resonate.
+Subtext Handling: Subtext should be conveyed through vocal performance nuances (tone, pacing, volume) rather than explicit statement. The narrator may provide insight into characters' unspoken thoughts when crucial to understanding. Sound design should support subtext through subtle musical cues or environmental reactions.
+
+----------------------------------------------------------------------
+NARRATION STYLE
+----------------------------------------------------------------------
+
+Narrator Presence: Moderate presence (20-30% of runtime), appearing regularly for internal thoughts, scene setting, time transitions, and emotional guidance. The narrator should be most prominent during early episodes when establishing the dark emotional tone, then gradually recede as character interactions become more prominent in later episodes.
+Narrator Relationship: This guide implements the 'A: Omniscient third-person' strategy selected in Station 4.5. The narrator knows all characters' thoughts and feelings while maintaining a neutral, professional tone. The narrator provides context for the characters' emotional journeys, particularly Julia's depression and Tom's professional motivations, while gradually revealing how their connection impacts both of them.
+Tense and Person: Consistent third-person perspective with past tense narration. The narrator should maintain this perspective throughout, even during moments of high emotional intensity, to provide stability and continuity for listeners.
+Narrator Personality: The narrator should have a warm, compassionate quality that conveys understanding of the characters' struggles without being overly sentimental. The vocal delivery should shift subtly to reflect the emotional tone of scenes - lower register and measured pacing during dark moments, warmer tones and more dynamic delivery during hopeful moments.
+Narrator Functions: Primary functions include conveying internal thoughts (especially Julia's depression and Tom's professional concerns), providing emotional guidance through the progression from dark to light tones, establishing scenes and transitions between locations, managing time transitions, and controlling tension through vocal modulation.
+Narrator Voice Casting: Gender-neutral capability, age range 35-50, with warm, versatile vocal quality and excellent emotional range. The narrator must be able to shift between lower registers for dark moments and brighter tones for lighter moments while maintaining vocal consistency and clarity.
+
+----------------------------------------------------------------------
+SONIC SIGNATURE
+----------------------------------------------------------------------
+
+Recurring Motifs: A primary musical motif that evolves across episodes, beginning as a simple, melancholic piano or acoustic guitar melody in early episodes and gradually incorporating richer instrumentation and harmonies as the story progresses. This motif should transform from minor key to major key, reflecting the emotional journey from darkness to light.
+Character Themes: Tom should be associated with warm, encouraging musical elements that reflect his coaching background. Julia should have a more complex theme that begins with dissonant elements reflecting her depression and gradually resolves into warmer tones. The evolution of these themes should parallel their emotional development and eventually harmonize as their connection deepens.
+Environmental Soundscapes: Tom's home office: soft instrumental background music, gentle keyboard tapping, quiet recording equipment hum, and muffled residential neighborhood sounds. ER hospital: beeping monitors, paging systems, hurried footsteps on polished floors, hushed urgent conversations, and controlled chaos sounds. Coffee shop: ambient chatter, rhythmic espresso machine hissing, clinking ceramic cups, soft indie music, and comforting community space noise.
+Genre Audio Elements: Contemporary romance elements include subtle heartbeat tempo variations during intimate scenes, city ambient sounds that ground the contemporary setting, and musical swells during emotional peaks. Drama elements include carefully timed pauses for dramatic effect and nuanced emotional vocal performances that convey both vulnerability and strength.
+Mood Sound Palette: Dark moments: minimal sound design, lower vocal registers, dissonant musical elements, sparse environmental sounds that emphasize isolation. Light moments: warmer musical tones, more dynamic vocal performances, richer environmental sounds that create a sense of connection. The balance should shift progressively across episodes from 60/40 dark/light in early episodes to 40/60 dark/light in final episodes.
+Audio Identity: The overall audio identity should balance authenticity with emotional resonance, creating an intimate listening experience that reflects the characters' journey from isolation to connection. Sound design should support the narrative without overwhelming it, with careful attention to the evolving emotional tone across the series.
+Musical References: The musical style should reference the intimate, emotionally resonant acoustic approach of artists like Iron & Wine or Gregory Alan Isakov, with the gradual incorporation of richer arrangements reminiscent of The Paper Kites' more orchestrated work. The overall sonic palette should evoke the Pacific Northwest setting with its blend of natural elements and urban atmosphere.
+
+======================================================================
+END OF MASTER STYLE GUIDE
+======================================================================

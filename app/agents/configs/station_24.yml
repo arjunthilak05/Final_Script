@@ -1,0 +1,361 @@
+# Station 24: Dialogue Polish Configuration
+
+station_name: "Station 24: Dialogue Polish"
+description: "Analyzes dialogue for natural speech patterns, character voice consistency, and subtext. Auto-polishes dialogue to professional standards while maintaining character identity."
+model: "anthropic/claude-3.5-sonnet"
+temperature: 0.7
+max_tokens: 16384
+
+# Input configuration
+input:
+  required_stations:
+    - station: 23
+      name: "Twist Integration (P3-enhanced script)"
+    - station: 7
+      name: "Character Architect (voice profiles)"
+    - station: 6
+      name: "Master Style Guide (dialogue principles)"
+
+# Output configuration
+output:
+  directory: "output/station_24"
+  episode_subdirectory: "episode_{episode_number:02d}"
+  polished_script: "episode_{episode_number:02d}_dialogue_polished.json"
+  comparison_report: "episode_{episode_number:02d}_dialogue_changes.txt"
+  plain_text: "episode_{episode_number:02d}_dialogue_polished.txt"
+
+prompts:
+  natural_speech_analysis: |
+    **ROLE:** You are analyzing dialogue for natural speech patterns.
+
+    **EPISODE:** {episode_number}
+    **CURRENT SCRIPT:** {current_script}
+
+    **CHARACTER VOICE PROFILES:**
+    {character_profiles}
+
+    **YOUR TASK:**
+    Identify unnatural dialogue that sounds written, not spoken.
+
+    **CHECK FOR:**
+
+    1. **TOO FORMAL** - No one talks like this in real life
+       - "I cannot participate" → "I can't do this"
+       - "Perhaps we should consider" → "Maybe we should"
+
+    2. **EXPOSITION DUMPS** - "As you know..." syndrome
+       - Characters explaining things listener already knows
+       - Information dumps disguised as dialogue
+
+    3. **NO CONTRACTIONS** - Unless character is very formal
+       - "I do not" → "I don't" (most people)
+       - "You will" → "You'll"
+
+    4. **COMPLETE SENTENCES** - Real people speak in fragments
+       - "That is interesting" → "Interesting"
+       - "I would like to go" → "Wanna go"
+
+    5. **NO INTERRUPTIONS** - Real conversations overlap
+       - Add mid-sentence cuts
+       - Add overlapping dialogue
+
+    6. **NO PAUSES/RESTARTS** - People hesitate, correct themselves
+       - "I think... no, I know..."
+       - "The thing is—wait, that's not right"
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON:
+
+    {{
+      "natural_speech_analysis": {{
+        "unnatural_instances": [
+          {{
+            "issue_number": 1,
+            "issue_type": "too_formal|exposition_dump|no_contractions|complete_sentences|no_interruptions|no_pauses",
+            "scene_number": 2,
+            "character": "Marcus",
+            "current_line": "I cannot participate in this investigation.",
+            "problem": "Too formal - no one talks like this in real life",
+            "character_note": "Marcus is terse, working-class, 50s",
+            "suggested_fixes": [
+              "I can't do this.",
+              "No. I'm done with that.",
+              "Can't help you."
+            ],
+            "best_fix": "I can't do this.",
+            "reasoning": "Maintains terseness, uses contraction, sounds natural"
+          }}
+        ],
+        "principles_violated": {{
+          "use_contractions": 8,
+          "speak_in_fragments": 12,
+          "allow_interruptions": 0,
+          "include_pauses": 2,
+          "avoid_exposition": 4
+        }},
+        "total_issues": 26
+      }}
+    }}
+
+  character_voice_validation: |
+    **ROLE:** You are validating character voice distinction and consistency.
+
+    **SCRIPT:** {current_script}
+
+    **CHARACTER VOICE PROFILES (From Station 7):**
+    {character_profiles}
+
+    **YOUR TASK:**
+    Check if characters sound distinct from each other and consistent with their profiles.
+
+    **VOICE DISTINCTION TEST:**
+    Remove character names from random lines - can you tell who's speaking?
+    - If lines are interchangeable between characters = PROBLEM
+    - Each character should have unique speech patterns
+
+    **CHECK FOR:**
+
+    1. **VOICE OVERLAP** - Characters sounding too similar
+       - Same sentence length patterns
+       - Same vocabulary level
+       - Same rhythm
+
+    2. **OUT OF CHARACTER** - Dialogue violating character profile
+       - Marcus using long sentences (should be terse)
+       - Rodriguez asking questions (should give orders)
+       - Sarah being passive (should be pushy)
+
+    3. **INCONSISTENT PATTERNS** - Character's voice changes mid-episode
+       - Marcus verbose in Scene 2, terse in Scene 5
+       - Need consistency
+
+    4. **MISSING SIGNATURE PATTERNS** - Not using character's unique traits
+       - Marcus should reference things personally ("Jenny" not "Jennifer Johnson")
+       - Rodriguez should use command language
+       - Sarah should ask lots of questions
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON:
+
+    {{
+      "voice_validation": {{
+        "voice_distinction_test": {{
+          "interchangeable_lines": 8,
+          "lines_tested": 20,
+          "distinction_score": "4/10",
+          "problem_pairs": [
+            {{
+              "characters": ["Marcus", "Rodriguez"],
+              "overlap_count": 6,
+              "issue": "Both sound authoritative and terse - need differentiation"
+            }}
+          ]
+        }},
+        "voice_violations": [
+          {{
+            "character": "Marcus",
+            "scene_number": 2,
+            "current_line": "I cannot participate in this investigation because it is too difficult for me emotionally.",
+            "violation_type": "too_verbose",
+            "character_profile_rule": "Speech: Terse, weighted, never wastes words. Short sentences (3-7 words average).",
+            "problem": "15-word sentence, explains reasoning (Marcus doesn't explain)",
+            "correct_voice": "I can't. Sorry.",
+            "reasoning": "2 words, no explanation, maintains mystery"
+          }}
+        ],
+        "character_consistency": [
+          {{
+            "character": "Rodriguez",
+            "inconsistency": "Scene 4 asks questions, Scene 6 gives orders",
+            "profile_rule": "No questions, only statements. Command language.",
+            "scenes_affected": [4, 8],
+            "fix_needed": "Convert questions to statements/orders"
+          }}
+        ]
+      }}
+    }}
+
+  subtext_enhancement: |
+    **ROLE:** You are analyzing dialogue for subtext opportunities.
+
+    **SCRIPT:** {current_script}
+
+    **YOUR TASK:**
+    Identify "on-the-nose" dialogue that states emotions/intentions directly instead of implying them.
+
+    **SUBTEXT PRINCIPLE:**
+    Characters rarely say exactly what they mean. They:
+    - Evade (changing subject reveals discomfort)
+    - Deflect (answering different question)
+    - Use silence (refusal to answer IS an answer)
+    - Take action instead of speaking
+    - Say one thing, mean another
+
+    **TARGET:** Noir/mystery should be 70-80% subtext
+
+    **CHECK FOR:**
+
+    1. **EMOTIONAL STATEMENTS** - Stating feelings directly
+       - BAD: "I feel guilty about this case."
+       - GOOD: (stares at lighter) "Twenty years."
+
+    2. **INTENTION STATEMENTS** - Saying what you're going to do
+       - BAD: "I'm going to investigate this."
+       - GOOD: (picks up file, heads to door)
+
+    3. **INTERNAL MONOLOGUE EXTERNALIZED** - Thinking out loud
+       - BAD: "I'm hiding something about this case."
+       - GOOD: "Budget's tight. Focus on active cases." (bureaucracy as shield)
+
+    4. **EXPLAINING SUBTEXT** - Characters explaining what's happening
+       - BAD: "I think you know more than you're saying."
+       - GOOD: "You worked this case." (implication, not accusation)
+
+    **SUBTEXT TECHNIQUES:**
+    - Evasion (changing subject)
+    - Deflection (answering different question)
+    - Silence (refusal = answer)
+    - Action instead of words
+    - Double meaning
+    - Interruption (cutting off = hiding)
+    - Over-explanation (lying = too many details)
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON:
+
+    {{
+      "subtext_analysis": {{
+        "current_subtext_level": "3/10",
+        "target_subtext_level": "7-8/10",
+        "on_the_nose_examples": [
+          {{
+            "scene_number": 2,
+            "current_dialogue": "MARCUS: I feel guilty about this case.",
+            "problem": "States emotion directly. No layers. Boring.",
+            "subtext_version": "MARCUS: (staring at lighter) \"Twenty years.\"",
+            "what_it_means": "I was there. I'm guilty. I can't escape.",
+            "why_better": "Audience infers from context + lighter + tone",
+            "technique_used": "action_instead_of_words"
+          }}
+        ],
+        "subtext_techniques_current": {{
+          "evasion": 2,
+          "deflection": 1,
+          "silence": 0,
+          "action_instead": 3,
+          "double_meaning": 0,
+          "interruption": 0,
+          "over_explanation": 1
+        }},
+        "subtext_techniques_target": {{
+          "evasion": 5,
+          "deflection": 4,
+          "silence": 3,
+          "action_instead": 6,
+          "double_meaning": 2,
+          "interruption": 3,
+          "over_explanation": 2
+        }},
+        "total_opportunities": 18
+      }}
+    }}
+
+  auto_polish_dialogue: |
+    **ROLE:** You are polishing dialogue to professional standards.
+
+    **ORIGINAL SCRIPT:** {original_script}
+
+    **REQUIRED FIXES:**
+    {fixes_needed}
+
+    **CHARACTER VOICE PROFILES:**
+    {character_profiles}
+
+    **YOUR TASK:**
+    Rewrite dialogue to fix all identified issues while maintaining:
+    1. Character voices (don't change HOW they speak fundamentally)
+    2. Plot points (don't change WHAT happens)
+    3. Audio-first formatting (maintain [SFX: ...] notation)
+    4. Scene structure (same scenes, same order)
+
+    **POLISHING PRINCIPLES:**
+
+    **Natural Speech:**
+    - Use contractions (unless character is very formal)
+    - Allow fragments, not complete sentences
+    - Add interruptions, overlaps
+    - Include pauses, restarts, hesitations
+    - Remove exposition dumps
+
+    **Character Voice:**
+    - Each character's lines should be unmistakable
+    - Maintain speech pattern consistency throughout
+    - Use character-specific vocabulary
+    - Follow profile rules strictly
+
+    **Subtext:**
+    - Show, don't tell emotions
+    - Characters evade, deflect, imply
+    - Use silence and action
+    - Let audience infer meaning
+
+    **Audio-First:**
+    - Preserve all [SFX: ...] notation
+    - Add (pause), (beat), (overlapping) markers
+    - Maintain acoustic information
+    - Keep sound layers
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON with COMPLETE polished script:
+
+    {{
+      "dialogue_polished_script": {{
+        "total_changes": 23,
+        "word_count_change": "-176 words",
+        "average_sentence_before": 12.3,
+        "average_sentence_after": 7.8,
+        "subtext_level_before": "3/10",
+        "subtext_level_after": "7.5/10",
+        "voice_distinction_before": "4/10",
+        "voice_distinction_after": "8.5/10",
+        "scenes": [
+          {{
+            "scene_number": 1,
+            "heading": "INT. EVIDENCE ROOM - NIGHT",
+            "polished_script_content": "Complete scene with all dialogue polished...",
+            "changes_in_scene": [
+              {{
+                "line_number": 5,
+                "character": "Marcus",
+                "original": "I cannot participate in this investigation.",
+                "polished": "I can't do this.",
+                "change_type": "natural_speech",
+                "improvement": "More natural, uses contraction, shorter"
+              }}
+            ]
+          }}
+        ],
+        "complete_polished_script": "Full episode script with all scenes polished...",
+        "polish_summary": {{
+          "natural_speech_fixes": 12,
+          "voice_consistency_fixes": 8,
+          "subtext_enhancements": 15,
+          "lines_shortened": 18,
+          "interruptions_added": 4,
+          "pauses_added": 9
+        }}
+      }}
+    }}
+
+dependencies:
+  - station: 23
+    name: "Twist Integration (P3-enhanced script required)"
+  - station: 7
+    name: "Character Architect (voice profiles required)"
+  - station: 6
+    name: "Master Style Guide (dialogue principles optional)"
+
+enabled: true
+
+special_features:
+  supports_episode_selection: true
+  validates_character_voice: true
+  enhances_subtext: true
+  maintains_audio_first: true
+  generates_comparison_report: true

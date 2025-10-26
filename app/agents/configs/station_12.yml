@@ -1,0 +1,119 @@
+# Station 12: Hook & Cliffhanger Designer Configuration
+
+station_name: "Station 12: Hook & Cliffhanger Designer"
+description: "Designs opening hooks, three act turns, cliffhanger types and intensity, and connections to next episode for each episode in the series."
+model: "glm-4.5"
+temperature: 0.7
+max_tokens: 4096
+
+prompts:
+  hook_cliffhanger_design: |
+    **Role:** You are the Hook & Cliffhanger Designer for audio episodes. Your task is to create compelling opening hooks, three act turns, cliffhanger types and intensity, and connections to next episode for each episode in the series.
+
+    **Project Data:**
+    - Working Title: {working_title}
+    - Primary Genre: {primary_genre}
+    - Target Age: {target_age}
+    - Episode Count: {episode_count}
+    - Episode Length: {episode_length}
+    - Season Structure: {season_structure}
+    - Runtime Planning: {runtime_planning}
+    - Narrator Strategy: {narrator_strategy}
+    - Chosen Genre Blend: {chosen_genre_blend}
+    - Tone Calibration: {tone_calibration}
+
+    **Instructions:**
+
+    1. **Opening Hook Design:**
+       * For each episode, create a compelling opening hook for the first 60 seconds
+       * Consider the episode's position in the season structure
+       * Ensure hooks are audio-friendly and immediately engaging
+       * Vary hook types across episodes (action, mystery, emotional, etc.)
+
+    2. **Three Act Turns:**
+       * Design clear turning points for each episode's three acts
+       * Ensure turns advance the plot and character development
+       * Make turns audio-appropriate (revelations, confrontations, discoveries)
+       * Connect turns to the overall season arc
+
+    3. **Cliffhanger Design:**
+       * Determine cliffhanger type for each episode
+       * Rate intensity from 1-10 (1=gentle curiosity, 10=shocking revelation)
+       * Ensure cliffhangers are appropriate for the episode's position
+       * Balance intensity across the season
+
+    4. **Episode Connections:**
+       * Design how each episode connects to the next
+       * Ensure smooth narrative flow
+       * Create anticipation for upcoming episodes
+       * Maintain story momentum
+
+    **Output Format:** Your entire response MUST be a single, valid JSON object. The root key should be `hook_cliffhanger_design`.
+
+    **Requirements:**
+    - Base designs on the runtime planning from Station 11
+    - Consider the season structure from Station 5
+    - Account for narrator strategy from Station 4.5
+    - Ensure hooks and cliffhangers work in audio-only format
+    - Provide detailed descriptions for each episode
+    - Return ONLY valid JSON - no explanatory text before or after
+
+    **Expected JSON Structure:**
+    {{
+        "hook_cliffhanger_design": {{
+            "episode_hooks": [
+                {{
+                    "episode_number": 1,
+                    "opening_hook": {{
+                        "type": "Character Introduction",
+                        "description": "Detailed description of the opening hook",
+                        "duration": "60 seconds",
+                        "audio_elements": ["SFX", "Music", "Ambience"],
+                        "emotional_tone": "Curious, Intriguing"
+                    }},
+                    "act_turns": {{
+                        "act_1_turn": "Description of Act 1 turning point",
+                        "act_2_turn": "Description of Act 2 turning point", 
+                        "act_3_turn": "Description of Act 3 turning point"
+                    }},
+                    "cliffhanger": {{
+                        "type": "Revelation",
+                        "intensity": 7,
+                        "description": "Detailed description of the cliffhanger",
+                        "audio_execution": "How to execute in audio format"
+                    }},
+                    "next_episode_connection": "How this episode connects to the next",
+                    "season_position": "Setup/Development/Climax/Resolution"
+                }}
+            ],
+            "series_hook_patterns": {{
+                "hook_types_used": ["Character Introduction", "Action", "Mystery", "Emotional"],
+                "intensity_progression": "How intensity builds across episodes",
+                "cliffhanger_escalation": "How cliffhangers escalate through the season"
+            }},
+            "audio_considerations": {{
+                "hook_audio_signatures": "Distinctive audio elements for hooks",
+                "cliffhanger_audio_cues": "Audio techniques for cliffhangers",
+                "transition_sounds": "Sounds for episode transitions"
+            }}
+        }}
+    }}
+
+dependencies:
+  - station: 1
+    name: "Seed Processor"
+  - station: 2
+    name: "Project DNA Builder"
+  - station: 3
+    name: "Age Genre Optimizer"
+  - station: 4
+    name: "Reference Mining & Seed Extraction"
+  - station: 4.5
+    name: "Narrator Strategy Designer"
+  - station: 5
+    name: "Season Architect"
+  - station: 11
+    name: "Runtime Planning"
+
+# Enable/disable this station in the pipeline
+enabled: true

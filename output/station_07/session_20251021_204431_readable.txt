@@ -1,0 +1,119 @@
+======================================================================
+STATION 7: CHARACTER ARCHITECT
+======================================================================
+
+Working Title: The Lifeline Text
+Primary Genre: Contemporary Romance
+Target Age: 28-50
+Episode Count: 8-12 episodes
+Core Premise: Unknown
+
+----------------------------------------------------------------------
+TIER 1: PROTAGONISTS
+----------------------------------------------------------------------
+
+1. Tom (Age: 38, Role: Life Coach and Therapist)
+   Background: Tom is a successful life coach who has recently experienced a personal crisis due to his own burnout. He is now more empathetic and understanding of his clients' struggles.
+   Motivations: To help his clients find balance and meaning in their lives while also finding his own.
+   Fears: Repeating his past mistakes and losing the trust of his clients.
+   Desires: To create a sustainable and fulfilling career that aligns with his values.
+   Voice: medium pitch, medium pace
+   Vocabulary: sophisticated adult vocabulary with occasional industry-specific jargon
+   Verbal Tics: You know, I believe, Let's focus on
+   Catchphrases: Find your lifeline, What does your heart tell you?
+
+2. Julia (Age: 35, Role: Psychiatrist)
+   Background: Julia is a dedicated psychiatrist who has a tendency to keep her personal life separate from her professional one. She is highly analytical and sometimes struggles with emotional openness.
+   Motivations: To help her patients and maintain her professional integrity.
+   Fears: Becoming too emotionally involved with her patients or colleagues.
+   Desires: A meaningful connection with someone who understands her.
+   Voice: medium pitch, medium pace
+   Vocabulary: sophisticated adult vocabulary with occasional medical jargon
+   Verbal Tics: Based on my experience, In my professional opinion, I need to
+   Catchphrases: Let's break this down, What are you feeling?
+
+3. Sarah (Age: 32, Role: Client of Tom)
+   Background: Sarah is a high-achieving businesswoman who has been struggling with anxiety and burnout. She is direct and driven but often feels overwhelmed by her responsibilities.
+   Motivations: To regain control over her life and find a sense of balance.
+   Fears: Failing to meet her own high standards and losing her professional success.
+   Desires: A more fulfilling and sustainable life.
+   Voice: medium-high pitch, fast pace
+   Vocabulary: sophisticated adult vocabulary with business-oriented terms
+   Verbal Tics: I need to, Let's get this done, What's the plan?
+   Catchphrases: I can handle this, What's the next step?
+
+----------------------------------------------------------------------
+TIER 2: MAJOR SUPPORTING
+----------------------------------------------------------------------
+
+1. Dr. Martinez (Age: 45, Role: Julia's Colleague)
+   Backstory: Dr. Martinez is a seasoned psychiatrist who has been a mentor to Julia. He is known for his calm and supportive demeanor but can be blunt when necessary.
+   Voice: medium pitch, medium pace
+   Story Function: Serves as a mentor and confidant, providing professional and personal advice.
+   Relationship to Protagonists: Mentor to Julia, Colleague and supporter of Tom
+   Verbal Tics: From my perspective, I've seen this before, Let's consider
+   Catchphrases: Trust the process, What's the bigger picture?
+
+2. Mike (Age: 40, Role: Sarah's Colleague)
+   Backstory: Mike is a longtime friend and colleague of Sarah. He is supportive but sometimes overbearing, pushing Sarah to work harder even when she is struggling.
+   Voice: medium pitch, fast pace
+   Story Function: Provides external pressure on Sarah, highlighting her struggles and eventual growth.
+   Relationship to Protagonists: Colleague and friend to Sarah
+   Verbal Tics: You can do it, Let's push for it, We need to
+   Catchphrases: You're the best, We've got this
+
+3. Lena (Age: 30, Role: Tom's Friend)
+   Backstory: Lena is a close friend of Tom's who has been supportive through his own struggles. She is a therapist herself and provides a different perspective on his work.
+   Voice: medium-high pitch, medium pace
+   Story Function: Serves as a sounding board and support system for Tom, offering different perspectives on his work and relationships.
+   Relationship to Protagonists: Close friend and confidant to Tom
+   Verbal Tics: I think, What do you feel?, Let's talk about
+   Catchphrases: You've got this, What's your gut telling you?
+
+----------------------------------------------------------------------
+TIER 3: RECURRING
+----------------------------------------------------------------------
+
+1. Dr. Thompson (Age: 55, Role: Hospital Administrator)
+   Defining Trait: Strict and by-the-book
+   Voice Hook: Formal and authoritative
+   Narrative Purpose: Provides professional challenges and constraints for Julia and Dr. Martinez.
+   Episodes Appearing: 2, 7
+   Verbal Tics: According to the policy, We must ensure, I expect
+   Catchphrases: This is non-negotiable, We have to follow protocol
+
+2. Rachel (Age: 28, Role: Tom's Client)
+   Defining Trait: Struggling with self-doubt
+   Voice Hook: Soft and hesitant
+   Narrative Purpose: Provides a contrast to Sarah's more confident demeanor and highlights different aspects of Tom's coaching abilities.
+   Episodes Appearing: 3, 9
+   Verbal Tics: I'm not sure, What if, I don't know
+   Catchphrases: I'll try, I'm scared
+
+3. Alex (Age: 33, Role: Julia's Patient)
+   Defining Trait: Struggling with depression
+   Voice Hook: Somber and reflective
+   Narrative Purpose: Highlights Julia's professional challenges and her ability to connect with patients on a deeper level.
+   Episodes Appearing: 4, 8
+   Verbal Tics: I feel, It's hard to, I don't want to
+   Catchphrases: I need help, I'm trying
+
+4. Emily (Age: 42, Role: Sarah's Friend)
+   Defining Trait: Supportive and empathetic
+   Voice Hook: Warm and comforting
+   Narrative Purpose: Provides emotional support to Sarah and highlights the importance of a support network.
+   Episodes Appearing: 5, 10
+   Verbal Tics: I'm here for you, You're not alone, Let's talk
+   Catchphrases: You can do this, We'll get through this together
+
+5. Mr. Johnson (Age: 60, Role: Tom's Mentor)
+   Defining Trait: Wise and experienced
+   Voice Hook: Deep and reassuring
+   Narrative Purpose: Provides wisdom and guidance to Tom, helping him navigate his own challenges.
+   Episodes Appearing: 6, 11
+   Verbal Tics: In my experience, You must, Remember that
+   Catchphrases: Trust yourself, Listen to your heart
+
+======================================================================
+END OF CHARACTER BIBLE
+======================================================================

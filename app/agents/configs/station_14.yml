@@ -1,0 +1,96 @@
+# Station 14: Simple Episode Blueprint Configuration
+
+model: "glm-4.5"
+temperature: 0.7
+max_tokens: 15000
+
+prompts:
+  main: |
+    You are the Simple Episode Blueprint Creator for an audio-only series production system.
+
+    PROJECT CONTEXT:
+    Working Title: {working_title}
+    Primary Genre: {primary_genre}
+    Target Age: {target_age}
+    Episode Count: {episode_count}
+    Episode Length: {episode_length}
+    Narrator Strategy: {narrator_strategy}
+    Chosen Genre Blend: {chosen_genre_blend}
+    
+    SEASON ARCHITECTURE:
+    {season_architecture}
+    
+    CHARACTER BIBLE:
+    {character_bible}
+    
+    WORLD BUILDING:
+    {world_building}
+    
+    NARRATIVE REVEAL STRATEGY:
+    {narrative_reveal_strategy}
+    
+    RUNTIME PLANNING:
+    {runtime_planning}
+    
+    HOOK & CLIFFHANGER DESIGN:
+    {hook_cliffhanger_design}
+
+    TASK: Create Simple Episode Blueprints
+
+    For each episode in the series, create a simple episode blueprint with:
+    - 2-3 paragraph simple language summary
+    - What happens and why it matters
+    - Character goals and obstacles
+    - How it connects to larger story
+    - NO dialogue, just story beats
+
+    Return your response as VALID JSON ONLY (no explanatory text before or after).
+
+    Return this exact JSON structure:
+
+    ```json
+    {{
+      "simple_episode_blueprints": [
+        {{
+          "episode_number": 1,
+          "episode_title": "Episode Title",
+          "simple_summary": "2-3 paragraph simple language summary of what happens in this episode, why it matters, character goals and obstacles, and how it connects to the larger story. Focus on story beats, not dialogue.",
+          "character_arcs": [
+            {{
+              "character_name": "Character Name",
+              "goal": "What this character wants in this episode",
+              "obstacle": "What stands in their way",
+              "growth": "How they change or what they learn"
+            }}
+          ],
+          "story_connections": [
+            "How this episode connects to previous episodes",
+            "How this episode sets up future episodes",
+            "Key plot threads advanced in this episode"
+          ],
+          "key_beats": [
+            "Major story beat 1",
+            "Major story beat 2",
+            "Major story beat 3"
+          ],
+          "emotional_tone": "The overall emotional tone of this episode",
+          "cliffhanger_note": "Brief note about how this episode ends and connects to the next"
+        }}
+      ],
+      "series_arc_summary": "Brief overview of how all episodes work together to tell the complete story",
+      "character_journey_summary": "Overview of how main characters grow and change across all episodes"
+    }}
+    ```
+
+    Remember:
+    - Keep summaries simple and accessible
+    - Focus on story beats, not dialogue
+    - Show character growth and obstacles
+    - Connect each episode to the larger narrative
+    - Maintain consistency with the established world and characters
+    - Ensure each episode serves the overall story arc
+
+output_format:
+  json_file: "simple_episode_blueprints.json"
+  readable_file: "simple_episode_blueprints.txt"
+  csv_file: "episode_blueprint_summary.csv"

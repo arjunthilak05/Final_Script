@@ -1,0 +1,128 @@
+{
+  "session_id": "session_20251016_235335",
+  "timestamp": "20251019_032539",
+  "project_title": "The Accidental Lifeline",
+  "dialect_planning_data": {
+    "dialect_planning_summary": {
+      "overall_status": "PASS_WITH_WARNINGS",
+      "total_issues_found": 5,
+      "voice_consistency_issues": 1,
+      "age_appropriateness_issues": 1,
+      "dialect_consistency_issues": 1,
+      "audio_clarity_issues": 1,
+      "genre_inconsistency_issues": 1
+    },
+    "character_voice_consistency": {
+      "status": "PASS_WITH_WARNINGS",
+      "character_analyses": [
+        {
+          "character_name": "Unknown Character",
+          "voice_status": "FAIL",
+          "voice_signature": {
+            "pitch": "not_defined",
+            "pace": "not_defined",
+            "vocabulary": "not_defined",
+            "speech_patterns": "not_defined",
+            "verbal_tics": "not_defined"
+          },
+          "issues": [
+            {
+              "issue_type": "voice_inconsistency",
+              "description": "Character information not available in Character Bible",
+              "severity": "critical",
+              "location": "Character Bible",
+              "recommendation": "Develop comprehensive Character Bible with detailed voice signatures for all characters"
+            }
+          ],
+          "voice_direction_notes": "Character voice direction cannot be determined without character information"
+        }
+      ]
+    },
+    "age_appropriateness": {
+      "status": "FAIL",
+      "target_age": "Unknown",
+      "issues": [
+        {
+          "issue_type": "vocabulary_too_complex",
+          "description": "Target age range not defined, making age-appropriate language assessment impossible",
+          "severity": "critical",
+          "location": "Project Context",
+          "recommendation": "Define target age range to establish appropriate vocabulary, sentence complexity, and content guidelines"
+        }
+      ],
+      "language_guidelines": "Cannot establish language guidelines without knowing target age range"
+    },
+    "dialect_consistency": {
+      "status": "PASS_WITH_WARNINGS",
+      "issues": [
+        {
+          "issue_type": "regional_dialect_inconsistency",
+          "description": "No world building information available to determine cultural or regional dialect requirements",
+          "severity": "warning",
+          "location": "World Building",
+          "recommendation": "Develop World Building documentation to establish cultural and regional speech patterns"
+        }
+      ],
+      "dialect_guidelines": "Dialect guidelines cannot be established without world building information"
+    },
+    "audio_clarity": {
+      "status": "PASS_WITH_WARNINGS",
+      "issues": [
+        {
+          "issue_type": "speaker_identification_difficult",
+          "description": "Without character voices defined, speaker identification planning cannot be completed",
+          "severity": "warning",
+          "location": "Character Bible",
+          "recommendation": "Define distinct voice characteristics for each character to ensure clear speaker identification in audio-only format"
+        }
+      ],
+      "audio_guidelines": "Ensure all characters have distinctive vocal characteristics including pitch, pace, and speech patterns for clear audio identification"
+    },
+    "genre_appropriateness": {
+      "status": "FAIL",
+      "genre": "Unknown",
+      "issues": [
+        {
+          "issue_type": "tone_inconsistency",
+          "description": "Primary genre not defined, making genre-appropriate language assessment impossible",
+          "severity": "critical",
+          "location": "Project Context",
+          "recommendation": "Define primary genre to establish appropriate language style, tone, and vocabulary"
+        }
+      ],
+      "genre_guidelines": "Genre guidelines cannot be established without knowing the primary genre"
+    },
+    "voice_direction_recommendations": {
+      "character_voice_notes": [
+        {
+          "character_name": "Placeholder Character",
+          "voice_description": "Voice characteristics to be defined based on Character Bible",
+          "speech_patterns": "Speech patterns to be established during character development",
+          "key_phrases": [
+            "To be determined"
+          ],
+          "emotional_range": "To be defined in Character Bible",
+          "audio_notes": "Each character must have distinct vocal characteristics for audio identification"
+        }
+      ],
+      "casting_guidelines": "Cast voice actors who can maintain consistent character voices across all episodes and create distinct character differentiations",
+      "production_notes": "Record voice reference samples for each character to ensure consistency across all episodes"
+    },
+    "recommendations": {
+      "immediate_fixes": [
+        "Develop comprehensive Character Bible with detailed voice signatures for all characters",
+        "Define target age range for age-appropriate language assessment",
+        "Establish primary genre for genre-appropriate language guidelines"
+      ],
+      "suggested_improvements": [
+        "Create detailed World Building documentation to establish cultural and regional speech patterns",
+        "Develop episode outlines to assess dialogue and voice consistency needs"
+      ],
+      "minor_adjustments": [
+        "Consider narrator strategy and how it will interact with character voices",
+        "Plan for voice actor direction sessions to establish character voices"
+      ]
+    },
+    "validation_notes": "Comprehensive dialect planning cannot be completed without essential project elements including Character Bible, World Building, episode outlines, defined target age, and established genre. These foundational elements must be developed before meaningful voice consistency and dialect planning can occur."
+  }
+}

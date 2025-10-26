@@ -1,0 +1,139 @@
+# Station 23: Story Coherence & Character Check
+
+station_name: "Station 23: Story Coherence Check"
+description: "Validates story logic, character consistency, and emotional authenticity. Genre-aware: drama focused for character-driven stories, minimal P3 Grid application only for thrillers/mysteries."
+model: "glm-4.5"
+temperature: 0.7
+max_tokens: 16384
+
+# Input configuration
+input:
+  required_stations:
+    - station: 21
+      name: "First Draft"
+    - station: 22
+      name: "Momentum Check (optional)"
+
+# Output configuration
+output:
+  directory: "output/station_23"
+  episode_subdirectory: "episode_{episode_number:02d}"
+  coherence_check: "episode_{episode_number:02d}_coherence_check.json"
+  enhancements: "episode_{episode_number:02d}_enhanced.txt"
+  summary: "episode_{episode_number:02d}_coherence_summary.txt"
+
+prompts:
+  story_coherence_validation: |
+    **ROLE:** You are validating story logic and narrative coherence.
+
+    **EPISODE:** {episode_number}
+    **SCRIPT:** {current_script}
+
+    **YOUR TASK:**
+    Validate that the story is logically coherent and emotionally consistent.
+
+    **VALIDATION FOCUS (Character Drama):**
+
+    1. **STORY LOGIC**
+       - Do events follow logically from previous events?
+       - Are character decisions motivated and believable?
+       - Does cause/effect flow naturally?
+
+    2. **CHARACTER CONSISTENCY**
+       - Do characters act according to established personalities?
+       - Are emotional reactions appropriate to situations?
+       - Is dialogue consistent with character voice?
+
+    3. **EMOTIONAL BEATS**
+       - Are emotional moments earned and believable?
+       - Does emotional arc make sense?
+       - Are transitions between emotional states smooth?
+
+    4. **RELATIONSHIP DYNAMICS**
+       - Do character interactions feel authentic?
+       - Do relationships evolve naturally?
+       - Is subtext clear in dialogue?
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON:
+
+    {{
+      "story_coherence": {{
+        "episode_number": {episode_number},
+        "coherence_score": "9/10",
+        "story_logic": {{
+          "status": "valid",
+          "assessment": "Events follow logically from character motivations"
+        }},
+        "character_consistency": {{
+          "consistent_characters": ["Tom", "Julia"],
+          "authenticity": "genuine"
+        }},
+        "emotional_authenticity": {{
+          "earned_moments": 6,
+          "emotional_arc": "believable",
+          "assessment": "All emotional beats are earned through character interaction"
+        }},
+        "issues_found": [],
+        "recommendations": [
+          "Story is coherent and emotionally authentic"
+        ]
+      }}
+    }}
+
+  minimal_enhancement: |
+    **ROLE:** You are making minimal targeted improvements to story coherence.
+
+    **EPISODE:** {episode_number}
+    **SCRIPT:** {current_script}
+    **COHERENCE_ISSUES:** {coherence_issues}
+
+    **YOUR TASK:**
+    Make ONLY minimal, targeted improvements. Preserve the original story.
+
+    **FIX PRINCIPLES (Minimal Intervention):**
+    - Only fix clear logic problems
+    - Only add brief character motivation where unclear
+    - Only smooth obvious transitions
+    - Only enhance genuine emotional beats
+    - Do NOT rewrite scenes
+    - Do NOT add new plot points
+    - Do NOT change character arc
+    - Do NOT over-complicate
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON:
+
+    {{
+      "coherence_enhancements": {{
+        "episode_number": {episode_number},
+        "total_changes": 2,
+        "enhancement_type": "minimal_targeted_fixes",
+        "enhancements": [
+          {{
+            "enhancement_number": 1,
+            "scene_number": 2,
+            "type": "add_motivation|clarify_transition|enhance_emotion",
+            "original_content": "Tom hangs up.",
+            "enhanced_content": "Tom hangs up, taking a moment to collect himself.",
+            "reason": "Clarifies emotional response"
+          }}
+        ],
+        "full_enhanced_script": "Complete script with minimal enhancements...",
+        "preservation_status": "Original story and character arc fully preserved",
+        "summary": "Minimal coherence improvements while maintaining narrative integrity"
+      }}
+    }}
+
+dependencies:
+  - station: 21
+    name: "First Draft (required)"
+  - station: 22
+    name: "Momentum Check (optional)"
+
+enabled: true
+
+special_features:
+  genre_aware: true
+  minimal_intervention: true
+  preserves_original_narrative: true
+  validates_emotional_authenticity: true
+  character_focused: true

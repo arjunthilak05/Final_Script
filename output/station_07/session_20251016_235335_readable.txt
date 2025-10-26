@@ -1,0 +1,119 @@
+======================================================================
+STATION 7: CHARACTER ARCHITECT
+======================================================================
+
+Working Title: The Accidental Lifeline
+Primary Genre: Drama
+Target Age: 25-45
+Episode Count: 3-6 episodes
+Core Premise: Unknown
+
+----------------------------------------------------------------------
+TIER 1: PROTAGONISTS
+----------------------------------------------------------------------
+
+1. Tom (Age: 35, Role: Life Coach and Motivational Speaker)
+   Background: Tom grew up in a middle-class family and struggled with self-esteem issues during his youth. He turned his life around through personal development and now helps others do the same.
+   Motivations: To help others find their purpose and overcome their fears.
+   Fears: Being seen as a fraud, failing his clients.
+   Desires: To build a successful practice and make a meaningful impact.
+   Voice: medium pitch, medium pace
+   Vocabulary: sophisticated but accessible
+   Verbal Tics: You can do this, I believe in you
+   Catchphrases: Your potential is limitless, Step into your power
+
+2. Julia (Age: 32, Role: Emergency Room Doctor)
+   Background: Julia comes from a family of medical professionals and has always felt the weight of expectation. She is dedicated to her work but struggles with the emotional toll of her job.
+   Motivations: To save lives and provide the best care possible.
+   Fears: Failing her patients, making a critical mistake.
+   Desires: To find a balance between her professional and personal life.
+   Voice: medium pitch, medium pace
+   Vocabulary: sophisticated but accessible, with a professional tone
+   Verbal Tics: Stay with me, I need you to focus
+   Catchphrases: Every life matters, We can do this
+
+3. Sarah (Age: 28, Role: Tom's Client)
+   Background: Sarah is a young professional who has been struggling with anxiety and low self-esteem. She is seeking help to overcome her fears and find more fulfillment in her life.
+   Motivations: To improve her mental health and achieve her personal goals.
+   Fears: Failure, rejection, and not being good enough.
+   Desires: To feel more confident and in control of her life.
+   Voice: medium pitch, medium pace
+   Vocabulary: sophisticated but accessible, with a touch of vulnerability
+   Verbal Tics: I'm not sure if, What if
+   Catchphrases: I can do this, I am worthy
+
+----------------------------------------------------------------------
+TIER 2: MAJOR SUPPORTING
+----------------------------------------------------------------------
+
+1. Dr. Martinez (Age: 45, Role: Julia's Colleague and Mentor)
+   Backstory: Dr. Martinez is a seasoned ER doctor who has seen it all. She is a mentor to Julia and provides guidance and support.
+   Voice: low pitch, medium pace
+   Story Function: Mentor and confidant to Julia, helping her navigate the challenges of her job.
+   Relationship to Protagonists: Mentor to Julia, Respects Tom's work
+   Verbal Tics: Let's get to work, Stay focused
+   Catchphrases: You've got this, We're a team
+
+2. Mike (Age: 40, Role: Paramedic)
+   Backstory: Mike is a seasoned paramedic who has worked closely with Julia and the ER team. He is known for his quick thinking and calm demeanor in high-stress situations.
+   Voice: medium pitch, medium pace
+   Story Function: Provides a bridge between the medical and personal worlds, offering practical and emotional support.
+   Relationship to Protagonists: Colleague and friend to Julia, Respects Tom's approach
+   Verbal Tics: Stay with me, We can handle this
+   Catchphrases: It's all good, Let's do this
+
+3. Lena (Age: 30, Role: Tom's Assistant)
+   Backstory: Lena is a recent graduate in psychology who has joined Tom's practice as an assistant. She is eager to learn and support Tom's clients.
+   Voice: medium pitch, medium pace
+   Story Function: Supports Tom's work and helps build a supportive environment for clients.
+   Relationship to Protagonists: Assistant and confidant to Tom, Supports Sarah
+   Verbal Tics: That's great, I'm here for you
+   Catchphrases: We can do this together, You're making progress
+
+----------------------------------------------------------------------
+TIER 3: RECURRING
+----------------------------------------------------------------------
+
+1. Nurse Linda (Age: 50, Role: Nurse in the ER)
+   Defining Trait: Compassionate and efficient
+   Voice Hook: Warm and soothing voice
+   Narrative Purpose: Provides emotional support and practical assistance to patients and staff.
+   Episodes Appearing: 1, 3, 5
+   Verbal Tics: It's going to be okay, You're safe now
+   Catchphrases: We've got you, You're doing great
+
+2. Mark (Age: 38, Role: Sarah's Colleague)
+   Defining Trait: Supportive and encouraging
+   Voice Hook: Cheerful and upbeat tone
+   Narrative Purpose: Provides a positive influence in Sarah's professional life.
+   Episodes Appearing: 2, 4
+   Verbal Tics: You're doing amazing, Keep it up
+   Catchphrases: We're a great team, You've got this
+
+3. Dr. Lee (Age: 55, Role: ER Doctor)
+   Defining Trait: Experienced and calm
+   Voice Hook: Deep, authoritative voice
+   Narrative Purpose: Provides medical expertise and support to the ER team.
+   Episodes Appearing: 1, 4
+   Verbal Tics: Let's assess the situation, We need to act quickly
+   Catchphrases: Stay focused, We can handle this
+
+4. Emma (Age: 25, Role: Tom's Client)
+   Defining Trait: Energetic and ambitious
+   Voice Hook: Bright and enthusiastic voice
+   Narrative Purpose: Provides a contrast to Sarah's struggles and shows the positive impact of Tom's coaching.
+   Episodes Appearing: 1, 5
+   Verbal Tics: I'm so excited, This is amazing
+   Catchphrases: I can do it, Let's go for it
+
+5. Mr. Thompson (Age: 60, Role: Patient in the ER)
+   Defining Trait: Gruff but grateful
+   Voice Hook: Rough, deep voice
+   Narrative Purpose: Provides a human element to the medical scenarios and shows the impact of the ER team's work.
+   Episodes Appearing: 2, 3
+   Verbal Tics: Thanks, doc, You did good
+   Catchphrases: I owe you one, You're a lifesaver
+
+======================================================================
+END OF CHARACTER BIBLE
+======================================================================

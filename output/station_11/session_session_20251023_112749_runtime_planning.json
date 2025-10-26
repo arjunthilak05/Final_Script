@@ -1,0 +1,44 @@
+{
+  "episode_breakdown": [
+    {
+      "episode_number": 1,
+      "total_runtime_target": "35 minutes",
+      "segment_allocation": {
+        "teaser_cold_open": "3 minutes",
+        "act_1": "10 minutes",
+        "act_2": "15 minutes",
+        "act_3": "5 minutes",
+        "tag_credits": "2 minutes"
+      },
+      "word_budget": {
+        "spoken_words_per_minute": 155,
+        "total_words": 5425,
+        "dialogue_percentage": 70,
+        "narration_percentage": 30,
+        "sfx_silence_allowance": "15%"
+      },
+      "pacing_type": "standard",
+      "special_notes": "Character introduction episode"
+    },
+    {
+      "episode_number": 2,
+      "total_runtime_target": "37 minutes",
+      "segment_allocation": {
+        "teaser_cold_open": "3 minutes",
+        "act_1": "11 minutes",
+        "act_2": "16 minutes",
+        "act_3": "5 minutes",
+        "tag_credits": "2 minutes"
+      },
+      "word_budget": {
+        "spoken_words_per_minute": 155,
+        "total_words": 5735,
+        "dialogue_percentage": 70,
+        "narration_percentage": 30,
+        "sfx_silence_allowance": "15%"
+      },
+      "pacing_type": "standard",
+      "special_notes": "Building relationships"
+    }
+  ]
+}

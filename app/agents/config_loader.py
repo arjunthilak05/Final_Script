@@ -16,12 +16,19 @@ from pathlib import Path
 
 class StationConfig:
     """Configuration for a single station"""
-    
+
     def __init__(self, config_data: Dict[str, Any]):
         self.model = config_data.get('model', 'qwen-72b')
         self.temperature = config_data.get('temperature', 0.7)
         self.max_tokens = config_data.get('max_tokens', 3000)
         self.prompts = config_data.get('prompts', {})
+        self.dependencies = config_data.get('dependencies', [])
+        self.enabled = config_data.get('enabled', True)
+        self.station_name = config_data.get('station_name', 'Unknown Station')
+        self.description = config_data.get('description', '')
+        
+        # Store raw config data for custom fields
+        self._config_data = config_data
         
     def get_prompt(self, prompt_name: str = 'main') -> str:
         """Get a specific prompt by name"""
@@ -30,6 +37,16 @@ class StationConfig:
     def get_all_prompts(self) -> Dict[str, str]:
         """Get all prompts as a dictionary"""
         return self.prompts.copy()
+    
+    def get(self, key: str, default: Any = None) -> Any:
+        """Get any configuration value by key"""
+        return self._config_data.get(key, default)
+    
+    def __getattr__(self, name: str) -> Any:
+        """Allow access to custom configuration fields"""
+        if name in self._config_data:
+            return self._config_data[name]
+        raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{name}'")
 
 
 def load_station_config(station_number: int, station_suffix: str = None) -> StationConfig:

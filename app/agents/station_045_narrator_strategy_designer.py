@@ -29,6 +29,7 @@ from app.openrouter_agent import OpenRouterAgent
 from app.redis_client import RedisClient
 from app.agents.config_loader import load_station_config
 from app.agents.json_extractor import extract_json
+from app.agents.title_validator import TitleValidator
 
 
 class Station045NarratorStrategyDesigner:
@@ -189,8 +190,8 @@ class Station045NarratorStrategyDesigner:
             extracted['episode_count'] = station1_data.get('episode_count', 'Unknown')
             extracted['episode_length'] = station1_data.get('episode_length', 'Unknown')
             
-            # From Station 2
-            extracted['working_title'] = station2_data.get('working_title', 'Unknown')
+            # Use bulletproof title extraction
+            extracted['working_title'] = TitleValidator.extract_bulletproof_title(station1_data, station2_data)
             extracted['core_premise'] = station2_data.get('world_setting', {}).get('core_premise', 'Unknown')
             
             # From Station 3

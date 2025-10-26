@@ -1,0 +1,183 @@
+{
+  "procedure_check_summary": {
+    "overall_status": "PASS_WITH_WARNINGS",
+    "total_issues_found": 6,
+    "legal_procedural_issues": 0,
+    "medical_accuracy_issues": 4,
+    "professional_accuracy_issues": 2,
+    "timeline_realism_issues": 0,
+    "technical_accuracy_issues": 0
+  },
+  "legal_procedural_check": {
+    "status": "PASS",
+    "areas_reviewed": [
+      "court_proceedings",
+      "police_procedures",
+      "legal_rights",
+      "criminal_justice",
+      "civil_procedures",
+      "government_processes",
+      "legal_terminology"
+    ],
+    "issues": []
+  },
+  "medical_accuracy_check": {
+    "status": "PASS_WITH_WARNINGS",
+    "areas_reviewed": [
+      "injuries_and_recovery",
+      "medical_treatments",
+      "hospital_procedures",
+      "emergency_services",
+      "medical_terminology",
+      "medication_effects",
+      "mental_health",
+      "medical_equipment"
+    ],
+    "issues": [
+      {
+        "issue_type": "procedural_inaccuracy",
+        "description": "ER nurse Julia is described as handling critical trauma cases with limited resources, but the specific procedures and hierarchies are not accurately depicted",
+        "severity": "warning",
+        "location": "Episode 3, Scene 3 and Episode 5, Scene 2",
+        "current_depiction": "Julia takes charge of critical emergencies using confidence gained from messages, successfully managing crises with limited resources",
+        "accurate_alternative": "In actual ER settings, nurses would follow established protocols with clear hierarchies. While nurses do take initiative, they would still work within a team structure with physicians making key medical decisions. Julia could demonstrate leadership but would operate within these professional boundaries",
+        "why_inaccurate": "The depiction oversimplifies the complex team dynamics and decision-making processes in emergency medical care",
+        "impact_on_credibility": "May be noticed by medical professionals in the audience, reducing credibility of the hospital setting",
+        "recommendation": "Show Julia as a skilled nurse who demonstrates initiative within the established medical team structure, with Dr. Martinez or other physicians confirming key decisions"
+      },
+      {
+        "issue_type": "procedural_inaccuracy",
+        "description": "Hospital administrator Dr. Patel questions Julia's methods in Episode 5, but the process depicted doesn't accurately reflect hospital administrative procedures",
+        "severity": "warning",
+        "location": "Episode 5, Scene 3",
+        "current_depiction": "Julia is called to a meeting with Dr. Patel to question her recent performance and methods",
+        "accurate_alternative": "In a hospital setting, performance concerns typically follow a more structured process including documentation, peer review, and progressive discipline. A direct questioning by an administrator would usually be preceded by documented concerns and follow specific protocols",
+        "why_inaccurate": "The administrative process shown is too informal and doesn't reflect actual hospital procedures for addressing staff performance",
+        "impact_on_credibility": "May be noticed by healthcare professionals familiar with administrative procedures",
+        "recommendation": "Show a more realistic process where Dr. Patel references specific documented incidents and follows established procedures for addressing performance concerns"
+      },
+      {
+        "issue_type": "terminology_error",
+        "description": "Julia is referred to as an ER doctor in Episode 1, but later consistently as an ER nurse",
+        "severity": "warning",
+        "location": "Episode 1, Episode 2, Episode 3",
+        "current_depiction": "In Episode 1 summary, Julia is described as a depressed ER doctor, but in the character bible and subsequent episodes, she's an ER nurse",
+        "accurate_alternative": "Consistently refer to Julia as an ER nurse throughout the series",
+        "why_inaccurate": "The inconsistency creates confusion about Julia's professional role and qualifications",
+        "impact_on_credibility": "Inconsistency in character details can break audience immersion",
+        "recommendation": "Ensure Julia is consistently identified as an ER nurse throughout all episodes, including the Episode 1 summary"
+      },
+      {
+        "issue_type": "mental_health",
+        "description": "Julia's depression appears to be significantly improved through motivational messages without depicting proper mental health treatment",
+        "severity": "warning",
+        "location": "Episodes 1-6",
+        "current_depiction": "Julia's depression improves primarily through receiving Tom's motivational messages and deciding to meet him",
+        "accurate_alternative": "While the messages provide support, depression typically requires professional treatment including therapy and possibly medication. The messages could be a catalyst but not the complete solution",
+        "why_inaccurate": "The portrayal oversimplifies the treatment of depression and may create unrealistic expectations about recovery",
+        "impact_on_credibility": "May be noticed by viewers familiar with mental health treatment, potentially reducing the series' credibility",
+        "recommendation": "Show Julia's journey as involving multiple support systems, with the messages being one important element among others including professional help from Dr. Martinez or mental health services"
+      }
+    ]
+  },
+  "professional_accuracy_check": {
+    "status": "PASS_WITH_WARNINGS",
+    "professions_reviewed": [
+      "Life Coach",
+      "ER Nurse",
+      "Corporate Executive",
+      "Hospital Administrator"
+    ],
+    "issues": [
+      {
+        "issue_type": "job_procedure_error",
+        "description": "Tom's ability to trace Julia's messages to determine she works in the medical field is oversimplified",
+        "severity": "warning",
+        "location": "Episode 5, Scene 1",
+        "current_depiction": "Tom uses technical skills to trace the message origin and discovers Julia works in the medical field",
+        "accurate_alternative": "While some basic location tracking might be possible, determining someone's profession from a phone number would require additional information or social engineering. Tom would need more sophisticated methods or additional information to make this determination",
+        "why_inaccurate": "The technical process shown oversimplifies the complexity of tracing digital communications and determining personal information",
+        "impact_on_credibility": "May be noticed by viewers with technical knowledge, reducing the realism of Tom's investigation",
+        "recommendation": "Show Tom using a combination of technical methods and deduction from Julia's messages to narrow down her profession, rather than a direct technical trace"
+      },
+      {
+        "issue_type": "job_procedure_error",
+        "description": "Sarah's role as a corporate executive is not clearly defined in terms of her specific position and responsibilities",
+        "severity": "warning",
+        "location": "Character Bible and Episodes 2, 4",
+        "current_depiction": "Sarah is described as a high-powered executive in a fast-paced corporate environment, but her specific role and industry are not defined",
+        "accurate_alternative": "Specify Sarah's position (e.g., VP of Marketing, CTO, etc.) and industry to provide more context for her work-life balance struggles and professional environment",
+        "why_inaccurate": "The lack of specificity makes Sarah's professional challenges less concrete and relatable",
+        "impact_on_credibility": "May reduce the authenticity of Sarah's character and her professional struggles",
+        "recommendation": "Define Sarah's specific executive position and industry to provide more context for her character development and professional challenges"
+      }
+    ]
+  },
+  "timeline_realism_check": {
+    "status": "PASS",
+    "issues": []
+  },
+  "technical_accuracy_check": {
+    "status": "PASS",
+    "technical_areas_reviewed": [
+      "messaging_systems",
+      "medical_equipment",
+      "computer_technology"
+    ],
+    "issues": []
+  },
+  "procedure_recommendations": {
+    "critical_fixes": [],
+    "suggested_improvements": [
+      "Clarify Julia's role as an ER nurse consistently throughout the series",
+      "Show more realistic ER team dynamics and medical hierarchies",
+      "Depict hospital administrative procedures more accurately",
+      "Add more depth to Sarah's executive role and industry",
+      "Show Julia's depression treatment as more comprehensive than just motivational messages"
+    ],
+    "minor_adjustments": [
+      "Refine Tom's technical investigation methods to be more realistic",
+      "Add more specific medical terminology and procedures in hospital scenes",
+      "Include more details about life coaching practices and techniques"
+    ],
+    "research_needed": [
+      "ER nursing procedures and team dynamics",
+      "Hospital administrative protocols",
+      "Depression treatment and recovery processes",
+      "Corporate executive roles and responsibilities",
+      "Life coaching practices and business models"
+    ],
+    "dramatic_license_notes": [
+      "The speed of Julia's improvement through motivational messages is acceptable for dramatic purposes, but should be balanced with more realistic treatment elements",
+      "Tom's ability to trace Julia's profession from messages can be simplified for narrative purposes, but should include some plausible technical elements",
+      "The focus on emotional connection over technical accuracy in the messaging system is appropriate for the story's themes"
+    ]
+  },
+  "accuracy_resources": {
+    "recommended_consultants": [
+      "ER nurse or nursing consultant",
+      "Hospital administrator or healthcare management consultant",
+      "Mental health professional",
+      "Corporate executive or business consultant",
+      "Life coach or professional coach"
+    ],
+    "reference_materials": [
+      "Emergency nursing protocols and procedures",
+      "Hospital administration guidelines",
+      "Depression treatment guidelines from mental health organizations",
+      "Corporate executive role descriptions and responsibilities",
+      "Life coaching industry standards and practices"
+    ],
+    "fact_checking_priorities": [
+      "ER nursing procedures and team dynamics",
+      "Hospital administrative processes",
+      "Depression treatment and recovery",
+      "Corporate executive work environments",
+      "Life coaching business practices"
+    ]
+  },
+  "validation_notes": "The series maintains overall credibility in its depiction of professional environments, with some areas needing refinement for greater accuracy. The medical scenarios, particularly in the ER setting, would benefit from more detailed and accurate representation of nursing roles and hospital procedures. Julia's character arc dealing with depression could be strengthened by showing a more comprehensive treatment approach. The life coaching and corporate executive elements are generally credible but would benefit from more specific details about these professions. The timeline and pacing of character developments are realistic and appropriate for the narrative.",
+  "session_id": "session_20251023_112749",
+  "timestamp": "20251023_180446",
+  "project_title": "Unknown"
+}

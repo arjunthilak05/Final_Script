@@ -1,0 +1,125 @@
+# Station 13: Multi-World/Timeline Manager Configuration
+
+model: "glm-4.5"
+temperature: 0.7
+max_tokens: 15000
+
+prompts:
+  main: |
+    You are the Multi-World/Timeline Manager for an audio-only series production system.
+
+    PROJECT CONTEXT:
+    Working Title: {working_title}
+    Primary Genre: {primary_genre}
+    Target Age: {target_age}
+    Episode Count: {episode_count}
+    Episode Length: {episode_length}
+    Narrator Strategy: {narrator_strategy}
+    Chosen Genre Blend: {chosen_genre_blend}
+    
+    SEASON ARCHITECTURE:
+    {season_architecture}
+    
+    CHARACTER BIBLE:
+    {character_bible}
+    
+    WORLD BUILDING:
+    {world_building}
+    
+    NARRATIVE REVEAL STRATEGY:
+    {narrative_reveal_strategy}
+    
+    RUNTIME PLANNING:
+    {runtime_planning}
+    
+    HOOK & CLIFFHANGER DESIGN:
+    {hook_cliffhanger_design}
+
+    TASK: Multi-World/Timeline Management Analysis
+
+    This station is CONDITIONAL - only needed for projects with multiple worlds, timelines, or realities.
+    
+    First, analyze if this project requires multi-world/timeline management by checking for:
+    - Multiple parallel universes/realities
+    - Time travel elements
+    - Flashbacks to different time periods
+    - Parallel storylines in different locations/timeframes
+    - Dreams/visions vs reality
+    - Alternate timelines or "what if" scenarios
+    - Fantasy/sci-fi elements with multiple dimensions
+
+    If NO multi-world/timeline elements are detected, return a simple "not applicable" response.
+    
+    If YES, create comprehensive multi-world/timeline management:
+
+    For each world/timeline:
+    - World/timeline per episode
+    - Transition sounds between worlds
+    - Rules for each world
+    - How differences are conveyed in audio
+
+    Return your response as VALID JSON ONLY (no explanatory text before or after).
+
+    Return this exact JSON structure:
+
+    ```json
+    {{
+      "multi_world_analysis": {{
+        "requires_management": true/false,
+        "reasoning": "Brief explanation of why this station is or isn't needed"
+      }},
+      "worlds_timelines": [
+        {{
+          "world_name": "World/Timeline Name",
+          "description": "Brief description of this world/timeline",
+          "audio_signature": "Unique audio characteristics that identify this world",
+          "rules": [
+            "Rule 1 for this world",
+            "Rule 2 for this world"
+          ],
+          "episodes_used": [
+            {{
+              "episode_number": 1,
+              "duration_percentage": "Percentage of episode spent in this world",
+              "key_scenes": ["Scene 1", "Scene 2"]
+            }}
+          ]
+        }}
+      ],
+      "transition_strategy": {{
+        "transition_sounds": [
+          {{
+            "from_world": "Source world name",
+            "to_world": "Destination world name",
+            "transition_sound": "Audio cue for this transition",
+            "duration": "How long the transition takes",
+            "usage_frequency": "How often this transition occurs"
+          }}
+        ],
+        "audio_differentiation": [
+          {{
+            "world_name": "World name",
+            "ambient_sounds": "Background sounds unique to this world",
+            "acoustic_properties": "How this world sounds different",
+            "voice_treatments": "Any special voice processing for this world"
+          }}
+        ]
+      }},
+      "listener_guidance": {{
+        "world_identification": "How listeners will know which world they're in",
+        "transition_clarity": "How transitions will be made clear",
+        "consistency_rules": "Rules to maintain audio consistency within each world"
+      }}
+    }}
+    ```
+
+    Remember:
+    - Only proceed if multi-world/timeline elements are clearly present
+    - Focus on audio-specific differentiation between worlds
+    - Ensure clear transitions that listeners can follow
+    - Maintain consistency within each world/timeline
+    - If no multi-world elements exist, set "requires_management" to false
+
+output_format:
+  json_file: "multi_world_timeline_management.json"
+  readable_file: "multi_world_timeline_management.txt"

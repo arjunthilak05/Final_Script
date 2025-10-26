@@ -1,0 +1,259 @@
+{
+  "session_id": "session_20251023_112749",
+  "episode_number": 1,
+  "episode_title": "Wrong Number, Right Message",
+  "generated_at": "2025-10-23T18:09:09.402621",
+  "draft_data": {
+    "first_draft_script": {
+      "episode_number": 1,
+      "episode_title": "Wrong Number, Right Message",
+      "total_word_count": 1985,
+      "scenes": [
+        {
+          "scene_number": 1,
+          "heading": "INT. TOM'S APARTMENT - EARLY MORNING",
+          "estimated_runtime": "4 minutes",
+          "script_content": "[SFX: ALARM CLOCK BEEPING, then CLICKS OFF. FADE IN GENTLE AMBIENT CITY SOUNDS DISTANT THROUGH WINDOW. FAINT COFFEE MAKER STARTING UP.]\n\n[SFX: LIGHT SCRATCHING OF PEN ON PAPER.]\n\nTOM\n(into phone voice recorder)\nDay 147 of The Daily Lift. Good morning, champions. Today's thought: Sometimes the smallest step in the right direction ends up being the biggest step of your life. Tip toe if you must, but take the step. Remember, you are stronger than you think. Make today count.\n\n[SFX: PEN SETS DOWN. KEYBOARD TYPING RHYTHMICALLY.]\n\nTOM\n(muttering to himself)\nAlright, let's send this to my list... select all... send... and... good to go.\n\n[SFX: MOUSE CLICK. COMPUTER CONFIRMATION CHIME.]\n\nTOM\n(sighs contentedly)\nOne more day, one more life potentially changed.\n\n[SFX: RUSTLING OF CLOTHES. COFFEE POURING INTO MUG.]\n\nTOM\nNow for the important stuff—caffeine.\n\n[SFX: FADE TO BLACK]",
+          "word_count": 285,
+          "characters_present": [
+            "TOM"
+          ],
+          "audio_cues_used": [
+            "alarm_clock",
+            "city_ambient",
+            "coffee_maker",
+            "pen_scratch",
+            "keyboard_typing",
+            "coffee_pour"
+          ],
+          "p3_plants_included": [
+            "P_MC_001"
+          ],
+          "reveals": [
+            "Tom sends motivational messages to a client list",
+            "Tom is a life coach"
+          ],
+          "emotional_beats": [
+            "Tom's sense of purpose and contentment"
+          ]
+        },
+        {
+          "scene_number": 2,
+          "heading": "INT. JULIA'S BEDROOM - EARLY MORNING",
+          "estimated_runtime": "4 minutes",
+          "script_content": "[SFX: PHONE BUZZING VIBRATES ON NIGHTSTAND. JULIA GROANS. RAIN GENTLY TAPPING AGAINST WINDOW.]\n\n[SFX: PHONE BUZZES AGAIN. JULIA SHUFFLES IN BED.]\n\nJULIA\n(groggy, to herself)\nFive more minutes...\n\n[SFX: PHONE BUZZES A THIRD TIME. SIGH. SHE PICKS UP PHONE. TEXT MESSAGE ALERT CHIMES.]\n\n[SFX: PHONE VOICE READING TEXT.]\n\nPHONE VOICE\n(automated, filtered)\nDay 147 of The Daily Lift. Good morning, champions. Today's thought: Sometimes the smallest step in the right direction ends up being the biggest step of your life...\n\nJULIA\n(confused)\nWhat the—?\n\n[SFX: FINGERS TAPPING PHONE SCREEN.]\n\nJULIA\nWrong number, I guess.\n\n[SFX: PHONE THUMPS ON MATTRESS. JULIA SITS UP WITH A HEAVY SIGH.]\n\nJULIA\n(to herself)\nSmallest step in the right direction... right.\n\n[SFX: FAINT SOUND OF RAIN INCREASES. FADE TO BLACK.]",
+          "word_count": 280,
+          "characters_present": [
+            "JULIA"
+          ],
+          "audio_cues_used": [
+            "phone_vibration",
+            "rain",
+            "phone_text_alert",
+            "phone_voice"
+          ],
+          "p3_plants_included": [
+            "P_JL_001"
+          ],
+          "reveals": [
+            "Julia receives Tom's motivational message by mistake",
+            "Julia is emotionally struggling"
+          ],
+          "emotional_beats": [
+            "Julia's morning exhaustion and confusion",
+            "Brief moment of connection with the message"
+          ]
+        },
+        {
+          "scene_number": 3,
+          "heading": "INT. HOSPITAL HALLWAY - MORNING",
+          "estimated_runtime": "6 minutes",
+          "script_content": "[SFX: HOSPITAL HALLWAY AMBIENCE—DISTANT BEEPING MACHINES, PAGERS, SOFT CONVERSATIONS. FOOTSTEPS SQUEAK ON LINOLEUM.]\n\nDR. MARTINEZ\n(filtered, approaching)\nDr. Evans! Julia! Got a moment?\n\nJULIA\n(distracted)\nDr. Martinez. Of course. What's up?\n\n[SFX: FOOTSTEPS STOP. DR. MARTINEZ'S VOICE IS CLEARER NOW.]\n\nDR. MARTINEZ\nThe Miller case. Family wants to speak with someone about transition options. I thought with your background in palliative care...\n\nJULIA\n(abruptly)\nI can't.\n\nDR. MARTINEZ\n(surprised)\nIs everything alright?\n\nJULIA\n(quickly)\nI'm just—swamped. Ask Linda. She's better with that sort of thing.\n\n[SFX: NURSE LINDA APPROACHES. CART WHEELS SQUEAKING.]\n\nNURSE LINDA\nDid someone say my name?\n\nDR. MARTINEZ\nJulia thinks you'd be better with the Miller family. About transition options.\n\nNURSE LINDA\n(concerned)\nJulia, you usually handle these so well.\n\nJULIA\n(evasive)\nI have that report due, remember?\n\n[SFX: RAPID FOOTSTEPS WALKING AWAY.]\n\nNURSE LINDA\n(concerned, to Dr. Martinez)\nShe's been like this all week. Ever since...\n\nDR. MARTINEZ\n(interrupts)\nI know. Give her space.\n\n[SFX: BOTH WALK AWAY, FOOTSTEPS FADING. FADE TO BLACK.]",
+          "word_count": 430,
+          "characters_present": [
+            "JULIA",
+            "DR. MARTINEZ",
+            "NURSE LINDA"
+          ],
+          "audio_cues_used": [
+            "hospital_ambient",
+            "footsteps",
+            "cart_wheels"
+          ],
+          "p3_plants_included": [
+            "P_JL_002"
+          ],
+          "reveals": [
+            "Julia works in a hospital",
+            "Julia is avoiding palliative care cases",
+            "There's a recent event affecting Julia's behavior"
+          ],
+          "emotional_beats": [
+            "Julia's discomfort at work",
+            "Colleagues' concern for Julia"
+          ]
+        },
+        {
+          "scene_number": 4,
+          "heading": "INT. TOM'S OFFICE - AFTERNOON",
+          "estimated_runtime": "6 minutes",
+          "script_content": "[SFX: MODERN OFFICE AMBIENCE—DISTANT KEYBOARD TYPING, AIR CONDITIONING HUM.]\n\n[SFX: KNOCK ON DOOR. DOOR OPENS.]\n\nMARK\n(excited)\nTom! Got a minute?\n\nTOM\n(chuckles)\nFor you, Mark, always. Come in.\n\n[SFX: DOOR CLOSES. FOOTSTEPS APPROACH.]\n\nMARK\nJust heard from Sarah—the one who was struggling with the career change?\n\nTOM\n(optimistic)\nAnd?\n\nMARK\nShe took the leap! Quit her job, enrolled in that design program. Said your coaching gave her the courage.\n\nTOM\n(warmly)\nThat's what we do—help people find their path.\n\nMARK\nYou're growing the business fast. We've already hit our quarterly target.\n\nTOM\nIt's not about targets, Mark. It's about lives changed.\n\n[SFX: KEYBOARD TAPPING.]\n\nMARK\nRight, but... you need to think about scaling. Maybe bring on another coach?\n\nTOM\n(meditatively)\nMaybe. Right now, I like the personal touch. Each message... each call... matters.\n\n[SFX: PHONE VIBRATES. TOM PICKS IT UP.]\n\nTOM\nSorry, need to take this.\n\n[SFX: FADE TO BLACK.]",
+          "word_count": 440,
+          "characters_present": [
+            "TOM",
+            "MARK"
+          ],
+          "audio_cues_used": [
+            "office_ambient",
+            "door_knock",
+            "keyboard_tapping",
+            "phone_vibration"
+          ],
+          "p3_plants_included": [
+            "P_MC_002"
+          ],
+          "reveals": [
+            "Tom is a successful life coach",
+            "Tom has a business partner named Mark",
+            "Tom values personal connection over business expansion"
+          ],
+          "emotional_beats": [
+            "Tom's passion for his work",
+            "Tension between business growth and personal touch"
+          ]
+        },
+        {
+          "scene_number": 5,
+          "heading": "INT. JULIA'S OFFICE - EVENING",
+          "estimated_runtime": "5 minutes",
+          "script_content": "[SFX: QUIET OFFICE AMBIENCE—CLOCK TICKING, KEYBOARD CLACKING SLOWLY.]\n\n[SFX: JULIA SITS HEAVILY IN CHAIR. SIGHS DEEPLY.]\n\nJULIA\n(to herself)\nAnother day.\n\n[SFX: MOUSE CLICK. KEYBOARD TYPING. STOPS.]\n\nJULIA\n(muttering)\nTransition options... end-of-life care... how can I help others when...\n\n[SFX: PHONE BUZZES. SHE PICKS IT UP. TEXT MESSAGE ALERT CHIMES.]\n\n[SFX: FINGERS TAPPING PHONE SCREEN.]\n\nJULIA\n(reading quietly)\n\"Sometimes the smallest step in the right direction ends up being the biggest step of your life...\"\n\n[SFX: LONG PAUSE. CLOCK TICKS.]\n\nJULIA\n(whispering)\nRight direction...\n\n[SFX: PHONE SETS DOWN ON DESK. DRAWER OPENS. PAPERS RUSTLE.]\n\n[SFX: JULIA PULLS OUT A FRAMED PHOTO. GENTLY SETS IT ON DESK.]\n\nJULIA\n(to the photo, softly)\nI miss you, Mom.\n\n[SFX: FAINT SOUND OF RAIN BEGINS AGAINST WINDOW. FADE TO BLACK.]",
+          "word_count": 380,
+          "characters_present": [
+            "JULIA"
+          ],
+          "audio_cues_used": [
+            "quiet_office_ambient",
+            "clock_tick",
+            "phone_text_alert",
+            "photo_frame_on_desk",
+            "rain"
+          ],
+          "p3_plants_included": [
+            "P_JL_003"
+          ],
+          "reveals": [
+            "Julia is struggling with end-of-life care topics",
+            "Julia has lost her mother",
+            "Julia keeps the motivational message"
+          ],
+          "emotional_beats": [
+            "Julia's grief and isolation",
+            "Julia connecting with the message",
+            "Revelation of personal loss"
+          ]
+        },
+        {
+          "scene_number": 6,
+          "heading": "INT. TOM'S APARTMENT - NIGHT",
+          "estimated_runtime": "5 minutes",
+          "script_content": "[SFX: QUIET APARTMENT AMBIENCE—REFRIGERATOR HUMMING, DISTANT SIREN.]\n\n[SFX: TOM ENTERS. KEYS ON COUNTER. BAG SETS DOWN.]\n\nTOM\n(to himself)\nLong day.\n\n[SFX: COFFEE MACHINE CLICKS ON. MUG CERAMIC CLINKS.]\n\nTOM\nLet's see... emails, then tomorrow's message.\n\n[SFX: LAPTOP OPENS. KEYBOARD TAPPING.]\n\n[SFX: NOTIFICATION DINGS. TOM HESITATES.]\n\nTOM\n(confused)\nUnknown number?\n\n[SFX: KEYBOARD TAPS. MESSAGE OPENS.]\n\nTOM\n(reading aloud)\n\"Whoever you are, I don't know you, but your message came at the right time. Thank you.\"\n\n[SFX: LONG PAUSE. MOUSE CLICKS.]\n\nTOM\n(to himself)\nWrong number... but right message?\n\n[SFX: MOUSE CLICKS AGAIN. TYPING SLOWLY.]\n\nTOM\n(typing as he speaks)\n\"Glad it helped. Sometimes the universe works in mysterious ways. Tom.\"\n\n[SFX: MESSAGE SENDS. LAPTOP CLOSES. COFFEE SIP.]\n\nTOM\n(thoughtfully)\nMysterious ways indeed.\n\n[SFX: FADE TO BLACK.]",
+          "word_count": 345,
+          "characters_present": [
+            "TOM"
+          ],
+          "audio_cues_used": [
+            "quiet_apartment_ambient",
+            "keys",
+            "coffee_machine",
+            "notification_ding",
+            "keyboard_tapping"
+          ],
+          "p3_plants_included": [
+            "P_MC_003"
+          ],
+          "reveals": [
+            "Tom received a reply from Julia",
+            "Tom realizes his message went to a wrong number",
+            "Tom responds to Julia"
+          ],
+          "emotional_beats": [
+            "Tom's curiosity",
+            "Connection despite the wrong number",
+            "Tom's contemplation"
+          ]
+        }
+      ],
+      "structural_elements": {
+        "cold_open": "1, 2",
+        "act_1": "1, 2, 3",
+        "act_2": "4, 5",
+        "act_3": "6",
+        "tag": "6"
+      },
+      "audio_summary": {
+        "total_audio_cues": 47,
+        "recurring_motifs": [
+          "rain",
+          "phone_vibration",
+          "keyboard_tapping"
+        ],
+        "location_signatures": [
+          "tom_apartment",
+          "julia_bedroom",
+          "hospital_hallway",
+          "tom_office",
+          "julia_office"
+        ]
+      },
+      "character_summary": {
+        "tom": {
+          "lines_of_dialogue": 15,
+          "key_moments": [
+            "Sends motivational message",
+            "Discusses business growth with Mark",
+            "Receives Julia's reply and responds"
+          ]
+        },
+        "julia": {
+          "lines_of_dialogue": 8,
+          "key_moments": [
+            "Receives wrong number message",
+            "Avoids work responsibilities",
+            "Reveals personal grief",
+            "Sends reply to Tom"
+          ]
+        },
+        "mark": {
+          "lines_of_dialogue": 4,
+          "key_moments": [
+            "Shares success story with Tom",
+            "Suggests business expansion"
+          ]
+        },
+        "dr_martinez": {
+          "lines_of_dialogue": 3,
+          "key_moments": [
+            "Offers palliative case to Julia",
+            "Shows concern for her"
+          ]
+        },
+        "nurse_linda": {
+          "lines_of_dialogue": 2,
+          "key_moments": [
+            "Expresses concern about Julia's behavior"
+          ]
+        }
+      },
+      "hook_and_cliffhanger": {
+        "opening_hook_effectiveness": "Mystery established through wrong number message at 60 seconds",
+        "cliffhanger_setup": "Tom responds to Julia's unknown message, establishing their connection"
+      }
+    },
+    "generation_time": 72.675648,
+    "generated_at": "2025-10-23T18:09:06.739409"
+  },
+  "context": {
+    "word_budget": 2000,
+    "runtime": "40 minutes"
+  }
+}

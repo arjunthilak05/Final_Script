@@ -116,6 +116,24 @@ class JSONExtractor:
             if json_string.count('"') % 2 != 0:
                 json_string += '"'
 
+            # Handle incomplete objects/arrays more intelligently
+            # Find the last incomplete structure and close it properly
+            
+            # If we're in the middle of an object or array, we need to close it properly
+            # Look for incomplete patterns at the end
+            lines = json_string.split('\n')
+            last_line = lines[-1].strip()
+            
+            # If last line is incomplete (missing comma, incomplete string, etc.)
+            if last_line and not last_line.endswith(('}', ']', '"', ',')):
+                # Try to complete the last line if it looks like an incomplete field
+                if ':' in last_line and not last_line.endswith(','):
+                    # Looks like incomplete field, add default value
+                    if '"' in last_line and last_line.count('"') % 2 == 1:
+                        # Incomplete string, close it
+                        json_string += '"'
+                    json_string += ','
+
             # Close unclosed objects
             while open_braces > close_braces:
                 json_string += '\n}'
@@ -131,6 +149,177 @@ class JSONExtractor:
         json_string = re.sub(r'"\s*\n\s*"', '",\n    "', json_string)
 
         return json_string
+
+    @staticmethod
+    def aggressive_truncation_recovery(json_string: str) -> str:
+        """
+        Aggressive recovery for severely truncated JSON.
+        This method tries to salvage as much data as possible by:
+        1. Finding the last complete object/array
+        2. Truncating at that point
+        3. Closing all open structures
+        
+        Args:
+            json_string: Severely truncated JSON string
+            
+        Returns:
+            str: Recovered JSON string
+        """
+        logger.warning("Attempting aggressive truncation recovery...")
+        
+        # Clean up any invalid control characters first
+        import string
+        printable = set(string.printable)
+        cleaned_json = ''.join(char for char in json_string if char in printable or char.isspace())
+        
+        # Try to find the last complete object or array
+        lines = cleaned_json.split('\n')
+        recovered_lines = []
+        
+        brace_depth = 0
+        bracket_depth = 0
+        in_string = False
+        escape_next = False
+        
+        for i, line in enumerate(lines):
+            # Check if this line looks like it might be the truncation point
+            if i == len(lines) - 1 and line.strip() and not line.strip().endswith(('}', ']', '"', ',')):
+                # Last line and it's incomplete, skip it
+                logger.info(f"Skipping incomplete last line: {line.strip()}")
+                break
+                
+            recovered_lines.append(line)
+            
+            # Track depth and string state
+            for char in line:
+                if escape_next:
+                    escape_next = False
+                    continue
+                    
+                if char == '\\':
+                    escape_next = True
+                    continue
+                    
+                if char == '"' and not escape_next:
+                    in_string = not in_string
+                    continue
+                    
+                if not in_string:
+                    if char == '{':
+                        brace_depth += 1
+                    elif char == '}':
+                        brace_depth -= 1
+                    elif char == '[':
+                        bracket_depth += 1
+                    elif char == ']':
+                        bracket_depth -= 1
+            
+            # If we have a complete structure, this might be a good truncation point
+            if brace_depth == 0 and bracket_depth == 0 and i > 0:
+                # Found a complete structure, truncate here
+                logger.info(f"Found complete structure at line {i+1}, truncating...")
+                break
+        
+        # Rebuild the JSON
+        recovered_json = '\n'.join(recovered_lines)
+        
+        # Close any remaining open structures
+        while brace_depth > 0:
+            recovered_json += '\n}'
+            brace_depth -= 1
+            
+        while bracket_depth > 0:
+            recovered_json += '\n]'
+            bracket_depth -= 1
+            
+        # Fix any trailing commas
+        recovered_json = re.sub(r',\s*([}\]])', r'\1', recovered_json)
+        
+        return recovered_json
+
+    @staticmethod
+    def emergency_fallback_recovery(json_string: str) -> Dict[str, Any]:
+        """
+        Emergency fallback recovery that tries to extract whatever data is possible.
+        This is the last resort - it will return partial data rather than failing completely.
+        
+        Args:
+            json_string: Severely malformed JSON string
+            
+        Returns:
+            Dict: Whatever data could be extracted
+        """
+        logger.warning("Using emergency fallback recovery...")
+        
+        # Try to extract the root key if it exists
+        import re
+        
+        # Look for common patterns in the JSON
+        result = {}
+        
+        # Try to find the main array/object key
+        main_key_match = re.search(r'"([^"]+)":\s*\[', json_string)
+        if main_key_match:
+            main_key = main_key_match.group(1)
+            
+            # Try to extract individual objects from the array
+            objects = []
+            
+            # Find all complete objects in the array - try multiple patterns
+            # First try: complete objects with proper nesting
+            object_pattern = r'\{(?:[^{}]|(?:\{[^{}]*\}))*\}'
+            object_matches = re.findall(object_pattern, json_string, re.DOTALL)
+            
+            # If no matches, try a more aggressive pattern
+            if not object_matches:
+                # Look for objects that might be incomplete but salvageable
+                lines = json_string.split('\n')
+                current_obj = ""
+                brace_count = 0
+                
+                for line in lines:
+                    if line.strip().startswith('{'):
+                        current_obj = line
+                        brace_count = line.count('{') - line.count('}')
+                    elif brace_count > 0:
+                        current_obj += '\n' + line
+                        brace_count += line.count('{') - line.count('}')
+                        if brace_count == 0:
+                            object_matches.append(current_obj)
+                            current_obj = ""
+            
+            for obj_str in object_matches:
+                try:
+                    obj = json.loads(obj_str)
+                    objects.append(obj)
+                except:
+                    # If individual object fails, try to fix it
+                    try:
+                        # Try to close incomplete objects
+                        fixed_obj = obj_str
+                        if fixed_obj.count('{') > fixed_obj.count('}'):
+                            fixed_obj += '}'
+                        if fixed_obj.count('"') % 2 != 0:
+                            fixed_obj += '"'
+                        obj = json.loads(fixed_obj)
+                        objects.append(obj)
+                    except:
+                        continue
+            
+            if objects:
+                result[main_key] = objects
+                logger.info(f"Emergency recovery extracted {len(objects)} items from {main_key}")
+            else:
+                # If no complete objects found, create a minimal structure
+                result[main_key] = []
+                logger.warning(f"Emergency recovery created empty {main_key} array")
+        
+        # If we couldn't extract anything, return a minimal structure
+        if not result:
+            logger.warning("Emergency recovery could not extract any data, returning minimal structure")
+            result = {"error": "JSON parsing failed", "data": []}
+        
+        return result
 
     @staticmethod
     def parse_json(json_string: str) -> Dict[str, Any]:
@@ -160,10 +349,30 @@ class JSONExtractor:
                 logger.info("✅ Successfully parsed JSON after sanitization")
                 return result
             except json.JSONDecodeError as e2:
-                logger.error(f"JSON parsing failed even after sanitization: {str(e2)}")
-                logger.error(f"Problematic JSON (first 500 chars): {json_string[:500]}")
-                logger.error(f"Sanitized JSON (first 500 chars): {sanitized[:500] if 'sanitized' in locals() else 'N/A'}")
-                raise ValueError(f"Invalid JSON from LLM: {str(e2)}")
+                logger.warning(f"Sanitization failed: {str(e2)}")
+                logger.warning("Attempting aggressive truncation recovery...")
+                
+                try:
+                    # Try aggressive truncation recovery
+                    recovered = JSONExtractor.aggressive_truncation_recovery(json_string)
+                    result = json.loads(recovered)
+                    logger.info("✅ Successfully parsed JSON after aggressive recovery")
+                    return result
+                except json.JSONDecodeError as e3:
+                    logger.warning(f"All recovery attempts failed: {str(e3)}")
+                    logger.warning("Attempting emergency fallback recovery...")
+                    
+                    try:
+                        # Emergency fallback: try to extract whatever we can
+                        fallback_result = JSONExtractor.emergency_fallback_recovery(json_string)
+                        logger.info("✅ Successfully parsed JSON with emergency fallback")
+                        return fallback_result
+                    except Exception as e4:
+                        logger.error(f"All JSON recovery attempts failed: {str(e4)}")
+                        logger.error(f"Original JSON (first 500 chars): {json_string[:500]}")
+                        logger.error(f"Sanitized JSON (first 500 chars): {sanitized[:500] if 'sanitized' in locals() else 'N/A'}")
+                        logger.error(f"Recovered JSON (first 500 chars): {recovered[:500] if 'recovered' in locals() else 'N/A'}")
+                        raise ValueError(f"Invalid JSON from LLM: {str(e4)}")
 
     @staticmethod
     def extract_and_parse(response: str) -> Dict[str, Any]:

@@ -1,0 +1,49 @@
+======================================================================
+STATION 6: MASTER STYLE GUIDE BUILDER
+======================================================================
+
+Working Title: Royal Blood
+Primary Genre: Political Drama
+Target Age: 25-45
+Episode Count: 3-6 episodes
+Episode Length: 15-25 min each
+Narrator Strategy: With Narrator
+
+----------------------------------------------------------------------
+LANGUAGE RULES
+----------------------------------------------------------------------
+
+Vocabulary Level: Advanced, with a mix of formal and conversational language to reflect the political and personal dynamics
+Sentence Complexity: Sentences and concepts should be sophisticated but clear, avoiding overly convoluted structures that might detract from the narrative flow
+Technical Term Handling: Use historically accurate medieval and political terminology with contextual explanation through dialogue or narrator exposition when necessary
+Narrator Voice Guidelines: Clear, measured, with a touch of gravitas; able to shift subtly between serious moments and lighter ones; capable of conveying authority when needed
+Age Appropriate Language: Avoid explicit sexual content, detailed depictions of violence, and overly graphic descriptions of injury or death. Maintain PG-13 content rating with mature themes handled subtly
+Genre Specific Terminology: Incorporate period-appropriate political and feudal terminology (e.g., 'fealty', 'vassal', 'chivalry') with natural integration into dialogue and narration
+
+Example Vocabulary:
+  Words to Use: sovereign, allegiance, dynasty, treachery, counsel, monarchy
+  Words to Avoid: explicit sexual terms, graphic violence descriptions, modern slang, overly complex political jargon without explanation
+
+----------------------------------------------------------------------
+DIALECT/ACCENT MAP
+----------------------------------------------------------------------
+
+Character Voice Distinctions: King Alexander: Authoritative, measured tone with slight royal inflection; Queen Eleanor: Refined, articulate with underlying strength; Lord Marcus: Commanding but less formal than royalty; Princess Isabella: Youthful but with regal training showing in formal speech
+Regional Markers: Northern regions: Slightly harsher consonants, quicker speech patterns; Southern regions: Softer vowels, more measured pace; Courtly speech: More formalized, with specific honorifics and titles used consistently
+
+Pronunciation Guide:
+  Character Names:
+    Alexander: Al-ex-AN-der
+    Eleanor: EL-a-nor
+    Marcus: MAR-cus
+    Isabella: Is-a-BEL-la
+  Locations:
+    Eldoria: El-DO-ri-a
+    Great Hall: Great Hall (standard pronunciation)
+    Castle Courtyard: Castle COURT-yard
+Voice Casting Notes: Cast actors who can maintain consistent accents throughout performances, with ability to shift between formal court speech and more intimate private conversations. Royal characters should have distinctive but not overly exaggerated aristocratic speech patterns
+Accent Consistency Rules: Maintain consistent regional markers for each character throughout all episodes. Characters should not adopt regional accents outside their established background unless specifically justified by the narrative
+
+======================================================================
+END OF MASTER STYLE GUIDE
+======================================================================

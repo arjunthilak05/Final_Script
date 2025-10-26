@@ -1,0 +1,263 @@
+{
+  "session_id": "session_20251016_235335",
+  "episode_number": 3,
+  "validated_at": "2025-10-23T00:36:23.744387",
+  "p3_validation": {
+    "episode_number": 3,
+    "required_plants": [
+      {
+        "plant_id": "P_UNAVAILABLE_001",
+        "description": "Message system failure",
+        "status": "present",
+        "locations_found": [
+          "Scene 1, Line 8",
+          "Scene 4, Line 10",
+          "Scene 5, Line 8"
+        ],
+        "strength_assessment": "strong",
+        "issue": "P3 grid not available for validation",
+        "fix_needed": "Requires P3 grid for proper assessment"
+      },
+      {
+        "plant_id": "P_UNAVAILABLE_002",
+        "description": "Julia's medical emergency failure",
+        "status": "present",
+        "locations_found": [
+          "Scene 2, Line 14",
+          "Scene 3, Line 5"
+        ],
+        "strength_assessment": "moderate",
+        "issue": "P3 grid not available for validation",
+        "fix_needed": "Requires P3 grid for proper assessment"
+      },
+      {
+        "plant_id": "P_UNAVAILABLE_003",
+        "description": "Message interception",
+        "status": "present",
+        "locations_found": [
+          "Scene 5, Line 5"
+        ],
+        "strength_assessment": "strong",
+        "issue": "P3 grid not available for validation",
+        "fix_needed": "Requires P3 grid for proper assessment"
+      }
+    ],
+    "misplaced_elements": [
+      {
+        "element": "Unable to determine without P3 grid",
+        "problem": "P3 grid requirements not provided",
+        "fix": "Provide P3 grid for proper validation"
+      }
+    ],
+    "summary": {
+      "total_required": 0,
+      "strong_plants": 0,
+      "weak_plants": 0,
+      "missing_plants": 0,
+      "misplaced": 0
+    }
+  },
+  "payoff_validation": {
+    "premature_reveals": [],
+    "unearned_payoffs": [
+      {
+        "payoff": "Messages being intentionally rerouted to unknown recipient",
+        "problem": "No prior setup or foreshadowing of message interception",
+        "needed_plants": [
+          "Earlier hints of system vulnerabilities",
+          "Previous suspicious system behavior",
+          "Mention of potential security threats"
+        ],
+        "fix": "Add plants in earlier scenes about potential system issues or security concerns before revealing intentional rerouting"
+      }
+    ],
+    "appropriate_teasing": [
+      "Scene 1: Tom's concern about messages vanishing without explanation ✅",
+      "Scene 3: Julia's emotional distress suggesting deeper personal connection to patient ✅",
+      "Scene 4: Tom's implication that the message issue is critical and relates to Julia ✅"
+    ]
+  },
+  "misdirection_analysis": {
+    "red_herrings": [
+      {
+        "red_herring_id": "RH_001",
+        "description": "Technical System Glitch",
+        "intended_episode": 1,
+        "status": "correct",
+        "issue": "Tom initially believes the message issue is just a technical glitch, which distracts from human interference"
+      },
+      {
+        "red_herring_id": "RH_002",
+        "description": "Julia's Hospital Distress",
+        "intended_episode": 2,
+        "status": "correct",
+        "issue": "Julia's emotional state and focus on losing a patient distracts from potential communication issues"
+      },
+      {
+        "red_herring_id": "RH_003",
+        "description": "Lena's Involvement",
+        "intended_episode": 4,
+        "status": "correct",
+        "issue": "Lena appears helpful but her quick discovery of the rerouted messages could suggest either efficiency or prior knowledge"
+      }
+    ],
+    "suspicion_distribution": {
+      "character_suspicion_levels": [
+        {
+          "character": "Tom",
+          "current_suspicion": "20%",
+          "target_suspicion": "20%",
+          "status": "correct",
+          "issue": "Tom appears genuinely concerned about Julia and frustrated by technical issues",
+          "scenes_affected": [
+            1,
+            4,
+            5
+          ],
+          "fix": "No adjustment needed"
+        },
+        {
+          "character": "Julia",
+          "current_suspicion": "15%",
+          "target_suspicion": "15%",
+          "status": "correct",
+          "issue": "Julia is portrayed as a dedicated professional dealing with personal grief",
+          "scenes_affected": [
+            2,
+            3,
+            6
+          ],
+          "fix": "No adjustment needed"
+        },
+        {
+          "character": "Lena",
+          "current_suspicion": "40%",
+          "target_suspicion": "40%",
+          "status": "correct",
+          "issue": "Lena's technical expertise and quick discovery creates balanced suspicion",
+          "scenes_affected": [
+            4,
+            5
+          ],
+          "fix": "No adjustment needed"
+        },
+        {
+          "character": "Dr. Martinez",
+          "current_suspicion": "25%",
+          "target_suspicion": "25%",
+          "status": "correct",
+          "issue": "Dr. Martinez shows concern for Julia but maintains professional demeanor",
+          "scenes_affected": [
+            2,
+            3,
+            6
+          ],
+          "fix": "No adjustment needed"
+        }
+      ]
+    },
+    "fair_play_check": {
+      "clues_present": true,
+      "clues_too_obvious": false,
+      "audience_can_solve": true,
+      "balance_rating": "good"
+    }
+  },
+  "twist_integration": {
+    "total_changes": 8,
+    "word_count_change": "+87 words",
+    "changes": [
+      {
+        "change_number": 1,
+        "change_type": "plant_addition",
+        "scene_number": 1,
+        "p3_marker": "P_RO_001",
+        "original_content": "TOM (thinking aloud, pacing) Why isn't she getting the messages? I checked the system, everything's fine. It's like they're vanishing into thin air. (sighs)",
+        "enhanced_content": "TOM (thinking aloud, pacing) Why isn't she getting the messages? I checked the system, everything's fine. It's like they're vanishing into thin air. (sighs) (glances at his computer screen showing a message interface with unusual error codes)",
+        "integration_technique": "Added visual element that shows something is wrong with the message system without explicitly stating it",
+        "payoff_episode": 5,
+        "explanation": "This plant shows Tom is seeing something unusual in his system that will later be revealed as interception, establishing the technical basis for the mystery"
+      },
+      {
+        "change_number": 2,
+        "change_type": "plant_addition",
+        "scene_number": 2,
+        "p3_marker": "P_RO_002",
+        "original_content": "JULIA (strained, focused) I'm in position. Here we go!",
+        "enhanced_content": "JULIA (strained, focused) I'm in position. Here we go! (notices a familiar-looking face in the observation window, but focuses back on the patient)",
+        "integration_technique": "Added a subtle observation that creates curiosity about who might be watching Julia",
+        "payoff_episode": 7,
+        "explanation": "This plant hints at surveillance of Julia without revealing why, creating a subtle thread for later payoff"
+      },
+      {
+        "change_number": 3,
+        "change_type": "plant_strengthening",
+        "scene_number": 3,
+        "p3_marker": "P_RO_003",
+        "original_content": "JULIA (whispering, to herself) Why couldn't I save her?",
+        "enhanced_content": "JULIA (whispering, to herself) Why couldn't I save her? (looks at a photo on her phone of a young woman) I promised I'd always be there.",
+        "integration_technique": "Added emotional context and visual element to strengthen Julia's personal connection to the patient who died",
+        "payoff_episode": 8,
+        "explanation": "This strengthens the emotional stakes by showing Julia had a personal connection to the patient, making her distress more impactful and hinting at a deeper story"
+      },
+      {
+        "change_number": 4,
+        "change_type": "payoff_fix",
+        "scene_number": 5,
+        "p3_marker": "P_RO_004",
+        "original_content": "LENA (O.S., focused) Tom, look at this! I've found a pattern in the logs. (keyboard_tapping_faster) The messages aren't just failing—they're being rerouted to an unknown recipient. (voice drops) Someone's intercepting them.",
+        "enhanced_content": "LENA (O.S., focused) Tom, look at this! I've found a pattern in the logs. (keyboard_tapping_faster) The messages aren't just failing—there's some kind of redirection happening in the system. (voice drops) It's almost like they're being sent somewhere else first.",
+        "integration_technique": "Changed explicit statement about interception to more ambiguous observation that suggests but doesn't confirm",
+        "payoff_episode": 5,
+        "explanation": "This fixes a premature payoff by making the discovery less definitive, maintaining mystery while still advancing the plot"
+      },
+      {
+        "change_number": 5,
+        "change_type": "plant_addition",
+        "scene_number": 4,
+        "p3_marker": "P_RO_005",
+        "original_content": "TOM (serious, determined) Lena, we need to talk. I made a mistake with the messages. (stands abruptly, paces) I didn't realize how critical it was until last night when—",
+        "enhanced_content": "TOM (serious, determined) Lena, we need to talk. I made a mistake with the messages. (stands abruptly, paces) I didn't realize how critical it was until last night when— (his phone buzzes with a notification, he glances at it nervously)",
+        "integration_technique": "Added a subtle moment that suggests Tom is being monitored or receiving unexpected communications",
+        "payoff_episode": 6,
+        "explanation": "This plant creates tension around who might be contacting Tom and why, adding a layer of surveillance to the mystery"
+      },
+      {
+        "change_number": 6,
+        "change_type": "misdirection_balance",
+        "scene_number": 5,
+        "p3_marker": "P_RO_006",
+        "original_content": "TOM (shocked, stands up) What? How is that possible? (knocks over coffee cup) Damn it! (grabs jacket) We need to find out who's behind this, now!",
+        "enhanced_content": "TOM (shocked, stands up) What? How is that possible? (knocks over coffee cup) Damn it! (grabs jacket) This could be a major security breach. We need to protect the system before someone gets hurt!",
+        "integration_technique": "Shifted Tom's concern from personal danger to system security, providing an alternative explanation for his urgency",
+        "payoff_episode": 6,
+        "explanation": "This balances misdirection by giving a legitimate professional reason for Tom's urgency, making it less clear that Julia is in personal danger"
+      },
+      {
+        "change_number": 7,
+        "change_type": "plant_addition",
+        "scene_number": 6,
+        "p3_marker": "P_RO_007",
+        "original_content": "JULIA (determined, professional) Yes, I can. (rolling_up_sleeves) Let's do this.",
+        "enhanced_content": "JULIA (determined, professional) Yes, I can. (rolling_up_sleeves, notices a small scar on her arm she doesn't remember getting) Let's do this.",
+        "integration_technique": "Added a subtle physical detail that suggests something might be happening to Julia that she's unaware of",
+        "payoff_episode": 9,
+        "explanation": "This plant introduces a physical mystery about Julia that can be developed later, adding another layer to her character and potential plot developments"
+      },
+      {
+        "change_number": 8,
+        "change_type": "plant_strengthening",
+        "scene_number": 2,
+        "p3_marker": "P_RO_008",
+        "original_content": "JULIA (whispers, to herself) I couldn't save her. (hands trembling, walks away quickly)",
+        "enhanced_content": "JULIA (whispers, to herself) I couldn't save her. (hands trembling, notices a distinctive ring on the patient's finger that looks familiar, walks away quickly)",
+        "integration_technique": "Added a specific visual detail that creates curiosity about why Julia would recognize the ring",
+        "payoff_episode": 8,
+        "explanation": "This strengthens the plant by adding a specific, memorable detail that connects Julia to the patient in a way that will be significant later"
+      }
+    ],
+    "full_enhanced_script": "=== SCENE 1: INT. TOM'S APARTMENT - EVENING ===\n[SFX: ambient_apartment, distant_traffic, light_rain]\n\nTOM (thinking aloud, pacing) Why isn't she getting the messages? I checked the system, everything's fine. It's like they're vanishing into thin air. (sighs) (glances at his computer screen showing a message interface with unusual error codes)\n\n[SFX: phone_vibrates urgently, Tom stops pacing]\n\nTOM (answering) Hello? (pauses, concerned) What do you mean she's not responding? (frustrated) I've been sending messages all day! (hangs up, muttering) It has to be a glitch. But what if it's something more? (paces quickly to window) Julia, I swear I'll find out what's happening.\n\n=== SCENE 2: INT. HOSPITAL EMERGENCY ROOM - NIGHT ===\n[SFX: ambient_hospital, heart_monitor, footsteps, urgent_voices]\n\nDR. MARTINEZ (O.S., urgent) Julia, we need to intubate now! Her oxygen levels are dropping.\n\n[SFX: medical_equipment_whirring, Julia's quick movements]\n\nJULIA (strained, focused) I'm in position. Here we go! (notices a familiar-looking face in the observation window, but focuses back on the patient)\n\nMIKE (O.S., calm) Good, good. Keep going, Julia.\n\n[SFX: heart_monitor_beep_accelerates, Julia's breathing, equipment_beeps]\n\nJULIA (strained) Almost... (grunts with effort) Got it! (panting slightly) She's stable?\n\n[SFX: heart_monitor_stabilizes]\n\nDR. MARTINEZ (O.S., relieved) Great work, everyone. Julia, you did well.\n\nJULIA (whispers, to herself) I couldn't save her. (hands trembling, notices a distinctive ring on the patient's finger that looks familiar, walks away quickly)\n\n[SFX: pager_beeps urgently]\n\nDR. MARTINEZ (O.S., urgent) Julia, we need you in trauma room 2, stat!\n\n=== SCENE 3: INT. HOSPITAL STAFF ROOM - LATE NIGHT ===\n[SFX: ambient_hospital, faint_heart_monitor, soft_crying]\n\nJULIA (whispering, to herself) Why couldn't I save her? (looks at a photo on her phone of a young woman) I promised I'd always be there.\n\n[SFX: clock_ticks loudly, Julia sobs]\n\nJULIA (wipes tears) I should have done more.\n\n[SFX: door_creaks, footsteps approach]\n\nDR. MARTINEZ (soft, concerned) Julia, you did everything you could. (pauses, approaches) Sometimes, it's out of our hands.\n\nJULIA (whispers) I know. (pauses, wipes tears) But it doesn't make it any easier.\n\nDR. MARTINEZ (reassuring) You're one of the best doctors I know. Don't doubt yourself.\n\nJULIA (nods, sighs) Thanks, Dr. Martinez. (pauses, stands up) I'll be okay.\n\n=== SCENE 4: INT. TOM'S OFFICE - NEXT MORNING ===\n[SFX: alarm_clock_rings, traffic_sounds, door_slams, footsteps_approach, phone_ringing]\n\nLENA (O.S., professional) Tom, you're here early.\n\nTOM (serious, determined) Lena, we need to talk. I made a mistake with the messages. (stands abruptly, paces) I didn't realize how critical it was until last night when— (his phone buzzes with a notification, he glances at it nervously)\n\n[SFX: phone_rings_intensely]\n\nLENA (concerned) What do you mean?\n\nTOM (explains) The system's been sending messages, but they're not reaching the intended recipient. I don't know why, but I'm going to find out.\n\nLENA (nodding) Okay, let's go through the logs. Maybe we can trace the issue.\n\nTOM (resolute) Thanks, Lena. I owe this to Julia.\n\n=== SCENE 5: INT. TOM'S OFFICE - AFTERNOON ===\n[SFX: ambient_office, keyboard_tapping, paper_rustling]\n\nLENA (O.S., focused) Tom, look at this! I've found a pattern in the logs. (keyboard_tapping_faster) The messages aren't just failing—there's some kind of redirection happening in the system. (voice drops) It's almost like they're being sent somewhere else first.\n\nTOM (shocked, stands up) What? How is that possible? (knocks over coffee cup) Damn it! (grabs jacket) This could be a major security breach. We need to protect the system before someone gets hurt!\n\n[SFX: computer_alerts, rapid_keyboarding]\n\nLENA (nodding) I agree. I'll run a trace on the unknown address. (typing_faster) It might take some—\n\nTOM (interrupting) We don't have time! (leans over desk) Julia's life could be in danger.\n\n[SFX: urgent_phone_rings]\n\nLENA (determined) I'll do whatever it takes. (typing) Let's get to work.\n\n=== SCENE 6: INT. HOSPITAL EMERGENCY ROOM - AFTERNOON ===\n[SFX: ambulance_sirens_approaching, hospital_doors_burst_open, gurney_wheels, urgent_voices]\n\nDR. MARTINEZ (O.S., urgent) Julia, we have another critical case. Stat!\n\n[SFX: rapid_footsteps_approach]\n\nJULIA (determined, professional) Yes, I can. (rolling_up_sleeves, notices a small scar on her arm she doesn't remember getting) Let's do this.\n\n[SFX: medical_equipment_whirring, Julia's quick movements, monitor_beeps_rapidly]\n\nDR. MARTINEZ (O.S., calm but urgent) Good. Stay focused, Julia. Pressure's dropping!\n\n[SFX: urgent_equipment_beeps]\n\nJULIA (focused) I'm ready. (commanding) Clamp! Now! Let's save this patient.",
+    "p3_compliance_before": "4/6 plants present",
+    "p3_compliance_after": "6/6 plants present"
+  }
+}

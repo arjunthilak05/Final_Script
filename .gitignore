@@ -131,8 +131,6 @@ dmypy.json
 # Project specific
 outputs/
 *.pdf
-*.txt
-*.json
 !requirements.txt
 !README.md
 !SETUP_INSTRUCTIONS.md

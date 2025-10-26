@@ -1,0 +1,49 @@
+======================================================================
+STATION 6: MASTER STYLE GUIDE BUILDER
+======================================================================
+
+Working Title: The Accidental Lifeline
+Primary Genre: Drama
+Target Age: 25-45
+Episode Count: 3-6 episodes
+Episode Length: 15-25 min each
+Narrator Strategy: With Narrator
+
+----------------------------------------------------------------------
+LANGUAGE RULES
+----------------------------------------------------------------------
+
+Vocabulary Level: Sophisticated but accessible, avoiding overly technical or esoteric terms (age-appropriate for 25-45 year olds with diverse backgrounds)
+Sentence Complexity: Clear and well-structured sentences that avoid overly complex or convoluted narratives to ensure comprehension and engagement
+Technical Term Handling: Minimize technical medical or coaching terminology; when necessary, provide context through dialogue or narration to ensure understanding
+Narrator Voice Guidelines: Warm, expressive, with authentic emotional range and ability to convey vulnerability. The narrator should use a warm, inviting tone to convey romantic and hopeful moments, and a more serious, somber tone during tense and dramatic scenes.
+Age Appropriate Language: No explicit sexual content, graphic violence, or extreme profanity (PG rating maintained). Content suitable for general audiences with parental guidance.
+Genre Specific Terminology: Incorporate terminology related to motivation, personal growth, and emotional well-being that aligns with drama and romance genres
+
+Example Vocabulary:
+  Words to Use: resilience, connection, reflection, authentic, compassion, transformation
+  Words to Avoid: graphic medical procedures, explicit trauma descriptions, extreme profanity, sexual explicitness
+
+----------------------------------------------------------------------
+DIALECT/ACCENT MAP
+----------------------------------------------------------------------
+
+Character Voice Distinctions: Tom should have a warm, motivational speaking style with clear articulation. Julia's voice should carry the weight of her professional role as an ER doctor but soften during personal moments. Sarah should have a distinct, professional client voice. Dr. Martinez should have a confident, authoritative medical professional tone.
+Regional Markers: Set in a contemporary urban environment with neutral, standard accents reflecting professional diversity in a bustling city hospital setting. Avoid strong regional accents that might distract from the emotional content.
+
+Pronunciation Guide:
+  Character Names:
+    Tom: Tahm
+    Julia: Joo-lee-ah
+    Sarah: Sair-ah
+    Dr. Martinez: Doc-ter Mar-TEE-nez
+  Locations:
+    Hospital ER: Hos-pih-tol Ee-Ahr
+    Coaching Office: Koh-ching Aw-fis
+    Café: Kah-fay
+Voice Casting Notes: N/A
+Accent Consistency Rules: N/A
+
+======================================================================
+END OF MASTER STYLE GUIDE
+======================================================================

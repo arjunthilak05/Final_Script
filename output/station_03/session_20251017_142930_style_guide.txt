@@ -1,0 +1,86 @@
+============================================================
+AGE/GENRE STYLE GUIDE
+============================================================
+
+PROJECT TITLE: Wrong Number, Right Message
+Session ID: session_20251017_142930
+Created: 2025-10-17T14:37:12.813298
+Input Type: synopsis
+
+Scale: STANDARD
+Episodes: 8-12 episodes
+Length: 35-45 min each
+Primary Genre: Contemporary Romance
+Target Age: 25-55
+Content Rating: PG-13
+
+------------------------------------------------------------
+ORIGINAL SEED:
+------------------------------------------------------------
+For one year, morning motivation coach Tom has been texting daily inspirational messages to what he thinks is his client’s number. Julia, a depressed ER doctor, has been receiving them, and they’ve saved her life multiple times. She never corrects the mistake, and Tom’s messages become her lifeline. When Tom’s actual client complains about never receiving messages, he realizes his mistake. He tracks down the wrong number to apologize, finding Julia on the worst day of her life. Their meeting reveals that Julia has been anonymously funding Tom’s coaching business to help others like these messages helped her.
+
+------------------------------------------------------------
+1. AGE-APPROPRIATE GUIDELINES
+------------------------------------------------------------
+Target Age: 25-55
+Content Rating: PG-13 with justification for adult themes and emotional content related to depression and isolation, presented in a way that acknowledges these difficult topics while maintaining hopefulness and avoiding explicit content
+Violence Level: MINIMAL
+Emotional Intensity: MODERATE
+
+Action Scene Limits:
+  • Minimal physical confrontation - brief descriptions only
+  • No graphic depictions of accidents or injuries
+  • Action sequences should serve character development, not be the primary focus
+
+Emotional Boundaries:
+  • Depression and isolation should be portrayed with sensitivity and nuance, avoiding glorification or trivialization of mental health struggles
+  • Romantic scenes may include moderate emotional intensity and mild physical intimacy, but should avoid explicit sexual content
+  • Moments of emotional crisis should be balanced with hope and the possibility of healing, without presenting unrealistically quick resolutions
+
+Sound Restrictions:
+  • Avoid overly jarring or sudden loud sounds that could distress listeners, particularly during emotional scenes depicting depression or anxiety
+  • Limit intense background music during scenes of emotional vulnerability to ensure dialogue remains clear and impactful
+  • Romantic scenes should use subtle sound design and music that enhances connection without becoming sexually suggestive
+
+------------------------------------------------------------
+2. GENRE BLEND OPTIONS
+------------------------------------------------------------
+
+[✓] OPTION A: Contemporary Romance + Drama
+    Enhancement: The Drama genre intensifies the emotional stakes and character development in the Contemporary Romance narrative. It creates more complex interpersonal conflicts and deeper emotional journeys for the characters, making the romantic elements more impactful through realistic obstacles and personal growth arcs.
+
+[ ] OPTION B: Contemporary Romance + Inspirational Fiction
+    Enhancement: Inspirational Fiction elevates the Contemporary Romance by infusing it with themes of personal growth, hope, and transformation. This blend focuses on how the relationship helps characters overcome past traumas or challenges, making the romance a catalyst for positive change rather than just an end goal.
+
+[ ] OPTION C: Contemporary Romance + Slice of Life
+    Enhancement: Slice of Life elements ground the Contemporary Romance in everyday reality, making the relationship feel authentic and relatable. This blend focuses on the small, intimate moments that build connection over time, emphasizing how love grows through ordinary interactions rather than just grand gestures.
+
+CHOSEN: Option A
+
+------------------------------------------------------------
+3. TONE CALIBRATION
+------------------------------------------------------------
+Chosen Blend: Contemporary Romance + Drama
+
+Episode Progression:
+  • Episodes 1-3: Establishing melancholy and isolation. The tone begins with somber, introspective narration and minimal musical elements. Voice performances carry emotional weight through subtle vulnerability. Purpose: To immerse listeners in the protagonists' emotional states and establish the foundation of their individual struggles with depression and loneliness.
+  • Episodes 4-6: Building connection and tentative hope. The tone gradually warms with the introduction of gentle musical motifs and more varied vocal performances. Purpose: To reflect the initial stages of connection between characters while maintaining realistic dramatic tension as they navigate their personal demons.
+  • Episodes 7-9: Deepening emotional investment and conflict. The tone becomes more complex with layered sound design and dynamic voice performances that capture both vulnerability and strength. Purpose: To intensify the emotional stakes as characters confront their past traumas and the obstacles to their connection, balancing moments of despair with glimmers of hope.
+  • Final episodes: Resolution and healing. The tone shifts toward warmth and fulfillment with richer musical arrangements and more assured vocal delivery. Purpose: To convey the characters' journeys toward healing and connection while acknowledging that growth is ongoing, creating a satisfying but realistic emotional conclusion.
+
+Tonal Shift Moments:
+  1. Key moment 1: Episode 3, when protagonists first connect meaningfully. The tone shifts from isolated melancholy to tentative connection through the introduction of a subtle musical motif that represents their bond, combined with more intimate vocal performances.
+  2. Key moment 2: Episode 6, when a major conflict threatens the relationship. The tone shifts dramatically from hopeful to tense through sudden musical dissonance, tighter vocal delivery, and the introduction of environmental sounds that create emotional distance between characters.
+  3. Key moment 3: Episode 8, when characters confront their deepest fears. The tone shifts from external conflict to internal vulnerability through minimalist sound design, raw vocal performances, and strategic use of silence to emphasize emotional weight.
+  4. Key moment 4: Final episode, when characters choose connection despite challenges. The tone shifts from uncertainty to commitment through the return of their musical motif in a fuller arrangement, warmer vocal tones, and sound design that creates a sense of shared space.
+
+Audio Tone Techniques:
+  • Music technique: Simple, melancholic piano or acoustic guitar melodies in early episodes that gradually evolve into richer arrangements as the relationship develops. Each character has a distinct musical theme that begins isolated and gradually harmonizes with the other's theme.
+  • Voice technique: Narration begins with slower, more measured pacing and lower vocal registers that convey heaviness. As connection builds, vocal performances gain warmth, subtle inflections, and more varied rhythms that reflect growing emotional complexity.
+  • Sound design technique: Early episodes feature sparse environmental sounds that emphasize isolation (empty rooms, distant traffic). As connection grows, sound design becomes richer with shared spaces, overlapping dialogue, and ambient sounds that create intimacy.
+  • Pacing technique: Initial episodes use deliberate pacing with longer pauses to reflect emotional stagnation. As the relationship develops, pacing becomes more dynamic with varied tempo that matches emotional energy, creating a sense of movement and possibility.
+  • Silence technique: Strategic pauses after emotional revelations allow listeners to absorb impact. Early episodes use silence to emphasize isolation and emptiness, while later episodes employ brief silences before moments of connection to heighten emotional impact.
+
+Light/Dark Balance:
+  The audio narrative carefully balances dark moments of depression and conflict with light moments of connection and humor through a nuanced approach. Dark moments are characterized by minimal sound design, lower vocal registers, and dissonant musical elements, but are never allowed to dominate for extended periods. Light moments feature warmer musical tones, more dynamic vocal performances, and richer environmental sounds. The balance shifts progressively across episodes, with early installments weighted toward darkness (60/40 dark/light), middle episodes achieving equilibrium (50/50), and final episodes leaning toward light (40/60 dark/light). This progression reflects the characters' emotional journeys while maintaining authentic dramatic tension throughout.
+

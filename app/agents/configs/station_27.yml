@@ -1,0 +1,250 @@
+# Station 27: Master Script Assembly Configuration
+
+station_name: "Station 27: Master Script Assembly"
+description: "Final assembly of all finalized scripts into production-ready master scripts with complete specifications, format conversions, and delivery packages."
+model: "anthropic/claude-3.5-sonnet"
+temperature: 0.7
+max_tokens: 16384
+
+# Input configuration
+input:
+  required_stations:
+    - station: 26
+      name: "Final Script Lock (locked scripts with performance notes)"
+
+# Output configuration
+output:
+  directory: "output/station_27"
+  episode_subdirectory: "episode_{episode_number:02d}"
+  master_script_json: "episode_{episode_number:02d}_MASTER.json"
+  master_script_txt: "episode_{episode_number:02d}_MASTER.txt"
+  master_script_fountain: "episode_{episode_number:02d}_MASTER.fountain"
+  master_script_markdown: "episode_{episode_number:02d}_MASTER.md"
+  production_package: "episode_{episode_number:02d}_production_package.json"
+  delivery_manifest: "episode_{episode_number:02d}_manifest.txt"
+
+prompts:
+  script_assembly: |
+    **ROLE:** You are the Master Script Assembler creating final production-ready scripts.
+
+    **EPISODE:** {episode_number}
+
+    **LOCKED SCRIPT:** {locked_script}
+
+    **YOUR TASK:**
+    Assemble the complete production-ready script with all specifications, ensuring perfect formatting for audio production.
+
+    **ASSEMBLY CHECKLIST:**
+
+    1. **SCRIPT INTEGRITY**
+       - All dialogue included
+       - All sound cues present
+       - All performance notes included
+       - All acoustic specifications included
+
+    2. **FORMATTING STANDARDS**
+       - Consistent scene headings
+       - Proper character name formatting
+       - Correct sound cue notation ([SFX: ...], [AMBIENCE: ...], [MUSIC: ...])
+       - Proper silence notation ([SILENCE: X seconds])
+       - Clear performance directions in parentheses
+
+    3. **PRODUCTION READINESS**
+       - No placeholder text
+       - No "[NEEDS ...]" or unresolved elements
+       - Complete word count within target range
+       - All scenes have acoustic notes
+       - All transitions specified
+
+    4. **AUDIO SPECIFICATIONS**
+       - Each scene has acoustic properties
+       - Ambient layers defined
+       - Duration estimates included
+       - Sound density within optimal ranges
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON:
+
+    {{
+      "master_script_assembly": {{
+        "episode_number": {episode_number},
+        "assembly_status": "complete",
+        "final_word_count": 3847,
+        "final_runtime": "45:30",
+        "scene_count": 12,
+        "assembly_notes": [
+          "All dialogue formatted for voice production",
+          "All sound cues verified and positioned",
+          "All performance notes included",
+          "Script ready for immediate production"
+        ],
+        "master_script_text": "Complete full episode script with all audio markup and formatting...",
+        "production_specifications": {{
+          "total_runtime": "45:30",
+          "estimated_word_count": 3847,
+          "sound_cue_count": 73,
+          "silence_count": 15,
+          "ambient_layers": 9,
+          "narrator_moments": 5,
+          "transition_count": 11
+        }},
+        "quality_metrics": {{
+          "dialogue_clarity": "✓ Excellent",
+          "audio_integration": "✓ Optimized",
+          "performance_readiness": "✓ Production-ready",
+          "format_compliance": "✓ Complete"
+        }}
+      }}
+    }}
+
+  format_conversion: |
+    **ROLE:** You are converting the master script into production delivery formats.
+
+    **EPISODE:** {episode_number}
+
+    **MASTER SCRIPT:** {master_script}
+
+    **YOUR TASK:**
+    Convert the master script into Fountain format (industry standard for audio production), Markdown (readable format), and specifications (technical production details).
+
+    **FOUNTAIN FORMAT:**
+    - Standard screenplay formatting
+    - Proper Fountain syntax for headers, dialogue, action
+    - Sound design in action lines
+    - Character names above dialogue
+    - Parentheticals for performance notes
+
+    **MARKDOWN FORMAT:**
+    - Readable breakdown by scene
+    - Bold character names
+    - Italicized performance notes
+    - Code blocks for sound specifications
+    - Clearly separated sections
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON:
+
+    {{
+      "format_conversion": {{
+        "episode_number": {episode_number},
+        "fountain_script": "Complete Fountain-formatted script...",
+        "markdown_script": "# Episode {episode_number} Master Script\n\n## Scene 1\n\n...",
+        "conversion_notes": [
+          "Fountain format ready for professional production software",
+          "Markdown format ready for readable review documents",
+          "All formats maintain perfect script fidelity"
+        ]
+      }}
+    }}
+
+  production_package_generation: |
+    **ROLE:** You are creating the complete production delivery package.
+
+    **EPISODE:** {episode_number}
+
+    **MASTER SCRIPT:** {master_script}
+
+    **YOUR TASK:**
+    Generate comprehensive production documentation and specifications needed for recording, editing, and final delivery.
+
+    **PRODUCTION PACKAGE INCLUDES:**
+
+    1. **CAST & CREW BRIEFING**
+       - Episode overview
+       - Tone and style notes
+       - Character emotional states
+       - Key scenes summary
+
+    2. **VOICE ACTOR SPECIFICATIONS**
+       - Per-scene vocal direction
+       - Emotional context for each line
+       - Audio cue placement (so actors can time deliveries)
+       - Signature sounds and consistent elements
+
+    3. **SOUND DESIGNER SPECIFICATIONS**
+       - Required sound effects with descriptions
+       - Ambient layer requirements
+       - Music cue specifications
+       - Silence duration and purpose
+       - Technical quality standards
+
+    4. **EDITOR SPECIFICATIONS**
+       - Scene-by-scene assembly order
+       - Crossfade specifications
+       - Audio level guidelines
+       - Quality checkpoints
+
+    5. **DELIVERY SPECIFICATIONS**
+       - Final audio format
+       - Target duration
+       - Quality standards
+       - Metadata requirements
+
+    **OUTPUT FORMAT:** Return ONLY valid JSON:
+
+    {{
+      "production_package": {{
+        "episode_number": {episode_number},
+        "production_summary": {{
+          "title": "Episode {episode_number}",
+          "estimated_runtime": "45:30",
+          "tone": "Dramatic, character-driven thriller",
+          "key_themes": ["Trust", "Revelation", "Consequence"]
+        }},
+        "cast_briefing": {{
+          "episode_overview": "Opening revelation drives protagonist to action...",
+          "emotional_journey": "Tension builds from confusion to determination",
+          "key_scenes": [
+            {{
+              "scene_number": 1,
+              "location": "INT. COFFEE SHOP - DAY",
+              "emotional_context": "Marcus senses danger, uncertainty growing",
+              "key_moments": ["Character discovery", "Mounting suspicion"]
+            }}
+          ]
+        }},
+        "voice_actor_specifications": [
+          {{
+            "character": "MARCUS",
+            "scenes": [1, 2, 5, 8],
+            "vocal_characteristics": "Determined, weary, carrying burden",
+            "key_directions": [
+              {{
+                "scene": 1,
+                "emotion": "Anxiety",
+                "delivery": "Nervous energy, glancing around",
+                "note": "Lighter click SFX before dialogue helps establish character"
+              }}
+            ]
+          }}
+        ],
+        "sound_design_specifications": {{
+          "required_effects": ["Lighter click", "Door opening", "Papers rustling"],
+          "ambient_layers": ["Coffee shop chatter", "Office ambiance", "Distant traffic"],
+          "music_cues": ["Tension theme - 15 seconds", "Resolution swell - 8 seconds"],
+          "silences": "15 marked, strategically placed for dramatic effect"
+        }},
+        "editor_specifications": {{
+          "crossfade_guidelines": "0.5-1.0 second crossfades between scenes",
+          "audio_level_standards": "Dialogue normalized to -6dB, ambience at -12dB",
+          "quality_checkpoints": ["Scene assembly", "Audio balance", "Effect integration", "Final mix"]
+        }},
+        "delivery_specifications": {{
+          "target_format": "MP3, 128kbps, stereo",
+          "final_duration": "45:30",
+          "quality_standard": "Professional audiobook production quality",
+          "metadata": "ID3 tags with episode title, number, series info"
+        }}
+      }}
+    }}
+
+dependencies:
+  - station: 26
+    name: "Final Script Lock (locked scripts required)"
+
+enabled: true
+
+special_features:
+  final_assembly_station: true
+  generates_multiple_formats: true
+  creates_production_package: true
+  supports_batch_processing: true
+  generates_delivery_manifests: true

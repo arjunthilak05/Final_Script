@@ -1,0 +1,6 @@
+ERROR LOG
+======================================================================
+
+❌ Error processing episode 2: ❌ Task 1 failed: 'short_max'
+❌ Error processing episode 3: ❌ Task 1 failed: 'short_max'
+❌ Error processing episode 1: ❌ Task 1 failed: 'short_max'

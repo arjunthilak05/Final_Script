@@ -82,14 +82,14 @@ class Station33PacingEnergyAnalyzer:
             station27_data = await self.load_station27_data()
             
             print("✅ All inputs loaded successfully")
-            print(f"   ✓ Station 27: {len(station27_data.get('episodes', []))} master scripts")
+            episodes = station27_data.get('episodes', {})
+            print(f"   ✓ Station 27: {len(episodes)} master scripts")
             print()
 
             # Step 2: Display project summary
             self.display_project_summary(station27_data)
 
             # Step 3: Process all episodes - need complete dataset for macro analysis
-            episodes = station27_data.get('episodes', {})
             if not episodes:
                 raise ValueError("❌ No episodes found in Station 27 data. Cannot proceed.")
 
@@ -172,12 +172,15 @@ class Station33PacingEnergyAnalyzer:
             print("=" * 70)
             print("Review pacing_fixes.json before applying solutions.")
             
-            response = input("Apply pacing fixes? [y/n]: ").strip().lower()
-            if response == 'y':
-                print("✅ User approved pacing fixes")
-                # Here you would apply the fixes (implementation depends on requirements)
-            else:
-                print("⏸️  Pacing fixes not applied (user review pending)")
+            try:
+                response = input("Apply pacing fixes? [y/n]: ").strip().lower()
+                if response == 'y':
+                    print("✅ User approved pacing fixes")
+                    # Here you would apply the fixes (implementation depends on requirements)
+                else:
+                    print("⏸️  Pacing fixes not applied (user review pending)")
+            except (EOFError, KeyboardInterrupt):
+                print("⏸️  Pacing fixes not applied (no user input available)")
             
             print("\n✅ Station 33 analysis complete!")
 
@@ -188,40 +191,30 @@ class Station33PacingEnergyAnalyzer:
     async def load_station27_data(self) -> Dict:
         """Load Station 27 master scripts from output files"""
         try:
-            # Load from episode subdirectories
             station_27_dir = Path("output/station_27")
-            episodes_data = {}
+            episodes = {}
             
             if not station_27_dir.exists():
-                # Try Redis
-                station27_key = f"audiobook:{self.session_id}:station_27"
-                station27_raw = await self.redis.get(station27_key)
-                
-                if not station27_raw:
-                    raise ValueError(f"❌ No Station 27 data found for session {self.session_id}\n   Please run Station 27 first")
-                
-                station27_data = json.loads(station27_raw)
-                return station27_data
+                raise ValueError(f"❌ Station 27 directory not found: {station_27_dir}\n   Please run Station 27 first")
             
-            # Load from files
+            # Load all episodes from Station 27
             for episode_dir in station_27_dir.iterdir():
                 if episode_dir.is_dir() and episode_dir.name.startswith("episode_"):
                     try:
                         episode_num = int(episode_dir.name.split("_")[1])
-                        json_file = episode_dir / f"episode_{episode_num:02d}_master_assembly.json"
+                        json_file = episode_dir / f"episode_{episode_num:02d}_MASTER.json"
                         
                         if json_file.exists():
                             with open(json_file, 'r', encoding='utf-8') as f:
                                 episode_data = json.load(f)
-                                episodes_data[f"episode_{episode_num:02d}"] = episode_data
-                    except (ValueError, KeyError, json.JSONDecodeError) as e:
-                        logger.warning(f"Could not load episode from {episode_dir.name}: {str(e)}")
+                                episodes[episode_num] = episode_data
+                    except (ValueError, KeyError, json.JSONDecodeError):
                         continue
             
-            if not episodes_data:
-                raise ValueError("❌ No episode data found in station_27 output directory")
+            if not episodes:
+                raise ValueError(f"❌ No Station 27 episodes found in {station_27_dir}\n   Please run Station 27 first")
             
-            return {'episodes': episodes_data}
+            return {'episodes': episodes}
             
         except json.JSONDecodeError as e:
             raise ValueError(f"❌ Error parsing Station 27 data: {str(e)}")
@@ -241,9 +234,9 @@ class Station33PacingEnergyAnalyzer:
         
         if episodes:
             print("Episode List:")
-            for episode_key, episode_data in episodes.items():
-                episode_id = episode_data.get('episode_number', episode_key)
-                title = episode_data.get('production_package', {}).get('production_summary', {}).get('title', 'Unknown')
+            for episode_id, episode_data in episodes.items():
+                production_pkg = episode_data.get('production_package', {})
+                title = production_pkg.get('production_summary', {}).get('title', 'Unknown')
                 print(f"   • Episode {episode_id}: {title}")
         
         print("-" * 70)
@@ -266,11 +259,14 @@ class Station33PacingEnergyAnalyzer:
             
             # Get thresholds from config
             thresholds = self.config_data.get('thresholds', {})
+            scene_length = thresholds.get('scene_length', {})
             
             context = {
                 'episode_id': str(episode_id),
                 'episode_content': episode_content[:15000],  # First 15000 chars
-                'thresholds': json.dumps(thresholds)
+                'thresholds': json.dumps(thresholds),
+                'short_max': scene_length.get('short_max', 120),
+                'medium_max': scene_length.get('medium_max', 300)
             }
             
             prompt = self.config.get_prompt('micro_pacing_analysis').format(**context)
@@ -393,17 +389,17 @@ class Station33PacingEnergyAnalyzer:
         
         # Try fountain script first
         fountain = format_conv.get('fountain_script', '')
-        if fountain and fountain.strip():
+        if fountain and fountain.strip() and 'Complete full episode script' not in fountain:
             return fountain
         
         # Try markdown
         markdown = format_conv.get('markdown_script', '')
-        if markdown and markdown.strip():
+        if markdown and markdown.strip() and 'Complete full episode script' not in markdown:
             return markdown
         
-        # Try master script text
+        # Try master script text (but skip if it's a placeholder)
         master_text = episode.get('master_script_assembly', {}).get('master_script_text', '')
-        if master_text and master_text.strip():
+        if master_text and master_text.strip() and 'Complete full episode script' not in master_text:
             return master_text
         
         return ''
@@ -588,18 +584,25 @@ Energy Trend: {energy_curve['energy_trend']}
 
 
 async def main():
-    """Entry point"""
-    import sys
+    """Run Station 33 standalone"""
+    session_id = input("\n👉 Enter Session ID from previous stations: ").strip()
     
-    if len(sys.argv) < 2:
-        print("Usage: python station_33_pacing_energy_analyzer.py <session_id>")
-        sys.exit(1)
-    
-    session_id = sys.argv[1]
+    if not session_id:
+        print("❌ Session ID required")
+        return
     
     analyzer = Station33PacingEnergyAnalyzer(session_id)
     await analyzer.initialize()
-    await analyzer.run()
+    
+    try:
+        await analyzer.run()
+        print(f"\n✅ Success! Pacing & energy analysis complete for session: {session_id}")
+    except KeyboardInterrupt:
+        print("\n\n❌ Cancelled by user")
+    except Exception as e:
+        print(f"\n❌ Error: {str(e)}")
+        import traceback
+        traceback.print_exc()
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-27T23:55:35.495920",
+  "generated_at": "2025-10-28T00:56:41.643303",
   "episode_metrics": [
     {
       "episode_id": 1,
@@ -9,17 +9,31 @@
           "medium_scenes": 0,
           "long_scenes": 0,
           "total_scenes": 1,
-          "average_length_seconds": 11,
+          "average_length_seconds": 45,
           "monotonous_patterns": [],
-          "pattern_alerts": []
+          "pattern_alerts": [
+            "Extremely short episode - may create abrupt listening experience"
+          ]
         },
         "dialogue_density": {
-          "average_wpm": 109,
+          "average_wpm": 24,
           "fast_sections": [],
-          "slow_sections": [],
-          "silence_gaps": [],
+          "slow_sections": [
+            {
+              "location": "Scene 1",
+              "wpm": 24,
+              "duration": "45 seconds"
+            }
+          ],
+          "silence_gaps": [
+            {
+              "location": "Scene 1",
+              "gap_duration": "Likely >5 seconds between lines"
+            }
+          ],
           "pacing_issues": [
-            "Single scene - no variation to analyze"
+            "Extremely slow dialogue pace at 24 WPM",
+            "Minimal dialogue content may not sustain listener engagement"
           ]
         },
         "sound_density": {
@@ -45,9 +59,9 @@
         },
         "total_duration": {
           "minutes": 0,
-          "seconds": 11
+          "seconds": 45
         },
-        "energy_rating": 4
+        "energy_rating": 2
       }
     },
     {
@@ -58,28 +72,27 @@
           "medium_scenes": 0,
           "long_scenes": 0,
           "total_scenes": 2,
-          "average_length_seconds": 6,
+          "average_length_seconds": 4.5,
           "monotonous_patterns": [],
           "pattern_alerts": [
-            "Episode consists of only very short scenes, may feel abrupt or underdeveloped"
+            "Episode appears to be incomplete - only 2 scenes analyzed"
           ]
         },
         "dialogue_density": {
-          "average_wpm": 133,
+          "average_wpm": 113,
           "fast_sections": [],
           "slow_sections": [],
           "silence_gaps": [],
           "pacing_issues": [
-            "Limited dialogue for pacing analysis",
-            "No significant variation in dialogue speed between scenes"
+            "Insufficient data to determine pacing patterns - episode appears incomplete"
           ]
         },
         "sound_density": {
           "high_activity_scenes": [],
           "medium_activity_scenes": [],
           "minimal_activity_scenes": [
-            "Scene 1: Living Room",
-            "Scene 2: Kitchen"
+            "Scene 1",
+            "Scene 2"
           ],
           "overload_scenes": [],
           "repeated_sounds": []
@@ -92,21 +105,19 @@
             },
             {
               "scene": 2,
-              "intensity": "medium"
+              "intensity": "low"
             }
           ],
           "exhaustion_risks": [],
-          "flatness_risks": [
-            "Both scenes have similar medium intensity - lacks variation"
-          ],
-          "emotional_rhythm": "stable",
-          "intensity_variance": "low"
+          "flatness_risks": [],
+          "emotional_rhythm": "declining",
+          "intensity_variance": "insufficient_data"
         },
         "total_duration": {
           "minutes": 0,
-          "seconds": 12
+          "seconds": 9
         },
-        "energy_rating": 4
+        "energy_rating": 3
       }
     },
     {
@@ -117,25 +128,25 @@
           "medium_scenes": 0,
           "long_scenes": 0,
           "total_scenes": 1,
-          "average_length_seconds": 30,
+          "average_length_seconds": 45,
           "monotonous_patterns": [],
           "pattern_alerts": [
-            "Insufficient data to analyze full episode pacing patterns"
+            "Single scene episode - insufficient data for pattern analysis"
           ]
         },
         "dialogue_density": {
-          "average_wpm": 46,
+          "average_wpm": 33,
           "fast_sections": [],
           "slow_sections": [
             {
               "location": "Scene 1",
-              "wpm": 46,
-              "duration": "0min30s"
+              "wpm": 33,
+              "duration": "45 seconds"
             }
           ],
           "silence_gaps": [],
           "pacing_issues": [
-            "Scene 1: Dialogue pace below minimum threshold (100 wpm)"
+            "Extremely low wpm (33) - may lack engagement for listeners"
           ]
         },
         "sound_density": {
@@ -151,19 +162,21 @@
           "intensity_sequence": [
             {
               "scene": 1,
-              "intensity": "medium"
+              "intensity": "low"
             }
           ],
           "exhaustion_risks": [],
-          "flatness_risks": [],
-          "emotional_rhythm": "unknown",
-          "intensity_variance": "unknown"
+          "flatness_risks": [
+            "Single scene with low intensity - potential listener disengagement"
+          ],
+          "emotional_rhythm": "stable",
+          "intensity_variance": "insufficient_data"
         },
         "total_duration": {
           "minutes": 0,
-          "seconds": 30
+          "seconds": 45
         },
-        "energy_rating": 3
+        "energy_rating": 2
       }
     }
   ],

@@ -1,0 +1,107 @@
+{
+  "cut_list": [],
+  "add_list": [
+    {
+      "description": "Scene-establishing ambient sounds",
+      "reason": "Essential for setting the scene and creating immersion",
+      "location": "Beginning of each scene",
+      "priority": "IMMEDIATE",
+      "episode": "episode_01",
+      "task": "sfx_audit"
+    },
+    {
+      "description": "Action-specific SFX (doors, footsteps, objects)",
+      "reason": "Critical for grounding actions in audio space",
+      "location": "Throughout script wherever actions occur",
+      "priority": "IMMEDIATE",
+      "episode": "episode_01",
+      "task": "sfx_audit"
+    },
+    {
+      "description": "Transition sounds between scenes",
+      "reason": "Helps listeners follow scene changes",
+      "location": "Scene boundaries",
+      "priority": "HIGH",
+      "episode": "episode_01",
+      "task": "sfx_audit"
+    },
+    {
+      "description": "Opening theme",
+      "reason": "Establishes episode tone and world",
+      "location": "Episode opening",
+      "priority": "IMMEDIATE",
+      "episode": "episode_01",
+      "task": "music_audit"
+    },
+    {
+      "description": "Transition stings between scenes",
+      "reason": "Marks scene changes and maintains flow",
+      "location": "Between major scene shifts",
+      "priority": "HIGH",
+      "episode": "episode_01",
+      "task": "music_audit"
+    },
+    {
+      "description": "Emotional underscore for key moments",
+      "reason": "Supports character emotions and dramatic beats",
+      "location": "During emotional confrontations or revelations",
+      "priority": "HIGH",
+      "episode": "episode_01",
+      "task": "music_audit"
+    },
+    {
+      "description": "Dramatic silences after key reveals",
+      "reason": "To create impact and emphasize important moments",
+      "location": "After major plot points and emotional reveals",
+      "duration": "3-5 seconds",
+      "priority": "HIGH",
+      "episode": "episode_01",
+      "task": "silence_audit"
+    },
+    {
+      "description": "Natural conversation pauses",
+      "reason": "To create realistic dialogue rhythm",
+      "location": "Between character exchanges",
+      "duration": "1-2 seconds",
+      "priority": "IMMEDIATE",
+      "episode": "episode_01",
+      "task": "silence_audit"
+    },
+    {
+      "description": "Scene transition silences",
+      "reason": "To provide clear separation between scenes",
+      "location": "Between all scene changes",
+      "duration": "2-3 seconds",
+      "priority": "IMMEDIATE",
+      "episode": "episode_01",
+      "task": "silence_audit"
+    },
+    {
+      "description": "Processing time pauses",
+      "reason": "To allow audience to absorb information",
+      "location": "After information-heavy dialogues",
+      "duration": "2-3 seconds",
+      "priority": "HIGH",
+      "episode": "episode_01",
+      "task": "silence_audit"
+    }
+  ],
+  "adjustments": [
+    {
+      "sfx_description": "Script formatting",
+      "current": "No SFX markup present",
+      "fix": "Add proper SFX bracket notation throughout script",
+      "priority": "IMMEDIATE",
+      "episode": "episode_01",
+      "task": "sfx_audit"
+    },
+    {
+      "silence_context": "Complete script structure",
+      "current": "Wall-to-wall sound with no silence cues",
+      "fix": "Integrate strategic silences throughout the episode for dramatic effect, natural flow, and clear transitions",
+      "priority": "CRITICAL",
+      "episode": "episode_01",
+      "task": "silence_audit"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "plants_without_payoffs": [],
+  "payoffs_without_plants": [],
+  "weak_connections": [],
+  "orphan_summary": {
+    "total_orphans": 0,
+    "plants_orphaned": 0,
+    "payoffs_orphaned": 0,
+    "weak_connections": 0,
+    "overall_health": "good",
+    "critical_action_required": false
+  }
+}

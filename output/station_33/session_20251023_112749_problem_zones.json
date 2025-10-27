@@ -1,0 +1,50 @@
+{
+  "generated_at": "2025-10-28T00:56:41.645121",
+  "dead_zones": [
+    {
+      "episode": 2,
+      "scene": 1,
+      "issue": "No clear plot advancement - characters express uncertainty without resolution",
+      "severity": "medium"
+    },
+    {
+      "episode": 2,
+      "scene": 2,
+      "issue": "No character development - Lucy's line adds nothing to story",
+      "severity": "medium"
+    },
+    {
+      "episode": 3,
+      "scene": 1,
+      "issue": "No conflict or reveals - generic conversation with no connection to main storyline",
+      "severity": "high"
+    }
+  ],
+  "overload_zones": [],
+  "repetition_fatigue": [
+    {
+      "episodes": "1-2",
+      "issue": "Similar night-time setting with characters whispering about unknown situations",
+      "severity": "medium"
+    },
+    {
+      "episodes": "1-2",
+      "issue": "Repeated 'door creaking' sound effect creating identical tension moment",
+      "severity": "medium"
+    }
+  ],
+  "audio_fatigue": [
+    {
+      "episode": 1,
+      "scene": 1,
+      "issue": "Single ambient setting (night in house) with minimal audio variation",
+      "severity": "low"
+    },
+    {
+      "episode": 2,
+      "scene": 1,
+      "issue": "Same door creaking sound effect repeated from previous episode",
+      "severity": "low"
+    }
+  ]
+}

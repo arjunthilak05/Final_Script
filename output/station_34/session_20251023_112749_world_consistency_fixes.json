@@ -1,0 +1,39 @@
+{
+  "immediate_fixes": [
+    {
+      "recommendation": "The scene is set in a living room at night but does not specify which of the established locations it represents. Consider clarifying if this is Sarah's House (which has a living room) or another location to better align with the established world geography.",
+      "priority": "MEDIUM",
+      "affected_location": "Scene 1",
+      "world_rule_reference": "Geography_spaces key_locations",
+      "episode_id": 1,
+      "task": "world_rules_check"
+    },
+    {
+      "recommendation": "Specify that the Living Room and Kitchen are part of one of the established locations, particularly Sarah's House which has both these spaces defined in its description.",
+      "priority": "HIGH",
+      "affected_location": "Scene 1: INT. LIVING ROOM - NIGHT, Scene 2: INT. KITCHEN - NIGHT",
+      "world_rule_reference": "Station 8 key_locations",
+      "episode_id": 2,
+      "task": "world_rules_check"
+    },
+    {
+      "recommendation": "Add more specific sound design notes that align with the sonic signatures of the established locations.",
+      "priority": "MEDIUM",
+      "affected_location": "Scene 1: SFX: DOOR CREAKING",
+      "world_rule_reference": "Station 8 sonic_signature",
+      "episode_id": 2,
+      "task": "world_rules_check"
+    },
+    {
+      "recommendation": "Consider adding more specific ambient sound design for the coffee shop scene based on the established sonic signature for the Café location (loc_006) to enhance immersion.",
+      "priority": "LOW",
+      "affected_location": "Coffee Shop Scene",
+      "world_rule_reference": "Café sonic signature includes constant background music at 35dB, periodic sounds of cups clinking or coffee grinding, random environmental sounds like customer laughter or door opening",
+      "episode_id": 3,
+      "task": "world_rules_check"
+    }
+  ],
+  "review_fixes": [],
+  "audio_fixes": [],
+  "character_fixes": []
+}

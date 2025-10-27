@@ -1,17 +1,17 @@
 {
-  "generated_at": "2025-10-27T23:55:35.497096",
+  "generated_at": "2025-10-28T00:56:41.644667",
   "energy_ratings": [
     {
       "episode_id": 1,
-      "energy_rating": 4
+      "energy_rating": 2
     },
     {
       "episode_id": 2,
-      "energy_rating": 4
+      "energy_rating": 3
     },
     {
       "episode_id": 3,
-      "energy_rating": 3
+      "energy_rating": 2
     }
   ],
   "energy_trend": "Stable"

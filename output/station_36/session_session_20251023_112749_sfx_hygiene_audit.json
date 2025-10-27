@@ -1,0 +1,457 @@
+{
+  "session_id": "session_20251023_112749",
+  "timestamp": "20251028_010640",
+  "episodes": {
+    "episode_01": {
+      "episode_id": "episode_01",
+      "sfx_audit": {
+        "necessity_check": {
+          "essential_sfx": [],
+          "decorative_sfx": [],
+          "issues": [
+            {
+              "sfx_description": "No SFX cues provided",
+              "issue": "Script lacks any sound effects cues, making it difficult to create an immersive audio experience",
+              "severity": "CRITICAL",
+              "line_context": "Entire script"
+            }
+          ]
+        },
+        "timing_check": {
+          "well_timed_sfx": [],
+          "timing_issues": [],
+          "duration_issues": []
+        },
+        "volume_and_mixing": {
+          "properly_marked_sfx": [],
+          "mixing_issues": [],
+          "volume_notes_missing": []
+        },
+        "realism_check": {
+          "believable_sfx": [],
+          "realism_issues": [],
+          "consistency_issues": []
+        },
+        "overall_sfx_hygiene": {
+          "necessity_score": 0,
+          "timing_score": 0,
+          "mixing_score": 0,
+          "realism_score": 0,
+          "overall_score": 0
+        },
+        "cut_list": [],
+        "add_list": [
+          {
+            "description": "Scene-establishing ambient sounds",
+            "reason": "Essential for setting the scene and creating immersion",
+            "location": "Beginning of each scene",
+            "priority": "IMMEDIATE"
+          },
+          {
+            "description": "Action-specific SFX (doors, footsteps, objects)",
+            "reason": "Critical for grounding actions in audio space",
+            "location": "Throughout script wherever actions occur",
+            "priority": "IMMEDIATE"
+          },
+          {
+            "description": "Transition sounds between scenes",
+            "reason": "Helps listeners follow scene changes",
+            "location": "Scene boundaries",
+            "priority": "HIGH"
+          }
+        ],
+        "adjustments": [
+          {
+            "sfx_description": "Script formatting",
+            "current": "No SFX markup present",
+            "fix": "Add proper SFX bracket notation throughout script",
+            "priority": "IMMEDIATE"
+          }
+        ]
+      },
+      "music_audit": {
+        "function_check": {
+          "emotional_support_music": [],
+          "transition_music": [],
+          "time_passage_music": [],
+          "character_themes": [],
+          "decorative_music": [],
+          "issues": [
+            {
+              "description": "No music cues present",
+              "issue": "Script lacks any music cues, missing opportunities for emotional support, transitions, and scene enhancement",
+              "severity": "CRITICAL"
+            }
+          ]
+        },
+        "duration_check": {
+          "appropriate_durations": [],
+          "duration_issues": [],
+          "overwhelming_dialogue": []
+        },
+        "style_consistency": {
+          "consistent_music": [],
+          "style_issues": [],
+          "jarring_shifts": []
+        },
+        "placement_check": {
+          "logical_entries": [],
+          "illogical_entries": [],
+          "smooth_exits": [],
+          "abrupt_exits": [],
+          "fighting_dialogue": []
+        },
+        "overall_music_hygiene": {
+          "function_score": 0,
+          "duration_score": 0,
+          "style_score": 0,
+          "placement_score": 0,
+          "overall_score": 0
+        },
+        "cut_list": [],
+        "add_list": [
+          {
+            "description": "Opening theme",
+            "reason": "Establishes episode tone and world",
+            "location": "Episode opening",
+            "priority": "IMMEDIATE"
+          },
+          {
+            "description": "Transition stings between scenes",
+            "reason": "Marks scene changes and maintains flow",
+            "location": "Between major scene shifts",
+            "priority": "HIGH"
+          },
+          {
+            "description": "Emotional underscore for key moments",
+            "reason": "Supports character emotions and dramatic beats",
+            "location": "During emotional confrontations or revelations",
+            "priority": "HIGH"
+          }
+        ],
+        "adjustments": []
+      },
+      "ambience_audit": {
+        "layer_count_check": {
+          "compliance": {
+            "max_layers_not_exceeded": true,
+            "scenes_with_overload": []
+          },
+          "layer_clarity": {
+            "distinct_layers": [],
+            "unclear_layers": [],
+            "muddy_layers": []
+          },
+          "issues": []
+        },
+        "consistency_check": {
+          "location_consistency": {
+            "consistent_locations": [],
+            "inconsistent_locations": []
+          },
+          "time_consistency": {
+            "appropriate_times": [],
+            "time_mismatches": []
+          },
+          "weather_consistency": {
+            "matching_weather": [],
+            "weather_mismatches": []
+          }
+        },
+        "dynamics_check": {
+          "proper_dynamics": [],
+          "ducking_issues": [],
+          "swelling_issues": [],
+          "fading_issues": [],
+          "wall_to_wall_issues": []
+        },
+        "overall_ambience_hygiene": {
+          "layering_score": 0,
+          "consistency_score": 0,
+          "dynamics_score": 0,
+          "overall_score": 0
+        },
+        "cut_list": [],
+        "add_list": [],
+        "adjustments": []
+      },
+      "silence_audit": {
+        "dramatic_silence": {
+          "effective_dramatic_silences": [],
+          "overused_dramatic_silences": [],
+          "ineffective_dramatic_silences": [],
+          "issues": [
+            {
+              "description": "Complete absence of dramatic silence cues",
+              "issue": "No dramatic silences present in script",
+              "severity": "CRITICAL"
+            }
+          ]
+        },
+        "natural_silence": {
+          "breathing_room_present": {
+            "adequate_silence": false,
+            "silence_percentage": "0%",
+            "scenes_with_adequate_pauses": [],
+            "scenes_needing_pauses": [
+              "All scenes"
+            ]
+          },
+          "wall_to_wall_sound": {
+            "has_breaks": false,
+            "continuous_sound_sections": [
+              {
+                "duration": "Entire episode",
+                "start": "Beginning",
+                "end": "End",
+                "issue": "No silence breaks throughout the entire episode"
+              }
+            ]
+          },
+          "conversation_pauses": {
+            "natural_pauses": [],
+            "unnatural_pauses": [
+              {
+                "scene": "All dialogue scenes",
+                "issue": "No pauses between dialogue exchanges",
+                "fix": "Add 2-3 second pauses between character lines"
+              }
+            ],
+            "missing_pauses": [
+              {
+                "scene": "All emotional moments",
+                "issue": "No pause after emotional reveals",
+                "fix": "Add 3-5 second silence after emotional moments"
+              }
+            ]
+          },
+          "processing_time": {
+            "allows_comprehension": false,
+            "overwhelming_sections": [
+              {
+                "description": "Entire episode",
+                "issue": "No pauses for audience to process information",
+                "fix": "Add 2-3 second silence after important information reveals"
+              }
+            ]
+          }
+        },
+        "transition_silence": {
+          "clear_scene_breaks": [],
+          "jarring_transitions": [
+            {
+              "transition": "All scene changes",
+              "issue": "Abrupt changes, no transition silence",
+              "fix": "Add 2-3 second silence between all scenes"
+            }
+          ],
+          "appropriate_length_transitions": [],
+          "inappropriate_length_transitions": [],
+          "scene_flow_issues": [
+            {
+              "description": "All transitions",
+              "issue": "No silence causing potential confusion between scenes",
+              "fix": "Add silence markers between all scenes"
+            }
+          ]
+        },
+        "overall_silence_hygiene": {
+          "dramatic_effectiveness": 0,
+          "natural_flow": 0,
+          "transition_clarity": 0,
+          "overall_score": 0
+        },
+        "cut_list": [],
+        "add_list": [
+          {
+            "description": "Dramatic silences after key reveals",
+            "reason": "To create impact and emphasize important moments",
+            "location": "After major plot points and emotional reveals",
+            "duration": "3-5 seconds",
+            "priority": "HIGH"
+          },
+          {
+            "description": "Natural conversation pauses",
+            "reason": "To create realistic dialogue rhythm",
+            "location": "Between character exchanges",
+            "duration": "1-2 seconds",
+            "priority": "IMMEDIATE"
+          },
+          {
+            "description": "Scene transition silences",
+            "reason": "To provide clear separation between scenes",
+            "location": "Between all scene changes",
+            "duration": "2-3 seconds",
+            "priority": "IMMEDIATE"
+          },
+          {
+            "description": "Processing time pauses",
+            "reason": "To allow audience to absorb information",
+            "location": "After information-heavy dialogues",
+            "duration": "2-3 seconds",
+            "priority": "HIGH"
+          }
+        ],
+        "adjustments": [
+          {
+            "silence_context": "Complete script structure",
+            "current": "Wall-to-wall sound with no silence cues",
+            "fix": "Integrate strategic silences throughout the episode for dramatic effect, natural flow, and clear transitions",
+            "priority": "CRITICAL"
+          }
+        ]
+      },
+      "total_cues": 0
+    }
+  },
+  "summary": {
+    "summary_text": "The audio hygiene analysis reveals significant deficiencies across all sound design elements in the single episode audited. Episode 01 shows a complete absence of sound effects, music, and silence cues, resulting in a script that lacks the necessary audio infrastructure for effective production. The episode demonstrates critical gaps in all major categories including SFX necessity (0%), music functionality (0%), ambience implementation (0%), and strategic silence usage (0%), indicating a fundamental lack of audio design integration at the script level. The audio landscape is essentially barren, with no cues provided for scene establishment, emotional support, or narrative enhancement through sound. This represents a foundational issue that would severely impact production quality and audience experience if not addressed immediately. The episode requires comprehensive audio design integration before proceeding to production.",
+    "overall_scores": {
+      "sfx_necessity_score": 0,
+      "sfx_timing_score": 0,
+      "sfx_mixing_score": 0,
+      "sfx_realism_score": 0,
+      "music_function_score": 0,
+      "music_duration_score": 0,
+      "music_style_score": 0,
+      "music_placement_score": 0,
+      "ambience_layering_score": 0,
+      "ambience_consistency_score": 0,
+      "ambience_dynamics_score": 0,
+      "silence_dramatic_effectiveness": 0,
+      "silence_natural_flow": 0,
+      "silence_transition_clarity": 0,
+      "overall_hygiene_score": 0
+    },
+    "critical_issues": [
+      {
+        "severity": "CRITICAL",
+        "title": "Complete Absence of Sound Effects",
+        "description": "Script lacks any sound effects cues, making it impossible to create an immersive audio experience or properly ground actions in the audio space.",
+        "affected_episodes": [
+          "episode_01"
+        ],
+        "impact": "Prevents creation of believable audio environment, leaves actions un-accompanied, and results in flat, unengaging audio production"
+      },
+      {
+        "severity": "CRITICAL",
+        "title": "Complete Absence of Music Cues",
+        "description": "No music cues present in the script, missing all opportunities for emotional support, scene transitions, and narrative enhancement through music.",
+        "affected_episodes": [
+          "episode_01"
+        ],
+        "impact": "Eliminates emotional depth, makes scene transitions jarring, and removes a key storytelling tool from the production"
+      },
+      {
+        "severity": "CRITICAL",
+        "title": "Complete Absence of Strategic Silence",
+        "description": "No dramatic silences, natural pauses, or transition silences present, creating a wall-to-wall sound environment with no breathing room.",
+        "affected_episodes": [
+          "episode_01"
+        ],
+        "impact": "Causes listener fatigue, prevents dramatic impact from key moments, and makes scene transitions confusing and abrupt"
+      },
+      {
+        "severity": "CRITICAL",
+        "title": "No Audio Markup in Script",
+        "description": "Script contains no proper SFX bracket notation or audio cues, making it impossible for sound designers and engineers to implement audio elements.",
+        "affected_episodes": [
+          "episode_01"
+        ],
+        "impact": "Creates production workflow breakdown, requires complete script revision before audio production can begin"
+      }
+    ],
+    "common_issues": [
+      {
+        "issue_type": "SFX",
+        "category": "necessity",
+        "frequency": "Entire script",
+        "affected_episodes": [
+          "episode_01"
+        ],
+        "pattern_description": "Complete absence of both essential and decorative sound effects throughout the entire episode"
+      },
+      {
+        "issue_type": "MUSIC",
+        "category": "function",
+        "frequency": "Entire script",
+        "affected_episodes": [
+          "episode_01"
+        ],
+        "pattern_description": "No music cues of any kind - no themes, transitions, emotional support, or decorative elements"
+      },
+      {
+        "issue_type": "SILENCE",
+        "category": "natural_flow",
+        "frequency": "Entire script",
+        "affected_episodes": [
+          "episode_01"
+        ],
+        "pattern_description": "Wall-to-wall sound with no natural pauses, dramatic silences, or processing time for audience"
+      },
+      {
+        "issue_type": "AMBIENCE",
+        "category": "layering",
+        "frequency": "Entire script",
+        "affected_episodes": [
+          "episode_01"
+        ],
+        "pattern_description": "No ambient sound layers established for any scenes or locations"
+      }
+    ],
+    "recommendations": [
+      {
+        "priority": "IMMEDIATE",
+        "title": "Implement Complete Audio Design Framework",
+        "description": "Add comprehensive SFX, music, ambience, and silence cues throughout the entire script using proper bracket notation. Include scene-establishing ambient sounds, action-specific SFX, opening theme, transition stings, emotional underscore, and strategic silences.",
+        "expected_impact": "Will transform the script from audio-barren to fully audio-ready, enabling proper sound design implementation and creating an immersive listening experience",
+        "affected_episodes": [
+          "episode_01"
+        ]
+      },
+      {
+        "priority": "IMMEDIATE",
+        "title": "Add Essential Scene-Setting Audio Elements",
+        "description": "Implement scene-establishing ambient sounds at the beginning of each scene, action-specific SFX for all character movements and object interactions, and proper transition sounds between scenes.",
+        "expected_impact": "Will create believable audio environments, ground character actions in the audio space, and provide clear scene transitions for audience understanding",
+        "affected_episodes": [
+          "episode_01"
+        ]
+      },
+      {
+        "priority": "IMMEDIATE",
+        "title": "Integrate Strategic Silence Throughout",
+        "description": "Add dramatic silences (3-5 seconds) after key reveals, natural conversation pauses (1-2 seconds) between character exchanges, scene transition silences (2-3 seconds) between all scene changes, and processing time pauses (2-3 seconds) after information-heavy dialogues.",
+        "expected_impact": "Will create dramatic impact, establish realistic dialogue rhythm, provide clear scene separation, and allow audience to absorb critical information",
+        "affected_episodes": [
+          "episode_01"
+        ]
+      },
+      {
+        "priority": "HIGH",
+        "title": "Develop Musical Identity",
+        "description": "Create and implement an opening theme to establish episode tone and world, transition stings between scenes to maintain flow, and emotional underscore for key moments to support character emotions and dramatic beats.",
+        "expected_impact": "Will establish the show's musical identity, enhance emotional moments, and create smooth narrative flow between scenes",
+        "affected_episodes": [
+          "episode_01"
+        ]
+      }
+    ],
+    "production_readiness": {
+      "hygiene_sufficient_for_production": false,
+      "critical_fixes_needed": true,
+      "total_issues": 4,
+      "critical_issues": 4,
+      "high_priority_issues": 0,
+      "medium_priority_issues": 0,
+      "low_priority_issues": 0,
+      "breaking_issues": [
+        "Complete absence of sound effects cues prevents audio implementation",
+        "No music cues eliminates emotional storytelling capability",
+        "Lack of strategic silence creates wall-to-wall sound fatigue",
+        "No audio markup in script makes production workflow impossible"
+      ],
+      "readiness_for_production": false
+    }
+  }
+}

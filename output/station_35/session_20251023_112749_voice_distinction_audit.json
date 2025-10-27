@@ -1,0 +1,1676 @@
+{
+  "generated_at": "2025-10-28T00:37:49.430605",
+  "session_id": "session_20251023_112749",
+  "summary": {
+    "summary_text": "The character voice distinction across all episodes shows significant challenges with auditory differentiation. Overall uniqueness scores remain low to moderate (ranging from 28 to 58), indicating that characters lack distinctive verbal markers that would allow listeners to identify them without visual cues. The most pervasive issue is the limited dialogue in early episodes, which prevents establishing strong baseline voices. Additionally, characters tend to share similar vocabulary, speech patterns, and emotional expressions, making them easily confusable. While Episode 3 shows some improvement with Beth and Jake demonstrating slightly more distinctive voices through vocabulary choices and speech patterns, there remains substantial work needed to create clear auditory differentiation across all characters.",
+    "overall_voice_distinction": {
+      "overall_score": 44,
+      "vocabulary_distinction": 50,
+      "speech_pattern_distinction": 51,
+      "verbal_tic_distinction": 41,
+      "emotional_expression_distinction": 46,
+      "total_confusion_pairs": 5,
+      "high_risk_characters": 4,
+      "fixable_issues": 16
+    },
+    "character_uniqueness_scores": {
+      "John": 47,
+      "Lisa": 30,
+      "Sara": 33,
+      "Lucy": 35,
+      "Beth": 60,
+      "Jake": 65
+    },
+    "character_breakdown": [
+      {
+        "character": "John",
+        "uniqueness_score": 47,
+        "vocabulary_strength": 47,
+        "speech_pattern_strength": 47,
+        "verbal_tics_strength": 40,
+        "emotional_expression_strength": 42,
+        "key_distinctive_features": [
+          "Whispering behavior",
+          "Use of word 'afford'"
+        ],
+        "key_weaknesses": [
+          "Limited distinctive vocabulary",
+          "No verbal tics",
+          "Generic emotional expression"
+        ],
+        "most_confusable_with": [
+          "Lisa",
+          "Sara",
+          "Lucy"
+        ],
+        "attribution_test_score": 41
+      },
+      {
+        "character": "Lisa",
+        "uniqueness_score": 30,
+        "vocabulary_strength": 50,
+        "speech_pattern_strength": 45,
+        "verbal_tics_strength": 32,
+        "emotional_expression_strength": 32,
+        "key_distinctive_features": [
+          "Minimal dialogue"
+        ],
+        "key_weaknesses": [
+          "Only one line of dialogue",
+          "No unique expressions",
+          "No verbal tics"
+        ],
+        "most_confusable_with": [
+          "John"
+        ],
+        "attribution_test_score": 5
+      },
+      {
+        "character": "Sara",
+        "uniqueness_score": 33,
+        "vocabulary_strength": 40,
+        "speech_pattern_strength": 30,
+        "verbal_tics_strength": 25,
+        "emotional_expression_strength": 20,
+        "key_distinctive_features": [
+          "Whispering behavior"
+        ],
+        "key_weaknesses": [
+          "Limited vocabulary sample",
+          "No verbal tics",
+          "Generic emotional expression"
+        ],
+        "most_confusable_with": [
+          "John",
+          "Lucy"
+        ],
+        "attribution_test_score": 33
+      },
+      {
+        "character": "Lucy",
+        "uniqueness_score": 35,
+        "vocabulary_strength": 35,
+        "speech_pattern_strength": 30,
+        "verbal_tics_strength": 25,
+        "emotional_expression_strength": 20,
+        "key_distinctive_features": [
+          "Pacing behavior"
+        ],
+        "key_weaknesses": [
+          "Limited vocabulary sample",
+          "No verbal tics",
+          "Generic emotional expression"
+        ],
+        "most_confusable_with": [
+          "John",
+          "Sara"
+        ],
+        "attribution_test_score": 36
+      },
+      {
+        "character": "Beth",
+        "uniqueness_score": 60,
+        "vocabulary_strength": 65,
+        "speech_pattern_strength": 55,
+        "verbal_tics_strength": 50,
+        "emotional_expression_strength": 60,
+        "key_distinctive_features": [
+          "Cheerful greeting",
+          "Consoling tone",
+          "College-level vocabulary"
+        ],
+        "key_weaknesses": [
+          "No distinguishing verbal tics",
+          "Limited emotional range"
+        ],
+        "most_confusable_with": [
+          "Jake"
+        ],
+        "attribution_test_score": 60
+      },
+      {
+        "character": "Jake",
+        "uniqueness_score": 65,
+        "vocabulary_strength": 60,
+        "speech_pattern_strength": 65,
+        "verbal_tics_strength": 50,
+        "emotional_expression_strength": 65,
+        "key_distinctive_features": [
+          "Fragmented speech",
+          "Technical vocabulary ('deadlines', 'bugs')",
+          "Stressed tone"
+        ],
+        "key_weaknesses": [
+          "No distinguishing verbal tics",
+          "Limited emotional range"
+        ],
+        "most_confusable_with": [
+          "Beth"
+        ],
+        "attribution_test_score": 70
+      }
+    ],
+    "common_issues": [
+      {
+        "issue_type": "tics",
+        "frequency": 6,
+        "affected_characters": [
+          "John",
+          "Lisa",
+          "Sara",
+          "Lucy",
+          "Beth",
+          "Jake"
+        ],
+        "recommended_systematic_fix": "Develop unique verbal tics or catchphrases for each character that reflect their personality and background"
+      },
+      {
+        "issue_type": "vocabulary",
+        "frequency": 5,
+        "affected_characters": [
+          "John",
+          "Lisa",
+          "Sara",
+          "Lucy",
+          "Jake"
+        ],
+        "recommended_systematic_fix": "Create distinctive vocabulary profiles for each character based on education level, regional background, and personality"
+      },
+      {
+        "issue_type": "speech patterns",
+        "frequency": 4,
+        "affected_characters": [
+          "John",
+          "Sara",
+          "Lucy",
+          "Beth"
+        ],
+        "recommended_systematic_fix": "Develop unique sentence structures and speech rhythms for each character that remain consistent across episodes"
+      },
+      {
+        "issue_type": "emotions",
+        "frequency": 4,
+        "affected_characters": [
+          "John",
+          "Sara",
+          "Lucy",
+          "Beth"
+        ],
+        "recommended_systematic_fix": "Create distinct emotional expression patterns for each character, including unique ways of expressing joy, anger, fear, and other emotions"
+      }
+    ],
+    "recommended_fixes": [
+      {
+        "character": "Lisa",
+        "fix_description": "Add more dialogue with unique expressions and verbal tics that distinguish her voice from John's",
+        "priority": "IMMEDIATE",
+        "affected_episodes": [
+          "1"
+        ],
+        "expected_improvement": "Significant improvement in identifiability and uniqueness"
+      },
+      {
+        "character": "Sara",
+        "fix_description": "Develop distinctive speech patterns such as shorter, more direct sentences or questions, and add regional markers",
+        "priority": "IMMEDIATE",
+        "affected_episodes": [
+          "2"
+        ],
+        "expected_improvement": "High improvement in differentiation from John and Lucy"
+      },
+      {
+        "character": "Lucy",
+        "fix_description": "Create more urgent or action-oriented language patterns and unique frustrated expressions",
+        "priority": "IMMEDIATE",
+        "affected_episodes": [
+          "2"
+        ],
+        "expected_improvement": "High improvement in differentiation from other characters"
+      },
+      {
+        "character": "John",
+        "fix_description": "Add authoritative language and unique phrases that establish him as a leader, plus more distinctive emotional expressions",
+        "priority": "HIGH",
+        "affected_episodes": [
+          "1",
+          "2"
+        ],
+        "expected_improvement": "Significant improvement in identifiability and uniqueness"
+      },
+      {
+        "character": "Beth",
+        "fix_description": "Add distinctive verbal tics such as specific greeting phrases or filler words that reflect her cheerful personality",
+        "priority": "HIGH",
+        "affected_episodes": [
+          "3"
+        ],
+        "expected_improvement": "Moderate improvement in identifiability"
+      },
+      {
+        "character": "Jake",
+        "fix_description": "Include more technical jargon and stress-related verbal habits like trailing off sentences or sighing",
+        "priority": "HIGH",
+        "affected_episodes": [
+          "3"
+        ],
+        "expected_improvement": "Moderate improvement in distinctiveness"
+      }
+    ],
+    "voice_health": {
+      "voice_distinction_sufficient_for_production": false,
+      "audio_only_viable": false,
+      "breaking_issues": [
+        "Characters lack distinctive verbal markers for auditory identification",
+        "Multiple characters are highly confusable without visual cues",
+        "Limited dialogue in early episodes prevents establishing strong voice baselines"
+      ],
+      "readiness_for_production": false,
+      "critical_fixes_needed": "All characters require development of unique verbal tics, distinctive vocabulary, and speech patterns. Lisa, Sara, and Lucy need immediate attention as they have the lowest uniqueness scores. John needs significant development to establish a consistent voice across episodes. Additional dialogue in early episodes is essential to establish proper voice baselines."
+    }
+  },
+  "episode_audits": [
+    {
+      "episode_id": 1,
+      "uniqueness_check": {
+        "vocabulary_check": {
+          "character_vocabulary_distinctness": {
+            "john": {
+              "distinctness_score": 60,
+              "unique_words": [
+                "afford"
+              ],
+              "education_level_reflected": "high school",
+              "regional_markers": [],
+              "age_appropriateness": "appropriate"
+            },
+            "lisa": {
+              "distinctness_score": 50,
+              "unique_words": [],
+              "education_level_reflected": "high school",
+              "regional_markers": [],
+              "age_appropriateness": "appropriate"
+            }
+          },
+          "overall_vocabulary_distinction": 55,
+          "issues": [
+            {
+              "character": "john",
+              "issue": "Limited dialogue makes vocabulary assessment difficult",
+              "severity": "MEDIUM"
+            },
+            {
+              "character": "lisa",
+              "issue": "Only one line of dialogue to assess vocabulary",
+              "severity": "HIGH"
+            }
+          ]
+        },
+        "speech_patterns_check": {
+          "character_speech_patterns": {
+            "john": {
+              "average_sentence_length": "short",
+              "fragment_usage": "none",
+              "question_vs_statement_ratio": "50%",
+              "pattern_uniqueness_score": 65
+            },
+            "lisa": {
+              "average_sentence_length": "short",
+              "fragment_usage": "occasional",
+              "question_vs_statement_ratio": "0%",
+              "pattern_uniqueness_score": 60
+            }
+          },
+          "overall_pattern_distinction": 62,
+          "issues": [
+            {
+              "character": "john",
+              "issue": "Limited dialogue makes pattern assessment difficult",
+              "severity": "MEDIUM"
+            },
+            {
+              "character": "lisa",
+              "issue": "Only one line of dialogue to assess speech patterns",
+              "severity": "HIGH"
+            }
+          ]
+        },
+        "verbal_tics_check": {
+          "character_tics": {
+            "john": {
+              "filler_words": [],
+              "repeated_phrases": [],
+              "unique_expressions": [],
+              "nervous_habits": [
+                "whispering"
+              ],
+              "tic_uniqueness_score": 55
+            },
+            "lisa": {
+              "filler_words": [],
+              "repeated_phrases": [],
+              "unique_expressions": [],
+              "nervous_habits": [],
+              "tic_uniqueness_score": 40
+            }
+          },
+          "overall_tic_distinction": 47,
+          "issues": [
+            {
+              "character": "john",
+              "issue": "Limited dialogue makes tic assessment difficult",
+              "severity": "MEDIUM"
+            },
+            {
+              "character": "lisa",
+              "issue": "Only one line of dialogue to assess verbal tics",
+              "severity": "HIGH"
+            }
+          ]
+        },
+        "emotional_expression_check": {
+          "character_emotional_expressions": {
+            "john": {
+              "anger_expression": "Not expressed in current dialogue",
+              "joy_expression": "Not expressed in current dialogue",
+              "fear_expression": "Expressed through whispering",
+              "emotional_uniqueness_score": 65
+            },
+            "lisa": {
+              "anger_expression": "Not expressed in current dialogue",
+              "joy_expression": "Not expressed in current dialogue",
+              "fear_expression": "Not clearly expressed",
+              "emotional_uniqueness_score": 45
+            }
+          },
+          "overall_emotional_distinction": 55,
+          "issues": [
+            {
+              "character": "john",
+              "issue": "Limited emotional range expressed in current dialogue",
+              "severity": "MEDIUM"
+            },
+            {
+              "character": "lisa",
+              "issue": "Only one line of dialogue to assess emotional expression",
+              "severity": "HIGH"
+            }
+          ]
+        },
+        "overall_uniqueness_score": 54,
+        "recommendations": [
+          {
+            "character": "john",
+            "recommendation": "Add more distinctive vocabulary or speech patterns to separate his voice from Lisa's",
+            "priority": "HIGH",
+            "affected_aspect": "vocabulary"
+          },
+          {
+            "character": "lisa",
+            "recommendation": "Add more dialogue with unique expressions or verbal tics that distinguish her voice",
+            "priority": "IMMEDIATE",
+            "affected_aspect": "tics"
+          },
+          {
+            "character": "john",
+            "recommendation": "Develop more distinctive emotional expression patterns",
+            "priority": "MEDIUM",
+            "affected_aspect": "emotions"
+          },
+          {
+            "character": "lisa",
+            "recommendation": "Establish a more unique speech pattern or sentence structure",
+            "priority": "HIGH",
+            "affected_aspect": "speech patterns"
+          }
+        ]
+      },
+      "evolution_check": {
+        "intentional_evolution": {
+          "JOHN": {
+            "voice_changes_with_arc": false,
+            "evolution_score": 0,
+            "described_changes": "First episode only - baseline established with ability to shift between whispering and calm tones",
+            "appropriateness_score": 100,
+            "issue": "Insufficient data to track evolution - this is the first episode"
+          },
+          "LISA": {
+            "voice_changes_with_arc": false,
+            "evolution_score": 0,
+            "described_changes": "First episode only - baseline established with standard speech pattern",
+            "appropriateness_score": 100,
+            "issue": "Insufficient data to track evolution - this is the first episode"
+          }
+        },
+        "unintentional_drift": {
+          "JOHN": {
+            "drifting_toward_other_character": "None detected",
+            "lost_unique_markers": [],
+            "inconsistency_score": 0,
+            "issues": []
+          },
+          "LISA": {
+            "drifting_toward_other_character": "None detected",
+            "lost_unique_markers": [],
+            "inconsistency_score": 0,
+            "issues": []
+          }
+        },
+        "relationship_influence": {
+          "JOHN": {
+            "adapting_to_relationships": true,
+            "code_switching_appropriate": true,
+            "mimicry_present_and_appropriate": false,
+            "relationship_influence_score": 85,
+            "issues": []
+          },
+          "LISA": {
+            "adapting_to_relationships": false,
+            "code_switching_appropriate": false,
+            "mimicry_present_and_appropriate": false,
+            "relationship_influence_score": 50,
+            "issues": [
+              "Limited data to assess relationship influence"
+            ]
+          }
+        },
+        "overall_evolution_health": 0,
+        "drift_warnings": [],
+        "evolution_recommendations": [
+          {
+            "character": "JOHN",
+            "recommendation": "Establish more consistent speech patterns and vocal qualities beyond the whispering/calm contrast to create a stronger baseline for tracking evolution"
+          },
+          {
+            "character": "LISA",
+            "recommendation": "Define more distinct vocal characteristics in future episodes to establish a clear baseline for evolution tracking"
+          }
+        ]
+      },
+      "attribution_check": {
+        "cold_read_test": {
+          "John": {
+            "identifiability_percentage": 50,
+            "identifiable_lines": [
+              "(whispering) Is everyone asleep?"
+            ],
+            "unidentifiable_lines": [
+              "(calm) Let's go, then. We can't afford to wait any longer."
+            ],
+            "confusable_with": [
+              "Lisa"
+            ]
+          },
+          "Lisa": {
+            "identifiability_percentage": 0,
+            "identifiable_lines": [],
+            "unidentifiable_lines": [
+              "Almost. Just waiting for Mom."
+            ],
+            "confusable_with": [
+              "John"
+            ]
+          }
+        },
+        "context_free_test": {
+          "John": {
+            "single_line_identifiable": false,
+            "lines_that_work_out_of_context": [],
+            "lines_that_dont_work_out_of_context": [
+              "(whispering) Is everyone asleep?",
+              "(calm) Let's go, then. We can't afford to wait any longer."
+            ],
+            "context_needed": "Full scene context needed to distinguish characters as both speak in similar patterns and tone."
+          },
+          "Lisa": {
+            "single_line_identifiable": false,
+            "lines_that_work_out_of_context": [],
+            "lines_that_dont_work_out_of_context": [
+              "Almost. Just waiting for Mom."
+            ],
+            "context_needed": "Full scene context needed as the single line lacks distinctive markers."
+          }
+        },
+        "group_scene_test": {
+          "trackability_score": 40,
+          "confusion_moments": [
+            {
+              "scene": "Living room scene",
+              "characters_involved": [
+                "John",
+                "Lisa"
+              ],
+              "confusion_description": "Both characters speak in similar patterns without distinctive verbal markers.",
+              "needed_verbal_landmarks": [
+                "Unique speech patterns",
+                "Distinctive vocabulary",
+                "Verbal tics or phrases"
+              ]
+            }
+          ],
+          "overlapping_dialogue_issues": [
+            "Without visual cues, the short exchanges between John and Lisa are difficult to attribute correctly."
+          ]
+        },
+        "overall_identifiability_score": 30,
+        "identifiability_scores": {
+          "John": 50,
+          "Lisa": 10
+        },
+        "confusion_pairs": [
+          {
+            "character_1": "John",
+            "character_2": "Lisa",
+            "confusion_level": "HIGH",
+            "why_confusable": "Both characters use similar sentence structures and lack distinctive verbal markers. John's directionals (whispering, calm) help somewhat but aren't sufficient for clear audio distinction.",
+            "how_to_differentiate": "Give John more authoritative or leading language patterns and Lisa more questioning or supportive patterns. Add unique phrases or speech characteristics."
+          }
+        ],
+        "recommendations": [
+          {
+            "character": "John",
+            "recommendation": "Add more authoritative language and unique phrases that establish him as the leader/initiator of the plan.",
+            "priority": "HIGH",
+            "specific_line_example": "Let's go, then. We can't afford to wait any longer. → Come on, we need to move now. Remember what happened last time we waited too long."
+          },
+          {
+            "character": "Lisa",
+            "recommendation": "Add more distinctive speech patterns, perhaps showing more concern or using unique phrases that identify her character.",
+            "priority": "IMMEDIATE",
+            "specific_line_example": "Almost. Just waiting for Mom. → She should be asleep any minute now. I still think we should wait until I hear her snoring."
+          }
+        ]
+      },
+      "performance_notes": {
+        "character_directions": {
+          "JOHN": {
+            "pace_indicators": [
+              {
+                "line_context": "Is everyone asleep?",
+                "pace_direction": "hesitant",
+                "reason": "Testing the waters, cautious to not wake others"
+              },
+              {
+                "line_context": "Let's go, then. We can't afford to wait any longer.",
+                "pace_direction": "urgent",
+                "reason": "Sense of time pressure, need to move quickly"
+              }
+            ],
+            "emotional_indicators": [
+              {
+                "line_context": "Is everyone asleep?",
+                "emotion_direction": "suppressed excitement",
+                "subtext": "Anticipating the planned activity, but trying to remain quiet",
+                "voice_quality": "Slightly breathy with controlled enthusiasm"
+              },
+              {
+                "line_context": "Let's go, then. We can't afford to wait any longer.",
+                "emotion_direction": "calm determination",
+                "subtext": "Taking charge of the situation, masking underlying urgency",
+                "voice_quality": "Steady but with slight tension"
+              }
+            ],
+            "physical_indicators": [
+              {
+                "line_context": "Is everyone asleep?",
+                "physical_direction": "whispering",
+                "affects_voice": "Reduced volume, softer consonants, more breathy delivery"
+              },
+              {
+                "line_context": "Let's go, then. We can't afford to wait any longer.",
+                "physical_direction": "while moving",
+                "affects_voice": "Slightly strained voice as if beginning to stand/move while speaking"
+              }
+            ],
+            "technical_indicators": [
+              {
+                "line_context": "Both lines",
+                "technical_direction": "close proximity",
+                "affects_perception": "Voice should sound intimate and immediate, as if speaking directly to someone nearby"
+              }
+            ]
+          },
+          "LISA": {
+            "pace_indicators": [
+              {
+                "line_context": "Almost. Just waiting for Mom.",
+                "pace_direction": "slowly",
+                "reason": "Deliberate and careful to maintain quiet"
+              }
+            ],
+            "emotional_indicators": [
+              {
+                "line_context": "Almost. Just waiting for Mom.",
+                "emotion_direction": "patient but expectant",
+                "subtext": "Waiting for the final signal, aware of the plan",
+                "voice_quality": "Soft but clear, with slight anticipation"
+              }
+            ],
+            "physical_indicators": [
+              {
+                "line_context": "Almost. Just waiting for Mom.",
+                "physical_direction": "whispering",
+                "affects_voice": "Gentle delivery with minimal air flow, controlled volume"
+              }
+            ],
+            "technical_indicators": [
+              {
+                "line_context": "Almost. Just waiting for Mom.",
+                "technical_direction": "from a short distance",
+                "affects_perception": "Slightly more distant than John, suggesting they're in different parts of the room"
+              }
+            ]
+          }
+        },
+        "overall_performance_enhancements": 75,
+        "recommendations": [
+          {
+            "character": "JOHN",
+            "missing_direction": "Age and voice quality indicators",
+            "where_needed": "Throughout the scene",
+            "priority": "HIGH"
+          },
+          {
+            "character": "LISA",
+            "missing_direction": "Age and voice quality indicators",
+            "where_needed": "Throughout the scene",
+            "priority": "HIGH"
+          },
+          {
+            "character": "JOHN",
+            "missing_direction": "Relationship to Lisa",
+            "where_needed": "In his delivery to show familiarity",
+            "priority": "MEDIUM"
+          },
+          {
+            "character": "LISA",
+            "missing_direction": "Relationship to John",
+            "where_needed": "In her delivery to show familiarity",
+            "priority": "MEDIUM"
+          }
+        ]
+      }
+    },
+    {
+      "episode_id": 2,
+      "uniqueness_check": {
+        "vocabulary_check": {
+          "character_vocabulary_distinctness": {
+            "JOHN": {
+              "distinctness_score": 35,
+              "unique_words": [
+                "What",
+                "are",
+                "we",
+                "going",
+                "to",
+                "do"
+              ],
+              "education_level_reflected": "indeterminate",
+              "regional_markers": [],
+              "age_appropriateness": "appropriate"
+            },
+            "SARA": {
+              "distinctness_score": 40,
+              "unique_words": [
+                "I",
+                "don't",
+                "know",
+                "We",
+                "have",
+                "to",
+                "think",
+                "of",
+                "something"
+              ],
+              "education_level_reflected": "indeterminate",
+              "regional_markers": [],
+              "age_appropriateness": "appropriate"
+            },
+            "LUCY": {
+              "distinctness_score": 35,
+              "unique_words": [
+                "We",
+                "can't",
+                "just",
+                "sit",
+                "here"
+              ],
+              "education_level_reflected": "indeterminate",
+              "regional_markers": [],
+              "age_appropriateness": "appropriate"
+            }
+          },
+          "overall_vocabulary_distinction": 35,
+          "issues": [
+            {
+              "character": "JOHN",
+              "issue": "Limited vocabulary sample makes assessment difficult",
+              "severity": "MEDIUM"
+            },
+            {
+              "character": "SARA",
+              "issue": "Limited vocabulary sample makes assessment difficult",
+              "severity": "MEDIUM"
+            },
+            {
+              "character": "LUCY",
+              "issue": "Limited vocabulary sample makes assessment difficult",
+              "severity": "MEDIUM"
+            },
+            {
+              "character": "All characters",
+              "issue": "No distinct vocabulary differences between characters",
+              "severity": "HIGH"
+            }
+          ]
+        },
+        "speech_patterns_check": {
+          "character_speech_patterns": {
+            "JOHN": {
+              "average_sentence_length": "short",
+              "fragment_usage": "none",
+              "question_vs_statement_ratio": "100%",
+              "pattern_uniqueness_score": 30
+            },
+            "SARA": {
+              "average_sentence_length": "short",
+              "fragment_usage": "none",
+              "question_vs_statement_ratio": "0%",
+              "pattern_uniqueness_score": 30
+            },
+            "LUCY": {
+              "average_sentence_length": "short",
+              "fragment_usage": "none",
+              "question_vs_statement_ratio": "0%",
+              "pattern_uniqueness_score": 30
+            }
+          },
+          "overall_pattern_distinction": 30,
+          "issues": [
+            {
+              "character": "All characters",
+              "issue": "All characters use similar short sentence structures",
+              "severity": "HIGH"
+            }
+          ]
+        },
+        "verbal_tics_check": {
+          "character_tics": {
+            "JOHN": {
+              "filler_words": [],
+              "repeated_phrases": [],
+              "unique_expressions": [],
+              "nervous_habits": [
+                "sighing"
+              ],
+              "tic_uniqueness_score": 25
+            },
+            "SARA": {
+              "filler_words": [],
+              "repeated_phrases": [],
+              "unique_expressions": [],
+              "nervous_habits": [
+                "whispering"
+              ],
+              "tic_uniqueness_score": 25
+            },
+            "LUCY": {
+              "filler_words": [],
+              "repeated_phrases": [],
+              "unique_expressions": [],
+              "nervous_habits": [
+                "pacing"
+              ],
+              "tic_uniqueness_score": 25
+            }
+          },
+          "overall_tic_distinction": 25,
+          "issues": [
+            {
+              "character": "All characters",
+              "issue": "No distinctive verbal tics or catchphrases",
+              "severity": "HIGH"
+            }
+          ]
+        },
+        "emotional_expression_check": {
+          "character_emotional_expressions": {
+            "JOHN": {
+              "anger_expression": "Not demonstrated",
+              "joy_expression": "Not demonstrated",
+              "fear_expression": "Expressed through sighing",
+              "emotional_uniqueness_score": 20
+            },
+            "SARA": {
+              "anger_expression": "Not demonstrated",
+              "joy_expression": "Not demonstrated",
+              "fear_expression": "Expressed through whispering",
+              "emotional_uniqueness_score": 20
+            },
+            "LUCY": {
+              "anger_expression": "Expressed through statement about inaction",
+              "joy_expression": "Not demonstrated",
+              "fear_expression": "Expressed through pacing",
+              "emotional_uniqueness_score": 20
+            }
+          },
+          "overall_emotional_distinction": 20,
+          "issues": [
+            {
+              "character": "All characters",
+              "issue": "Limited emotional range demonstrated",
+              "severity": "HIGH"
+            },
+            {
+              "character": "All characters",
+              "issue": "Emotional expressions are not distinctive between characters",
+              "severity": "HIGH"
+            }
+          ]
+        },
+        "overall_uniqueness_score": 28,
+        "recommendations": [
+          {
+            "character": "JOHN",
+            "recommendation": "Develop a more distinctive vocabulary, perhaps using more formal language or technical terms to suggest education level",
+            "priority": "HIGH",
+            "affected_aspect": "vocabulary"
+          },
+          {
+            "character": "JOHN",
+            "recommendation": "Add verbal tics such as starting sentences with 'Well,' or using filler words like 'um' when nervous",
+            "priority": "MEDIUM",
+            "affected_aspect": "tics"
+          },
+          {
+            "character": "SARA",
+            "recommendation": "Develop a pattern of shorter, more direct sentences or questions to create speech pattern distinction",
+            "priority": "HIGH",
+            "affected_aspect": "speech patterns"
+          },
+          {
+            "character": "SARA",
+            "recommendation": "Add regional markers or colloquial expressions to create vocal distinction",
+            "priority": "MEDIUM",
+            "affected_aspect": "vocabulary"
+          },
+          {
+            "character": "LUCY",
+            "recommendation": "Develop a pattern of longer, more complex sentences to distinguish from other characters",
+            "priority": "HIGH",
+            "affected_aspect": "speech patterns"
+          },
+          {
+            "character": "LUCY",
+            "recommendation": "Create unique emotional expressions, perhaps showing frustration through specific phrases or exclamations",
+            "priority": "MEDIUM",
+            "affected_aspect": "emotions"
+          },
+          {
+            "character": "All characters",
+            "recommendation": "Expand dialogue to demonstrate more emotional range and distinctive reactions to situations",
+            "priority": "IMMEDIATE",
+            "affected_aspect": "emotions"
+          }
+        ]
+      },
+      "evolution_check": {
+        "intentional_evolution": {
+          "john": {
+            "voice_changes_with_arc": false,
+            "evolution_score": 0,
+            "described_changes": "No discernible evolution as this is only the second episode with limited dialogue. John shows only a sighing, worried tone.",
+            "appropriateness_score": 50,
+            "issue": "Cannot assess evolution with limited data points. Need more dialogue across episodes to track changes."
+          },
+          "sara": {
+            "voice_changes_with_arc": false,
+            "evolution_score": 0,
+            "described_changes": "No discernible evolution as this is only the second episode with limited dialogue. Sara shows only a whispering, uncertain tone.",
+            "appropriateness_score": 50,
+            "issue": "Cannot assess evolution with limited data points. Need more dialogue across episodes to track changes."
+          },
+          "lucy": {
+            "voice_changes_with_arc": false,
+            "evolution_score": 0,
+            "described_changes": "No discernible evolution as this is only the second episode with limited dialogue. Lucy shows only a pacing, anxious tone.",
+            "appropriateness_score": 50,
+            "issue": "Cannot assess evolution with limited data points. Need more dialogue across episodes to track changes."
+          }
+        },
+        "unintentional_drift": {
+          "john": {
+            "drifting_toward_other_character": "None detected",
+            "lost_unique_markers": [],
+            "inconsistency_score": 20,
+            "issues": [
+              "Insufficient data to determine drift. Only one line in this episode."
+            ]
+          },
+          "sara": {
+            "drifting_toward_other_character": "None detected",
+            "lost_unique_markers": [],
+            "inconsistency_score": 20,
+            "issues": [
+              "Insufficient data to determine drift. Only one line in this episode."
+            ]
+          },
+          "lucy": {
+            "drifting_toward_other_character": "None detected",
+            "lost_unique_markers": [],
+            "inconsistency_score": 20,
+            "issues": [
+              "Insufficient data to determine drift. Only one line in this episode."
+            ]
+          }
+        },
+        "relationship_influence": {
+          "john": {
+            "adapting_to_relationships": false,
+            "code_switching_appropriate": false,
+            "mimicry_present_and_appropriate": false,
+            "relationship_influence_score": 30,
+            "issues": [
+              "Cannot assess relationship influence with minimal dialogue and no interaction with other characters in this episode."
+            ]
+          },
+          "sara": {
+            "adapting_to_relationships": false,
+            "code_switching_appropriate": false,
+            "mimicry_present_and_appropriate": false,
+            "relationship_influence_score": 30,
+            "issues": [
+              "Cannot assess relationship influence with minimal dialogue and no interaction with other characters in this episode."
+            ]
+          },
+          "lucy": {
+            "adapting_to_relationships": false,
+            "code_switching_appropriate": false,
+            "mimicry_present_and_appropriate": false,
+            "relationship_influence_score": 30,
+            "issues": [
+              "Cannot assess relationship influence with minimal dialogue and no interaction with other characters in this episode."
+            ]
+          }
+        },
+        "overall_evolution_health": 35,
+        "drift_warnings": [
+          {
+            "character": "All characters",
+            "warning": "Insufficient dialogue in Episode 2 to establish or track voice evolution patterns. Each character only has one line.",
+            "severity": "MEDIUM",
+            "recommended_fix": "Expand dialogue for all characters in upcoming episodes to establish distinctive voice patterns and enable proper tracking of evolution across episodes."
+          }
+        ],
+        "evolution_recommendations": [
+          {
+            "character": "All characters",
+            "recommendation": "Develop more distinctive speech patterns for each character (vocabulary choices, cadence, sentence structure) to establish baseline voices that can evolve meaningfully over time."
+          },
+          {
+            "character": "All characters",
+            "recommendation": "Create more dialogue interactions between characters to establish relationship dynamics and influence on speech patterns."
+          }
+        ]
+      },
+      "attribution_check": {
+        "cold_read_test": {
+          "JOHN": {
+            "identifiability_percentage": 33,
+            "identifiable_lines": [
+              "(sighing)\nWhat are we going to do?"
+            ],
+            "unidentifiable_lines": [],
+            "confusable_with": [
+              "SARA",
+              "LUCY"
+            ]
+          },
+          "SARA": {
+            "identifiability_percentage": 33,
+            "identifiable_lines": [
+              "(whispering)\nI don't know. We have to think of something."
+            ],
+            "unidentifiable_lines": [],
+            "confusable_with": [
+              "JOHN",
+              "LUCY"
+            ]
+          },
+          "LUCY": {
+            "identifiability_percentage": 33,
+            "identifiable_lines": [
+              "(pacing)\nWe can't just sit here."
+            ],
+            "unidentifiable_lines": [],
+            "confusable_with": [
+              "JOHN",
+              "SARA"
+            ]
+          }
+        },
+        "context_free_test": {
+          "JOHN": {
+            "single_line_identifiable": false,
+            "lines_that_work_out_of_context": [],
+            "lines_that_dont_work_out_of_context": [
+              "What are we going to do?"
+            ],
+            "context_needed": "The sighing action provides minimal differentiation. Without name, could be any character expressing concern."
+          },
+          "SARA": {
+            "single_line_identifiable": false,
+            "lines_that_work_out_of_context": [],
+            "lines_that_dont_work_out_of_context": [
+              "I don't know. We have to think of something."
+            ],
+            "context_needed": "The whispering action provides minimal differentiation. Without name, could be any character responding with uncertainty."
+          },
+          "LUCY": {
+            "single_line_identifiable": false,
+            "lines_that_work_out_of_context": [],
+            "lines_that_dont_work_out_of_context": [
+              "We can't just sit here."
+            ],
+            "context_needed": "The pacing action provides minimal differentiation. Without name, could be any character expressing impatience."
+          }
+        },
+        "group_scene_test": {
+          "trackability_score": 40,
+          "confusion_moments": [
+            {
+              "scene": "INT. LIVING ROOM - NIGHT",
+              "characters_involved": [
+                "JOHN",
+                "SARA"
+              ],
+              "confusion_description": "Both characters express concern with similar emotional tone, making them difficult to distinguish without visual cues.",
+              "needed_verbal_landmarks": [
+                "Distinctive speech patterns, catchphrases, or vocal qualities"
+              ]
+            },
+            {
+              "scene": "INT. KITCHEN - NIGHT",
+              "characters_involved": [
+                "LUCY"
+              ],
+              "confusion_description": "Lucy speaks alone but her line could easily belong to either John or Sara without differentiation.",
+              "needed_verbal_landmarks": [
+                "Unique vocabulary, speech rhythm, or emotional signature"
+              ]
+            }
+          ],
+          "overlapping_dialogue_issues": [
+            "No overlapping dialogue present, but if characters were in the same scene, their similar emotional states would make tracking difficult without more distinctive vocal patterns."
+          ]
+        },
+        "overall_identifiability_score": 35,
+        "identifiability_scores": {
+          "JOHN": 33,
+          "SARA": 33,
+          "LUCY": 40
+        },
+        "confusion_pairs": [
+          {
+            "character_1": "JOHN",
+            "character_2": "SARA",
+            "confusion_level": "HIGH",
+            "why_confusable": "Both express concern with similar emotional tone and general vocabulary. Their lines could be exchanged without changing meaning.",
+            "how_to_differentiate": "Give John more declarative statements while Sara uses questions, or assign distinctive vocabulary or speech patterns to each."
+          },
+          {
+            "character_1": "SARA",
+            "character_2": "LUCY",
+            "confusion_level": "HIGH",
+            "why_confusable": "Both express uncertainty with similar emotional tone. Their lines could be exchanged without changing meaning.",
+            "how_to_differentiate": "Give Lucy more urgent or action-oriented language while Sara remains more thoughtful and cautious."
+          },
+          {
+            "character_1": "JOHN",
+            "character_2": "LUCY",
+            "confusion_level": "HIGH",
+            "why_confusable": "Both express concern with similar emotional tone. Their lines could be exchanged without changing meaning.",
+            "how_to_differentiate": "Give John more resigned or weary language while Lucy uses more impatient or energetic phrasing."
+          }
+        ],
+        "recommendations": [
+          {
+            "character": "JOHN",
+            "recommendation": "Add distinctive speech patterns such as using more contractions, specific vocabulary, or a characteristic sigh at the end of lines.",
+            "priority": "IMMEDIATE",
+            "specific_line_example": "(sighing)\nWhat are we gonna do now? We're completely stuck."
+          },
+          {
+            "character": "SARA",
+            "recommendation": "Add distinctive speech patterns such as using more formal language, or characteristic phrases like 'We must...' or beginning responses with 'I think...'",
+            "priority": "IMMEDIATE",
+            "specific_line_example": "(whispering)\nI don't know. We must think of something. Perhaps we should consider all options."
+          },
+          {
+            "character": "LUCY",
+            "recommendation": "Add distinctive speech patterns such as using more urgent or action-oriented language, or characteristic phrase like 'Come on!' or 'We need to...'",
+            "priority": "IMMEDIATE",
+            "specific_line_example": "(pacing)\nCome on! We can't just sit here. We need to do something right now!"
+          }
+        ]
+      },
+      "performance_notes": {
+        "character_directions": {
+          "John": {
+            "pace_indicators": [
+              {
+                "line_context": "What are we going to do?",
+                "pace_direction": "slowly",
+                "reason": "Expressing exhaustion and contemplation after a sigh"
+              }
+            ],
+            "emotional_indicators": [
+              {
+                "line_context": "What are we going to do?",
+                "emotion_direction": "weary resignation",
+                "subtext": "Feeling overwhelmed by their situation",
+                "voice_quality": "Slightly lower register with vocal weight, subtle vocal fry at the end"
+              }
+            ],
+            "physical_indicators": [
+              {
+                "line_context": "Opening sigh",
+                "physical_direction": "exhausted sigh",
+                "affects_voice": "Breathiness in voice, slight tremor indicating fatigue"
+              }
+            ],
+            "technical_indicators": []
+          },
+          "Sara": {
+            "pace_indicators": [
+              {
+                "line_context": "I don't know. We have to think of something.",
+                "pace_direction": "hesitant",
+                "reason": "Uncertainty about their situation and fear of being heard"
+              }
+            ],
+            "emotional_indicators": [
+              {
+                "line_context": "I don't know. We have to think of something.",
+                "emotion_direction": "suppressed fear with determination",
+                "subtext": "Scared but trying to be strong for John",
+                "voice_quality": "Higher register with controlled breathing, slight trembling"
+              }
+            ],
+            "physical_indicators": [
+              {
+                "line_context": "Entire line",
+                "physical_direction": "whispering",
+                "affects_voice": "Constricted vocal cords, intimate delivery, close to microphone"
+              }
+            ],
+            "technical_indicators": []
+          },
+          "Lucy": {
+            "pace_indicators": [
+              {
+                "line_context": "We can't just sit here.",
+                "pace_direction": "rapidly",
+                "reason": "Expressing urgency and frustration while pacing"
+              }
+            ],
+            "emotional_indicators": [
+              {
+                "line_context": "We can't just sit here.",
+                "emotion_direction": "anxious determination",
+                "subtext": "Feeling trapped and wanting to take action",
+                "voice_quality": "Sharp consonants, mid-range pitch, slight elevation at the end of sentence"
+              }
+            ],
+            "physical_indicators": [
+              {
+                "line_context": "Entire line",
+                "physical_direction": "pacing",
+                "affects_voice": "Slight breathlessness, dynamic shifts in volume as she moves toward and away from microphone"
+              }
+            ],
+            "technical_indicators": [
+              {
+                "line_context": "Entire scene",
+                "technical_direction": "different room",
+                "affects_perception": "Slight reverb or room tone change to indicate kitchen vs living room"
+              }
+            ]
+          }
+        },
+        "overall_performance_enhancements": 75,
+        "recommendations": [
+          {
+            "character": "John",
+            "missing_direction": "More specific age/vocal quality indicator",
+            "where_needed": "Character introduction",
+            "priority": "HIGH"
+          },
+          {
+            "character": "Sara",
+            "missing_direction": "Relationship dynamic with John",
+            "where_needed": "During whispering",
+            "priority": "MEDIUM"
+          },
+          {
+            "character": "Lucy",
+            "missing_direction": "Connection to other characters",
+            "where_needed": "When she speaks in kitchen",
+            "priority": "HIGH"
+          }
+        ]
+      }
+    },
+    {
+      "episode_id": 3,
+      "uniqueness_check": {
+        "vocabulary_check": {
+          "character_vocabulary_distinctness": {
+            "Beth": {
+              "distinctness_score": 65,
+              "unique_words": [
+                "cheerful",
+                "consoling"
+              ],
+              "education_level_reflected": "college",
+              "regional_markers": [],
+              "age_appropriateness": "appropriate"
+            },
+            "Jake": {
+              "distinctness_score": 60,
+              "unique_words": [
+                "nightmare",
+                "deadlines",
+                "bugs"
+              ],
+              "education_level_reflected": "college",
+              "regional_markers": [],
+              "age_appropriateness": "appropriate"
+            }
+          },
+          "overall_vocabulary_distinction": 62,
+          "issues": [
+            {
+              "character": "Beth",
+              "issue": "Limited vocabulary sample makes distinctness assessment difficult",
+              "severity": "MEDIUM"
+            },
+            {
+              "character": "Jake",
+              "issue": "Limited vocabulary sample makes distinctness assessment difficult",
+              "severity": "MEDIUM"
+            }
+          ]
+        },
+        "speech_patterns_check": {
+          "character_speech_patterns": {
+            "Beth": {
+              "average_sentence_length": "short",
+              "fragment_usage": "none",
+              "question_vs_statement_ratio": "50%",
+              "pattern_uniqueness_score": 55
+            },
+            "Jake": {
+              "average_sentence_length": "short",
+              "fragment_usage": "frequent",
+              "question_vs_statement_ratio": "0%",
+              "pattern_uniqueness_score": 65
+            }
+          },
+          "overall_pattern_distinction": 60,
+          "issues": []
+        },
+        "verbal_tics_check": {
+          "character_tics": {
+            "Beth": {
+              "filler_words": [],
+              "repeated_phrases": [],
+              "unique_expressions": [],
+              "nervous_habits": [],
+              "tic_uniqueness_score": 50
+            },
+            "Jake": {
+              "filler_words": [],
+              "repeated_phrases": [],
+              "unique_expressions": [],
+              "nervous_habits": [],
+              "tic_uniqueness_score": 50
+            }
+          },
+          "overall_tic_distinction": 50,
+          "issues": [
+            {
+              "character": "Beth",
+              "issue": "No distinguishing verbal tics present",
+              "severity": "MEDIUM"
+            },
+            {
+              "character": "Jake",
+              "issue": "No distinguishing verbal tics present",
+              "severity": "MEDIUM"
+            }
+          ]
+        },
+        "emotional_expression_check": {
+          "character_emotional_expressions": {
+            "Beth": {
+              "anger_expression": "Not demonstrated in sample",
+              "joy_expression": "Cheerful greeting",
+              "fear_expression": "Not demonstrated in sample",
+              "emotional_uniqueness_score": 60
+            },
+            "Jake": {
+              "anger_expression": "Expressed through negative descriptors ('nightmare')",
+              "joy_expression": "Not demonstrated in sample",
+              "fear_expression": "Not demonstrated in sample",
+              "emotional_uniqueness_score": 65
+            }
+          },
+          "overall_emotional_distinction": 62,
+          "issues": [
+            {
+              "character": "Beth",
+              "issue": "Limited emotional range demonstrated in sample",
+              "severity": "MEDIUM"
+            },
+            {
+              "character": "Jake",
+              "issue": "Limited emotional range demonstrated in sample",
+              "severity": "MEDIUM"
+            }
+          ]
+        },
+        "overall_uniqueness_score": 58,
+        "recommendations": [
+          {
+            "character": "Beth",
+            "recommendation": "Add distinctive verbal tics such as a specific greeting phrase or filler words that reflect her personality",
+            "priority": "HIGH",
+            "affected_aspect": "tics"
+          },
+          {
+            "character": "Jake",
+            "recommendation": "Include more technical jargon or workplace-specific terms to reflect his project-focused mindset",
+            "priority": "HIGH",
+            "affected_aspect": "vocabulary"
+          },
+          {
+            "character": "Beth",
+            "recommendation": "Develop more unique sentence structures, perhaps with longer, more complex sentences that contrast with Jake's fragmented speech",
+            "priority": "MEDIUM",
+            "affected_aspect": "speech patterns"
+          },
+          {
+            "character": "Jake",
+            "recommendation": "Add stress-related verbal habits like trailing off sentences or sighing to enhance his stressed characterization",
+            "priority": "MEDIUM",
+            "affected_aspect": "tics"
+          }
+        ]
+      },
+      "evolution_check": {
+        "intentional_evolution": {
+          "BETH": {
+            "voice_changes_with_arc": false,
+            "evolution_score": 0,
+            "described_changes": "No discernible evolution across episodes as only one episode is provided",
+            "appropriateness_score": 0,
+            "issue": "Insufficient data to track evolution across episodes"
+          },
+          "JAKE": {
+            "voice_changes_with_arc": false,
+            "evolution_score": 0,
+            "described_changes": "No discernible evolution across episodes as only one episode is provided",
+            "appropriateness_score": 0,
+            "issue": "Insufficient data to track evolution across episodes"
+          }
+        },
+        "unintentional_drift": {
+          "BETH": {
+            "drifting_toward_other_character": "None detected",
+            "lost_unique_markers": [],
+            "inconsistency_score": 0,
+            "issues": [
+              "Insufficient data to detect drift across episodes"
+            ]
+          },
+          "JAKE": {
+            "drifting_toward_other_character": "None detected",
+            "lost_unique_markers": [],
+            "inconsistency_score": 0,
+            "issues": [
+              "Insufficient data to detect drift across episodes"
+            ]
+          }
+        },
+        "relationship_influence": {
+          "BETH": {
+            "adapting_to_relationships": true,
+            "code_switching_appropriate": true,
+            "mimicry_present_and_appropriate": false,
+            "relationship_influence_score": 75,
+            "issues": []
+          },
+          "JAKE": {
+            "adapting_to_relationships": true,
+            "code_switching_appropriate": true,
+            "mimicry_present_and_appropriate": false,
+            "relationship_influence_score": 75,
+            "issues": []
+          }
+        },
+        "overall_evolution_health": 0,
+        "drift_warnings": [
+          {
+            "character": "All characters",
+            "warning": "Insufficient data provided to track voice evolution across episodes",
+            "severity": "CRITICAL",
+            "recommended_fix": "Provide multiple episodes or character arc information to enable voice evolution tracking"
+          }
+        ],
+        "evolution_recommendations": [
+          {
+            "character": "BETH",
+            "recommendation": "Establish baseline voice markers and personality traits to track in future episodes"
+          },
+          {
+            "character": "JAKE",
+            "recommendation": "Establish baseline voice markers and personality traits to track in future episodes"
+          }
+        ]
+      },
+      "attribution_check": {
+        "cold_read_test": {
+          "BETH": {
+            "identifiability_percentage": 60,
+            "identifiable_lines": [
+              "Hey, how's the big project coming along?",
+              "You'll get through it. You always do."
+            ],
+            "unidentifiable_lines": [
+              "(consoling) You'll get through it. You always do."
+            ],
+            "confusable_with": [
+              "JAKE"
+            ]
+          },
+          "JAKE": {
+            "identifiability_percentage": 70,
+            "identifiable_lines": [
+              "It's a nightmare. Deadlines, bugs, you name it."
+            ],
+            "unidentifiable_lines": [
+              "(looks stressed) It's a nightmare. Deadlines, bugs, you name it."
+            ],
+            "confusable_with": [
+              "BETH"
+            ]
+          }
+        },
+        "context_free_test": {
+          "BETH": {
+            "single_line_identifiable": false,
+            "lines_that_work_out_of_context": [],
+            "lines_that_dont_work_out_of_context": [
+              "Hey, how's the big project coming along?",
+              "You'll get through it. You always do."
+            ],
+            "context_needed": "Needs response to identify as the supportive, cheerful character asking about a project"
+          },
+          "JAKE": {
+            "single_line_identifiable": false,
+            "lines_that_work_out_of_context": [],
+            "lines_that_dont_work_out_of_context": [
+              "It's a nightmare. Deadlines, bugs, you name it."
+            ],
+            "context_needed": "Needs the question about a project to identify as the stressed character responding"
+          }
+        },
+        "group_scene_test": {
+          "trackability_score": 80,
+          "confusion_moments": [
+            {
+              "scene": "Coffee shop conversation",
+              "characters_involved": [
+                "BETH",
+                "JAKE"
+              ],
+              "confusion_description": "Without visual cues, the characters' emotional states are only indicated by parentheses which won't be audible",
+              "needed_verbal_landmarks": [
+                "More distinctive speech patterns",
+                "Unique phrases or expressions"
+              ]
+            }
+          ],
+          "overlapping_dialogue_issues": []
+        },
+        "overall_identifiability_score": 65,
+        "identifiability_scores": {
+          "BETH": 60,
+          "JAKE": 70
+        },
+        "confusion_pairs": [
+          {
+            "character_1": "BETH",
+            "character_2": "JAKE",
+            "confusion_level": "MEDIUM",
+            "why_confusable": "Both characters use relatively generic conversational language without distinctive verbal markers",
+            "how_to_differentiate": "Add character-specific expressions, speech patterns, or verbal tics"
+          }
+        ],
+        "recommendations": [
+          {
+            "character": "BETH",
+            "recommendation": "Add more distinctive cheerful verbal markers or unique expressions",
+            "priority": "HIGH",
+            "specific_line_example": "Hey sweetie, how's the big project coming along? Hope it's going better than last time!"
+          },
+          {
+            "character": "JAKE",
+            "recommendation": "Add stress-related verbal tics or technical jargon to make speech more distinctive",
+            "priority": "HIGH",
+            "specific_line_example": "Ugh, it's a total nightmare. The backend keeps throwing exceptions, and the sprint deadline is killing me."
+          }
+        ]
+      },
+      "performance_notes": {
+        "character_directions": {
+          "Beth": {
+            "pace_indicators": [
+              {
+                "line_context": "Opening line: 'Hey, how's the big project coming along?'",
+                "pace_direction": "rapidly",
+                "reason": "Establishing Beth as energetic and upbeat, contrasting with Jake's stressed state"
+              },
+              {
+                "line_context": "Consoling line: 'You'll get through it. You always do.'",
+                "pace_direction": "slowly, deliberate",
+                "reason": "Creating a calming, supportive presence to counter Jake's stress"
+              }
+            ],
+            "emotional_indicators": [
+              {
+                "line_context": "Opening line: 'Hey, how's the big project coming along?'",
+                "emotion_direction": "genuine cheerfulness with concern",
+                "subtext": "Trying to lift Jake's mood while showing she's aware he's been stressed",
+                "voice_quality": "Light, higher register, warm tone"
+              },
+              {
+                "line_context": "Consoling line: 'You'll get through it. You always do.'",
+                "emotion_direction": "empathetic and reassuring",
+                "subtext": "She believes in Jake's abilities and wants to remind him of his past successes",
+                "voice_quality": "Soft, slightly lower register, steady and comforting"
+              }
+            ],
+            "physical_indicators": [
+              {
+                "line_context": "Both lines",
+                "physical_direction": "sitting forward in chair",
+                "affects_voice": "Slightly closer to microphone, creating intimacy and engagement"
+              }
+            ],
+            "technical_indicators": [
+              {
+                "line_context": "Both lines",
+                "technical_direction": "clear, present",
+                "affects_perception": "Beth should feel close and immediate, creating a sense of personal connection"
+              }
+            ]
+          },
+          "Jake": {
+            "pace_indicators": [
+              {
+                "line_context": "Response line: 'It's a nightmare. Deadlines, bugs, you name it.'",
+                "pace_direction": "rapidly at first, then slowing with exhaustion",
+                "reason": "Showing initial frustration that transitions into weary resignation"
+              }
+            ],
+            "emotional_indicators": [
+              {
+                "line_context": "Response line: 'It's a nightmare. Deadlines, bugs, you name it.'",
+                "emotion_direction": "overwhelmed exhaustion with underlying frustration",
+                "subtext": "Feeling defeated by the project but trying not to completely lose it",
+                "voice_quality": "Lower register, slightly strained, with tension in the throat"
+              }
+            ],
+            "physical_indicators": [
+              {
+                "line_context": "Response line: 'It's a nightmare. Deadlines, bugs, you name it.'",
+                "physical_direction": "rubbing temples, slumped posture",
+                "affects_voice": "Slightly muffled at first, then becoming clearer as he sits up slightly"
+              }
+            ],
+            "technical_indicators": [
+              {
+                "line_context": "Response line: 'It's a nightmare. Deadlines, bugs, you name it.'",
+                "technical_direction": "slightly distant at first, then moving closer",
+                "affects_perception": "Creates the sense that Jake is lost in thought before engaging with Beth"
+              }
+            ]
+          }
+        },
+        "overall_performance_enhancements": 85,
+        "recommendations": [
+          {
+            "character": "Jake",
+            "missing_direction": "Physical reaction to sound effect",
+            "where_needed": "SFX DRINK SET ON TABLE",
+            "priority": "MEDIUM"
+          },
+          {
+            "character": "Beth",
+            "missing_direction": "Physical action of setting down drink",
+            "where_needed": "SFX DRINK SET ON TABLE",
+            "priority": "MEDIUM"
+          },
+          {
+            "character": "Jake",
+            "missing_direction": "Reaction to Beth's encouragement",
+            "where_needed": "After Beth's line 'You'll get through it. You always do.'",
+            "priority": "HIGH"
+          }
+        ]
+      }
+    }
+  ]
+}

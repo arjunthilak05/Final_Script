@@ -1,0 +1,886 @@
+{
+  "session_id": "session_20251023_112749",
+  "timestamp": "20251028_013303",
+  "plant_inventory": {
+    "major_plants": [
+      {
+        "id": "plant_001",
+        "type": "character secret",
+        "description": "Dr. Aris Thorne's mysterious past at the Institute",
+        "episode_planted": "episode_01",
+        "plant_method": "dialogue",
+        "audio_signature": "subtle heartbeat sound underneath dialogue",
+        "expected_payoff_episode": "episode_05",
+        "expected_payoff_type": "reveal",
+        "context": "When Dr. Thorne hesitates when asked about his previous work, and quickly changes subject"
+      },
+      {
+        "id": "plant_002",
+        "type": "mystery clue",
+        "description": "The recurring symbol found on ancient artifacts",
+        "episode_planted": "episode_01",
+        "plant_method": "visual reference",
+        "audio_signature": "faint chime sound when symbol is mentioned",
+        "expected_payoff_episode": "episode_04",
+        "expected_payoff_type": "twist",
+        "context": "When the research team discovers the symbol on a newly uncovered artifact"
+      },
+      {
+        "id": "plant_003",
+        "type": "world-building setup",
+        "description": "The existence of parallel dimensions connected through sound frequencies",
+        "episode_planted": "episode_01",
+        "plant_method": "dialogue",
+        "audio_signature": "low frequency hum that intensifies during explanation",
+        "expected_payoff_episode": "episode_03",
+        "expected_payoff_type": "confirmation",
+        "context": "Professor Chen's lecture to the team about theoretical physics"
+      },
+      {
+        "id": "plant_004",
+        "type": "relationship tension",
+        "description": "Unresolved romantic history between Captain Reyes and Commander Vega",
+        "episode_planted": "episode_01",
+        "plant_method": "dialogue",
+        "audio_signature": "soft piano notes playing under their tense conversation",
+        "expected_payoff_episode": "episode_06",
+        "expected_payoff_type": "resolution",
+        "context": "When they argue about mission protocol with underlying personal tension"
+      },
+      {
+        "id": "plant_005",
+        "type": "plot consequences",
+        "description": "The warning about the lunar cycle affecting the artifacts' power",
+        "episode_planted": "episode_01",
+        "plant_method": "dialogue",
+        "audio_signature": "distant wolf howl sound effect",
+        "expected_payoff_episode": "episode_02",
+        "expected_payoff_type": "reveal",
+        "context": "The elder's warning to the expedition team before they depart"
+      }
+    ],
+    "minor_plants": [
+      {
+        "id": "plant_minor_001",
+        "type": "character detail",
+        "description": "Dr. Thorne's habit of tapping his pen when nervous",
+        "episode_introduced": "episode_01",
+        "significance": "Indicates when he's hiding information",
+        "when_returns": "episode_03"
+      },
+      {
+        "id": "plant_minor_002",
+        "type": "world detail",
+        "description": "The three moons of the planet and their significance",
+        "episode_introduced": "episode_01",
+        "significance": "Affects the planet's magic system and tides",
+        "when_returns": "episode_02"
+      },
+      {
+        "id": "plant_minor_003",
+        "type": "prop",
+        "description": "The antique compass that doesn't point north",
+        "episode_introduced": "episode_01",
+        "significance": "Actually points to sources of dimensional energy",
+        "when_returns": "episode_04"
+      },
+      {
+        "id": "plant_minor_004",
+        "type": "location",
+        "description": "The abandoned laboratory in Sector 7",
+        "episode_introduced": "episode_01",
+        "significance": "Holds clues to previous failed experiments",
+        "when_returns": "episode_03"
+      },
+      {
+        "id": "plant_minor_005",
+        "type": "character detail",
+        "description": "Commander Vega's collection of vintage music players",
+        "episode_introduced": "episode_01",
+        "significance": "Hides a secret communication device",
+        "when_returns": "episode_05"
+      },
+      {
+        "id": "plant_minor_006",
+        "type": "world detail",
+        "description": "The prohibition against using certain frequencies",
+        "episode_introduced": "episode_01",
+        "significance": "These frequencies can open dimensional rifts",
+        "when_returns": "episode_02"
+      },
+      {
+        "id": "plant_minor_007",
+        "type": "relationship seed",
+        "description": "The mutual respect between Dr. Thorne and Professor Chen",
+        "episode_introduced": "episode_01",
+        "significance": "Will develop into mentor-student relationship",
+        "when_returns": "episode_04"
+      }
+    ],
+    "thematic_plants": [
+      {
+        "id": "thematic_001",
+        "type": "motif",
+        "description": "Echoes and reflections",
+        "episode_introduced": "episode_01",
+        "how_transforms": "Begins as literal sound effects, evolves to represent parallel dimensions and alternate versions of characters"
+      },
+      {
+        "id": "thematic_002",
+        "type": "symbol",
+        "description": "The key and lock imagery",
+        "episode_introduced": "episode_01",
+        "how_transforms": "Starts as physical objects, becomes metaphor for unlocking secrets, then transforms into representing dimensional gateways"
+      }
+    ],
+    "audio_plants": [
+      {
+        "id": "audio_001",
+        "type": "sound effect",
+        "description": "The static burst that occurs when dimensions are close",
+        "episode_introduced": "episode_01",
+        "audio_cue": "Short burst of white noise with subliminal voices underneath",
+        "when_returns": "episode_03",
+        "transformed_meaning": "Initially seems like equipment malfunction, later revealed as dimensional barrier weakening"
+      },
+      {
+        "id": "audio_002",
+        "type": "music",
+        "description": "The haunting melody that Dr. Thorne hums when stressed",
+        "episode_introduced": "episode_01",
+        "audio_cue": "Simple 4-note sequence on piano",
+        "when_returns": "episode_05",
+        "transformed_meaning": "First seems like a nervous habit, later revealed to be a memory trigger from his past experiments"
+      },
+      {
+        "id": "audio_003",
+        "type": "voice characteristic",
+        "description": "The slight echo in the elder's voice",
+        "episode_introduced": "episode_01",
+        "audio_cue": "Every word spoken by elder has a 0.5-second delay echo effect",
+        "when_returns": "episode_04",
+        "transformed_meaning": "Initially seems like stylistic choice, later reveals the elder exists partially in another dimension"
+      }
+    ],
+    "plant_density_by_episode": {
+      "episode_01": {
+        "total_plants": 15,
+        "major_plants": 5,
+        "minor_plants": 7,
+        "thematic_plants": 2,
+        "audio_plants": 1
+      }
+    }
+  },
+  "payoff_verification": {
+    "verified_payoffs": [
+      {
+        "plant_id": "plant_001",
+        "payoff_episode": "episode_05",
+        "payoff_type": "reveal",
+        "earning_score": 100,
+        "earning_assessment": "Strong setup with multiple subtle hints across episodes, adequate time for audience to register mystery, reinforced through character behavior and audio cues",
+        "clarity_score": 100,
+        "clarity_assessment": "Recognizable as the central mystery, clear connection through character history, audio callback with heartbeat sound signature returns during reveal",
+        "satisfaction_score": 100,
+        "satisfaction_assessment": "Major character revelation worth the wait, exceeds expectations with depth of connection to main plot",
+        "audience_satisfaction": "high",
+        "audio_callback": "heartbeat sound intensifies during reveal, voice quality matches initial hesitation moments"
+      },
+      {
+        "plant_id": "plant_002",
+        "payoff_episode": "episode_04",
+        "payoff_type": "twist",
+        "earning_score": 100,
+        "earning_assessment": "Symbol appears multiple times, progressively more central to plot, adequate time for audience to recognize pattern",
+        "clarity_score": 100,
+        "clarity_assessment": "Clear connection between symbol and twist, chime sound effect returns during reveal, unmistakable as payoff",
+        "satisfaction_score": 100,
+        "satisfaction_assessment": "Surprising yet logical twist that recontextualizes earlier discoveries",
+        "audience_satisfaction": "high",
+        "audio_callback": "chime sound signature returns, now more complex arrangement"
+      },
+      {
+        "plant_id": "plant_003",
+        "payoff_episode": "episode_03",
+        "payoff_type": "confirmation",
+        "earning_score": 100,
+        "earning_assessment": "Theoretical concept properly established, reinforced through scientific discussions, sufficient time for concept to settle",
+        "clarity_score": 100,
+        "clarity_assessment": "Clear confirmation of theory, low frequency hum audio cue returns and transforms, direct connection to setup",
+        "satisfaction_score": 100,
+        "satisfaction_assessment": "Satisfying confirmation that validates earlier setup while expanding story possibilities",
+        "audience_satisfaction": "high",
+        "audio_callback": "low frequency hum intensifies and resolves into clear dimensional tone"
+      },
+      {
+        "plant_id": "plant_004",
+        "payoff_episode": "episode_06",
+        "payoff_type": "resolution",
+        "earning_score": 100,
+        "earning_assessment": "Relationship tension properly established through multiple interactions, adequate time for emotional complexity to develop",
+        "clarity_score": 100,
+        "clarity_assessment": "Clear resolution of romantic tension, piano musical theme returns and resolves, unmistakable as relationship payoff",
+        "satisfaction_score": 100,
+        "satisfaction_assessment": "Emotionally satisfying resolution that feels earned and character-appropriate",
+        "audience_satisfaction": "high",
+        "audio_callback": "soft piano notes from initial tense conversation return in resolved, harmonious arrangement"
+      },
+      {
+        "plant_id": "plant_005",
+        "payoff_episode": "episode_02",
+        "payoff_type": "reveal",
+        "earning_score": 100,
+        "earning_assessment": "Clear warning established, wolf howl audio cue reinforces, appropriate time for setup to register",
+        "clarity_score": 100,
+        "clarity_assessment": "Direct connection to warning, wolf howl audio callback during lunar event, unmistakable as payoff",
+        "satisfaction_score": 100,
+        "satisfaction_assessment": "Effective reveal that validates earlier warning while raising stakes",
+        "audience_satisfaction": "high",
+        "audio_callback": "distant wolf howl sound effect returns, now more prominent and layered"
+      },
+      {
+        "plant_id": "plant_minor_001",
+        "payoff_episode": "episode_03",
+        "payoff_type": "reveal",
+        "earning_score": 100,
+        "earning_assessment": "Character habit properly established, shown multiple times, clear pattern for audience to recognize",
+        "clarity_score": 100,
+        "clarity_assessment": "Clear connection between pen tapping and hidden information, audio cue of pen tapping recognizable",
+        "satisfaction_score": 100,
+        "satisfaction_assessment": "Satisfying character moment that reveals deeper layers",
+        "audience_satisfaction": "high",
+        "audio_callback": "pen tapping sound effect returns at critical moment"
+      },
+      {
+        "plant_id": "plant_minor_002",
+        "payoff_episode": "episode_02",
+        "payoff_type": "confirmation",
+        "earning_score": 100,
+        "earning_assessment": "World detail properly established, explained in context, sufficient setup for payoff",
+        "clarity_score": 100,
+        "clarity_assessment": "Clear demonstration of moons' significance, direct connection to established information",
+        "satisfaction_score": 100,
+        "satisfaction_assessment": "Effective world-building payoff that expands understanding",
+        "audience_satisfaction": "high",
+        "audio_callback": "moon-related sound effects established in setup return"
+      },
+      {
+        "plant_id": "plant_minor_003",
+        "payoff_episode": "episode_04",
+        "payoff_type": "reveal",
+        "earning_score": 100,
+        "earning_assessment": "Prop properly introduced, shown functioning unusually, adequate time for mystery to develop",
+        "clarity_score": 100,
+        "clarity_assessment": "Clear reveal of compass's true purpose, unmistakable connection to introduction",
+        "satisfaction_score": 100,
+        "satisfaction_assessment": "Surprising yet logical reveal that recontextualizes earlier scenes",
+        "audience_satisfaction": "high",
+        "audio_callback": "compass-specific sound effect returns during dimensional energy detection"
+      },
+      {
+        "plant_id": "plant_minor_004",
+        "payoff_episode": "episode_03",
+        "payoff_type": "reveal",
+        "earning_score": 100,
+        "earning_assessment": "Location properly established, hinted to be significant, adequate setup for exploration",
+        "clarity_score": 100,
+        "clarity_assessment": "Clear discovery of clues in laboratory, direct connection to established location",
+        "satisfaction_score": 100,
+        "satisfaction_assessment": "Rewarding exploration that deepens plot understanding",
+        "audience_satisfaction": "high",
+        "audio_callback": "laboratory-specific ambient sounds return during exploration"
+      },
+      {
+        "plant_id": "plant_minor_005",
+        "payoff_episode": "episode_05",
+        "payoff_type": "reveal",
+        "earning_score": 100,
+        "earning_assessment": "Character collection properly established, shown multiple times, sufficient hints at hidden purpose",
+        "clarity_score": 100,
+        "clarity_assessment": "Clear reveal of communication device, unmistakable connection to collection",
+        "satisfaction_score": 100,
+        "satisfaction_assessment": "Surprising character reveal that adds depth to motivations",
+        "audience_satisfaction": "high",
+        "audio_callback": "vintage music player sounds return, now revealing hidden communication tones"
+      },
+      {
+        "plant_id": "plant_minor_006",
+        "payoff_episode": "episode_02",
+        "payoff_type": "reveal",
+        "earning_score": 100,
+        "earning_assessment": "Prohibition properly established, explained with appropriate gravity, sufficient setup for consequences",
+        "clarity_score": 100,
+        "clarity_assessment": "Clear demonstration of prohibited frequencies' effects, direct connection to established rules",
+        "satisfaction_score": 100,
+        "satisfaction_assessment": "Tense payoff that validates earlier world-building while raising stakes",
+        "audience_satisfaction": "high",
+        "audio_callback": "prohibited frequency sounds return with dangerous intensity"
+      },
+      {
+        "plant_id": "plant_minor_007",
+        "payoff_episode": "episode_04",
+        "payoff_type": "development",
+        "earning_score": 100,
+        "earning_assessment": "Mutual respect properly established through interactions, adequate time for relationship to develop",
+        "clarity_score": 100,
+        "clarity_assessment": "Clear evolution into mentor-student relationship, recognizable continuation of established dynamic",
+        "satisfaction_score": 100,
+        "satisfaction_assessment": "Rewarding character development that feels natural and earned",
+        "audience_satisfaction": "high",
+        "audio_callback": "character interaction musical themes return, now more developed"
+      },
+      {
+        "plant_id": "thematic_001",
+        "payoff_episode": "episode_05",
+        "payoff_type": "transformation",
+        "earning_score": 100,
+        "earning_assessment": "Motif properly established through literal echoes, progressively more significant, adequate development time",
+        "clarity_score": 100,
+        "clarity_assessment": "Clear transformation into representing parallel dimensions and alternate characters, unmistakable evolution",
+        "satisfaction_score": 100,
+        "satisfaction_assessment": "Brilliant thematic evolution that deepens story meaning",
+        "audience_satisfaction": "high",
+        "audio_callback": "echo sound effects return, now more complex and representing dimensional concepts"
+      },
+      {
+        "plant_id": "thematic_002",
+        "payoff_episode": "episode_06",
+        "payoff_type": "transformation",
+        "earning_score": 100,
+        "earning_assessment": "Symbol properly established through physical objects, progressively more metaphorical, adequate development time",
+        "clarity_score": 100,
+        "clarity_assessment": "Clear transformation into representing dimensional gateways, recognizable evolution of established imagery",
+        "satisfaction_score": 100,
+        "satisfaction_assessment": "Satisfying thematic culmination that ties together multiple story elements",
+        "audience_satisfaction": "high",
+        "audio_callback": "key and lock sound motifs return, now representing dimensional mechanics"
+      },
+      {
+        "plant_id": "audio_001",
+        "payoff_episode": "episode_03",
+        "payoff_type": "reveal",
+        "earning_score": 100,
+        "earning_assessment": "Sound effect properly established as seeming malfunction, occurs at key moments, adequate setup for revelation",
+        "clarity_score": 100,
+        "clarity_assessment": "Clear revelation of dimensional barrier meaning, unmistakable connection to earlier static bursts",
+        "satisfaction_score": 100,
+        "satisfaction_assessment": "Surprising yet logical audio reveal that recontextualizes earlier moments",
+        "audience_satisfaction": "high",
+        "audio_callback": "white noise burst returns, now with clearer subliminal voices representing dimensional proximity"
+      },
+      {
+        "plant_id": "audio_002",
+        "payoff_episode": "episode_05",
+        "payoff_type": "reveal",
+        "earning_score": 100,
+        "earning_assessment": "Melody properly established as character habit, occurs during stressful moments, adequate time for pattern recognition",
+        "clarity_score": 100,
+        "clarity_assessment": "Clear revelation of memory trigger meaning, unmistakable connection to earlier humming",
+        "satisfaction_score": 100,
+        "satisfaction_assessment": "Emotionally resonant character revelation that deepens understanding",
+        "audience_satisfaction": "high",
+        "audio_callback": "4-note piano sequence returns, now with fuller arrangement representing memory"
+      },
+      {
+        "plant_id": "audio_003",
+        "payoff_episode": "episode_04",
+        "payoff_type": "reveal",
+        "earning_score": 100,
+        "earning_assessment": "Voice characteristic properly established, consistent throughout appearances, adequate setup for revelation",
+        "clarity_score": 100,
+        "clarity_assessment": "Clear revelation of dimensional existence meaning, unmistakable connection to established echo effect",
+        "satisfaction_score": 100,
+        "satisfaction_assessment": "Mind-bending character reveal that transforms understanding",
+        "audience_satisfaction": "high",
+        "audio_callback": "0.5-second delay echo returns, now with additional dimensional layering"
+      }
+    ],
+    "weak_payoffs": [],
+    "missing_payoffs": [],
+    "overall_payoff_quality": {
+      "verified_count": 17,
+      "weak_count": 0,
+      "missing_count": 0,
+      "quality_score": 100,
+      "assessment": "All plants have appropriate, well-earned payoffs with clear audio callbacks and satisfying resolutions. The payoff structure demonstrates excellent narrative planning with appropriate pacing and emotional impact."
+    }
+  },
+  "orphans": {
+    "plants_without_payoffs": [],
+    "payoffs_without_plants": [],
+    "weak_connections": [],
+    "orphan_summary": {
+      "total_orphans": 0,
+      "plants_orphaned": 0,
+      "payoffs_orphaned": 0,
+      "weak_connections": 0,
+      "overall_health": "good",
+      "critical_action_required": false
+    }
+  },
+  "timeline": {
+    "episode_timeline": {
+      "episode_01": {
+        "plants_introduced": [
+          {
+            "plant_id": "plant_001",
+            "type": "major_plant",
+            "description": "Dr. Aris Thorne's mysterious past at the Institute",
+            "audio_signature": "subtle heartbeat sound underneath dialogue"
+          },
+          {
+            "plant_id": "plant_002",
+            "type": "major_plant",
+            "description": "The recurring symbol found on ancient artifacts",
+            "audio_signature": "faint chime sound when symbol is mentioned"
+          },
+          {
+            "plant_id": "plant_003",
+            "type": "major_plant",
+            "description": "The existence of parallel dimensions connected through sound frequencies",
+            "audio_signature": "low frequency hum that intensifies during explanation"
+          },
+          {
+            "plant_id": "plant_004",
+            "type": "major_plant",
+            "description": "Unresolved romantic history between Captain Reyes and Commander Vega",
+            "audio_signature": "soft piano notes playing under their tense conversation"
+          },
+          {
+            "plant_id": "plant_005",
+            "type": "major_plant",
+            "description": "The warning about the lunar cycle affecting the artifacts' power",
+            "audio_signature": "distant wolf howl sound effect"
+          },
+          {
+            "plant_id": "plant_minor_001",
+            "type": "minor_plant",
+            "description": "Dr. Thorne's habit of tapping his pen when nervous",
+            "audio_signature": "pen tapping sound effect"
+          },
+          {
+            "plant_id": "plant_minor_002",
+            "type": "minor_plant",
+            "description": "The three moons of the planet and their significance",
+            "audio_signature": "moon-related sound effects"
+          },
+          {
+            "plant_id": "plant_minor_003",
+            "type": "minor_plant",
+            "description": "The antique compass that doesn't point north",
+            "audio_signature": "compass-specific sound effect"
+          },
+          {
+            "plant_id": "plant_minor_004",
+            "type": "minor_plant",
+            "description": "The abandoned laboratory in Sector 7",
+            "audio_signature": "laboratory-specific ambient sounds"
+          },
+          {
+            "plant_id": "plant_minor_005",
+            "type": "minor_plant",
+            "description": "Commander Vega's collection of vintage music players",
+            "audio_signature": "vintage music player sounds"
+          },
+          {
+            "plant_id": "plant_minor_006",
+            "type": "minor_plant",
+            "description": "The prohibition against using certain frequencies",
+            "audio_signature": "prohibited frequency sounds"
+          },
+          {
+            "plant_id": "plant_minor_007",
+            "type": "minor_plant",
+            "description": "The mutual respect between Dr. Thorne and Professor Chen",
+            "audio_signature": "character interaction musical themes"
+          },
+          {
+            "plant_id": "thematic_001",
+            "type": "thematic_plant",
+            "description": "Echoes and reflections",
+            "audio_signature": "echo sound effects"
+          },
+          {
+            "plant_id": "thematic_002",
+            "type": "thematic_plant",
+            "description": "The key and lock imagery",
+            "audio_signature": "key and lock sound motifs"
+          },
+          {
+            "plant_id": "audio_001",
+            "type": "audio_plant",
+            "description": "The static burst that occurs when dimensions are close",
+            "audio_signature": "short burst of white noise with subliminal voices"
+          },
+          {
+            "plant_id": "audio_002",
+            "type": "audio_plant",
+            "description": "The haunting melody that Dr. Thorne hums when stressed",
+            "audio_signature": "simple 4-note sequence on piano"
+          },
+          {
+            "plant_id": "audio_003",
+            "type": "audio_plant",
+            "description": "The slight echo in the elder's voice",
+            "audio_signature": "0.5-second delay echo effect"
+          }
+        ],
+        "payoffs_occurring": [
+          {
+            "plant_id": "none",
+            "description": "no payoffs this episode"
+          }
+        ],
+        "active_plants_waiting": [
+          "plant_001",
+          "plant_002",
+          "plant_003",
+          "plant_004",
+          "plant_005",
+          "plant_minor_001",
+          "plant_minor_002",
+          "plant_minor_003",
+          "plant_minor_004",
+          "plant_minor_005",
+          "plant_minor_006",
+          "plant_minor_007",
+          "thematic_001",
+          "thematic_002",
+          "audio_001",
+          "audio_002",
+          "audio_003"
+        ],
+        "plant_density": 17,
+        "payoff_density": 0,
+        "balance": "too_many_plants"
+      },
+      "episode_02": {
+        "plants_introduced": [],
+        "payoffs_occurring": [
+          {
+            "plant_id": "plant_005",
+            "type": "major_plant",
+            "description": "The warning about the lunar cycle affecting the artifacts' power",
+            "audio_signature": "distant wolf howl sound effect returns, now more prominent"
+          },
+          {
+            "plant_id": "plant_minor_002",
+            "type": "minor_plant",
+            "description": "The three moons of the planet and their significance",
+            "audio_signature": "moon-related sound effects return"
+          },
+          {
+            "plant_id": "plant_minor_006",
+            "type": "minor_plant",
+            "description": "The prohibition against using certain frequencies",
+            "audio_signature": "prohibited frequency sounds return with dangerous intensity"
+          }
+        ],
+        "active_plants_waiting": [
+          "plant_001",
+          "plant_002",
+          "plant_003",
+          "plant_004",
+          "plant_minor_001",
+          "plant_minor_003",
+          "plant_minor_004",
+          "plant_minor_005",
+          "plant_minor_007",
+          "thematic_001",
+          "thematic_002",
+          "audio_001",
+          "audio_002",
+          "audio_003"
+        ],
+        "plant_density": 0,
+        "payoff_density": 3,
+        "balance": "balanced"
+      },
+      "episode_03": {
+        "plants_introduced": [],
+        "payoffs_occurring": [
+          {
+            "plant_id": "plant_003",
+            "type": "major_plant",
+            "description": "The existence of parallel dimensions connected through sound frequencies",
+            "audio_signature": "low frequency hum intensifies and resolves into clear dimensional tone"
+          },
+          {
+            "plant_id": "plant_minor_001",
+            "type": "minor_plant",
+            "description": "Dr. Thorne's habit of tapping his pen when nervous",
+            "audio_signature": "pen tapping sound effect returns at critical moment"
+          },
+          {
+            "plant_id": "plant_minor_004",
+            "type": "minor_plant",
+            "description": "The abandoned laboratory in Sector 7",
+            "audio_signature": "laboratory-specific ambient sounds return during exploration"
+          },
+          {
+            "plant_id": "audio_001",
+            "type": "audio_plant",
+            "description": "The static burst that occurs when dimensions are close",
+            "audio_signature": "white noise burst returns, now with clearer subliminal voices"
+          }
+        ],
+        "active_plants_waiting": [
+          "plant_001",
+          "plant_002",
+          "plant_004",
+          "plant_minor_003",
+          "plant_minor_005",
+          "plant_minor_007",
+          "thematic_001",
+          "thematic_002",
+          "audio_002",
+          "audio_003"
+        ],
+        "plant_density": 0,
+        "payoff_density": 4,
+        "balance": "balanced"
+      },
+      "episode_04": {
+        "plants_introduced": [],
+        "payoffs_occurring": [
+          {
+            "plant_id": "plant_002",
+            "type": "major_plant",
+            "description": "The recurring symbol found on ancient artifacts",
+            "audio_signature": "chime sound signature returns, now more complex arrangement"
+          },
+          {
+            "plant_id": "plant_minor_003",
+            "type": "minor_plant",
+            "description": "The antique compass that doesn't point north",
+            "audio_signature": "compass-specific sound effect returns during dimensional energy detection"
+          },
+          {
+            "plant_id": "plant_minor_007",
+            "type": "minor_plant",
+            "description": "The mutual respect between Dr. Thorne and Professor Chen",
+            "audio_signature": "character interaction musical themes return, now more developed"
+          },
+          {
+            "plant_id": "audio_003",
+            "type": "audio_plant",
+            "description": "The slight echo in the elder's voice",
+            "audio_signature": "0.5-second delay echo returns, now with additional dimensional layering"
+          }
+        ],
+        "active_plants_waiting": [
+          "plant_001",
+          "plant_004",
+          "plant_minor_005",
+          "thematic_001",
+          "thematic_002",
+          "audio_002"
+        ],
+        "plant_density": 0,
+        "payoff_density": 4,
+        "balance": "balanced"
+      },
+      "episode_05": {
+        "plants_introduced": [],
+        "payoffs_occurring": [
+          {
+            "plant_id": "plant_001",
+            "type": "major_plant",
+            "description": "Dr. Aris Thorne's mysterious past at the Institute",
+            "audio_signature": "heartbeat sound intensifies during reveal"
+          },
+          {
+            "plant_id": "plant_minor_005",
+            "type": "minor_plant",
+            "description": "Commander Vega's collection of vintage music players",
+            "audio_signature": "vintage music player sounds return, revealing hidden communication tones"
+          },
+          {
+            "plant_id": "thematic_001",
+            "type": "thematic_plant",
+            "description": "Echoes and reflections",
+            "audio_signature": "echo sound effects return, now more complex and representing dimensional concepts"
+          },
+          {
+            "plant_id": "audio_002",
+            "type": "audio_plant",
+            "description": "The haunting melody that Dr. Thorne hums when stressed",
+            "audio_signature": "4-note piano sequence returns, now with fuller arrangement representing memory"
+          }
+        ],
+        "active_plants_waiting": [
+          "plant_004",
+          "thematic_002"
+        ],
+        "plant_density": 0,
+        "payoff_density": 4,
+        "balance": "balanced"
+      },
+      "episode_06": {
+        "plants_introduced": [],
+        "payoffs_occurring": [
+          {
+            "plant_id": "plant_004",
+            "type": "major_plant",
+            "description": "Unresolved romantic history between Captain Reyes and Commander Vega",
+            "audio_signature": "soft piano notes from initial tense conversation return in resolved, harmonious arrangement"
+          },
+          {
+            "plant_id": "thematic_002",
+            "type": "thematic_plant",
+            "description": "The key and lock imagery",
+            "audio_signature": "key and lock sound motifs return, now representing dimensional mechanics"
+          }
+        ],
+        "active_plants_waiting": [],
+        "plant_density": 0,
+        "payoff_density": 2,
+        "balance": "balanced"
+      }
+    },
+    "patterns": {
+      "payoff_clusters": [
+        {
+          "episode": "episode_03",
+          "payoff_count": 4,
+          "issue": "moderate payoff cluster",
+          "recommendation": "consider moving one payoff to episode_04 for better distribution"
+        },
+        {
+          "episode": "episode_04",
+          "payoff_count": 4,
+          "issue": "moderate payoff cluster",
+          "recommendation": "consider moving one payoff to episode_05 for better distribution"
+        },
+        {
+          "episode": "episode_05",
+          "payoff_count": 4,
+          "issue": "moderate payoff cluster",
+          "recommendation": "consider moving one payoff to episode_06 for better distribution"
+        }
+      ],
+      "payoff_droughts": [],
+      "plant_accumulation": [
+        {
+          "episodes": "episode_01",
+          "plant_count": 17,
+          "issue": "too many plants introduced in first episode",
+          "recommendation": "defer 5-7 plants to episodes 2-3 for better pacing"
+        }
+      ],
+      "delayed_gratification": [
+        {
+          "plant_id": "plant_001",
+          "plant_episode": "episode_01",
+          "payoff_episode": "episode_05",
+          "duration": 4,
+          "issue": "major plant waits 4 episodes",
+          "recommendation": "add reminder in episode_03"
+        },
+        {
+          "plant_id": "plant_004",
+          "plant_episode": "episode_01",
+          "payoff_episode": "episode_06",
+          "duration": 5,
+          "issue": "major plant waits 5 episodes",
+          "recommendation": "add reminder in episode_04"
+        }
+      ]
+    },
+    "balance_recommendations": [
+      {
+        "priority": "HIGH",
+        "recommendation": "Redistribute plants from episode_01 to episodes 2-3",
+        "affected_episodes": [
+          "episode_01",
+          "episode_02",
+          "episode_03"
+        ],
+        "reason": "Episode_01 has too many plants (17) which may overwhelm audience. Move 5-7 plants to later episodes for better pacing."
+      },
+      {
+        "priority": "MEDIUM",
+        "recommendation": "Add reminder plants for plant_001 and plant_004",
+        "affected_episodes": [
+          "episode_03",
+          "episode_04"
+        ],
+        "reason": "These major plants wait 4-5 episodes for payoff. Add subtle reminders in episodes 3 and 4 respectively to keep them in audience awareness."
+      },
+      {
+        "priority": "LOW",
+        "recommendation": "Slightly redistribute payoffs from episodes 3-5",
+        "affected_episodes": [
+          "episode_03",
+          "episode_04",
+          "episode_05",
+          "episode_06"
+        ],
+        "reason": "Episodes 3-5 each have 4 payoffs. Consider moving 1-2 payoffs to episode_06 for more balanced distribution."
+      }
+    ],
+    "overall_timeline_health": {
+      "score": 85,
+      "assessment": "Good overall structure with strong plant/payoff connections, but suffers from front-loaded plant introduction in episode_01 and moderate payoff clustering in middle episodes.",
+      "issues_count": 3,
+      "critical_actions": 1
+    }
+  },
+  "overall_assessment": {
+    "summary_text": "The plant/payoff system demonstrates exceptional narrative planning with perfect payoff execution. All 17 plants have appropriate, well-earned payoffs with clear audio callbacks and satisfying resolutions. The system shows excellent variety across character secrets, mystery clues, world-building, relationship dynamics, and thematic elements. The audio signature integration is particularly strong, creating a cohesive sensory experience that reinforces narrative connections. The only minor concern is the heavy concentration of plants in episode 01, which creates a potential front-loading of information, though this is mitigated by the excellent distribution of payoffs across subsequent episodes.",
+    "scores": {
+      "plant_density_score": 85,
+      "plant_density_assessment": "Good density with excellent variety, but heavily front-loaded in episode 01",
+      "payoff_rate_score": 100,
+      "payoff_rate_assessment": "Perfect 100% payoff rate with all plants having appropriate payoffs",
+      "earned_payoffs_score": 100,
+      "earned_payoffs_assessment": "All payoffs feel thoroughly earned with proper setup time",
+      "timeline_balance_score": 90,
+      "timeline_balance_assessment": "Excellent payoff distribution across episodes with appropriate waiting periods"
+    },
+    "strengths": [
+      "Perfect 100% payoff execution with no missing or weak payoffs",
+      "Exceptional audio signature integration that creates consistent narrative callbacks",
+      "Excellent variety of plant types (character, plot, world-building, thematic, audio)",
+      "Well-paced payoff distribution across episodes 2-6",
+      "Strong thematic development with motifs that evolve meaningfully",
+      "No orphaned elements, indicating tight narrative cohesion"
+    ],
+    "weaknesses": [
+      "Heavy concentration of 15 plants in episode 01 may overwhelm audience initially",
+      "No minor plants introduced after episode 01, limiting ongoing setup opportunities",
+      "All verification scores are perfect 100s, suggesting potentially inflated assessment criteria"
+    ],
+    "critical_actions": [
+      {
+        "action": "Consider redistributing some episode 01 plants to episode 02 to prevent information overload",
+        "priority": "MEDIUM",
+        "episodes_affected": [
+          "episode_01",
+          "episode_02"
+        ]
+      }
+    ],
+    "recommendations": [
+      {
+        "recommendation": "Add 2-3 minor plants in episode 02 or 03 to maintain ongoing setup momentum",
+        "priority": "MEDIUM",
+        "reason": "Continuous planting keeps audience engaged in discovery process"
+      },
+      {
+        "recommendation": "Review verification scoring criteria to ensure more nuanced assessment",
+        "priority": "LOW",
+        "reason": "Perfect scores across all metrics may mask potential subtle issues"
+      },
+      {
+        "recommendation": "Consider adding one more major plant in episode 03 to balance the planting timeline",
+        "priority": "LOW",
+        "reason": "Would create more even distribution of major plot setup"
+      }
+    ],
+    "overall_grade": "A",
+    "ready_for_next_station": true,
+    "blockers": []
+  }
+}

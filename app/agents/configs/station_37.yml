@@ -1,0 +1,478 @@
+# Station 37: Plant/Payoff Tracker Configuration
+
+model: "glm-4.5"
+temperature: 0.7
+max_tokens: 10000
+
+prompts:
+  plant_inventory: |
+    You are a Plant Inventory Specialist for audio drama scripts.
+    
+    Scan all episodes to identify every planted story element from minor details to major plot points.
+    
+    EPISODES CONTENT:
+    {episodes_content}
+    
+    NARRATIVE REVEAL STRATEGY (from Station 10):
+    {narrative_reveal_strategy}
+    
+    CREATE COMPREHENSIVE PLANT INVENTORY:
+    
+    1. MAJOR PLANTS (Plot-critical setups)
+    - Character secrets/reveals
+    - Mystery clues
+    - World-building setups
+    - Plot consequences
+    - Relationship tensions
+    - Power dynamics
+    - For each: episode planted, audio signature, expected payoff
+    
+    2. MINOR PLANTS (Character/world details)
+    - Character traits mentioned
+    - Background information
+    - World rules established
+    - Relationship seeds
+    - Prop details
+    - Location descriptions
+    - For each: when introduced, when expected to recur
+    
+    3. THEMATIC PLANTS (Motifs and symbols)
+    - Recurring images or ideas
+    - Symbolic objects/concepts
+    - Musical themes
+    - Visual/aural metaphors
+    - For each: how it transforms across episodes
+    
+    4. AUDIO PLANTS (Sounds with later meaning)
+    - Sound effects that will recur significantly
+    - Musical motifs introduced
+    - Voice characteristics that mean something
+    - Environmental audio that carries significance
+    - For each: audio cue, when returns, transformed meaning
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "plant_inventory": {{
+        "major_plants": [
+          {{
+            "id": "plant_001",
+            "type": "plot reveal|character secret|world rule|relationship tension",
+            "description": "Brief description of plant",
+            "episode_planted": "episode_01",
+            "plant_method": "dialogue|action|sound|visual reference",
+            "audio_signature": "specific sound or music that accompanies plant",
+            "expected_payoff_episode": "episode_05",
+            "expected_payoff_type": "reveal|confirmation|twist|resolution",
+            "context": "where in episode and surrounding dialogue/action"
+          }}
+        ],
+        "minor_plants": [
+          {{
+            "id": "plant_minor_001",
+            "type": "character detail|world detail|prop|location",
+            "description": "Brief description",
+            "episode_introduced": "episode_02",
+            "significance": "why this matters",
+            "when_returns": "episode_04|not planned|foreshadowing only"
+          }}
+        ],
+        "thematic_plants": [
+          {{
+            "id": "thematic_001",
+            "type": "motif|symbol|image|concept",
+            "description": "what the theme is",
+            "episode_introduced": "episode_01",
+            "how_transforms": "how it changes meaning across episodes"
+          }}
+        ],
+        "audio_plants": [
+          {{
+            "id": "audio_001",
+            "type": "sound effect|music|voice characteristic|ambience",
+            "description": "audio element description",
+            "episode_introduced": "episode_01",
+            "audio_cue": "specific audio description",
+            "when_returns": "episode_03",
+            "transformed_meaning": "how audio takes on new meaning when returns"
+          }}
+        ],
+        "plant_density_by_episode": {{
+          "episode_01": {{
+            "total_plants": 15,
+            "major_plants": 5,
+            "minor_plants": 7,
+            "thematic_plants": 2,
+            "audio_plants": 1
+          }}
+        }}
+      }}
+    }}
+    ```
+    
+    IMPORTANT: Be thorough. Include every mention that could be a plant. Better to over-identify than miss something important.
+
+  payoff_verification: |
+    You are a Payoff Verification Specialist for audio drama scripts.
+    
+    Verify that every plant in the inventory has an appropriate payoff.
+    
+    PLANT INVENTORY:
+    {plant_inventory}
+    
+    EPISODES CONTENT:
+    {episodes_content}
+    
+    VERIFY EACH PAYOFF:
+    
+    1. EARNING CHECK
+    - Is there sufficient setup before payoff?
+    - Has enough time passed for setup to register?
+    - Has setup been reinforced/reminded if needed?
+    - Was setup clear enough for audience to notice?
+    
+    2. CLARITY CHECK
+    - Is payoff recognizable as fulfilling the plant?
+    - Is connection between plant and payoff clear?
+    - Is there audio callback to original plant?
+    - Could audience remember the original plant?
+    
+    3. SATISFACTION CHECK
+    - Is payoff worth the wait?
+    - Does payoff exceed expectations?
+    - Does payoff provide emotional impact?
+    - Is payoff appropriately scaled to plant?
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "payoff_verification": {{
+        "verified_payoffs": [
+          {{
+            "plant_id": "plant_001",
+            "payoff_episode": "episode_05",
+            "payoff_type": "reveal|confirmation|twist|resolution",
+            "earning_score": 100,
+            "earning_assessment": "strong setup, adequate time, clear payoff",
+            "clarity_score": 100,
+            "clarity_assessment": "recognizable, clear connection, audio callback present",
+            "satisfaction_score": 100,
+            "satisfaction_assessment": "worth the wait, exceeds expectations",
+            "audience_satisfaction": "high",
+            "audio_callback": "music theme returns, voice quality matches setup"
+          }}
+        ],
+        "weak_payoffs": [
+          {{
+            "plant_id": "plant_002",
+            "payoff_episode": "episode_03",
+            "issue": "insufficient setup|too quick|not recognizable|underwhelming",
+            "severity": "CRITICAL|HIGH|MEDIUM|LOW",
+            "recommendation": "add earlier plant or strengthen payoff"
+          }}
+        ],
+        "missing_payoffs": [
+          {{
+            "plant_id": "plant_008",
+            "plant_type": "character detail",
+            "plant_description": "what was planted",
+            "plant_episode": "episode_02",
+            "expected_payoff": "what should have happened",
+            "severity": "CRITICAL|HIGH|MEDIUM|LOW",
+            "recommendation": "add payoff or remove plant"
+          }}
+        ],
+        "overall_payoff_quality": {{
+          "verified_count": 45,
+          "weak_count": 3,
+          "missing_count": 0,
+          "quality_score": 85,
+          "assessment": "Most payoffs are well-earned. Some need strengthening."
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: Verify every plant has a payoff. Flag any unearned or missing payoffs.
+
+  orphan_identification: |
+    You are an Orphan Plant/Payoff Identifier for audio drama scripts.
+    
+    Identify plants without payoffs and payoffs without plants.
+    
+    PLANT INVENTORY:
+    {plant_inventory}
+    
+    PAYOFF VERIFICATION:
+    {payoff_verification}
+    
+    IDENTIFY ORPHANS:
+    
+    1. PLANTS WITHOUT PAYOFFS
+    - Any plant that doesn't appear in verified payoffs
+    - Any plant not yet paid off by last episode
+    - Any plant that was forgotten
+    
+    2. PAYOFFS WITHOUT PLANTS
+    - Any major reveal without setup
+    - Any twist without foreshadowing
+    - Any resolution without cause
+    
+    3. WEAK CONNECTIONS
+    - Plants and payoffs where connection is tenuous
+    - Payoffs that don't clearly relate to their plants
+    - Audio callbacks missing or unclear
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "orphan_identification": {{
+        "plants_without_payoffs": [
+          {{
+            "plant_id": "plant_015",
+            "type": "character detail",
+            "description": "what was planted",
+            "episode_planted": "episode_03",
+            "severity": "CRITICAL|HIGH|MEDIUM|LOW",
+            "recommendation": "add payoff in episode_X or remove plant",
+            "affects": "which characters/plot elements depend on this"
+          }}
+        ],
+        "payoffs_without_plants": [
+          {{
+            "payoff_description": "major reveal that happened",
+            "episode": "episode_05",
+            "severity": "CRITICAL|HIGH|MEDIUM|LOW",
+            "recommendation": "add plant in episode_X or earlier",
+            "feels_unearned": "why payoff feels sudden"
+          }}
+        ],
+        "weak_connections": [
+          {{
+            "plant_id": "plant_022",
+            "payoff_description": "what happened",
+            "connection_weakness": "why connection is unclear",
+            "severity": "HIGH|MEDIUM|LOW",
+            "recommendation": "strengthen audio callback or add reminder plant",
+            "audio_callback_issue": "what audio callback is missing"
+          }}
+        ],
+        "orphan_summary": {{
+          "total_orphans": 5,
+          "plants_orphaned": 3,
+          "payoffs_orphaned": 2,
+          "weak_connections": 4,
+          "overall_health": "good|needs_work|critical",
+          "critical_action_required": true
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: Identify every orphan. Track severity and recommend specific fixes.
+
+  timeline_mapping: |
+    You are a Plant/Payoff Timeline Mapper for audio drama scripts.
+    
+    Create a complete timeline showing when each plant is introduced and when it pays off.
+    
+    PLANT INVENTORY:
+    {plant_inventory}
+    
+    PAYOFF VERIFICATION:
+    {payoff_verification}
+    
+    EPISODE IDS:
+    {episode_ids}
+    
+    CREATE TIMELINE:
+    
+    1. EPISODE-BY-EPISODE PLANT/PAYOFF MAP
+    Show for each episode:
+    - Plants introduced (with IDs)
+    - Payoffs occurring (with plant IDs)
+    - Plants continuing without payoff yet
+    - Cumulative plant/payoff density
+    
+    2. IDENTIFY PATTERNS
+    - Payoff clusters (too many at once?)
+    - Payoff droughts (too long without?)
+    - Plant accumulation (too many plants early?)
+    - Delayed gratification (plants waiting too long?)
+    
+    3. BALANCE RECOMMENDATIONS
+    - Redistribute payoffs for better pacing
+    - Add reminder plants if payoff is distant
+    - Suggest plant removal if no payoff planned
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "timeline_mapping": {{
+        "episode_timeline": {{
+          "episode_01": {{
+            "plants_introduced": [
+              {{
+                "plant_id": "plant_001",
+                "type": "major_plant",
+                "description": "brief description",
+                "audio_signature": "audio cue"
+              }}
+            ],
+            "payoffs_occurring": [
+              {{
+                "plant_id": "none",
+                "description": "no payoffs this episode"
+              }}
+            ],
+            "active_plants_waiting": [],
+            "plant_density": 12,
+            "payoff_density": 0,
+            "balance": "too_many_plants|balanced|needs_plants|needs_payoffs"
+          }}
+        }},
+        "patterns": {{
+          "payoff_clusters": [
+            {{
+              "episode": "episode_05",
+              "payoff_count": 8,
+              "issue": "too many payoffs at once",
+              "recommendation": "spread across episodes 4-6"
+            }}
+          ],
+          "payoff_droughts": [
+            {{
+              "episodes": "episode_07 to episode_09",
+              "duration": 3,
+              "issue": "no payoffs for too long",
+              "recommendation": "add payoff in episode_08"
+            }}
+          ],
+          "plant_accumulation": [
+            {{
+              "episodes": "episode_01 to episode_03",
+              "plant_count": 25,
+              "issue": "too many plants early",
+              "recommendation": "defer some plants to later episodes"
+            }}
+          ],
+          "delayed_gratification": [
+            {{
+              "plant_id": "plant_001",
+              "plant_episode": "episode_01",
+              "payoff_episode": "episode_12",
+              "duration": 11,
+              "issue": "plant waits too long",
+              "recommendation": "add reminder in episode_06 or payoff earlier"
+            }}
+          ]
+        }},
+        "balance_recommendations": [
+          {{
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW",
+            "recommendation": "specific action needed",
+            "affected_episodes": ["episode_X"],
+            "reason": "why this fixes timeline"
+          }}
+        ],
+        "overall_timeline_health": {{
+          "score": 85,
+          "assessment": "Good balance overall with some clustering issues",
+          "issues_count": 3,
+          "critical_actions": 1
+        }}
+      }}
+    }}
+    ```
+    
+    IMPORTANT: Create clear timeline showing plant/payoff distribution. Flag any pacing issues.
+
+  overall_assessment: |
+    You are the Overall Plant/Payoff Assessment Specialist.
+    
+    Provide comprehensive assessment of the plant/payoff system.
+    
+    PLANT INVENTORY:
+    {plant_inventory}
+    
+    PAYOFF VERIFICATION:
+    {payoff_verification}
+    
+    ORPHANS:
+    {orphans}
+    
+    ASSESSMENT AREAS:
+    
+    1. PLANT DENSITY (0-100)
+    - Are there enough plants?
+    - Too many or too few?
+    - Are they distributed well?
+    
+    2. PAYOFF RATE (0-100)
+    - What percentage of plants have payoffs?
+    - Are payoffs timed well?
+    - Is payoff rhythm satisfying?
+    
+    3. EARNED PAYOFFS (0-100)
+    - Are payoffs adequately set up?
+    - Do payoffs feel earned?
+    - Are there unearned reveals?
+    
+    4. TIMELINE BALANCE (0-100)
+    - Are payoffs distributed evenly?
+    - Any clustering or droughts?
+    - Is waiting time appropriate?
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "overall_assessment": {{
+        "summary_text": "Comprehensive written assessment of plant/payoff system health",
+        "scores": {{
+          "plant_density_score": 85,
+          "plant_density_assessment": "Good density, well distributed",
+          "payoff_rate_score": 95,
+          "payoff_rate_assessment": "Nearly all plants have payoffs",
+          "earned_payoffs_score": 90,
+          "earned_payoffs_assessment": "Most payoffs feel earned",
+          "timeline_balance_score": 75,
+          "timeline_balance_assessment": "Some clustering issues but workable"
+        }},
+        "strengths": [
+          "strength description 1",
+          "strength description 2"
+        ],
+        "weaknesses": [
+          "weakness description 1",
+          "weakness description 2"
+        ],
+        "critical_actions": [
+          {{
+            "action": "specific critical action needed",
+            "priority": "IMMEDIATE|HIGH|MEDIUM",
+            "episodes_affected": ["episode_X"]
+          }}
+        ],
+        "recommendations": [
+          {{
+            "recommendation": "specific recommendation",
+            "priority": "HIGH|MEDIUM|LOW",
+            "reason": "why this matters"
+          }}
+        ],
+        "overall_grade": "A|B|C|D|F",
+        "ready_for_next_station": true,
+        "blockers": [
+          "any blockers preventing moving to next station"
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Provide honest assessment. If there are major plant/payoff issues, identify them as blockers.
+

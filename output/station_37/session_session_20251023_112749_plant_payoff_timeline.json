@@ -1,0 +1,408 @@
+{
+  "episode_timeline": {
+    "episode_01": {
+      "plants_introduced": [
+        {
+          "plant_id": "plant_001",
+          "type": "major_plant",
+          "description": "Dr. Aris Thorne's mysterious past at the Institute",
+          "audio_signature": "subtle heartbeat sound underneath dialogue"
+        },
+        {
+          "plant_id": "plant_002",
+          "type": "major_plant",
+          "description": "The recurring symbol found on ancient artifacts",
+          "audio_signature": "faint chime sound when symbol is mentioned"
+        },
+        {
+          "plant_id": "plant_003",
+          "type": "major_plant",
+          "description": "The existence of parallel dimensions connected through sound frequencies",
+          "audio_signature": "low frequency hum that intensifies during explanation"
+        },
+        {
+          "plant_id": "plant_004",
+          "type": "major_plant",
+          "description": "Unresolved romantic history between Captain Reyes and Commander Vega",
+          "audio_signature": "soft piano notes playing under their tense conversation"
+        },
+        {
+          "plant_id": "plant_005",
+          "type": "major_plant",
+          "description": "The warning about the lunar cycle affecting the artifacts' power",
+          "audio_signature": "distant wolf howl sound effect"
+        },
+        {
+          "plant_id": "plant_minor_001",
+          "type": "minor_plant",
+          "description": "Dr. Thorne's habit of tapping his pen when nervous",
+          "audio_signature": "pen tapping sound effect"
+        },
+        {
+          "plant_id": "plant_minor_002",
+          "type": "minor_plant",
+          "description": "The three moons of the planet and their significance",
+          "audio_signature": "moon-related sound effects"
+        },
+        {
+          "plant_id": "plant_minor_003",
+          "type": "minor_plant",
+          "description": "The antique compass that doesn't point north",
+          "audio_signature": "compass-specific sound effect"
+        },
+        {
+          "plant_id": "plant_minor_004",
+          "type": "minor_plant",
+          "description": "The abandoned laboratory in Sector 7",
+          "audio_signature": "laboratory-specific ambient sounds"
+        },
+        {
+          "plant_id": "plant_minor_005",
+          "type": "minor_plant",
+          "description": "Commander Vega's collection of vintage music players",
+          "audio_signature": "vintage music player sounds"
+        },
+        {
+          "plant_id": "plant_minor_006",
+          "type": "minor_plant",
+          "description": "The prohibition against using certain frequencies",
+          "audio_signature": "prohibited frequency sounds"
+        },
+        {
+          "plant_id": "plant_minor_007",
+          "type": "minor_plant",
+          "description": "The mutual respect between Dr. Thorne and Professor Chen",
+          "audio_signature": "character interaction musical themes"
+        },
+        {
+          "plant_id": "thematic_001",
+          "type": "thematic_plant",
+          "description": "Echoes and reflections",
+          "audio_signature": "echo sound effects"
+        },
+        {
+          "plant_id": "thematic_002",
+          "type": "thematic_plant",
+          "description": "The key and lock imagery",
+          "audio_signature": "key and lock sound motifs"
+        },
+        {
+          "plant_id": "audio_001",
+          "type": "audio_plant",
+          "description": "The static burst that occurs when dimensions are close",
+          "audio_signature": "short burst of white noise with subliminal voices"
+        },
+        {
+          "plant_id": "audio_002",
+          "type": "audio_plant",
+          "description": "The haunting melody that Dr. Thorne hums when stressed",
+          "audio_signature": "simple 4-note sequence on piano"
+        },
+        {
+          "plant_id": "audio_003",
+          "type": "audio_plant",
+          "description": "The slight echo in the elder's voice",
+          "audio_signature": "0.5-second delay echo effect"
+        }
+      ],
+      "payoffs_occurring": [
+        {
+          "plant_id": "none",
+          "description": "no payoffs this episode"
+        }
+      ],
+      "active_plants_waiting": [
+        "plant_001",
+        "plant_002",
+        "plant_003",
+        "plant_004",
+        "plant_005",
+        "plant_minor_001",
+        "plant_minor_002",
+        "plant_minor_003",
+        "plant_minor_004",
+        "plant_minor_005",
+        "plant_minor_006",
+        "plant_minor_007",
+        "thematic_001",
+        "thematic_002",
+        "audio_001",
+        "audio_002",
+        "audio_003"
+      ],
+      "plant_density": 17,
+      "payoff_density": 0,
+      "balance": "too_many_plants"
+    },
+    "episode_02": {
+      "plants_introduced": [],
+      "payoffs_occurring": [
+        {
+          "plant_id": "plant_005",
+          "type": "major_plant",
+          "description": "The warning about the lunar cycle affecting the artifacts' power",
+          "audio_signature": "distant wolf howl sound effect returns, now more prominent"
+        },
+        {
+          "plant_id": "plant_minor_002",
+          "type": "minor_plant",
+          "description": "The three moons of the planet and their significance",
+          "audio_signature": "moon-related sound effects return"
+        },
+        {
+          "plant_id": "plant_minor_006",
+          "type": "minor_plant",
+          "description": "The prohibition against using certain frequencies",
+          "audio_signature": "prohibited frequency sounds return with dangerous intensity"
+        }
+      ],
+      "active_plants_waiting": [
+        "plant_001",
+        "plant_002",
+        "plant_003",
+        "plant_004",
+        "plant_minor_001",
+        "plant_minor_003",
+        "plant_minor_004",
+        "plant_minor_005",
+        "plant_minor_007",
+        "thematic_001",
+        "thematic_002",
+        "audio_001",
+        "audio_002",
+        "audio_003"
+      ],
+      "plant_density": 0,
+      "payoff_density": 3,
+      "balance": "balanced"
+    },
+    "episode_03": {
+      "plants_introduced": [],
+      "payoffs_occurring": [
+        {
+          "plant_id": "plant_003",
+          "type": "major_plant",
+          "description": "The existence of parallel dimensions connected through sound frequencies",
+          "audio_signature": "low frequency hum intensifies and resolves into clear dimensional tone"
+        },
+        {
+          "plant_id": "plant_minor_001",
+          "type": "minor_plant",
+          "description": "Dr. Thorne's habit of tapping his pen when nervous",
+          "audio_signature": "pen tapping sound effect returns at critical moment"
+        },
+        {
+          "plant_id": "plant_minor_004",
+          "type": "minor_plant",
+          "description": "The abandoned laboratory in Sector 7",
+          "audio_signature": "laboratory-specific ambient sounds return during exploration"
+        },
+        {
+          "plant_id": "audio_001",
+          "type": "audio_plant",
+          "description": "The static burst that occurs when dimensions are close",
+          "audio_signature": "white noise burst returns, now with clearer subliminal voices"
+        }
+      ],
+      "active_plants_waiting": [
+        "plant_001",
+        "plant_002",
+        "plant_004",
+        "plant_minor_003",
+        "plant_minor_005",
+        "plant_minor_007",
+        "thematic_001",
+        "thematic_002",
+        "audio_002",
+        "audio_003"
+      ],
+      "plant_density": 0,
+      "payoff_density": 4,
+      "balance": "balanced"
+    },
+    "episode_04": {
+      "plants_introduced": [],
+      "payoffs_occurring": [
+        {
+          "plant_id": "plant_002",
+          "type": "major_plant",
+          "description": "The recurring symbol found on ancient artifacts",
+          "audio_signature": "chime sound signature returns, now more complex arrangement"
+        },
+        {
+          "plant_id": "plant_minor_003",
+          "type": "minor_plant",
+          "description": "The antique compass that doesn't point north",
+          "audio_signature": "compass-specific sound effect returns during dimensional energy detection"
+        },
+        {
+          "plant_id": "plant_minor_007",
+          "type": "minor_plant",
+          "description": "The mutual respect between Dr. Thorne and Professor Chen",
+          "audio_signature": "character interaction musical themes return, now more developed"
+        },
+        {
+          "plant_id": "audio_003",
+          "type": "audio_plant",
+          "description": "The slight echo in the elder's voice",
+          "audio_signature": "0.5-second delay echo returns, now with additional dimensional layering"
+        }
+      ],
+      "active_plants_waiting": [
+        "plant_001",
+        "plant_004",
+        "plant_minor_005",
+        "thematic_001",
+        "thematic_002",
+        "audio_002"
+      ],
+      "plant_density": 0,
+      "payoff_density": 4,
+      "balance": "balanced"
+    },
+    "episode_05": {
+      "plants_introduced": [],
+      "payoffs_occurring": [
+        {
+          "plant_id": "plant_001",
+          "type": "major_plant",
+          "description": "Dr. Aris Thorne's mysterious past at the Institute",
+          "audio_signature": "heartbeat sound intensifies during reveal"
+        },
+        {
+          "plant_id": "plant_minor_005",
+          "type": "minor_plant",
+          "description": "Commander Vega's collection of vintage music players",
+          "audio_signature": "vintage music player sounds return, revealing hidden communication tones"
+        },
+        {
+          "plant_id": "thematic_001",
+          "type": "thematic_plant",
+          "description": "Echoes and reflections",
+          "audio_signature": "echo sound effects return, now more complex and representing dimensional concepts"
+        },
+        {
+          "plant_id": "audio_002",
+          "type": "audio_plant",
+          "description": "The haunting melody that Dr. Thorne hums when stressed",
+          "audio_signature": "4-note piano sequence returns, now with fuller arrangement representing memory"
+        }
+      ],
+      "active_plants_waiting": [
+        "plant_004",
+        "thematic_002"
+      ],
+      "plant_density": 0,
+      "payoff_density": 4,
+      "balance": "balanced"
+    },
+    "episode_06": {
+      "plants_introduced": [],
+      "payoffs_occurring": [
+        {
+          "plant_id": "plant_004",
+          "type": "major_plant",
+          "description": "Unresolved romantic history between Captain Reyes and Commander Vega",
+          "audio_signature": "soft piano notes from initial tense conversation return in resolved, harmonious arrangement"
+        },
+        {
+          "plant_id": "thematic_002",
+          "type": "thematic_plant",
+          "description": "The key and lock imagery",
+          "audio_signature": "key and lock sound motifs return, now representing dimensional mechanics"
+        }
+      ],
+      "active_plants_waiting": [],
+      "plant_density": 0,
+      "payoff_density": 2,
+      "balance": "balanced"
+    }
+  },
+  "patterns": {
+    "payoff_clusters": [
+      {
+        "episode": "episode_03",
+        "payoff_count": 4,
+        "issue": "moderate payoff cluster",
+        "recommendation": "consider moving one payoff to episode_04 for better distribution"
+      },
+      {
+        "episode": "episode_04",
+        "payoff_count": 4,
+        "issue": "moderate payoff cluster",
+        "recommendation": "consider moving one payoff to episode_05 for better distribution"
+      },
+      {
+        "episode": "episode_05",
+        "payoff_count": 4,
+        "issue": "moderate payoff cluster",
+        "recommendation": "consider moving one payoff to episode_06 for better distribution"
+      }
+    ],
+    "payoff_droughts": [],
+    "plant_accumulation": [
+      {
+        "episodes": "episode_01",
+        "plant_count": 17,
+        "issue": "too many plants introduced in first episode",
+        "recommendation": "defer 5-7 plants to episodes 2-3 for better pacing"
+      }
+    ],
+    "delayed_gratification": [
+      {
+        "plant_id": "plant_001",
+        "plant_episode": "episode_01",
+        "payoff_episode": "episode_05",
+        "duration": 4,
+        "issue": "major plant waits 4 episodes",
+        "recommendation": "add reminder in episode_03"
+      },
+      {
+        "plant_id": "plant_004",
+        "plant_episode": "episode_01",
+        "payoff_episode": "episode_06",
+        "duration": 5,
+        "issue": "major plant waits 5 episodes",
+        "recommendation": "add reminder in episode_04"
+      }
+    ]
+  },
+  "balance_recommendations": [
+    {
+      "priority": "HIGH",
+      "recommendation": "Redistribute plants from episode_01 to episodes 2-3",
+      "affected_episodes": [
+        "episode_01",
+        "episode_02",
+        "episode_03"
+      ],
+      "reason": "Episode_01 has too many plants (17) which may overwhelm audience. Move 5-7 plants to later episodes for better pacing."
+    },
+    {
+      "priority": "MEDIUM",
+      "recommendation": "Add reminder plants for plant_001 and plant_004",
+      "affected_episodes": [
+        "episode_03",
+        "episode_04"
+      ],
+      "reason": "These major plants wait 4-5 episodes for payoff. Add subtle reminders in episodes 3 and 4 respectively to keep them in audience awareness."
+    },
+    {
+      "priority": "LOW",
+      "recommendation": "Slightly redistribute payoffs from episodes 3-5",
+      "affected_episodes": [
+        "episode_03",
+        "episode_04",
+        "episode_05",
+        "episode_06"
+      ],
+      "reason": "Episodes 3-5 each have 4 payoffs. Consider moving 1-2 payoffs to episode_06 for more balanced distribution."
+    }
+  ],
+  "overall_timeline_health": {
+    "score": 85,
+    "assessment": "Good overall structure with strong plant/payoff connections, but suffers from front-loaded plant introduction in episode_01 and moderate payoff clustering in middle episodes.",
+    "issues_count": 3,
+    "critical_actions": 1
+  }
+}

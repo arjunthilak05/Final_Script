@@ -12,11 +12,11 @@ Flow:
    - Task 3: Attention Management
    - Task 4: Rhythm Solutions
 3. Generate output files:
-   - pacing_chart.json
-   - energy_curve_data.json
-   - problem_zones.json
-   - pacing_fixes.json
-   - pacing_analysis_report.md
+   - {session_id}_pacing_chart.json
+   - {session_id}_energy_curve_data.json
+   - {session_id}_problem_zones.json
+   - {session_id}_pacing_fixes.json
+   - {session_id}_pacing_analysis_report.md
 4. Prompt user validation before applying fixes
 
 Critical Pacing Analysis - Ensures optimal rhythm and energy management across series
@@ -164,13 +164,14 @@ class Station33PacingEnergyAnalyzer:
                 rhythm_solutions,
                 error_log
             )
-            print("✅ All output files generated")
+            print(f"✅ All output files generated in: {self.output_dir}/")
+            print(f"   Files prefixed with session ID: {self.session_id}_*")
 
             # Step 8: User validation prompt
             print("\n" + "=" * 70)
             print("🔍 USER VALIDATION REQUIRED")
             print("=" * 70)
-            print("Review pacing_fixes.json before applying solutions.")
+            print(f"Review {self.session_id}_pacing_fixes.json before applying solutions.")
             
             try:
                 response = input("Apply pacing fixes? [y/n]: ").strip().lower()
@@ -425,7 +426,7 @@ class Station33PacingEnergyAnalyzer:
             }
         }
         
-        with open(self.output_dir / 'pacing_chart.json', 'w', encoding='utf-8') as f:
+        with open(self.output_dir / f'{self.session_id}_pacing_chart.json', 'w', encoding='utf-8') as f:
             json.dump(pacing_chart, f, indent=2, ensure_ascii=False)
         
         # 2. energy_curve_data.json
@@ -435,7 +436,7 @@ class Station33PacingEnergyAnalyzer:
             'energy_trend': self._analyze_energy_trend(episode_metrics)
         }
         
-        with open(self.output_dir / 'energy_curve_data.json', 'w', encoding='utf-8') as f:
+        with open(self.output_dir / f'{self.session_id}_energy_curve_data.json', 'w', encoding='utf-8') as f:
             json.dump(energy_curve, f, indent=2, ensure_ascii=False)
         
         # 3. problem_zones.json
@@ -447,7 +448,7 @@ class Station33PacingEnergyAnalyzer:
             'audio_fatigue': attention_analysis.get('audio_fatigue', [])
         }
         
-        with open(self.output_dir / 'problem_zones.json', 'w', encoding='utf-8') as f:
+        with open(self.output_dir / f'{self.session_id}_problem_zones.json', 'w', encoding='utf-8') as f:
             json.dump(problem_zones, f, indent=2, ensure_ascii=False)
         
         # 4. pacing_fixes.json
@@ -458,7 +459,7 @@ class Station33PacingEnergyAnalyzer:
             'implementation_notes': rhythm_solutions.get('implementation_notes', [])
         }
         
-        with open(self.output_dir / 'pacing_fixes.json', 'w', encoding='utf-8') as f:
+        with open(self.output_dir / f'{self.session_id}_pacing_fixes.json', 'w', encoding='utf-8') as f:
             json.dump(pacing_fixes, f, indent=2, ensure_ascii=False)
         
         # 5. pacing_analysis_report.md
@@ -466,12 +467,12 @@ class Station33PacingEnergyAnalyzer:
             pacing_chart, energy_curve, problem_zones, pacing_fixes, error_log
         )
         
-        with open(self.output_dir / 'pacing_analysis_report.md', 'w', encoding='utf-8') as f:
+        with open(self.output_dir / f'{self.session_id}_pacing_analysis_report.md', 'w', encoding='utf-8') as f:
             f.write(report)
         
         # 6. error_log.txt (if errors exist)
         if error_log:
-            with open(self.output_dir / 'error_log.txt', 'w', encoding='utf-8') as f:
+            with open(self.output_dir / f'{self.session_id}_error_log.txt', 'w', encoding='utf-8') as f:
                 f.write("ERROR LOG\n")
                 f.write("=" * 70 + "\n\n")
                 for error in error_log:

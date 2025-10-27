@@ -1,0 +1,901 @@
+# Station 36: Music & Sound Effects Hygiene Configuration
+
+model: "glm-4.5"
+temperature: 0.7
+max_tokens: 10000
+
+prompts:
+  sound_effects_audit: |
+    You are a Sound Effects Hygiene Auditor for audio drama scripts.
+    
+    Analyze all sound effects (SFX) cues for necessity, timing, volume, and realism.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {script_content}
+    
+    SFX CUES:
+    {sfx_cues}
+    
+    AUDIT CRITERIA:
+    
+    1. NECESSITY CHECK
+    - Does each SFX serve a clear purpose?
+    - Is it essential to story or decorative?
+    - Would scene lose meaning without it?
+    - Is SFX describing something already clear in dialogue?
+    
+    2. TIMING CHECK
+    - Is SFX synchronized with described action?
+    - Does it occur at the right moment?
+    - Is duration appropriate for the action?
+    - Not arriving before or after the action?
+    
+    3. VOLUME AND MIXING
+    - Foreground vs background properly marked?
+    - Should duck under dialogue?
+    - Crescendo/diminuendo marked where needed?
+    - Volume notes present and clear?
+    
+    4. REALISM AND CONSISTENCY
+    - Sound believable for the world?
+    - Consistent with established world rules?
+    - Source logical and present?
+    - Not violating reality physics?
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "sound_effects_audit": {{
+        "necessity_check": {{
+          "essential_sfx": [
+            {{
+              "description": "Door creak as tension mounts",
+              "reason": "Essential to building suspense",
+              "line_context": "Context of where it appears"
+            }}
+          ],
+          "decorative_sfx": [
+            {{
+              "description": "Footsteps on grass",
+              "reason": "Unnecessary - dialogue already clear",
+              "recommendation": "Remove or keep minimal",
+              "line_context": "Context"
+            }}
+          ],
+          "issues": [
+            {{
+              "sfx_description": "description",
+              "issue": "why it's problematic",
+              "severity": "CRITICAL|HIGH|MEDIUM|LOW",
+              "line_context": "where it appears"
+            }}
+          ]
+        }},
+        "timing_check": {{
+          "well_timed_sfx": [
+            {{
+              "description": "Gunshot during fight scene",
+              "timing_score": 100,
+              "synchronized_with_action": true
+            }}
+          ],
+          "timing_issues": [
+            {{
+              "description": "Door slam occurs 2 seconds after door closes",
+              "issue": "SFX too late - action already done",
+              "fix": "Move SFX to exact moment of action",
+              "severity": "HIGH"
+            }}
+          ],
+          "duration_issues": [
+            {{
+              "description": "Car engine running 45 seconds",
+              "expected_duration": "5-10 seconds",
+              "actual_duration": "45 seconds",
+              "issue": "Too long for establishing sound",
+              "fix": "Fade out after establishment"
+            }}
+          ]
+        }},
+        "volume_and_mixing": {{
+          "properly_marked_sfx": [
+            {{
+              "description": "Whispered conversation",
+              "volume_note": "Quiet, foreground",
+              "mixing_notes": "Duck other sounds"
+            }}
+          ],
+          "mixing_issues": [
+            {{
+              "description": "Explosion during dialogue",
+              "issue": "No ducking instruction",
+              "fix": "Add 'duck under dialogue' note",
+              "severity": "HIGH"
+            }}
+          ],
+          "volume_notes_missing": [
+            {{
+              "description": "SFX name",
+              "needed_note": "foreground or background",
+              "reason": "why it matters"
+            }}
+          ]
+        }},
+        "realism_check": {{
+          "believable_sfx": [
+            {{
+              "description": "Sword clashing",
+              "realism_score": 100,
+              "world_appropriate": true
+            }}
+          ],
+          "realism_issues": [
+            {{
+              "description": "Time machine hum",
+              "issue": "No source established in scene",
+              "world_violation": "Time machine not mentioned",
+              "fix": "Add time machine presence or remove SFX"
+            }}
+          ],
+          "consistency_issues": [
+            {{
+              "description": "Magic doorbell",
+              "issue": "Inconsistent with earlier doorbell sound",
+              "previous_sound": "Normal doorbell in Ep1",
+              "fix": "Maintain consistency or explain difference"
+            }}
+          ]
+        }},
+        "overall_sfx_hygiene": {{
+          "necessity_score": 0-100,
+          "timing_score": 0-100,
+          "mixing_score": 0-100,
+          "realism_score": 0-100,
+          "overall_score": 0-100
+        }},
+        "cut_list": [
+          {{
+            "description": "SFX description",
+            "reason": "why to cut",
+            "line_context": "where it appears",
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW"
+          }}
+        ],
+        "add_list": [
+          {{
+            "description": "Missing essential SFX",
+            "reason": "why needed",
+            "location": "where it should appear",
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW"
+          }}
+        ],
+        "adjustments": [
+          {{
+            "sfx_description": "what needs adjusting",
+            "current": "how it is now",
+            "fix": "how it should be",
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW"
+          }}
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Provide cut list for unnecessary SFX, add list for missing essentials, and specific adjustments for timing/volume issues.
+
+  music_audit: |
+    You are a Music Cue Hygiene Auditor for audio drama scripts.
+    
+    Analyze all music cues for function, duration, style consistency, and placement.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {script_content}
+    
+    MUSIC CUES:
+    {music_cues}
+    
+    AUDIT CRITERIA:
+    
+    1. FUNCTION CHECK
+    - Emotional support for scene?
+    - Scene transition marker?
+    - Time passage indicator?
+    - Character theme?
+    - Genuine purpose or decorative?
+    
+    2. DURATION CHECK
+    - Stings (2-3 seconds) appropriately brief?
+    - Beds (under dialogue) appropriately mixed?
+    - Features (standalone music) appropriately highlighted?
+    - Not overwhelming dialogue?
+    - Duration matches function?
+    
+    3. STYLE CONSISTENCY
+    - Fits established world/genre?
+    - Consistent with episode palette?
+    - Not jarring stylistic shifts?
+    - Appropriate to story tone?
+    
+    4. PLACEMENT CHECK
+    - Entry point logical and earned?
+    - Exit point smooth and natural?
+    - Not fighting against dialogue?
+    - Supporting emotional arc?
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "music_audit": {{
+        "function_check": {{
+          "emotional_support_music": [
+            {{
+              "description": "Tense strings during confrontation",
+              "function": "emotional support",
+              "effectiveness_score": 90,
+              "supports_scene": true
+            }}
+          ],
+          "transition_music": [
+            {{
+              "description": "Upbeat transition music",
+              "function": "scene transition",
+              "effectiveness_score": 85
+            }}
+          ],
+          "time_passage_music": [
+            {{
+              "description": "Montage music",
+              "function": "time passage",
+              "duration": "appropriate"
+            }}
+          ],
+          "character_themes": [
+            {{
+              "description": "Hero theme",
+              "character": "name",
+              "consistency": "consistent",
+              "recurrence": "established"
+            }}
+          ],
+          "decorative_music": [
+            {{
+              "description": "Background café music",
+              "issue": "No function, just ambience",
+              "recommendation": "Remove or replace with AMBIENCE"
+            }}
+          ],
+          "issues": [
+            {{
+              "description": "Music description",
+              "issue": "why it's problematic",
+              "severity": "CRITICAL|HIGH|MEDIUM|LOW"
+            }}
+          ]
+        }},
+        "duration_check": {{
+          "appropriate_durations": [
+            {{
+              "description": "3-second sting",
+              "duration": "3 seconds",
+              "type": "sting",
+              "appropriate": true
+            }}
+          ],
+          "duration_issues": [
+            {{
+              "description": "30-second tense strings",
+              "expected_duration": "5-10 seconds max",
+              "actual_duration": "30 seconds",
+              "issue": "Too long - overwhelming dialogue",
+              "fix": "Reduce to 10 seconds or fade out"
+            }}
+          ],
+          "overwhelming_dialogue": [
+            {{
+              "description": "music description",
+              "issue": "how it overwhelms",
+              "fix": "how to fix it"
+            }}
+          ]
+        }},
+        "style_consistency": {{
+          "consistent_music": [
+            {{
+              "description": "Orchestral score throughout",
+              "consistency_score": 100
+            }}
+          ],
+          "style_issues": [
+            {{
+              "description": "Electronic dance music",
+              "world_genre": "Medieval fantasy",
+              "issue": "Stylistically inappropriate",
+              "fix": "Replace with orchestral or remove"
+            }}
+          ],
+          "jarring_shifts": [
+            {{
+              "description": "Music description",
+              "previous_style": "what came before",
+              "issue": "why the shift is jarring",
+              "fix": "how to smooth transition"
+            }}
+          ]
+        }},
+        "placement_check": {{
+          "logical_entries": [
+            {{
+              "description": "Music description",
+              "entry_point": "why entry is logical",
+              "earned": true
+            }}
+          ],
+          "illogical_entries": [
+            {{
+              "description": "Music description",
+              "issue": "why entry is illogical",
+              "fix": "when it should actually enter"
+            }}
+          ],
+          "smooth_exits": [
+            {{
+              "description": "Music description",
+              "exit_point": "why exit works",
+              "smooth": true
+            }}
+          ],
+          "abrupt_exits": [
+            {{
+              "description": "Music description",
+              "issue": "why exit is abrupt",
+              "fix": "how to smooth exit"
+            }}
+          ],
+          "fighting_dialogue": [
+            {{
+              "description": "Music description",
+              "issue": "how it conflicts with dialogue",
+              "fix": "how to resolve conflict"
+            }}
+          ]
+        }},
+        "overall_music_hygiene": {{
+          "function_score": 0-100,
+          "duration_score": 0-100,
+          "style_score": 0-100,
+          "placement_score": 0-100,
+          "overall_score": 0-100
+        }},
+        "cut_list": [
+          {{
+            "description": "Music to cut",
+            "reason": "why to cut",
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW"
+          }}
+        ],
+        "add_list": [
+          {{
+            "description": "Missing music cue",
+            "reason": "why needed",
+            "location": "where needed",
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW"
+          }}
+        ],
+        "adjustments": [
+          {{
+            "music_description": "what to adjust",
+            "current": "current state",
+            "fix": "how to fix",
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW"
+          }}
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Flag music that fights dialogue, violates style, or lacks function. Provide specific timing and placement fixes.
+
+  ambience_audit: |
+    You are an Ambience Sound Hygiene Auditor for audio drama scripts.
+    
+    Analyze all ambience cues for layering, consistency, and dynamics.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {script_content}
+    
+    AMBIENCE CUES:
+    {ambience_cues}
+    
+    AUDIT CRITERIA:
+    
+    1. LAYER COUNT
+    - Never more than 4 simultaneous layers?
+    - Each layer distinct and purposeful?
+    - Not muddy or unclear?
+    - Layers complement not conflict?
+    
+    2. CONSISTENCY
+    - Location ambience consistent each time?
+    - Time of day appropriate?
+    - Weather patterns matching?
+    - Seasonal consistency?
+    
+    3. DYNAMICS
+    - Properly ducked under dialogue?
+    - Swelling during transitions?
+    - Fading at appropriate moments?
+    - Not wall-to-wall sound?
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "ambience_audit": {{
+        "layer_count_check": {{
+          "compliance": {{
+            "max_layers_not_exceeded": true/false,
+            "scenes_with_overload": [
+              {{
+                "scene": "Scene description",
+                "layers": ["layer1", "layer2", "layer3", "layer4", "layer5"],
+                "layer_count": 5,
+                "issue": "Too many layers"
+              }}
+            ]
+          }},
+          "layer_clarity": {{
+            "distinct_layers": [
+              {{
+                "layer": "Traffic ambience",
+                "purpose": "Establishes urban setting",
+                "clarity_score": 95
+              }}
+            ],
+            "unclear_layers": [
+              {{
+                "layer": "Mixed background sounds",
+                "issue": "Cannot distinguish components",
+                "fix": "Separate into distinct layers or reduce"
+              }}
+            ],
+            "muddy_layers": [
+              {{
+                "description": "Multiple overlapping ambiences",
+                "issue": "Creates muddy audio",
+                "fix": "Reduce to 2-3 distinct layers"
+              }}
+            ]
+          }},
+          "issues": [
+            {{
+              "description": "Ambience description",
+              "layer_count": 5,
+              "issue": "why it's problematic",
+              "severity": "CRITICAL|HIGH|MEDIUM|LOW"
+            }}
+          ]
+        }},
+        "consistency_check": {{
+          "location_consistency": {{
+            "consistent_locations": [
+              {{
+                "location": "Urban café",
+                "consistency_score": 100,
+                "recurring_elements": ["street noise", "glass clinks", "murmur"]
+              }}
+            ],
+            "inconsistent_locations": [
+              {{
+                "location": "Same urban café",
+                "episode_1": "Street noise, glass clinks, murmur",
+                "episode_5": "Quiet ambience, minimal sounds",
+                "issue": "Inconsistent with previous establishment",
+                "fix": "Maintain consistent acoustic signature"
+              }}
+            ]
+          }},
+          "time_consistency": {{
+            "appropriate_times": [
+              {{
+                "ambience": "Night crickets",
+                "time_of_day": "Evening",
+                "appropriate": true
+              }}
+            ],
+            "time_mismatches": [
+              {{
+                "ambience": "Morning birds chirping",
+                "time_context": "10 PM scene",
+                "issue": "Birds don't chirp at 10 PM",
+                "fix": "Replace with appropriate night sounds"
+              }}
+            ]
+          }},
+          "weather_consistency": {{
+            "matching_weather": [
+              {{
+                "ambience": "Rain pattering",
+                "weather_context": "Rainy day",
+                "consistency": "matches"
+              }}
+            ],
+            "weather_mismatches": [
+              {{
+                "ambience": "Bright sunny ambience",
+                "weather_context": "Thunderstorm described",
+                "issue": "Ambience doesn't match weather",
+                "fix": "Add rain, wind, thunder sounds"
+              }}
+            ]
+          }}
+        }},
+        "dynamics_check": {{
+          "proper_dynamics": [
+            {{
+              "ambience": "Background chatter",
+              "ducking": "Ducks under dialogue appropriately",
+              "swelling": "Swells during transitions",
+              "fading": "Fades at scene end",
+              "score": 95
+            }}
+          ],
+          "ducking_issues": [
+            {{
+              "ambience": "Busy street",
+              "issue": "No ducking instruction under dialogue",
+              "fix": "Add 'duck under dialogue' note"
+            }}
+          ],
+          "swelling_issues": [
+            {{
+              "ambience": "Tension building ambience",
+              "issue": "Doesn't swell during tense scene transitions",
+              "fix": "Add swelling instructions during transitions"
+            }}
+          ],
+          "fading_issues": [
+            {{
+              "ambience": "Horror ambience",
+              "issue": "Abruptly cuts off instead of fading",
+              "fix": "Add gradual fade-out"
+            }}
+          ],
+          "wall_to_wall_issues": [
+            {{
+              "episode_section": "Entire episode",
+              "issue": "Ambience present throughout, no breaks",
+              "fix": "Add strategic silence breaks"
+            }}
+          ]
+        }},
+        "overall_ambience_hygiene": {{
+          "layering_score": 0-100,
+          "consistency_score": 0-100,
+          "dynamics_score": 0-100,
+          "overall_score": 0-100
+        }},
+        "cut_list": [
+          {{
+            "description": "Ambience to cut",
+            "reason": "why to cut",
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW"
+          }}
+        ],
+        "add_list": [
+          {{
+            "description": "Missing ambience",
+            "reason": "why needed",
+            "location": "where needed",
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW"
+          }}
+        ],
+        "adjustments": [
+          {{
+            "ambience_description": "what to adjust",
+            "current": "current state",
+            "fix": "how to fix",
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW"
+          }}
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Flag ambience layering violations (max 4 layers), consistency issues, and dynamic problems. Provide specific fixes.
+
+  silence_audit: |
+    You are a Silence Usage Auditor for audio drama scripts.
+    
+    Analyze use of silence for dramatic, natural, and transition purposes.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {script_content}
+    
+    SILENCE CUES:
+    {silence_cues}
+    
+    AUDIT CRITERIA:
+    
+    1. DRAMATIC SILENCE
+    - Used effectively for impact?
+    - Not overused?
+    - Duration appropriate?
+    - Earned by preceding tension?
+    
+    2. NATURAL SILENCE
+    - Breathing room present?
+    - Not wall-to-wall sound?
+    - Conversation pauses natural?
+    - Allows processing time?
+    
+    3. TRANSITION SILENCE
+    - Scene breaks clear?
+    - Not jarring transitions?
+    - Appropriate length?
+    - Supports scene flow?
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "silence_audit": {{
+        "dramatic_silence": {{
+          "effective_dramatic_silences": [
+            {{
+              "description": "5-second pause after revelation",
+              "duration": "5 seconds",
+              "impact_score": 95,
+              "earned_by_tension": true,
+              "effectiveness": "high"
+            }}
+          ],
+          "overused_dramatic_silences": [
+            {{
+              "description": "Silence after every major line",
+              "count": 15,
+              "issue": "Too frequent - loses impact",
+              "fix": "Save for truly pivotal moments"
+            }}
+          ],
+          "ineffective_dramatic_silences": [
+            {{
+              "description": "2-second pause after joke",
+              "duration": "2 seconds",
+              "issue": "Too short to register, or wrong timing",
+              "fix": "Remove or extend to 5+ seconds if needed"
+            }}
+          ],
+          "issues": [
+            {{
+              "description": "Silence cue",
+              "issue": "why ineffective or overused",
+              "severity": "CRITICAL|HIGH|MEDIUM|LOW"
+            }}
+          ]
+        }},
+        "natural_silence": {{
+          "breathing_room_present": {{
+            "adequate_silence": true/false,
+            "silence_percentage": "percentage of episode",
+            "scenes_with_adequate_pauses": [
+              "Scene 2", "Scene 5", "Scene 8"
+            ],
+            "scenes_needing_pauses": [
+              "Scene 1", "Scene 4", "Scene 6"
+            ]
+          }},
+          "wall_to_wall_sound": {{
+            "has_breaks": true/false,
+            "continuous_sound_sections": [
+              {{
+                "duration": "15 minutes",
+                "start": "Scene 3",
+                "end": "Scene 7",
+                "issue": "No silence breaks for 15 minutes"
+              }}
+            ]
+          }},
+          "conversation_pauses": {{
+            "natural_pauses": [
+              {{
+                "scene": "Two characters talking",
+                "pause_assessment": "natural",
+                "pace": "realistic"
+              }}
+            ],
+            "unnatural_pauses": [
+              {{
+                "scene": "Rapid-fire dialogue scene",
+                "issue": "No pauses, unrealistic pace",
+                "fix": "Add 2-3 second pauses between exchanges"
+              }}
+            ],
+            "missing_pauses": [
+              {{
+                "scene": "Emotional conversation",
+                "issue": "No pause after emotional reveal",
+                "fix": "Add 3-5 second silence after revelation"
+              }}
+            ]
+          }},
+          "processing_time": {{
+            "allows_comprehension": true/false,
+            "overwhelming_sections": [
+              {{
+                "description": "Rapid information dump",
+                "issue": "No pause for audience to process",
+                "fix": "Add 2-3 second silence mid-scene"
+              }}
+            ]
+          }}
+        }},
+        "transition_silence": {{
+          "clear_scene_breaks": [
+            {{
+              "transition": "End of Act 1 to Act 2",
+              "silence_duration": "3 seconds",
+              "clarity_score": 95,
+              "effective": true
+            }}
+          ],
+          "jarring_transitions": [
+            {{
+              "transition": "Action scene to quiet scene",
+              "issue": "Abrupt change, no transition silence",
+              "fix": "Add 2-3 second silence between scenes"
+            }}
+          ],
+          "appropriate_length_transitions": [
+            {{
+              "transition": "Scene change",
+              "duration": "2 seconds",
+              "appropriate": true
+            }}
+          ],
+          "inappropriate_length_transitions": [
+            {{
+              "transition": "Scene change",
+              "duration": "10 seconds",
+              "issue": "Too long - loses momentum",
+              "fix": "Reduce to 2-3 seconds"
+            }}
+          ],
+          "scene_flow_issues": [
+            {{
+              "description": "Missing transition",
+              "issue": "No silence causing confusion",
+              "fix": "Add silence marker"
+            }}
+          ]
+        }},
+        "overall_silence_hygiene": {{
+          "dramatic_effectiveness": 0-100,
+          "natural_flow": 0-100,
+          "transition_clarity": 0-100,
+          "overall_score": 0-100
+        }},
+        "cut_list": [
+          {{
+            "description": "Silence to cut",
+            "reason": "why to cut",
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW"
+          }}
+        ],
+        "add_list": [
+          {{
+            "description": "Missing silence",
+            "reason": "why needed",
+            "location": "where needed",
+            "duration": "suggested duration",
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW"
+          }}
+        ],
+        "adjustments": [
+          {{
+            "silence_context": "what to adjust",
+            "current": "current state",
+            "fix": "how to fix",
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW"
+          }}
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Ensure silence is used for impact, not overused, and provides breathing room. Flag wall-to-wall sound and jarring transitions.
+
+  summary_report: |
+    You are a Music & Sound Effects Hygiene Summary Report Generator.
+    
+    Generate comprehensive summary of sound hygiene across all episodes.
+    
+    ALL AUDITS:
+    {all_audits}
+    
+    Generate comprehensive summary report and return ONLY valid JSON:
+    
+    ```json
+    {{
+      "summary_report": {{
+        "summary_text": "2-3 paragraph overview of sound hygiene across all episodes",
+        "overall_scores": {{
+          "sfx_necessity_score": 0-100,
+          "sfx_timing_score": 0-100,
+          "sfx_mixing_score": 0-100,
+          "sfx_realism_score": 0-100,
+          "music_function_score": 0-100,
+          "music_duration_score": 0-100,
+          "music_style_score": 0-100,
+          "music_placement_score": 0-100,
+          "ambience_layering_score": 0-100,
+          "ambience_consistency_score": 0-100,
+          "ambience_dynamics_score": 0-100,
+          "silence_dramatic_effectiveness": 0-100,
+          "silence_natural_flow": 0-100,
+          "silence_transition_clarity": 0-100,
+          "overall_hygiene_score": 0-100
+        }},
+        "critical_issues": [
+          {{
+            "severity": "CRITICAL|HIGH|MEDIUM|LOW",
+            "title": "Issue title",
+            "description": "Detailed description",
+            "affected_episodes": ["episode1", "episode2"],
+            "impact": "how this affects production"
+          }}
+        ],
+        "common_issues": [
+          {{
+            "issue_type": "SFX|MUSIC|AMBIENCE|SILENCE",
+            "category": "necessity|timing|volume|realism|function|duration|style|placement|layering|consistency|dynamics",
+            "frequency": "how many times",
+            "affected_episodes": ["episode1", "episode2"],
+            "pattern_description": "what the pattern is"
+          }}
+        ],
+        "recommendations": [
+          {{
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW",
+            "title": "Recommendation title",
+            "description": "detailed recommendation",
+            "expected_impact": "how this will improve",
+            "affected_episodes": ["episode1"]
+          }}
+        ],
+        "production_readiness": {{
+          "hygiene_sufficient_for_production": true/false,
+          "critical_fixes_needed": true/false,
+          "total_issues": 0,
+          "critical_issues": 0,
+          "high_priority_issues": 0,
+          "medium_priority_issues": 0,
+          "low_priority_issues": 0,
+          "breaking_issues": ["description of production blockers"],
+          "readiness_for_production": true/false
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: Provide actionable summary with specific recommendations. Identify production blockers and readiness status.
+
+dependencies:
+  - station: 27
+    name: "Master Script Assembly"
+
+# Enable/disable this station in the pipeline
+enabled: true
+
+# Configuration values
+output_directory: "output/station_36"
+hygiene_score_threshold: 70
+critical_issue_threshold: 3
+max_ambience_layers: 4
+user_validation_required: true
+

@@ -1,0 +1,620 @@
+# Station 38: Redundancy Eliminator Configuration
+
+model: "glm-4.5"
+temperature: 0.7
+max_tokens: 10000
+
+prompts:
+  dialogue_redundancy: |
+    You are a Dialogue Redundancy Eliminator for audio drama scripts.
+    
+    Identify repeated information, phrases, conflicts, and reactions across all episodes.
+    
+    EPISODES CONTENT:
+    {episodes_content}
+    
+    TASK 1: DIALOGUE REDUNDANCY
+    
+    Find and flag:
+    
+    1. REPEATED INFORMATION
+    - Same fact stated multiple times
+    - Exposition repeated unnecessarily
+    - Character backstory retold
+    - Plot points re-explained
+    - For each instance: keep strongest, flag others to cut
+    - Example: "She was the daughter of the mayor" appears in episodes 2, 4, and 6
+    
+    2. REPEATED PHRASES
+    - Characters overusing phrases/catchphrases
+    - Same line recurring too frequently
+    - Verbal tics that become repetitive
+    - Dialogue patterns that feel same-y
+    - Exception: Character-specific verbal habits are OK if they serve a purpose
+    - Flag for variation or cutting
+    
+    3. REPEATED CONFLICTS
+    - Same argument happening multiple times
+    - Same relationship tension repeating
+    - Same character dynamics re-hashing
+    - Escalation or resolution expected, not status quo
+    - Flag: Either escalate the conflict or resolve it
+    
+    4. REPEATED REACTIONS
+    - Same emotional response to different events
+    - Characters always reacting the same way
+    - No growth or variation in reactions
+    - Characters feel flat due to predictable responses
+    - Flag: Show growth or vary reactions
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "dialogue_redundancy": {{
+        "repeated_information": [
+          {{
+            "fact": "specific information repeated",
+            "episodes": ["episode_02", "episode_04", "episode_06"],
+            "instances": [
+              {{
+                "episode": "episode_02",
+                "line": "exact line with repeated info",
+                "context": "surrounding dialogue",
+                "keep": true,
+                "reason": "strongest instance"
+              }},
+              {{
+                "episode": "episode_04",
+                "line": "exact line",
+                "context": "surrounding dialogue",
+                "keep": false,
+                "reason": "redundant"
+              }}
+            ],
+            "recommendation": "keep episode_02 instance, cut episode_04 and episode_06",
+            "severity": "CRITICAL|HIGH|MEDIUM|LOW"
+          }}
+        ],
+        "repeated_phrases": [
+          {{
+            "phrase": "exact phrase or pattern",
+            "character": "character name",
+            "occurrences": 8,
+            "episodes": ["episode_01", "episode_03", "episode_05"],
+            "instances": [
+              {{
+                "episode": "episode_01",
+                "line": "exact line",
+                "context": "surrounding dialogue"
+              }}
+            ],
+            "recommendation": "reduce to 3 occurrences|vary phrasing|cut completely",
+            "severity": "HIGH|MEDIUM|LOW",
+            "character_appropriate": true
+          }}
+        ],
+        "repeated_conflicts": [
+          {{
+            "conflict_type": "relationship tension|professional dispute|moral dilemma",
+            "characters": ["Character A", "Character B"],
+            "episodes": ["episode_03", "episode_05", "episode_07"],
+            "conflict_description": "description of what they're arguing about",
+            "instances": [
+              {{
+                "episode": "episode_03",
+                "dialogue": "representative exchange",
+                "context": "surrounding scene"
+              }}
+            ],
+            "issue": "not escalating|no resolution|same ground",
+            "recommendation": "escalate conflict|resolve conflict|add variation",
+            "severity": "HIGH|MEDIUM|LOW"
+          }}
+        ],
+        "repeated_reactions": [
+          {{
+            "reaction_type": "surprise|anger|confusion|fear",
+            "character": "character name",
+            "episodes": ["episode_02", "episode_04", "episode_06"],
+            "trigger_events": [
+              "event that triggers reaction",
+              "different event that triggers same reaction"
+            ],
+            "instances": [
+              {{
+                "episode": "episode_02",
+                "reaction": "exact reaction line",
+                "trigger": "what caused reaction",
+                "context": "surrounding scene"
+              }}
+            ],
+            "issue": "character always reacts same way|no growth|predictable",
+            "recommendation": "show growth|vary reactions|add emotional range",
+            "severity": "HIGH|MEDIUM|LOW"
+          }}
+        ],
+        "overall_dialogue_score": {{
+          "redundancy_count": 15,
+          "severity_distribution": {{
+            "CRITICAL": 2,
+            "HIGH": 5,
+            "MEDIUM": 6,
+            "LOW": 2
+          }},
+          "assessment": "Mostly clean dialogue with some repeated info issues",
+          "prioritized_actions": [
+            "priority action 1",
+            "priority action 2"
+          ]
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: Be thorough. Flag any information repeated more than necessary. Better to over-report than miss redundancy.
+
+  sound_redundancy: |
+    You are a Sound Redundancy Eliminator for audio drama scripts.
+    
+    Identify narrator/sound overlap, overused SFX/music, and redundant audio cues.
+    
+    EPISODES CONTENT:
+    {episodes_content}
+    
+    TASK 2: SOUND REDUNDANCY
+    
+    Find and flag:
+    
+    1. NARRATOR DESCRIBING SOUNDS
+    - Narrator saying "The door slammed" + [SFX: door slam]
+    - Narration describing what sound effect shows
+    - Redundant audio description
+    - Fix: Trust the SFX, cut the narration
+    - Example: "The door slammed shut behind her" + [SFX: door slam]
+    
+    2. DIALOGUE DESCRIBING SOUNDS
+    - Characters saying what sound tells
+    - "Did you hear that crash?" + [SFX: crash]
+    - Redundant sound description in dialogue
+    - Fix: Use less specific dialogue
+    - Example: "What was that?" instead of "Did you hear that crash?"
+    
+    3. OVERUSED SFX
+    - Same sound effect too frequent
+    - Losing impact due to repetition
+    - Monotonous soundscape
+    - Fix: Vary or reduce frequency
+    - Track: door slams, phone rings, footsteps, etc.
+    
+    4. OVERUSED MUSIC
+    - Same music cues repeating too much
+    - Musical themes overplayed
+    - Losing emotional impact
+    - Fix: Vary or reduce, save for key moments
+    - Track: recurring themes, stingers, ambiance
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "sound_redundancy": {{
+        "narrator_overlap": [
+          {{
+            "episode": "episode_03",
+            "description_type": "narrator describing sound",
+            "narrator_line": "exact narrator line",
+            "sfx_cue": "[SFX: description]",
+            "issue": "narrator says what sound shows",
+            "recommendation": "cut narrator line, trust SFX",
+            "severity": "HIGH|MEDIUM|LOW",
+            "context": "surrounding text"
+          }}
+        ],
+        "dialogue_sound_overlap": [
+          {{
+            "episode": "episode_04",
+            "description_type": "dialogue describing sound",
+            "dialogue_line": "exact dialogue line",
+            "sfx_cue": "[SFX: description]",
+            "issue": "dialogue says what sound shows",
+            "recommendation": "change dialogue to be less specific",
+            "replacement_suggestion": "less specific line",
+            "severity": "MEDIUM|LOW",
+            "context": "surrounding dialogue"
+          }}
+        ],
+        "overused_sfx": [
+          {{
+            "sfx_type": "door slam|phone ring|footsteps|gunshot",
+            "sfx_description": "[SFX: specific description]",
+            "occurrences": 12,
+            "episodes": ["episode_01", "episode_02", "episode_05"],
+            "issue": "too frequent|losing impact|monotonous",
+            "recommendation": "reduce occurrences by X|find variation|cut some",
+            "target_frequency": 5,
+            "severity": "HIGH|MEDIUM|LOW",
+            "specific_instances": [
+              {{
+                "episode": "episode_01",
+                "location": "where in script",
+                "context": "surrounding scene"
+              }}
+            ]
+          }}
+        ],
+        "overused_music": [
+          {{
+            "music_type": "tension theme|character theme|stinger|ambiance",
+            "music_description": "[MUSIC: specific description]",
+            "occurrences": 8,
+            "episodes": ["episode_01", "episode_02", "episode_03"],
+            "issue": "losing emotional impact|overplayed|monotonous",
+            "recommendation": "reduce to X occurrences|vary|save for key moments",
+            "target_frequency": 3,
+            "severity": "MEDIUM|LOW",
+            "specific_instances": [
+              {{
+                "episode": "episode_01",
+                "location": "where in script",
+                "context": "emotional purpose"
+              }}
+            ]
+          }}
+        ],
+        "overall_sound_score": {{
+          "redundancy_count": 20,
+          "severity_distribution": {{
+            "HIGH": 3,
+            "MEDIUM": 10,
+            "LOW": 7
+          }},
+          "assessment": "Some sound overlap but manageable",
+          "prioritized_actions": [
+            "priority action 1",
+            "priority action 2"
+          ]
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: Trust your sound effects. If SFX shows it, don't have narrator or dialogue say it too.
+
+  scene_redundancy: |
+    You are a Scene Redundancy Eliminator for audio drama scripts.
+    
+    Identify similar scenes, beats, and transitions that can be combined or cut.
+    
+    EPISODES CONTENT:
+    {episodes_content}
+    
+    TASK 3: SCENE REDUNDANCY
+    
+    Find and flag:
+    
+    1. SIMILAR SCENES
+    - Scenes serving same function
+    - Scenes with same purpose
+    - Scenes conveying same information
+    - Different settings but same dynamic
+    - Recommendation: Combine into one or cut the weaker
+    
+    2. SIMILAR BEATS
+    - Repeated story rhythms
+    - Same narrative patterns recurring
+    - Predictable scene structures
+    - Same conflict escalation patterns
+    - Recommendation: Vary structure, break patterns
+    
+    3. SIMILAR TRANSITIONS
+    - Same bridging methods
+    - Repetitive connection techniques
+    - Overusing same transition style
+    - Lacks variety in scene connections
+    - Recommendation: Vary techniques, fresh approaches
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "scene_redundancy": {{
+        "similar_scenes": [
+          {{
+            "scene_type": "exposition|confrontation|revelation|reflection",
+            "function": "what scenes accomplish",
+            "episodes": ["episode_02", "episode_04", "episode_06"],
+            "instances": [
+              {{
+                "episode": "episode_02",
+                "scene_description": "what happens in scene",
+                "characters": ["Character A", "Character B"],
+                "purpose": "what scene accomplishes",
+                "location": "where scene takes place"
+              }}
+            ],
+            "issue": "serves same function|lacks variety|repetitive",
+            "recommendation": "combine into one|cutt weakest|keep strongest",
+            "which_to_keep": "episode_02 (strongest)",
+            "which_to_cut": ["episode_04", "episode_06"],
+            "severity": "HIGH|MEDIUM|LOW"
+          }}
+        ],
+        "similar_beats": [
+          {{
+            "beat_pattern": "description of story beat",
+            "occurrences": 6,
+            "episodes": ["episode_01", "episode_03", "episode_05"],
+            "pattern_description": "what makes them similar",
+            "instances": [
+              {{
+                "episode": "episode_01",
+                "beat": "specific beat description",
+                "context": "surrounding story"
+              }}
+            ],
+            "issue": "predictable|lacks variety|repetitive rhythm",
+            "recommendation": "vary structure|break pattern|add twist",
+            "alternatives": "suggested variations",
+            "severity": "MEDIUM|LOW"
+          }}
+        ],
+        "similar_transitions": [
+          {{
+            "transition_type": "fade|cross|music bridge|silence",
+            "occurrences": 10,
+            "episodes": ["episode_01", "episode_02", "episode_03"],
+            "pattern_description": "how transitions are similar",
+            "instances": [
+              {{
+                "episode": "episode_01",
+                "transition": "how scene transitions",
+                "from": "previous scene",
+                "to": "next scene"
+              }}
+            ],
+            "issue": "monotonous|lacks variety|overused method",
+            "recommendation": "vary techniques|try alternatives",
+            "alternatives": "suggested alternative transitions",
+            "severity": "LOW"
+          }}
+        ],
+        "overall_scene_score": {{
+          "redundancy_count": 8,
+          "severity_distribution": {{
+            "HIGH": 1,
+            "MEDIUM": 3,
+            "LOW": 4
+          }},
+          "assessment": "Generally varied scenes with some repetition",
+          "prioritized_actions": [
+            "priority action 1",
+            "priority action 2"
+          ]
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: Look for variety. If scenes/beats/transitions feel same-y, flag them for variation or combination.
+
+  word_count_optimization: |
+    You are a Word Count Optimizer for audio drama scripts.
+    
+    Generate trimming, combining, and efficiency recommendations to reach target word counts.
+    
+    DIALOGUE REDUNDANCY:
+    {dialogue_redundancy}
+    
+    SOUND REDUNDANCY:
+    {sound_redundancy}
+    
+    SCENE REDUNDANCY:
+    {scene_redundancy}
+    
+    TASK 4: WORD COUNT OPTIMIZATION
+    
+    Generate recommendations for:
+    
+    1. LINE TRIMMING
+    - Remove unnecessary words
+    - Tighten without losing meaning
+    - Common phrases to cut: "I think that maybe" → "Maybe", "In my opinion" → Cut, "The fact that" → "That"
+    - Example: "I think that maybe we should" → "Maybe we should"
+    
+    2. SCENE COMBINING
+    - Merge short related scenes
+    - Achieve multiple goals at once
+    - Combine scenes with similar functions
+    - Example: Two exposition scenes combined into one
+    
+    3. DESCRIPTION EFFICIENCY
+    - Shorter stage directions
+    - Trust actors/directors to interpret
+    - Essential information only
+    - Cut excessive stage direction details
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "optimization": {{
+        "current_word_count": 185000,
+        "target_word_count": 165000,
+        "estimated_savings": 20000,
+        "savings_percentage": 10.8,
+        "line_trimming": {{
+          "total_lines_to_trim": 45,
+          "common_phrases": [
+            {{
+              "phrase": "I think that maybe",
+              "occurrences": 8,
+              "replacement": "Maybe",
+              "savings_per_occurrence": 4,
+              "total_savings": 32,
+              "severity": "LOW"
+            }}
+          ],
+          "unnecessary_words": [
+            {{
+              "pattern": "pattern of unnecessary words",
+              "occurrences": 12,
+              "replacement": "tightened version",
+              "savings_per_occurrence": 2,
+              "total_savings": 24
+            }}
+          ],
+          "examples": [
+            {{
+              "episode": "episode_02",
+              "original": "I think that maybe we should consider the fact that",
+              "trimmed": "We should consider",
+              "word_savings": 6
+            }}
+          ]
+        }},
+        "scene_combining": {{
+          "scenes_to_combine": 3,
+          "combinations": [
+            {{
+              "episodes": ["episode_03", "episode_04"],
+              "scene_type": "exposition scenes",
+              "reason": "both provide same info",
+              "estimated_savings": 500,
+              "recommendation": "combine into single scene"
+            }}
+          ],
+          "scenes_to_cut": [
+            {{
+              "episode": "episode_05",
+              "scene_description": "what scene does",
+              "reason": "redundant with episode_04",
+              "estimated_savings": 300,
+              "recommendation": "cut entirely"
+            }}
+          ]
+        }},
+        "description_efficiency": {{
+          "stage_directions_to_trim": 25,
+          "examples": [
+            {{
+              "episode": "episode_01",
+              "original": "Sarah stands up from her chair and walks slowly across the room towards the door",
+              "trimmed": "Sarah crosses room",
+              "word_savings": 10
+            }}
+          ],
+          "overall_savings": 250,
+          "recommendation": "trust actors, cut excess direction"
+        }},
+        "overall_optimization": {{
+          "areas": {{
+            "dialogue_cuts": 800,
+            "narrator_cuts": 600,
+            "scene_cuts": 1200,
+            "sound_cuts": 200,
+            "description_cuts": 500
+          }},
+          "total_estimated_savings": 3300,
+          "confidence": "HIGH|MEDIUM|LOW",
+          "readiness_for_production": true,
+          "final_recommendations": [
+            "specific recommendation 1",
+            "specific recommendation 2"
+          ]
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: Prioritize cuts that maintain story integrity while maximizing word count savings.
+
+  overall_assessment: |
+    You are the Overall Redundancy Assessment Specialist.
+    
+    Provide comprehensive assessment of redundancy elimination and word count optimization.
+    
+    DIALOGUE REDUNDANCY:
+    {dialogue_redundancy}
+    
+    SOUND REDUNDANCY:
+    {sound_redundancy}
+    
+    SCENE REDUNDANCY:
+    {scene_redundancy}
+    
+    OPTIMIZATION:
+    {optimization}
+    
+    ASSESSMENT AREAS:
+    
+    1. DIALOGUE REDUNDANCY SCORE (0-100)
+    - How redundant is the dialogue?
+    - Are repeated info/phrases/conflicts flaggable?
+    - Is overall dialogue efficient?
+    
+    2. SOUND REDUNDANCY SCORE (0-100)
+    - How redundant is the sound design?
+    - Are there overlaps and overused cues?
+    - Is audio efficient?
+    
+    3. SCENE REDUNDANCY SCORE (0-100)
+    - How varied are scenes?
+    - Are there similar scenes/beats/transitions?
+    - Is structure efficient?
+    
+    4. EFFICIENCY SCORE (0-100)
+    - Word count vs target
+    - Estimated savings potential
+    - Optimization opportunities
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "overall_assessment": {{
+        "summary_text": "Comprehensive written assessment of redundancy elimination",
+        "scores": {{
+          "dialogue_score": 85,
+          "dialogue_assessment": "Some repeated info, mostly clean dialogue",
+          "sound_score": 90,
+          "sound_assessment": "Generally efficient sound design",
+          "scene_score": 80,
+          "scene_assessment": "Some similar scenes could be combined",
+          "efficiency_score": 75,
+          "efficiency_assessment": "Good optimization opportunities available"
+        }},
+        "strengths": [
+          "strength description 1",
+          "strength description 2"
+        ],
+        "weaknesses": [
+          "weakness description 1",
+          "weakness description 2"
+        ],
+        "critical_actions": [
+          {{
+            "action": "specific critical action needed",
+            "priority": "IMMEDIATE|HIGH|MEDIUM",
+            "episodes_affected": ["episode_X"]
+          }}
+        ],
+        "recommendations": [
+          {{
+            "recommendation": "specific recommendation",
+            "priority": "HIGH|MEDIUM|LOW",
+            "reason": "why this matters",
+            "estimated_impact": "word savings or improvement"
+          }}
+        ],
+        "overall_grade": "A|B|C|D|F",
+        "ready_for_next_station": true,
+        "blockers": [
+          "any blockers preventing moving to next station"
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Provide honest assessment. If scripts are not production-ready due to redundancy, identify blockers.
+

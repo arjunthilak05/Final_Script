@@ -1,0 +1,472 @@
+{
+  "generated_at": "2025-10-28T00:14:06.545447",
+  "session_id": "session_20251023_112749",
+  "summary": {
+    "summary_text": "The world consistency across the three episodes shows a solid foundation with several areas requiring improvement. The physical world, social systems, and historical continuity maintain high scores, indicating good adherence to established world rules. However, there are notable issues with location specificity, audio signature implementation, and character knowledge context that affect the overall consistency. The world bible provides a detailed framework for locations and their sonic signatures, but the episodes don't always leverage these established elements effectively, leading to inconsistencies in how spaces are represented and experienced by the audience.",
+    "overall_world_consistency": {
+      "overall_score": 89,
+      "world_rules_compliance": 97,
+      "audio_signature_consistency": 96,
+      "character_world_appropriateness": 84,
+      "cross_world_consistency": 100,
+      "total_violations": 9,
+      "critical_violations": 0,
+      "fixable_issues": 9
+    },
+    "episode_breakdown": [
+      {
+        "episode_id": "1",
+        "world_rules_score": 100,
+        "audio_signature_score": 100,
+        "character_fit_score": 83,
+        "overall_score": 94,
+        "key_issues": [
+          "John's knowledge lacks context about the plan",
+          "Scene location not clearly linked to established world geography"
+        ],
+        "key_strengths": [
+          "Perfect physical world consistency",
+          "No technology/magic violations",
+          "Excellent historical continuity"
+        ]
+      },
+      {
+        "episode_id": "2",
+        "world_rules_score": 90,
+        "audio_signature_score": 100,
+        "character_fit_score": 80,
+        "overall_score": 90,
+        "key_issues": [
+          "Generic locations not tied to established key locations",
+          "Sound effects don't align with specific location signatures",
+          "Character knowledge lacks context"
+        ],
+        "key_strengths": [
+          "Good travel time consistency",
+          "Strong social world adherence",
+          "No historical continuity issues"
+        ]
+      },
+      {
+        "episode_id": "3",
+        "world_rules_score": 100,
+        "audio_signature_score": 88,
+        "character_fit_score": 90,
+        "overall_score": 93,
+        "key_issues": [
+          "Coffee shop lacks consistent ambient sounds per established signature",
+          "Beth's knowledge about Jake's project lacks specificity"
+        ],
+        "key_strengths": [
+          "Perfect physical world adherence",
+          "No technology/magic violations",
+          "Strong historical continuity"
+        ]
+      }
+    ],
+    "common_violations": [
+      {
+        "violation_type": "Location specificity",
+        "frequency": 2,
+        "typical_location": "Generic spaces like living rooms and kitchens",
+        "recommended_systematic_fix": "Ensure all scene headers explicitly reference established key locations from the world bible (e.g., 'INT. SARAH'S HOUSE - LIVING ROOM - NIGHT' instead of just 'INT. LIVING ROOM - NIGHT')"
+      },
+      {
+        "violation_type": "Audio signature implementation",
+        "frequency": 2,
+        "typical_location": "Indoor spaces requiring ambient sound",
+        "recommended_systematic_fix": "Create scene-specific sound design notes that reference the established sonic signatures for each location, ensuring consistent implementation of ambient sounds, acoustic properties, and distinctive noises"
+      },
+      {
+        "violation_type": "Character knowledge context",
+        "frequency": 4,
+        "typical_location": "Dialogue scenes",
+        "recommended_systematic_fix": "Revise dialogue to include subtle context clues that help the audience understand what characters know about their situation without lengthy exposition"
+      }
+    ],
+    "world_integrity": {
+      "world_remains_internally_consistent": true,
+      "breaking_issues": [],
+      "readiness_for_production": true,
+      "remaining_critical_fixes": "None of the identified issues are critical to world integrity, but immediate attention should be given to specifying locations and implementing proper audio signatures to enhance immersion and consistency."
+    }
+  },
+  "episode_validations": [
+    {
+      "episode_id": 1,
+      "world_rules_check": {
+        "physical_world_check": {
+          "geography_score": 100,
+          "travel_time_score": 100,
+          "weather_score": 100,
+          "day_night_cycle_score": 100,
+          "violations": []
+        },
+        "social_world_check": {
+          "cultural_norms_score": 100,
+          "language_appropriateness_score": 100,
+          "hierarchy_score": 100,
+          "customs_score": 100,
+          "violations": []
+        },
+        "technology_magic_check": {
+          "capabilities_score": 100,
+          "limitations_score": 100,
+          "sound_consistency_score": 100,
+          "availability_score": 100,
+          "violations": []
+        },
+        "historical_continuity_check": {
+          "past_events_score": 100,
+          "timeline_score": 100,
+          "cause_effect_score": 100,
+          "character_ages_score": 100,
+          "violations": []
+        },
+        "overall_compliance_score": 100,
+        "critical_issues_count": 0,
+        "recommendations": [
+          {
+            "recommendation": "The scene is set in a living room at night but does not specify which of the established locations it represents. Consider clarifying if this is Sarah's House (which has a living room) or another location to better align with the established world geography.",
+            "priority": "MEDIUM",
+            "affected_location": "Scene 1",
+            "world_rule_reference": "Geography_spaces key_locations"
+          }
+        ]
+      },
+      "audio_signature_check": {
+        "location_signatures": {
+          "consistency_score": 100,
+          "inconsistencies": []
+        },
+        "technology_sounds": {
+          "consistency_score": 100,
+          "inconsistencies": []
+        },
+        "environmental_sounds": {
+          "consistency_score": 100,
+          "inconsistencies": []
+        },
+        "cultural_sounds": {
+          "consistency_score": 100,
+          "inconsistencies": []
+        },
+        "overall_audio_consistency": 100,
+        "corrections_needed": []
+      },
+      "character_interaction_check": {
+        "knowledge_check": {
+          "appropriateness_score": 75,
+          "violations": [
+            {
+              "character": "John",
+              "issue": "too little knowledge",
+              "location": "Scene 1",
+              "specific_issue": "John implies knowledge of a plan without providing context for the audience",
+              "world_rules_reference": "No world parameters provided to validate against",
+              "severity": "MEDIUM"
+            }
+          ]
+        },
+        "capabilities_check": {
+          "appropriateness_score": 85,
+          "violations": []
+        },
+        "speech_check": {
+          "appropriateness_score": 90,
+          "anachronisms_found": []
+        },
+        "overall_character_world_fit": 83,
+        "corrections_needed": [
+          {
+            "character": "John",
+            "correction": "Add subtle context to John's dialogue to give audience hints about the plan",
+            "priority": "MEDIUM"
+          }
+        ]
+      },
+      "cross_world_check": {
+        "applicable": false,
+        "note": "Single world - no cross-world validation needed"
+      }
+    },
+    {
+      "episode_id": 2,
+      "world_rules_check": {
+        "physical_world_check": {
+          "geography_score": 70,
+          "travel_time_score": 100,
+          "weather_score": 100,
+          "day_night_cycle_score": 100,
+          "violations": [
+            {
+              "rule_type": "geography",
+              "violation_description": "The script references locations (Living Room, Kitchen) that are not explicitly defined in the world's key locations. While Sarah's House is defined with a kitchen and living room, the script doesn't specify this is Sarah's House.",
+              "location": "INT. LIVING ROOM - NIGHT, INT. KITCHEN - NIGHT",
+              "line_number": "1, 6",
+              "expected": "Locations should match established key locations or be clearly defined as part of them",
+              "actual": "Undefined generic locations",
+              "severity": "MEDIUM",
+              "world_rule_source": "Station 8 key_locations"
+            }
+          ]
+        },
+        "social_world_check": {
+          "cultural_norms_score": 100,
+          "language_appropriateness_score": 100,
+          "hierarchy_score": 100,
+          "customs_score": 100,
+          "violations": []
+        },
+        "technology_magic_check": {
+          "capabilities_score": 100,
+          "limitations_score": 100,
+          "sound_consistency_score": 80,
+          "availability_score": 100,
+          "violations": [
+            {
+              "rule_type": "sound_consistency",
+              "violation_description": "The script references a door creaking sound effect, but doesn't specify which location's acoustic properties this aligns with. The creak should match the sonic signature of the established location.",
+              "location": "INT. LIVING ROOM - NIGHT",
+              "line_number": "4",
+              "expected": "Sound effects should align with established sonic signatures of locations",
+              "actual": "Generic door creak without location-specific context",
+              "severity": "LOW",
+              "world_rule_source": "Station 8 sonic_signature"
+            }
+          ]
+        },
+        "historical_continuity_check": {
+          "past_events_score": 100,
+          "timeline_score": 100,
+          "cause_effect_score": 100,
+          "character_ages_score": 100,
+          "violations": []
+        },
+        "overall_compliance_score": 90,
+        "critical_issues_count": 0,
+        "recommendations": [
+          {
+            "recommendation": "Specify that the Living Room and Kitchen are part of one of the established locations, particularly Sarah's House which has both these spaces defined in its description.",
+            "priority": "HIGH",
+            "affected_location": "Scene 1: INT. LIVING ROOM - NIGHT, Scene 2: INT. KITCHEN - NIGHT",
+            "world_rule_reference": "Station 8 key_locations"
+          },
+          {
+            "recommendation": "Add more specific sound design notes that align with the sonic signatures of the established locations.",
+            "priority": "MEDIUM",
+            "affected_location": "Scene 1: SFX: DOOR CREAKING",
+            "world_rule_reference": "Station 8 sonic_signature"
+          }
+        ]
+      },
+      "audio_signature_check": {
+        "location_signatures": {
+          "consistency_score": 100,
+          "inconsistencies": []
+        },
+        "technology_sounds": {
+          "consistency_score": 100,
+          "inconsistencies": []
+        },
+        "environmental_sounds": {
+          "consistency_score": 100,
+          "inconsistencies": []
+        },
+        "cultural_sounds": {
+          "consistency_score": 100,
+          "inconsistencies": []
+        },
+        "overall_audio_consistency": 100,
+        "corrections_needed": []
+      },
+      "character_interaction_check": {
+        "knowledge_check": {
+          "appropriateness_score": 75,
+          "violations": [
+            {
+              "character": "John",
+              "issue": "too little knowledge",
+              "location": "Scene 1",
+              "specific_issue": "John's line 'What are we going to do?' is too vague given the lack of context about their situation",
+              "world_rules_reference": "Without world parameters, it's unclear if John's knowledge level is appropriate",
+              "severity": "MEDIUM"
+            },
+            {
+              "character": "Sara",
+              "issue": "too little knowledge",
+              "location": "Scene 1",
+              "specific_issue": "Sara's response 'I don't know' provides no indication of what she might know about their predicament",
+              "world_rules_reference": "Without world parameters, it's unclear if Sara's knowledge level is appropriate",
+              "severity": "MEDIUM"
+            },
+            {
+              "character": "Lucy",
+              "issue": "too little knowledge",
+              "location": "Scene 2",
+              "specific_issue": "Lucy's statement 'We can't just sit here' lacks context about what actions are possible in their situation",
+              "world_rules_reference": "Without world parameters, it's unclear if Lucy's knowledge level is appropriate",
+              "severity": "MEDIUM"
+            }
+          ]
+        },
+        "capabilities_check": {
+          "appropriateness_score": 80,
+          "violations": [
+            {
+              "character": "Lucy",
+              "issue": "physical abilities unclear",
+              "location": "Scene 2",
+              "specific_issue": "Lucy is pacing, but without world parameters, we can't determine if this is physically appropriate for her character",
+              "world_rules_reference": "Without world parameters, Lucy's capabilities cannot be properly validated",
+              "severity": "LOW"
+            }
+          ]
+        },
+        "speech_check": {
+          "appropriateness_score": 90,
+          "anachronisms_found": []
+        },
+        "overall_character_world_fit": 80,
+        "corrections_needed": [
+          {
+            "character": "All characters",
+            "correction": "Add more specific context to dialogue to better establish what characters know about their situation",
+            "priority": "HIGH"
+          },
+          {
+            "character": "All characters",
+            "correction": "Provide world parameters to enable proper validation of character knowledge and capabilities",
+            "priority": "IMMEDIATE"
+          }
+        ]
+      },
+      "cross_world_check": {
+        "applicable": false,
+        "note": "Single world - no cross-world validation needed"
+      }
+    },
+    {
+      "episode_id": 3,
+      "world_rules_check": {
+        "physical_world_check": {
+          "geography_score": 100,
+          "travel_time_score": 100,
+          "weather_score": 100,
+          "day_night_cycle_score": 100,
+          "violations": []
+        },
+        "social_world_check": {
+          "cultural_norms_score": 100,
+          "language_appropriateness_score": 100,
+          "hierarchy_score": 100,
+          "customs_score": 100,
+          "violations": []
+        },
+        "technology_magic_check": {
+          "capabilities_score": 100,
+          "limitations_score": 100,
+          "sound_consistency_score": 100,
+          "availability_score": 100,
+          "violations": []
+        },
+        "historical_continuity_check": {
+          "past_events_score": 100,
+          "timeline_score": 100,
+          "cause_effect_score": 100,
+          "character_ages_score": 100,
+          "violations": []
+        },
+        "overall_compliance_score": 100,
+        "critical_issues_count": 0,
+        "recommendations": [
+          {
+            "recommendation": "Consider adding more specific ambient sound design for the coffee shop scene based on the established sonic signature for the Café location (loc_006) to enhance immersion.",
+            "priority": "LOW",
+            "affected_location": "Coffee Shop Scene",
+            "world_rule_reference": "Café sonic signature includes constant background music at 35dB, periodic sounds of cups clinking or coffee grinding, random environmental sounds like customer laughter or door opening"
+          }
+        ]
+      },
+      "audio_signature_check": {
+        "location_signatures": {
+          "consistency_score": 75,
+          "inconsistencies": [
+            {
+              "location": "COFFEE SHOP",
+              "expected_signature": "Consistent coffee shop ambience with mild background chatter, espresso machine sounds, appropriate reverb for small space",
+              "actual_signature": "Minimal audio description - only SFX of drink being set on table",
+              "first_appearance": "No previous episodes referenced",
+              "current_appearance": "Episode 3",
+              "severity": "MEDIUM"
+            }
+          ]
+        },
+        "technology_sounds": {
+          "consistency_score": 100,
+          "inconsistencies": []
+        },
+        "environmental_sounds": {
+          "consistency_score": 80,
+          "inconsistencies": [
+            {
+              "location": "COFFEE SHOP",
+              "expected_signature": "Coffee shop ambient sounds (clinking dishes, coffee grinder, espresso machine, light music)",
+              "actual_signature": "Only SFX of drink being set on table",
+              "first_appearance": "No previous episodes referenced",
+              "current_appearance": "Episode 3",
+              "severity": "MEDIUM"
+            }
+          ]
+        },
+        "cultural_sounds": {
+          "consistency_score": 100,
+          "inconsistencies": []
+        },
+        "overall_audio_consistency": 88,
+        "corrections_needed": [
+          {
+            "location": "COFFEE SHOP",
+            "correction": "Add consistent coffee shop background ambience throughout scene",
+            "signature_reference": "Station 8 reference: Coffee Shop Ambience (Small) - CS-AMBSM"
+          }
+        ]
+      },
+      "character_interaction_check": {
+        "knowledge_check": {
+          "appropriateness_score": 85,
+          "violations": [
+            {
+              "character": "BETH",
+              "issue": "too little knowledge",
+              "location": "Scene 1",
+              "specific_issue": "Beth seems to know about Jake's project but doesn't provide any specific technical details in her consoling",
+              "world_rules_reference": "No specific world rules provided, but in a modern office setting, colleagues would typically have more specific knowledge",
+              "severity": "LOW"
+            }
+          ]
+        },
+        "capabilities_check": {
+          "appropriateness_score": 95,
+          "violations": []
+        },
+        "speech_check": {
+          "appropriateness_score": 90,
+          "anachronisms_found": []
+        },
+        "overall_character_world_fit": 90,
+        "corrections_needed": [
+          {
+            "character": "BETH",
+            "correction": "Add more specific knowledge about Jake's project to make the interaction more realistic",
+            "priority": "MEDIUM"
+          }
+        ]
+      },
+      "cross_world_check": {
+        "applicable": false,
+        "note": "Single world - no cross-world validation needed"
+      }
+    }
+  ]
+}

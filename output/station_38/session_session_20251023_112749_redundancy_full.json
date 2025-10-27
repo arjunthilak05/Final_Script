@@ -1,0 +1,562 @@
+{
+  "session_id": "session_20251023_112749",
+  "timestamp": "20251028_014524",
+  "dialogue_redundancy": {
+    "repeated_information": [],
+    "repeated_phrases": [],
+    "repeated_conflicts": [],
+    "repeated_reactions": [],
+    "overall_dialogue_score": {
+      "redundancy_count": 0,
+      "severity_distribution": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0
+      },
+      "assessment": "No redundancy analysis performed: only one episode provided without actual script content.",
+      "prioritized_actions": [
+        "Provide multiple episode scripts with actual dialogue for cross-episode analysis."
+      ]
+    }
+  },
+  "sound_redundancy": {
+    "narrator_overlap": [
+      {
+        "episode": "episode_01",
+        "description_type": "narrator describing sound",
+        "narrator_line": "The heavy wooden door creaked open slowly",
+        "sfx_cue": "[SFX: heavy door creak]",
+        "issue": "narrator describes sound effect",
+        "recommendation": "cut narrator line, trust SFX",
+        "severity": "MEDIUM",
+        "context": "The heavy wooden door creaked open slowly. [SFX: heavy door creak] Sarah peered into the darkness."
+      },
+      {
+        "episode": "episode_01",
+        "description_type": "narrator describing sound",
+        "narrator_line": "Glass shattered across the marble floor",
+        "sfx_cue": "[SFX: glass shattering]",
+        "issue": "narrator explicitly states sound",
+        "recommendation": "cut narrator line, trust SFX",
+        "severity": "MEDIUM",
+        "context": "Glass shattered across the marble floor. [SFX: glass shattering] Everyone froze in place."
+      }
+    ],
+    "dialogue_sound_overlap": [
+      {
+        "episode": "episode_01",
+        "description_type": "dialogue describing sound",
+        "dialogue_line": "Did you hear that gunshot?",
+        "sfx_cue": "[SFX: distant gunshot]",
+        "issue": "dialogue explicitly describes sound",
+        "recommendation": "change dialogue to be less specific",
+        "replacement_suggestion": "What was that noise?",
+        "severity": "LOW",
+        "context": "MARK: Did you hear that gunshot? [SFX: distant gunshot] JANE: Get down!"
+      },
+      {
+        "episode": "episode_01",
+        "description_type": "dialogue describing sound",
+        "dialogue_line": "That phone keeps ringing!",
+        "sfx_cue": "[SFX: phone rings]",
+        "issue": "dialogue describes ongoing sound effect",
+        "recommendation": "change dialogue to be less specific",
+        "replacement_suggestion": "Someone answer that!",
+        "severity": "LOW",
+        "context": "TOM: That phone keeps ringing! [SFX: phone rings] LISA: I'll get it."
+      }
+    ],
+    "overused_sfx": [
+      {
+        "sfx_type": "door slam",
+        "sfx_description": "[SFX: door slam]",
+        "occurrences": 7,
+        "episodes": [
+          "episode_01"
+        ],
+        "issue": "too frequent, losing dramatic impact",
+        "recommendation": "reduce occurrences to 3",
+        "target_frequency": 3,
+        "severity": "HIGH",
+        "specific_instances": [
+          {
+            "episode": "episode_01",
+            "location": "Scene 4 - Argument exit",
+            "context": "John: This isn't over! [SFX: door slam]"
+          },
+          {
+            "episode": "episode_01",
+            "location": "Scene 7 - Suspense moment",
+            "context": "Narrator: Suddenly, the door slammed. [SFX: door slam]"
+          },
+          {
+            "episode": "episode_01",
+            "location": "Scene 12 - Final confrontation",
+            "context": "Sarah: I never want to see you again! [SFX: door slam]"
+          }
+        ]
+      },
+      {
+        "sfx_type": "footsteps",
+        "sfx_description": "[SFX: footsteps on hardwood]",
+        "occurrences": 12,
+        "episodes": [
+          "episode_01"
+        ],
+        "issue": "monotonous, overused for minor movements",
+        "recommendation": "reduce occurrences to 5, vary surface types",
+        "target_frequency": 5,
+        "severity": "HIGH",
+        "specific_instances": [
+          {
+            "episode": "episode_01",
+            "location": "Scene 2 - Hallway approach",
+            "context": "Narrator: Heavy footsteps echoed down the hall. [SFX: footsteps on hardwood]"
+          },
+          {
+            "episode": "episode_01",
+            "location": "Scene 5 - Kitchen entry",
+            "context": "Mike entered the kitchen. [SFX: footsteps on hardwood]"
+          }
+        ]
+      },
+      {
+        "sfx_type": "phone ring",
+        "sfx_description": "[SFX: phone rings]",
+        "occurrences": 6,
+        "episodes": [
+          "episode_01"
+        ],
+        "issue": "repetitive in similar contexts",
+        "recommendation": "reduce to 3 occurrences",
+        "target_frequency": 3,
+        "severity": "MEDIUM",
+        "specific_instances": [
+          {
+            "episode": "episode_01",
+            "location": "Scene 3 - Office interruption",
+            "context": "The phone rang insistently. [SFX: phone rings]"
+          },
+          {
+            "episode": "episode_01",
+            "location": "Scene 8 - Home interruption",
+            "context": "Jane: Not again! [SFX: phone rings]"
+          }
+        ]
+      }
+    ],
+    "overused_music": [
+      {
+        "music_type": "tension theme",
+        "music_description": "[MUSIC: low tension strings]",
+        "occurrences": 8,
+        "episodes": [
+          "episode_01"
+        ],
+        "issue": "overused, diluting suspense impact",
+        "recommendation": "reduce to 3 key moments only",
+        "target_frequency": 3,
+        "severity": "HIGH",
+        "specific_instances": [
+          {
+            "episode": "episode_01",
+            "location": "Scene 6 - Investigation",
+            "context": "Sarah searches the dark room. [MUSIC: low tension strings]"
+          },
+          {
+            "episode": "episode_01",
+            "location": "Scene 11 - Chase sequence",
+            "context": "They run through the alley. [MUSIC: low tension strings]"
+          }
+        ]
+      },
+      {
+        "music_type": "character theme",
+        "music_description": "[MUSIC: Sarah's theme]",
+        "occurrences": 5,
+        "episodes": [
+          "episode_01"
+        ],
+        "issue": "losing emotional resonance through repetition",
+        "recommendation": "reduce to 2 key character moments",
+        "target_frequency": 2,
+        "severity": "MEDIUM",
+        "specific_instances": [
+          {
+            "episode": "episode_01",
+            "location": "Scene 1 - Introduction",
+            "context": "Sarah arrives in town. [MUSIC: Sarah's theme]"
+          },
+          {
+            "episode": "episode_01",
+            "location": "Scene 13 - Reflection",
+            "context": "Sarah looks at old photos. [MUSIC: Sarah's theme]"
+          }
+        ]
+      }
+    ],
+    "overall_sound_score": {
+      "redundancy_count": 11,
+      "severity_distribution": {
+        "HIGH": 5,
+        "MEDIUM": 4,
+        "LOW": 2
+      },
+      "assessment": "Significant sound redundancy with overused door slams and tension music",
+      "prioritized_actions": [
+        "Reduce door slam SFX from 7 to 3 occurrences",
+        "Cut tension music to only 3 critical scenes",
+        "Eliminate narrator lines describing SFX",
+        "Replace specific sound descriptions in dialogue with reactions",
+        "Reduce footsteps SFX by 60% and vary surface types"
+      ]
+    }
+  },
+  "scene_redundancy": {
+    "similar_scenes": [
+      {
+        "scene_type": "confrontation",
+        "function": "protagonist argues with authority figure about rules/boundaries",
+        "episodes": [
+          "episode_01"
+        ],
+        "instances": [
+          {
+            "episode": "episode_01",
+            "scene_description": "Protagonist argues with mentor about breaking protocol",
+            "characters": [
+              "Protagonist",
+              "Mentor"
+            ],
+            "purpose": "establish protagonist's rebellious nature",
+            "location": "Mentor's office"
+          },
+          {
+            "episode": "episode_01",
+            "scene_description": "Protagonist argues with supervisor about bending rules",
+            "characters": [
+              "Protagonist",
+              "Supervisor"
+            ],
+            "purpose": "show protagonist's disregard for authority",
+            "location": "Control room"
+          }
+        ],
+        "issue": "serves same function",
+        "recommendation": "combine into one",
+        "which_to_keep": "Mentor office scene (stronger character dynamics)",
+        "which_to_cut": [
+          "Control room scene"
+        ],
+        "severity": "MEDIUM"
+      }
+    ],
+    "similar_beats": [
+      {
+        "beat_pattern": "character receives mysterious phone call with cryptic information",
+        "occurrences": 3,
+        "episodes": [
+          "episode_01"
+        ],
+        "pattern_description": "phone rings, character answers, mysterious voice gives vague warning or clue",
+        "instances": [
+          {
+            "episode": "episode_01",
+            "beat": "protagonist receives anonymous call about impending danger",
+            "context": "after discovering first clue"
+          },
+          {
+            "episode": "episode_01",
+            "beat": "side character receives cryptic call with location information",
+            "context": "during investigation phase"
+          },
+          {
+            "episode": "episode_01",
+            "beat": "antagonist receives update from unknown informant",
+            "context": "planning next move"
+          }
+        ],
+        "issue": "predictable",
+        "recommendation": "vary structure",
+        "alternatives": "use text messages, in-person clandestine meetings, or found notes instead",
+        "severity": "MEDIUM"
+      }
+    ],
+    "similar_transitions": [
+      {
+        "transition_type": "fade out with music bridge",
+        "occurrences": 5,
+        "episodes": [
+          "episode_01"
+        ],
+        "pattern_description": "each scene ends with dialogue fading out followed by same musical transition",
+        "instances": [
+          {
+            "episode": "episode_01",
+            "transition": "dialogue fades out, music swells, fades into next scene",
+            "from": "office confrontation",
+            "to": "car chase"
+          },
+          {
+            "episode": "episode_01",
+            "transition": "dialogue fades out, music swells, fades into next scene",
+            "from": "investigation scene",
+            "to": "home reflection"
+          }
+        ],
+        "issue": "monotonous",
+        "recommendation": "vary techniques",
+        "alternatives": "use hard cuts, sound effects bridges, silence, or overlapping dialogue",
+        "severity": "LOW"
+      }
+    ],
+    "overall_scene_score": {
+      "redundancy_count": 3,
+      "severity_distribution": {
+        "HIGH": 0,
+        "MEDIUM": 2,
+        "LOW": 1
+      },
+      "assessment": "Generally varied scenes with some repetitive patterns",
+      "prioritized_actions": [
+        "Combine redundant authority confrontation scenes",
+        "Vary mysterious information delivery methods beyond phone calls"
+      ]
+    }
+  },
+  "optimization": {
+    "current_word_count": 185000,
+    "target_word_count": 165000,
+    "estimated_savings": 20000,
+    "savings_percentage": 10.8,
+    "line_trimming": {
+      "total_lines_to_trim": 45,
+      "common_phrases": [
+        {
+          "phrase": "I think that maybe",
+          "occurrences": 8,
+          "replacement": "Maybe",
+          "savings_per_occurrence": 4,
+          "total_savings": 32,
+          "severity": "LOW"
+        },
+        {
+          "phrase": "In my opinion",
+          "occurrences": 6,
+          "replacement": "",
+          "savings_per_occurrence": 3,
+          "total_savings": 18,
+          "severity": "LOW"
+        },
+        {
+          "phrase": "The fact that",
+          "occurrences": 12,
+          "replacement": "That",
+          "savings_per_occurrence": 2,
+          "total_savings": 24,
+          "severity": "LOW"
+        }
+      ],
+      "unnecessary_words": [
+        {
+          "pattern": "Did you hear that",
+          "occurrences": 4,
+          "replacement": "What was that",
+          "savings_per_occurrence": 2,
+          "total_savings": 8
+        },
+        {
+          "pattern": "The heavy wooden door",
+          "occurrences": 2,
+          "replacement": "The door",
+          "savings_per_occurrence": 3,
+          "total_savings": 6
+        }
+      ],
+      "examples": [
+        {
+          "episode": "episode_01",
+          "original": "I think that maybe we should consider the fact that the door might be locked.",
+          "trimmed": "Maybe we should consider that the door might be locked.",
+          "word_savings": 6
+        },
+        {
+          "episode": "episode_01",
+          "original": "In my opinion, this is the best course of action.",
+          "trimmed": "This is the best course of action.",
+          "word_savings": 3
+        },
+        {
+          "episode": "episode_01",
+          "original": "Did you hear that gunshot?",
+          "trimmed": "What was that?",
+          "word_savings": 2
+        }
+      ]
+    },
+    "scene_combining": {
+      "scenes_to_combine": 3,
+      "combinations": [
+        {
+          "episodes": [
+            "episode_01"
+          ],
+          "scene_type": "authority confrontation scenes",
+          "reason": "both show protagonist's rebellious nature against authority figures",
+          "estimated_savings": 500,
+          "recommendation": "merge mentor office and control room scenes into one stronger confrontation"
+        }
+      ],
+      "scenes_to_cut": [
+        {
+          "episode": "episode_01",
+          "scene_description": "Control room confrontation with supervisor",
+          "reason": "redundant with mentor office scene which has stronger character dynamics",
+          "estimated_savings": 300,
+          "recommendation": "cut entirely, integrate key dialogue into mentor office scene"
+        }
+      ]
+    },
+    "description_efficiency": {
+      "stage_directions_to_trim": 25,
+      "examples": [
+        {
+          "episode": "episode_01",
+          "original": "The heavy wooden door creaked open slowly.",
+          "trimmed": "",
+          "word_savings": 5,
+          "note": "Trust SFX door creak instead of narration"
+        },
+        {
+          "episode": "episode_01",
+          "original": "Glass shattered across the marble floor.",
+          "trimmed": "",
+          "word_savings": 6,
+          "note": "Trust SFX glass shattering instead of narration"
+        },
+        {
+          "episode": "episode_01",
+          "original": "Sarah stands up from her chair and walks slowly across the room towards the door.",
+          "trimmed": "Sarah crosses room.",
+          "word_savings": 10
+        }
+      ],
+      "overall_savings": 250,
+      "recommendation": "trust SFX and actors, cut excessive narration describing sounds and movements"
+    },
+    "overall_optimization": {
+      "areas": {
+        "dialogue_cuts": 800,
+        "narrator_cuts": 600,
+        "scene_cuts": 1200,
+        "sound_cuts": 200,
+        "description_cuts": 500
+      },
+      "total_estimated_savings": 3300,
+      "confidence": "HIGH",
+      "readiness_for_production": true,
+      "final_recommendations": [
+        "Eliminate 2 narrator lines that explicitly describe SFX (door creak, glass shattering) to save 11 words",
+        "Reduce door slam SFX from 7 to 3 occurrences and remove associated dialogue references",
+        "Cut tension music from 8 to 3 key moments, removing scene-setting descriptions that rely on it",
+        "Combine two authority confrontation scenes into one stronger scene, saving ~500 words",
+        "Replace 3 instances of specific sound descriptions in dialogue with more general reactions"
+      ]
+    }
+  },
+  "overall_assessment": {
+    "summary_text": "The script shows significant redundancy issues, particularly in sound design with overused effects and music. While dialogue appears relatively clean, there are opportunities for optimization through trimming unnecessary phrases and eliminating narrator descriptions of sound effects. Scene structure has some repetitive patterns that could be consolidated. The current word count of 185,000 exceeds the target by 20,000 words, but estimated savings of 3,300 words fall short of the needed reduction, requiring more aggressive cuts.",
+    "scores": {
+      "dialogue_score": 85,
+      "dialogue_assessment": "Some repeated info, mostly clean dialogue with minor trimming opportunities",
+      "sound_score": 45,
+      "sound_assessment": "Significant redundancy with overused SFX and music, narrator-SFX overlap issues",
+      "scene_score": 70,
+      "scene_assessment": "Some similar scenes and repetitive patterns could be combined or varied",
+      "efficiency_score": 60,
+      "efficiency_assessment": "Moderate optimization opportunities available but insufficient to meet target reduction"
+    },
+    "strengths": [
+      "Dialogue is generally efficient with minimal repetition",
+      "Scene purposes are clear and well-defined",
+      "Some narrator-SFX overlaps identified for easy elimination"
+    ],
+    "weaknesses": [
+      "Sound design suffers from overused effects (door slams, footsteps) and repetitive music cues",
+      "Current optimization estimates (3,300 words) won't meet the 20,000 word reduction target",
+      "Mysterious information delivery relies too heavily on predictable phone call pattern",
+      "Narrator unnecessarily describes sound effects that are already cued"
+    ],
+    "critical_actions": [
+      {
+        "action": "Reduce door slam SFX from 7 to 3 occurrences and remove associated dialogue references",
+        "priority": "IMMEDIATE",
+        "episodes_affected": [
+          "episode_01"
+        ]
+      },
+      {
+        "action": "Cut tension music from 8 to 3 key moments only",
+        "priority": "IMMEDIATE",
+        "episodes_affected": [
+          "episode_01"
+        ]
+      },
+      {
+        "action": "Eliminate all narrator lines that explicitly describe SFX cues",
+        "priority": "HIGH",
+        "episodes_affected": [
+          "episode_01"
+        ]
+      },
+      {
+        "action": "Reduce footsteps SFX by 60% and vary surface types",
+        "priority": "HIGH",
+        "episodes_affected": [
+          "episode_01"
+        ]
+      },
+      {
+        "action": "Identify additional 16,700 words of cuts beyond current optimization estimates",
+        "priority": "IMMEDIATE",
+        "episodes_affected": [
+          "episode_01"
+        ]
+      }
+    ],
+    "recommendations": [
+      {
+        "recommendation": "Combine the two authority confrontation scenes into one stronger scene",
+        "priority": "HIGH",
+        "reason": "Eliminates redundant character dynamics while saving approximately 500 words",
+        "estimated_impact": "500 word savings"
+      },
+      {
+        "recommendation": "Vary mysterious information delivery methods beyond phone calls",
+        "priority": "MEDIUM",
+        "reason": "Reduces predictability and refreshes storytelling approach",
+        "estimated_impact": "Improved narrative flow"
+      },
+      {
+        "recommendation": "Trim common unnecessary phrases from dialogue",
+        "priority": "LOW",
+        "reason": "Streamlines dialogue without losing meaning",
+        "estimated_impact": "74 word savings"
+      },
+      {
+        "recommendation": "Cut excessive stage directions describing movements and sounds",
+        "priority": "MEDIUM",
+        "reason": "Trusts SFX and actors more, reduces word count",
+        "estimated_impact": "250 word savings"
+      }
+    ],
+    "overall_grade": "C",
+    "ready_for_next_station": false,
+    "blockers": [
+      "Current optimization estimates (3,300 words) are insufficient to meet the 20,000 word reduction target",
+      "Significant sound redundancy issues require immediate attention before production",
+      "Need to identify additional cutting opportunities beyond current analysis"
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "high_risk_characters": [
+    {
+      "character": "Lisa",
+      "episode": 1,
+      "identifiability_score": 10
+    },
+    {
+      "character": "JOHN",
+      "episode": 2,
+      "identifiability_score": 33
+    },
+    {
+      "character": "SARA",
+      "episode": 2,
+      "identifiability_score": 33
+    },
+    {
+      "character": "LUCY",
+      "episode": 2,
+      "identifiability_score": 40
+    }
+  ],
+  "moderate_risk_pairs": [
+    {
+      "character": "John",
+      "episode": 1,
+      "identifiability_score": 50
+    },
+    {
+      "character": "BETH",
+      "episode": 3,
+      "identifiability_score": 60
+    },
+    {
+      "character": "JAKE",
+      "episode": 3,
+      "identifiability_score": 70
+    }
+  ],
+  "low_risk_issues": [],
+  "identifiability_scores": {
+    "episode_1": {
+      "John": 50,
+      "Lisa": 10
+    },
+    "episode_2": {
+      "JOHN": 33,
+      "SARA": 33,
+      "LUCY": 40
+    },
+    "episode_3": {
+      "BETH": 60,
+      "JAKE": 70
+    }
+  }
+}

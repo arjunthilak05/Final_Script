@@ -1,0 +1,475 @@
+# Station 35: Character Voice Distinction Audit Configuration
+
+model: "glm-4.5"
+temperature: 0.7
+max_tokens: 10000
+
+prompts:
+  voice_uniqueness_check: |
+    You are a Character Voice Uniqueness Auditor for audio drama scripts.
+    
+    Analyze each character's voice for distinctiveness in audio-only format.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    CHARACTER PROFILES:
+    {character_profiles}
+    
+    VALIDATION CRITERIA:
+    
+    1. VOCABULARY PROFILE
+    - Word choice distinct from other characters?
+    - Education level reflected in vocabulary?
+    - Regional/cultural markers present?
+    - Age-appropriate language?
+    
+    2. SPEECH PATTERNS
+    - Sentence structure unique?
+    - Long vs short sentences?
+    - Complete sentences vs fragments?
+    - Questions vs statements preference?
+    
+    3. VERBAL TICS
+    - Filler words present (um, like, you know)?
+    - Repeated phrases or catchphrases?
+    - Unique expressions?
+    - Nervous habits in speech?
+    
+    4. EMOTIONAL EXPRESSION
+    - How they express anger uniquely?
+    - How they express joy uniquely?
+    - How they express fear uniquely?
+    - Emotional expression patterns different from others?
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "voice_uniqueness_analysis": {{
+        "vocabulary_check": {{
+          "character_vocabulary_distinctness": {{
+            "character_name": {{
+              "distinctness_score": 0-100,
+              "unique_words": ["word1", "word2"],
+              "education_level_reflected": "high school|college|doctoral|etc",
+              "regional_markers": ["marker1", "marker2"],
+              "age_appropriateness": "appropriate|too mature|too childish"
+            }}
+          }},
+          "overall_vocabulary_distinction": 0-100,
+          "issues": [
+            {{
+              "character": "character name",
+              "issue": "description of issue",
+              "severity": "CRITICAL|HIGH|MEDIUM|LOW"
+            }}
+          ]
+        }},
+        "speech_patterns_check": {{
+          "character_speech_patterns": {{
+            "character_name": {{
+              "average_sentence_length": "short|medium|long",
+              "fragment_usage": "none|occasional|frequent",
+              "question_vs_statement_ratio": "percentage",
+              "pattern_uniqueness_score": 0-100
+            }}
+          }},
+          "overall_pattern_distinction": 0-100,
+          "issues": []
+        }},
+        "verbal_tics_check": {{
+          "character_tics": {{
+            "character_name": {{
+              "filler_words": ["um", "like"],
+              "repeated_phrases": ["phrase1"],
+              "unique_expressions": ["expression1"],
+              "nervous_habits": ["habit1"],
+              "tic_uniqueness_score": 0-100
+            }}
+          }},
+          "overall_tic_distinction": 0-100,
+          "issues": []
+        }},
+        "emotional_expression_check": {{
+          "character_emotional_expressions": {{
+            "character_name": {{
+              "anger_expression": "how they express anger uniquely",
+              "joy_expression": "how they express joy uniquely",
+              "fear_expression": "how they express fear uniquely",
+              "emotional_uniqueness_score": 0-100
+            }}
+          }},
+          "overall_emotional_distinction": 0-100,
+          "issues": []
+        }},
+        "overall_uniqueness_score": 0-100,
+        "recommendations": [
+          {{
+            "character": "character name",
+            "recommendation": "specific fix to enhance voice distinction",
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW",
+            "affected_aspect": "vocabulary|speech patterns|tics|emotions"
+          }}
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Score 0-100 for each character's voice distinctness. Flag any characters that sound too similar. Provide specific fixes.
+
+  voice_evolution_tracking: |
+    You are a Voice Evolution Tracker for audio drama scripts.
+    
+    Track how character voices change across episodes and identify problems.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    CHARACTER ARCS:
+    {character_arcs}
+    
+    CHARACTER PROFILES:
+    {character_profiles}
+    
+    TRACKING CRITERIA:
+    
+    1. INTENTIONAL EVOLUTION
+    - Voice changing appropriately with character arc?
+    - Confidence growing/shrinking as intended?
+    - Vocabulary expanding/contracting as arc progresses?
+    - Speech patterns shifting meaningfully?
+    
+    2. UNINTENTIONAL DRIFT
+    - Character sounding like other characters?
+    - Losing unique voice markers?
+    - Speech patterns becoming inconsistent?
+    - Voice losing distinction over time?
+    
+    3. RELATIONSHIP INFLUENCE
+    - Speech adapting to other characters appropriately?
+    - Code-switching present and appropriate?
+    - Voice mimicry happening appropriately?
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "voice_evolution_analysis": {{
+        "intentional_evolution": {{
+          "character_name": {{
+            "voice_changes_with_arc": true/false,
+            "evolution_score": 0-100,
+            "described_changes": "how voice has evolved",
+            "appropriateness_score": 0-100,
+            "issue": "if evolution not happening or inappropriate"
+          }}
+        }},
+        "unintentional_drift": {{
+          "character_name": {{
+            "drifting_toward_other_character": "name of character they're sounding like",
+            "lost_unique_markers": ["marker1", "marker2"],
+            "inconsistency_score": 0-100,
+            "issues": ["description of inconsistency"]
+          }}
+        }},
+        "relationship_influence": {{
+          "character_name": {{
+            "adapting_to_relationships": true/false,
+            "code_switching_appropriate": true/false,
+            "mimicry_present_and_appropriate": true/false,
+            "relationship_influence_score": 0-100,
+            "issues": ["description of issue"]
+          }}
+        }},
+        "overall_evolution_health": 0-100,
+        "drift_warnings": [
+          {{
+            "character": "character name",
+            "warning": "description of problematic drift",
+            "severity": "CRITICAL|HIGH|MEDIUM|LOW",
+            "recommended_fix": "how to restore voice"
+          }}
+        ],
+        "evolution_recommendations": [
+          {{
+            "character": "character name",
+            "recommendation": "how to enhance intentional evolution"
+          }}
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Identify characters that drift or lose distinction. Flag missing intentional evolution.
+
+  dialogue_attribution_test: |
+    You are a Dialogue Attribution Tester for audio drama scripts.
+    
+    Test if characters are distinguishable without their names (audio-only format).
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    CHARACTER PROFILES:
+    {character_profiles}
+    
+    TEST CRITERIA:
+    
+    1. COLD READ TEST
+    - Can you identify speaker from dialogue alone?
+    - What percentage of lines are identifiable?
+    - Which characters are confusable?
+    
+    2. CONTEXT-FREE TEST
+    - Single lines identifiable out of context?
+    - How much context is needed?
+    - Which characters need more verbal landmarks?
+    
+    3. GROUP SCENE TEST
+    - Multiple speakers trackable?
+    - Overlapping dialogue distinguishable?
+    - Need verbal landmarks for tracking?
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "attribution_analysis": {{
+        "cold_read_test": {{
+          "character_name": {{
+            "identifiability_percentage": 0-100,
+            "identifiable_lines": ["example line 1", "example line 2"],
+            "unidentifiable_lines": ["example line 1", "example line 2"],
+            "confusable_with": ["other character name"]
+          }}
+        }},
+        "context_free_test": {{
+          "character_name": {{
+            "single_line_identifiable": true/false,
+            "lines_that_work_out_of_context": ["line1", "line2"],
+            "lines_that_dont_work_out_of_context": ["line1", "line2"],
+            "context_needed": "description of how much context needed"
+          }}
+        }},
+        "group_scene_test": {{
+          "trackability_score": 0-100,
+          "confusion_moments": [
+            {{
+              "scene": "scene description",
+              "characters_involved": ["char1", "char2"],
+              "confusion_description": "why it's confusing",
+              "needed_verbal_landmarks": ["landmark needed"]
+            }}
+          ],
+          "overlapping_dialogue_issues": [
+            "description of issue"
+          ]
+        }},
+        "overall_identifiability_score": 0-100,
+        "identifiability_scores": {{
+          "character_name": 0-100
+        }},
+        "confusion_pairs": [
+          {{
+            "character_1": "name1",
+            "character_2": "name2",
+            "confusion_level": "HIGH|MEDIUM|LOW",
+            "why_confusable": "what makes them similar",
+            "how_to_differentiate": "specific fix"
+          }}
+        ],
+        "recommendations": [
+          {{
+            "character": "character name",
+            "recommendation": "how to make more distinguishable",
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW",
+            "specific_line_example": "example of line that needs fix"
+          }}
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Score identifiability 0-100. Flag confusable character pairs. Provide specific lines that need work.
+
+  performance_notes_enhancement: |
+    You are a Performance Notes Enhancer for audio drama scripts.
+    
+    Add/adjust performance directions for actors to ensure voice distinction.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    CHARACTER PROFILES:
+    {character_profiles}
+    
+    PERFORMANCE DIRECTIONS NEEDED:
+    
+    1. PACE INDICATORS
+    - Character-specific pace (rapidly, slowly, hesitant)
+    - When pace should change
+    - Pace for emotional moments
+    
+    2. EMOTION INDICATORS
+    - Subtext notes (angrily but controlled, false cheerfulness)
+    - Emotional arc moments
+    - Voice quality changes
+    
+    3. PHYSICAL INDICATORS
+    - Situational cues (out of breath, while eating, from distance)
+    - Physical state affecting voice
+    - Movement affecting delivery
+    
+    4. TECHNICAL INDICATORS
+    - Audio context (on phone, through door, echoing)
+    - Environmental voice modifiers
+    - Post-production considerations
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "performance_notes": {{
+        "character_directions": {{
+          "character_name": {{
+            "pace_indicators": [
+              {{
+                "line_context": "description of where this applies",
+                "pace_direction": "rapidly|slowly|hesitant|urgent|contemplative",
+                "reason": "why this pace at this moment"
+              }}
+            ],
+            "emotional_indicators": [
+              {{
+                "line_context": "description of emotional moment",
+                "emotion_direction": "angrily but controlled|false cheerfulness|suppressed fear|etc",
+                "subtext": "what's really happening beneath",
+                "voice_quality": "how voice should change"
+              }}
+            ],
+            "physical_indicators": [
+              {{
+                "line_context": "description of physical state",
+                "physical_direction": "out of breath|while eating|from distance|whispering|shouting",
+                "affects_voice": "how this affects delivery"
+              }}
+            ],
+            "technical_indicators": [
+              {{
+                "line_context": "description of audio context",
+                "technical_direction": "on phone|through door|echoing|filtered|distant",
+                "affects_perception": "how this affects how audience hears it"
+              }}
+            ]
+          }}
+        }},
+        "overall_performance_enhancements": 0-100,
+        "recommendations": [
+          {{
+            "character": "character name",
+            "missing_direction": "what direction is missing",
+            "where_needed": "which moment/scene",
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW"
+          }}
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Provide specific performance directions that enhance voice distinction. Focus on moments where identity needs clarification.
+
+  summary_report: |
+    You are a Character Voice Distinction Summary Report Generator.
+    
+    Generate comprehensive summary of character voice distinction across all episodes.
+    
+    ALL AUDITS:
+    {all_audits}
+    
+    CHARACTER PROFILES:
+    {character_profiles}
+    
+    Generate comprehensive summary report and return ONLY valid JSON:
+    
+    ```json
+    {{
+      "summary_report": {{
+        "summary_text": "2-3 paragraph overview of voice distinction across all episodes",
+        "overall_voice_distinction": {{
+          "overall_score": 0-100,
+          "vocabulary_distinction": 0-100,
+          "speech_pattern_distinction": 0-100,
+          "verbal_tic_distinction": 0-100,
+          "emotional_expression_distinction": 0-100,
+          "total_confusion_pairs": 0,
+          "high_risk_characters": 0,
+          "fixable_issues": 0
+        }},
+        "character_uniqueness_scores": {{
+          "character_name": 0-100
+        }},
+        "character_breakdown": [
+          {{
+            "character": "character name",
+            "uniqueness_score": 0-100,
+            "vocabulary_strength": 0-100,
+            "speech_pattern_strength": 0-100,
+            "verbal_tics_strength": 0-100,
+            "emotional_expression_strength": 0-100,
+            "key_distinctive_features": ["feature1", "feature2"],
+            "key_weaknesses": ["weakness1", "weakness2"],
+            "most_confusable_with": ["other character name"],
+            "attribution_test_score": 0-100
+          }}
+        ],
+        "common_issues": [
+          {{
+            "issue_type": "vocabulary|speech patterns|tics|emotions",
+            "frequency": "how many times",
+            "affected_characters": ["char1", "char2"],
+            "recommended_systematic_fix": "general solution"
+          }}
+        ],
+        "recommended_fixes": [
+          {{
+            "character": "character name",
+            "fix_description": "specific fix to enhance distinction",
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW",
+            "affected_episodes": ["episode list"],
+            "expected_improvement": "how much this will help"
+          }}
+        ],
+        "voice_health": {{
+          "voice_distinction_sufficient_for_production": true/false,
+          "audio_only_viable": true/false,
+          "breaking_issues": ["issue that prevents production"],
+          "readiness_for_production": true/false,
+          "critical_fixes_needed": "description of what must be fixed"
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: Provide actionable summary with specific character-by-character recommendations. Identify production blockers.
+
+dependencies:
+  - station: 27
+    name: "Master Script Assembly"
+  - station: 8
+    name: "Character Architect"
+
+# Enable/disable this station in the pipeline
+enabled: true
+
+# Configuration values
+output_directory: "output/station_35"
+identifiability_threshold: 75
+uniqueness_threshold: 70
+confusion_threshold: 50
+user_validation_required: true
+

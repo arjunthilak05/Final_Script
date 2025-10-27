@@ -1,0 +1,402 @@
+# Station 34: World Consistency Validator Configuration
+
+model: "glm-4.5"
+temperature: 0.7
+max_tokens: 10000
+
+prompts:
+  world_rules_compliance: |
+    You are a World Rules Compliance Validator for audio drama scripts.
+    
+    Validate that every scene complies with established world rules from Station 8.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    WORLD RULES:
+    {world_rules}
+    
+    SYSTEM DATA:
+    {system_data}
+    
+    VALIDATION CRITERIA:
+    
+    1. PHYSICAL WORLD RULES
+    - Geography consistent across scenes?
+    - Travel times realistic given distances?
+    - Weather patterns match world logic?
+    - Day/night cycle maintained?
+    
+    2. SOCIAL WORLD RULES
+    - Cultural norms maintained?
+    - Language use appropriate to setting?
+    - Social hierarchy respected?
+    - Customs and traditions followed?
+    
+    3. TECHNOLOGY/MAGIC RULES
+    - Capabilities within established limits?
+    - Limitations consistently applied?
+    - Sound signatures for tech/magic consistent?
+    - Availability logical (common vs rare)?
+    
+    4. HISTORICAL CONTINUITY
+    - Past events referenced correctly?
+    - Timeline consistent?
+    - Cause-effect relationships maintained?
+    - Character ages and timeline aligned?
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "world_rules_compliance": {{
+        "physical_world_check": {{
+          "geography_score": 0-100,
+          "travel_time_score": 0-100,
+          "weather_score": 0-100,
+          "day_night_cycle_score": 0-100,
+          "violations": [
+            {{
+              "rule_type": "geography|travel|weather|day_night",
+              "violation_description": "specific inconsistency",
+              "location": "Scene X",
+              "line_number": 42,
+              "expected": "what should be",
+              "actual": "what script has",
+              "severity": "CRITICAL|HIGH|MEDIUM|LOW",
+              "world_rule_source": "Station 8 reference"
+            }}
+          ]
+        }},
+        "social_world_check": {{
+          "cultural_norms_score": 0-100,
+          "language_appropriateness_score": 0-100,
+          "hierarchy_score": 0-100,
+          "customs_score": 0-100,
+          "violations": []
+        }},
+        "technology_magic_check": {{
+          "capabilities_score": 0-100,
+          "limitations_score": 0-100,
+          "sound_consistency_score": 0-100,
+          "availability_score": 0-100,
+          "violations": []
+        }},
+        "historical_continuity_check": {{
+          "past_events_score": 0-100,
+          "timeline_score": 0-100,
+          "cause_effect_score": 0-100,
+          "character_ages_score": 0-100,
+          "violations": []
+        }},
+        "overall_compliance_score": 0-100,
+        "critical_issues_count": 0,
+        "recommendations": [
+          {{
+            "recommendation": "specific fix",
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW",
+            "affected_location": "Scene X",
+            "world_rule_reference": "rule from Station 8"
+          }}
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Score 0-100. Identify specific violations with line references. Assign severity based on world-breaking impact.
+
+  audio_signature_verification: |
+    You are an Audio World Signature Validator for audio drama scripts.
+    
+    Verify sonic consistency across episodes and scenes.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    EXPECTED AUDIO SIGNATURES:
+    {audio_signatures}
+    
+    VERIFICATION CRITERIA:
+    
+    1. LOCATION SIGNATURES
+    - Each location sounds consistent across all appearances?
+    - Acoustic properties maintained (reverb, space)?
+    - Background ambience consistent?
+    
+    2. TECHNOLOGY SOUNDS
+    - Devices sound same each time?
+    - Future/past tech audio appropriate?
+    - Magic sounds consistent and distinctive?
+    
+    3. ENVIRONMENTAL SOUNDS
+    - Nature sounds match setting (forest, city, etc.)?
+    - City sounds consistent with world?
+    - Weather sounds match described conditions?
+    
+    4. CULTURAL SOUNDS
+    - Music styles consistent with world?
+    - Crowd sounds appropriate to culture?
+    - Language/accent consistent with established?
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "audio_signature_check": {{
+        "location_signatures": {{
+          "consistency_score": 0-100,
+          "inconsistencies": [
+            {{
+              "location": "location name",
+              "expected_signature": "what should sound like",
+              "actual_signature": "what script has",
+              "first_appearance": "Episode X",
+              "current_appearance": "Episode Y",
+              "severity": "CRITICAL|HIGH|MEDIUM|LOW"
+            }}
+          ]
+        }},
+        "technology_sounds": {{
+          "consistency_score": 0-100,
+          "inconsistencies": []
+        }},
+        "environmental_sounds": {{
+          "consistency_score": 0-100,
+          "inconsistencies": []
+        }},
+        "cultural_sounds": {{
+          "consistency_score": 0-100,
+          "inconsistencies": []
+        }},
+        "overall_audio_consistency": 0-100,
+        "corrections_needed": [
+          {{
+            "location": "where",
+            "correction": "what to change",
+            "signature_reference": "Station 8 reference"
+          }}
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Flag any audio inconsistencies. Reference Station 8 audio signatures.
+
+  character_world_interaction: |
+    You are a Character-World Interaction Validator for audio drama scripts.
+    
+    Check character-world fit and appropriateness.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    WORLD PARAMETERS:
+    {world_parameters}
+    
+    VALIDATION CRITERIA:
+    
+    1. CHARACTER KNOWLEDGE
+    - Know what they should know?
+    - Ignorant of what they shouldn't?
+    - Learning curve realistic?
+    
+    2. CHARACTER CAPABILITIES
+    - Skills consistent with world?
+    - Physical abilities realistic?
+    - Access to resources logical?
+    
+    3. CHARACTER SPEECH
+    - Using world-appropriate terminology?
+    - References fit the world?
+    - Anachronisms avoided?
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "character_interaction_check": {{
+        "knowledge_check": {{
+          "appropriateness_score": 0-100,
+          "violations": [
+            {{
+              "character": "character name",
+              "issue": "too much knowledge|too little knowledge|inappropriate knowledge",
+              "location": "Scene X",
+              "specific_issue": "what they know that they shouldn't or vice versa",
+              "world_rules_reference": "what world rules say",
+              "severity": "CRITICAL|HIGH|MEDIUM|LOW"
+            }}
+          ]
+        }},
+        "capabilities_check": {{
+          "appropriateness_score": 0-100,
+          "violations": []
+        }},
+        "speech_check": {{
+          "appropriateness_score": 0-100,
+          "anachronisms_found": [
+            {{
+              "character": "character name",
+              "anachronism": "out of time reference",
+              "location": "Scene X",
+              "line_number": 42,
+              "suggested_replacement": "world-appropriate term"
+            }}
+          ]
+        }},
+        "overall_character_world_fit": 0-100,
+        "corrections_needed": [
+          {{
+            "character": "character name",
+            "correction": "specific fix",
+            "priority": "IMMEDIATE|HIGH|MEDIUM|LOW"
+          }}
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Flag characters acting outside world parameters. Find anachronisms.
+
+  cross_world_consistency: |
+    You are a Cross-World Consistency Validator for scripts with multiple worlds/timelines.
+    
+    Validate transitions and differences between worlds.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    WORLD TRANSITIONS:
+    {world_transitions}
+    
+    WORLD RULES:
+    {world_rules}
+    
+    VALIDATION CRITERIA:
+    
+    1. TRANSITION RULES
+    - Movement between worlds consistent?
+    - Costs/requirements maintained?
+    - Sound cues for transitions consistent?
+    
+    2. PARALLEL DIFFERENCES
+    - Clear what's different between worlds?
+    - Differences maintained throughout?
+    - Audio distinctions between worlds clear?
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "cross_world_check": {{
+        "applicable": true/false,
+        "transition_check": {{
+          "consistency_score": 0-100,
+          "violations": [
+            {{
+              "transition": "from World A to World B",
+              "issue": "missing cost|inconsistent method|wrong sound cue",
+              "location": "Scene X",
+              "expected": "what should happen",
+              "actual": "what script has",
+              "severity": "CRITICAL|HIGH|MEDIUM|LOW"
+            }}
+          ]
+        }},
+        "difference_maintenance": {{
+          "consistency_score": 0-100,
+          "violations": []
+        }},
+        "audio_distinctions": {{
+          "clarity_score": 0-100,
+          "confusing_moments": []
+        }},
+        "overall_cross_world_consistency": 0-100,
+        "corrections_needed": []
+      }}
+    }}
+    ```
+    
+    CRITICAL: If single world, return applicable: false. Validate world boundaries.
+
+  summary_report: |
+    You are a World Consistency Summary Report Generator.
+    
+    Generate comprehensive summary of world consistency across all episodes.
+    
+    ALL VALIDATIONS:
+    {all_validations}
+    
+    WORLD CONTEXT:
+    {world_context}
+    
+    Generate comprehensive summary report and return ONLY valid JSON:
+    
+    ```json
+    {{
+      "summary_report": {{
+        "summary_text": "2-3 paragraph overview of world consistency across all episodes",
+        "overall_world_consistency": {{
+          "overall_score": 0-100,
+          "world_rules_compliance": 0-100,
+          "audio_signature_consistency": 0-100,
+          "character_world_appropriateness": 0-100,
+          "cross_world_consistency": 0-100,
+          "total_violations": 0,
+          "critical_violations": 0,
+          "fixable_issues": 0
+        }},
+        "episode_breakdown": [
+          {{
+            "episode_id": "episode identifier",
+            "world_rules_score": 0-100,
+            "audio_signature_score": 0-100,
+            "character_fit_score": 0-100,
+            "overall_score": 0-100,
+            "key_issues": ["issue 1", "issue 2"],
+            "key_strengths": ["strength 1", "strength 2"]
+          }}
+        ],
+        "common_violations": [
+          {{
+            "violation_type": "type of violation",
+            "frequency": "how many times",
+            "typical_location": "where it occurs",
+            "recommended_systematic_fix": "general solution"
+          }}
+        ],
+        "world_integrity": {{
+          "world_remains_internally_consistent": true/false,
+          "breaking_issues": ["issue that breaks world"],
+          "readiness_for_production": true/false,
+          "remaining_critical_fixes": "description"
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: Provide actionable summary with specific recommendations.
+
+dependencies:
+  - station: 27
+    name: "Master Script Assembly"
+  - station: 8
+    name: "World Builder"
+  - station: 9
+    name: "World Building System (optional)"
+
+# Enable/disable this station in the pipeline
+enabled: true
+
+# Configuration values
+output_directory: "output/station_34"
+severity_weights:
+  critical: 1.0
+  high: 0.7
+  medium: 0.4
+  low: 0.2
+user_validation_required: true

@@ -1,0 +1,1124 @@
+{
+  "session_id": "session_20251023_112749",
+  "timestamp": "2025-10-27T12:25:21.560711",
+  "total_episodes": 3,
+  "episode_results": [
+    {
+      "episode_id": 2,
+      "speakability_analysis": {
+        "speakability_issues": [
+          {
+            "issue_type": "breath_length",
+            "location": "INT. KITCHEN - NIGHT, line 1",
+            "character": "LUCY",
+            "problematic_text": "We can't just sit here.",
+            "problem": "This line is actually fine in terms of length, but the pacing direction (pacing) might cause the actor to deliver it with unnatural breath patterns.",
+            "recommended_fix": "Keep the line as is, but consider removing the pacing direction if it causes breath issues during recording.",
+            "auto_fixed": false
+          }
+        ],
+        "tongue_twisters_detected": [],
+        "breath_length_problems": [],
+        "word_order_issues": [],
+        "total_issues": 0
+      },
+      "naturalness_scorecard": {
+        "character_naturalness": {
+          "John": {
+            "vocabulary_score": 3,
+            "vocabulary_appropriateness": "The vocabulary is simple and direct, which fits a moment of uncertainty. However, without more context about John's background, education level, or age, it's difficult to determine if this is perfectly appropriate. The phrase 'What are we going to do?' is universally understandable but doesn't provide distinctive character markers.",
+            "sentence_structure_score": 3,
+            "sentence_analysis": "The sentence is simple and direct, which works for a moment of uncertainty. However, it's a basic interrogative sentence without any distinctive structure that would make it particularly natural or unnatural. Without more dialogue samples, it's difficult to assess variance in sentence structure.",
+            "filler_words_score": 2,
+            "filler_word_usage": "There are no filler words present in John's single line of dialogue. While this isn't necessarily unnatural, the sighing direction suggests some hesitation or contemplation that might be reflected in filler words in a more expanded dialogue.",
+            "interruption_score": 1,
+            "interruption_analysis": "There are no interruptions or overlaps in John's dialogue. With only one line of dialogue, there's no opportunity for natural interruptions or overlaps to occur.",
+            "overall_score": 2.25,
+            "naturalness_notes": "John's dialogue is minimal and doesn't provide enough material for a comprehensive naturalness assessment. The sighing direction adds emotional context that helps, but without more dialogue or character background, it's difficult to determine if this represents natural speech patterns for this character."
+          },
+          "Sara": {
+            "vocabulary_score": 3,
+            "vocabulary_appropriateness": "Similar to John, Sara's vocabulary is simple and direct. The phrase 'I don't know' is universally understandable, and 'We have to think of something' shows a problem-solving mindset. Without more context about Sara's background, it's difficult to determine if this vocabulary is perfectly appropriate for her character.",
+            "sentence_structure_score": 3,
+            "sentence_analysis": "Sara's dialogue consists of two simple sentences. The first is a basic negation, and the second is a statement of necessity. This structure works for a moment of uncertainty, but without more dialogue samples, it's difficult to assess variance in sentence structure or complexity.",
+            "filler_words_score": 3,
+            "filler_word_usage": "There are no explicit filler words in Sara's dialogue. However, the whispering direction suggests a more tentative or emotional delivery, which might naturally include filler words in a more expanded dialogue.",
+            "interruption_score": 1,
+            "interruption_analysis": "There are no interruptions or overlaps in Sara's dialogue. With only one line of dialogue, there's no opportunity for natural interruptions or overlaps to occur.",
+            "overall_score": 2.5,
+            "naturalness_notes": "Sara's dialogue is minimal and doesn't provide enough material for a comprehensive naturalness assessment. The whispering direction adds emotional context that helps convey her state of mind, but without more dialogue or character background, it's difficult to determine if this represents natural speech patterns for this character."
+          },
+          "Lucy": {
+            "vocabulary_score": 3,
+            "vocabulary_appropriateness": "Lucy's vocabulary is simple and direct. The phrase 'We can't just sit here' shows frustration or urgency. Without more context about Lucy's background, education level, or age, it's difficult to determine if this vocabulary is perfectly appropriate for her character.",
+            "sentence_structure_score": 3,
+            "sentence_analysis": "Lucy's dialogue consists of a single sentence with a negative contraction. This structure works for expressing frustration or urgency, but without more dialogue samples, it's difficult to assess variance in sentence structure or complexity.",
+            "filler_words_score": 2,
+            "filler_word_usage": "There are no filler words present in Lucy's single line of dialogue. However, the pacing direction suggests agitation or impatience, which might naturally include filler words in a more expanded dialogue.",
+            "interruption_score": 1,
+            "interruption_analysis": "There are no interruptions or overlaps in Lucy's dialogue. With only one line of dialogue, there's no opportunity for natural interruptions or overlaps to occur.",
+            "overall_score": 2.25,
+            "naturalness_notes": "Lucy's dialogue is minimal and doesn't provide enough material for a comprehensive naturalness assessment. The pacing direction adds context about her emotional state, but without more dialogue or character background, it's difficult to determine if this represents natural speech patterns for this character."
+          }
+        },
+        "vocabulary_scores": {
+          "John": {
+            "age_appropriate": true,
+            "education_fit": true,
+            "era_fit": true,
+            "examples": [
+              "What are we going to do?"
+            ]
+          },
+          "Sara": {
+            "age_appropriate": true,
+            "education_fit": true,
+            "era_fit": true,
+            "examples": [
+              "I don't know.",
+              "We have to think of something."
+            ]
+          },
+          "Lucy": {
+            "age_appropriate": true,
+            "education_fit": true,
+            "era_fit": true,
+            "examples": [
+              "We can't just sit here."
+            ]
+          }
+        },
+        "sentence_structure_scores": {
+          "John": {
+            "average_length": 6,
+            "variance": "low",
+            "complexity_level": "low",
+            "notes": "Only one sentence available for analysis"
+          },
+          "Sara": {
+            "average_length": 4,
+            "variance": "low",
+            "complexity_level": "low",
+            "notes": "Only two simple sentences available for analysis"
+          },
+          "Lucy": {
+            "average_length": 5,
+            "variance": "low",
+            "complexity_level": "low",
+            "notes": "Only one sentence available for analysis"
+          }
+        },
+        "filler_word_analysis": {
+          "John": {
+            "usage_count": 0,
+            "realistic": true,
+            "overuse": false,
+            "examples": []
+          },
+          "Sara": {
+            "usage_count": 0,
+            "realistic": true,
+            "overuse": false,
+            "examples": []
+          },
+          "Lucy": {
+            "usage_count": 0,
+            "realistic": true,
+            "overuse": false,
+            "examples": []
+          }
+        },
+        "interruption_overlap_analysis": {
+          "John": {
+            "overlap_count": 0,
+            "cutoff_count": 0,
+            "natural_flow": true,
+            "examples": []
+          },
+          "Sara": {
+            "overlap_count": 0,
+            "cutoff_count": 0,
+            "natural_flow": true,
+            "examples": []
+          },
+          "Lucy": {
+            "overlap_count": 0,
+            "cutoff_count": 0,
+            "natural_flow": true,
+            "examples": []
+          }
+        }
+      },
+      "identity_clarity": {
+        "character_identification": {
+          "John": {
+            "identifiable_within_lines": 1,
+            "unique_markers": [
+              "sighing"
+            ],
+            "distinction_score": 0.3,
+            "over_naming_count": 1,
+            "notes": "John can only be identified by name and sighing, with no distinctive speech patterns from the character data"
+          },
+          "Sara": {
+            "identifiable_within_lines": 1,
+            "unique_markers": [
+              "whispering"
+            ],
+            "distinction_score": 0.3,
+            "over_naming_count": 1,
+            "notes": "Sara can only be identified by name and whispering, with no distinctive speech patterns from the character data"
+          },
+          "Lucy": {
+            "identifiable_within_lines": 1,
+            "unique_markers": [
+              "pacing"
+            ],
+            "distinction_score": 0.3,
+            "over_naming_count": 1,
+            "notes": "Lucy can only be identified by name and pacing, with no distinctive speech patterns from the character data"
+          }
+        },
+        "voice_distinction_scores": {
+          "John": {
+            "distinction_level": 0.3,
+            "uniqueness": "low",
+            "interchangeable_with": [
+              "Sara",
+              "Lucy"
+            ],
+            "improvement_needed": true
+          },
+          "Sara": {
+            "distinction_level": 0.3,
+            "uniqueness": "low",
+            "interchangeable_with": [
+              "John",
+              "Lucy"
+            ],
+            "improvement_needed": true
+          },
+          "Lucy": {
+            "distinction_level": 0.3,
+            "uniqueness": "low",
+            "interchangeable_with": [
+              "John",
+              "Sara"
+            ],
+            "improvement_needed": true
+          }
+        },
+        "verbal_ticks_usage": {
+          "John": {
+            "signature_patterns": [],
+            "consistency": "low",
+            "usage_count": 0
+          },
+          "Sara": {
+            "signature_patterns": [],
+            "consistency": "low",
+            "usage_count": 0
+          },
+          "Lucy": {
+            "signature_patterns": [],
+            "consistency": "low",
+            "usage_count": 0
+          }
+        },
+        "relationship_clarity": {
+          "relationships_clear": false,
+          "location_clear": true,
+          "time_period_clear": true,
+          "context_sufficiency": "low"
+        },
+        "improvement_recommendations": [
+          {
+            "character": "John",
+            "issue": "No distinctive voice markers or speech patterns from character data",
+            "recommendation": "If John is meant to be Tom (Life Coach), incorporate his verbal tics like 'Imagine' or 'Think about' and use motivational language. Example: 'Imagine what we could do if we just took a moment to think this through.'"
+          },
+          {
+            "character": "Sara",
+            "issue": "No distinctive voice markers or speech patterns from character data",
+            "recommendation": "If Sara is meant to be Julia (ER Nurse), incorporate her professional cadence and verbal tics like 'Alright, let's focus'. Example: 'Alright, let's focus. I don't know, but we have to think of something.'"
+          },
+          {
+            "character": "Lucy",
+            "issue": "No distinctive voice markers or speech patterns from character data",
+            "recommendation": "If Lucy is meant to be Sarah (Corporate Executive), incorporate her business jargon and direct speech patterns. Example: 'Bottom line: we can't just sit here. We need to move forward.'"
+          },
+          {
+            "character": "All Characters",
+            "issue": "Relationships between characters are unclear",
+            "recommendation": "Add dialogue that reveals relationships. Example: 'John, as your life coach, I'm telling you we need a plan.' or 'Sara, after your shift at the ER, you must be exhausted.'"
+          }
+        ]
+      },
+      "subtext_layers": {
+        "subtext_layers": {
+          "dialogue_layers": [
+            {
+              "dialogue_line": "What are we going to do?",
+              "character": "John",
+              "location": "Living Room, Line 1",
+              "surface_meaning": "John is asking about a course of action to resolve a problem",
+              "underlying_meaning": "John feels overwhelmed and helpless, seeking reassurance or leadership from others",
+              "withheld_information": "John may know more about the problem than he's letting on, or he might be avoiding taking responsibility",
+              "layer_score": 1,
+              "subtext_depth": "low"
+            },
+            {
+              "dialogue_line": "I don't know. We have to think of something.",
+              "character": "Sara",
+              "location": "Living Room, Line 2",
+              "surface_meaning": "Sara admits uncertainty but emphasizes the need for a solution",
+              "underlying_meaning": "Sara is also anxious but trying to maintain composure and encourage problem-solving",
+              "withheld_information": "Sara might have an idea she's hesitant to share, or she may be more frightened than she's showing",
+              "layer_score": 1,
+              "subtext_depth": "low"
+            },
+            {
+              "dialogue_line": "We can't just sit here.",
+              "character": "Lucy",
+              "location": "Kitchen, Line 1",
+              "surface_meaning": "Lucy believes inaction is not an option",
+              "underlying_meaning": "Lucy is frustrated with the lack of progress and wants to take immediate action",
+              "withheld_information": "Lucy may have a specific course of mind she's not sharing, or she might be blaming others for the inaction",
+              "layer_score": 1,
+              "subtext_depth": "low"
+            }
+          ]
+        },
+        "surface_meaning_analysis": {
+          "total_lines_analyzed": 3,
+          "lines_with_surface_only": 3,
+          "lines_with_layers": 0,
+          "examples": [
+            "What are we going to do?",
+            "I don't know. We have to think of something.",
+            "We can't just sit here."
+          ]
+        },
+        "underlying_meaning_analysis": {
+          "intent_clarity": "low",
+          "evasion_techniques": 0,
+          "deflection_count": 0,
+          "examples": []
+        },
+        "withheld_information_cues": {
+          "pause_markers": 0,
+          "tone_cues": 3,
+          "silence_as_tool": 0,
+          "examples": [
+            "John sighing",
+            "Sara whispering",
+            "Lucy pacing"
+          ]
+        },
+        "subtext_quality_score": 0.33,
+        "recommendations": [
+          {
+            "location": "Living Room",
+            "issue": "Dialogue lacks deeper subtext and character-specific voice markers",
+            "recommendation": "Incorporate character-specific speech patterns and add more layered meaning. For John: '(sighing) Imagine if we could find a way out of this. What are we going to do?' - showing his life coach perspective. For Sara: '(whispering) Alright, let's focus. I don't know, but we have to think of something.' - showing her medical professional cadence."
+          },
+          {
+            "location": "Kitchen",
+            "issue": "Lucy's line lacks corporate executive characteristics and deeper subtext",
+            "recommendation": "Rephrase to show Lucy's business mindset: '(pacing) Bottom line: we can't just sit here. We need actionable solutions now.' This adds her professional jargon while maintaining the frustration."
+          },
+          {
+            "location": "Entire Scene",
+            "issue": "Missing relationship cues between characters and context about their situation",
+            "recommendation": "Add dialogue that reveals their relationships and the nature of their problem. Example: 'John, as your life coach, I'm telling you we need a plan.' or 'Sara, after your shift at the ER, you must be exhausted.'"
+          }
+        ]
+      },
+      "timestamp": "2025-10-27T12:22:35.574764"
+    },
+    {
+      "episode_id": 3,
+      "speakability_analysis": {
+        "speakability_issues": [],
+        "tongue_twisters_detected": [],
+        "breath_length_problems": [],
+        "word_order_issues": [],
+        "total_issues": 0
+      },
+      "naturalness_scorecard": {
+        "character_naturalness": {
+          "Beth": {
+            "vocabulary_score": 4,
+            "vocabulary_appropriateness": "Beth's vocabulary is appropriate for her age and background. She uses casual language like \"how's\" and colloquialisms like \"you name it\" that fit a coffee shop conversation. Her speech feels natural for someone in her apparent age range.",
+            "sentence_structure_score": 4,
+            "sentence_analysis": "Beth's sentences vary in length and structure. She uses a simple question followed by a comforting statement. Her lines are concise and flow naturally, matching the cheerful tone indicated in the script.",
+            "filler_words_score": 4,
+            "filler_word_usage": "Beth doesn't use filler words, which is appropriate for her brief, focused dialogue. The lack of fillers doesn't sound robotic because her lines are short and purposeful.",
+            "interruption_score": 3,
+            "interruption_analysis": "There are no interruptions in Beth's dialogue. While this is acceptable for the brief exchange, some natural overlap might have enhanced realism. The flow of conversation is still believable.",
+            "overall_score": 4,
+            "naturalness_notes": "Beth's dialogue feels natural for a coffee shop conversation. Her cheerful tone and consoling words match the context well. The speech patterns, vocabulary, and sentence structure all contribute to a believable character."
+          },
+          "Jake": {
+            "vocabulary_score": 4,
+            "vocabulary_appropriateness": "Jake's vocabulary is appropriate for someone discussing work stress. Terms like \"nightmare,\" \"deadlines,\" and \"bugs\" fit a professional discussing project challenges. His language is casual but specific enough to sound authentic.",
+            "sentence_structure_score": 4,
+            "sentence_analysis": "Jake's sentences are short and fragmented, reflecting his stressed state. The structure \"It's a nightmare. Deadlines, bugs, you name it\" effectively conveys his frustration through fragmented thoughts, which is natural for someone under stress.",
+            "filler_words_score": 4,
+            "filler_word_usage": "Jake doesn't use filler words, which works for his brief, stressed dialogue. His direct responses without fillers convey his focused frustration naturally.",
+            "interruption_score": 3,
+            "interruption_analysis": "There are no interruptions in Jake's dialogue. While this isn't unrealistic for such a brief exchange, some natural overlap might have enhanced the conversational flow. The current structure still feels believable.",
+            "overall_score": 4,
+            "naturalness_notes": "Jake's dialogue effectively conveys stress and frustration through word choice and sentence structure. His responses are natural for someone discussing work problems in a casual setting. The speech patterns match the emotional tone indicated in the script."
+          }
+        },
+        "vocabulary_scores": {
+          "Beth": {
+            "age_appropriate": true,
+            "education_fit": true,
+            "era_fit": true,
+            "examples": [
+              "Hey, how's the big project coming along?",
+              "You'll get through it. You always do."
+            ]
+          },
+          "Jake": {
+            "age_appropriate": true,
+            "education_fit": true,
+            "era_fit": true,
+            "examples": [
+              "It's a nightmare.",
+              "Deadlines, bugs, you name it."
+            ]
+          }
+        },
+        "sentence_structure_scores": {
+          "Beth": {
+            "average_length": 5.5,
+            "variance": "medium",
+            "complexity_level": "low",
+            "notes": "Beth's sentences are simple and direct, appropriate for a casual conversation. The structure varies between a question and a statement, creating natural rhythm."
+          },
+          "Jake": {
+            "average_length": 4,
+            "variance": "high",
+            "complexity_level": "low",
+            "notes": "Jake's sentences are short and fragmented, reflecting his stressed state. The variance between a complete sentence and a list creates a natural pattern of someone overwhelmed."
+          }
+        },
+        "filler_word_analysis": {
+          "Beth": {
+            "usage_count": 0,
+            "realistic": true,
+            "overuse": false,
+            "examples": []
+          },
+          "Jake": {
+            "usage_count": 0,
+            "realistic": true,
+            "overuse": false,
+            "examples": []
+          }
+        },
+        "interruption_overlap_analysis": {
+          "Beth": {
+            "overlap_count": 0,
+            "cutoff_count": 0,
+            "natural_flow": true,
+            "examples": []
+          },
+          "Jake": {
+            "overlap_count": 0,
+            "cutoff_count": 0,
+            "natural_flow": true,
+            "examples": []
+          }
+        }
+      },
+      "identity_clarity": {
+        "character_identification": {
+          "Beth": {
+            "identifiable_within_lines": 2,
+            "unique_markers": [
+              "cheerful tone",
+              "consoling language"
+            ],
+            "distinction_score": 0.75,
+            "over_naming_count": 0,
+            "notes": "Beth's cheerful and consoling tone helps distinguish her from Jake, but her dialogue lacks unique verbal tics or specific speech patterns that would make her instantly recognizable without name tags."
+          },
+          "Jake": {
+            "identifiable_within_lines": 2,
+            "unique_markers": [
+              "stressed tone",
+              "complaints about work"
+            ],
+            "distinction_score": 0.7,
+            "over_naming_count": 0,
+            "notes": "Jake's stressed tone and work-related complaints help identify him, but his dialogue lacks distinctive speech patterns or verbal tics that would make him instantly recognizable without name tags."
+          }
+        },
+        "voice_distinction_scores": {
+          "Beth": {
+            "distinction_level": 0.75,
+            "uniqueness": "medium",
+            "interchangeable_with": [],
+            "improvement_needed": true
+          },
+          "Jake": {
+            "distinction_level": 0.7,
+            "uniqueness": "medium",
+            "interchangeable_with": [],
+            "improvement_needed": true
+          }
+        },
+        "verbal_ticks_usage": {
+          "Beth": {
+            "signature_patterns": [
+              "cheerful greeting",
+              "consoling statement"
+            ],
+            "consistency": "low",
+            "usage_count": 2
+          },
+          "Jake": {
+            "signature_patterns": [
+              "complaint about work"
+            ],
+            "consistency": "low",
+            "usage_count": 1
+          }
+        },
+        "relationship_clarity": {
+          "relationships_clear": true,
+          "location_clear": true,
+          "time_period_clear": false,
+          "context_sufficiency": "medium"
+        },
+        "improvement_recommendations": [
+          {
+            "character": "Beth",
+            "issue": "Lacks distinctive verbal tics and speech patterns",
+            "recommendation": "Incorporate unique verbal tics such as a consistent use of positive affirmations or a specific greeting pattern. For example: 'How's the big project coming along?' could become 'Hey there! How's that big project of yours shaping up today?'"
+          },
+          {
+            "character": "Jake",
+            "issue": "Generic stress responses without unique markers",
+            "recommendation": "Add specific verbal tics that reflect his stressed state, such as sighing before speaking or using specific phrases like 'Honestly...' or 'I'm telling you...' to preface his complaints. Example: 'Honestly, it's a nightmare. Deadlines, bugs, you name it.'"
+          }
+        ]
+      },
+      "subtext_layers": {
+        "subtext_layers": {
+          "dialogue_layers": [
+            {
+              "dialogue_line": "Hey, how's the big project coming along?",
+              "character": "Beth",
+              "location": "Scene 1, Line 1",
+              "surface_meaning": "Beth is asking Jake about the status of his project.",
+              "underlying_meaning": "Beth is attempting to engage Jake in conversation and show interest in his work life while maintaining a cheerful demeanor.",
+              "withheld_information": "Beth might be aware that Jake is stressed and is using this question as a gentle way to open the conversation.",
+              "layer_score": 2,
+              "subtext_depth": "medium"
+            },
+            {
+              "dialogue_line": "It's a nightmare. Deadlines, bugs, you name it.",
+              "character": "Jake",
+              "location": "Scene 1, Line 2",
+              "surface_meaning": "Jake is describing his work project as difficult due to various challenges.",
+              "underlying_meaning": "Jake is expressing his frustration and possibly seeking validation or sympathy from Beth.",
+              "withheld_information": "Jake may be overwhelmed to the point of not wanting to discuss details, just venting his stress.",
+              "layer_score": 2,
+              "subtext_depth": "medium"
+            },
+            {
+              "dialogue_line": "You'll get through it. You always do.",
+              "character": "Beth",
+              "location": "Scene 1, Line 3",
+              "surface_meaning": "Beth is offering encouragement to Jake.",
+              "underlying_meaning": "Beth is offering emotional support while also subtly recognizing this as a recurring pattern of stress for Jake.",
+              "withheld_information": "Beth might be implying that this stress is typical for Jake but doesn't want to directly point out this pattern.",
+              "layer_score": 2,
+              "subtext_depth": "medium"
+            }
+          ]
+        },
+        "surface_meaning_analysis": {
+          "total_lines_analyzed": 3,
+          "lines_with_surface_only": 0,
+          "lines_with_layers": 3,
+          "examples": [
+            "It's a nightmare. Deadlines, bugs, you name it.",
+            "You'll get through it. You always do."
+          ]
+        },
+        "underlying_meaning_analysis": {
+          "intent_clarity": "medium",
+          "evasion_techniques": 1,
+          "deflection_count": 0,
+          "examples": [
+            "Jake's vague response about his project difficulties without going into specifics"
+          ]
+        },
+        "withheld_information_cues": {
+          "pause_markers": 0,
+          "tone_cues": 2,
+          "silence_as_tool": 0,
+          "examples": [
+            "Jake's stressed tone indicating he doesn't want to elaborate further",
+            "Beth's consoling tone suggesting she recognizes this pattern"
+          ]
+        },
+        "subtext_quality_score": 0.67,
+        "recommendations": [
+          {
+            "location": "Scene 1, Line 1",
+            "issue": "Beth's opening question lacks deeper subtextual layers",
+            "recommendation": "Add a slight hesitation or specific detail that suggests Beth already knows Jake is stressed, e.g., '(hesitates slightly) Hey, how's the big project coming along?'"
+          },
+          {
+            "location": "Scene 1, Line 2",
+            "issue": "Jake's response could contain more hidden meaning",
+            "recommendation": "Include a physical action or pause that suggests Jake is holding back more serious concerns, e.g., 'It's a nightmare. (sighs) Deadlines, bugs, you name it.'"
+          },
+          {
+            "location": "Scene 1, Line 3",
+            "issue": "Beth's response could be more layered",
+            "recommendation": "Add a subtle element that suggests this is a recurring conversation, e.g., 'You'll get through it. (small smile) You always do.'"
+          }
+        ]
+      },
+      "timestamp": "2025-10-27T12:23:28.062990"
+    },
+    {
+      "episode_id": 1,
+      "speakability_analysis": {
+        "speakability_issues": [],
+        "tongue_twisters_detected": [],
+        "breath_length_problems": [],
+        "word_order_issues": [],
+        "total_issues": 0
+      },
+      "naturalness_scorecard": {
+        "character_naturalness": {
+          "John": {
+            "vocabulary_score": 4,
+            "vocabulary_appropriateness": "John's vocabulary is simple and direct, appropriate for a family setting. His lines are short and to the point, which fits the whispered, secretive tone of the scene.",
+            "sentence_structure_score": 4,
+            "sentence_analysis": "John's sentences vary in length but are generally short, which is natural for whispered dialogue in a tense situation. There's good variation between his two lines.",
+            "filler_words_score": 3,
+            "filler_word_usage": "John doesn't use filler words in his brief dialogue, which is actually appropriate for the tense, whispered situation where characters would likely speak more deliberately.",
+            "interruption_score": 3,
+            "interruption_analysis": "There are no interruptions in the dialogue, but the scene is very brief. The natural flow is maintained between John and Lisa's exchanges.",
+            "overall_score": 4,
+            "naturalness_notes": "John's dialogue feels natural for the context. The whispered delivery and concise phrasing create an appropriate secretive atmosphere."
+          },
+          "Lisa": {
+            "vocabulary_score": 4,
+            "vocabulary_appropriateness": "Lisa's vocabulary is simple and age-appropriate. Her single line is concise and fits the secretive, whispered tone of the scene.",
+            "sentence_structure_score": 4,
+            "sentence_analysis": "Lisa's sentence structure is simple and direct, which is natural for whispered dialogue in a tense situation. Her line is short but conveys the necessary information.",
+            "filler_words_score": 3,
+            "filler_word_usage": "Lisa doesn't use filler words in her brief dialogue, which is appropriate for the tense, whispered situation where characters would likely speak more deliberately.",
+            "interruption_score": 3,
+            "interruption_analysis": "There are no interruptions in the dialogue, but the scene is very brief. The natural flow is maintained between Lisa and John's exchanges.",
+            "overall_score": 4,
+            "naturalness_notes": "Lisa's dialogue feels natural for the context. Her response to John is appropriate for the secretive atmosphere they're creating."
+          },
+          "Tom": {
+            "vocabulary_score": 5,
+            "vocabulary_appropriateness": "Tom's vocabulary is perfectly suited to his role as a life coach. He uses motivational and accessible language like 'New day, new chances' and 'Progress, not perfection' that fits his professional background while remaining natural.",
+            "sentence_structure_score": 4,
+            "sentence_analysis": "Tom's sentence structure varies appropriately between coaching moments and personal reflections. He uses shorter, more directive sentences when coaching ('Take a deep breath in... and out') and more reflective ones when alone ('Maybe today will be different').",
+            "filler_words_score": 4,
+            "filler_word_usage": "Tom uses minimal but appropriate filler words. His use of 'gotta' instead of 'got to' adds naturalness to his speech without being overdone.",
+            "interruption_score": 3,
+            "interruption_analysis": "Tom's dialogue flows naturally with interruptions from phone calls and colleagues. The abrupt transitions feel realistic for a busy professional.",
+            "overall_score": 4,
+            "naturalness_notes": "Tom's dialogue strongly reflects his character as a life coach while maintaining natural speech patterns. His coaching voice and personal thoughts blend seamlessly."
+          },
+          "Julia": {
+            "vocabulary_score": 4,
+            "vocabulary_appropriateness": "Julia's vocabulary reflects her medical profession while remaining accessible. She uses simple, direct language in her professional interactions ('Everything looks good. I'll let Dr. Martinez know') and more emotional language in private moments.",
+            "sentence_structure_score": 4,
+            "sentence_analysis": "Julia's sentence structure varies between professional, direct statements ('Understood. I'll be there') and more emotional, fragmented thoughts when alone ('Another day, another challenge'). This contrast effectively shows her dual professional/personal life.",
+            "filler_words_score": 4,
+            "filler_word_usage": "Julia uses minimal filler words, which fits her professional demeanor. Her speech is direct and purposeful, even when expressing personal emotions.",
+            "interruption_score": 4,
+            "interruption_analysis": "Julia experiences natural interruptions from pagers and emergency situations, which effectively conveys the chaotic environment of an ER nurse.",
+            "overall_score": 4,
+            "naturalness_notes": "Julia's dialogue captures the exhaustion and determination of an ER nurse. The contrast between her professional voice and personal reflections creates a realistic character portrayal."
+          },
+          "Sarah": {
+            "vocabulary_score": 4,
+            "vocabulary_appropriateness": "Sarah's vocabulary reflects her corporate background with phrases like 'Something came up' and 'Things are just... complicated right now.' Her language is professional yet shows vulnerability.",
+            "sentence_structure_score": 4,
+            "sentence_analysis": "Sarah's sentence structure shows her professional directness but also reveals her stress through hesitations ('I... I'm really struggling today'). The mix of complete sentences and fragmented thoughts feels natural for someone under pressure.",
+            "filler_words_score": 4,
+            "filler_word_usage": "Sarah's use of hesitation and fragmented speech ('I think it's the stress at work. My boss is really pushing me...') effectively conveys her anxiety without overusing filler words.",
+            "interruption_score": 3,
+            "interruption_analysis": "Sarah's dialogue isn't interrupted by others, but her own speech shows internal interruptions through hesitations and pauses, which effectively portrays her stressed mental state.",
+            "overall_score": 4,
+            "naturalness_notes": "Sarah's dialogue effectively portrays a corporate executive under stress. Her professional demeanor breaks through even in moments of vulnerability, creating a realistic character."
+          }
+        },
+        "vocabulary_scores": {
+          "John": {
+            "age_appropriate": true,
+            "education_fit": true,
+            "era_fit": true,
+            "examples": [
+              "Is everyone asleep?",
+              "Let's go, then. We can't afford to wait any longer."
+            ]
+          },
+          "Lisa": {
+            "age_appropriate": true,
+            "education_fit": true,
+            "era_fit": true,
+            "examples": [
+              "Almost. Just waiting for Mom."
+            ]
+          },
+          "Tom": {
+            "age_appropriate": true,
+            "education_fit": true,
+            "era_fit": true,
+            "examples": [
+              "New day, new chances.",
+              "Progress, not perfection.",
+              "Let's make an impact."
+            ]
+          },
+          "Julia": {
+            "age_appropriate": true,
+            "education_fit": true,
+            "era_fit": true,
+            "examples": [
+              "Everything looks good. I'll let Dr. Martinez know.",
+              "Understood. I'll be there.",
+              "Another day, another challenge."
+            ]
+          },
+          "Sarah": {
+            "age_appropriate": true,
+            "education_fit": true,
+            "era_fit": true,
+            "examples": [
+              "Something came up.",
+              "Things are just... complicated right now.",
+              "I... I'm really struggling today."
+            ]
+          }
+        },
+        "sentence_structure_scores": {
+          "John": {
+            "average_length": 6.5,
+            "variance": "high",
+            "complexity_level": "low",
+            "notes": "John's sentences are short and direct, appropriate for whispered dialogue in a tense situation."
+          },
+          "Lisa": {
+            "average_length": 5,
+            "variance": "low",
+            "complexity_level": "low",
+            "notes": "Lisa has only one line, but it's concise and fits the secretive tone of the scene."
+          },
+          "Tom": {
+            "average_length": 7.8,
+            "variance": "high",
+            "complexity_level": "medium",
+            "notes": "Tom's sentence structure varies between coaching directives and personal reflections, effectively showing his dual roles."
+          },
+          "Julia": {
+            "average_length": 8.2,
+            "variance": "high",
+            "complexity_level": "medium",
+            "notes": "Julia's sentence structure varies between professional statements and emotional reflections, effectively showing her dual professional/personal life."
+          },
+          "Sarah": {
+            "average_length": 9.3,
+            "variance": "medium",
+            "complexity_level": "medium",
+            "notes": "Sarah's sentence structure shows her professional directness but also reveals her stress through hesitations."
+          }
+        },
+        "filler_word_analysis": {
+          "John": {
+            "usage_count": 0,
+            "realistic": true,
+            "overuse": false,
+            "examples": []
+          },
+          "Lisa": {
+            "usage_count": 0,
+            "realistic": true,
+            "overuse": false,
+            "examples": []
+          },
+          "Tom": {
+            "usage_count": 1,
+            "realistic": true,
+            "overuse": false,
+            "examples": [
+              "gotta keep it real"
+            ]
+          },
+          "Julia": {
+            "usage_count": 0,
+            "realistic": true,
+            "overuse": false,
+            "examples": []
+          },
+          "Sarah": {
+            "usage_count": 2,
+            "realistic": true,
+            "overuse": false,
+            "examples": [
+              "I... I'm really struggling",
+              "Things are just... complicated"
+            ]
+          }
+        },
+        "interruption_overlap_analysis": {
+          "John": {
+            "overlap_count": 0,
+            "cutoff_count": 0,
+            "natural_flow": true,
+            "examples": []
+          },
+          "Lisa": {
+            "overlap_count": 0,
+            "cutoff_count": 0,
+            "natural_flow": true,
+            "examples": []
+          },
+          "Tom": {
+            "overlap_count": 0,
+            "cutoff_count": 0,
+            "natural_flow": true,
+            "examples": [
+              "Tom's dialogue is interrupted by phone calls and colleagues, creating natural transitions."
+            ]
+          },
+          "Julia": {
+            "overlap_count": 0,
+            "cutoff_count": 0,
+            "natural_flow": true,
+            "examples": [
+              "Julia's dialogue is interrupted by pagers and emergency situations, effectively conveying the chaotic environment."
+            ]
+          },
+          "Sarah": {
+            "overlap_count": 0,
+            "cutoff_count": 0,
+            "natural_flow": true,
+            "examples": [
+              "Sarah's speech shows internal interruptions through hesitations and pauses, effectively portraying her stressed mental state."
+            ]
+          }
+        }
+      },
+      "identity_clarity": {
+        "character_identification": {
+          "John": {
+            "identifiable_within_lines": 2,
+            "unique_markers": [
+              "whispering",
+              "calm tone"
+            ],
+            "distinction_score": 0.6,
+            "over_naming_count": 2,
+            "notes": "John has limited dialogue with only tonal distinctions (whispering vs calm). Without voice acting, his identity would be unclear after 2 lines."
+          },
+          "Lisa": {
+            "identifiable_within_lines": 2,
+            "unique_markers": [
+              "informative response"
+            ],
+            "distinction_score": 0.5,
+            "over_naming_count": 1,
+            "notes": "Lisa has only one line of dialogue, making it impossible to establish a consistent voice pattern."
+          }
+        },
+        "voice_distinction_scores": {
+          "John": {
+            "distinction_level": 0.6,
+            "uniqueness": "medium",
+            "interchangeable_with": [
+              "Lisa"
+            ],
+            "improvement_needed": true
+          },
+          "Lisa": {
+            "distinction_level": 0.5,
+            "uniqueness": "low",
+            "interchangeable_with": [
+              "John"
+            ],
+            "improvement_needed": true
+          }
+        },
+        "verbal_ticks_usage": {
+          "John": {
+            "signature_patterns": [],
+            "consistency": "low",
+            "usage_count": 0
+          },
+          "Lisa": {
+            "signature_patterns": [],
+            "consistency": "low",
+            "usage_count": 0
+          }
+        },
+        "relationship_clarity": {
+          "relationships_clear": false,
+          "location_clear": true,
+          "time_period_clear": true,
+          "context_sufficiency": "low"
+        },
+        "improvement_recommendations": [
+          {
+            "character": "John",
+            "issue": "Lack of distinctive speech patterns and limited dialogue",
+            "recommendation": "Add more dialogue with unique vocabulary or phrasing. Consider adding verbal tics like repeated phrases or questions that reveal character. For example, John could be more cautious with lines like 'Are you sure it's safe?' or use phrases indicating his role as leader: 'Follow my lead carefully.'"
+          },
+          {
+            "character": "Lisa",
+            "issue": "Only one line of dialogue preventing voice establishment",
+            "recommendation": "Expand Lisa's dialogue to include more personality-revealing speech. If she's meant to be the cautious one, she could say things like 'We should double-check the plan' or use phrases showing her observational skills: 'I hear footsteps upstairs.'"
+          },
+          {
+            "character": "Both characters",
+            "issue": "Unclear relationship between characters",
+            "recommendation": "Add dialogue that establishes their relationship. John could call Lisa 'sis' or use her name affectionately. They could reference shared history or current situation: 'Remember what happened last time we tried this?' or 'We can't get caught like before.'"
+          }
+        ]
+      },
+      "subtext_layers": {
+        "subtext_layers": {
+          "dialogue_layers": [
+            {
+              "dialogue_line": "Is everyone asleep?",
+              "character": "John",
+              "location": "Scene 1, Line 1",
+              "surface_meaning": "John is asking if all family members are sleeping",
+              "underlying_meaning": "John is checking if it's safe to proceed with a secret plan",
+              "withheld_information": "John is nervous about being caught doing something he shouldn't",
+              "layer_score": 2,
+              "subtext_depth": "medium"
+            },
+            {
+              "dialogue_line": "Almost. Just waiting for Mom.",
+              "character": "Lisa",
+              "location": "Scene 1, Line 2",
+              "surface_meaning": "Most people are asleep except their mother",
+              "underlying_meaning": "Lisa is confirming they need to wait for one more person to be asleep before proceeding",
+              "withheld_information": "Lisa is also aware of the secret plan and is complicit",
+              "layer_score": 2,
+              "subtext_depth": "medium"
+            },
+            {
+              "dialogue_line": "Let's go, then. We can't afford to wait any longer.",
+              "character": "John",
+              "location": "Scene 1, Line 3",
+              "surface_meaning": "John suggests they should leave now because waiting is not an option",
+              "underlying_meaning": "John is taking charge and deciding the risk of waiting is greater than the risk of proceeding",
+              "withheld_information": "There's urgency to their plan - perhaps a deadline or fear of being discovered",
+              "layer_score": 2,
+              "subtext_depth": "medium"
+            }
+          ]
+        },
+        "surface_meaning_analysis": {
+          "total_lines_analyzed": 3,
+          "lines_with_surface_only": 0,
+          "lines_with_layers": 3,
+          "examples": [
+            "Is everyone asleep?",
+            "Almost. Just waiting for Mom.",
+            "Let's go, then. We can't afford to wait any longer."
+          ]
+        },
+        "underlying_meaning_analysis": {
+          "intent_clarity": "medium",
+          "evasion_techniques": 0,
+          "deflection_count": 0,
+          "examples": [
+            "John checking if it's safe to proceed with a secret plan",
+            "Lisa confirming they need to wait for one more person",
+            "John deciding the risk of waiting is greater than proceeding"
+          ]
+        },
+        "withheld_information_cues": {
+          "pause_markers": 0,
+          "tone_cues": 2,
+          "silence_as_tool": 0,
+          "examples": [
+            "John whispering indicates nervousness about being caught",
+            "John's calm tone suggests he's trying to control his anxiety"
+          ]
+        },
+        "subtext_quality_score": 0.7,
+        "recommendations": [
+          {
+            "location": "Scene 1",
+            "issue": "The dialogue lacks explicit withheld information cues like pauses or hesitations",
+            "recommendation": "Add subtle hesitation in John's second line: 'Let's go, then. (pause) We can't afford to wait any longer.' This would create stronger subtext by suggesting internal conflict about the decision."
+          },
+          {
+            "location": "Scene 1",
+            "issue": "The relationship between John and Lisa isn't clearly established through their dialogue",
+            "recommendation": "Add a term of endearment or reference to their relationship: 'Let's go, sis. We can't afford to wait any longer.' This would create a richer subtext about their family dynamic."
+          }
+        ]
+      },
+      "timestamp": "2025-10-27T12:24:39.533282"
+    }
+  ],
+  "summary_report": {
+    "executive_summary": "The dialogue across the three episodes shows varying levels of naturalness, with Episode 1 and Episode 3 demonstrating more authentic speech patterns compared to Episode 2. Episode 1 features well-developed characters with distinct professional voices (Tom as a life coach, Julia as an ER nurse, Sarah as a corporate executive) that align with their roles. Episode 3 effectively captures a natural coffee shop conversation between Beth and Jake, with appropriate emotional tones. Episode 2, however, suffers from character voice inconsistency and lacks distinctive speech patterns, making John, Sara, and Lucy nearly interchangeable despite different emotional directions. The subtext in Episodes 1 and 3 is more developed, while Episode 2's dialogue is primarily surface-level with minimal underlying meaning. Overall, the dialogue would benefit from greater character voice distinction, more consistent use of verbal tics, and deeper subtextual layers to enhance production readiness.",
+    "overall_naturalness_health": {
+      "average_speakability_score": 4.8,
+      "average_naturalness_score": 3.5,
+      "average_identity_score": 2.8,
+      "average_subtext_score": 0.57,
+      "total_speakability_issues": 1,
+      "episodes_needing_fixes": 1
+    },
+    "episode_breakdown": [
+      {
+        "episode_id": "1",
+        "naturalness_health_score": 4.0,
+        "key_strengths": [
+          "Strong character voice distinction for Tom, Julia, and Sarah",
+          "Natural dialogue structure reflecting professional backgrounds",
+          "Effective use of subtext in John and Lisa's secret conversation"
+        ],
+        "key_weaknesses": [
+          "Limited dialogue for John and Lisa prevents full character development",
+          "Relationships between characters unclear"
+        ],
+        "critical_fixes": [
+          "Add more dialogue for John and Lisa to establish consistent voice patterns",
+          "Incorporate relationship cues between characters"
+        ]
+      },
+      {
+        "episode_id": "2",
+        "naturalness_health_score": 2.3,
+        "key_strengths": [
+          "Simple, direct vocabulary appropriate for uncertainty situation",
+          "Emotional directions (sighing, whispering, pacing) add context"
+        ],
+        "key_weaknesses": [
+          "Character voices nearly interchangeable with distinction scores of only 0.3",
+          "Lack of distinctive speech patterns or verbal tics",
+          "Minimal subtext with most lines having surface-only meaning"
+        ],
+        "critical_fixes": [
+          "Incorporate character-specific speech patterns and verbal tics",
+          "Add dialogue revealing character relationships and background",
+          "Develop deeper subtextual layers to increase dialogue richness"
+        ]
+      },
+      {
+        "episode_id": "3",
+        "naturalness_health_score": 4.0,
+        "key_strengths": [
+          "Natural coffee shop conversation flow",
+          "Appropriate vocabulary and sentence structure for stressed Jake and supportive Beth",
+          "Medium-level subtext that reveals underlying dynamics"
+        ],
+        "key_weaknesses": [
+          "Characters lack distinctive verbal tics for strong voice differentiation"
+        ],
+        "critical_fixes": [
+          "Add unique verbal tics for Beth and Jake to enhance voice distinction",
+          "Incorporate more physical actions or pauses to create stronger subtext"
+        ]
+      }
+    ],
+    "character_consistency": [
+      {
+        "character": "Tom",
+        "consistency_score": 4.0,
+        "naturalness_consistency": "high",
+        "voice_distinction": "consistent",
+        "notes": "Tom maintains a consistent life coach voice with motivational language and coaching patterns throughout Episode 1."
+      },
+      {
+        "character": "Julia",
+        "consistency_score": 4.0,
+        "naturalness_consistency": "high",
+        "voice_distinction": "consistent",
+        "notes": "Julia's professional medical voice is consistent in Episode 1, with direct statements and minimal filler words."
+      },
+      {
+        "character": "Sarah",
+        "consistency_score": 4.0,
+        "naturalness_consistency": "high",
+        "voice_distinction": "consistent",
+        "notes": "Sarah maintains a corporate executive voice with professional language and subtle stress indicators in Episode 1."
+      },
+      {
+        "character": "Beth",
+        "consistency_score": 4.0,
+        "naturalness_consistency": "high",
+        "voice_distinction": "consistent",
+        "notes": "Beth's cheerful, consoling tone is consistent throughout Episode 3, though she could benefit from more distinctive verbal tics."
+      },
+      {
+        "character": "Jake",
+        "consistency_score": 4.0,
+        "naturalness_consistency": "high",
+        "voice_distinction": "consistent",
+        "notes": "Jake's stressed, fragmented speech pattern is consistent in Episode 3, effectively conveying his emotional state."
+      },
+      {
+        "character": "John",
+        "consistency_score": 2.5,
+        "naturalness_consistency": "low",
+        "voice_distinction": "variable",
+        "notes": "John's character voice varies between Episodes 1 and 2, with different speech patterns that don't form a consistent character identity."
+      },
+      {
+        "character": "Sara",
+        "consistency_score": 2.0,
+        "naturalness_consistency": "low",
+        "voice_distinction": "variable",
+        "notes": "Sara appears in Episode 2 with minimal distinctive speech patterns, making her character voice underdeveloped."
+      },
+      {
+        "character": "Lucy",
+        "consistency_score": 2.0,
+        "naturalness_consistency": "low",
+        "voice_distinction": "variable",
+        "notes": "Lucy appears in Episode 2 with minimal distinctive speech patterns, making her character voice underdeveloped."
+      },
+      {
+        "character": "Lisa",
+        "consistency_score": 2.0,
+        "naturalness_consistency": "low",
+        "voice_distinction": "variable",
+        "notes": "Lisa has only one line in Episode 1, preventing the establishment of a consistent character voice."
+      }
+    ],
+    "speech_naturalization_recommendations": [
+      "Develop character-specific verbal tics and speech patterns for John, Sara, and Lucy in Episode 2 to create distinctive voices that align with their potential professional backgrounds",
+      "Add relationship-revealing dialogue in Episode 2 to establish connections between characters and provide context for their situation",
+      "Enhance subtext layers across all episodes by incorporating pauses, hesitations, and physical actions that reveal underlying emotions and withheld information",
+      "Consider implementing a consistent voice for characters who appear in multiple episodes to maintain character identity throughout the production"
+    ],
+    "readiness_for_production": {
+      "production_ready": false,
+      "remaining_issues": "Episode 2 requires significant revisions to address character voice distinction and subtext development. Characters John, Sara, and Lucy lack distinctive speech patterns, making them nearly interchangeable. The episode also lacks relationship context and deeper meaning layers.",
+      "next_steps": [
+        "Revise Episode 2 dialogue to incorporate character-specific speech patterns and verbal tics",
+        "Add relationship-revealing dialogue and subtextual layers to Episode 2",
+        "Review voice consistency for characters appearing in multiple episodes",
+        "Conduct a second round of naturalness analysis after implementing these changes"
+      ]
+    }
+  }
+}

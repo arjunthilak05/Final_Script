@@ -1,0 +1,272 @@
+{
+  "episode_id": 1,
+  "scene_clarity_analysis": {
+    "scene_clarity_scorecard": {
+      "Scene 1": {
+        "establishment_seconds": 8,
+        "location_score": 40,
+        "time_score": 85,
+        "character_presence_score": 70,
+        "overall_clarity": 65,
+        "location_issues": [
+          {
+            "issue_type": "insufficient acoustic environment description",
+            "location": "Scene 1",
+            "line_number": 1,
+            "specific_problem": "Living room is not sonically distinct from any other interior space",
+            "recommended_fix": "Add ambient sounds specific to a living room (TV humming, clock ticking, fireplace crackling, etc.)",
+            "severity": "HIGH",
+            "blocking_comprehension": false
+          }
+        ],
+        "time_issues": [
+          {
+            "issue_type": "missing nighttime audio cues",
+            "location": "Scene 1",
+            "line_number": 1,
+            "specific_problem": "No external sounds to establish nighttime",
+            "recommended_fix": "Add subtle nighttime ambient sounds (crickets, distant traffic, wind)",
+            "severity": "MEDIUM",
+            "blocking_comprehension": false
+          }
+        ],
+        "character_issues": [
+          {
+            "issue_type": "unclear spatial positioning",
+            "location": "Scene 1",
+            "line_number": 3,
+            "specific_problem": "Listeners can't determine where John and Lisa are in relation to each other or the door",
+            "recommended_fix": "Add directional audio cues or dialogue referencing their positions",
+            "severity": "MEDIUM",
+            "blocking_comprehension": false
+          }
+        ]
+      }
+    },
+    "audio_signatures": {
+      "Scene 1": {
+        "location_audio_cues": [
+          "none"
+        ],
+        "time_audio_cues": [
+          "John: 'Is everyone asleep?'"
+        ],
+        "spatial_audio_cues": [
+          "door creaking"
+        ],
+        "sound_effects_detected": [
+          "DOOR CREAKING OPEN"
+        ],
+        "ambient_sound_detected": [
+          "none"
+        ],
+        "audio_density": "low",
+        "detection_confidence": 0.7
+      }
+    }
+  },
+  "action_comprehension_analysis": {
+    "action_sequence_scorecard": {
+      "Scene 1": {
+        "physical_action_score": 30,
+        "character_action_score": 25,
+        "emotional_action_score": 20,
+        "overall_action_score": 25,
+        "action_issues": [
+          {
+            "action_type": "physical",
+            "location": "Scene 1",
+            "line_number": 1,
+            "problematic_sequence": "Scene opening with no established positions",
+            "problem": "Listeners don't know where characters are positioned in the living room or their postures",
+            "recommended_fix": "Add introductory description: 'John and Lisa sit tensely on the couch in the dark living room'",
+            "severity": "HIGH",
+            "auto_fixed": false
+          },
+          {
+            "action_type": "character",
+            "location": "Scene 1, line 5",
+            "line_number": 5,
+            "problematic_sequence": "SFX: DOOR CREAKING OPEN",
+            "problem": "Unclear which door is opening and characters' reactions to it",
+            "recommended_fix": "Add character reaction: 'SFX: DOOR CREAKING OPEN. John freezes, holding his breath.'",
+            "severity": "CRITICAL",
+            "auto_fixed": false
+          },
+          {
+            "action_type": "physical",
+            "location": "Scene 1, line 6",
+            "line_number": 6,
+            "problematic_sequence": "Let's go, then.",
+            "problem": "No physical movement described when John decides to leave",
+            "recommended_fix": "Add movement description: 'Let's go, then. (John stands quietly, motioning to the back door)'",
+            "severity": "HIGH",
+            "auto_fixed": false
+          },
+          {
+            "action_type": "emotional",
+            "location": "Scene 1",
+            "line_number": 1,
+            "problematic_sequence": "Entire scene",
+            "problem": "Lacks emotional reactions and non-verbal communication cues",
+            "recommended_fix": "Add emotional cues: 'JOHN (whispering nervously)' and 'LISA (glancing toward hallway)'",
+            "severity": "MEDIUM",
+            "auto_fixed": false
+          }
+        ]
+      }
+    },
+    "sound_effect_sequencing": {
+      "Scene 1": [
+        {
+          "action": "Door opening",
+          "sound_effect": "DOOR CREAKING OPEN",
+          "integration_score": 3,
+          "line_number": 5,
+          "natural_placement": true,
+          "auditory_clarity": 4,
+          "fix_needed": true,
+          "recommended_sfx": "SFX: FRONT DOOR CREAKING OPEN (followed by brief pause for character reaction)"
+        }
+      ]
+    }
+  },
+  "transition_clarity_analysis": {
+    "transition_scorecard": {
+      "Transition into Scene": {
+        "transition_from": "previous episode/nothing",
+        "transition_to": "living room at night",
+        "clarity_score": 85,
+        "time_transition_score": 90,
+        "location_transition_score": 80,
+        "pov_transition_score": 100,
+        "transition_issues": [
+          {
+            "transition_type": "location",
+            "location": "start of episode",
+            "line_number": 1,
+            "specific_problem": "Limited acoustic description of living room environment",
+            "recommended_fix": "Add subtle ambient sound to establish the living room setting (e.g., faint clock ticking, distant traffic)",
+            "severity": "MEDIUM",
+            "disorientation_risk": false
+          }
+        ]
+      },
+      "Implied Movement Transition": {
+        "transition_from": "living room",
+        "transition_to": "unknown location",
+        "clarity_score": 45,
+        "time_transition_score": 100,
+        "location_transition_score": 30,
+        "pov_transition_score": 100,
+        "transition_issues": [
+          {
+            "transition_type": "location",
+            "location": "after door creaking sound",
+            "line_number": 7,
+            "specific_problem": "Door creaking suggests movement but no clear indication if characters actually move locations",
+            "recommended_fix": "Add dialogue or sound effects to confirm if they move through the door (e.g., footsteps, door closing)",
+            "severity": "HIGH",
+            "disorientation_risk": true
+          }
+        ]
+      },
+      "Transition out of Scene": {
+        "transition_from": "living room",
+        "transition_to": "next episode/scene",
+        "clarity_score": 70,
+        "time_transition_score": 80,
+        "location_transition_score": 60,
+        "pov_transition_score": 100,
+        "transition_issues": [
+          {
+            "transition_type": "location",
+            "location": "end of episode",
+            "line_number": 9,
+            "specific_problem": "Unclear where characters are when scene fades out",
+            "recommended_fix": "Add a line or sound effect to establish final position before fade out",
+            "severity": "MEDIUM",
+            "disorientation_risk": false
+          }
+        ]
+      }
+    },
+    "audio_bridges": {
+      "Opening to Scene": {
+        "transition_type": "location",
+        "bridge_audio_cues": [
+          "FADE IN",
+          "scene setting description"
+        ],
+        "clarity_score": 85
+      },
+      "Door Creaking to Dialogue": {
+        "transition_type": "location",
+        "bridge_audio_cues": [
+          "DOOR CREAKING OPEN",
+          "John's dialogue"
+        ],
+        "clarity_score": 45
+      },
+      "Scene to Closing": {
+        "transition_type": "location",
+        "bridge_audio_cues": [
+          "FADE OUT"
+        ],
+        "clarity_score": 70
+      }
+    }
+  },
+  "information_delivery_analysis": {
+    "delivery_scorecard": {
+      "Scene 1": {
+        "natural_integration_score": 70,
+        "audio_friendly_score": 85,
+        "repetition_score": 50,
+        "overall_delivery_score": 68,
+        "delivery_issues": [
+          {
+            "issue_type": "memory_gap",
+            "location": "Scene 1, line 4",
+            "line_number": 4,
+            "problematic_content": "We can't afford to wait any longer.",
+            "problem": "Lacks context about why they can't wait, leaving listeners unclear about the stakes and purpose of their actions",
+            "recommended_fix": "Add a brief hint about their purpose, such as 'We can't afford to wait any longer. The package needs to be delivered before dawn.'",
+            "severity": "HIGH",
+            "one_breath_fix": "We can't wait, we need to deliver this before dawn."
+          },
+          {
+            "issue_type": "memory_gap",
+            "location": "Scene 1, beginning",
+            "line_number": 1,
+            "problematic_content": "Is everyone asleep?",
+            "problem": "No context about who 'everyone' refers to or why they need people to be asleep",
+            "recommended_fix": "Add subtle context, such as 'Is everyone asleep? We can't risk anyone knowing about the mission.'",
+            "severity": "MEDIUM",
+            "one_breath_fix": "Is everyone asleep? We need to leave undetected."
+          }
+        ]
+      }
+    },
+    "information_priority": {
+      "critical_info": [
+        {
+          "information": "John and Lisa are waiting for someone (Mom) to fall asleep before they can leave",
+          "repetition_count": 1,
+          "spacing": "N/A",
+          "clarity_score": 75
+        }
+      ],
+      "secondary_info": [
+        {
+          "information": "There's urgency to their departure",
+          "repetition_count": 1,
+          "spacing": "N/A",
+          "clarity_score": 50
+        }
+      ]
+    }
+  },
+  "overall_clarity_score": 56,
+  "timestamp": "2025-10-27T16:48:13.206698"
+}

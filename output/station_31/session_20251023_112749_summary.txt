@@ -1,0 +1,32 @@
+======================================================================
+STATION 31: DIALOGUE NATURALNESS SUMMARY
+======================================================================
+
+Session ID: session_20251023_112749
+Analysis Date: 2025-10-27T12:25:21.560711
+Total Episodes: 3
+
+----------------------------------------------------------------------
+EXECUTIVE SUMMARY
+----------------------------------------------------------------------
+The dialogue across the three episodes shows varying levels of naturalness, with Episode 1 and Episode 3 demonstrating more authentic speech patterns compared to Episode 2. Episode 1 features well-developed characters with distinct professional voices (Tom as a life coach, Julia as an ER nurse, Sarah as a corporate executive) that align with their roles. Episode 3 effectively captures a natural coffee shop conversation between Beth and Jake, with appropriate emotional tones. Episode 2, however, suffers from character voice inconsistency and lacks distinctive speech patterns, making John, Sara, and Lucy nearly interchangeable despite different emotional directions. The subtext in Episodes 1 and 3 is more developed, while Episode 2's dialogue is primarily surface-level with minimal underlying meaning. Overall, the dialogue would benefit from greater character voice distinction, more consistent use of verbal tics, and deeper subtextual layers to enhance production readiness.
+
+----------------------------------------------------------------------
+OVERALL NATURALNESS SCORES
+----------------------------------------------------------------------
+
+2:
+  Characters Analyzed: 3
+  Average Naturalness Score: 2.3/5
+
+3:
+  Characters Analyzed: 2
+  Average Naturalness Score: 4.0/5
+
+1:
+  Characters Analyzed: 5
+  Average Naturalness Score: 4.0/5
+
+======================================================================
+END OF DIALOGUE NATURALNESS ANALYSIS
+======================================================================

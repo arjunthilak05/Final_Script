@@ -1,0 +1,39 @@
+======================================================================
+STATION 31: DIALOGUE NATURALNESS ANALYSIS
+======================================================================
+
+Episode ID: 3
+Analysis Date: 2025-10-27T12:23:28.062990
+Session ID: session_20251023_112749
+
+----------------------------------------------------------------------
+SPEAKABILITY CHECK
+----------------------------------------------------------------------
+Total Issues Found: 0
+
+----------------------------------------------------------------------
+NATURALNESS SCORECARD
+----------------------------------------------------------------------
+
+Beth:
+  Vocabulary Score: 4/5
+  Sentence Structure Score: 4/5
+  Overall Naturalness: 4/5
+
+Jake:
+  Vocabulary Score: 4/5
+  Sentence Structure Score: 4/5
+  Overall Naturalness: 4/5
+
+----------------------------------------------------------------------
+IDENTITY CLARITY
+----------------------------------------------------------------------
+Beth: {'distinction_level': 0.75, 'uniqueness': 'medium', 'interchangeable_with': [], 'improvement_needed': True}/5
+Jake: {'distinction_level': 0.7, 'uniqueness': 'medium', 'interchangeable_with': [], 'improvement_needed': True}/5
+
+----------------------------------------------------------------------
+SUBTEXT VERIFICATION
+----------------------------------------------------------------------
+======================================================================
+END OF NATURALNESS ANALYSIS
+======================================================================

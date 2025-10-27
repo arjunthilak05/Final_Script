@@ -1,0 +1,254 @@
+{
+  "episode_id": 3,
+  "speakability_analysis": {
+    "speakability_issues": [],
+    "tongue_twisters_detected": [],
+    "breath_length_problems": [],
+    "word_order_issues": [],
+    "total_issues": 0
+  },
+  "naturalness_scorecard": {
+    "character_naturalness": {
+      "Beth": {
+        "vocabulary_score": 4,
+        "vocabulary_appropriateness": "Beth's vocabulary is appropriate for her age and background. She uses casual language like \"how's\" and colloquialisms like \"you name it\" that fit a coffee shop conversation. Her speech feels natural for someone in her apparent age range.",
+        "sentence_structure_score": 4,
+        "sentence_analysis": "Beth's sentences vary in length and structure. She uses a simple question followed by a comforting statement. Her lines are concise and flow naturally, matching the cheerful tone indicated in the script.",
+        "filler_words_score": 4,
+        "filler_word_usage": "Beth doesn't use filler words, which is appropriate for her brief, focused dialogue. The lack of fillers doesn't sound robotic because her lines are short and purposeful.",
+        "interruption_score": 3,
+        "interruption_analysis": "There are no interruptions in Beth's dialogue. While this is acceptable for the brief exchange, some natural overlap might have enhanced realism. The flow of conversation is still believable.",
+        "overall_score": 4,
+        "naturalness_notes": "Beth's dialogue feels natural for a coffee shop conversation. Her cheerful tone and consoling words match the context well. The speech patterns, vocabulary, and sentence structure all contribute to a believable character."
+      },
+      "Jake": {
+        "vocabulary_score": 4,
+        "vocabulary_appropriateness": "Jake's vocabulary is appropriate for someone discussing work stress. Terms like \"nightmare,\" \"deadlines,\" and \"bugs\" fit a professional discussing project challenges. His language is casual but specific enough to sound authentic.",
+        "sentence_structure_score": 4,
+        "sentence_analysis": "Jake's sentences are short and fragmented, reflecting his stressed state. The structure \"It's a nightmare. Deadlines, bugs, you name it\" effectively conveys his frustration through fragmented thoughts, which is natural for someone under stress.",
+        "filler_words_score": 4,
+        "filler_word_usage": "Jake doesn't use filler words, which works for his brief, stressed dialogue. His direct responses without fillers convey his focused frustration naturally.",
+        "interruption_score": 3,
+        "interruption_analysis": "There are no interruptions in Jake's dialogue. While this isn't unrealistic for such a brief exchange, some natural overlap might have enhanced the conversational flow. The current structure still feels believable.",
+        "overall_score": 4,
+        "naturalness_notes": "Jake's dialogue effectively conveys stress and frustration through word choice and sentence structure. His responses are natural for someone discussing work problems in a casual setting. The speech patterns match the emotional tone indicated in the script."
+      }
+    },
+    "vocabulary_scores": {
+      "Beth": {
+        "age_appropriate": true,
+        "education_fit": true,
+        "era_fit": true,
+        "examples": [
+          "Hey, how's the big project coming along?",
+          "You'll get through it. You always do."
+        ]
+      },
+      "Jake": {
+        "age_appropriate": true,
+        "education_fit": true,
+        "era_fit": true,
+        "examples": [
+          "It's a nightmare.",
+          "Deadlines, bugs, you name it."
+        ]
+      }
+    },
+    "sentence_structure_scores": {
+      "Beth": {
+        "average_length": 5.5,
+        "variance": "medium",
+        "complexity_level": "low",
+        "notes": "Beth's sentences are simple and direct, appropriate for a casual conversation. The structure varies between a question and a statement, creating natural rhythm."
+      },
+      "Jake": {
+        "average_length": 4,
+        "variance": "high",
+        "complexity_level": "low",
+        "notes": "Jake's sentences are short and fragmented, reflecting his stressed state. The variance between a complete sentence and a list creates a natural pattern of someone overwhelmed."
+      }
+    },
+    "filler_word_analysis": {
+      "Beth": {
+        "usage_count": 0,
+        "realistic": true,
+        "overuse": false,
+        "examples": []
+      },
+      "Jake": {
+        "usage_count": 0,
+        "realistic": true,
+        "overuse": false,
+        "examples": []
+      }
+    },
+    "interruption_overlap_analysis": {
+      "Beth": {
+        "overlap_count": 0,
+        "cutoff_count": 0,
+        "natural_flow": true,
+        "examples": []
+      },
+      "Jake": {
+        "overlap_count": 0,
+        "cutoff_count": 0,
+        "natural_flow": true,
+        "examples": []
+      }
+    }
+  },
+  "identity_clarity": {
+    "character_identification": {
+      "Beth": {
+        "identifiable_within_lines": 2,
+        "unique_markers": [
+          "cheerful tone",
+          "consoling language"
+        ],
+        "distinction_score": 0.75,
+        "over_naming_count": 0,
+        "notes": "Beth's cheerful and consoling tone helps distinguish her from Jake, but her dialogue lacks unique verbal tics or specific speech patterns that would make her instantly recognizable without name tags."
+      },
+      "Jake": {
+        "identifiable_within_lines": 2,
+        "unique_markers": [
+          "stressed tone",
+          "complaints about work"
+        ],
+        "distinction_score": 0.7,
+        "over_naming_count": 0,
+        "notes": "Jake's stressed tone and work-related complaints help identify him, but his dialogue lacks distinctive speech patterns or verbal tics that would make him instantly recognizable without name tags."
+      }
+    },
+    "voice_distinction_scores": {
+      "Beth": {
+        "distinction_level": 0.75,
+        "uniqueness": "medium",
+        "interchangeable_with": [],
+        "improvement_needed": true
+      },
+      "Jake": {
+        "distinction_level": 0.7,
+        "uniqueness": "medium",
+        "interchangeable_with": [],
+        "improvement_needed": true
+      }
+    },
+    "verbal_ticks_usage": {
+      "Beth": {
+        "signature_patterns": [
+          "cheerful greeting",
+          "consoling statement"
+        ],
+        "consistency": "low",
+        "usage_count": 2
+      },
+      "Jake": {
+        "signature_patterns": [
+          "complaint about work"
+        ],
+        "consistency": "low",
+        "usage_count": 1
+      }
+    },
+    "relationship_clarity": {
+      "relationships_clear": true,
+      "location_clear": true,
+      "time_period_clear": false,
+      "context_sufficiency": "medium"
+    },
+    "improvement_recommendations": [
+      {
+        "character": "Beth",
+        "issue": "Lacks distinctive verbal tics and speech patterns",
+        "recommendation": "Incorporate unique verbal tics such as a consistent use of positive affirmations or a specific greeting pattern. For example: 'How's the big project coming along?' could become 'Hey there! How's that big project of yours shaping up today?'"
+      },
+      {
+        "character": "Jake",
+        "issue": "Generic stress responses without unique markers",
+        "recommendation": "Add specific verbal tics that reflect his stressed state, such as sighing before speaking or using specific phrases like 'Honestly...' or 'I'm telling you...' to preface his complaints. Example: 'Honestly, it's a nightmare. Deadlines, bugs, you name it.'"
+      }
+    ]
+  },
+  "subtext_layers": {
+    "subtext_layers": {
+      "dialogue_layers": [
+        {
+          "dialogue_line": "Hey, how's the big project coming along?",
+          "character": "Beth",
+          "location": "Scene 1, Line 1",
+          "surface_meaning": "Beth is asking Jake about the status of his project.",
+          "underlying_meaning": "Beth is attempting to engage Jake in conversation and show interest in his work life while maintaining a cheerful demeanor.",
+          "withheld_information": "Beth might be aware that Jake is stressed and is using this question as a gentle way to open the conversation.",
+          "layer_score": 2,
+          "subtext_depth": "medium"
+        },
+        {
+          "dialogue_line": "It's a nightmare. Deadlines, bugs, you name it.",
+          "character": "Jake",
+          "location": "Scene 1, Line 2",
+          "surface_meaning": "Jake is describing his work project as difficult due to various challenges.",
+          "underlying_meaning": "Jake is expressing his frustration and possibly seeking validation or sympathy from Beth.",
+          "withheld_information": "Jake may be overwhelmed to the point of not wanting to discuss details, just venting his stress.",
+          "layer_score": 2,
+          "subtext_depth": "medium"
+        },
+        {
+          "dialogue_line": "You'll get through it. You always do.",
+          "character": "Beth",
+          "location": "Scene 1, Line 3",
+          "surface_meaning": "Beth is offering encouragement to Jake.",
+          "underlying_meaning": "Beth is offering emotional support while also subtly recognizing this as a recurring pattern of stress for Jake.",
+          "withheld_information": "Beth might be implying that this stress is typical for Jake but doesn't want to directly point out this pattern.",
+          "layer_score": 2,
+          "subtext_depth": "medium"
+        }
+      ]
+    },
+    "surface_meaning_analysis": {
+      "total_lines_analyzed": 3,
+      "lines_with_surface_only": 0,
+      "lines_with_layers": 3,
+      "examples": [
+        "It's a nightmare. Deadlines, bugs, you name it.",
+        "You'll get through it. You always do."
+      ]
+    },
+    "underlying_meaning_analysis": {
+      "intent_clarity": "medium",
+      "evasion_techniques": 1,
+      "deflection_count": 0,
+      "examples": [
+        "Jake's vague response about his project difficulties without going into specifics"
+      ]
+    },
+    "withheld_information_cues": {
+      "pause_markers": 0,
+      "tone_cues": 2,
+      "silence_as_tool": 0,
+      "examples": [
+        "Jake's stressed tone indicating he doesn't want to elaborate further",
+        "Beth's consoling tone suggesting she recognizes this pattern"
+      ]
+    },
+    "subtext_quality_score": 0.67,
+    "recommendations": [
+      {
+        "location": "Scene 1, Line 1",
+        "issue": "Beth's opening question lacks deeper subtextual layers",
+        "recommendation": "Add a slight hesitation or specific detail that suggests Beth already knows Jake is stressed, e.g., '(hesitates slightly) Hey, how's the big project coming along?'"
+      },
+      {
+        "location": "Scene 1, Line 2",
+        "issue": "Jake's response could contain more hidden meaning",
+        "recommendation": "Include a physical action or pause that suggests Jake is holding back more serious concerns, e.g., 'It's a nightmare. (sighs) Deadlines, bugs, you name it.'"
+      },
+      {
+        "location": "Scene 1, Line 3",
+        "issue": "Beth's response could be more layered",
+        "recommendation": "Add a subtle element that suggests this is a recurring conversation, e.g., 'You'll get through it. (small smile) You always do.'"
+      }
+    ]
+  },
+  "timestamp": "2025-10-27T12:23:28.062990"
+}

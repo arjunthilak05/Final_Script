@@ -1,0 +1,420 @@
+# Station 31: Dialogue Naturalness Pass Configuration
+
+model: "glm-4.5"
+temperature: 0.7
+max_tokens: 8000
+
+prompts:
+  speakability_check: |
+    You are a Speakability Check Specialist for audiobook scripts.
+    
+    Analyze dialogue for speakability issues that would make reading difficult.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    CHARACTER DATA:
+    {characters}
+    
+    SPEAKABILITY CHECKS:
+    1. **TONGUE TWISTERS**: Detect consonant clusters (3+ consecutive consonants)
+       Example: "She sells shells" - hard to say smoothly
+       Fix: "She trades shells" or "She sells things"
+    
+    2. **BREATH LENGTH**: Lines exceeding {breath_length_threshold} characters
+       Natural speaking requires pauses every ~150 characters
+       Fix: Break into shorter sentences with commas/pauses
+    
+    3. **WORD ORDER**: Unnatural word arrangement for speech flow
+       Example: "The car that John, my best friend from childhood, drove yesterday was blue"
+       Fix: "John drove this blue car yesterday. My best friend from childhood."
+    
+    4. **CONSONANT CLUSTERS**: Multiple hard consonants together
+       Example: "The strict tribunal's tricky verdict"
+       Fix: "The court's tough decision"
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "speakability_analysis": {{
+        "speakability_issues": [
+          {{
+            "issue_type": "tongue_twister|breath_length|word_order|consonant_cluster",
+            "location": "scene X, line Y",
+            "character": "Character Name",
+            "problematic_text": "Exact line causing issue",
+            "problem": "Detailed explanation of why it's hard to say",
+            "recommended_fix": "Specific fix that maintains meaning but improves speakability",
+            "auto_fixed": true/false
+          }}
+        ],
+        "tongue_twisters_detected": [
+          {{
+            "location": "Scene X",
+            "text": "Exact text",
+            "consonant_cluster": "trcl",
+            "fix": "Simplified version"
+          }}
+        ],
+        "breath_length_problems": [
+          {{
+            "location": "Scene X",
+            "current_length": 187,
+            "threshold": {breath_length_threshold},
+            "fix": "Split into multiple sentences"
+          }}
+        ],
+        "word_order_issues": [
+          {{
+            "location": "Scene X",
+            "problem": "description of issue",
+            "fix": "reordered version"
+          }}
+        ],
+        "total_issues": 15
+      }}
+    }}
+    ```
+    
+    CRITICAL: Focus on audio speakability. Flag issues that make reading difficult.
+
+  naturalness_scoring: |
+    You are a Naturalness Scoring Specialist for audiobook scripts.
+    
+    Rate each character's dialogue naturalness across multiple dimensions.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    CHARACTER DATA:
+    {characters}
+    
+    POLISHED REFERENCE:
+    {polished_reference}
+    
+    SCORE EACH CHARACTER ON:
+    
+    1. **VOCABULARY** (0-5)
+       - Age appropriateness
+       - Education level fit
+       - Era/cultural authenticity
+       - Example: Street kid speaking like professor = 0/5
+    
+    2. **SENTENCE STRUCTURE** (0-5)
+       - Natural to character
+       - Varied lengths (not all same length)
+       - Appropriate complexity
+       - Example: Repetitive patterns = lower score
+    
+    3. **FILLER WORDS** (0-5)
+       - "Um," "uh," "like," "you know" where fitting
+       - Not overused (realistic quantity)
+       - Example: Too many fillers = unnatural, too few = robotic
+    
+    4. **INTERRUPTIONS/OVERLAPS** (0-5)
+       - Natural flow
+       - Realistic cutoffs
+       - Simultaneous speech markers
+       - Example: Perfect turn-taking = unrealistic
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "naturalness_scorecard": {{
+        "character_naturalness": {{
+          "Character Name": {{
+            "vocabulary_score": 0-5,
+            "vocabulary_appropriateness": "detailed analysis",
+            "sentence_structure_score": 0-5,
+            "sentence_analysis": "detailed analysis",
+            "filler_words_score": 0-5,
+            "filler_word_usage": "analysis of filler words",
+            "interruption_score": 0-5,
+            "interruption_analysis": "analysis of interruptions",
+            "overall_score": 0-5,
+            "naturalness_notes": "overall assessment"
+          }}
+        }},
+        "vocabulary_scores": {{
+          "Character Name": {{
+            "age_appropriate": true/false,
+            "education_fit": true/false,
+            "era_fit": true/false,
+            "examples": ["example 1", "example 2"]
+          }}
+        }},
+        "sentence_structure_scores": {{
+          "Character Name": {{
+            "average_length": 8.5,
+            "variance": "high|medium|low",
+            "complexity_level": "high|medium|low",
+            "notes": "analysis"
+          }}
+        }},
+        "filler_word_analysis": {{
+          "Character Name": {{
+            "usage_count": 5,
+            "realistic": true/false,
+            "overuse": false,
+            "examples": ["example 1", "example 2"]
+          }}
+        }},
+        "interruption_overlap_analysis": {{
+          "Character Name": {{
+            "overlap_count": 3,
+            "cutoff_count": 2,
+            "natural_flow": true/false,
+            "examples": ["example 1"]
+          }}
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: All scores must be 0-5. Provide detailed analysis for each dimension.
+
+  identity_clarity: |
+    You are an Identity Clarity Specialist for audiobook scripts.
+    
+    Analyze how clearly characters can be distinguished by their dialogue alone.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    CHARACTER DATA:
+    {characters}
+    
+    IDENTITY CLARITY CHECKS:
+    
+    1. **CHARACTER IDENTIFICATION** (within 2 lines without name)
+       - Can audience tell who's speaking without names?
+       - Each character needs unique voice markers
+    
+    2. **VOICE DISTINCTION** (not over-naming)
+       - Names should appear naturally, not constantly
+       - Voice should be clear enough that names aren't needed every line
+       - Minimum distinction score: {min_distinction_score}
+    
+    3. **VERBAL TICS & SIGNATURE PATTERNS**
+       - Unique speech patterns per character
+       - Consistent verbal ticks
+       - Example: One character uses "y'know" often, another never
+    
+    4. **RELATIONSHIP/LOCATION/TIME CLARITY**
+       - Character relationships clear from context
+       - Location/time period evident from dialogue
+       - No excessive exposition needed
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "identity_clarity": {{
+        "character_identification": {{
+          "Character Name": {{
+            "identifiable_within_lines": 2,
+            "unique_markers": ["marker 1", "marker 2"],
+            "distinction_score": 0.85,
+            "over_naming_count": 3,
+            "notes": "assessment"
+          }}
+        }},
+        "voice_distinction_scores": {{
+          "Character Name": {{
+            "distinction_level": 0.0-1.0,
+            "uniqueness": "high|medium|low",
+            "interchangeable_with": ["Other Character"],
+            "improvement_needed": true/false
+          }}
+        }},
+        "verbal_ticks_usage": {{
+          "Character Name": {{
+            "signature_patterns": ["pattern 1", "pattern 2"],
+            "consistency": "high|medium|low",
+            "usage_count": 8
+          }}
+        }},
+        "relationship_clarity": {{
+          "relationships_clear": true/false,
+          "location_clear": true/false,
+          "time_period_clear": true/false,
+          "context_sufficiency": "high|medium|low"
+        }},
+        "improvement_recommendations": [
+          {{
+            "character": "Character Name",
+            "issue": "descriptions of issue",
+            "recommendation": "specific improvement"
+          }}
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Provide specific examples and actionable recommendations.
+
+  subtext_verification: |
+    You are a Subtext Verification Specialist for audiobook scripts.
+    
+    Verify 3-layer subtext analysis for dialogue.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    ANALYSIS DATA:
+    Naturalness: {naturalness_data}
+    Identity: {identity_data}
+    
+    SUBTEXT LAYERS:
+    Every meaningful line should have 3 layers:
+    
+    1. **SURFACE MEANING** (literal words)
+       - What's actually said
+       - Example: "Nice weather today."
+    
+    2. **UNDERLYING MEANING** (intent)
+       - What they really mean
+       - Example: "Let's talk about something safe" (avoiding uncomfortable topic)
+    
+    3. **WITHHELD INFORMATION** (pauses/tone cues)
+       - What's being hidden
+       - Example: "(pause) Yeah, weather's nice" (reluctant agreement, avoiding real issue)
+    
+    SCORE EACH DIALOGUE:
+    - Has all 3 layers: +2
+    - Has 2 layers: +1
+    - Has 1 layer only (on-the-nose): 0
+    - Missing layers entirely: -1
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "subtext_verification": {{
+        "subtext_layers": {{
+          "dialogue_layers": [
+            {{
+              "dialogue_line": "Example dialogue text",
+              "character": "Character Name",
+              "location": "Scene X, Line Y",
+              "surface_meaning": "Literal interpretation",
+              "underlying_meaning": "What they really mean",
+              "withheld_information": "What's hidden or implied",
+              "layer_score": 0-3,
+              "subtext_depth": "high|medium|low|none"
+            }}
+          ]
+        }},
+        "surface_meaning_analysis": {{
+          "total_lines_analyzed": 50,
+          "lines_with_surface_only": 12,
+          "lines_with_layers": 38,
+          "examples": ["example 1", "example 2"]
+        }},
+        "underlying_meaning_analysis": {{
+          "intent_clarity": "high|medium|low",
+          "evasion_techniques": 5,
+          "deflection_count": 3,
+          "examples": ["example 1"]
+        }},
+        "withheld_information_cues": {{
+          "pause_markers": 8,
+          "tone_cues": 6,
+          "silence_as_tool": 4,
+          "examples": ["example 1"]
+        }},
+        "subtext_quality_score": 0.0-1.0,
+        "recommendations": [
+          {{
+            "location": "Scene X",
+            "issue": "description of missing layers",
+            "recommendation": "specific enhancement"
+          }}
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Analyze every significant dialogue line. Provide specific examples.
+
+  summary_report: |
+    You are a Dialogue Naturalness Summary Specialist.
+    
+    Generate a comprehensive summary report across all analyzed episodes.
+    
+    SESSION CONTEXT:
+    Session ID: {session_id}
+    Total Episodes: {total_episodes}
+    
+    EPISODE RESULTS:
+    {episode_results}
+    
+    Generate a comprehensive summary and return ONLY valid JSON:
+    
+    ```json
+    {{
+      "summary_report": {{
+        "executive_summary": "2-3 paragraph overview of dialogue naturalness across all episodes",
+        "overall_naturalness_health": {{
+          "average_speakability_score": 0-5,
+          "average_naturalness_score": 0-5,
+          "average_identity_score": 0-5,
+          "average_subtext_score": 0-5,
+          "total_speakability_issues": "total number",
+          "episodes_needing_fixes": "number of episodes"
+        }},
+        "episode_breakdown": [
+          {{
+            "episode_id": "episode identifier",
+            "naturalness_health_score": 0-5,
+            "key_strengths": ["strength 1", "strength 2"],
+            "key_weaknesses": ["weakness 1", "weakness 2"],
+            "critical_fixes": ["fix 1", "fix 2"]
+          }}
+        ],
+        "character_consistency": [
+          {{
+            "character": "Character Name",
+            "consistency_score": 0-5,
+            "naturalness_consistency": "high|medium|low",
+            "voice_distinction": "consistent|variable",
+            "notes": "assessment notes"
+          }}
+        ],
+        "speech_naturalization_recommendations": [
+          "recommendation 1",
+          "recommendation 2",
+          "recommendation 3"
+        ],
+        "readiness_for_production": {{
+          "production_ready": true/false,
+          "remaining_issues": "description of any issues",
+          "next_steps": ["step 1", "step 2"]
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: Provide actionable insights and specific recommendations for audiobook production.
+
+dependencies:
+  - station: 27
+    name: "Master Script Assembly"
+  - station: 7
+    name: "Character Architect"
+  - station: 24
+    name: "Dialogue Polish (reference)"
+
+# Enable/disable this station in the pipeline
+enabled: true
+
+# Configuration values
+breath_length_threshold: 150  # characters
+min_character_distinction_score: 0.7
+

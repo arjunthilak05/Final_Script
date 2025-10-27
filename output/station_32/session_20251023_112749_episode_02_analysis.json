@@ -1,0 +1,201 @@
+{
+  "episode_id": 2,
+  "scene_clarity_analysis": {},
+  "action_comprehension_analysis": {
+    "action_sequence_scorecard": {
+      "Scene 1": {
+        "physical_action_score": 30,
+        "character_action_score": 40,
+        "emotional_action_score": 70,
+        "overall_action_score": 47,
+        "action_issues": [
+          {
+            "action_type": "physical",
+            "location": "Scene 1, after line 4",
+            "line_number": 4,
+            "problematic_sequence": "SFX: DOOR CREAKING",
+            "problem": "The door creaking sound effect isn't connected to any character action - it's unclear who is interacting with the door or if it's opening on its own",
+            "recommended_fix": "Add a description of who is at the door or what is causing the creaking sound before the SFX line, such as 'SFX: FOOTSTEPS APPROACHING' followed by 'SFX: DOOR CREAKING OPEN'",
+            "severity": "HIGH",
+            "auto_fixed": false
+          },
+          {
+            "action_type": "character",
+            "location": "Scene 1, throughout",
+            "line_number": 1,
+            "problematic_sequence": "JOHN and SARA dialogue without spatial context",
+            "problem": "Their positions in the room and proximity to each other aren't established, making it difficult to visualize the scene",
+            "recommended_fix": "Add introductory action lines establishing positions, such as 'JOHN sits on the couch' and 'SARA kneels beside him'",
+            "severity": "MEDIUM",
+            "auto_fixed": false
+          }
+        ]
+      },
+      "Scene 2": {
+        "physical_action_score": 60,
+        "character_action_score": 50,
+        "emotional_action_score": 40,
+        "overall_action_score": 50,
+        "action_issues": [
+          {
+            "action_type": "physical",
+            "location": "Scene 2, line 6",
+            "line_number": 6,
+            "problematic_sequence": "LUCY (pacing)",
+            "problem": "The pacing action lacks detail - speed, pattern, and duration aren't specified",
+            "recommended_fix": "Add more descriptive pacing action, such as 'LUCY (pacing rapidly back and forth between the counter and the table)'",
+            "severity": "MEDIUM",
+            "auto_fixed": false
+          },
+          {
+            "action_type": "emotional",
+            "location": "Scene 2, line 7",
+            "line_number": 7,
+            "problematic_sequence": "LUCY dialogue without emotional descriptors",
+            "problem": "Lucy's emotional state is implied but not explicitly described through sound",
+            "recommended_fix": "Add an emotional sound cue before her line, such as '(frustrated sigh)' or '(anxious breathing)'",
+            "severity": "LOW",
+            "auto_fixed": false
+          }
+        ]
+      }
+    },
+    "sound_effect_sequencing": {
+      "Scene 1": [
+        {
+          "action": "Door creaking sound",
+          "sound_effect": "SFX: DOOR CREAKING",
+          "integration_score": 6,
+          "line_number": 4,
+          "natural_placement": true,
+          "auditory_clarity": 7,
+          "fix_needed": true,
+          "recommended_sfx": "Add preceding sound such as 'SFX: FOOTSTEPS APPROACHING' followed by 'SFX: DOOR CREAKING OPEN' to provide context"
+        }
+      ],
+      "Scene 2": [
+        {
+          "action": "Lucy pacing",
+          "sound_effect": "Missing",
+          "integration_score": 0,
+          "line_number": 6,
+          "natural_placement": false,
+          "auditory_clarity": 0,
+          "fix_needed": true,
+          "recommended_sfx": "Add 'SFX: FOOTSTEPS ON TILE FLOOR, BACK AND FORTH' to accompany the pacing action"
+        }
+      ]
+    }
+  },
+  "transition_clarity_analysis": {
+    "transition_scorecard": {
+      "Living Room to Kitchen": {
+        "transition_from": "INT. LIVING ROOM - NIGHT",
+        "transition_to": "INT. KITCHEN - NIGHT",
+        "clarity_score": 55,
+        "time_transition_score": 85,
+        "location_transition_score": 65,
+        "pov_transition_score": 15,
+        "transition_issues": [
+          {
+            "transition_type": "location",
+            "location": "between Living Room and Kitchen",
+            "line_number": 8,
+            "specific_problem": "Acoustic signature change not clearly established between rooms",
+            "recommended_fix": "Add specific SFX that clearly indicates movement from living room to kitchen, such as footsteps, door opening/closing, and distinct room acoustics",
+            "severity": "MEDIUM",
+            "disorientation_risk": true
+          },
+          {
+            "transition_type": "pov",
+            "location": "between Living Room and Kitchen",
+            "line_number": 10,
+            "specific_problem": "New character Lucy introduced without establishing connection to previous characters or context",
+            "recommended_fix": "Add a narrator transition or character reference to establish Lucy's relationship to John and Sara, or include dialogue that references the previous conversation",
+            "severity": "HIGH",
+            "disorientation_risk": true
+          }
+        ]
+      }
+    },
+    "audio_bridges": {
+      "Living Room to Kitchen": {
+        "transition_type": "location",
+        "bridge_audio_cues": [
+          "Footsteps walking across floor",
+          "Door handle turning",
+          "Door opening with creak",
+          "Footsteps in hallway",
+          "Kitchen door opening",
+          "Distinct kitchen acoustic signature with different reverb"
+        ],
+        "clarity_score": 30
+      }
+    }
+  },
+  "information_delivery_analysis": {
+    "delivery_scorecard": {
+      "Scene 1": {
+        "natural_integration_score": 60,
+        "audio_friendly_score": 40,
+        "repetition_score": 0,
+        "overall_delivery_score": 33,
+        "delivery_issues": [
+          {
+            "issue_type": "memory_gap",
+            "location": "Scene 1, line 1",
+            "line_number": 1,
+            "problematic_content": "What are we going to do?",
+            "problem": "No context provided for listeners to understand what situation John is referring to",
+            "recommended_fix": "Add a line of dialogue or narration that establishes the basic situation before this line",
+            "severity": "CRITICAL",
+            "one_breath_fix": "John stared at the broken window. 'What are we going to do?'"
+          }
+        ]
+      },
+      "Scene 2": {
+        "natural_integration_score": 60,
+        "audio_friendly_score": 30,
+        "repetition_score": 0,
+        "overall_delivery_score": 30,
+        "delivery_issues": [
+          {
+            "issue_type": "memory_gap",
+            "location": "Scene 2, line 1",
+            "line_number": 1,
+            "problematic_content": "We can't just sit here.",
+            "problem": "Listeners don't know who Lucy is, her relationship to John and Sara, or what she's referring to",
+            "recommended_fix": "Establish who Lucy is and provide context for why she can't sit still",
+            "severity": "CRITICAL",
+            "one_breath_fix": "Lucy paced the kitchen, phone in hand. 'We can't just sit here while Mom's missing.'"
+          }
+        ]
+      }
+    },
+    "information_priority": {
+      "critical_info": [
+        {
+          "information": "Who the characters are and their relationships to each other",
+          "repetition_count": 0,
+          "spacing": "N/A",
+          "clarity_score": 0
+        },
+        {
+          "information": "What problem the characters are facing",
+          "repetition_count": 0,
+          "spacing": "N/A",
+          "clarity_score": 0
+        },
+        {
+          "information": "Why the characters are in different rooms",
+          "repetition_count": 0,
+          "spacing": "N/A",
+          "clarity_score": 0
+        }
+      ],
+      "secondary_info": []
+    }
+  },
+  "overall_clarity_score": 32,
+  "timestamp": "2025-10-27T16:41:50.230473"
+}

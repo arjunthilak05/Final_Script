@@ -1,0 +1,420 @@
+# Station 33: Pacing & Energy Analyzer Configuration
+
+model: "glm-4.5"
+temperature: 0.7
+max_tokens: 12000
+
+# Thresholds configuration
+thresholds:
+  scene_length:
+    short_max: 120  # seconds (2 minutes)
+    medium_max: 300  # seconds (5 minutes)
+    long_min: 300  # seconds (5+ minutes)
+  
+  dialogue:
+    fast_wpm: 160  # words per minute
+    slow_wpm: 100  # words per minute
+    silence_gap_max: 5  # seconds
+  
+  energy:
+    high_min: 7  # energy rating 1-10
+    low_max: 3  # energy rating 1-10
+    medium_range: [4, 6]
+  
+  attention_risks:
+    consecutive_high_intensity: 3  # scenes in a row
+    consecutive_low_intensity: 5  # scenes in a row
+    info_dump_reveals: 3  # major reveals per scene
+    speaker_uninterrupted_max: 300  # seconds (5 minutes)
+    same_sound_effect_count: 4  # times per episode
+    audio_overload_simultaneous: 4  # simultaneous sounds per scene
+  
+  energy_jumps:
+    unnatural_jump: 4  # points between consecutive episodes
+    cliffhanger_variation: 2  # points from previous cliffhanger rating
+
+# Prompts configuration
+prompts:
+  micro_pacing_analysis: |
+    You are a Micro-Pacing Analyzer for audio drama scripts.
+    
+    Analyze the pacing within a single episode at the scene level.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Episode Content: {episode_content}
+    
+    THRESHOLDS:
+    {thresholds}
+    
+    YOUR TASK:
+    For this episode, calculate and analyze:
+    
+    1. **SCENE LENGTH DISTRIBUTION:**
+       - Count short scenes (<2min/<{short_max}s)
+       - Count medium scenes (2-5min/120-300s)
+       - Count long scenes (>5min/>300s)
+       - Detect monotonous patterns (5+ consecutive scenes of similar length)
+       - Calculate average scene length
+    
+    2. **DIALOGUE DENSITY:**
+       - Calculate words-per-minute for the episode
+       - Identify fast sections (>160 wpm)
+       - Identify slow sections (<100 wpm)
+       - Detect silence gaps (>5 seconds)
+       - Flag monotonous pacing (all scenes same wpm)
+    
+    3. **SOUND DENSITY:**
+       - Count sound effects per scene
+       - Categorize as high/medium/minimal activity per scene
+       - Identify scenes with simultaneous sound overload (>4 simultaneous sounds)
+       - Detect sound repetition (same sound 4+ times in episode)
+    
+    4. **EMOTIONAL PACING:**
+       - Tag intensity level (high/medium/low) for each scene
+       - Flag exhaustion risk (3+ consecutive high-intensity scenes)
+       - Flag flatness (5+ consecutive low-intensity scenes)
+       - Identify emotional rhythm (building, declining, stable, erratic)
+    
+    5. **ENERGY RATING:**
+       - Rate overall episode energy 1-10 based on aggregated metrics
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "micro_pacing_analysis": {{
+        "scene_length_distribution": {{
+          "short_scenes": 3,
+          "medium_scenes": 8,
+          "long_scenes": 1,
+          "total_scenes": 12,
+          "average_length_seconds": 245,
+          "monotonous_patterns": ["Scene 5-9: All medium length"],
+          "pattern_alerts": ["Possible pacing monotony in Act 2"]
+        }},
+        "dialogue_density": {{
+          "average_wpm": 125,
+          "fast_sections": [
+            {{"location": "Scene 3", "wpm": 168, "duration": "2min30s"}},
+            {{"location": "Scene 8", "wpm": 172, "duration": "3min15s"}}
+          ],
+          "slow_sections": [
+            {{"location": "Scene 5", "wpm": 95, "duration": "4min"}},
+            {{"location": "Scene 11", "wpm": 88, "duration": "3min45s"}}
+          ],
+          "silence_gaps": [
+            {{"location": "Scene 7", "gap_duration": "8 seconds"}}
+          ],
+          "pacing_issues": ["Consistent 125 wpm throughout - lacks variation"]
+        }},
+        "sound_density": {{
+          "high_activity_scenes": ["Scene 1", "Scene 8", "Scene 10"],
+          "medium_activity_scenes": ["Scene 2", "Scene 3", "Scene 4", "Scene 6", "Scene 9"],
+          "minimal_activity_scenes": ["Scene 5", "Scene 7", "Scene 11", "Scene 12"],
+          "overload_scenes": ["Scene 8: 6 simultaneous sounds detected"],
+          "repeated_sounds": ["Door_creak: 5 times", "Footsteps: 7 times"]
+        }},
+        "emotional_pacing": {{
+          "intensity_sequence": [
+            {{"scene": 1, "intensity": "high"}},
+            {{"scene": 2, "intensity": "medium"}},
+            {{"scene": 3, "intensity": "high"}},
+            {{"scene": 4, "intensity": "high"}},
+            {{"scene": 5, "intensity": "high"}},
+            {{"scene": 6, "intensity": "low"}}
+          ],
+          "exhaustion_risks": ["Scenes 3-5: 3 consecutive high-intensity scenes"],
+          "flatness_risks": [],
+          "emotional_rhythm": "building",
+          "intensity_variance": "adequate"
+        }},
+        "total_duration": {{
+          "minutes": 48,
+          "seconds": 2880
+        }},
+        "energy_rating": 7
+      }}
+    }}
+    ```
+    
+    CRITICAL: Provide specific scene IDs and timestamps. Flag any potential pacing issues.
+
+  macro_pacing_analysis: |
+    You are a Macro-Pacing Analyzer for audio drama series.
+    
+    Analyze pacing patterns ACROSS ALL EPISODES in the series.
+    
+    EPISODE SUMMARIES:
+    {episode_summaries}
+    
+    EPISODE METRICS:
+    {episode_metrics}
+    
+    THRESHOLDS:
+    {thresholds}
+    
+    YOUR TASK:
+    Analyze the series-wide pacing:
+    
+    1. **EPISODE ENERGY RATINGS:**
+       - Score each episode 1-10 based on aggregated scene intensity, dialogue speed, sound density
+       - Identify highest/lowest energy episodes
+       - Calculate average energy across series
+    
+    2. **MOMENTUM ANALYSIS:**
+       - Check if energy builds toward climaxes
+       - Identify "rest" episodes (intentionally lower energy)
+       - Detect unnatural rhythm (energy jumps >4 points between consecutive episodes)
+       - Analyze if energy crescendos toward finale
+    
+    3. **CLIFFHANGER INTENSITY:**
+       - Rate each episode's ending 1-10
+       - Ensure variation (±2 points from previous cliffhanger)
+       - Verify building trend toward finale
+       - Flag repetitive cliffhanger strategies
+    
+    4. **REVELATION PACING:**
+       - Track info dumps (>3 major reveals in one scene)
+       - Identify gradual drip episodes (1 reveal per episode)
+       - Flag overwhelm risk (too many reveals clustered)
+       - Ensure reveal distribution matches Station 10 strategy
+    
+    5. **SERIES-WIDE PROBLEMS:**
+       - Identify episodes that are consistently slow/fast
+       - Detect pattern repetition (same pacing formula every episode)
+       - Flag episodes that break established rhythm
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "macro_pacing_analysis": {{
+        "episode_energy_ratings": [
+          {{"episode": 1, "energy": 7, "rationale": "Strong opening"}},
+          {{"episode": 2, "energy": 5, "rationale": "Rest episode"}},
+          {{"episode": 3, "energy": 8, "rationale": "Action peak"}},
+          {{"episode": 4, "energy": 6, "rationale": "Character development"}},
+          {{"episode": 5, "energy": 9, "rationale": "Climax episode"}}
+        ],
+        "average_energy": 7.0,
+        "energy_range": {{"low": 5, "high": 9}},
+        "momentum_analysis": {{
+          "overall_trend": "building",
+          "builds_to_climax": true,
+          "climax_episode": 5,
+          "rest_episodes": [2, 4],
+          "unnatural_jumps": [
+            {{"episodes": "3-4", "jump": 2, "natural": true}},
+            {{"episodes": "4-5", "jump": 3, "natural": true}}
+          ],
+          "momentum_health": "healthy"
+        }},
+        "cliffhanger_intensity": [
+          {{"episode": 1, "rating": 6, "strategy": "mystery hook"}},
+          {{"episode": 2, "rating": 7, "strategy": "danger reveal"}},
+          {{"episode": 3, "rating": 8, "strategy": "character in peril"}},
+          {{"episode": 4, "rating": 9, "strategy": "plot twist"}},
+          {{"episode": 5, "rating": 10, "strategy": "series climax"}}
+        ],
+        "cliffhanger_trend": "building",
+        "cliffhanger_variation": "adequate",
+        "revelation_pacing": {{
+          "info_dumps": [
+            {{"episode": 2, "scene": 3, "reveal_count": 4, "risk": "high"}}
+          ],
+          "gradual_episodes": [1, 3, 4, 5],
+          "overwhelm_risks": ["Episode 2: Too many reveals in Scene 3"],
+          "reveal_distribution": "mostly well-distributed"
+        }},
+        "series_wide_problems": [
+          "No major series-wide pacing issues detected"
+        ],
+        "recommendations": [
+          "Consider reducing reveals in Episode 2, Scene 3",
+          "Energy trend is healthy and building appropriately"
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Provide specific episode numbers and scene IDs. Compare episodes to identify patterns.
+
+  attention_management: |
+    You are an Attention Management Specialist for audio drama.
+    
+    Flag problem zones that risk losing audience attention.
+    
+    EPISODE DATA:
+    {episode_data}
+    
+    THRESHOLDS:
+    {thresholds}
+    
+    YOUR TASK:
+    Identify these problem zones across all episodes:
+    
+    1. **DEAD ZONES:**
+       - Scenes with no plot advancement
+       - Scenes with no conflict
+       - Scenes with no reveals (new information)
+       - Scenes with no character development
+       - Flag by episode and scene ID
+    
+    2. **OVERLOAD ZONES:**
+       - Scenes with 4+ major events
+       - Scenes with dialogue >200 wpm for >3min
+       - Scenes with too many simultaneous actions
+       - Scenes where audience feels rushed
+    
+    3. **REPETITION FATIGUE:**
+       - Similar conflict types in consecutive scenes
+       - Same character dynamics repeated 3+ times
+       - Repeated plot structures across episodes
+       - Identical pacing patterns (all scenes same length)
+    
+    4. **AUDIO FATIGUE:**
+       - Single speaker >5min uninterrupted
+       - Same sound effect 4+ times in episode
+       - Single ambient track throughout entire scene
+       - Overreliance on one audio technique
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "attention_analysis": {{
+        "dead_zones": [
+          {{"episode": 2, "scene": 4, "issue": "No plot advancement - pure exposition", "severity": "medium"}},
+          {{"episode": 3, "scene": 7, "issue": "Recap of previous episode - no new information", "severity": "high"}}
+        ],
+        "overload_zones": [
+          {{"episode": 1, "scene": 8, "issue": "5 major events in 4 minutes", "severity": "high"}},
+          {{"episode": 4, "scene": 3, "issue": "Dialogue at 185 wpm for 3min45s", "severity": "medium"}}
+        ],
+        "repetition_fatigue": [
+          {{"episodes": "2-3", "issue": "Same character argument pattern in Scenes 3, 5, 7", "severity": "medium"}},
+          {{"episodes": "1-5", "issue": "All episodes follow identical structure", "severity": "low"}}
+        ],
+        "audio_fatigue": [
+          {{"episode": 3, "scene": 2, "issue": "Single character monologue for 6 minutes", "severity": "high"}},
+          {{"episode": 2, "scene": 5, "issue": "Same door creak sound 7 times", "severity": "medium"}},
+          {{"episode": 4, "scene": 8, "issue": "Rain ambient throughout entire 8-minute scene", "severity": "low"}}
+        ],
+        "total_issues": 9,
+        "critical_issues": 4,
+        "moderate_issues": 4,
+        "minor_issues": 1
+      }}
+    }}
+    ```
+    
+    CRITICAL: Flag specific episode and scene IDs. Prioritize by severity.
+
+  rhythm_solutions: |
+    You are a Rhythm Solutions Specialist for audio drama.
+    
+    Generate specific, actionable fixes for flagged pacing problems.
+    
+    ATTENTION ANALYSIS:
+    {attention_analysis}
+    
+    EPISODE METRICS:
+    {episode_metrics}
+    
+    YOUR TASK:
+    For each flagged problem, generate specific fixes with before/after estimates:
+    
+    1. **SLOW SECTIONS:**
+       - Suggest urgency additions (ticking clock, time limit, deadline)
+       - Dialogue trims (target word count reduction)
+       - Tension injections (conflict, stakes, suspense)
+       - Audio enhancements (pacing music, sound effects)
+       - Include before/after duration estimates
+    
+    2. **RUSHED SECTIONS:**
+       - Recommend scene splits (new scene IDs to create)
+       - Transition beats (sound/pause suggestions)
+       - Pacing buffer (target duration increase)
+       - Breathing room (silence, pauses, character reactions)
+       - Include specific timestamps for splits
+    
+    3. **MONOTONOUS SECTIONS:**
+       - Propose sentence length variation
+       - Sound texture additions
+       - Emotional temperature shifts
+       - Pacing rhythm changes (fast/slow/fast)
+       - Include example modifications
+    
+    4. **DEAD ZONES:**
+       - Inject plot advancement (what needs to happen)
+       - Add conflict (what opposes the character)
+       - Insert reveals (what information to reveal)
+       - Character development opportunities
+       - Include specific script additions
+    
+    5. **OVERLOAD ZONES:**
+       - Prioritize what stays (most important beats)
+       - What to cut or defer
+       - Scene split recommendations
+       - Reduction targets (events, dialogue, sounds)
+       - Include priority ranking
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "rhythm_solutions": {{
+        "fixes": [
+          {{
+            "problem": "Episode 2, Scene 4: Dead zone - no plot advancement",
+            "solution": "Add reveal: character discovers clue about mystery",
+            "implementation": "Insert 2-minute scene section where character finds hidden message",
+            "before_duration": "4 minutes",
+            "after_duration": "6 minutes",
+            "target_scene_id": "Scene 4A",
+            "priority": "high"
+          }},
+          {{
+            "problem": "Episode 3, Scene 2: Single character monologue for 6 minutes",
+            "solution": "Break into dialogue with another character or add interruptions",
+            "implementation": "Insert phone call or visitor at 2min mark, resume at 4min mark",
+            "before_duration": "6 minutes",
+            "after_duration": "6 minutes (same total, broken up)",
+            "target_scene_id": "Scene 2 (modified)",
+            "priority": "high"
+          }},
+          {{
+            "problem": "Episode 1, Scene 8: 5 major events in 4 minutes",
+            "solution": "Split into 2 scenes with transition",
+            "implementation": "Create Scene 8A (first 3 events) and Scene 8B (last 2 events), add 30s transition",
+            "before_duration": "4 minutes",
+            "after_duration": "4 minutes (split, not expanded)",
+            "target_scene_ids": ["Scene 8A", "Scene 8B"],
+            "priority": "high"
+          }}
+        ],
+        "recommendations": [
+          "Review Episode 2 pacing - too many exposition scenes",
+          "Add more variety to cliffhanger strategies across series",
+          "Consider reducing simultaneous sounds in Episode 4, Scene 8"
+        ],
+        "implementation_notes": [
+          "All fixes preserve episode runtime targets",
+          "Scene splits maintain scene continuity with transitions",
+          "Audio enhancements use existing sound library",
+          "Dialogue trims maintain character voice consistency"
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Each fix must be actionable with specific scene IDs, durations, and implementation steps.
+
+# Enable/disable this station in the pipeline
+enabled: true
+
+# Dependencies
+dependencies:
+  - station: 27
+    name: "Master Script Assembly"

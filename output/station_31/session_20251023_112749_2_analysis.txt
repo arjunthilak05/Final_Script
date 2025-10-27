@@ -1,0 +1,49 @@
+======================================================================
+STATION 31: DIALOGUE NATURALNESS ANALYSIS
+======================================================================
+
+Episode ID: 2
+Analysis Date: 2025-10-27T12:22:35.574764
+Session ID: session_20251023_112749
+
+----------------------------------------------------------------------
+SPEAKABILITY CHECK
+----------------------------------------------------------------------
+Total Issues Found: 0
+
+• breath_length: INT. KITCHEN - NIGHT, line 1
+  Problem: This line is actually fine in terms of length, but the pacing direction (pacing) might cause the actor to deliver it with unnatural breath patterns.
+  Fix: Keep the line as is, but consider removing the pacing direction if it causes breath issues during recording.
+
+----------------------------------------------------------------------
+NATURALNESS SCORECARD
+----------------------------------------------------------------------
+
+John:
+  Vocabulary Score: 3/5
+  Sentence Structure Score: 3/5
+  Overall Naturalness: 2.25/5
+
+Sara:
+  Vocabulary Score: 3/5
+  Sentence Structure Score: 3/5
+  Overall Naturalness: 2.5/5
+
+Lucy:
+  Vocabulary Score: 3/5
+  Sentence Structure Score: 3/5
+  Overall Naturalness: 2.25/5
+
+----------------------------------------------------------------------
+IDENTITY CLARITY
+----------------------------------------------------------------------
+John: {'distinction_level': 0.3, 'uniqueness': 'low', 'interchangeable_with': ['Sara', 'Lucy'], 'improvement_needed': True}/5
+Sara: {'distinction_level': 0.3, 'uniqueness': 'low', 'interchangeable_with': ['John', 'Lucy'], 'improvement_needed': True}/5
+Lucy: {'distinction_level': 0.3, 'uniqueness': 'low', 'interchangeable_with': ['John', 'Sara'], 'improvement_needed': True}/5
+
+----------------------------------------------------------------------
+SUBTEXT VERIFICATION
+----------------------------------------------------------------------
+======================================================================
+END OF NATURALNESS ANALYSIS
+======================================================================

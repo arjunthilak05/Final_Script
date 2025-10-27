@@ -1,0 +1,428 @@
+# Station 32: Audio-Only Clarity Audit Configuration
+
+model: "glm-4.5"
+temperature: 0.7
+max_tokens: 8000
+
+prompts:
+  scene_clarity_analysis: |
+    You are an Audio-Only Clarity Specialist for audiobook scripts.
+    
+    Analyze how clearly scenes are established for audio-only comprehension.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    SCENE ESTABLISHMENT CRITERIA:
+    
+    1. **LOCATION ESTABLISHMENT** (must be clear within 10 seconds)
+       - Physical environment clearly described
+       - Acoustic signature indicators (echo, traffic, footsteps)
+       - Spatial layout evident from sound cues
+    
+    2. **TIME ESTABLISHMENT** (day/night indicators)
+       - Day or night clearly established
+       - Time passage markers (morning to afternoon, etc.)
+       - Audio temporal cues
+    
+    3. **CHARACTER PRESENCE** (who's where and doing what)
+       - Who is present in the scene
+       - Spatial positioning among characters
+       - Movement tracking via sound
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "scene_clarity_analysis": {{
+        "scene_clarity_scorecard": {{
+          "Scene X": {{
+            "establishment_seconds": 8,
+            "location_score": 0-100,
+            "time_score": 0-100,
+            "character_presence_score": 0-100,
+            "overall_clarity": 0-100,
+            "location_issues": [
+              {{
+                "issue_type": "description of problem",
+                "location": "Scene X, line Y",
+                "line_number": 42,
+                "specific_problem": "what's unclear",
+                "recommended_fix": "specific improvement",
+                "severity": "CRITICAL|HIGH|MEDIUM|LOW",
+                "blocking_comprehension": true/false
+              }}
+            ],
+            "time_issues": [
+              {{
+                "issue_type": "time ambiguity",
+                "location": "Scene X",
+                "line_number": 42,
+                "specific_problem": "what's unclear",
+                "recommended_fix": "specific improvement",
+                "severity": "CRITICAL|HIGH|MEDIUM|LOW",
+                "blocking_comprehension": true/false
+              }}
+            ],
+            "character_issues": [
+              {{
+                "issue_type": "presence ambiguity",
+                "location": "Scene X",
+                "line_number": 42,
+                "specific_problem": "what's unclear",
+                "recommended_fix": "specific improvement",
+                "severity": "CRITICAL|HIGH|MEDIUM|LOW",
+                "blocking_comprehension": true/false
+              }}
+            ]
+          }}
+        }},
+        "audio_signatures": {{
+          "Scene X": {{
+            "location_audio_cues": ["cue 1", "cue 2"],
+            "time_audio_cues": ["cue 1", "cue 2"],
+            "spatial_audio_cues": ["cue 1", "cue 2"],
+            "sound_effects_detected": ["SFX 1", "SFX 2"],
+            "ambient_sound_detected": ["ambient 1", "ambient 2"],
+            "audio_density": "high|medium|low",
+            "detection_confidence": 0.0-1.0
+          }}
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: 
+    - Score 0-100. Identify specific issues with line references.
+    - Assign severity: CRITICAL/HIGH/MEDIUM/LOW for all issues.
+    - Mark blocking_comprehension: true if issue blocks understanding.
+    - Detect existing audio elements (SFX, ambient sounds) with confidence scores.
+    - If audio signatures are mostly empty, analyze why: missing elements OR poor detection.
+
+  action_comprehension_analysis: |
+    You are an Action Comprehension Specialist for audiobook scripts.
+    
+    Analyze how clearly physical actions are described for audio-only following.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    ACTION COMPREHENSION CRITERIA:
+    
+    1. **PHYSICAL ACTIONS** (followability)
+       - Clear sequence of movements
+       - Sound effect integration
+       - Logical progression
+    
+    2. **CHARACTER ACTIONS** (movement clarity)
+       - Who is moving/acting
+       - Spatial relationships during actions
+       - Interaction tracking
+    
+    3. **EMOTIONAL ACTIONS** (reactions)
+       - Gasps, sighs, reactions via sound
+       - Physical responses audible
+       - Non-verbal communication clear
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "action_comprehension_analysis": {{
+        "action_sequence_scorecard": {{
+          "Scene X": {{
+            "physical_action_score": 0-100,
+            "character_action_score": 0-100,
+            "emotional_action_score": 0-100,
+            "overall_action_score": 0-100,
+            "action_issues": [
+              {{
+                "action_type": "physical|character|emotional",
+                "location": "Scene X, line Y",
+                "line_number": 42,
+                "problematic_sequence": "what's unclear",
+                "problem": "why it's hard to follow",
+                "recommended_fix": "specific improvement",
+                "severity": "CRITICAL|HIGH|MEDIUM|LOW",
+                "auto_fixed": true/false
+              }}
+            ]
+          }}
+        }},
+        "sound_effect_sequencing": {{
+          "Scene X": [
+            {{
+              "action": "description of action",
+              "sound_effect": "appropriate sound",
+              "integration_score": 0-10,
+              "line_number": 42,
+              "natural_placement": true/false,
+              "auditory_clarity": 0-10,
+              "fix_needed": true/false,
+              "recommended_sfx": "improved sound effect"
+            }}
+          ]
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: 
+    - Analyze every action sequence. Provide specific fixes.
+    - Assign severity: CRITICAL/HIGH/MEDIUM/LOW.
+    - Sound effect integration scoring should be 0-10 (not 0-5).
+    - Validate natural placement and auditory clarity.
+    - If scores are consistently 0-2, issue is in detection logic not content.
+
+  transition_clarity_analysis: |
+    You are a Transition Clarity Specialist for audiobook scripts.
+    
+    Analyze how clearly transitions are handled for audio-only comprehension.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    TRANSITION CLARITY CRITERIA:
+    
+    1. **TIME TRANSITIONS** (passage clarity)
+       - How much time passed is clear
+       - Audio bridges between times
+       - Temporal orientation maintained
+    
+    2. **LOCATION TRANSITIONS** (movement clarity)
+       - Movement to new location clear
+       - Acoustic signature changes obvious
+       - Spatial orientation maintained
+    
+    3. **POV TRANSITIONS** (perspective clarity)
+       - Perspective change signaled
+       - Voice/narrator signaling clear
+       - Attribution tracking maintained
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "transition_clarity_analysis": {{
+        "transition_scorecard": {{
+          "Transition Type": {{
+            "transition_from": "previous scene/location/time",
+            "transition_to": "new scene/location/time",
+            "clarity_score": 0-100,
+            "time_transition_score": 0-100,
+            "location_transition_score": 0-100,
+            "pov_transition_score": 0-100,
+            "transition_issues": [
+              {{
+                "transition_type": "time|location|pov",
+                "location": "between Scene X and Y",
+                "line_number": 42,
+                "specific_problem": "what's unclear",
+                "recommended_fix": "specific improvement",
+                "severity": "CRITICAL|HIGH|MEDIUM|LOW",
+                "disorientation_risk": true/false
+              }}
+            ]
+          }}
+        }},
+        "audio_bridges": {{
+          "Scene X to Y": {{
+            "transition_type": "time|location|pov",
+            "bridge_audio_cues": ["cue 1", "cue 2"],
+            "clarity_score": 0-100
+          }}
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: 
+    - Score each transition. Identify disorienting passages.
+    - Assign severity: CRITICAL/HIGH/MEDIUM/LOW.
+    - Mark disorientation_risk: true if transition could confuse listener.
+    - Provide audio bridge suggestions to improve clarity.
+
+  information_delivery_analysis: |
+    You are an Information Delivery Specialist for audiobook scripts.
+    
+    Analyze how clearly information is delivered for audio-only comprehension.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    INFORMATION DELIVERY CRITERIA:
+    
+    1. **NATURAL INTEGRATION** (organic delivery)
+       - No "as you know" exposition
+       - Action-based information delivery
+       - Context emerges naturally
+    
+    2. **AUDIO-FRIENDLY EXPLANATION** (comprehension)
+       - Concepts simplified appropriately
+       - Terms defined naturally
+       - One-breath explanations
+    
+    3. **STRATEGIC REPETITION** (memory aid)
+       - Key info repeated appropriately
+       - Helpful not annoying
+       - Proper spacing of repetition
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "information_delivery_analysis": {{
+        "delivery_scorecard": {{
+          "Scene X": {{
+            "natural_integration_score": 0-100,
+            "audio_friendly_score": 0-100,
+            "repetition_score": 0-100,
+            "overall_delivery_score": 0-100,
+            "delivery_issues": [
+              {{
+                "issue_type": "as_you_know|complex_terminology|repetition|memory_gap",
+                "location": "Scene X, line Y",
+                "line_number": 42,
+                "problematic_content": "what's problematic",
+                "problem": "why it's unclear",
+                "recommended_fix": "specific alternative phrasing",
+                "severity": "CRITICAL|HIGH|MEDIUM|LOW",
+                "one_breath_fix": "alternative in one breath"
+              }}
+            ]
+          }}
+        }},
+        "information_priority": {{
+          "critical_info": [
+            {{
+              "information": "key information",
+              "repetition_count": 3,
+              "spacing": "every 5 minutes",
+              "clarity_score": 0-100
+            }}
+          ],
+          "secondary_info": []
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: 
+    - Identify expositional problems. Suggest audio-native alternatives.
+    - Assign severity: CRITICAL/HIGH/MEDIUM/LOW.
+    - Provide "one_breath_fix" - alternative phrasing for complex concepts.
+    - Flag "as you know" exposition patterns.
+
+  audit_report: |
+    You are an Audio Clarity Audit Report Generator.
+    
+    Generate comprehensive audio clarity audit report with scoring and recommendations.
+    
+    SESSION CONTEXT:
+    Session ID: {session_id}
+    Total Episodes: {total_episodes}
+    
+    ANALYSIS DATA:
+    {analyses_data}
+    
+    Generate comprehensive audit report and return ONLY valid JSON:
+    
+    ```json
+    {{
+      "audit_report": {{
+        "executive_summary": "2-3 paragraph overview of audio clarity across all episodes",
+        "overall_clarity_health": {{
+          "average_scene_clarity": 0-100,
+          "average_action_clarity": 0-100,
+          "average_transition_clarity": 0-100,
+          "average_information_delivery": 0-100,
+          "overall_audio_clarity_score": 0-100,
+          "total_issues_found": "number",
+          "critical_issues": "number",
+          "minor_issues": "number"
+        }},
+        "episode_breakdown": [
+          {{
+            "episode_id": "episode identifier",
+            "scene_clarity_score": 0-100,
+            "action_clarity_score": 0-100,
+            "transition_clarity_score": 0-100,
+            "information_delivery_score": 0-100,
+            "overall_score": 0-100,
+            "key_strengths": ["strength 1", "strength 2"],
+            "key_issues": ["issue 1", "issue 2"],
+            "recommendations": ["rec 1", "rec 2"]
+          }}
+        ],
+        "common_problems": [
+          {{
+            "problem_type": "type",
+            "frequency": "how many times",
+            "typical_location": "where it occurs",
+            "recommended_fix": "general solution"
+          }}
+        ],
+        "audio_optimization_recommendations": [
+          "recommendation 1",
+          "recommendation 2",
+          "recommendation 3"
+        ],
+        "readiness_for_audio_production": {{
+          "audio_readiness": true/false,
+          "remaining_issues": "description",
+          "next_steps": ["step 1", "step 2"]
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: Provide actionable, specific recommendations with line-level fixes.
+
+dependencies:
+  - station: 27
+    name: "Master Script Assembly"
+  - station: 7
+    name: "Character Architect"
+  - station: 8
+    name: "World Builder"
+
+# Enable/disable this station in the pipeline
+enabled: true
+
+# Configuration values
+input_directory: "output/station_27"
+output_directory: "output/station_32"
+clarity_thresholds:
+  scene_establishment_seconds: 10
+  minimum_score: 70
+scoring_weights:
+  scene_clarity: 0.3
+  action_comprehension: 0.25
+  transitions: 0.25
+  information_delivery: 0.2
+user_validation_required: true
+
+# Output enhancements
+output_enhancements:
+  # Severity levels for issue prioritization
+  severity_levels:
+    critical: "< 50 score OR blocks comprehension"
+    high: "50-60 score OR major comprehension issue"
+    medium: "60-70 score OR minor comprehension issue"
+    low: "70-80 score OR enhancement opportunity"
+  # Encoding
+  bullet_character: "•"  # Proper UTF-8 bullet
+  encoding: "utf-8"
+  # Issue tracking
+  include_line_numbers: true
+  max_issues_per_category: 10
+  deduplicate_recommendations: true
+  # Reporting
+  include_readiness_checklist: true
+  include_comparative_trends: true
+  generate_patch_files: true
+

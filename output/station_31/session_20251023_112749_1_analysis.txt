@@ -1,0 +1,54 @@
+======================================================================
+STATION 31: DIALOGUE NATURALNESS ANALYSIS
+======================================================================
+
+Episode ID: 1
+Analysis Date: 2025-10-27T12:24:39.533282
+Session ID: session_20251023_112749
+
+----------------------------------------------------------------------
+SPEAKABILITY CHECK
+----------------------------------------------------------------------
+Total Issues Found: 0
+
+----------------------------------------------------------------------
+NATURALNESS SCORECARD
+----------------------------------------------------------------------
+
+John:
+  Vocabulary Score: 4/5
+  Sentence Structure Score: 4/5
+  Overall Naturalness: 4/5
+
+Lisa:
+  Vocabulary Score: 4/5
+  Sentence Structure Score: 4/5
+  Overall Naturalness: 4/5
+
+Tom:
+  Vocabulary Score: 5/5
+  Sentence Structure Score: 4/5
+  Overall Naturalness: 4/5
+
+Julia:
+  Vocabulary Score: 4/5
+  Sentence Structure Score: 4/5
+  Overall Naturalness: 4/5
+
+Sarah:
+  Vocabulary Score: 4/5
+  Sentence Structure Score: 4/5
+  Overall Naturalness: 4/5
+
+----------------------------------------------------------------------
+IDENTITY CLARITY
+----------------------------------------------------------------------
+John: {'distinction_level': 0.6, 'uniqueness': 'medium', 'interchangeable_with': ['Lisa'], 'improvement_needed': True}/5
+Lisa: {'distinction_level': 0.5, 'uniqueness': 'low', 'interchangeable_with': ['John'], 'improvement_needed': True}/5
+
+----------------------------------------------------------------------
+SUBTEXT VERIFICATION
+----------------------------------------------------------------------
+======================================================================
+END OF NATURALNESS ANALYSIS
+======================================================================

@@ -1,0 +1,333 @@
+{
+  "episode_id": 2,
+  "speakability_analysis": {
+    "speakability_issues": [
+      {
+        "issue_type": "breath_length",
+        "location": "INT. KITCHEN - NIGHT, line 1",
+        "character": "LUCY",
+        "problematic_text": "We can't just sit here.",
+        "problem": "This line is actually fine in terms of length, but the pacing direction (pacing) might cause the actor to deliver it with unnatural breath patterns.",
+        "recommended_fix": "Keep the line as is, but consider removing the pacing direction if it causes breath issues during recording.",
+        "auto_fixed": false
+      }
+    ],
+    "tongue_twisters_detected": [],
+    "breath_length_problems": [],
+    "word_order_issues": [],
+    "total_issues": 0
+  },
+  "naturalness_scorecard": {
+    "character_naturalness": {
+      "John": {
+        "vocabulary_score": 3,
+        "vocabulary_appropriateness": "The vocabulary is simple and direct, which fits a moment of uncertainty. However, without more context about John's background, education level, or age, it's difficult to determine if this is perfectly appropriate. The phrase 'What are we going to do?' is universally understandable but doesn't provide distinctive character markers.",
+        "sentence_structure_score": 3,
+        "sentence_analysis": "The sentence is simple and direct, which works for a moment of uncertainty. However, it's a basic interrogative sentence without any distinctive structure that would make it particularly natural or unnatural. Without more dialogue samples, it's difficult to assess variance in sentence structure.",
+        "filler_words_score": 2,
+        "filler_word_usage": "There are no filler words present in John's single line of dialogue. While this isn't necessarily unnatural, the sighing direction suggests some hesitation or contemplation that might be reflected in filler words in a more expanded dialogue.",
+        "interruption_score": 1,
+        "interruption_analysis": "There are no interruptions or overlaps in John's dialogue. With only one line of dialogue, there's no opportunity for natural interruptions or overlaps to occur.",
+        "overall_score": 2.25,
+        "naturalness_notes": "John's dialogue is minimal and doesn't provide enough material for a comprehensive naturalness assessment. The sighing direction adds emotional context that helps, but without more dialogue or character background, it's difficult to determine if this represents natural speech patterns for this character."
+      },
+      "Sara": {
+        "vocabulary_score": 3,
+        "vocabulary_appropriateness": "Similar to John, Sara's vocabulary is simple and direct. The phrase 'I don't know' is universally understandable, and 'We have to think of something' shows a problem-solving mindset. Without more context about Sara's background, it's difficult to determine if this vocabulary is perfectly appropriate for her character.",
+        "sentence_structure_score": 3,
+        "sentence_analysis": "Sara's dialogue consists of two simple sentences. The first is a basic negation, and the second is a statement of necessity. This structure works for a moment of uncertainty, but without more dialogue samples, it's difficult to assess variance in sentence structure or complexity.",
+        "filler_words_score": 3,
+        "filler_word_usage": "There are no explicit filler words in Sara's dialogue. However, the whispering direction suggests a more tentative or emotional delivery, which might naturally include filler words in a more expanded dialogue.",
+        "interruption_score": 1,
+        "interruption_analysis": "There are no interruptions or overlaps in Sara's dialogue. With only one line of dialogue, there's no opportunity for natural interruptions or overlaps to occur.",
+        "overall_score": 2.5,
+        "naturalness_notes": "Sara's dialogue is minimal and doesn't provide enough material for a comprehensive naturalness assessment. The whispering direction adds emotional context that helps convey her state of mind, but without more dialogue or character background, it's difficult to determine if this represents natural speech patterns for this character."
+      },
+      "Lucy": {
+        "vocabulary_score": 3,
+        "vocabulary_appropriateness": "Lucy's vocabulary is simple and direct. The phrase 'We can't just sit here' shows frustration or urgency. Without more context about Lucy's background, education level, or age, it's difficult to determine if this vocabulary is perfectly appropriate for her character.",
+        "sentence_structure_score": 3,
+        "sentence_analysis": "Lucy's dialogue consists of a single sentence with a negative contraction. This structure works for expressing frustration or urgency, but without more dialogue samples, it's difficult to assess variance in sentence structure or complexity.",
+        "filler_words_score": 2,
+        "filler_word_usage": "There are no filler words present in Lucy's single line of dialogue. However, the pacing direction suggests agitation or impatience, which might naturally include filler words in a more expanded dialogue.",
+        "interruption_score": 1,
+        "interruption_analysis": "There are no interruptions or overlaps in Lucy's dialogue. With only one line of dialogue, there's no opportunity for natural interruptions or overlaps to occur.",
+        "overall_score": 2.25,
+        "naturalness_notes": "Lucy's dialogue is minimal and doesn't provide enough material for a comprehensive naturalness assessment. The pacing direction adds context about her emotional state, but without more dialogue or character background, it's difficult to determine if this represents natural speech patterns for this character."
+      }
+    },
+    "vocabulary_scores": {
+      "John": {
+        "age_appropriate": true,
+        "education_fit": true,
+        "era_fit": true,
+        "examples": [
+          "What are we going to do?"
+        ]
+      },
+      "Sara": {
+        "age_appropriate": true,
+        "education_fit": true,
+        "era_fit": true,
+        "examples": [
+          "I don't know.",
+          "We have to think of something."
+        ]
+      },
+      "Lucy": {
+        "age_appropriate": true,
+        "education_fit": true,
+        "era_fit": true,
+        "examples": [
+          "We can't just sit here."
+        ]
+      }
+    },
+    "sentence_structure_scores": {
+      "John": {
+        "average_length": 6,
+        "variance": "low",
+        "complexity_level": "low",
+        "notes": "Only one sentence available for analysis"
+      },
+      "Sara": {
+        "average_length": 4,
+        "variance": "low",
+        "complexity_level": "low",
+        "notes": "Only two simple sentences available for analysis"
+      },
+      "Lucy": {
+        "average_length": 5,
+        "variance": "low",
+        "complexity_level": "low",
+        "notes": "Only one sentence available for analysis"
+      }
+    },
+    "filler_word_analysis": {
+      "John": {
+        "usage_count": 0,
+        "realistic": true,
+        "overuse": false,
+        "examples": []
+      },
+      "Sara": {
+        "usage_count": 0,
+        "realistic": true,
+        "overuse": false,
+        "examples": []
+      },
+      "Lucy": {
+        "usage_count": 0,
+        "realistic": true,
+        "overuse": false,
+        "examples": []
+      }
+    },
+    "interruption_overlap_analysis": {
+      "John": {
+        "overlap_count": 0,
+        "cutoff_count": 0,
+        "natural_flow": true,
+        "examples": []
+      },
+      "Sara": {
+        "overlap_count": 0,
+        "cutoff_count": 0,
+        "natural_flow": true,
+        "examples": []
+      },
+      "Lucy": {
+        "overlap_count": 0,
+        "cutoff_count": 0,
+        "natural_flow": true,
+        "examples": []
+      }
+    }
+  },
+  "identity_clarity": {
+    "character_identification": {
+      "John": {
+        "identifiable_within_lines": 1,
+        "unique_markers": [
+          "sighing"
+        ],
+        "distinction_score": 0.3,
+        "over_naming_count": 1,
+        "notes": "John can only be identified by name and sighing, with no distinctive speech patterns from the character data"
+      },
+      "Sara": {
+        "identifiable_within_lines": 1,
+        "unique_markers": [
+          "whispering"
+        ],
+        "distinction_score": 0.3,
+        "over_naming_count": 1,
+        "notes": "Sara can only be identified by name and whispering, with no distinctive speech patterns from the character data"
+      },
+      "Lucy": {
+        "identifiable_within_lines": 1,
+        "unique_markers": [
+          "pacing"
+        ],
+        "distinction_score": 0.3,
+        "over_naming_count": 1,
+        "notes": "Lucy can only be identified by name and pacing, with no distinctive speech patterns from the character data"
+      }
+    },
+    "voice_distinction_scores": {
+      "John": {
+        "distinction_level": 0.3,
+        "uniqueness": "low",
+        "interchangeable_with": [
+          "Sara",
+          "Lucy"
+        ],
+        "improvement_needed": true
+      },
+      "Sara": {
+        "distinction_level": 0.3,
+        "uniqueness": "low",
+        "interchangeable_with": [
+          "John",
+          "Lucy"
+        ],
+        "improvement_needed": true
+      },
+      "Lucy": {
+        "distinction_level": 0.3,
+        "uniqueness": "low",
+        "interchangeable_with": [
+          "John",
+          "Sara"
+        ],
+        "improvement_needed": true
+      }
+    },
+    "verbal_ticks_usage": {
+      "John": {
+        "signature_patterns": [],
+        "consistency": "low",
+        "usage_count": 0
+      },
+      "Sara": {
+        "signature_patterns": [],
+        "consistency": "low",
+        "usage_count": 0
+      },
+      "Lucy": {
+        "signature_patterns": [],
+        "consistency": "low",
+        "usage_count": 0
+      }
+    },
+    "relationship_clarity": {
+      "relationships_clear": false,
+      "location_clear": true,
+      "time_period_clear": true,
+      "context_sufficiency": "low"
+    },
+    "improvement_recommendations": [
+      {
+        "character": "John",
+        "issue": "No distinctive voice markers or speech patterns from character data",
+        "recommendation": "If John is meant to be Tom (Life Coach), incorporate his verbal tics like 'Imagine' or 'Think about' and use motivational language. Example: 'Imagine what we could do if we just took a moment to think this through.'"
+      },
+      {
+        "character": "Sara",
+        "issue": "No distinctive voice markers or speech patterns from character data",
+        "recommendation": "If Sara is meant to be Julia (ER Nurse), incorporate her professional cadence and verbal tics like 'Alright, let's focus'. Example: 'Alright, let's focus. I don't know, but we have to think of something.'"
+      },
+      {
+        "character": "Lucy",
+        "issue": "No distinctive voice markers or speech patterns from character data",
+        "recommendation": "If Lucy is meant to be Sarah (Corporate Executive), incorporate her business jargon and direct speech patterns. Example: 'Bottom line: we can't just sit here. We need to move forward.'"
+      },
+      {
+        "character": "All Characters",
+        "issue": "Relationships between characters are unclear",
+        "recommendation": "Add dialogue that reveals relationships. Example: 'John, as your life coach, I'm telling you we need a plan.' or 'Sara, after your shift at the ER, you must be exhausted.'"
+      }
+    ]
+  },
+  "subtext_layers": {
+    "subtext_layers": {
+      "dialogue_layers": [
+        {
+          "dialogue_line": "What are we going to do?",
+          "character": "John",
+          "location": "Living Room, Line 1",
+          "surface_meaning": "John is asking about a course of action to resolve a problem",
+          "underlying_meaning": "John feels overwhelmed and helpless, seeking reassurance or leadership from others",
+          "withheld_information": "John may know more about the problem than he's letting on, or he might be avoiding taking responsibility",
+          "layer_score": 1,
+          "subtext_depth": "low"
+        },
+        {
+          "dialogue_line": "I don't know. We have to think of something.",
+          "character": "Sara",
+          "location": "Living Room, Line 2",
+          "surface_meaning": "Sara admits uncertainty but emphasizes the need for a solution",
+          "underlying_meaning": "Sara is also anxious but trying to maintain composure and encourage problem-solving",
+          "withheld_information": "Sara might have an idea she's hesitant to share, or she may be more frightened than she's showing",
+          "layer_score": 1,
+          "subtext_depth": "low"
+        },
+        {
+          "dialogue_line": "We can't just sit here.",
+          "character": "Lucy",
+          "location": "Kitchen, Line 1",
+          "surface_meaning": "Lucy believes inaction is not an option",
+          "underlying_meaning": "Lucy is frustrated with the lack of progress and wants to take immediate action",
+          "withheld_information": "Lucy may have a specific course of mind she's not sharing, or she might be blaming others for the inaction",
+          "layer_score": 1,
+          "subtext_depth": "low"
+        }
+      ]
+    },
+    "surface_meaning_analysis": {
+      "total_lines_analyzed": 3,
+      "lines_with_surface_only": 3,
+      "lines_with_layers": 0,
+      "examples": [
+        "What are we going to do?",
+        "I don't know. We have to think of something.",
+        "We can't just sit here."
+      ]
+    },
+    "underlying_meaning_analysis": {
+      "intent_clarity": "low",
+      "evasion_techniques": 0,
+      "deflection_count": 0,
+      "examples": []
+    },
+    "withheld_information_cues": {
+      "pause_markers": 0,
+      "tone_cues": 3,
+      "silence_as_tool": 0,
+      "examples": [
+        "John sighing",
+        "Sara whispering",
+        "Lucy pacing"
+      ]
+    },
+    "subtext_quality_score": 0.33,
+    "recommendations": [
+      {
+        "location": "Living Room",
+        "issue": "Dialogue lacks deeper subtext and character-specific voice markers",
+        "recommendation": "Incorporate character-specific speech patterns and add more layered meaning. For John: '(sighing) Imagine if we could find a way out of this. What are we going to do?' - showing his life coach perspective. For Sara: '(whispering) Alright, let's focus. I don't know, but we have to think of something.' - showing her medical professional cadence."
+      },
+      {
+        "location": "Kitchen",
+        "issue": "Lucy's line lacks corporate executive characteristics and deeper subtext",
+        "recommendation": "Rephrase to show Lucy's business mindset: '(pacing) Bottom line: we can't just sit here. We need actionable solutions now.' This adds her professional jargon while maintaining the frustration."
+      },
+      {
+        "location": "Entire Scene",
+        "issue": "Missing relationship cues between characters and context about their situation",
+        "recommendation": "Add dialogue that reveals their relationships and the nature of their problem. Example: 'John, as your life coach, I'm telling you we need a plan.' or 'Sara, after your shift at the ER, you must be exhausted.'"
+      }
+    ]
+  },
+  "timestamp": "2025-10-27T12:22:35.574764"
+}

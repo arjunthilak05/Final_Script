@@ -1,0 +1,821 @@
+{
+  "session_id": "session_20251023_112749",
+  "timestamp": "2025-10-27T16:49:51.259187",
+  "total_episodes": 3,
+  "episode_results": [
+    {
+      "episode_id": 2,
+      "scene_clarity_analysis": {},
+      "action_comprehension_analysis": {
+        "action_sequence_scorecard": {
+          "Scene 1": {
+            "physical_action_score": 30,
+            "character_action_score": 40,
+            "emotional_action_score": 70,
+            "overall_action_score": 47,
+            "action_issues": [
+              {
+                "action_type": "physical",
+                "location": "Scene 1, after line 4",
+                "line_number": 4,
+                "problematic_sequence": "SFX: DOOR CREAKING",
+                "problem": "The door creaking sound effect isn't connected to any character action - it's unclear who is interacting with the door or if it's opening on its own",
+                "recommended_fix": "Add a description of who is at the door or what is causing the creaking sound before the SFX line, such as 'SFX: FOOTSTEPS APPROACHING' followed by 'SFX: DOOR CREAKING OPEN'",
+                "severity": "HIGH",
+                "auto_fixed": false
+              },
+              {
+                "action_type": "character",
+                "location": "Scene 1, throughout",
+                "line_number": 1,
+                "problematic_sequence": "JOHN and SARA dialogue without spatial context",
+                "problem": "Their positions in the room and proximity to each other aren't established, making it difficult to visualize the scene",
+                "recommended_fix": "Add introductory action lines establishing positions, such as 'JOHN sits on the couch' and 'SARA kneels beside him'",
+                "severity": "MEDIUM",
+                "auto_fixed": false
+              }
+            ]
+          },
+          "Scene 2": {
+            "physical_action_score": 60,
+            "character_action_score": 50,
+            "emotional_action_score": 40,
+            "overall_action_score": 50,
+            "action_issues": [
+              {
+                "action_type": "physical",
+                "location": "Scene 2, line 6",
+                "line_number": 6,
+                "problematic_sequence": "LUCY (pacing)",
+                "problem": "The pacing action lacks detail - speed, pattern, and duration aren't specified",
+                "recommended_fix": "Add more descriptive pacing action, such as 'LUCY (pacing rapidly back and forth between the counter and the table)'",
+                "severity": "MEDIUM",
+                "auto_fixed": false
+              },
+              {
+                "action_type": "emotional",
+                "location": "Scene 2, line 7",
+                "line_number": 7,
+                "problematic_sequence": "LUCY dialogue without emotional descriptors",
+                "problem": "Lucy's emotional state is implied but not explicitly described through sound",
+                "recommended_fix": "Add an emotional sound cue before her line, such as '(frustrated sigh)' or '(anxious breathing)'",
+                "severity": "LOW",
+                "auto_fixed": false
+              }
+            ]
+          }
+        },
+        "sound_effect_sequencing": {
+          "Scene 1": [
+            {
+              "action": "Door creaking sound",
+              "sound_effect": "SFX: DOOR CREAKING",
+              "integration_score": 6,
+              "line_number": 4,
+              "natural_placement": true,
+              "auditory_clarity": 7,
+              "fix_needed": true,
+              "recommended_sfx": "Add preceding sound such as 'SFX: FOOTSTEPS APPROACHING' followed by 'SFX: DOOR CREAKING OPEN' to provide context"
+            }
+          ],
+          "Scene 2": [
+            {
+              "action": "Lucy pacing",
+              "sound_effect": "Missing",
+              "integration_score": 0,
+              "line_number": 6,
+              "natural_placement": false,
+              "auditory_clarity": 0,
+              "fix_needed": true,
+              "recommended_sfx": "Add 'SFX: FOOTSTEPS ON TILE FLOOR, BACK AND FORTH' to accompany the pacing action"
+            }
+          ]
+        }
+      },
+      "transition_clarity_analysis": {
+        "transition_scorecard": {
+          "Living Room to Kitchen": {
+            "transition_from": "INT. LIVING ROOM - NIGHT",
+            "transition_to": "INT. KITCHEN - NIGHT",
+            "clarity_score": 55,
+            "time_transition_score": 85,
+            "location_transition_score": 65,
+            "pov_transition_score": 15,
+            "transition_issues": [
+              {
+                "transition_type": "location",
+                "location": "between Living Room and Kitchen",
+                "line_number": 8,
+                "specific_problem": "Acoustic signature change not clearly established between rooms",
+                "recommended_fix": "Add specific SFX that clearly indicates movement from living room to kitchen, such as footsteps, door opening/closing, and distinct room acoustics",
+                "severity": "MEDIUM",
+                "disorientation_risk": true
+              },
+              {
+                "transition_type": "pov",
+                "location": "between Living Room and Kitchen",
+                "line_number": 10,
+                "specific_problem": "New character Lucy introduced without establishing connection to previous characters or context",
+                "recommended_fix": "Add a narrator transition or character reference to establish Lucy's relationship to John and Sara, or include dialogue that references the previous conversation",
+                "severity": "HIGH",
+                "disorientation_risk": true
+              }
+            ]
+          }
+        },
+        "audio_bridges": {
+          "Living Room to Kitchen": {
+            "transition_type": "location",
+            "bridge_audio_cues": [
+              "Footsteps walking across floor",
+              "Door handle turning",
+              "Door opening with creak",
+              "Footsteps in hallway",
+              "Kitchen door opening",
+              "Distinct kitchen acoustic signature with different reverb"
+            ],
+            "clarity_score": 30
+          }
+        }
+      },
+      "information_delivery_analysis": {
+        "delivery_scorecard": {
+          "Scene 1": {
+            "natural_integration_score": 60,
+            "audio_friendly_score": 40,
+            "repetition_score": 0,
+            "overall_delivery_score": 33,
+            "delivery_issues": [
+              {
+                "issue_type": "memory_gap",
+                "location": "Scene 1, line 1",
+                "line_number": 1,
+                "problematic_content": "What are we going to do?",
+                "problem": "No context provided for listeners to understand what situation John is referring to",
+                "recommended_fix": "Add a line of dialogue or narration that establishes the basic situation before this line",
+                "severity": "CRITICAL",
+                "one_breath_fix": "John stared at the broken window. 'What are we going to do?'"
+              }
+            ]
+          },
+          "Scene 2": {
+            "natural_integration_score": 60,
+            "audio_friendly_score": 30,
+            "repetition_score": 0,
+            "overall_delivery_score": 30,
+            "delivery_issues": [
+              {
+                "issue_type": "memory_gap",
+                "location": "Scene 2, line 1",
+                "line_number": 1,
+                "problematic_content": "We can't just sit here.",
+                "problem": "Listeners don't know who Lucy is, her relationship to John and Sara, or what she's referring to",
+                "recommended_fix": "Establish who Lucy is and provide context for why she can't sit still",
+                "severity": "CRITICAL",
+                "one_breath_fix": "Lucy paced the kitchen, phone in hand. 'We can't just sit here while Mom's missing.'"
+              }
+            ]
+          }
+        },
+        "information_priority": {
+          "critical_info": [
+            {
+              "information": "Who the characters are and their relationships to each other",
+              "repetition_count": 0,
+              "spacing": "N/A",
+              "clarity_score": 0
+            },
+            {
+              "information": "What problem the characters are facing",
+              "repetition_count": 0,
+              "spacing": "N/A",
+              "clarity_score": 0
+            },
+            {
+              "information": "Why the characters are in different rooms",
+              "repetition_count": 0,
+              "spacing": "N/A",
+              "clarity_score": 0
+            }
+          ],
+          "secondary_info": []
+        }
+      },
+      "overall_clarity_score": 32,
+      "timestamp": "2025-10-27T16:41:50.230473"
+    },
+    {
+      "episode_id": 3,
+      "scene_clarity_analysis": {
+        "scene_clarity_scorecard": {
+          "Scene 1": {
+            "establishment_seconds": 8,
+            "location_score": 25,
+            "time_score": 10,
+            "character_presence_score": 60,
+            "overall_clarity": 32,
+            "location_issues": [
+              {
+                "issue_type": "missing location indicators",
+                "location": "Scene 1",
+                "line_number": 1,
+                "specific_problem": "Coffee shop location not established through dialogue or sound",
+                "recommended_fix": "Add dialogue reference to coffee shop or coffee shop ambient sounds",
+                "severity": "HIGH",
+                "blocking_comprehension": true
+              }
+            ],
+            "time_issues": [
+              {
+                "issue_type": "no temporal indicators",
+                "location": "Scene 1",
+                "line_number": 1,
+                "specific_problem": "Daytime not established through any audio cues",
+                "recommended_fix": "Add dialogue reference to time of day or appropriate ambient sounds",
+                "severity": "HIGH",
+                "blocking_comprehension": true
+              }
+            ],
+            "character_issues": [
+              {
+                "issue_type": "unclear spatial positioning",
+                "location": "Scene 1",
+                "line_number": 3,
+                "specific_problem": "Character positions relative to each other not established",
+                "recommended_fix": "Add sound cues indicating positioning (e.g., chair movement, voice direction)",
+                "severity": "MEDIUM",
+                "blocking_comprehension": false
+              }
+            ]
+          }
+        },
+        "audio_signatures": {
+          "Scene 1": {
+            "location_audio_cues": [],
+            "time_audio_cues": [],
+            "spatial_audio_cues": [
+              "drink placed on surface"
+            ],
+            "sound_effects_detected": [
+              "DRINK SET ON TABLE"
+            ],
+            "ambient_sound_detected": [],
+            "audio_density": "low",
+            "detection_confidence": 0.2
+          }
+        }
+      },
+      "action_comprehension_analysis": {
+        "action_sequence_scorecard": {
+          "Scene 1": {
+            "physical_action_score": 30,
+            "character_action_score": 25,
+            "emotional_action_score": 40,
+            "overall_action_score": 32,
+            "action_issues": [
+              {
+                "action_type": "physical",
+                "location": "Scene 1, SFX line",
+                "line_number": 7,
+                "problematic_sequence": "SFX DRINK SET ON TABLE",
+                "problem": "It's unclear which character sets down the drink, when exactly it happens, and how it relates to the dialogue",
+                "recommended_fix": "Add a parenthetical in the dialogue to indicate who sets down the drink, e.g., 'BETH (sets down coffee)' or 'JAKE (sets down cup forcefully)'",
+                "severity": "HIGH",
+                "auto_fixed": false
+              },
+              {
+                "action_type": "character",
+                "location": "Scene 1, opening",
+                "line_number": 1,
+                "problematic_sequence": "No description of character positions",
+                "problem": "Listeners can't visualize where characters are in relation to each other",
+                "recommended_fix": "Add a brief scene description at the beginning, e.g., 'Beth approaches Jake who is sitting at a table with his laptop'",
+                "severity": "MEDIUM",
+                "auto_fixed": false
+              },
+              {
+                "action_type": "emotional",
+                "location": "Scene 1, throughout",
+                "line_number": 3,
+                "problematic_sequence": "No audible emotional cues",
+                "problem": "Listeners can't hear emotional reactions beyond vocal tone",
+                "recommended_fix": "Add sound effects for emotional reactions, e.g., 'SFX JAKE SIGHS' or describe audible physical reactions like 'BETH (reaches across table)'",
+                "severity": "MEDIUM",
+                "auto_fixed": false
+              }
+            ]
+          }
+        },
+        "sound_effect_sequencing": {
+          "Scene 1": [
+            {
+              "action": "Setting down a drink",
+              "sound_effect": "DRINK SET ON TABLE",
+              "integration_score": 3,
+              "line_number": 7,
+              "natural_placement": false,
+              "auditory_clarity": 4,
+              "fix_needed": true,
+              "recommended_sfx": "Add context such as 'SFX COFFEE CUP PLACED FIRMLY ON TABLE' or indicate character: 'SFX JAKE SLAMS COFFEE CUP DOWN'"
+            }
+          ]
+        }
+      },
+      "transition_clarity_analysis": {
+        "transition_scorecard": {
+          "Scene Start": {
+            "transition_from": "Unknown - previous scene not provided",
+            "transition_to": "INT. COFFEE SHOP - DAY",
+            "clarity_score": 60,
+            "time_transition_score": 70,
+            "location_transition_score": 50,
+            "pov_transition_score": 60,
+            "transition_issues": [
+              {
+                "transition_type": "location",
+                "location": "Between previous scene and Scene 3",
+                "line_number": 1,
+                "specific_problem": "No clear audio cue indicating transition to coffee shop",
+                "recommended_fix": "Add coffee shop ambient sounds (coffee machine, chatter) at scene start",
+                "severity": "MEDIUM",
+                "disorientation_risk": true
+              }
+            ]
+          },
+          "Within Scene": {
+            "transition_from": "Same scene",
+            "transition_to": "Same scene",
+            "clarity_score": 90,
+            "time_transition_score": 95,
+            "location_transition_score": 95,
+            "pov_transition_score": 80,
+            "transition_issues": []
+          }
+        },
+        "audio_bridges": {
+          "Scene Start": {
+            "transition_type": "location",
+            "bridge_audio_cues": [
+              "Suggested: Coffee shop ambient sounds at beginning",
+              "Existing: DRINK SET ON TABLE"
+            ],
+            "clarity_score": 65
+          },
+          "Scene End": {
+            "transition_type": "location|time",
+            "bridge_audio_cues": [
+              "None present - needs transition cue before next scene"
+            ],
+            "clarity_score": 30
+          }
+        }
+      },
+      "information_delivery_analysis": {
+        "delivery_scorecard": {
+          "Scene 1": {
+            "natural_integration_score": 85,
+            "audio_friendly_score": 90,
+            "repetition_score": 50,
+            "overall_delivery_score": 75,
+            "delivery_issues": [
+              {
+                "issue_type": "memory_gap",
+                "location": "Scene 1, line 1",
+                "line_number": 1,
+                "problematic_content": "Hey, how's the big project coming along?",
+                "problem": "The 'big project' is mentioned without establishing what this project is, which could create confusion for listeners just tuning in.",
+                "recommended_fix": "Add a brief descriptor to establish what the project is about. 'Hey, how's the database migration project coming along?'",
+                "severity": "MEDIUM",
+                "one_breath_fix": "Hey, how's the database project coming along?"
+              },
+              {
+                "issue_type": "complex_terminology",
+                "location": "Scene 1, line 3",
+                "line_number": 3,
+                "problematic_content": "It's a nightmare. Deadlines, bugs, you name it.",
+                "problem": "While 'bugs' is common terminology in tech contexts, some listeners might not immediately understand it refers to software issues.",
+                "recommended_fix": "Clarify the term 'bugs' in context. 'It's a nightmare. Deadlines, software bugs, you name it.'",
+                "severity": "LOW",
+                "one_breath_fix": "It's a nightmare. Deadlines, coding bugs, you name it."
+              }
+            ]
+          }
+        },
+        "information_priority": {
+          "critical_info": [
+            {
+              "information": "Jake is working on a stressful project with deadlines and bugs.",
+              "repetition_count": 1,
+              "spacing": "N/A",
+              "clarity_score": 75
+            }
+          ],
+          "secondary_info": [
+            {
+              "information": "Beth is supportive of Jake.",
+              "repetition_count": 1,
+              "spacing": "N/A",
+              "clarity_score": 90
+            }
+          ]
+        }
+      },
+      "overall_clarity_score": 51,
+      "timestamp": "2025-10-27T16:45:29.873465"
+    },
+    {
+      "episode_id": 1,
+      "scene_clarity_analysis": {
+        "scene_clarity_scorecard": {
+          "Scene 1": {
+            "establishment_seconds": 8,
+            "location_score": 40,
+            "time_score": 85,
+            "character_presence_score": 70,
+            "overall_clarity": 65,
+            "location_issues": [
+              {
+                "issue_type": "insufficient acoustic environment description",
+                "location": "Scene 1",
+                "line_number": 1,
+                "specific_problem": "Living room is not sonically distinct from any other interior space",
+                "recommended_fix": "Add ambient sounds specific to a living room (TV humming, clock ticking, fireplace crackling, etc.)",
+                "severity": "HIGH",
+                "blocking_comprehension": false
+              }
+            ],
+            "time_issues": [
+              {
+                "issue_type": "missing nighttime audio cues",
+                "location": "Scene 1",
+                "line_number": 1,
+                "specific_problem": "No external sounds to establish nighttime",
+                "recommended_fix": "Add subtle nighttime ambient sounds (crickets, distant traffic, wind)",
+                "severity": "MEDIUM",
+                "blocking_comprehension": false
+              }
+            ],
+            "character_issues": [
+              {
+                "issue_type": "unclear spatial positioning",
+                "location": "Scene 1",
+                "line_number": 3,
+                "specific_problem": "Listeners can't determine where John and Lisa are in relation to each other or the door",
+                "recommended_fix": "Add directional audio cues or dialogue referencing their positions",
+                "severity": "MEDIUM",
+                "blocking_comprehension": false
+              }
+            ]
+          }
+        },
+        "audio_signatures": {
+          "Scene 1": {
+            "location_audio_cues": [
+              "none"
+            ],
+            "time_audio_cues": [
+              "John: 'Is everyone asleep?'"
+            ],
+            "spatial_audio_cues": [
+              "door creaking"
+            ],
+            "sound_effects_detected": [
+              "DOOR CREAKING OPEN"
+            ],
+            "ambient_sound_detected": [
+              "none"
+            ],
+            "audio_density": "low",
+            "detection_confidence": 0.7
+          }
+        }
+      },
+      "action_comprehension_analysis": {
+        "action_sequence_scorecard": {
+          "Scene 1": {
+            "physical_action_score": 30,
+            "character_action_score": 25,
+            "emotional_action_score": 20,
+            "overall_action_score": 25,
+            "action_issues": [
+              {
+                "action_type": "physical",
+                "location": "Scene 1",
+                "line_number": 1,
+                "problematic_sequence": "Scene opening with no established positions",
+                "problem": "Listeners don't know where characters are positioned in the living room or their postures",
+                "recommended_fix": "Add introductory description: 'John and Lisa sit tensely on the couch in the dark living room'",
+                "severity": "HIGH",
+                "auto_fixed": false
+              },
+              {
+                "action_type": "character",
+                "location": "Scene 1, line 5",
+                "line_number": 5,
+                "problematic_sequence": "SFX: DOOR CREAKING OPEN",
+                "problem": "Unclear which door is opening and characters' reactions to it",
+                "recommended_fix": "Add character reaction: 'SFX: DOOR CREAKING OPEN. John freezes, holding his breath.'",
+                "severity": "CRITICAL",
+                "auto_fixed": false
+              },
+              {
+                "action_type": "physical",
+                "location": "Scene 1, line 6",
+                "line_number": 6,
+                "problematic_sequence": "Let's go, then.",
+                "problem": "No physical movement described when John decides to leave",
+                "recommended_fix": "Add movement description: 'Let's go, then. (John stands quietly, motioning to the back door)'",
+                "severity": "HIGH",
+                "auto_fixed": false
+              },
+              {
+                "action_type": "emotional",
+                "location": "Scene 1",
+                "line_number": 1,
+                "problematic_sequence": "Entire scene",
+                "problem": "Lacks emotional reactions and non-verbal communication cues",
+                "recommended_fix": "Add emotional cues: 'JOHN (whispering nervously)' and 'LISA (glancing toward hallway)'",
+                "severity": "MEDIUM",
+                "auto_fixed": false
+              }
+            ]
+          }
+        },
+        "sound_effect_sequencing": {
+          "Scene 1": [
+            {
+              "action": "Door opening",
+              "sound_effect": "DOOR CREAKING OPEN",
+              "integration_score": 3,
+              "line_number": 5,
+              "natural_placement": true,
+              "auditory_clarity": 4,
+              "fix_needed": true,
+              "recommended_sfx": "SFX: FRONT DOOR CREAKING OPEN (followed by brief pause for character reaction)"
+            }
+          ]
+        }
+      },
+      "transition_clarity_analysis": {
+        "transition_scorecard": {
+          "Transition into Scene": {
+            "transition_from": "previous episode/nothing",
+            "transition_to": "living room at night",
+            "clarity_score": 85,
+            "time_transition_score": 90,
+            "location_transition_score": 80,
+            "pov_transition_score": 100,
+            "transition_issues": [
+              {
+                "transition_type": "location",
+                "location": "start of episode",
+                "line_number": 1,
+                "specific_problem": "Limited acoustic description of living room environment",
+                "recommended_fix": "Add subtle ambient sound to establish the living room setting (e.g., faint clock ticking, distant traffic)",
+                "severity": "MEDIUM",
+                "disorientation_risk": false
+              }
+            ]
+          },
+          "Implied Movement Transition": {
+            "transition_from": "living room",
+            "transition_to": "unknown location",
+            "clarity_score": 45,
+            "time_transition_score": 100,
+            "location_transition_score": 30,
+            "pov_transition_score": 100,
+            "transition_issues": [
+              {
+                "transition_type": "location",
+                "location": "after door creaking sound",
+                "line_number": 7,
+                "specific_problem": "Door creaking suggests movement but no clear indication if characters actually move locations",
+                "recommended_fix": "Add dialogue or sound effects to confirm if they move through the door (e.g., footsteps, door closing)",
+                "severity": "HIGH",
+                "disorientation_risk": true
+              }
+            ]
+          },
+          "Transition out of Scene": {
+            "transition_from": "living room",
+            "transition_to": "next episode/scene",
+            "clarity_score": 70,
+            "time_transition_score": 80,
+            "location_transition_score": 60,
+            "pov_transition_score": 100,
+            "transition_issues": [
+              {
+                "transition_type": "location",
+                "location": "end of episode",
+                "line_number": 9,
+                "specific_problem": "Unclear where characters are when scene fades out",
+                "recommended_fix": "Add a line or sound effect to establish final position before fade out",
+                "severity": "MEDIUM",
+                "disorientation_risk": false
+              }
+            ]
+          }
+        },
+        "audio_bridges": {
+          "Opening to Scene": {
+            "transition_type": "location",
+            "bridge_audio_cues": [
+              "FADE IN",
+              "scene setting description"
+            ],
+            "clarity_score": 85
+          },
+          "Door Creaking to Dialogue": {
+            "transition_type": "location",
+            "bridge_audio_cues": [
+              "DOOR CREAKING OPEN",
+              "John's dialogue"
+            ],
+            "clarity_score": 45
+          },
+          "Scene to Closing": {
+            "transition_type": "location",
+            "bridge_audio_cues": [
+              "FADE OUT"
+            ],
+            "clarity_score": 70
+          }
+        }
+      },
+      "information_delivery_analysis": {
+        "delivery_scorecard": {
+          "Scene 1": {
+            "natural_integration_score": 70,
+            "audio_friendly_score": 85,
+            "repetition_score": 50,
+            "overall_delivery_score": 68,
+            "delivery_issues": [
+              {
+                "issue_type": "memory_gap",
+                "location": "Scene 1, line 4",
+                "line_number": 4,
+                "problematic_content": "We can't afford to wait any longer.",
+                "problem": "Lacks context about why they can't wait, leaving listeners unclear about the stakes and purpose of their actions",
+                "recommended_fix": "Add a brief hint about their purpose, such as 'We can't afford to wait any longer. The package needs to be delivered before dawn.'",
+                "severity": "HIGH",
+                "one_breath_fix": "We can't wait, we need to deliver this before dawn."
+              },
+              {
+                "issue_type": "memory_gap",
+                "location": "Scene 1, beginning",
+                "line_number": 1,
+                "problematic_content": "Is everyone asleep?",
+                "problem": "No context about who 'everyone' refers to or why they need people to be asleep",
+                "recommended_fix": "Add subtle context, such as 'Is everyone asleep? We can't risk anyone knowing about the mission.'",
+                "severity": "MEDIUM",
+                "one_breath_fix": "Is everyone asleep? We need to leave undetected."
+              }
+            ]
+          }
+        },
+        "information_priority": {
+          "critical_info": [
+            {
+              "information": "John and Lisa are waiting for someone (Mom) to fall asleep before they can leave",
+              "repetition_count": 1,
+              "spacing": "N/A",
+              "clarity_score": 75
+            }
+          ],
+          "secondary_info": [
+            {
+              "information": "There's urgency to their departure",
+              "repetition_count": 1,
+              "spacing": "N/A",
+              "clarity_score": 50
+            }
+          ]
+        }
+      },
+      "overall_clarity_score": 56,
+      "timestamp": "2025-10-27T16:48:13.206698"
+    }
+  ],
+  "summary_report": {
+    "executive_summary": "The audio clarity analysis across three episodes reveals significant challenges in establishing clear auditory environments and character contexts. Episode 2 scored the lowest at 32, showing critical issues in character introduction and spatial context, while Episode 1 performed best at 56, though still lacking in emotional cues and movement descriptions. Common problems include insufficient sound design to establish locations, unclear character positioning, and missing contextual information that would help listeners understand character relationships and motivations.",
+    "overall_clarity_health": {
+      "average_scene_clarity": 49,
+      "average_action_clarity": 35,
+      "average_transition_clarity": 66,
+      "average_information_delivery": 59,
+      "overall_audio_clarity_score": 46,
+      "total_issues_found": "21",
+      "critical_issues": "3",
+      "minor_issues": "1"
+    },
+    "episode_breakdown": [
+      {
+        "episode_id": "1",
+        "scene_clarity_score": 65,
+        "action_clarity_score": 25,
+        "transition_clarity_score": 67,
+        "information_delivery_score": 68,
+        "overall_score": 56,
+        "key_strengths": [
+          "Clear time establishment with nighttime dialogue",
+          "Good POV transitions"
+        ],
+        "key_issues": [
+          "Missing emotional cues throughout",
+          "Unclear physical movements and positioning"
+        ],
+        "recommendations": [
+          "Add emotional cues like '(whispering nervously)' for character dialogue",
+          "Include physical movement descriptions such as 'John stands quietly, motioning to the back door'",
+          "Add ambient sounds specific to living room (TV humming, clock ticking)"
+        ]
+      },
+      {
+        "episode_id": "2",
+        "scene_clarity_score": 32,
+        "action_clarity_score": 47,
+        "transition_clarity_score": 55,
+        "information_delivery_score": 33,
+        "overall_score": 32,
+        "key_strengths": [
+          "Some emotional action scoring higher at 70 in Scene 1"
+        ],
+        "key_issues": [
+          "Critical memory gaps in character introduction and relationships",
+          "Door creaking sound not connected to character action",
+          "New character Lucy introduced without establishing connection"
+        ],
+        "recommendations": [
+          "Add introductory lines establishing character relationships: 'LUCY (John's sister) paced the kitchen'",
+          "Connect sound effects to character actions: 'SFX: FOOTSTEPS APPROACHING' followed by 'SFX: DOOR CREAKING OPEN'",
+          "Establish spatial context: 'JOHN sits on the couch' and 'SARA kneels beside him'"
+        ]
+      },
+      {
+        "episode_id": "3",
+        "scene_clarity_score": 51,
+        "action_clarity_score": 32,
+        "transition_clarity_score": 75,
+        "information_delivery_score": 75,
+        "overall_score": 51,
+        "key_strengths": [
+          "Good information delivery with natural integration",
+          "Clear transitions within scenes"
+        ],
+        "key_issues": [
+          "Coffee shop location not established through dialogue or sound",
+          "Unclear which character sets down drink",
+          "No emotional cues beyond vocal tone"
+        ],
+        "recommendations": [
+          "Add coffee shop ambient sounds at scene start: 'SFX: COFFEE MACHINE, LOW CHATTER'",
+          "Clarify character actions: 'BETH (sets down coffee)' or 'JAKE (sets down cup forcefully)'",
+          "Add sound effects for emotional reactions: 'SFX JAKE SIGHS' or 'BETH (reaches across table)'"
+        ]
+      }
+    ],
+    "common_problems": [
+      {
+        "problem_type": "Missing spatial context",
+        "frequency": "3",
+        "typical_location": "Scene opening",
+        "recommended_fix": "Add introductory description establishing character positions and movements at the start of each scene"
+      },
+      {
+        "problem_type": "Lack of emotional cues",
+        "frequency": "3",
+        "typical_location": "Throughout scenes",
+        "recommended_fix": "Add parenthetical emotional descriptors and sound effects for emotional reactions"
+      },
+      {
+        "problem_type": "Insufficient scene establishment",
+        "frequency": "3",
+        "typical_location": "Scene transitions",
+        "recommended_fix": "Include location-specific ambient sounds and clear audio cues for setting changes"
+      },
+      {
+        "problem_type": "Information memory gaps",
+        "frequency": "3",
+        "typical_location": "Dialogue opening",
+        "recommended_fix": "Establish context through brief introductory lines or narration before key dialogue"
+      }
+    ],
+    "audio_optimization_recommendations": [
+      "Create a consistent sound design template for each location with distinctive ambient signatures",
+      "Implement character positioning indicators at the start of each scene to establish spatial relationships",
+      "Add emotional sound cues (sighs, footsteps, object interactions) to enhance character presence",
+      "Establish clear audio bridges between scenes using transitional sounds (footsteps, doors, environmental changes)",
+      "Review all dialogue openings to ensure sufficient context for new listeners or after breaks"
+    ],
+    "readiness_for_audio_production": {
+      "audio_readiness": false,
+      "remaining_issues": "Multiple critical issues related to character positioning, emotional cues, and scene establishment need to be addressed before production",
+      "next_steps": [
+        "Implement all recommended fixes for critical and high-severity issues",
+        "Create detailed sound design document specifying ambient sounds for each location",
+        "Add character positioning indicators at the start of each scene",
+        "Review and enhance emotional cues throughout all episodes"
+      ]
+    }
+  }
+}

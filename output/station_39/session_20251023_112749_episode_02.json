@@ -1,0 +1,130 @@
+{
+  "episode_id": 2,
+  "content_rating": "PG",
+  "target_age_range": "28-55",
+  "content_screening": {
+    "content_flags": [],
+    "violence_assessment": {
+      "physical_violence_level": "none",
+      "emotional_violence_level": "none",
+      "consequences_shown": false,
+      "age_appropriate": true
+    },
+    "language_assessment": {
+      "profanity_level": "none",
+      "innuendo_present": false,
+      "complex_themes": []
+    },
+    "fear_factor_assessment": {
+      "scary_moments_count": 0,
+      "tension_duration": "brief",
+      "relief_present": false,
+      "nightmare_risk": "low"
+    },
+    "mature_themes_assessment": {
+      "death_handling": "none",
+      "romance_level": "none",
+      "substance_references": false
+    }
+  },
+  "comprehension_check": {
+    "comprehension_adjustments": [
+      {
+        "section": "dialogue",
+        "issue": "vocabulary is too basic for target age range",
+        "category": "vocabulary",
+        "current_level": "simple, basic vocabulary suitable for younger audiences",
+        "target_level": "more sophisticated vocabulary appropriate for adult viewers",
+        "recommendation": "enhance dialogue with more complex sentence structures and vocabulary that better reflects adult communication patterns"
+      },
+      {
+        "section": "plot development",
+        "issue": "insufficient plot information for adult engagement",
+        "category": "plot_complexity",
+        "current_level": "minimal plot development with unclear context",
+        "target_level": "more substantive plot development with clearer context",
+        "recommendation": "provide more context about the situation the characters are facing to create engagement for adult viewers"
+      },
+      {
+        "section": "emotional context",
+        "issue": "emotional complexity too basic for target age",
+        "category": "emotional_complexity",
+        "current_level": "basic emotional expressions without depth",
+        "target_level": "more nuanced emotional expressions with clearer motivations",
+        "recommendation": "develop more complex emotional dynamics between characters and provide clearer motivations for their concerns"
+      }
+    ],
+    "vocabulary_assessment": {
+      "age_appropriate": false,
+      "complex_words_count": 0,
+      "simplification_needed": false,
+      "engagement_level": "too_simple"
+    },
+    "plot_complexity_assessment": {
+      "comprehensibility": "easy",
+      "structure_clarity": "unclear",
+      "engagement_for_age": false
+    },
+    "emotional_complexity_assessment": {
+      "emotional_concepts": "age_appropriate",
+      "relationship_dynamics": "appropriate",
+      "motivational_understanding": "unclear"
+    }
+  },
+  "audio_intensity_analysis": {
+    "intensity_flags": [
+      {
+        "issue": "Door creaking sound effect could be startling depending on implementation",
+        "severity": "LOW",
+        "location": "scene 1, after Sara's dialogue",
+        "category": "volume_dynamics",
+        "problematic_content": "SFX: DOOR CREAKING",
+        "suggested_fix": "Ensure the door creaking is moderate in volume without sudden spikes"
+      }
+    ],
+    "volume_dynamics_assessment": {
+      "startling_sounds_count": 1,
+      "jump_scare_potential": "low",
+      "volume_variation": "minimal"
+    },
+    "disturbing_sounds_assessment": {
+      "explicit_sounds": false,
+      "disturbing_cues": [
+        "door creaking"
+      ],
+      "implied_not_explicit": true
+    },
+    "emotional_intensity_assessment": {
+      "distress_duration": "brief",
+      "resolution_present": false,
+      "emotional_impact": "moderate"
+    }
+  },
+  "positive_messaging_check": {
+    "message_alignment_notes": "The content features relatable adult characters with appropriate flaws and growth arcs. While the script excerpt is brief, the character profiles indicate positive messaging through personal development, professional relationships, and non-violent problem-solving. The content aligns well with the PG rating and target age range of 28-55.",
+    "role_model_assessment": {
+      "heroic_characteristics": "strong",
+      "flaw_balance": "balanced",
+      "growth_arc": "clear"
+    },
+    "conflict_resolution_assessment": {
+      "non_violent_solutions": true,
+      "cooperation_valued": true,
+      "positive_problem_solving": true
+    },
+    "consequences_assessment": {
+      "consequences_present": true,
+      "learning_moments": true,
+      "hope_maintained": true
+    }
+  },
+  "age_rating_confirmation": {
+    "compliant": true,
+    "critical_flags": 0,
+    "high_flags": 0,
+    "total_flags": 1,
+    "requires_user_review": false,
+    "positive_messaging_ok": true
+  },
+  "timestamp": "2025-10-28T15:46:28.902044"
+}

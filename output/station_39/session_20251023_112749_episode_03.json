@@ -1,0 +1,122 @@
+{
+  "episode_id": 3,
+  "content_rating": "PG",
+  "target_age_range": "28-55",
+  "content_screening": {
+    "content_flags": [],
+    "violence_assessment": {
+      "physical_violence_level": "none",
+      "emotional_violence_level": "none",
+      "consequences_shown": false,
+      "age_appropriate": true
+    },
+    "language_assessment": {
+      "profanity_level": "none",
+      "innuendo_present": false,
+      "complex_themes": [
+        "work stress",
+        "professional challenges"
+      ]
+    },
+    "fear_factor_assessment": {
+      "scary_moments_count": 0,
+      "tension_duration": "brief",
+      "relief_present": true,
+      "nightmare_risk": "low"
+    },
+    "mature_themes_assessment": {
+      "death_handling": "none",
+      "romance_level": "none",
+      "substance_references": false
+    }
+  },
+  "comprehension_check": {
+    "comprehension_adjustments": [
+      {
+        "section": "dialogue",
+        "issue": "dialogue is too simplistic for target age range",
+        "category": "vocabulary",
+        "current_level": "basic conversational vocabulary suitable for teenagers",
+        "target_level": "more sophisticated adult vocabulary with nuanced expression",
+        "recommendation": "enhance dialogue with more complex vocabulary and expressions that reflect adult communication patterns"
+      },
+      {
+        "section": "scene content",
+        "issue": "plot lacks depth and complexity for target age range",
+        "category": "plot_complexity",
+        "current_level": "very simple conversation with minimal development",
+        "target_level": "more layered conversation with subtext and additional context",
+        "recommendation": "add more context about the project, the stakes involved, and more complex interpersonal dynamics"
+      },
+      {
+        "section": "emotional expression",
+        "issue": "emotions are expressed in a very basic manner",
+        "category": "emotional_complexity",
+        "current_level": "simple emotional expressions with minimal depth",
+        "target_level": "more nuanced emotional expression with subtext",
+        "recommendation": "enhance emotional expression with more subtle cues, underlying tensions, and complex emotional responses"
+      }
+    ],
+    "vocabulary_assessment": {
+      "age_appropriate": false,
+      "complex_words_count": 0,
+      "simplification_needed": false,
+      "engagement_level": "too_simple"
+    },
+    "plot_complexity_assessment": {
+      "comprehensibility": "easy",
+      "structure_clarity": "clear",
+      "engagement_for_age": false
+    },
+    "emotional_complexity_assessment": {
+      "emotional_concepts": "age_appropriate",
+      "relationship_dynamics": "appropriate",
+      "motivational_understanding": "clear"
+    }
+  },
+  "audio_intensity_analysis": {
+    "intensity_flags": [],
+    "volume_dynamics_assessment": {
+      "startling_sounds_count": 0,
+      "jump_scare_potential": "none",
+      "volume_variation": "minimal"
+    },
+    "disturbing_sounds_assessment": {
+      "explicit_sounds": false,
+      "disturbing_cues": [],
+      "implied_not_explicit": true
+    },
+    "emotional_intensity_assessment": {
+      "distress_duration": "brief",
+      "resolution_present": true,
+      "emotional_impact": "mild"
+    }
+  },
+  "positive_messaging_check": {
+    "message_alignment_notes": "The content demonstrates positive messaging appropriate for a PG rating and target age range of 28-55. Characters face realistic adult challenges with supportive interactions, personal growth, and non-violent conflict resolution. The brief scene shows emotional support during work stress, which is relatable and appropriate for the target demographic.",
+    "role_model_assessment": {
+      "heroic_characteristics": "strong",
+      "flaw_balance": "balanced",
+      "growth_arc": "clear"
+    },
+    "conflict_resolution_assessment": {
+      "non_violent_solutions": true,
+      "cooperation_valued": true,
+      "positive_problem_solving": true
+    },
+    "consequences_assessment": {
+      "consequences_present": true,
+      "learning_moments": true,
+      "hope_maintained": true
+    }
+  },
+  "age_rating_confirmation": {
+    "compliant": true,
+    "critical_flags": 0,
+    "high_flags": 0,
+    "total_flags": 0,
+    "requires_user_review": false,
+    "positive_messaging_ok": true
+  },
+  "timestamp": "2025-10-28T15:47:54.279916"
+}

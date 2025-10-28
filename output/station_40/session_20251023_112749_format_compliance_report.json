@@ -1,0 +1,386 @@
+{
+  "generated_at": "2025-10-28T23:15:36.941046",
+  "session_id": "session_20251023_112749",
+  "episodes": [
+    {
+      "episode_id": 2,
+      "format_verification": {
+        "episode_id": "2",
+        "format_compliance": {
+          "standard_format": {
+            "character_names_caps": true,
+            "dialogue_indentation": true,
+            "action_present_tense": true,
+            "sfx_cues_marked": false
+          },
+          "performance_directions": {
+            "parentheses_enclosed": true,
+            "brief_clear": true,
+            "over_direction_count": 0,
+            "vague_direction_count": 0
+          },
+          "scene_structure": {
+            "headers_complete": false,
+            "sequential_numbering": false,
+            "logical_page_breaks": true,
+            "runtime_estimates": false
+          },
+          "audio_cues": {
+            "sfx_format_compliant": false,
+            "music_format_compliant": true,
+            "ambience_format_compliant": true,
+            "silence_format_compliant": true
+          }
+        },
+        "format_errors": [
+          {
+            "check": "SFX format",
+            "location": "After SARA dialogue",
+            "line_number": 8,
+            "expected": "[SFX: description, timing, volume, source]",
+            "actual": "SFX: DOOR CREAKING",
+            "context": "something. SFX: DOOR CREAKING CUT TO:",
+            "severity": "CRITICAL",
+            "fix_required": "Change to '[SFX: door creaking, immediate, medium, off-screen]' or similar"
+          },
+          {
+            "check": "Scene numbering",
+            "location": "Scene headers",
+            "line_number": 1,
+            "expected": "INT. LIVING ROOM - NIGHT #1",
+            "actual": "INT. LIVING ROOM - NIGHT",
+            "context": "INT. LIVING ROOM - NIGHT FADE IN:",
+            "severity": "HIGH",
+            "fix_required": "Add sequential numbering to all scene headers"
+          },
+          {
+            "check": "Scene numbering",
+            "location": "Scene headers",
+            "line_number": 10,
+            "expected": "INT. KITCHEN - NIGHT #2",
+            "actual": "INT. KITCHEN - NIGHT",
+            "context": "CUT TO: INT. KITCHEN - NIGHT LUCY",
+            "severity": "HIGH",
+            "fix_required": "Add sequential numbering to all scene headers"
+          },
+          {
+            "check": "Runtime estimates",
+            "location": "Missing from script",
+            "line_number": 0,
+            "expected": "Runtime estimates for each scene",
+            "actual": "No runtime estimates provided",
+            "context": "Entire script lacks runtime estimates",
+            "severity": "MEDIUM",
+            "fix_required": "Add runtime estimates for each scene"
+          }
+        ],
+        "compliance_summary": {
+          "total_errors": 4,
+          "critical_errors": 1,
+          "high_errors": 2,
+          "medium_errors": 1,
+          "low_errors": 0,
+          "passes_all_checks": false
+        }
+      },
+      "production_notes_verification": {
+        "casting_notes_complete": true,
+        "casting_notes_errors": [],
+        "technical_requirements_complete": true,
+        "missing_technical_fields": [],
+        "delivery_specs_complete": true,
+        "missing_delivery_fields": [],
+        "verification_summary": {
+          "all_complete": true,
+          "total_errors": 0,
+          "blocking_errors": 0
+        }
+      },
+      "documentation_completeness": {
+        "episode_guide_complete": true,
+        "character_guide_complete": true,
+        "sound_bible_complete": true,
+        "missing_sections": [],
+        "completeness_summary": {
+          "all_docs_present": true,
+          "total_missing": 0,
+          "critical_sections_missing": 0
+        }
+      },
+      "overall_compliance": {
+        "total_errors": 4,
+        "blocking_issues": 1,
+        "format_errors": 4,
+        "production_errors": 0,
+        "documentation_errors": 0,
+        "production_ready": false
+      },
+      "timestamp": "2025-10-28T23:13:10.487548"
+    },
+    {
+      "episode_id": 3,
+      "format_verification": {
+        "episode_id": "3",
+        "format_compliance": {
+          "standard_format": {
+            "character_names_caps": true,
+            "dialogue_indentation": true,
+            "action_present_tense": true,
+            "sfx_cues_marked": true
+          },
+          "performance_directions": {
+            "parentheses_enclosed": true,
+            "brief_clear": true,
+            "over_direction_count": 0,
+            "vague_direction_count": 0
+          },
+          "scene_structure": {
+            "headers_complete": false,
+            "sequential_numbering": false,
+            "logical_page_breaks": true,
+            "runtime_estimates": false
+          },
+          "audio_cues": {
+            "sfx_format_compliant": false,
+            "music_format_compliant": true,
+            "ambience_format_compliant": true,
+            "silence_format_compliant": true
+          }
+        },
+        "format_errors": [
+          {
+            "check": "Scene header numbering",
+            "location": "Scene header",
+            "line_number": 1,
+            "expected": "INT./EXT. LOCATION - TIME - NUMBER",
+            "actual": "INT. COFFEE SHOP - DAY",
+            "context": "INT. COFFEE SHOP - DAY",
+            "severity": "HIGH",
+            "fix_required": "Add sequential scene number to header"
+          },
+          {
+            "check": "SFX format",
+            "location": "After JAKE dialogue",
+            "line_number": 6,
+            "expected": "[SFX: description, timing, volume, source]",
+            "actual": "SFX\nDRINK SET ON TABLE",
+            "context": "you name it.\n\nSFX\nDRINK SET ON TABLE",
+            "severity": "CRITICAL",
+            "fix_required": "Convert to proper SFX format with all required elements"
+          },
+          {
+            "check": "Runtime estimates",
+            "location": "Script end",
+            "line_number": 10,
+            "expected": "Estimated running time for scene",
+            "actual": "No runtime estimate provided",
+            "context": "You always do.",
+            "severity": "MEDIUM",
+            "fix_required": "Add estimated running time for the scene"
+          }
+        ],
+        "compliance_summary": {
+          "total_errors": 3,
+          "critical_errors": 1,
+          "high_errors": 1,
+          "medium_errors": 1,
+          "low_errors": 0,
+          "passes_all_checks": false
+        }
+      },
+      "production_notes_verification": {
+        "casting_notes_complete": true,
+        "casting_notes_errors": [],
+        "technical_requirements_complete": true,
+        "missing_technical_fields": [],
+        "delivery_specs_complete": true,
+        "missing_delivery_fields": [],
+        "verification_summary": {
+          "all_complete": true,
+          "total_errors": 0,
+          "blocking_errors": 0
+        }
+      },
+      "documentation_completeness": {
+        "episode_guide_complete": true,
+        "character_guide_complete": true,
+        "sound_bible_complete": true,
+        "missing_sections": [],
+        "completeness_summary": {
+          "all_docs_present": true,
+          "total_missing": 0,
+          "critical_sections_missing": 0
+        }
+      },
+      "overall_compliance": {
+        "total_errors": 3,
+        "blocking_issues": 1,
+        "format_errors": 3,
+        "production_errors": 0,
+        "documentation_errors": 0,
+        "production_ready": false
+      },
+      "timestamp": "2025-10-28T23:13:38.617827"
+    },
+    {
+      "episode_id": 1,
+      "format_verification": {
+        "episode_id": "1",
+        "format_compliance": {
+          "standard_format": {
+            "character_names_caps": true,
+            "dialogue_indentation": true,
+            "action_present_tense": true,
+            "sfx_cues_marked": false
+          },
+          "performance_directions": {
+            "parentheses_enclosed": true,
+            "brief_clear": true,
+            "over_direction_count": 0,
+            "vague_direction_count": 0
+          },
+          "scene_structure": {
+            "headers_complete": false,
+            "sequential_numbering": false,
+            "logical_page_breaks": true,
+            "runtime_estimates": false
+          },
+          "audio_cues": {
+            "sfx_format_compliant": false,
+            "music_format_compliant": true,
+            "ambience_format_compliant": true,
+            "silence_format_compliant": true
+          }
+        },
+        "format_errors": [
+          {
+            "check": "SFX format",
+            "location": "Line after LISA dialogue",
+            "line_number": 8,
+            "expected": "[SFX: description, timing, volume, source]",
+            "actual": "SFX: DOOR CREAKING OPEN",
+            "context": "waiting for Mom. SFX: DOOR CREAKING OPEN JOHN",
+            "severity": "CRITICAL",
+            "fix_required": "Change to '[SFX: DOOR CREAKING OPEN, timing, volume, source]' with appropriate values"
+          },
+          {
+            "check": "Scene numbering",
+            "location": "Scene header",
+            "line_number": 1,
+            "expected": "1. INT. LIVING ROOM - NIGHT",
+            "actual": "INT. LIVING ROOM - NIGHT",
+            "context": "INT. LIVING ROOM - NIGHT FADE IN:",
+            "severity": "HIGH",
+            "fix_required": "Add sequential numbering to the scene header"
+          },
+          {
+            "check": "Runtime estimates",
+            "location": "Missing from script",
+            "line_number": 0,
+            "expected": "Runtime estimate should be included",
+            "actual": "No runtime estimate provided",
+            "context": "Entire script is missing runtime estimate",
+            "severity": "MEDIUM",
+            "fix_required": "Add runtime estimate at the beginning or end of the script"
+          }
+        ],
+        "compliance_summary": {
+          "total_errors": 3,
+          "critical_errors": 1,
+          "high_errors": 1,
+          "medium_errors": 1,
+          "low_errors": 0,
+          "passes_all_checks": false
+        }
+      },
+      "production_notes_verification": {
+        "casting_notes_complete": true,
+        "casting_notes_errors": [],
+        "technical_requirements_complete": true,
+        "missing_technical_fields": [],
+        "delivery_specs_complete": true,
+        "missing_delivery_fields": [],
+        "verification_summary": {
+          "all_complete": true,
+          "total_errors": 0,
+          "blocking_errors": 0
+        }
+      },
+      "documentation_completeness": {
+        "episode_guide_complete": true,
+        "character_guide_complete": true,
+        "sound_bible_complete": true,
+        "missing_sections": [],
+        "completeness_summary": {
+          "all_docs_present": true,
+          "total_missing": 0,
+          "critical_sections_missing": 0
+        }
+      },
+      "overall_compliance": {
+        "total_errors": 3,
+        "blocking_issues": 1,
+        "format_errors": 3,
+        "production_errors": 0,
+        "documentation_errors": 0,
+        "production_ready": false
+      },
+      "timestamp": "2025-10-28T23:14:46.117053"
+    }
+  ],
+  "summary": {
+    "executive_summary": "The format verification across all three episodes reveals consistent issues that prevent production readiness. All episodes fail to meet required format standards, with common problems including incorrect SFX formatting, missing scene numbering, and absent runtime estimates. These issues appear systematic across the entire series, suggesting a need for standardized formatting guidelines and writer training. While production notes and documentation are complete across all episodes, the technical formatting requires immediate attention before any production can proceed.",
+    "overall_compliance": {
+      "episodes_passing": 0,
+      "episodes_failing": 3,
+      "total_errors": 10,
+      "critical_errors": 3,
+      "blocking_production": true
+    },
+    "common_format_errors": [
+      {
+        "error_type": "SFX format",
+        "frequency": 3,
+        "typical_location": "After dialogue lines",
+        "recommended_fix": "Convert all SFX cues to the proper format '[SFX: description, timing, volume, source]' with appropriate values for each element"
+      },
+      {
+        "error_type": "Scene numbering",
+        "frequency": 3,
+        "typical_location": "Scene headers",
+        "recommended_fix": "Add sequential numbering to all scene headers using the format 'INT./EXT. LOCATION - TIME - NUMBER'"
+      },
+      {
+        "error_type": "Runtime estimates",
+        "frequency": 3,
+        "typical_location": "Missing from all scenes",
+        "recommended_fix": "Add estimated running time for each scene, either at the beginning or end of the script"
+      }
+    ],
+    "missing_documentation_summary": {
+      "missing_casting_notes": [],
+      "missing_technical_fields": [],
+      "missing_documentation_sections": []
+    },
+    "production_readiness": {
+      "production_ready": false,
+      "blocking_issues": [
+        "Incorrect SFX formatting in all episodes",
+        "Missing scene numbering in all episodes",
+        "No runtime estimates provided in any episode"
+      ],
+      "remaining_steps": [
+        "Standardize SFX formatting across all episodes",
+        "Add sequential scene numbering to all scene headers",
+        "Include runtime estimates for each scene",
+        "Re-verify format compliance after corrections"
+      ]
+    },
+    "recommendations": [
+      "Create a comprehensive style guide document that clearly demonstrates the correct formatting for SFX cues, scene headers, and runtime estimates",
+      "Conduct a training session for all writers on the standardized formatting requirements before proceeding with any new scripts",
+      "Implement a pre-submission checklist that writers must complete before submitting episodes, including verification of proper SFX formatting, scene numbering, and runtime estimates",
+      "Establish a two-tier review process where scripts are first checked for format compliance before content review, ensuring all technical requirements are met before proceeding to production"
+    ]
+  }
+}

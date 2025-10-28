@@ -1,0 +1,254 @@
+{
+  "episode_id": 2,
+  "scene_clarity_analysis": {
+    "scene_clarity_scorecard": {
+      "Scene 1": {
+        "establishment_seconds": 0,
+        "location_score": 20,
+        "time_score": 10,
+        "character_presence_score": 50,
+        "overall_clarity": 27,
+        "location_issues": [
+          {
+            "issue_type": "Missing auditory cues",
+            "location": "Scene 1",
+            "line_number": 1,
+            "specific_problem": "No sound effects or ambient sounds to establish living room setting",
+            "recommended_fix": "Add ambient living room sounds (e.g., fireplace crackling, soft TV sounds in background)",
+            "severity": "HIGH",
+            "blocking_comprehension": true
+          }
+        ],
+        "time_issues": [
+          {
+            "issue_type": "Missing temporal cues",
+            "location": "Scene 1",
+            "line_number": 1,
+            "specific_problem": "No audio cues or dialogue references to establish night time",
+            "recommended_fix": "Add night-specific ambient sounds (e.g., crickets outside window, moonlight mentioned in dialogue)",
+            "severity": "HIGH",
+            "blocking_comprehension": true
+          }
+        ],
+        "character_issues": [
+          {
+            "issue_type": "Spatial ambiguity",
+            "location": "Scene 1",
+            "line_number": 3,
+            "specific_problem": "Don't know where characters are positioned relative to each other",
+            "recommended_fix": "Add dialogue or sound cues that establish positioning (e.g., 'John sat across from Sara on the couch')",
+            "severity": "MEDIUM",
+            "blocking_comprehension": false
+          },
+          {
+            "issue_type": "Presence ambiguity",
+            "location": "Scene 1",
+            "line_number": 8,
+            "specific_problem": "Door creaking suggests someone might be entering, but it's unclear who",
+            "recommended_fix": "Add dialogue or sound cues that clarify (e.g., footsteps following the creak, or a character saying 'Who's there?')",
+            "severity": "MEDIUM",
+            "blocking_comprehension": false
+          }
+        ]
+      },
+      "Scene 2": {
+        "establishment_seconds": 0,
+        "location_score": 10,
+        "time_score": 10,
+        "character_presence_score": 40,
+        "overall_clarity": 20,
+        "location_issues": [
+          {
+            "issue_type": "Missing auditory cues",
+            "location": "Scene 2",
+            "line_number": 11,
+            "specific_problem": "No sound effects or ambient sounds to establish kitchen setting",
+            "recommended_fix": "Add kitchen-specific ambient sounds (e.g., refrigerator hum, faucet dripping, or Lucy opening a cabinet)",
+            "severity": "HIGH",
+            "blocking_comprehension": true
+          }
+        ],
+        "time_issues": [
+          {
+            "issue_type": "Missing temporal cues",
+            "location": "Scene 2",
+            "line_number": 11,
+            "specific_problem": "No audio cues or dialogue references to establish night time",
+            "recommended_fix": "Add night-specific ambient sounds or dialogue references (e.g., 'It's getting late' or clock chiming)",
+            "severity": "HIGH",
+            "blocking_comprehension": true
+          }
+        ],
+        "character_issues": [
+          {
+            "issue_type": "Presence ambiguity",
+            "location": "Scene 2",
+            "line_number": 13,
+            "specific_problem": "Don't know if Lucy is alone or if others are present",
+            "recommended_fix": "Add dialogue or sound cues that clarify (e.g., 'Lucy said to herself' or another character responding)",
+            "severity": "MEDIUM",
+            "blocking_comprehension": false
+          }
+        ]
+      }
+    },
+    "audio_signatures": {
+      "Scene 1": {
+        "location_audio_cues": [],
+        "time_audio_cues": [],
+        "spatial_audio_cues": [],
+        "sound_effects_detected": [
+          "DOOR CREAKING"
+        ],
+        "ambient_sound_detected": [],
+        "audio_density": "low",
+        "detection_confidence": 0.7
+      },
+      "Scene 2": {
+        "location_audio_cues": [],
+        "time_audio_cues": [],
+        "spatial_audio_cues": [],
+        "sound_effects_detected": [],
+        "ambient_sound_detected": [],
+        "audio_density": "low",
+        "detection_confidence": 0.9
+      }
+    }
+  },
+  "action_comprehension_analysis": {},
+  "transition_clarity_analysis": {
+    "transition_scorecard": {
+      "Living Room to Kitchen": {
+        "transition_from": "INT. LIVING ROOM - NIGHT with John and Sara",
+        "transition_to": "INT. KITCHEN - NIGHT with Lucy",
+        "clarity_score": 40,
+        "time_transition_score": 30,
+        "location_transition_score": 60,
+        "pov_transition_score": 30,
+        "transition_issues": [
+          {
+            "transition_type": "time",
+            "location": "between Living Room and Kitchen scenes",
+            "line_number": "between SARA's dialogue and CUT TO:",
+            "specific_problem": "No indication of time passage or temporal relationship between scenes",
+            "recommended_fix": "Add a time indicator like 'LATER THAT NIGHT' or 'MEANWHILE' before the CUT TO: to clarify if scenes are simultaneous or sequential",
+            "severity": "HIGH",
+            "disorientation_risk": true
+          },
+          {
+            "transition_type": "location",
+            "location": "between Living Room and Kitchen scenes",
+            "line_number": "SFX: DOOR CREAKING and CUT TO:",
+            "specific_problem": "Door creaking sound effect is placed before the location change, making its relationship to the transition unclear",
+            "recommended_fix": "Reposition the door creaking sound effect to immediately follow CUT TO: and add footsteps sound effect to indicate movement between rooms",
+            "severity": "MEDIUM",
+            "disorientation_risk": true
+          },
+          {
+            "transition_type": "pov",
+            "location": "between Living Room and Kitchen scenes",
+            "line_number": "CUT TO:",
+            "specific_problem": "No clear indication of relationship between John/Sara and Lucy or perspective shift",
+            "recommended_fix": "Add a brief narrator line or character reference to establish connection, e.g., 'In another part of the house, Lucy paced anxiously'",
+            "severity": "CRITICAL",
+            "disorientation_risk": true
+          }
+        ]
+      }
+    },
+    "audio_bridges": {
+      "Living Room to Kitchen": {
+        "transition_type": "location",
+        "bridge_audio_cues": [
+          "DOOR CREAKING"
+        ],
+        "clarity_score": 30
+      }
+    }
+  },
+  "information_delivery_analysis": {
+    "delivery_scorecard": {
+      "Scene 1": {
+        "natural_integration_score": 60,
+        "audio_friendly_score": 40,
+        "repetition_score": 0,
+        "overall_delivery_score": 33,
+        "delivery_issues": [
+          {
+            "issue_type": "memory_gap",
+            "location": "Scene 1, opening",
+            "line_number": 1,
+            "problematic_content": "INT. LIVING ROOM - NIGHT",
+            "problem": "No context established about characters or situation",
+            "recommended_fix": "Add brief narration establishing who John and Sara are and what situation they're facing",
+            "severity": "CRITICAL",
+            "one_breath_fix": "John and Sara, trapped in their home by the storm, try to stay quiet."
+          },
+          {
+            "issue_type": "memory_gap",
+            "location": "Scene 1, line 3",
+            "line_number": 3,
+            "problematic_content": "What are we going to do?",
+            "problem": "Listeners don't know what situation they're referring to",
+            "recommended_fix": "Add context to the dialogue about what problem they're facing",
+            "severity": "CRITICAL",
+            "one_breath_fix": "John sighs. What are we going to do about that broken window?"
+          }
+        ]
+      },
+      "Scene 2": {
+        "natural_integration_score": 50,
+        "audio_friendly_score": 30,
+        "repetition_score": 0,
+        "overall_delivery_score": 27,
+        "delivery_issues": [
+          {
+            "issue_type": "memory_gap",
+            "location": "Scene 2, opening",
+            "line_number": 9,
+            "problematic_content": "INT. KITCHEN - NIGHT",
+            "problem": "Abrupt scene transition without establishing why they moved or who Lucy is",
+            "recommended_fix": "Add narration explaining the scene change and introducing Lucy",
+            "severity": "CRITICAL",
+            "one_breath_fix": "Later, in the kitchen, their daughter Lucy paces nervously."
+          },
+          {
+            "issue_type": "memory_gap",
+            "location": "Scene 2, line 11",
+            "line_number": 11,
+            "problematic_content": "We can't just sit here.",
+            "problem": "Unclear what threat they're facing or why they can't sit",
+            "recommended_fix": "Add context about what's motivating them to act",
+            "severity": "HIGH",
+            "one_breath_fix": "Lucy paces. We can't just sit here while the storm gets worse."
+          }
+        ]
+      }
+    },
+    "information_priority": {
+      "critical_info": [
+        {
+          "information": "Who the characters are and their relationship to each other",
+          "repetition_count": 0,
+          "spacing": "Not present",
+          "clarity_score": 0
+        },
+        {
+          "information": "What situation or threat they're facing",
+          "repetition_count": 0,
+          "spacing": "Not present",
+          "clarity_score": 0
+        },
+        {
+          "information": "Why they moved from the living room to the kitchen",
+          "repetition_count": 0,
+          "spacing": "Not present",
+          "clarity_score": 0
+        }
+      ],
+      "secondary_info": []
+    }
+  },
+  "overall_clarity_score": 23,
+  "timestamp": "2025-10-28T13:36:59.063360"
+}

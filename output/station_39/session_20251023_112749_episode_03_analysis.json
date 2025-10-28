@@ -1,0 +1,203 @@
+{
+  "episode_id": 3,
+  "scene_clarity_analysis": {
+    "scene_clarity_scorecard": {
+      "Scene 1": {
+        "establishment_seconds": 8,
+        "location_score": 30,
+        "time_score": 40,
+        "character_presence_score": 60,
+        "overall_clarity": 43,
+        "location_issues": [
+          {
+            "issue_type": "missing ambient sounds",
+            "location": "Scene 1",
+            "line_number": 1,
+            "specific_problem": "Coffee shop location is stated in heading but lacks audio confirmation through ambient sounds",
+            "recommended_fix": "Add ambient coffee shop sounds (espresso machine, background chatter, cash register)",
+            "severity": "HIGH",
+            "blocking_comprehension": false
+          }
+        ],
+        "time_issues": [
+          {
+            "issue_type": "missing time indicators",
+            "location": "Scene 1",
+            "line_number": 1,
+            "specific_problem": "Daytime is stated in heading but no audio cues reinforce this",
+            "recommended_fix": "Add daytime audio cues (morning rush sounds, bright ambient light indicators)",
+            "severity": "MEDIUM",
+            "blocking_comprehension": false
+          }
+        ],
+        "character_issues": [
+          {
+            "issue_type": "limited spatial awareness",
+            "location": "Scene 1",
+            "line_number": 3,
+            "specific_problem": "Character positions are inferred but not established through sound cues",
+            "recommended_fix": "Add sound cues for character positioning (chairs scraping, footsteps approaching)",
+            "severity": "MEDIUM",
+            "blocking_comprehension": false
+          }
+        ]
+      }
+    },
+    "audio_signatures": {
+      "Scene 1": {
+        "location_audio_cues": [],
+        "time_audio_cues": [],
+        "spatial_audio_cues": [
+          "DRINK SET ON TABLE"
+        ],
+        "sound_effects_detected": [
+          "DRINK SET ON TABLE"
+        ],
+        "ambient_sound_detected": [],
+        "audio_density": "low",
+        "detection_confidence": 0.7
+      }
+    }
+  },
+  "action_comprehension_analysis": {
+    "action_sequence_scorecard": {
+      "Scene 1": {
+        "physical_action_score": 30,
+        "character_action_score": 20,
+        "emotional_action_score": 50,
+        "overall_action_score": 33,
+        "action_issues": [
+          {
+            "action_type": "physical",
+            "location": "Scene 1, line 1",
+            "line_number": 1,
+            "problematic_sequence": "INT. COFFEE SHOP - DAY",
+            "problem": "No description of character positions or setting layout",
+            "recommended_fix": "Add brief description of where characters are seated/standing and their proximity to each other",
+            "severity": "HIGH",
+            "auto_fixed": false
+          },
+          {
+            "action_type": "character",
+            "location": "Scene 1, line 6",
+            "line_number": 6,
+            "problematic_sequence": "SFX DRINK SET ON TABLE",
+            "problem": "Unclear which character is setting down the drink",
+            "recommended_fix": "Specify who is performing the action (e.g., 'Beth sets her drink down' or 'Jake places his coffee cup')",
+            "severity": "CRITICAL",
+            "auto_fixed": false
+          },
+          {
+            "action_type": "emotional",
+            "location": "Scene 1, line 3",
+            "line_number": 3,
+            "problematic_sequence": "JAKE (looks stressed)",
+            "problem": "Visual cue cannot be conveyed in audio-only format",
+            "recommended_fix": "Replace with audible cues like 'JAKE (sighs)' or 'JAKE (with strained voice)'",
+            "severity": "HIGH",
+            "auto_fixed": false
+          }
+        ]
+      }
+    },
+    "sound_effect_sequencing": {
+      "Scene 1": [
+        {
+          "action": "Setting a drink on table",
+          "sound_effect": "DRINK SET ON TABLE",
+          "integration_score": 4,
+          "line_number": 6,
+          "natural_placement": true,
+          "auditory_clarity": 5,
+          "fix_needed": true,
+          "recommended_sfx": "BETH sets her coffee cup down with a clink OR JAKE slams his coffee cup on table"
+        }
+      ]
+    }
+  },
+  "transition_clarity_analysis": {
+    "transition_scorecard": {
+      "Transition Type": {
+        "transition_from": "Unknown (scene beginning)",
+        "transition_to": "Unknown (scene continuation)",
+        "clarity_score": 85,
+        "time_transition_score": 80,
+        "location_transition_score": 90,
+        "pov_transition_score": 85,
+        "transition_issues": [
+          {
+            "transition_type": "time",
+            "location": "Scene beginning",
+            "line_number": 1,
+            "specific_problem": "Time passage within scene is unclear - how long has this conversation been happening?",
+            "recommended_fix": "Add a brief time reference in dialogue or narration to establish duration (e.g., 'Been here long?' or 'You just got here?')",
+            "severity": "LOW",
+            "disorientation_risk": false
+          }
+        ]
+      }
+    },
+    "audio_bridges": {
+      "Scene beginning to conversation": {
+        "transition_type": "location",
+        "bridge_audio_cues": [
+          "Coffee shop ambient sounds",
+          "Subtle chair movement"
+        ],
+        "clarity_score": 90
+      }
+    }
+  },
+  "information_delivery_analysis": {
+    "delivery_scorecard": {
+      "Scene 1": {
+        "natural_integration_score": 65,
+        "audio_friendly_score": 90,
+        "repetition_score": 30,
+        "overall_delivery_score": 62,
+        "delivery_issues": [
+          {
+            "issue_type": "memory_gap",
+            "location": "Scene 1, line 3",
+            "line_number": 3,
+            "problematic_content": "It's a nightmare. Deadlines, bugs, you name it.",
+            "problem": "Lacks specific context about the project's importance and stakes",
+            "recommended_fix": "Add more specific details about what the project is and why it matters to Jake",
+            "severity": "MEDIUM",
+            "one_breath_fix": "The client's new app launch is next week, and these bugs could sink the whole deal."
+          },
+          {
+            "issue_type": "complex_terminology",
+            "location": "Scene 1, line 3",
+            "line_number": 3,
+            "problematic_content": "Deadlines, bugs, you name it.",
+            "problem": "Technical terms like 'bugs' may not be clear to all listeners",
+            "recommended_fix": "Provide a brief, natural explanation of what 'bugs' means in this context",
+            "severity": "LOW",
+            "one_breath_fix": "These coding errors keep crashing the system right before our deadline."
+          }
+        ]
+      }
+    },
+    "information_priority": {
+      "critical_info": [
+        {
+          "information": "Jake is struggling with a work project",
+          "repetition_count": 1,
+          "spacing": "only mentioned once",
+          "clarity_score": 60
+        }
+      ],
+      "secondary_info": [
+        {
+          "information": "Beth is supportive of Jake",
+          "repetition_count": 1,
+          "spacing": "only mentioned once",
+          "clarity_score": 70
+        }
+      ]
+    }
+  },
+  "overall_clarity_score": 55,
+  "timestamp": "2025-10-28T13:39:06.556954"
+}

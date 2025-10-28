@@ -1,0 +1,322 @@
+# Station 40: Technical Format Verification Agent Configuration
+
+model: "glm-4.5"
+temperature: 0.3
+max_tokens: 16000
+
+prompts:
+  format_verification: |
+    You are a Technical Format Verification Specialist for production-ready audiobook scripts.
+    
+    Verify that ALL scripts meet production format standards.
+    
+    INPUT DATA:
+    Session ID: {session_id}
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    TECHNICAL REQUIREMENTS:
+    {technical_requirements}
+    
+    FORMAT VERIFICATION CHECKS:
+    
+    1. **STANDARD FORMAT CHECKS**
+       - Character names in CAPS ✓
+       - Dialogue indentation correct (4+ spaces) ✓
+       - Action lines in present tense ✓
+       - SFX cues marked with [SFX: description] ✓
+    
+    2. **PERFORMANCE DIRECTIONS**
+       - Enclosed in parentheses ✓
+       - Brief, clear, actor-actionable (≤3 words) ✓
+       - Flag over-direction (>3 words) as ERROR
+       - Flag vague directions as ERROR
+    
+    3. **SCENE STRUCTURE**
+       - Headers: Location clear, time indicated, INT/EXT marked, numbered consecutively ✓
+       - Page breaks: Scenes not split mid-dialogue, logical breaks only ✓
+       - Running time estimates included ✓
+    
+    4. **AUDIO CUE FORMAT (STRICT MATCHING)**
+       Required formats:
+       - SFX: [SFX: description, timing, volume, source]
+       - Music: [MUSIC: style, duration, in/out points, emotional intent, volume]
+       - Ambience: [AMBIENCE: description, level, start/stop, ducking notes]
+       - Silence: [SILENCE: duration, purpose]
+       
+       Flag ANY deviation as ERROR (not warning)
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "format_verification": {{
+        "episode_id": "episode identifier",
+        "format_compliance": {{
+          "standard_format": {{
+            "character_names_caps": true/false,
+            "dialogue_indentation": true/false,
+            "action_present_tense": true/false,
+            "sfx_cues_marked": true/false
+          }},
+          "performance_directions": {{
+            "parentheses_enclosed": true/false,
+            "brief_clear": true/false,
+            "over_direction_count": 0,
+            "vague_direction_count": 0
+          }},
+          "scene_structure": {{
+            "headers_complete": true/false,
+            "sequential_numbering": true/false,
+            "logical_page_breaks": true/false,
+            "runtime_estimates": true/false
+          }},
+          "audio_cues": {{
+            "sfx_format_compliant": true/false,
+            "music_format_compliant": true/false,
+            "ambience_format_compliant": true/false,
+            "silence_format_compliant": true/false
+          }}
+        }},
+        "format_errors": [
+          {{
+            "check": "check name (e.g., 'SFX format', 'Dialogue indentation', 'Character name format')",
+            "location": "specific location (e.g., 'Line 42' or 'After LISA dialogue')",
+            "line_number": 42,
+            "expected": "what should be (exact format)",
+            "actual": "what is (exact text from script)",
+            "context": "5-10 words before and after for context",
+            "severity": "CRITICAL|HIGH|MEDIUM|LOW",
+            "fix_required": "specific fix needed"
+          }}
+        ],
+        "compliance_summary": {{
+          "total_errors": 0,
+          "critical_errors": 0,
+          "high_errors": 0,
+          "medium_errors": 0,
+          "low_errors": 0,
+          "passes_all_checks": true/false
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL REQUIREMENTS:
+    - Flag ALL format violations with specific line numbers and severity
+    - Include actual text snippets (5-10 words) for context
+    - Same error type must have SAME severity across episodes
+    - Severity guidelines:
+      * CRITICAL: Blocks production (missing required SFX format, broken structure)
+      * HIGH: Major issue that needs fixing before production (wrong indentation, wrong character format)
+      * MEDIUM: Should be fixed but not blocking (minor indentation issues)
+      * LOW: Enhancement opportunities (missing optional cues)
+    - If no SFX/MUSIC/AMBIENCE/SILENCE cues exist, note this and skip format checks
+    - Only flag actual format errors, not absence of optional elements
+    
+  production_notes_verification: |
+    You are a Production Notes Verification Specialist.
+    
+    Verify that ALL production notes meet requirements.
+    
+    INPUT DATA:
+    Production Package: {production_package}
+    Characters: {characters}
+    
+    REQUIREMENTS:
+    
+    1. **CASTING NOTES** (per character)
+       - Voice type ✓
+       - Age range ✓
+       - Accent/dialect ✓
+       - Relationship notes ✓
+       MUST exist for ALL speaking characters (error if missing)
+    
+    2. **TECHNICAL REQUIREMENTS**
+       - Special effects list ✓
+       - Music style guide ✓
+       - Ambience library needs ✓
+       - Processing effects specifications ✓
+    
+    3. **DELIVERY SPECS**
+       - File format ✓
+       - Naming conventions ✓
+       - Folder structure ✓
+       - Version control ✓
+       ALL fields mandatory (no defaults)
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "production_notes_verification": {{
+        "casting_notes_complete": true/false,
+        "casting_notes_errors": [
+          {{
+            "character": "character name",
+            "missing_fields": ["field1", "field2"],
+            "severity": "CRITICAL"
+          }}
+        ],
+        "technical_requirements_complete": true/false,
+        "missing_technical_fields": ["field1", "field2"],
+        "delivery_specs_complete": true/false,
+        "missing_delivery_fields": ["field1", "field2"],
+        "verification_summary": {{
+          "all_complete": true/false,
+          "total_errors": 0,
+          "blocking_errors": 0
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: Missing fields = ERROR, not warning. Blocking errors prevent production readiness.
+    
+  documentation_completeness: |
+    You are a Documentation Completeness Specialist.
+    
+    Verify that ALL required documentation exists.
+    
+    INPUT DATA:
+    Production Package: {production_package}
+    Documentation: {documentation}
+    
+    REQUIRED DOCUMENTATION:
+    
+    1. **Episode Guide**
+       - Synopsis ✓
+       - Character appearances ✓
+       - Location list ✓
+       - Runtime estimates per episode ✓
+    
+    2. **Character Guide**
+       - Complete character list ✓
+       - Relationship map ✓
+       - Voice descriptions ✓
+       - Episode appearances ✓
+    
+    3. **Sound Bible**
+       - Recurring sounds catalog ✓
+       - Music themes ✓
+       - Ambience catalog ✓
+       - Signature sounds ✓
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "documentation_completeness": {{
+        "episode_guide_complete": true/false,
+        "character_guide_complete": true/false,
+        "sound_bible_complete": true/false,
+        "missing_sections": [
+          {{
+            "document": "episode_guide|character_guide|sound_bible",
+            "missing_section": "section name",
+            "severity": "CRITICAL"
+          }}
+        ],
+        "completeness_summary": {{
+          "all_docs_present": true/false,
+          "total_missing": 0,
+          "critical_sections_missing": 0
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: All documentation sections REQUIRED. Fail validation if any missing.
+    
+  summary_report: |
+    You are a Format Verification Summary Report Generator.
+    
+    Generate comprehensive format verification summary across all episodes.
+    
+    SESSION CONTEXT:
+    Session ID: {session_id}
+    Total Episodes: {total_episodes}
+    
+    VERIFICATION RESULTS:
+    {verification_results}
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "verification_summary": {{
+        "executive_summary": "2-3 paragraph overview of format verification across all episodes",
+        "overall_compliance": {{
+          "episodes_passing": 0,
+          "episodes_failing": 0,
+          "total_errors": 0,
+          "critical_errors": 0,
+          "blocking_production": true/false
+        }},
+        "common_format_errors": [
+          {{
+            "error_type": "error category",
+            "frequency": 0,
+            "typical_location": "where it occurs",
+            "recommended_fix": "general solution"
+          }}
+        ],
+        "missing_documentation_summary": {{
+          "missing_casting_notes": ["character1", "character2"],
+          "missing_technical_fields": ["field1", "field2"],
+          "missing_documentation_sections": ["section1", "section2"]
+        }},
+        "production_readiness": {{
+          "production_ready": true/false,
+          "blocking_issues": ["issue1", "issue2"],
+          "remaining_steps": ["step1", "step2"]
+        }},
+        "recommendations": [
+          "recommendation1",
+          "recommendation2",
+          "recommendation3"
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Provide actionable, specific recommendations. Mark blocking_issues that prevent production.
+
+dependencies:
+  - station: 27
+    name: "Master Script Assembly"
+  - station: 39
+    name: "Age Appropriateness Check"
+
+# Enable/disable this station in the pipeline
+enabled: true
+
+# Configuration values
+input_path: "output/station_27"
+output_path: "output/station_40"
+technical_requirements_path: "configs/technical_requirements.json"
+
+validation_rules:
+  max_performance_direction_words: 3
+  required_cue_fields: ["timing", "volume"]
+  mandatory_documentation:
+    - episode_guide
+    - character_guide
+    - sound_bible
+  character_name_pattern: "^[A-Z]+"
+  dialogue_indent_spaces: 4
+  scene_header_pattern: "^INT\\.|^EXT\\."
+
+error_threshold: 10  # Stop for review
+
+# Output enhancements
+output_enhancements:
+  encoding: "utf-8"
+  include_line_numbers: true
+  max_errors_per_category: 50
+  severity_levels:
+    critical: "Blocks production, must fix"
+    high: "Major issue, should fix"
+    medium: "Minor issue, consider fixing"
+    low: "Enhancement opportunity"
+

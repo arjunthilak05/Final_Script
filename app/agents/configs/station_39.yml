@@ -1,0 +1,359 @@
+# Station 39: Age Appropriateness Final Check Configuration
+
+model: "glm-4.5"
+temperature: 0.7
+max_tokens: 8000
+
+prompts:
+  content_screening: |
+    You are an Age Appropriateness Specialist for audiobook content.
+    
+    Analyze content for age appropriateness issues based on target age rating.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    CHARACTER DATA:
+    {characters}
+    
+    TARGET AGE RATING: {age_rating}
+    
+    TARGET AUDIENCE:
+    Content Rating: {age_rating}
+    Target Age Range: {target_age}
+    
+    CONTENT SCREENING CHECKS:
+    
+    1. **VIOLENCE**: Check physical/emotional violence, consequences, appropriateness
+       - Physical violence intensity
+       - Emotional violence and manipulation
+       - Consequences shown
+       - Age-appropriate handling for {target_age}
+    
+    2. **LANGUAGE**: Scan profanity, innuendo, complex themes
+       - Profanity level
+       - Innuendo and references
+       - Complex mature themes
+       - Vocabulary appropriateness for {target_age}
+    
+    3. **FEAR FACTOR**: Assess scary moments intensity
+       - Tension duration
+       - Relief presence
+       - Nightmare risk for {target_age}
+    
+    4. **MATURE THEMES**: Review death handling, romance level, substance references
+       - Death and loss handling
+       - Romance/intimacy level
+       - Substance references
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "content_screening": {{
+        "content_flags": [
+          {{
+            "issue": "description of violation",
+            "severity": "CRITICAL|HIGH|MEDIUM|LOW",
+            "location": "scene X, line Y",
+            "category": "violence|language|fear_factor|mature_themes",
+            "problematic_content": "specific text or scene",
+            "issue_description": "why this violates age rating",
+            "suggested_fix": "specific adjustment needed",
+            "severity_score": 1-10
+          }}
+        ],
+        "violence_assessment": {{
+          "physical_violence_level": "none|mild|moderate|intense",
+          "emotional_violence_level": "none|mild|moderate|intense",
+          "consequences_shown": true/false,
+          "age_appropriate": true/false
+        }},
+        "language_assessment": {{
+          "profanity_level": "none|mild|moderate|strong",
+          "innuendo_present": true/false,
+          "complex_themes": ["theme1", "theme2"]
+        }},
+        "fear_factor_assessment": {{
+          "scary_moments_count": 0,
+          "tension_duration": "brief|moderate|prolonged",
+          "relief_present": true/false,
+          "nightmare_risk": "low|medium|high"
+        }},
+        "mature_themes_assessment": {{
+          "death_handling": "none|gentle|moderate|explicit",
+          "romance_level": "none|innocent|developing|mature",
+          "substance_references": true/false
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: Flag violations with severity scores. Provide specific fixes for each issue.
+    
+  comprehension_check: |
+    You are a Comprehension Check Specialist for age-appropriate content.
+    
+    Verify comprehension level matches target age rating.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    TARGET AUDIENCE:
+    Content Rating: {age_rating}
+    Target Age Range: {target_age}
+    
+    COMPREHENSION CHECKS:
+    
+    1. **VOCABULARY**: Verify words/concepts match age without condescension
+       - Age-appropriate vocabulary for {target_age}
+       - Concept complexity matching {target_age}
+       - Engagement level
+    
+    2. **PLOT COMPLEXITY**: Validate followability and engagement
+       - Story comprehensibility for {target_age}
+       - Plot structure clarity
+       - Engagement for {target_age}
+    
+    3. **EMOTIONAL COMPLEXITY**: Ensure emotions/motivations/relationships are age-appropriate
+       - Emotional concepts suitable for {target_age}
+       - Relationship dynamics
+       - Motivational understanding
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "comprehension_check": {{
+        "comprehension_adjustments": [
+          {{
+            "section": "scene identifier",
+            "issue": "what's inappropriate",
+            "category": "vocabulary|plot_complexity|emotional_complexity",
+            "current_level": "description of current level",
+            "target_level": "description of appropriate level",
+            "recommendation": "specific adjustment needed"
+          }}
+        ],
+        "vocabulary_assessment": {{
+          "age_appropriate": true/false,
+          "complex_words_count": 0,
+          "simplification_needed": true/false,
+          "engagement_level": "appropriate|too_simple|too_complex"
+        }},
+        "plot_complexity_assessment": {{
+          "comprehensibility": "easy|moderate|difficult",
+          "structure_clarity": "clear|unclear",
+          "engagement_for_age": true/false
+        }},
+        "emotional_complexity_assessment": {{
+          "emotional_concepts": "age_appropriate|too_mature",
+          "relationship_dynamics": "appropriate|inappropriate",
+          "motivational_understanding": "clear|unclear"
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: Ensure content matches target age without condescension.
+    
+  audio_intensity_analysis: |
+    You are an Audio Intensity Specialist for age-appropriate audiobooks.
+    
+    Analyze audio-specific intensity factors for age rating compliance.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    TARGET AUDIENCE:
+    Content Rating: {age_rating}
+    Target Age Range: {target_age}
+    
+    AUDIO INTENSITY CHECKS:
+    
+    1. **VOLUME DYNAMICS**: Check for startling sounds, jump scares
+       - Sudden loud sounds appropriate for {target_age}
+       - Jump scare potential for {target_age}
+       - Volume variation
+    
+    2. **DISTURBING SOUNDS**: Flag explicit gore/suffering (keep implied not explicit)
+       - Explicit sound effects
+       - Disturbing audio cues
+       - Implied vs explicit for {target_age}
+    
+    3. **EMOTIONAL INTENSITY**: Limit distress duration, ensure resolution
+       - Distress duration appropriate for {target_age}
+       - Resolution presence
+       - Emotional impact level
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "audio_intensity_analysis": {{
+        "intensity_flags": [
+          {{
+            "issue": "description of intensity issue",
+            "severity": "CRITICAL|HIGH|MEDIUM|LOW",
+            "location": "scene X, line Y",
+            "category": "volume_dynamics|disturbing_sounds|emotional_intensity",
+            "problematic_content": "specific content",
+            "suggested_fix": "specific adjustment"
+          }}
+        ],
+        "volume_dynamics_assessment": {{
+          "startling_sounds_count": 0,
+          "jump_scare_potential": "none|low|medium|high",
+          "volume_variation": "minimal|moderate|extreme"
+        }},
+        "disturbing_sounds_assessment": {{
+          "explicit_sounds": true/false,
+          "disturbing_cues": ["cue1", "cue2"],
+          "implied_not_explicit": true/false
+        }},
+        "emotional_intensity_assessment": {{
+          "distress_duration": "brief|moderate|prolonged",
+          "resolution_present": true/false,
+          "emotional_impact": "mild|moderate|intense"
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: Flag audio elements that may be too intense for target age.
+    
+  positive_messaging_check: |
+    You are a Positive Messaging Specialist for age-appropriate content.
+    
+    Verify positive messages align with age rating expectations.
+    
+    EPISODE CONTEXT:
+    Episode ID: {episode_id}
+    Script Content: {episode_content}
+    
+    CHARACTER DATA:
+    {characters}
+    
+    TARGET AUDIENCE:
+    Content Rating: {age_rating}
+    Target Age Range: {target_age}
+    
+    POSITIVE MESSAGING CHECKS:
+    
+    1. **ROLE MODELS**: Verify heroes are admirable with balanced flaws/growth
+       - Heroic characteristics appropriate for {target_age}
+       - Flaw balance
+       - Growth arc
+    
+    2. **CONFLICT RESOLUTION**: Ensure non-violent solutions, cooperation valued
+       - Resolution methods suitable for {target_age}
+       - Cooperation themes
+       - Positive problem-solving
+    
+    3. **CONSEQUENCES**: Validate actions have results, lessons learned, hope maintained
+       - Consequence presence suitable for {target_age}
+       - Learning moments
+       - Hope themes
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "positive_messaging_check": {{
+        "message_alignment_notes": "overall assessment of positive messaging alignment",
+        "role_model_assessment": {{
+          "heroic_characteristics": "strong|moderate|weak",
+          "flaw_balance": "balanced|imbalanced",
+          "growth_arc": "clear|unclear"
+        }},
+        "conflict_resolution_assessment": {{
+          "non_violent_solutions": true/false,
+          "cooperation_valued": true/false,
+          "positive_problem_solving": true/false
+        }},
+        "consequences_assessment": {{
+          "consequences_present": true/false,
+          "learning_moments": true/false,
+          "hope_maintained": true/false
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: Ensure positive messaging aligns with age rating expectations.
+    
+  summary_report: |
+    You are an Age Appropriateness Summary Specialist.
+    
+    Generate comprehensive age appropriateness summary across all episodes.
+    
+    SESSION CONTEXT:
+    Session ID: {session_id}
+    Total Episodes: {total_episodes}
+    Content Rating: {age_rating}
+    Target Age Range: {target_age}
+    
+    EPISODE RESULTS:
+    {episode_results}
+    
+    Generate comprehensive summary and return ONLY valid JSON:
+    
+    ```json
+    {{
+      "age_appropriateness_summary": {{
+        "executive_summary": "2-3 paragraph overview of age appropriateness across all episodes",
+        "overall_compliance": {{
+          "episodes_passing": "number",
+          "episodes_requiring_review": "number",
+          "total_flags": "total number",
+          "high_severity_flags": "number",
+          "critical_flags": "number",
+          "compliance_rate": "percentage"
+        }},
+        "common_issues": [
+          {{
+            "issue_type": "category",
+            "frequency": "how many times",
+            "typical_severity": "severity level",
+            "recommended_action": "general solution"
+          }}
+        ],
+        "positive_findings": [
+          "finding 1",
+          "finding 2"
+        ],
+        "recommendations": [
+          "recommendation 1",
+          "recommendation 2",
+          "recommendation 3"
+        ],
+        "readiness_for_production": {{
+          "production_ready": true/false,
+          "blocking_issues": "description",
+          "remaining_steps": ["step 1", "step 2"]
+        }}
+      }}
+    }}
+    ```
+    
+    CRITICAL: Provide actionable insights for age rating compliance.
+    
+dependencies:
+  - station: 2
+    name: "Project DNA Builder"
+  - station: 27
+    name: "Master Script Assembly"
+  - station: 7
+    name: "Character Architect"
+    
+# Enable/disable this station in the pipeline
+enabled: true
+
+# Configuration values
+output_directory: "output/station_39"
+conditional_execution: true
+skip_if_age_rating_general: true
+user_validation_required_for_high_severity: true

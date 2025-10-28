@@ -1,0 +1,105 @@
+{
+  "episode_id": 1,
+  "format_verification": {
+    "episode_id": "1",
+    "format_compliance": {
+      "standard_format": {
+        "character_names_caps": true,
+        "dialogue_indentation": true,
+        "action_present_tense": true,
+        "sfx_cues_marked": false
+      },
+      "performance_directions": {
+        "parentheses_enclosed": true,
+        "brief_clear": true,
+        "over_direction_count": 0,
+        "vague_direction_count": 0
+      },
+      "scene_structure": {
+        "headers_complete": false,
+        "sequential_numbering": false,
+        "logical_page_breaks": true,
+        "runtime_estimates": false
+      },
+      "audio_cues": {
+        "sfx_format_compliant": false,
+        "music_format_compliant": true,
+        "ambience_format_compliant": true,
+        "silence_format_compliant": true
+      }
+    },
+    "format_errors": [
+      {
+        "check": "SFX format",
+        "location": "Line after LISA dialogue",
+        "line_number": 8,
+        "expected": "[SFX: description, timing, volume, source]",
+        "actual": "SFX: DOOR CREAKING OPEN",
+        "context": "waiting for Mom. SFX: DOOR CREAKING OPEN JOHN",
+        "severity": "CRITICAL",
+        "fix_required": "Change to '[SFX: DOOR CREAKING OPEN, timing, volume, source]' with appropriate values"
+      },
+      {
+        "check": "Scene numbering",
+        "location": "Scene header",
+        "line_number": 1,
+        "expected": "1. INT. LIVING ROOM - NIGHT",
+        "actual": "INT. LIVING ROOM - NIGHT",
+        "context": "INT. LIVING ROOM - NIGHT FADE IN:",
+        "severity": "HIGH",
+        "fix_required": "Add sequential numbering to the scene header"
+      },
+      {
+        "check": "Runtime estimates",
+        "location": "Missing from script",
+        "line_number": 0,
+        "expected": "Runtime estimate should be included",
+        "actual": "No runtime estimate provided",
+        "context": "Entire script is missing runtime estimate",
+        "severity": "MEDIUM",
+        "fix_required": "Add runtime estimate at the beginning or end of the script"
+      }
+    ],
+    "compliance_summary": {
+      "total_errors": 3,
+      "critical_errors": 1,
+      "high_errors": 1,
+      "medium_errors": 1,
+      "low_errors": 0,
+      "passes_all_checks": false
+    }
+  },
+  "production_notes_verification": {
+    "casting_notes_complete": true,
+    "casting_notes_errors": [],
+    "technical_requirements_complete": true,
+    "missing_technical_fields": [],
+    "delivery_specs_complete": true,
+    "missing_delivery_fields": [],
+    "verification_summary": {
+      "all_complete": true,
+      "total_errors": 0,
+      "blocking_errors": 0
+    }
+  },
+  "documentation_completeness": {
+    "episode_guide_complete": true,
+    "character_guide_complete": true,
+    "sound_bible_complete": true,
+    "missing_sections": [],
+    "completeness_summary": {
+      "all_docs_present": true,
+      "total_missing": 0,
+      "critical_sections_missing": 0
+    }
+  },
+  "overall_compliance": {
+    "total_errors": 3,
+    "blocking_issues": 1,
+    "format_errors": 3,
+    "production_errors": 0,
+    "documentation_errors": 0,
+    "production_ready": false
+  },
+  "timestamp": "2025-10-28T23:14:46.117053"
+}

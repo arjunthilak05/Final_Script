@@ -1,0 +1,126 @@
+{
+  "generated_at": "2025-10-28T23:15:36.942711",
+  "total_requirements": 10,
+  "requirements": [
+    {
+      "episode_id": 2,
+      "category": "format",
+      "check": "SFX format",
+      "location": "After SARA dialogue",
+      "line_number": 8,
+      "expected": "[SFX: description, timing, volume, source]",
+      "actual": "SFX: DOOR CREAKING",
+      "context": "something. SFX: DOOR CREAKING CUT TO:",
+      "severity": "CRITICAL",
+      "fix_required": "Change to '[SFX: door creaking, immediate, medium, off-screen]' or similar"
+    },
+    {
+      "episode_id": 2,
+      "category": "format",
+      "check": "Scene numbering",
+      "location": "Scene headers",
+      "line_number": 1,
+      "expected": "INT. LIVING ROOM - NIGHT #1",
+      "actual": "INT. LIVING ROOM - NIGHT",
+      "context": "INT. LIVING ROOM - NIGHT FADE IN:",
+      "severity": "HIGH",
+      "fix_required": "Add sequential numbering to all scene headers"
+    },
+    {
+      "episode_id": 2,
+      "category": "format",
+      "check": "Scene numbering",
+      "location": "Scene headers",
+      "line_number": 10,
+      "expected": "INT. KITCHEN - NIGHT #2",
+      "actual": "INT. KITCHEN - NIGHT",
+      "context": "CUT TO: INT. KITCHEN - NIGHT LUCY",
+      "severity": "HIGH",
+      "fix_required": "Add sequential numbering to all scene headers"
+    },
+    {
+      "episode_id": 2,
+      "category": "format",
+      "check": "Runtime estimates",
+      "location": "Missing from script",
+      "line_number": 0,
+      "expected": "Runtime estimates for each scene",
+      "actual": "No runtime estimates provided",
+      "context": "Entire script lacks runtime estimates",
+      "severity": "MEDIUM",
+      "fix_required": "Add runtime estimates for each scene"
+    },
+    {
+      "episode_id": 3,
+      "category": "format",
+      "check": "Scene header numbering",
+      "location": "Scene header",
+      "line_number": 1,
+      "expected": "INT./EXT. LOCATION - TIME - NUMBER",
+      "actual": "INT. COFFEE SHOP - DAY",
+      "context": "INT. COFFEE SHOP - DAY",
+      "severity": "HIGH",
+      "fix_required": "Add sequential scene number to header"
+    },
+    {
+      "episode_id": 3,
+      "category": "format",
+      "check": "SFX format",
+      "location": "After JAKE dialogue",
+      "line_number": 6,
+      "expected": "[SFX: description, timing, volume, source]",
+      "actual": "SFX\nDRINK SET ON TABLE",
+      "context": "you name it.\n\nSFX\nDRINK SET ON TABLE",
+      "severity": "CRITICAL",
+      "fix_required": "Convert to proper SFX format with all required elements"
+    },
+    {
+      "episode_id": 3,
+      "category": "format",
+      "check": "Runtime estimates",
+      "location": "Script end",
+      "line_number": 10,
+      "expected": "Estimated running time for scene",
+      "actual": "No runtime estimate provided",
+      "context": "You always do.",
+      "severity": "MEDIUM",
+      "fix_required": "Add estimated running time for the scene"
+    },
+    {
+      "episode_id": 1,
+      "category": "format",
+      "check": "SFX format",
+      "location": "Line after LISA dialogue",
+      "line_number": 8,
+      "expected": "[SFX: description, timing, volume, source]",
+      "actual": "SFX: DOOR CREAKING OPEN",
+      "context": "waiting for Mom. SFX: DOOR CREAKING OPEN JOHN",
+      "severity": "CRITICAL",
+      "fix_required": "Change to '[SFX: DOOR CREAKING OPEN, timing, volume, source]' with appropriate values"
+    },
+    {
+      "episode_id": 1,
+      "category": "format",
+      "check": "Scene numbering",
+      "location": "Scene header",
+      "line_number": 1,
+      "expected": "1. INT. LIVING ROOM - NIGHT",
+      "actual": "INT. LIVING ROOM - NIGHT",
+      "context": "INT. LIVING ROOM - NIGHT FADE IN:",
+      "severity": "HIGH",
+      "fix_required": "Add sequential numbering to the scene header"
+    },
+    {
+      "episode_id": 1,
+      "category": "format",
+      "check": "Runtime estimates",
+      "location": "Missing from script",
+      "line_number": 0,
+      "expected": "Runtime estimate should be included",
+      "actual": "No runtime estimate provided",
+      "context": "Entire script is missing runtime estimate",
+      "severity": "MEDIUM",
+      "fix_required": "Add runtime estimate at the beginning or end of the script"
+    }
+  ]
+}

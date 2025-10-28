@@ -1,0 +1,86 @@
+{
+  "generated_at": "2025-10-28T23:15:36.944999",
+  "session_id": "session_20251023_112749",
+  "certified_by": "Station 40 Format Verifier",
+  "episodes_verified": 3,
+  "total_errors": 10,
+  "blocking_issues": 3,
+  "production_ready": false,
+  "verification_summary": {
+    "executive_summary": "The format verification across all three episodes reveals consistent issues that prevent production readiness. All episodes fail to meet required format standards, with common problems including incorrect SFX formatting, missing scene numbering, and absent runtime estimates. These issues appear systematic across the entire series, suggesting a need for standardized formatting guidelines and writer training. While production notes and documentation are complete across all episodes, the technical formatting requires immediate attention before any production can proceed.",
+    "overall_compliance": {
+      "episodes_passing": 0,
+      "episodes_failing": 3,
+      "total_errors": 10,
+      "critical_errors": 3,
+      "blocking_production": true
+    },
+    "common_format_errors": [
+      {
+        "error_type": "SFX format",
+        "frequency": 3,
+        "typical_location": "After dialogue lines",
+        "recommended_fix": "Convert all SFX cues to the proper format '[SFX: description, timing, volume, source]' with appropriate values for each element"
+      },
+      {
+        "error_type": "Scene numbering",
+        "frequency": 3,
+        "typical_location": "Scene headers",
+        "recommended_fix": "Add sequential numbering to all scene headers using the format 'INT./EXT. LOCATION - TIME - NUMBER'"
+      },
+      {
+        "error_type": "Runtime estimates",
+        "frequency": 3,
+        "typical_location": "Missing from all scenes",
+        "recommended_fix": "Add estimated running time for each scene, either at the beginning or end of the script"
+      }
+    ],
+    "missing_documentation_summary": {
+      "missing_casting_notes": [],
+      "missing_technical_fields": [],
+      "missing_documentation_sections": []
+    },
+    "production_readiness": {
+      "production_ready": false,
+      "blocking_issues": [
+        "Incorrect SFX formatting in all episodes",
+        "Missing scene numbering in all episodes",
+        "No runtime estimates provided in any episode"
+      ],
+      "remaining_steps": [
+        "Standardize SFX formatting across all episodes",
+        "Add sequential scene numbering to all scene headers",
+        "Include runtime estimates for each scene",
+        "Re-verify format compliance after corrections"
+      ]
+    },
+    "recommendations": [
+      "Create a comprehensive style guide document that clearly demonstrates the correct formatting for SFX cues, scene headers, and runtime estimates",
+      "Conduct a training session for all writers on the standardized formatting requirements before proceeding with any new scripts",
+      "Implement a pre-submission checklist that writers must complete before submitting episodes, including verification of proper SFX formatting, scene numbering, and runtime estimates",
+      "Establish a two-tier review process where scripts are first checked for format compliance before content review, ensuring all technical requirements are met before proceeding to production"
+    ]
+  },
+  "episode_status": [
+    {
+      "episode_id": 2,
+      "total_errors": 4,
+      "blocking_issues": 1,
+      "production_ready": false
+    },
+    {
+      "episode_id": 3,
+      "total_errors": 3,
+      "blocking_issues": 1,
+      "production_ready": false
+    },
+    {
+      "episode_id": 1,
+      "total_errors": 3,
+      "blocking_issues": 1,
+      "production_ready": false
+    }
+  ],
+  "certification_notes": "Production NOT ready. Please address errors before proceeding.",
+  "timestamp": "2025-10-28T23:15:36.945024"
+}

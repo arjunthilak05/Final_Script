@@ -1,0 +1,55 @@
+{
+  "generated_at": "2025-10-30T00:35:53.370731",
+  "session_id": "session_20251023_112749",
+  "required_audio_callbacks": [
+    {
+      "from_episode": 1,
+      "to_episode": 2,
+      "audio_element": "Lighter click",
+      "callback_type": "motif_recurrence",
+      "description": "The lighter click sound motif established in episode 1 must continue in episode 2 to maintain character consistency",
+      "implementation_notes": "Use the exact same lighter click sound recording to ensure audio consistency"
+    },
+    {
+      "from_episode": 1,
+      "to_episode": 2,
+      "audio_element": "Tension theme - 15 seconds",
+      "callback_type": "theme_return",
+      "description": "The tension theme established in episode 1 must return in episode 2 to maintain emotional continuity",
+      "implementation_notes": "Use the exact same musical arrangement and instrumentation for the tension theme"
+    },
+    {
+      "from_episode": 1,
+      "to_episode": 2,
+      "audio_element": "Coffee shop chatter",
+      "callback_type": "sound_signature",
+      "description": "The coffee shop location sound signature established in episode 1 must return in episode 2 to maintain location consistency",
+      "implementation_notes": "Use similar crowd density and conversation patterns, with the same subtle background elements"
+    },
+    {
+      "from_episode": 2,
+      "to_episode": 3,
+      "audio_element": "Lighter click",
+      "callback_type": "motif_recurrence",
+      "description": "The lighter click sound motif from episode 2 must continue in episode 3 to maintain character consistency",
+      "implementation_notes": "Use the exact same lighter click sound recording as in previous episodes"
+    },
+    {
+      "from_episode": 2,
+      "to_episode": 3,
+      "audio_element": "Tension theme - 15 seconds",
+      "callback_type": "theme_return",
+      "description": "The tension theme from episode 2 must return in episode 3 to maintain emotional continuity",
+      "implementation_notes": "Use the exact same musical arrangement and instrumentation for the tension theme"
+    },
+    {
+      "from_episode": 1,
+      "to_episode": 3,
+      "audio_element": "Footsteps",
+      "callback_type": "sound_signature",
+      "description": "The footsteps sound signature from episode 1 returns in episode 3, indicating character movement",
+      "implementation_notes": "Maintain the same rhythm and character of footsteps established in episode 1"
+    }
+  ],
+  "total_callbacks": 6
+}

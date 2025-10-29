@@ -1,0 +1,446 @@
+{
+  "generated_at": "2025-10-30T00:58:52.576431",
+  "session_id": "session_20251023_112749",
+  "listener_journey_map": {
+    "episodes": [
+      1,
+      2,
+      3
+    ],
+    "first_time_journey": {
+      "episode_1_clarity": {
+        "clarity_score": 3,
+        "world_understandable": "NO",
+        "world_understandability_notes": "The setting is unclear - is this present day? What location? Are these characters related? There's no context to ground the listener.",
+        "characters_distinguishable": "PARTIAL",
+        "character_distinction_notes": "John and Lisa have distinct voices, but their relationship and purpose are unclear. I can't tell if they're siblings, friends, or something else.",
+        "hook_effective": "PARTIAL",
+        "hook_effectiveness_notes": "The whispered dialogue and creaking door create suspense, but without context, I don't know what they're waiting for or what they're planning to do.",
+        "continue_motivation": "MODERATE",
+        "overall_assessment": "Episode 1 creates some intrigue but lacks the basic information needed for a listener to feel invested. The mysterious dialogue raises questions but provides too few answers or context to create a strong hook."
+      },
+      "early_episodes_analysis": {
+        "episodes_covered": [
+          2,
+          3
+        ],
+        "learning_curve_rating": "OVERWHELMING",
+        "learning_curve_notes": "With only 3 episodes available, it's difficult to establish a clear learning curve, but the jump from the tense nighttime scenes of episodes 1-2 to the casual coffee shop conversation in episode 3 is jarring.",
+        "information_overload_risk": "MEDIUM",
+        "question_building": "MODERATE",
+        "investment_growth": "WEAK",
+        "confusion_points": [
+          {
+            "episode": 2,
+            "confusion_description": "New characters (Sara, Lucy) appear without context, and it's unclear how they relate to John and Lisa from episode 1.",
+            "impact": "MODERATE"
+          },
+          {
+            "episode": 3,
+            "confusion_description": "The complete shift to new characters (Beth, Jake) in a completely different setting with no connection to previous episodes is highly confusing.",
+            "impact": "MAJOR"
+          }
+        ]
+      },
+      "middle_episodes_analysis": {
+        "episodes_covered": [],
+        "interest_maintained": "WEAK",
+        "payoff_satisfaction": "LOW",
+        "new_questions_emerging": "NO",
+        "character_development_depth": "SHALLOW",
+        "pacing_assessment": "TOO_FAST",
+        "engagement_trends": "DECREASING",
+        "notes": "With only 3 episodes available, I cannot fully analyze the middle section. However, the lack of narrative continuity between episodes suggests issues with maintaining interest and character development."
+      },
+      "final_episodes_analysis": {
+        "episodes_covered": [],
+        "ending_pace": "UNKNOWN",
+        "answer_satisfaction": "UNSATISFYING",
+        "emotion_earned": "NO",
+        "ending_quality": "WEAK",
+        "loose_threads": [
+          "All narrative threads from episodes 1-2 are left unresolved",
+          "The purpose and connection of episode 3 remains unclear"
+        ],
+        "overall_ending_assessment": "With only 3 episodes available, there's no proper ending. The episodes feel disconnected and don't form a coherent narrative, leaving the listener with numerous unanswered questions."
+      },
+      "episode_analysis": {
+        "1": {
+          "engagement_score": 0.6,
+          "confusion_score": 0.7,
+          "satisfaction_score": 0.4,
+          "recommendation_likelihood": "MEDIUM"
+        },
+        "2": {
+          "engagement_score": 0.5,
+          "confusion_score": 0.8,
+          "satisfaction_score": 0.3,
+          "recommendation_likelihood": "LOW"
+        },
+        "3": {
+          "engagement_score": 0.3,
+          "confusion_score": 0.9,
+          "satisfaction_score": 0.2,
+          "recommendation_likelihood": "LOW"
+        }
+      },
+      "confusion_points": [
+        {
+          "episode": 1,
+          "confusion_description": "No establishing context about who John and Lisa are, their relationship, or what they're planning to do.",
+          "risk_level": 7,
+          "suggested_fix": "Add brief establishing narration or dialogue to provide basic context about the characters and situation.",
+          "source_simulation": "first_time"
+        },
+        {
+          "episode": 2,
+          "confusion_description": "Introduction of new characters without connection to episode 1, creating narrative disconnection.",
+          "risk_level": 8,
+          "suggested_fix": "Either maintain character continuity or provide clear indication that these are different storylines within the same series.",
+          "source_simulation": "first_time"
+        },
+        {
+          "episode": 3,
+          "confusion_description": "Complete narrative departure with no connection to previous episodes, making the series feel disjointed.",
+          "risk_level": 9,
+          "suggested_fix": "Establish clearer connections between episodes or provide framing that explains the anthology nature if that's the intention.",
+          "source_simulation": "first_time"
+        },
+        {
+          "episode": "All",
+          "confusion_description": "The episodes don't match the project DNA about 'The Accidental Lifeline' story of Tom the motivation coach and Julia the ER doctor.",
+          "risk_level": 10,
+          "suggested_fix": "Align episode content with the intended project narrative or clarify if these are placeholder episodes not representative of the final series.",
+          "source_simulation": "first_time"
+        }
+      ],
+      "strengths": [
+        "Episode 1 creates some initial mystery with its whispered dialogue and atmospheric sound design",
+        "The individual scenes have some dramatic tension within themselves",
+        "The voice acting appears clear and distinguishable within each episode"
+      ],
+      "weaknesses": [
+        "Complete lack of narrative continuity between episodes",
+        "No connection to the project DNA about Tom and Julia's story",
+        "Missing essential context in each episode to help listeners understand the characters and situations",
+        "The episodes don't follow the planned season architecture or rhythm mapping",
+        "With only 3 episodes available, there's no sense of the intended 8-12 episode arc"
+      ]
+    },
+    "binge_journey": {
+      "repetition_fatigue": {
+        "risk_level": 6,
+        "recap_annoyance": "MEDIUM",
+        "pattern_obviousness": "MEDIUM",
+        "variation_sufficient": "PARTIAL",
+        "repetition_impact": "NEUTRAL",
+        "fatigue_episodes": [
+          2
+        ],
+        "fatigue_notes": "The three provided episodes seem disconnected from each other and from the project DNA. There's a pattern of characters whispering in tense situations, but the settings and characters change abruptly between episodes without clear connection. The cliffhangers are very similar (all ending with 'FADE OUT')."
+      },
+      "momentum_maintenance": {
+        "overall_rating": "ADEQUATE",
+        "cliffhanger_effectiveness": "WEAK",
+        "natural_break_points": "SOME",
+        "exhaustion_risk": "LOW",
+        "pacing_for_binge": "ADEQUATE",
+        "momentum_notes": "The episodes lack narrative continuity with each other and with the project DNA about Tom and Julia's story. There's minimal forward momentum as each episode appears to introduce new characters and situations without connecting to the main storyline. The cliffhangers are weak and don't create compelling reasons to continue.",
+        "episodes_where_momentum_drops": [
+          2,
+          3
+        ]
+      },
+      "clarity_in_speed": {
+        "overall_rating": "CONFUSING",
+        "information_trackable": "PARTIAL",
+        "character_distinction_sufficient": "NO",
+        "world_rules_clear": "NO",
+        "information_overload_episodes": [
+          2,
+          3
+        ],
+        "overload_notes": "The episodes don't align with the project DNA at all. None of the characters in these samples (John, Lisa, Sara, Lucy, Beth, Jake) appear to be the main characters Tom and Julia described in the project DNA. The settings also don't match the key locations mentioned (Hospital ER, Tom's coaching studio, Julia's apartment)."
+      },
+      "episode_analysis": {
+        "1": {
+          "binge_engagement_score": 0.4,
+          "momentum_score": 0.3,
+          "fatigue_indicator": 0.2
+        },
+        "2": {
+          "binge_engagement_score": 0.3,
+          "momentum_score": 0.2,
+          "fatigue_indicator": 0.4
+        },
+        "3": {
+          "binge_engagement_score": 0.2,
+          "momentum_score": 0.1,
+          "fatigue_indicator": 0.5
+        }
+      },
+      "confusion_points": [
+        {
+          "episode": 1,
+          "confusion_description": "Characters John and Lisa don't match the main characters Tom and Julia from project DNA. The setting doesn't match any key locations.",
+          "risk_level": 8,
+          "suggested_fix": "Align episodes with the main storyline of Tom and Julia, starting with establishing Tom as a motivation coach and Julia as an ER doctor.",
+          "source_simulation": "binge"
+        },
+        {
+          "episode": 2,
+          "confusion_description": "Introduces new characters Sara and Lucy with no connection to previous episode or main storyline.",
+          "risk_level": 9,
+          "suggested_fix": "Develop the main narrative thread about the accidental text messages and their impact on Julia's life.",
+          "source_simulation": "binge"
+        },
+        {
+          "episode": 3,
+          "confusion_description": "Completely different setting (coffee shop) and characters (Beth and Jake) with no connection to the main storyline.",
+          "risk_level": 10,
+          "suggested_fix": "Focus on developing Tom and Julia's relationship through the text messages, showing how they're affecting both characters' lives.",
+          "source_simulation": "binge"
+        }
+      ],
+      "strengths": [
+        "The project DNA provides a strong foundation for an engaging binge experience with its dual narrative structure and emotional depth."
+      ],
+      "weaknesses": [
+        "The episodes provided don't align with the project DNA at all, making it impossible to evaluate the actual series.",
+        "No continuity between episodes, creating confusion for binge listeners.",
+        "Lack of the main characters and settings outlined in the project DNA.",
+        "Weak cliffhangers that don't create compelling reasons to continue listening."
+      ],
+      "binge_optimization_suggestions": [
+        "Align episodes with the main storyline of Tom and Julia as described in project DNA.",
+        "Create stronger narrative continuity between episodes.",
+        "Develop more compelling cliffhangers that relate to the central conflict.",
+        "Incorporate the key locations from project DNA (Hospital ER, Tom's coaching studio, Julia's apartment).",
+        "Include the text messages that form the core of the story, showing their impact on Julia's life.",
+        "Establish a clear progression in the relationship that develops through the accidental text messages."
+      ]
+    },
+    "weekly_journey": {
+      "recap_necessity": {
+        "rating": 2,
+        "recap_sufficient": "NO",
+        "recap_not_excessive": "YES",
+        "recap_natural": "NO",
+        "context_reminder_effectiveness": "WEAK",
+        "recap_notes": "None of the episodes contain any recap information, making it difficult for listeners to remember context after a week-long gap between episodes.",
+        "episodes_needing_better_recap": [
+          2,
+          3
+        ]
+      },
+      "hook_strength": {
+        "overall_rating": "WEAK",
+        "memorability_after_week": "LOW",
+        "excitement_to_return": "LOW",
+        "previous_episode_clarity": "UNCLEAR",
+        "re_engagement_effectiveness": "WEAK",
+        "hook_notes": "None of the episodes contain opening hooks to re-engage listeners after the week-long break. Episode 1 ends with a mild cliffhanger about waiting for someone, but there's no hook at the beginning of Episode 2 to remind listeners or build excitement.",
+        "weak_hook_episodes": [
+          1,
+          2,
+          3
+        ]
+      },
+      "satisfaction_pacing": {
+        "overall_rating": "POOR",
+        "progress_each_week": "PARTIAL",
+        "pacing_speed": "TOO_SLOW",
+        "worth_the_wait": "NO",
+        "payoff_spacing": "TOO_SPREAD",
+        "satisfaction_notes": "With only minimal dialogue and very short episodes, there's little narrative progression between episodes. Listeners waiting a week would be disappointed by the lack of development. Episode 3 appears to completely shift characters and setting with no connection to the previous episodes, which would be particularly jarring for weekly listeners.",
+        "episodes_with_pacing_issues": [
+          1,
+          2,
+          3
+        ]
+      },
+      "episode_analysis": {
+        "1": {
+          "weekly_engagement_score": 0.3,
+          "hook_effectiveness": 0.2,
+          "satisfaction_score": 0.2
+        },
+        "2": {
+          "weekly_engagement_score": 0.2,
+          "hook_effectiveness": 0.1,
+          "satisfaction_score": 0.1
+        },
+        "3": {
+          "weekly_engagement_score": 0.1,
+          "hook_effectiveness": 0.0,
+          "satisfaction_score": 0.1
+        }
+      },
+      "confusion_points": [
+        {
+          "episode": 2,
+          "confusion_description": "Introduction of new character Sara without context, and unclear relationship to John from Episode 1.",
+          "risk_level": 7,
+          "suggested_fix": "Add a brief recap at the beginning mentioning John and Lisa waiting for their mother, then introduce Sara's relationship to them.",
+          "source_simulation": "weekly"
+        },
+        {
+          "episode": 3,
+          "confusion_description": "Complete shift in characters and setting with no connection to previous episodes, making it seem like an entirely different show.",
+          "risk_level": 9,
+          "suggested_fix": "Add substantial recap and a bridge connecting the previous narrative to this new setting, or reconsider if this episode belongs in this series.",
+          "source_simulation": "weekly"
+        }
+      ],
+      "strengths": [
+        "Short episodes are easy to consume in a single listening session"
+      ],
+      "weaknesses": [
+        "No recaps to remind listeners of previous story elements",
+        "No opening hooks to re-engage listeners after the week-long break",
+        "Lack of narrative progression between episodes",
+        "Episode 3 appears disconnected from the previous episodes with no explanation",
+        "Minimal character development and plot advancement"
+      ],
+      "weekly_optimization_suggestions": [
+        "Add brief recaps at the beginning of each episode to remind listeners of key events",
+        "Create strong opening hooks that reference previous episodes and tease new developments",
+        "Ensure narrative continuity between episodes, especially for Episode 3 which currently feels disconnected",
+        "Increase the amount of story development in each episode to make the week-long wait worthwhile",
+        "Consider ending episodes with stronger cliffhangers to encourage listeners to return"
+      ]
+    },
+    "attention_levels": {
+      "full_attention": {
+        "overall_score": 0.7,
+        "careful_listening_rewarded": "YES",
+        "details_findable": "PARTIAL",
+        "multiple_layers_present": "PARTIAL",
+        "depth_rating": 6,
+        "depth_notes": "The episodes contain subtle character interactions and sound design elements that attentive listeners will appreciate. However, with only short previews available, the full depth of the narrative isn't yet apparent. The dialogue density varies between episodes, with Episode 3 having the highest density (2.29) which suggests potentially richer content for attentive listeners.",
+        "episodes_with_great_depth": [
+          3
+        ],
+        "episodes_lacking_depth": []
+      },
+      "casual_listening": {
+        "overall_score": 0.8,
+        "followable_while_multitasking": "YES",
+        "main_story_clear": "YES",
+        "requires_full_focus": "NO",
+        "background_listening_friendly": "YES",
+        "key_points_emphasized": "PARTIAL",
+        "casual_listening_notes": "The short, dialogue-driven scenes with clear character cues make it relatively easy to follow while multitasking. The sound effects (door creaking, drink setting on table) help orient listeners even with partial attention. The scenes are brief and self-contained, which works well for casual listening.",
+        "episodes_good_for_casual": [
+          1,
+          2,
+          3
+        ],
+        "episodes_require_attention": []
+      },
+      "interrupted_listening": {
+        "overall_score": 0.6,
+        "resumable_after_pause": "PARTIAL",
+        "natural_segment_points": "SOME",
+        "thread_maintained_after_interruption": "PARTIAL",
+        "key_information_accessible": "PARTIAL",
+        "interruption_notes": "The episodes are very short, which makes them somewhat resumable after interruption. However, with limited context provided in each preview, listeners might lose the narrative thread if interrupted, as there's minimal reinforcement of story elements. The scene transitions (like 'CUT TO:') provide some natural break points.",
+        "episodes_good_for_interruptions": [
+          1,
+          2
+        ],
+        "episodes_bad_for_interruptions": [
+          3
+        ]
+      },
+      "episode_analysis": {
+        "1": {
+          "full_attention_score": 0.6,
+          "casual_listening_score": 0.8,
+          "interrupted_listening_score": 0.7,
+          "attention_flexibility": "HIGH"
+        },
+        "2": {
+          "full_attention_score": 0.6,
+          "casual_listening_score": 0.8,
+          "interrupted_listening_score": 0.6,
+          "attention_flexibility": "MEDIUM"
+        },
+        "3": {
+          "full_attention_score": 0.8,
+          "casual_listening_score": 0.7,
+          "interrupted_listening_score": 0.5,
+          "attention_flexibility": "LOW"
+        }
+      },
+      "confusion_points": [
+        {
+          "episode": 3,
+          "attention_level": "interrupted",
+          "confusion_description": "The sudden shift to a coffee shop setting during daytime may confuse listeners who resume after interruption, as there's no clear connection to the previous nighttime scenes.",
+          "risk_level": 7,
+          "suggested_fix": "Add a brief establishing comment or sound effect that connects Episode 3 to previous episodes, or include a subtle reminder of the main characters/narrative thread.",
+          "source_simulation": "attention"
+        },
+        {
+          "episode": 2,
+          "attention_level": "casual",
+          "confusion_description": "The introduction of new characters (Sara, Lucy) without clear connection to Episode 1's characters (John, Lisa) might confuse casual listeners.",
+          "risk_level": 5,
+          "suggested_fix": "Include brief character identifiers or relationship references to help listeners understand character connections without requiring full attention.",
+          "source_simulation": "attention"
+        }
+      ],
+      "strengths": [
+        "Clear dialogue with character names stated frequently helps maintain orientation across attention levels",
+        "Sound effects provide environmental context that aids comprehension even with partial attention",
+        "Short scenes create natural pause points and make it easier to resume after interruptions",
+        "Simple setting descriptions help orient listeners quickly"
+      ],
+      "weaknesses": [
+        "Limited narrative reinforcement across episodes makes it harder to maintain story continuity during interrupted listening",
+        "Character relationships aren't always clearly established, which can be problematic for casual listeners",
+        "Setting changes between episodes (especially Episode 3) may confuse listeners who aren't paying full attention",
+        "The previews are too short to establish meaningful narrative depth for attentive listeners"
+      ],
+      "attention_optimization_suggestions": [
+        "Include brief 'previously on' recaps at the beginning of each episode to reinforce story continuity",
+        "Add subtle audio cues that connect characters across episodes (distinctive vocal tones or recurring phrases)",
+        "Use consistent sound design elements to help listeners identify locations and characters",
+        "Consider slightly longer scenes with more narrative reinforcement to help maintain story thread across interruptions",
+        "For Episode 3, add a brief reference to previous episodes or characters to help orient listeners who may be listening casually or after interruptions"
+      ]
+    },
+    "overall_journey": {
+      "episode_ratings": {
+        "1": {
+          "first_time_score": 0.6,
+          "binge_score": 0.0,
+          "weekly_score": 0.2,
+          "attention_score": 0.0
+        },
+        "2": {
+          "first_time_score": 0.5,
+          "binge_score": 0.0,
+          "weekly_score": 0.1,
+          "attention_score": 0.0
+        },
+        "3": {
+          "first_time_score": 0.3,
+          "binge_score": 0.0,
+          "weekly_score": 0.1,
+          "attention_score": 0.0
+        }
+      },
+      "engagement_curve": [],
+      "confusion_curve": [],
+      "satisfaction_curve": []
+    }
+  },
+  "statistics": {
+    "total_episodes": 3,
+    "confusion_risks": 11,
+    "drop_off_risks": 3,
+    "engagement_peaks": 0
+  }
+}

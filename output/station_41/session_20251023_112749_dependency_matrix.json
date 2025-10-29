@@ -1,0 +1,1318 @@
+{
+  "generated_at": "2025-10-30T00:35:53.367568",
+  "session_id": "session_20251023_112749",
+  "dependency_matrix": {
+    "episodes": [
+      1,
+      2,
+      3
+    ],
+    "all_dependencies": [
+      {
+        "from_episode": 1,
+        "to_episode": 2,
+        "category": "character",
+        "dependency_type": "forward",
+        "information_element": "John and Lisa's relationship",
+        "description": "Episode 2 builds on the established relationship between John and Lisa from Episode 1",
+        "criticality": "HIGH",
+        "cannot_reorder": true,
+        "audio_callback_required": false
+      },
+      {
+        "from_episode": 1,
+        "to_episode": 2,
+        "category": "plot",
+        "dependency_type": "forward",
+        "information_element": "Secretive behavior in the living room at night",
+        "description": "Episode 2 continues the scenario of secretive behavior at night established in Episode 1",
+        "criticality": "HIGH",
+        "cannot_reorder": true,
+        "audio_callback_required": false
+      },
+      {
+        "from_episode": 1,
+        "to_episode": 3,
+        "category": "character",
+        "dependency_type": "forward",
+        "information_element": "John's character",
+        "description": "John appears in Episode 1 but not in Episode 3, so Episode 3 doesn't depend on John's character development",
+        "criticality": "LOW",
+        "cannot_reorder": false,
+        "audio_callback_required": false
+      },
+      {
+        "from_episode": 1,
+        "to_episode": 2,
+        "category": "world",
+        "dependency_type": "forward",
+        "information_element": "Living room setting at night",
+        "description": "Episode 2 continues in the same setting established in Episode 1",
+        "criticality": "MEDIUM",
+        "cannot_reorder": true,
+        "audio_callback_required": false
+      },
+      {
+        "from_episode": 2,
+        "to_episode": 3,
+        "category": "plot",
+        "dependency_type": "forward",
+        "information_element": "Living room night scenes",
+        "description": "Episode 3 breaks from the night setting in Episodes 1-2 with a daytime coffee shop scene",
+        "criticality": "LOW",
+        "cannot_reorder": false,
+        "audio_callback_required": false
+      },
+      {
+        "from_episode": 2,
+        "to_episode": 3,
+        "category": "character",
+        "dependency_type": "forward",
+        "information_element": "Character transition",
+        "description": "Episode 3 introduces completely new characters (Beth and Jake) unrelated to previous episodes",
+        "criticality": "LOW",
+        "cannot_reorder": false,
+        "audio_callback_required": false
+      },
+      {
+        "from_episode": 1,
+        "to_episode": 2,
+        "category": "audio",
+        "dependency_type": "forward",
+        "information_element": "Door creaking sound effect",
+        "description": "The door creaking SFX in Episode 1 is reused in Episode 2, creating an audio connection",
+        "criticality": "MEDIUM",
+        "cannot_reorder": true,
+        "audio_callback_required": true
+      },
+      {
+        "from_episode": 2,
+        "to_episode": 3,
+        "category": "audio",
+        "dependency_type": "forward",
+        "information_element": "Sound design transition",
+        "description": "Episode 3 shifts from door creaking sounds to drink setting sounds, indicating a scene change",
+        "criticality": "MEDIUM",
+        "cannot_reorder": false,
+        "audio_callback_required": true
+      },
+      {
+        "from_episode": 1,
+        "to_episode": 3,
+        "category": "plot",
+        "dependency_type": "backward",
+        "information_element": "Nighttime mystery setup",
+        "description": "Episode 1 establishes a nighttime mystery that is not resolved by Episode 3",
+        "criticality": "HIGH",
+        "cannot_reorder": true,
+        "audio_callback_required": false
+      },
+      {
+        "from_episode": 1,
+        "to_episode": 2,
+        "category": "plot",
+        "dependency_type": "backward",
+        "information_element": "Waiting for Mom",
+        "description": "Episode 1 sets up the element of waiting for Mom, which is not addressed in Episode 2",
+        "criticality": "HIGH",
+        "cannot_reorder": true,
+        "audio_callback_required": false
+      },
+      {
+        "from_episode": 2,
+        "to_episode": 3,
+        "category": "character",
+        "dependency_type": "backward",
+        "information_element": "New character introduction",
+        "description": "Episode 2 introduces Sara and Lucy, who don't appear in Episode 3",
+        "criticality": "LOW",
+        "cannot_reorder": false,
+        "audio_callback_required": false
+      },
+      {
+        "from_episode": 1,
+        "to_episode": 2,
+        "category": "character",
+        "dependency_type": "critical_path",
+        "information_element": "John and Lisa's secretive plan",
+        "description": "The secretive plan introduced in Episode 1 continues in Episode 2 with new characters",
+        "criticality": "CRITICAL",
+        "cannot_reorder": true,
+        "audio_callback_required": false
+      },
+      {
+        "from_episode": 1,
+        "to_episode": 3,
+        "category": "narrative",
+        "dependency_type": "critical_path",
+        "information_element": "Narrative structure shift",
+        "description": "Episodes 1-2 establish a nighttime mystery narrative that Episode 3 completely abandons",
+        "criticality": "CRITICAL",
+        "cannot_reorder": true,
+        "audio_callback_required": false
+      },
+      {
+        "from_episode": 1,
+        "to_episode": 2,
+        "category": "character",
+        "dependency_type": "presence",
+        "characters_involved": [
+          "MARCUS"
+        ],
+        "description": "MARCUS appears in both Episode 1 and 2, establishing him as a recurring character",
+        "criticality": "HIGH",
+        "cannot_reorder": true
+      },
+      {
+        "from_episode": 2,
+        "to_episode": 3,
+        "category": "character",
+        "dependency_type": "presence",
+        "characters_involved": [
+          "MARCUS"
+        ],
+        "description": "MARCUS continues his character arc across all three episodes",
+        "criticality": "HIGH",
+        "cannot_reorder": true
+      },
+      {
+        "from_episode": 1,
+        "to_episode": 2,
+        "category": "character",
+        "dependency_type": "knowledge",
+        "characters_involved": [
+          "MARCUS"
+        ],
+        "description": "MARCUS gains knowledge from his interaction with COLLEAGUE in Episode 1 that influences his actions in Episode 2",
+        "criticality": "MEDIUM",
+        "cannot_reorder": true
+      },
+      {
+        "from_episode": 2,
+        "to_episode": 3,
+        "category": "character",
+        "dependency_type": "knowledge",
+        "characters_involved": [
+          "MARCUS"
+        ],
+        "description": "Information gained from INFORMANT in Episode 2 informs MARCUS's interaction with ANNA in Episode 3",
+        "criticality": "MEDIUM",
+        "cannot_reorder": true
+      },
+      {
+        "from_episode": 1,
+        "to_episode": 2,
+        "category": "world",
+        "dependency_type": "location",
+        "world_element": "Coffee Shop",
+        "description": "The Coffee Shop location is established in Episode 1 and reused in Episode 2, requiring consistent audio treatment",
+        "criticality": "MEDIUM",
+        "cannot_reorder": false
+      },
+      {
+        "from_episode": 2,
+        "to_episode": 3,
+        "category": "world",
+        "dependency_type": "location",
+        "world_element": "Abandoned Warehouse",
+        "description": "The Abandoned Warehouse is introduced in Episode 2 and appears again in Episode 3, suggesting an important plot location that requires consistent acoustic properties",
+        "criticality": "HIGH",
+        "cannot_reorder": false
+      },
+      {
+        "from_episode": 1,
+        "to_episode": 3,
+        "category": "world",
+        "dependency_type": "location",
+        "world_element": "Coffee Shop",
+        "description": "The Coffee Shop appears in all three episodes, establishing it as a central location that requires consistent acoustic treatment across the series",
+        "criticality": "MEDIUM",
+        "cannot_reorder": false
+      },
+      {
+        "from_episode": 1,
+        "to_episode": 2,
+        "category": "world",
+        "dependency_type": "time",
+        "world_element": "Night progression",
+        "description": "Episode 1 ends at NIGHT (Office) and Episode 2 begins at LATE NIGHT (Apartment), suggesting a continuous timeline",
+        "criticality": "MEDIUM",
+        "cannot_reorder": true
+      },
+      {
+        "from_episode": 2,
+        "to_episode": 3,
+        "category": "world",
+        "dependency_type": "time",
+        "world_element": "Night progression",
+        "description": "Episode 2 ends at NIGHT (Abandoned Warehouse) and Episode 3 begins at NIGHT (Abandoned Warehouse), suggesting these scenes might be connected",
+        "criticality": "HIGH",
+        "cannot_reorder": true
+      },
+      {
+        "from_episode": 1,
+        "to_episode": 2,
+        "category": "audio",
+        "dependency_type": "motif",
+        "audio_element": "Lighter click",
+        "description": "The lighter click sound motif established in episode 1 must continue in episode 2 to maintain character consistency",
+        "criticality": "HIGH",
+        "cannot_reorder": true,
+        "audio_callback_required": true,
+        "callback_type": "motif_recurrence",
+        "implementation_notes": "Use the exact same lighter click sound recording to ensure audio consistency"
+      },
+      {
+        "from_episode": 1,
+        "to_episode": 2,
+        "category": "audio",
+        "dependency_type": "music",
+        "audio_element": "Tension theme - 15 seconds",
+        "description": "The tension theme established in episode 1 must return in episode 2 to maintain emotional continuity",
+        "criticality": "HIGH",
+        "cannot_reorder": true,
+        "audio_callback_required": true,
+        "callback_type": "theme_return",
+        "implementation_notes": "Use the exact same musical arrangement and instrumentation for the tension theme"
+      },
+      {
+        "from_episode": 1,
+        "to_episode": 2,
+        "category": "audio",
+        "dependency_type": "signature_sound",
+        "audio_element": "Coffee shop chatter",
+        "description": "The coffee shop location sound signature established in episode 1 must return in episode 2 to maintain location consistency",
+        "criticality": "MEDIUM",
+        "cannot_reorder": false,
+        "audio_callback_required": true,
+        "callback_type": "sound_signature",
+        "implementation_notes": "Use similar crowd density and conversation patterns, with the same subtle background elements"
+      },
+      {
+        "from_episode": 2,
+        "to_episode": 3,
+        "category": "audio",
+        "dependency_type": "motif",
+        "audio_element": "Lighter click",
+        "description": "The lighter click sound motif from episode 2 must continue in episode 3 to maintain character consistency",
+        "criticality": "HIGH",
+        "cannot_reorder": true,
+        "audio_callback_required": true,
+        "callback_type": "motif_recurrence",
+        "implementation_notes": "Use the exact same lighter click sound recording as in previous episodes"
+      },
+      {
+        "from_episode": 2,
+        "to_episode": 3,
+        "category": "audio",
+        "dependency_type": "music",
+        "audio_element": "Tension theme - 15 seconds",
+        "description": "The tension theme from episode 2 must return in episode 3 to maintain emotional continuity",
+        "criticality": "HIGH",
+        "cannot_reorder": true,
+        "audio_callback_required": true,
+        "callback_type": "theme_return",
+        "implementation_notes": "Use the exact same musical arrangement and instrumentation for the tension theme"
+      },
+      {
+        "from_episode": 1,
+        "to_episode": 3,
+        "category": "audio",
+        "dependency_type": "signature_sound",
+        "audio_element": "Footsteps",
+        "description": "The footsteps sound signature from episode 1 returns in episode 3, indicating character movement",
+        "criticality": "MEDIUM",
+        "cannot_reorder": false,
+        "audio_callback_required": true,
+        "callback_type": "sound_signature",
+        "implementation_notes": "Maintain the same rhythm and character of footsteps established in episode 1"
+      }
+    ],
+    "forward_dependencies": {
+      "2": [
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "character",
+          "dependency_type": "forward",
+          "information_element": "John and Lisa's relationship",
+          "description": "Episode 2 builds on the established relationship between John and Lisa from Episode 1",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "plot",
+          "dependency_type": "forward",
+          "information_element": "Secretive behavior in the living room at night",
+          "description": "Episode 2 continues the scenario of secretive behavior at night established in Episode 1",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "world",
+          "dependency_type": "forward",
+          "information_element": "Living room setting at night",
+          "description": "Episode 2 continues in the same setting established in Episode 1",
+          "criticality": "MEDIUM",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "audio",
+          "dependency_type": "forward",
+          "information_element": "Door creaking sound effect",
+          "description": "The door creaking SFX in Episode 1 is reused in Episode 2, creating an audio connection",
+          "criticality": "MEDIUM",
+          "cannot_reorder": true,
+          "audio_callback_required": true
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "plot",
+          "dependency_type": "backward",
+          "information_element": "Waiting for Mom",
+          "description": "Episode 1 sets up the element of waiting for Mom, which is not addressed in Episode 2",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "character",
+          "dependency_type": "critical_path",
+          "information_element": "John and Lisa's secretive plan",
+          "description": "The secretive plan introduced in Episode 1 continues in Episode 2 with new characters",
+          "criticality": "CRITICAL",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "character",
+          "dependency_type": "presence",
+          "characters_involved": [
+            "MARCUS"
+          ],
+          "description": "MARCUS appears in both Episode 1 and 2, establishing him as a recurring character",
+          "criticality": "HIGH",
+          "cannot_reorder": true
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "character",
+          "dependency_type": "knowledge",
+          "characters_involved": [
+            "MARCUS"
+          ],
+          "description": "MARCUS gains knowledge from his interaction with COLLEAGUE in Episode 1 that influences his actions in Episode 2",
+          "criticality": "MEDIUM",
+          "cannot_reorder": true
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "world",
+          "dependency_type": "location",
+          "world_element": "Coffee Shop",
+          "description": "The Coffee Shop location is established in Episode 1 and reused in Episode 2, requiring consistent audio treatment",
+          "criticality": "MEDIUM",
+          "cannot_reorder": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "world",
+          "dependency_type": "time",
+          "world_element": "Night progression",
+          "description": "Episode 1 ends at NIGHT (Office) and Episode 2 begins at LATE NIGHT (Apartment), suggesting a continuous timeline",
+          "criticality": "MEDIUM",
+          "cannot_reorder": true
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "audio",
+          "dependency_type": "motif",
+          "audio_element": "Lighter click",
+          "description": "The lighter click sound motif established in episode 1 must continue in episode 2 to maintain character consistency",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": true,
+          "callback_type": "motif_recurrence",
+          "implementation_notes": "Use the exact same lighter click sound recording to ensure audio consistency"
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "audio",
+          "dependency_type": "music",
+          "audio_element": "Tension theme - 15 seconds",
+          "description": "The tension theme established in episode 1 must return in episode 2 to maintain emotional continuity",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": true,
+          "callback_type": "theme_return",
+          "implementation_notes": "Use the exact same musical arrangement and instrumentation for the tension theme"
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "audio",
+          "dependency_type": "signature_sound",
+          "audio_element": "Coffee shop chatter",
+          "description": "The coffee shop location sound signature established in episode 1 must return in episode 2 to maintain location consistency",
+          "criticality": "MEDIUM",
+          "cannot_reorder": false,
+          "audio_callback_required": true,
+          "callback_type": "sound_signature",
+          "implementation_notes": "Use similar crowd density and conversation patterns, with the same subtle background elements"
+        }
+      ],
+      "3": [
+        {
+          "from_episode": 1,
+          "to_episode": 3,
+          "category": "character",
+          "dependency_type": "forward",
+          "information_element": "John's character",
+          "description": "John appears in Episode 1 but not in Episode 3, so Episode 3 doesn't depend on John's character development",
+          "criticality": "LOW",
+          "cannot_reorder": false,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "plot",
+          "dependency_type": "forward",
+          "information_element": "Living room night scenes",
+          "description": "Episode 3 breaks from the night setting in Episodes 1-2 with a daytime coffee shop scene",
+          "criticality": "LOW",
+          "cannot_reorder": false,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "character",
+          "dependency_type": "forward",
+          "information_element": "Character transition",
+          "description": "Episode 3 introduces completely new characters (Beth and Jake) unrelated to previous episodes",
+          "criticality": "LOW",
+          "cannot_reorder": false,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "audio",
+          "dependency_type": "forward",
+          "information_element": "Sound design transition",
+          "description": "Episode 3 shifts from door creaking sounds to drink setting sounds, indicating a scene change",
+          "criticality": "MEDIUM",
+          "cannot_reorder": false,
+          "audio_callback_required": true
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 3,
+          "category": "plot",
+          "dependency_type": "backward",
+          "information_element": "Nighttime mystery setup",
+          "description": "Episode 1 establishes a nighttime mystery that is not resolved by Episode 3",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "character",
+          "dependency_type": "backward",
+          "information_element": "New character introduction",
+          "description": "Episode 2 introduces Sara and Lucy, who don't appear in Episode 3",
+          "criticality": "LOW",
+          "cannot_reorder": false,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 3,
+          "category": "narrative",
+          "dependency_type": "critical_path",
+          "information_element": "Narrative structure shift",
+          "description": "Episodes 1-2 establish a nighttime mystery narrative that Episode 3 completely abandons",
+          "criticality": "CRITICAL",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "character",
+          "dependency_type": "presence",
+          "characters_involved": [
+            "MARCUS"
+          ],
+          "description": "MARCUS continues his character arc across all three episodes",
+          "criticality": "HIGH",
+          "cannot_reorder": true
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "character",
+          "dependency_type": "knowledge",
+          "characters_involved": [
+            "MARCUS"
+          ],
+          "description": "Information gained from INFORMANT in Episode 2 informs MARCUS's interaction with ANNA in Episode 3",
+          "criticality": "MEDIUM",
+          "cannot_reorder": true
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "world",
+          "dependency_type": "location",
+          "world_element": "Abandoned Warehouse",
+          "description": "The Abandoned Warehouse is introduced in Episode 2 and appears again in Episode 3, suggesting an important plot location that requires consistent acoustic properties",
+          "criticality": "HIGH",
+          "cannot_reorder": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 3,
+          "category": "world",
+          "dependency_type": "location",
+          "world_element": "Coffee Shop",
+          "description": "The Coffee Shop appears in all three episodes, establishing it as a central location that requires consistent acoustic treatment across the series",
+          "criticality": "MEDIUM",
+          "cannot_reorder": false
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "world",
+          "dependency_type": "time",
+          "world_element": "Night progression",
+          "description": "Episode 2 ends at NIGHT (Abandoned Warehouse) and Episode 3 begins at NIGHT (Abandoned Warehouse), suggesting these scenes might be connected",
+          "criticality": "HIGH",
+          "cannot_reorder": true
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "audio",
+          "dependency_type": "motif",
+          "audio_element": "Lighter click",
+          "description": "The lighter click sound motif from episode 2 must continue in episode 3 to maintain character consistency",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": true,
+          "callback_type": "motif_recurrence",
+          "implementation_notes": "Use the exact same lighter click sound recording as in previous episodes"
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "audio",
+          "dependency_type": "music",
+          "audio_element": "Tension theme - 15 seconds",
+          "description": "The tension theme from episode 2 must return in episode 3 to maintain emotional continuity",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": true,
+          "callback_type": "theme_return",
+          "implementation_notes": "Use the exact same musical arrangement and instrumentation for the tension theme"
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 3,
+          "category": "audio",
+          "dependency_type": "signature_sound",
+          "audio_element": "Footsteps",
+          "description": "The footsteps sound signature from episode 1 returns in episode 3, indicating character movement",
+          "criticality": "MEDIUM",
+          "cannot_reorder": false,
+          "audio_callback_required": true,
+          "callback_type": "sound_signature",
+          "implementation_notes": "Maintain the same rhythm and character of footsteps established in episode 1"
+        }
+      ]
+    },
+    "backward_dependencies": {
+      "1": [
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "character",
+          "dependency_type": "forward",
+          "information_element": "John and Lisa's relationship",
+          "description": "Episode 2 builds on the established relationship between John and Lisa from Episode 1",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "plot",
+          "dependency_type": "forward",
+          "information_element": "Secretive behavior in the living room at night",
+          "description": "Episode 2 continues the scenario of secretive behavior at night established in Episode 1",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 3,
+          "category": "character",
+          "dependency_type": "forward",
+          "information_element": "John's character",
+          "description": "John appears in Episode 1 but not in Episode 3, so Episode 3 doesn't depend on John's character development",
+          "criticality": "LOW",
+          "cannot_reorder": false,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "world",
+          "dependency_type": "forward",
+          "information_element": "Living room setting at night",
+          "description": "Episode 2 continues in the same setting established in Episode 1",
+          "criticality": "MEDIUM",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "audio",
+          "dependency_type": "forward",
+          "information_element": "Door creaking sound effect",
+          "description": "The door creaking SFX in Episode 1 is reused in Episode 2, creating an audio connection",
+          "criticality": "MEDIUM",
+          "cannot_reorder": true,
+          "audio_callback_required": true
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 3,
+          "category": "plot",
+          "dependency_type": "backward",
+          "information_element": "Nighttime mystery setup",
+          "description": "Episode 1 establishes a nighttime mystery that is not resolved by Episode 3",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "plot",
+          "dependency_type": "backward",
+          "information_element": "Waiting for Mom",
+          "description": "Episode 1 sets up the element of waiting for Mom, which is not addressed in Episode 2",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "character",
+          "dependency_type": "critical_path",
+          "information_element": "John and Lisa's secretive plan",
+          "description": "The secretive plan introduced in Episode 1 continues in Episode 2 with new characters",
+          "criticality": "CRITICAL",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 3,
+          "category": "narrative",
+          "dependency_type": "critical_path",
+          "information_element": "Narrative structure shift",
+          "description": "Episodes 1-2 establish a nighttime mystery narrative that Episode 3 completely abandons",
+          "criticality": "CRITICAL",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "character",
+          "dependency_type": "presence",
+          "characters_involved": [
+            "MARCUS"
+          ],
+          "description": "MARCUS appears in both Episode 1 and 2, establishing him as a recurring character",
+          "criticality": "HIGH",
+          "cannot_reorder": true
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "character",
+          "dependency_type": "knowledge",
+          "characters_involved": [
+            "MARCUS"
+          ],
+          "description": "MARCUS gains knowledge from his interaction with COLLEAGUE in Episode 1 that influences his actions in Episode 2",
+          "criticality": "MEDIUM",
+          "cannot_reorder": true
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "world",
+          "dependency_type": "location",
+          "world_element": "Coffee Shop",
+          "description": "The Coffee Shop location is established in Episode 1 and reused in Episode 2, requiring consistent audio treatment",
+          "criticality": "MEDIUM",
+          "cannot_reorder": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 3,
+          "category": "world",
+          "dependency_type": "location",
+          "world_element": "Coffee Shop",
+          "description": "The Coffee Shop appears in all three episodes, establishing it as a central location that requires consistent acoustic treatment across the series",
+          "criticality": "MEDIUM",
+          "cannot_reorder": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "world",
+          "dependency_type": "time",
+          "world_element": "Night progression",
+          "description": "Episode 1 ends at NIGHT (Office) and Episode 2 begins at LATE NIGHT (Apartment), suggesting a continuous timeline",
+          "criticality": "MEDIUM",
+          "cannot_reorder": true
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "audio",
+          "dependency_type": "motif",
+          "audio_element": "Lighter click",
+          "description": "The lighter click sound motif established in episode 1 must continue in episode 2 to maintain character consistency",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": true,
+          "callback_type": "motif_recurrence",
+          "implementation_notes": "Use the exact same lighter click sound recording to ensure audio consistency"
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "audio",
+          "dependency_type": "music",
+          "audio_element": "Tension theme - 15 seconds",
+          "description": "The tension theme established in episode 1 must return in episode 2 to maintain emotional continuity",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": true,
+          "callback_type": "theme_return",
+          "implementation_notes": "Use the exact same musical arrangement and instrumentation for the tension theme"
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "audio",
+          "dependency_type": "signature_sound",
+          "audio_element": "Coffee shop chatter",
+          "description": "The coffee shop location sound signature established in episode 1 must return in episode 2 to maintain location consistency",
+          "criticality": "MEDIUM",
+          "cannot_reorder": false,
+          "audio_callback_required": true,
+          "callback_type": "sound_signature",
+          "implementation_notes": "Use similar crowd density and conversation patterns, with the same subtle background elements"
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 3,
+          "category": "audio",
+          "dependency_type": "signature_sound",
+          "audio_element": "Footsteps",
+          "description": "The footsteps sound signature from episode 1 returns in episode 3, indicating character movement",
+          "criticality": "MEDIUM",
+          "cannot_reorder": false,
+          "audio_callback_required": true,
+          "callback_type": "sound_signature",
+          "implementation_notes": "Maintain the same rhythm and character of footsteps established in episode 1"
+        }
+      ],
+      "2": [
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "plot",
+          "dependency_type": "forward",
+          "information_element": "Living room night scenes",
+          "description": "Episode 3 breaks from the night setting in Episodes 1-2 with a daytime coffee shop scene",
+          "criticality": "LOW",
+          "cannot_reorder": false,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "character",
+          "dependency_type": "forward",
+          "information_element": "Character transition",
+          "description": "Episode 3 introduces completely new characters (Beth and Jake) unrelated to previous episodes",
+          "criticality": "LOW",
+          "cannot_reorder": false,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "audio",
+          "dependency_type": "forward",
+          "information_element": "Sound design transition",
+          "description": "Episode 3 shifts from door creaking sounds to drink setting sounds, indicating a scene change",
+          "criticality": "MEDIUM",
+          "cannot_reorder": false,
+          "audio_callback_required": true
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "character",
+          "dependency_type": "backward",
+          "information_element": "New character introduction",
+          "description": "Episode 2 introduces Sara and Lucy, who don't appear in Episode 3",
+          "criticality": "LOW",
+          "cannot_reorder": false,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "character",
+          "dependency_type": "presence",
+          "characters_involved": [
+            "MARCUS"
+          ],
+          "description": "MARCUS continues his character arc across all three episodes",
+          "criticality": "HIGH",
+          "cannot_reorder": true
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "character",
+          "dependency_type": "knowledge",
+          "characters_involved": [
+            "MARCUS"
+          ],
+          "description": "Information gained from INFORMANT in Episode 2 informs MARCUS's interaction with ANNA in Episode 3",
+          "criticality": "MEDIUM",
+          "cannot_reorder": true
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "world",
+          "dependency_type": "location",
+          "world_element": "Abandoned Warehouse",
+          "description": "The Abandoned Warehouse is introduced in Episode 2 and appears again in Episode 3, suggesting an important plot location that requires consistent acoustic properties",
+          "criticality": "HIGH",
+          "cannot_reorder": false
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "world",
+          "dependency_type": "time",
+          "world_element": "Night progression",
+          "description": "Episode 2 ends at NIGHT (Abandoned Warehouse) and Episode 3 begins at NIGHT (Abandoned Warehouse), suggesting these scenes might be connected",
+          "criticality": "HIGH",
+          "cannot_reorder": true
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "audio",
+          "dependency_type": "motif",
+          "audio_element": "Lighter click",
+          "description": "The lighter click sound motif from episode 2 must continue in episode 3 to maintain character consistency",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": true,
+          "callback_type": "motif_recurrence",
+          "implementation_notes": "Use the exact same lighter click sound recording as in previous episodes"
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "audio",
+          "dependency_type": "music",
+          "audio_element": "Tension theme - 15 seconds",
+          "description": "The tension theme from episode 2 must return in episode 3 to maintain emotional continuity",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": true,
+          "callback_type": "theme_return",
+          "implementation_notes": "Use the exact same musical arrangement and instrumentation for the tension theme"
+        }
+      ]
+    },
+    "by_category": {
+      "knowledge": [
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "character",
+          "dependency_type": "forward",
+          "information_element": "John and Lisa's relationship",
+          "description": "Episode 2 builds on the established relationship between John and Lisa from Episode 1",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "plot",
+          "dependency_type": "forward",
+          "information_element": "Secretive behavior in the living room at night",
+          "description": "Episode 2 continues the scenario of secretive behavior at night established in Episode 1",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 3,
+          "category": "character",
+          "dependency_type": "forward",
+          "information_element": "John's character",
+          "description": "John appears in Episode 1 but not in Episode 3, so Episode 3 doesn't depend on John's character development",
+          "criticality": "LOW",
+          "cannot_reorder": false,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "world",
+          "dependency_type": "forward",
+          "information_element": "Living room setting at night",
+          "description": "Episode 2 continues in the same setting established in Episode 1",
+          "criticality": "MEDIUM",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "plot",
+          "dependency_type": "forward",
+          "information_element": "Living room night scenes",
+          "description": "Episode 3 breaks from the night setting in Episodes 1-2 with a daytime coffee shop scene",
+          "criticality": "LOW",
+          "cannot_reorder": false,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "character",
+          "dependency_type": "forward",
+          "information_element": "Character transition",
+          "description": "Episode 3 introduces completely new characters (Beth and Jake) unrelated to previous episodes",
+          "criticality": "LOW",
+          "cannot_reorder": false,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "audio",
+          "dependency_type": "forward",
+          "information_element": "Door creaking sound effect",
+          "description": "The door creaking SFX in Episode 1 is reused in Episode 2, creating an audio connection",
+          "criticality": "MEDIUM",
+          "cannot_reorder": true,
+          "audio_callback_required": true
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "audio",
+          "dependency_type": "forward",
+          "information_element": "Sound design transition",
+          "description": "Episode 3 shifts from door creaking sounds to drink setting sounds, indicating a scene change",
+          "criticality": "MEDIUM",
+          "cannot_reorder": false,
+          "audio_callback_required": true
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 3,
+          "category": "plot",
+          "dependency_type": "backward",
+          "information_element": "Nighttime mystery setup",
+          "description": "Episode 1 establishes a nighttime mystery that is not resolved by Episode 3",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "plot",
+          "dependency_type": "backward",
+          "information_element": "Waiting for Mom",
+          "description": "Episode 1 sets up the element of waiting for Mom, which is not addressed in Episode 2",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "character",
+          "dependency_type": "backward",
+          "information_element": "New character introduction",
+          "description": "Episode 2 introduces Sara and Lucy, who don't appear in Episode 3",
+          "criticality": "LOW",
+          "cannot_reorder": false,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "character",
+          "dependency_type": "critical_path",
+          "information_element": "John and Lisa's secretive plan",
+          "description": "The secretive plan introduced in Episode 1 continues in Episode 2 with new characters",
+          "criticality": "CRITICAL",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 3,
+          "category": "narrative",
+          "dependency_type": "critical_path",
+          "information_element": "Narrative structure shift",
+          "description": "Episodes 1-2 establish a nighttime mystery narrative that Episode 3 completely abandons",
+          "criticality": "CRITICAL",
+          "cannot_reorder": true,
+          "audio_callback_required": false
+        }
+      ],
+      "character": [
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "character",
+          "dependency_type": "presence",
+          "characters_involved": [
+            "MARCUS"
+          ],
+          "description": "MARCUS appears in both Episode 1 and 2, establishing him as a recurring character",
+          "criticality": "HIGH",
+          "cannot_reorder": true
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "character",
+          "dependency_type": "presence",
+          "characters_involved": [
+            "MARCUS"
+          ],
+          "description": "MARCUS continues his character arc across all three episodes",
+          "criticality": "HIGH",
+          "cannot_reorder": true
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "character",
+          "dependency_type": "knowledge",
+          "characters_involved": [
+            "MARCUS"
+          ],
+          "description": "MARCUS gains knowledge from his interaction with COLLEAGUE in Episode 1 that influences his actions in Episode 2",
+          "criticality": "MEDIUM",
+          "cannot_reorder": true
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "character",
+          "dependency_type": "knowledge",
+          "characters_involved": [
+            "MARCUS"
+          ],
+          "description": "Information gained from INFORMANT in Episode 2 informs MARCUS's interaction with ANNA in Episode 3",
+          "criticality": "MEDIUM",
+          "cannot_reorder": true
+        }
+      ],
+      "world": [
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "world",
+          "dependency_type": "location",
+          "world_element": "Coffee Shop",
+          "description": "The Coffee Shop location is established in Episode 1 and reused in Episode 2, requiring consistent audio treatment",
+          "criticality": "MEDIUM",
+          "cannot_reorder": false
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "world",
+          "dependency_type": "location",
+          "world_element": "Abandoned Warehouse",
+          "description": "The Abandoned Warehouse is introduced in Episode 2 and appears again in Episode 3, suggesting an important plot location that requires consistent acoustic properties",
+          "criticality": "HIGH",
+          "cannot_reorder": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 3,
+          "category": "world",
+          "dependency_type": "location",
+          "world_element": "Coffee Shop",
+          "description": "The Coffee Shop appears in all three episodes, establishing it as a central location that requires consistent acoustic treatment across the series",
+          "criticality": "MEDIUM",
+          "cannot_reorder": false
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "world",
+          "dependency_type": "time",
+          "world_element": "Night progression",
+          "description": "Episode 1 ends at NIGHT (Office) and Episode 2 begins at LATE NIGHT (Apartment), suggesting a continuous timeline",
+          "criticality": "MEDIUM",
+          "cannot_reorder": true
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "world",
+          "dependency_type": "time",
+          "world_element": "Night progression",
+          "description": "Episode 2 ends at NIGHT (Abandoned Warehouse) and Episode 3 begins at NIGHT (Abandoned Warehouse), suggesting these scenes might be connected",
+          "criticality": "HIGH",
+          "cannot_reorder": true
+        }
+      ],
+      "audio": [
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "audio",
+          "dependency_type": "motif",
+          "audio_element": "Lighter click",
+          "description": "The lighter click sound motif established in episode 1 must continue in episode 2 to maintain character consistency",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": true,
+          "callback_type": "motif_recurrence",
+          "implementation_notes": "Use the exact same lighter click sound recording to ensure audio consistency"
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "audio",
+          "dependency_type": "music",
+          "audio_element": "Tension theme - 15 seconds",
+          "description": "The tension theme established in episode 1 must return in episode 2 to maintain emotional continuity",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": true,
+          "callback_type": "theme_return",
+          "implementation_notes": "Use the exact same musical arrangement and instrumentation for the tension theme"
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 2,
+          "category": "audio",
+          "dependency_type": "signature_sound",
+          "audio_element": "Coffee shop chatter",
+          "description": "The coffee shop location sound signature established in episode 1 must return in episode 2 to maintain location consistency",
+          "criticality": "MEDIUM",
+          "cannot_reorder": false,
+          "audio_callback_required": true,
+          "callback_type": "sound_signature",
+          "implementation_notes": "Use similar crowd density and conversation patterns, with the same subtle background elements"
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "audio",
+          "dependency_type": "motif",
+          "audio_element": "Lighter click",
+          "description": "The lighter click sound motif from episode 2 must continue in episode 3 to maintain character consistency",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": true,
+          "callback_type": "motif_recurrence",
+          "implementation_notes": "Use the exact same lighter click sound recording as in previous episodes"
+        },
+        {
+          "from_episode": 2,
+          "to_episode": 3,
+          "category": "audio",
+          "dependency_type": "music",
+          "audio_element": "Tension theme - 15 seconds",
+          "description": "The tension theme from episode 2 must return in episode 3 to maintain emotional continuity",
+          "criticality": "HIGH",
+          "cannot_reorder": true,
+          "audio_callback_required": true,
+          "callback_type": "theme_return",
+          "implementation_notes": "Use the exact same musical arrangement and instrumentation for the tension theme"
+        },
+        {
+          "from_episode": 1,
+          "to_episode": 3,
+          "category": "audio",
+          "dependency_type": "signature_sound",
+          "audio_element": "Footsteps",
+          "description": "The footsteps sound signature from episode 1 returns in episode 3, indicating character movement",
+          "criticality": "MEDIUM",
+          "cannot_reorder": false,
+          "audio_callback_required": true,
+          "callback_type": "sound_signature",
+          "implementation_notes": "Maintain the same rhythm and character of footsteps established in episode 1"
+        }
+      ]
+    }
+  },
+  "statistics": {
+    "total_dependencies": 28,
+    "knowledge_dependencies": 13,
+    "character_dependencies": 4,
+    "world_dependencies": 5,
+    "audio_dependencies": 6
+  }
+}

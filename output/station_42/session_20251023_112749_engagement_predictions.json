@@ -1,0 +1,27 @@
+{
+  "generated_at": "2025-10-30T00:58:52.579903",
+  "session_id": "session_20251023_112749",
+  "engagement_predictions": {
+    "drop_off_risks": [
+      {
+        "episode": 1,
+        "avg_score": 0.2,
+        "reason": "Low engagement across all listening modes"
+      },
+      {
+        "episode": 2,
+        "avg_score": 0.15,
+        "reason": "Low engagement across all listening modes"
+      },
+      {
+        "episode": 3,
+        "avg_score": 0.1,
+        "reason": "Low engagement across all listening modes"
+      }
+    ],
+    "engagement_peaks": [],
+    "retention_probability": {},
+    "recommendation_likelihood": {}
+  },
+  "retention_forecast": "Based on engagement curve analysis"
+}

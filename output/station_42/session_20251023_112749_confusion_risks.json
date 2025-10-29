@@ -1,0 +1,87 @@
+{
+  "generated_at": "2025-10-30T00:58:52.579245",
+  "session_id": "session_20251023_112749",
+  "confusion_risk_points": [
+    {
+      "episode": "All",
+      "confusion_description": "The episodes don't match the project DNA about 'The Accidental Lifeline' story of Tom the motivation coach and Julia the ER doctor.",
+      "risk_level": 10,
+      "suggested_fix": "Align episode content with the intended project narrative or clarify if these are placeholder episodes not representative of the final series.",
+      "source_simulation": "first_time"
+    },
+    {
+      "episode": 3,
+      "confusion_description": "Completely different setting (coffee shop) and characters (Beth and Jake) with no connection to the main storyline.",
+      "risk_level": 10,
+      "suggested_fix": "Focus on developing Tom and Julia's relationship through the text messages, showing how they're affecting both characters' lives.",
+      "source_simulation": "binge"
+    },
+    {
+      "episode": 3,
+      "confusion_description": "Complete narrative departure with no connection to previous episodes, making the series feel disjointed.",
+      "risk_level": 9,
+      "suggested_fix": "Establish clearer connections between episodes or provide framing that explains the anthology nature if that's the intention.",
+      "source_simulation": "first_time"
+    },
+    {
+      "episode": 2,
+      "confusion_description": "Introduces new characters Sara and Lucy with no connection to previous episode or main storyline.",
+      "risk_level": 9,
+      "suggested_fix": "Develop the main narrative thread about the accidental text messages and their impact on Julia's life.",
+      "source_simulation": "binge"
+    },
+    {
+      "episode": 3,
+      "confusion_description": "Complete shift in characters and setting with no connection to previous episodes, making it seem like an entirely different show.",
+      "risk_level": 9,
+      "suggested_fix": "Add substantial recap and a bridge connecting the previous narrative to this new setting, or reconsider if this episode belongs in this series.",
+      "source_simulation": "weekly"
+    },
+    {
+      "episode": 2,
+      "confusion_description": "Introduction of new characters without connection to episode 1, creating narrative disconnection.",
+      "risk_level": 8,
+      "suggested_fix": "Either maintain character continuity or provide clear indication that these are different storylines within the same series.",
+      "source_simulation": "first_time"
+    },
+    {
+      "episode": 1,
+      "confusion_description": "Characters John and Lisa don't match the main characters Tom and Julia from project DNA. The setting doesn't match any key locations.",
+      "risk_level": 8,
+      "suggested_fix": "Align episodes with the main storyline of Tom and Julia, starting with establishing Tom as a motivation coach and Julia as an ER doctor.",
+      "source_simulation": "binge"
+    },
+    {
+      "episode": 1,
+      "confusion_description": "No establishing context about who John and Lisa are, their relationship, or what they're planning to do.",
+      "risk_level": 7,
+      "suggested_fix": "Add brief establishing narration or dialogue to provide basic context about the characters and situation.",
+      "source_simulation": "first_time"
+    },
+    {
+      "episode": 2,
+      "confusion_description": "Introduction of new character Sara without context, and unclear relationship to John from Episode 1.",
+      "risk_level": 7,
+      "suggested_fix": "Add a brief recap at the beginning mentioning John and Lisa waiting for their mother, then introduce Sara's relationship to them.",
+      "source_simulation": "weekly"
+    },
+    {
+      "episode": 3,
+      "attention_level": "interrupted",
+      "confusion_description": "The sudden shift to a coffee shop setting during daytime may confuse listeners who resume after interruption, as there's no clear connection to the previous nighttime scenes.",
+      "risk_level": 7,
+      "suggested_fix": "Add a brief establishing comment or sound effect that connects Episode 3 to previous episodes, or include a subtle reminder of the main characters/narrative thread.",
+      "source_simulation": "attention"
+    },
+    {
+      "episode": 2,
+      "attention_level": "casual",
+      "confusion_description": "The introduction of new characters (Sara, Lucy) without clear connection to Episode 1's characters (John, Lisa) might confuse casual listeners.",
+      "risk_level": 5,
+      "suggested_fix": "Include brief character identifiers or relationship references to help listeners understand character connections without requiring full attention.",
+      "source_simulation": "attention"
+    }
+  ],
+  "high_risk_count": 7,
+  "total_risks": 11
+}

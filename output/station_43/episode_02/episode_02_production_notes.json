@@ -1,0 +1,99 @@
+{
+  "episode_number": 2,
+  "production_notes": [
+    "Maintain a balance between emotional vulnerability and plot momentum throughout the scene.",
+    "Ensure kitchen ambience is subtle enough not to distract from dialogue but present enough to establish setting.",
+    "Pay special attention to the emotional beats in Tom and Julia's dialogue, as this establishes their characters and the central conflict.",
+    "Sarah's introduction should shift the tone from emotional to more urgent/action-oriented, marking a clear turning point in the scene.",
+    "The narrator's tone should be consistent and reflective, providing emotional context without overshadowing the characters.",
+    "Consider recording Julia's dialogue with a different microphone technique (closer, more intimate) to emphasize her 'barely audible' quality while maintaining clarity.",
+    "All dialogue should be recorded with consistent proximity to avoid perspective shifts that might confuse listeners."
+  ],
+  "critical_sounds": [
+    {
+      "sound_description": "DOOR CREAKING",
+      "location": "Between Julia's dialogue and narrator's line in living room scene",
+      "priority": "CRITICAL",
+      "must_have": true,
+      "alternatives": [
+        "Door latch click",
+        "Door hinge squeak",
+        "Door handle turning"
+      ],
+      "story_impact": "Without this sound cue, Sarah's entrance lacks impact and the transition between emotional moment and plot advancement is less effective."
+    },
+    {
+      "sound_description": "SUBTLE KITCHEN AMBIENCE - REFRIGERATOR HUM, DISTANT CITY TRAFFIC",
+      "location": "Beginning of kitchen scene, continuing throughout",
+      "priority": "HIGH",
+      "must_have": true,
+      "alternatives": [
+        "General kitchen sounds without specific elements",
+        "City ambience alone"
+      ],
+      "story_impact": "This establishes the setting and creates atmosphere for the kitchen scene. Without it, the scene lacks environmental context and feels disconnected from the world."
+    }
+  ],
+  "performance_notes": [
+    {
+      "location": "Tom's dialogue: 'How could I have been sending messages to a stranger for a year?'",
+      "note_type": "emotional_beat",
+      "note": "Voice trembling with disbelief - convey shock, confusion, and a sense of personal failure. The delivery should communicate that his professional identity as a coach is being challenged.",
+      "importance": "CRITICAL"
+    },
+    {
+      "location": "Julia's dialogue: 'Those messages... they were the only thing keeping me grounded some days.'",
+      "note_type": "emotional_beat",
+      "note": "Voice barely audible but clear, filled with emotion - convey vulnerability, gratitude, and deep feeling. The pause before 'they were' should be significant, showing the emotional weight of her admission.",
+      "importance": "CRITICAL"
+    },
+    {
+      "location": "Narrator's lines throughout",
+      "note_type": "emotional_beat",
+      "note": "Maintain a calm, reflective tone that emphasizes the weight of the situation without being overly dramatic. The narrator serves as the emotional anchor and should provide context without overshadowing the characters.",
+      "importance": "HIGH"
+    },
+    {
+      "location": "Sarah's dialogue: 'We need to find out who this person is. Now.'",
+      "note_type": "emotional_beat",
+      "note": "Pacing urgently - convey determination and business-like approach. The 'Now' should be delivered with sharp emphasis, showing her decisive nature and contrasting with the emotional tone of the previous dialogue.",
+      "importance": "HIGH"
+    },
+    {
+      "location": "Interaction between Tom and Julia",
+      "note_type": "relationship_dynamic",
+      "note": "Subtext of unexpected connection and emotional dependence despite never having met. Their voices should reflect a strange intimacy that has formed through text messages, creating an uncomfortable but compelling tension.",
+      "importance": "HIGH"
+    }
+  ],
+  "technical_notes": [
+    {
+      "location": "Transition between living room and kitchen scenes",
+      "technical_need": "transition",
+      "description": "Need a clear audio transition between scenes that maintains narrative flow while signaling location change",
+      "complexity": "MODERATE",
+      "solution": "Use door creaking as a transition point, followed by narrator's bridge line, then a slight pause (0.5-1 second) before introducing kitchen ambience. This creates a natural flow while clearly indicating the scene change."
+    },
+    {
+      "location": "Kitchen scene ambience",
+      "technical_need": "multilayer",
+      "description": "Combine refrigerator hum and distant city traffic to create subtle background texture",
+      "complexity": "SIMPLE",
+      "solution": "Layer two ambient tracks with refrigerator sound more prominent (70%) and city traffic more subtle (30%). Ensure combined level is -18dB to -20dB below dialogue to avoid distraction."
+    },
+    {
+      "location": "Julia's dialogue delivery",
+      "technical_need": "clarity",
+      "description": "Ensure Julia's 'barely audible' voice is still clear to listeners despite the direction",
+      "complexity": "MODERATE",
+      "solution": "Record at normal volume but with intimate, close-mic technique. In post-production, reduce volume slightly (-3dB to -5dB) while applying subtle compression to maintain intelligibility. Add a touch of room reverb to create the sense of someone speaking softly in a space."
+    },
+    {
+      "location": "Narrator's voice",
+      "technical_need": "presence",
+      "description": "Narrator needs to be distinct from character voices while maintaining emotional connection",
+      "complexity": "SIMPLE",
+      "solution": "Apply different EQ treatment to narrator's voice (slight boost at 3kHz for clarity) with minimal reverb (short decay, 0.8-1.2s) to create presence while keeping separate from the scene's acoustic space."
+    }
+  ]
+}

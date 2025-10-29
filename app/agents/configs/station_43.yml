@@ -1,0 +1,511 @@
+# Station 43: Final Polish Pass Configuration
+
+model: "glm-4.5"
+temperature: 0.3
+max_tokens: 16000
+
+prompts:
+  read_aloud_review: |
+    You are the Final Polish Editor performing read-aloud review for audio series production.
+    
+    This is the FINAL quality check before production. Every line must flow naturally when spoken aloud.
+    
+    SESSION CONTEXT:
+    Session ID: {session_id}
+    Episode: {episode_number}
+    
+    EPISODE CONTENT:
+    {episode_content}
+    
+    PROJECT DNA:
+    {project_dna}
+    
+    STYLE GUIDE:
+    {style_guide}
+    
+    CHARACTER BIBLE:
+    {character_bible}
+    
+    TASK 1: READ-ALOUD REVIEW - FINAL PERFORMANCE CHECK
+    
+    Review every line as if an actor will perform it:
+    
+    1. **EVERY LINE SPOKEN**:
+       - Does each line flow naturally when spoken?
+       - Can lines be said in one breath?
+       - Are lines performable (not too complex)?
+       - Do lines match character voices?
+       - Flag any tongue twisters or awkward phrasing
+       - Rate speakability: 0-10 per character
+    
+    2. **EMOTIONAL TRUTH**:
+       - Are reactions genuine to the situation?
+       - Is timing realistic (no instant emotional shifts)?
+       - Are pauses natural and well-placed?
+       - Are dynamics varied (not monotone)?
+       - Do emotional beats land?
+       - Rate emotional authenticity: 0-10
+    
+    3. **AUDIO THEATER**:
+       - Do sounds support the story (not overwhelm)?
+       - Is there space for performance (not overproduced)?
+       - Is the magic preserved (not over-explained)?
+       - Can listeners imagine the scene?
+       - Rate audio theater quality: 0-10
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "read_aloud_review": {{
+        "overall_score": 0.0-1.0,
+        "speakability_analysis": {{
+          "overall_rating": "EXCELLENT|GOOD|ADEQUATE|NEEDS_WORK",
+          "character_scores": {{
+            "CHARACTER_NAME": {{
+              "speakability_score": 0-10,
+              "issues_found": ["list of speakability issues"],
+              "strengths": ["list of speakability strengths"]
+            }}
+          }},
+          "tongue_twisters": [
+            {{
+              "line": "the problematic line",
+              "character": "CHARACTER_NAME",
+              "issue": "what makes it hard to say",
+              "suggestion": "how to fix it"
+            }}
+          ],
+          "breath_issues": [
+            {{
+              "line": "line too long for one breath",
+              "character": "CHARACTER_NAME",
+              "suggestion": "how to break it up"
+            }}
+          ]
+        }},
+        "emotional_truth_analysis": {{
+          "overall_rating": "EXCELLENT|GOOD|ADEQUATE|NEEDS_WORK",
+          "authenticity_score": 0-10,
+          "timing_issues": [
+            {{
+              "scene": "scene description",
+              "issue": "emotional shift too fast/slow",
+              "suggestion": "how to fix timing"
+            }}
+          ],
+          "pausing_needs": [
+            {{
+              "location": "line/context",
+              "reason": "why pause needed here",
+              "suggestion": "pause duration/marking"
+            }}
+          ],
+          "dynamics_assessment": "VARIED|ADEQUATE|MONOTONE",
+          "emotional_beats": [
+            {{
+              "beat_location": "scene/line",
+              "beat_type": "revelation|confrontation|resolution",
+              "effectiveness": "STRONG|ADEQUATE|WEAK",
+              "suggestion": "how to strengthen if needed"
+            }}
+          ]
+        }},
+        "audio_theater_analysis": {{
+          "overall_rating": "EXCELLENT|GOOD|ADEQUATE|NEEDS_WORK",
+          "quality_score": 0-10,
+          "sound_balance": "GOOD|TOO_MUCH|TOO_LITTLE",
+          "performance_space": "ADEQUATE|CROWDED|TOO_SPARSE",
+          "imagination_factors": "STRONG|ADEQUATE|WEAK",
+          "overproduction_risks": [
+            {{
+              "location": "scene description",
+              "issue": "what's overproduced",
+              "suggestion": "how to simplify"
+            }}
+          ],
+          "magic_preservation": "PRESERVED|PARTIAL|LOST"
+        }},
+        "issues_found": [
+          {{
+            "type": "speakability|emotional|audio_theater",
+            "severity": "CRITICAL|MAJOR|MINOR",
+            "description": "what the issue is",
+            "location": "scene/line reference",
+            "suggestion": "how to fix"
+          }}
+        ],
+        "strengths": [
+          "what works exceptionally well in read-aloud"
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Think like a voice actor. Every line must be performable and natural.
+    
+  precision_editing: |
+    You are the Final Polish Editor performing precision editing for audio series production.
+    
+    This is the FINAL tightening pass. Every word must be the best word. Every rhythm must be perfect.
+    
+    SESSION CONTEXT:
+    Session ID: {session_id}
+    Episode: {episode_number}
+    
+    EPISODE CONTENT:
+    {episode_content}
+    
+    READ-ALOUD ISSUES FOUND:
+    {read_aloud_issues}
+    
+    PROJECT DNA:
+    {project_dna}
+    
+    STYLE GUIDE:
+    {style_guide}
+    
+    TASK 2: PRECISION EDITING - FINAL TIGHTENING
+    
+    Tighten every element to perfection:
+    
+    1. **WORD PRECISION**:
+       - Is the best word chosen (not good, not acceptable, the BEST)?
+       - Are clichés eliminated?
+       - Is phrasing fresh (not overused)?
+       - Is meaning crystal clear?
+       - Count: clichés removed, improved word choices
+    
+    2. **RHYTHM PERFECTION**:
+       - Is line rhythm musical (not monotonous)?
+       - Is scene rhythm varied (not same pace throughout)?
+       - Is episode rhythm satisfying (peaks and valleys)?
+       - Does series rhythm feel complete?
+       - Rate rhythm: 0-10
+    
+    3. **EMOTIONAL PRECISION**:
+       - Are peaks and valleys placed optimally?
+       - Is breathing room provided?
+       - Is catharsis earned (not rushed)?
+       - Is resolution satisfying?
+       - Rate emotional precision: 0-10
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "precision_editing": {{
+        "overall_score": 0.0-1.0,
+        "word_precision": {{
+          "rating": "EXCELLENT|GOOD|ADEQUATE|NEEDS_WORK",
+          "clichés_removed": ["list of clichés found and removed"],
+          "word_improvements": [
+            {{
+              "original": "original word/phrase",
+              "improved": "better word/phrase",
+              "reason": "why it's better",
+              "location": "scene/line reference"
+            }}
+          ],
+          "fresh_phrasing_check": "PASS|NEEDS_WORK",
+          "clarity_check": "CRYSTAL_CLEAR|MOSTLY_CLEAR|SOMEWHAT_CLEAR|UNCLEAR"
+        }},
+        "rhythm_perfection": {{
+          "rating": "EXCELLENT|GOOD|ADEQUATE|NEEDS_WORK",
+          "line_rhythm_score": 0-10,
+          "scene_rhythm_score": 0-10,
+          "episode_rhythm_score": 0-10,
+          "monotony_issues": [
+            {{
+              "location": "scene description",
+              "issue": "what's monotonous",
+              "suggestion": "how to vary rhythm"
+            }}
+          ],
+          "rhythm_variations_made": [
+            {{
+              "location": "where variation added",
+              "change": "what was changed",
+              "effect": "how it improves rhythm"
+            }}
+          ]
+        }},
+        "emotional_precision": {{
+          "rating": "EXCELLENT|GOOD|ADEQUATE|NEEDS_WORK",
+          "precision_score": 0-10,
+          "peak_placement": "OPTIMAL|GOOD|NEEDS_ADJUSTMENT",
+          "breathing_room_sufficient": "YES|NO|PARTIAL",
+          "catharsis_earned": "YES|NO|PARTIAL",
+          "resolution_satisfaction": "VERY_SATISFYING|SATISFYING|UNSATISFYING",
+          "emotional_adjustments": [
+            {{
+              "location": "scene/beat",
+              "adjustment": "what was adjusted",
+              "reason": "why adjustment needed"
+            }}
+          ]
+        }},
+        "changes_made": [
+          {{
+            "type": "word|rhythm|emotional",
+            "location": "scene/line",
+            "original": "original text",
+            "edited": "edited text",
+            "reason": "why change was made"
+          }}
+        ],
+        "polished_script_text": "FULL POLISHED SCRIPT TEXT WITH ALL IMPROVEMENTS APPLIED"
+      }}
+    }}
+    ```
+    
+    CRITICAL: Every change must improve the script. No changes for the sake of changes.
+    
+  audio_annotation: |
+    You are the Final Polish Editor creating audio annotation for production.
+    
+    Add final production notes so directors and sound engineers know exactly what's needed.
+    
+    SESSION CONTEXT:
+    Session ID: {session_id}
+    Episode: {episode_number}
+    
+    POLISHED SCRIPT:
+    {polished_script}
+    
+    EDITING CHANGES:
+    {editing_changes}
+    
+    PROJECT DNA:
+    {project_dna}
+    
+    WORLD BIBLE:
+    {world_bible}
+    
+    TASK 3: AUDIO ANNOTATION - FINAL PRODUCTION NOTES
+    
+    Add comprehensive production annotations:
+    
+    1. **CRITICAL SOUNDS**:
+       - Which SFX are must-have (story would fail without them)?
+       - Which SFX are optional (nice but not essential)?
+       - What alternatives exist if production constraints limit?
+       - Mark each critical sound with priority
+    
+    2. **PERFORMANCE NOTES**:
+       - Mark key emotional beats that need specific delivery
+       - Note relationship dynamics that affect performance
+       - Clarify subtext that must be audible
+       - Indicate pacing/breathing needs
+    
+    3. **TECHNICAL NOTES**:
+       - Note processing needs (reverb, echo, etc.)
+       - Mark special requirements (multilayer sounds, sync needs)
+       - Flag problem areas (difficult transitions, complex scenes)
+       - Suggest technical solutions
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "audio_annotation": {{
+        "critical_sounds": [
+          {{
+            "sound_description": "SFX description",
+            "location": "scene/line reference",
+            "priority": "CRITICAL|HIGH|MEDIUM|LOW",
+            "must_have": true/false,
+            "alternatives": ["list of alternative options"],
+            "story_impact": "how story fails without it"
+          }}
+        ],
+        "optional_sounds": [
+          {{
+            "sound_description": "SFX description",
+            "location": "scene/line reference",
+            "enhancement_value": "HIGH|MEDIUM|LOW",
+            "suggestion": "use if resources allow"
+          }}
+        ],
+        "performance_notes": [
+          {{
+            "location": "scene/line reference",
+            "note_type": "emotional_beat|relationship_dynamic|subtext_clarification|pacing",
+            "note": "specific performance guidance",
+            "importance": "CRITICAL|HIGH|MEDIUM"
+          }}
+        ],
+        "technical_notes": [
+          {{
+            "location": "scene/line reference",
+            "technical_need": "reverb|echo|multilayer|sync|transition",
+            "description": "what technical processing needed",
+            "complexity": "SIMPLE|MODERATE|COMPLEX",
+            "solution": "suggested technical approach"
+          }}
+        ],
+        "problem_areas": [
+          {{
+            "location": "scene description",
+            "problem": "what's problematic",
+            "severity": "CRITICAL|MAJOR|MINOR",
+            "suggested_solution": "how to address"
+          }}
+        ],
+        "production_notes": [
+          "General production guidance notes"
+        ],
+        "annotated_script_text": "SCRIPT TEXT WITH ANNOTATIONS MARKED (use [NOTE: annotation] format)"
+      }}
+    }}
+    ```
+    
+    CRITICAL: Be specific. Production teams need clear guidance, not vague suggestions.
+    
+  sign_off_checklist: |
+    You are the Final Polish Editor completing sign-off checklist verification.
+    
+    This is the FINAL verification. Every item must be checked before production approval.
+    
+    SESSION CONTEXT:
+    Session ID: {session_id}
+    Episode: {episode_number}
+    
+    FINAL SCRIPT:
+    {final_script}
+    
+    AUDIO NOTES:
+    {audio_notes}
+    
+    PROJECT DNA:
+    {project_dna}
+    
+    CHARACTER BIBLE:
+    {character_bible}
+    
+    WORLD BIBLE:
+    {world_bible}
+    
+    TASK 4: SIGN-OFF CHECKLIST - FINAL VERIFICATION
+    
+    Verify completion of all requirements:
+    
+    ✅ All plants have payoffs
+    ✅ All payoffs have plants
+    ✅ All characters distinct
+    ✅ All scenes necessary
+    ✅ All dialogue speakable
+    ✅ All sounds purposeful
+    ✅ All transitions clear
+    ✅ All information trackable
+    ✅ All emotions earned
+    ✅ All promises kept
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "sign_off_checklist": {{
+        "all_checks_passed": true/false,
+        "checklist_items": {{
+          "plants_have_payoffs": {{
+            "status": "PASS|FAIL|PARTIAL",
+            "verified": true/false,
+            "issues": ["list any issues"],
+            "notes": "verification notes"
+          }},
+          "payoffs_have_plants": {{
+            "status": "PASS|FAIL|PARTIAL",
+            "verified": true/false,
+            "issues": ["list any issues"],
+            "notes": "verification notes"
+          }},
+          "characters_distinct": {{
+            "status": "PASS|FAIL|PARTIAL",
+            "verified": true/false,
+            "issues": ["list any issues"],
+            "notes": "verification notes"
+          }},
+          "scenes_necessary": {{
+            "status": "PASS|FAIL|PARTIAL",
+            "verified": true/false,
+            "issues": ["list any issues"],
+            "notes": "verification notes"
+          }},
+          "dialogue_speakable": {{
+            "status": "PASS|FAIL|PARTIAL",
+            "verified": true/false,
+            "issues": ["list any issues"],
+            "notes": "verification notes"
+          }},
+          "sounds_purposeful": {{
+            "status": "PASS|FAIL|PARTIAL",
+            "verified": true/false,
+            "issues": ["list any issues"],
+            "notes": "verification notes"
+          }},
+          "transitions_clear": {{
+            "status": "PASS|FAIL|PARTIAL",
+            "verified": true/false,
+            "issues": ["list any issues"],
+            "notes": "verification notes"
+          }},
+          "information_trackable": {{
+            "status": "PASS|FAIL|PARTIAL",
+            "verified": true/false,
+            "issues": ["list any issues"],
+            "notes": "verification notes"
+          }},
+          "emotions_earned": {{
+            "status": "PASS|FAIL|PARTIAL",
+            "verified": true/false,
+            "issues": ["list any issues"],
+            "notes": "verification notes"
+          }},
+          "promises_kept": {{
+            "status": "PASS|FAIL|PARTIAL",
+            "verified": true/false,
+            "issues": ["list any issues"],
+            "notes": "verification notes"
+          }}
+        }},
+        "failed_checks": [
+          "list of check names that failed"
+        ],
+        "partial_passes": [
+          "list of check names that partially passed"
+        ],
+        "production_ready": true/false,
+        "certification_status": "APPROVED|CONDITIONAL|NOT_READY",
+        "final_notes": "overall assessment and next steps"
+      }}
+    }}
+    ```
+    
+    CRITICAL: Be thorough. Production approval depends on this checklist. No false positives.
+
+dependencies:
+  - station: 27
+    name: "Master Script Assembly"
+  - station: 2
+    name: "Project DNA Builder"
+  - station: 6
+    name: "Master Style Guide Builder"
+  - station: 7
+    name: "Character Architect"
+  - station: 8
+    name: "World Builder"
+
+# Enable/disable this station in the pipeline
+enabled: true
+
+# Configuration values
+input_path: "output/station_27"
+output_path: "output/station_43"
+
+# Output enhancements
+output_enhancements:
+  encoding: "utf-8"
+  include_statistics: true
+  generate_polished_scripts: true
+

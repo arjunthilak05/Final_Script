@@ -1,0 +1,469 @@
+# Station 42: Listener Experience Simulator Configuration
+
+model: "glm-4.5"
+temperature: 0.4
+max_tokens: 16000
+
+prompts:
+  first_time_listener: |
+    You are a First-Time Listener Experience Simulator for audio series production.
+    
+    Simulate the experience of a listener hearing the series for the first time with NO prior knowledge.
+    
+    SESSION CONTEXT:
+    Session ID: {session_id}
+    Total Episodes: {total_episodes}
+    
+    EPISODE SUMMARIES:
+    {episode_summaries}
+    
+    PROJECT DNA:
+    {project_dna}
+    
+    SEASON ARCHITECTURE:
+    {season_architecture}
+    
+    TASK 1: FIRST-TIME LISTENER PATH SIMULATION
+    
+    Simulate virgin listening experience episode by episode:
+    
+    1. **EPISODE 1 CLARITY**:
+       - Is the world understandable without prior knowledge?
+       - Are characters distinguishable from first appearance?
+       - Is the opening hook effective for new listeners?
+       - Does it make the listener want to continue?
+       - Rate clarity: 0-10
+    
+    2. **EARLY EPISODES (2-25% of series)**:
+       - Is the learning curve comfortable?
+       - Is the listener overwhelmed with information?
+       - Are questions building naturally?
+       - Is investment in characters/story growing?
+       - Any confusion points?
+    
+    3. **MIDDLE EPISODES (25-75% of series)**:
+       - Is interest being maintained?
+       - Are payoffs satisfying?
+       - Are new questions arising to replace answered ones?
+       - Are characters deepening appropriately?
+       - Any pacing issues?
+    
+    4. **FINAL EPISODES (75-100% of series)**:
+       - Is the ending rushing or dragging?
+       - Are answers satisfying?
+       - Is emotion earned?
+       - Does the ending stick the landing?
+       - Any loose threads?
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "first_time_listener_path": {{
+        "episode_1_clarity": {{
+          "clarity_score": 0-10,
+          "world_understandable": "YES|NO|PARTIAL",
+          "world_understandability_notes": "specific notes",
+          "characters_distinguishable": "YES|NO|PARTIAL",
+          "character_distinction_notes": "specific notes",
+          "hook_effective": "YES|NO|PARTIAL",
+          "hook_effectiveness_notes": "specific notes",
+          "continue_motivation": "STRONG|MODERATE|WEAK",
+          "overall_assessment": "summary assessment"
+        }},
+        "early_episodes_analysis": {{
+          "episodes_covered": [2, 3, 4],
+          "learning_curve_rating": "COMFORTABLE|TOO_SLOW|TOO_FAST|OVERWHELMING",
+          "learning_curve_notes": "specific notes",
+          "information_overload_risk": "LOW|MEDIUM|HIGH",
+          "question_building": "STRONG|MODERATE|WEAK",
+          "investment_growth": "STRONG|MODERATE|WEAK",
+          "confusion_points": [
+            {{
+              "episode": 3,
+              "confusion_description": "what was confusing",
+              "impact": "MINOR|MODERATE|MAJOR"
+            }}
+          ]
+        }},
+        "middle_episodes_analysis": {{
+          "episodes_covered": [5, 6, 7],
+          "interest_maintained": "STRONG|MODERATE|WEAK",
+          "payoff_satisfaction": "HIGH|MEDIUM|LOW",
+          "new_questions_emerging": "YES|NO|PARTIAL",
+          "character_development_depth": "DEEP|ADEQUATE|SHALLOW",
+          "pacing_assessment": "GOOD|TOO_FAST|TOO_SLOW",
+          "engagement_trends": "INCREASING|STABLE|DECREASING"
+        }},
+        "final_episodes_analysis": {{
+          "episodes_covered": [8, 9, 10],
+          "ending_pace": "GOOD|RUSHED|DRAGGING",
+          "answer_satisfaction": "VERY_SATISFYING|SATISFYING|UNSATISFYING",
+          "emotion_earned": "YES|NO|PARTIAL",
+          "ending_quality": "STRONG|ADEQUATE|WEAK",
+          "loose_threads": ["list of any loose threads"],
+          "overall_ending_assessment": "summary"
+        }},
+        "episode_analysis": {{
+          "1": {{
+            "engagement_score": 0.0-1.0,
+            "confusion_score": 0.0-1.0,
+            "satisfaction_score": 0.0-1.0,
+            "recommendation_likelihood": "HIGH|MEDIUM|LOW"
+          }},
+          "2": {{ ... }},
+          "3": {{ ... }}
+        }},
+        "confusion_points": [
+          {{
+            "episode": 1,
+            "confusion_description": "what was confusing for first-time listener",
+            "risk_level": 0-10,
+            "suggested_fix": "how to fix the confusion"
+          }}
+        ],
+        "strengths": [
+          "what works well for first-time listeners"
+        ],
+        "weaknesses": [
+          "what doesn't work well for first-time listeners"
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Think like someone with ZERO prior knowledge. Identify all confusion points and clarity issues.
+    
+  binge_listener: |
+    You are a Binge Listener Experience Simulator for audio series production.
+    
+    Simulate the experience of a listener consuming multiple episodes in rapid succession (binge listening).
+    
+    SESSION CONTEXT:
+    Session ID: {session_id}
+    Total Episodes: {total_episodes}
+    
+    EPISODE SUMMARIES:
+    {episode_summaries}
+    
+    PROJECT DNA:
+    {project_dna}
+    
+    TASK 2: BINGE LISTENER PATH SIMULATION
+    
+    Simulate continuous listening experience:
+    
+    1. **REPETITION FATIGUE**:
+       - Are recaps annoying when listening continuously?
+       - Are story patterns too obvious when consumed quickly?
+       - Is there enough variation to maintain interest?
+       - Does repetition hurt the binge experience?
+       - Rate fatigue risk: 0-10
+    
+    2. **MOMENTUM MAINTENANCE**:
+       - Do cliffhangers push forward effectively?
+       - Are there natural break points for fatigue?
+       - Is there exhaustion risk from constant tension?
+       - Does the pacing work for binge consumption?
+       - Overall momentum rating
+    
+    3. **CLARITY IN SPEED**:
+       - Is information trackable when consumed quickly?
+       - Are characters distinct enough for rapid consumption?
+       - Are world rules clear enough without time to process?
+       - Any information overload when binging?
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "binge_listener_path": {{
+        "repetition_fatigue": {{
+          "risk_level": 0-10,
+          "recap_annoyance": "LOW|MEDIUM|HIGH",
+          "pattern_obviousness": "LOW|MEDIUM|HIGH",
+          "variation_sufficient": "YES|NO|PARTIAL",
+          "repetition_impact": "POSITIVE|NEUTRAL|NEGATIVE",
+          "fatigue_episodes": [2, 5],
+          "fatigue_notes": "specific notes"
+        }},
+        "momentum_maintenance": {{
+          "overall_rating": "EXCELLENT|GOOD|ADEQUATE|POOR",
+          "cliffhanger_effectiveness": "STRONG|MODERATE|WEAK",
+          "natural_break_points": "MANY|SOME|FEW|NONE",
+          "exhaustion_risk": "LOW|MEDIUM|HIGH",
+          "pacing_for_binge": "EXCELLENT|GOOD|ADEQUATE|POOR",
+          "momentum_notes": "specific notes",
+          "episodes_where_momentum_drops": [4]
+        }},
+        "clarity_in_speed": {{
+          "overall_rating": "CLEAR|MOSTLY_CLEAR|SOMEWHAT_CLEAR|CONFUSING",
+          "information_trackable": "YES|NO|PARTIAL",
+          "character_distinction_sufficient": "YES|NO|PARTIAL",
+          "world_rules_clear": "YES|NO|PARTIAL",
+          "information_overload_episodes": [6],
+          "overload_notes": "specific notes"
+        }},
+        "episode_analysis": {{
+          "1": {{
+            "binge_engagement_score": 0.0-1.0,
+            "momentum_score": 0.0-1.0,
+            "fatigue_indicator": 0.0-1.0
+          }},
+          "2": {{ ... }},
+          "3": {{ ... }}
+        }},
+        "confusion_points": [
+          {{
+            "episode": 3,
+            "confusion_description": "what was confusing when binging",
+            "risk_level": 0-10,
+            "suggested_fix": "how to fix for binge listeners"
+          }}
+        ],
+        "strengths": [
+          "what works well for binge listeners"
+        ],
+        "weaknesses": [
+          "what doesn't work well for binge listeners"
+        ],
+        "binge_optimization_suggestions": [
+          "suggestions for better binge experience"
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Consider rapid consumption patterns. Identify repetition issues and momentum problems.
+    
+  weekly_listener: |
+    You are a Weekly Listener Experience Simulator for audio series production.
+    
+    Simulate the experience of a listener hearing episodes with a week between releases (episodic release).
+    
+    SESSION CONTEXT:
+    Session ID: {session_id}
+    Total Episodes: {total_episodes}
+    
+    EPISODE SUMMARIES:
+    {episode_summaries}
+    
+    PROJECT DNA:
+    {project_dna}
+    
+    TASK 3: WEEKLY LISTENER PATH SIMULATION
+    
+    Simulate episodic release experience:
+    
+    1. **RECAP NECESSITY**:
+       - Is there enough reminder of previous episodes?
+       - Is recap information not too much (boring)?
+       - Is recap naturally integrated?
+       - Does it help listeners remember context?
+       - Rate recap effectiveness: 0-10
+    
+    2. **HOOK STRENGTH**:
+       - Will listeners remember after a week?
+       - Are listeners excited to return?
+       - Is it clear what happened in previous episode?
+       - Does hook effectively re-engage after break?
+    
+    3. **SATISFACTION PACING**:
+       - Is there progress each week?
+       - Is pacing not too slow for weekly release?
+       - Is each episode worth the week's wait?
+       - Are payoffs appropriately spaced?
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "weekly_listener_path": {{
+        "recap_necessity": {{
+          "rating": 0-10,
+          "recap_sufficient": "YES|NO|PARTIAL",
+          "recap_not_excessive": "YES|NO|PARTIAL",
+          "recap_natural": "YES|NO|PARTIAL",
+          "context_reminder_effectiveness": "STRONG|MODERATE|WEAK",
+          "recap_notes": "specific notes",
+          "episodes_needing_better_recap": [3, 5]
+        }},
+        "hook_strength": {{
+          "overall_rating": "STRONG|MODERATE|WEAK",
+          "memorability_after_week": "HIGH|MEDIUM|LOW",
+          "excitement_to_return": "HIGH|MEDIUM|LOW",
+          "previous_episode_clarity": "CLEAR|MOSTLY_CLEAR|UNCLEAR",
+          "re_engagement_effectiveness": "STRONG|MODERATE|WEAK",
+          "hook_notes": "specific notes",
+          "weak_hook_episodes": [4]
+        }},
+        "satisfaction_pacing": {{
+          "overall_rating": "EXCELLENT|GOOD|ADEQUATE|POOR",
+          "progress_each_week": "YES|NO|PARTIAL",
+          "pacing_speed": "GOOD|TOO_SLOW|TOO_FAST",
+          "worth_the_wait": "YES|NO|PARTIAL",
+          "payoff_spacing": "GOOD|TOO_SPREAD|TOO_CLOSE",
+          "satisfaction_notes": "specific notes",
+          "episodes_with_pacing_issues": [6]
+        }},
+        "episode_analysis": {{
+          "1": {{
+            "weekly_engagement_score": 0.0-1.0,
+            "hook_effectiveness": 0.0-1.0,
+            "satisfaction_score": 0.0-1.0
+          }},
+          "2": {{ ... }},
+          "3": {{ ... }}
+        }},
+        "confusion_points": [
+          {{
+            "episode": 3,
+            "confusion_description": "what was confusing with week gap",
+            "risk_level": 0-10,
+            "suggested_fix": "how to fix for weekly listeners"
+          }}
+        ],
+        "strengths": [
+          "what works well for weekly listeners"
+        ],
+        "weaknesses": [
+          "what doesn't work well for weekly listeners"
+        ],
+        "weekly_optimization_suggestions": [
+          "suggestions for better weekly experience"
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Consider week-long gaps. Identify recap needs and hook effectiveness issues.
+    
+  attention_levels: |
+    You are an Attention Level Experience Simulator for audio series production.
+    
+    Simulate the experience of listeners with different attention levels and listening conditions.
+    
+    SESSION CONTEXT:
+    Session ID: {session_id}
+    Total Episodes: {total_episodes}
+    
+    EPISODE SUMMARIES:
+    {episode_summaries}
+    
+    PROJECT DNA:
+    {project_dna}
+    
+    TASK 4: DIFFERENT ATTENTION LEVELS SIMULATION
+    
+    Simulate listening experiences with varying attention:
+    
+    1. **FULL ATTENTION** (Dedicated listening, no distractions):
+       - Is careful listening rewarded?
+       - Are details findable for attentive listeners?
+       - Are there multiple layers present?
+       - Does deep attention reveal more?
+       - Rate depth: 0-10
+    
+    2. **CASUAL LISTENING** (Multi-tasking, partial attention):
+       - Is story followable while multitasking?
+       - Is main story clear without full focus?
+       - Does it require total focus or allow background listening?
+       - Are key points emphasized enough?
+    
+    3. **INTERRUPTED LISTENING** (Paused and resumed):
+       - Is it resumable after pause?
+       - Are there natural segment points?
+       - Does listener not lose thread when interrupted?
+       - Are key information points accessible?
+    
+    Return ONLY valid JSON:
+    
+    ```json
+    {{
+      "attention_level_analysis": {{
+        "full_attention": {{
+          "overall_score": 0.0-1.0,
+          "careful_listening_rewarded": "YES|NO|PARTIAL",
+          "details_findable": "YES|NO|PARTIAL",
+          "multiple_layers_present": "YES|NO|PARTIAL",
+          "depth_rating": 0-10,
+          "depth_notes": "specific notes",
+          "episodes_with_great_depth": [1, 5],
+          "episodes_lacking_depth": [3]
+        }},
+        "casual_listening": {{
+          "overall_score": 0.0-1.0,
+          "followable_while_multitasking": "YES|NO|PARTIAL",
+          "main_story_clear": "YES|NO|PARTIAL",
+          "requires_full_focus": "YES|NO|PARTIAL",
+          "background_listening_friendly": "YES|NO|PARTIAL",
+          "key_points_emphasized": "YES|NO|PARTIAL",
+          "casual_listening_notes": "specific notes",
+          "episodes_good_for_casual": [2, 4],
+          "episodes_require_attention": [6]
+        }},
+        "interrupted_listening": {{
+          "overall_score": 0.0-1.0,
+          "resumable_after_pause": "YES|NO|PARTIAL",
+          "natural_segment_points": "MANY|SOME|FEW|NONE",
+          "thread_maintained_after_interruption": "YES|NO|PARTIAL",
+          "key_information_accessible": "YES|NO|PARTIAL",
+          "interruption_notes": "specific notes",
+          "episodes_good_for_interruptions": [1, 3],
+          "episodes_bad_for_interruptions": [5]
+        }},
+        "episode_analysis": {{
+          "1": {{
+            "full_attention_score": 0.0-1.0,
+            "casual_listening_score": 0.0-1.0,
+            "interrupted_listening_score": 0.0-1.0,
+            "attention_flexibility": "HIGH|MEDIUM|LOW"
+          }},
+          "2": {{ ... }},
+          "3": {{ ... }}
+        }},
+        "confusion_points": [
+          {{
+            "episode": 3,
+            "attention_level": "casual|interrupted",
+            "confusion_description": "what was confusing at this attention level",
+            "risk_level": 0-10,
+            "suggested_fix": "how to fix for this attention level"
+          }}
+        ],
+        "strengths": [
+          "what works well across attention levels"
+        ],
+        "weaknesses": [
+          "what doesn't work well at certain attention levels"
+        ],
+        "attention_optimization_suggestions": [
+          "suggestions for better experience across attention levels"
+        ]
+      }}
+    }}
+    ```
+    
+    CRITICAL: Consider real-world listening conditions. Identify issues with partial attention and interruptions.
+
+dependencies:
+  - station: 27
+    name: "Master Script Assembly"
+  - station: 2
+    name: "Project DNA Builder"
+  - station: 5
+    name: "Season Architecture"
+
+# Enable/disable this station in the pipeline
+enabled: true
+
+# Configuration values
+input_path: "output/station_27"
+output_path: "output/station_42"
+
+# Output enhancements
+output_enhancements:
+  encoding: "utf-8"
+  include_statistics: true
+  max_confusion_risks_displayed: 20
+

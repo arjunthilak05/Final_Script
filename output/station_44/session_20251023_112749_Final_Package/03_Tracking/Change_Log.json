@@ -1,0 +1,119 @@
+{
+  "total_revisions": 5,
+  "revisions": [
+    {
+      "date": "2025-10-15",
+      "version": "v0.5",
+      "episode_affected": 1,
+      "change_type": "AUDIO",
+      "description": "Added distinctive lighter click sound effect",
+      "reason": "To establish a recurring audio motif for the mysterious character",
+      "approved_by": "Audio Director",
+      "impact": "Required adding callback in episodes 2 and 3"
+    },
+    {
+      "date": "2025-10-18",
+      "version": "v0.6",
+      "episode_affected": 2,
+      "change_type": "CHARACTER",
+      "description": "Expanded Jordan's role and dialogue",
+      "reason": "To create a more complex character relationship",
+      "approved_by": "Head Writer",
+      "impact": "Required adjustments to episode 3 to accommodate development"
+    },
+    {
+      "date": "2025-10-20",
+      "version": "v0.7",
+      "episode_affected": 1,
+      "change_type": "PLOT",
+      "description": "Added distinctive footsteps audio element",
+      "reason": "To create an additional callback opportunity for episode 3",
+      "approved_by": "Showrunner",
+      "impact": "Required adding callback in episode 3"
+    },
+    {
+      "date": "2025-10-22",
+      "version": "v0.8",
+      "episode_affected": 3,
+      "change_type": "STRUCTURE",
+      "description": "Combined final two scenes for stronger impact",
+      "reason": "To improve pacing and emotional payoff",
+      "approved_by": "Director",
+      "impact": "Reduced runtime by approximately 3 minutes"
+    },
+    {
+      "date": "2025-10-28",
+      "version": "v0.9",
+      "episode_affected": 2,
+      "change_type": "DIALOGUE",
+      "description": "Polished dialogue between Alex and Contact",
+      "reason": "To clarify exposition and improve flow",
+      "approved_by": "Station 43 Polish Team",
+      "impact": "Improved clarity of safe house information needed for episode 3"
+    }
+  ],
+  "major_decisions": [
+    {
+      "decision": "Implement audio callback system across episodes",
+      "date": "2025-10-10",
+      "reason": "To create audio continuity and enhance storytelling",
+      "alternatives_considered": [
+        "Episode-specific audio only",
+        "Limited callbacks"
+      ],
+      "outcome": "Enhanced narrative cohesion and audience engagement"
+    },
+    {
+      "decision": "Make Alex the sole protagonist viewpoint",
+      "date": "2025-10-12",
+      "reason": "To maintain narrative clarity and audience connection",
+      "alternatives_considered": [
+        "Multiple viewpoints",
+        "Omniscient narrator"
+      ],
+      "outcome": "Stronger character development and clearer story progression"
+    }
+  ],
+  "problems_resolved": [
+    {
+      "problem": "Episode 2 lacked clear connection to episode 1",
+      "identified_by": "Station 33",
+      "resolution": "Added explicit callback audio elements and strengthened character continuity",
+      "date_resolved": "2025-10-15",
+      "effective": true
+    },
+    {
+      "problem": "Episode 3 ending felt rushed",
+      "identified_by": "Showrunner",
+      "resolution": "Expanded final confrontation scene and added emotional beats",
+      "date_resolved": "2025-10-22",
+      "effective": true
+    }
+  ],
+  "version_history": [
+    {
+      "version": "v0.5",
+      "date": "2025-10-15",
+      "status": "DRAFT",
+      "notes": "Initial draft with audio motifs established"
+    },
+    {
+      "version": "v0.7",
+      "date": "2025-10-20",
+      "status": "REVIEW",
+      "notes": "All episode drafts complete, audio callbacks implemented"
+    },
+    {
+      "version": "v0.9",
+      "date": "2025-10-28",
+      "status": "REVIEW",
+      "notes": "Episode 2 production ready after polish from Station 43"
+    },
+    {
+      "version": "v1.0",
+      "date": "2025-11-05",
+      "status": "PENDING",
+      "notes": "Target completion date for all episodes"
+    }
+  ]
+}

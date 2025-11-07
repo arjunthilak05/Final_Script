@@ -1,0 +1,243 @@
+{
+  "adaptation_potential": {
+    "overall_score": 0.8,
+    "overall_rating": "HIGHLY_ADAPTABLE",
+    "international_potential": {
+      "rating": "EXCELLENT",
+      "appeal_score": 8,
+      "culturally_translatable": true,
+      "universal_themes": true,
+      "target_markets": [
+        {
+          "market": "United Kingdom",
+          "appeal": "HIGH",
+          "barriers": [
+            "Some healthcare system differences would need adaptation"
+          ],
+          "opportunities": [
+            "Strong appetite for character-driven dramas, relatable urban settings"
+          ]
+        },
+        {
+          "market": "Canada",
+          "appeal": "HIGH",
+          "barriers": [
+            "Minor regional healthcare differences"
+          ],
+          "opportunities": [
+            "Similar healthcare systems and urban environments"
+          ]
+        },
+        {
+          "market": "Australia",
+          "appeal": "HIGH",
+          "barriers": [
+            "Local healthcare terminology would need adjustment"
+          ],
+          "opportunities": [
+            "Strong interest in mental health themes and character stories"
+          ]
+        },
+        {
+          "market": "Germany",
+          "appeal": "MEDIUM",
+          "barriers": [
+            "Different healthcare structure, cultural approach to mental health"
+          ],
+          "opportunities": [
+            "Growing interest in wellness themes and complex character dramas"
+          ]
+        },
+        {
+          "market": "Japan",
+          "appeal": "MEDIUM",
+          "barriers": [
+            "Different cultural approach to mental health and professional relationships"
+          ],
+          "opportunities": [
+            "Interest in stories about unexpected connections and healing"
+          ]
+        }
+      ],
+      "localization_notes": [
+        {
+          "element": "Healthcare system terminology",
+          "reason": "Medical systems vary significantly between countries",
+          "approach": "Consult with local medical professionals to ensure authenticity"
+        },
+        {
+          "element": "Cultural approach to mental health",
+          "reason": "Stigma and treatment approaches vary across cultures",
+          "approach": "Work with local mental health experts to ensure sensitive portrayal"
+        },
+        {
+          "element": "Urban setting details",
+          "reason": "City life differs across regions",
+          "approach": "Incorporate local landmarks, transportation, and neighborhood characteristics"
+        }
+      ],
+      "cultural_barriers": [
+        "Healthcare system differences that require careful adaptation",
+        "Varying cultural approaches to discussing depression and mental health",
+        "Different workplace dynamics in professional coaching industries"
+      ],
+      "universal_elements": [
+        "The power of unexpected human connection",
+        "The struggle with mental health and workplace stress",
+        "The impact of words on others' lives",
+        "The tension between professional ethics and personal relationships"
+      ]
+    },
+    "expansion_potential": {
+      "rating": "GOOD",
+      "expansion_score": 7,
+      "season_2_possible": true,
+      "season_2_hooks": [
+        "Tom and Julia's developing relationship after the revelation",
+        "How Sarah (Tom's actual client) processes the situation",
+        "The impact on Tom's coaching business and approach",
+        "Julia's journey with her depression treatment",
+        "Other accidental recipients of Tom's messages"
+      ],
+      "spinoff_opportunities": [
+        {
+          "title": "The Text Chain",
+          "focus": "Other people who received Tom's accidental messages",
+          "appeal": "Anthology-style stories showing how a single message can change multiple lives",
+          "viability": "MEDIUM"
+        },
+        {
+          "title": "ER Nights",
+          "focus": "Julia's colleagues and their personal struggles",
+          "appeal": "Medical drama with deeper character exploration",
+          "viability": "HIGH"
+        },
+        {
+          "title": "The Coaching Studio",
+          "focus": "Tom's other clients and their transformations",
+          "appeal": "Character-driven stories about personal growth",
+          "viability": "MEDIUM"
+        }
+      ],
+      "universe_expandable": true,
+      "expansion_directions": [
+        "Prequel exploring Tom's career-ending injury and mental health journey",
+        "Sequel following Tom and Julia's relationship development",
+        "Parallel stories about other healthcare workers at the hospital",
+        "Anthology series about the impact of digital communication on modern relationships"
+      ],
+      "world_richness": "The hospital setting provides a rich ecosystem of characters and stories, while the post-pandemic urban environment offers many avenues for exploration",
+      "character_depth": "The main characters have sufficient depth for continued development, with clear arcs that can extend beyond the initial story",
+      "commercial_viability": "Strong potential for continued audience engagement through character-driven stories and relatable themes"
+    },
+    "format_flexibility": {
+      "rating": "HIGHLY_FLEXIBLE",
+      "flexibility_score": 8,
+      "visual_adaptation": {
+        "feasible": true,
+        "best_format": "LIMITED_SERIES",
+        "strengths": [
+          "Strong visual contrast between hospital and personal spaces",
+          "Text message visualization potential",
+          "Rich character dynamics that translate well to screen"
+        ],
+        "challenges": [
+          "Adapting internal monologues and text messages visually",
+          "Maintaining intimacy while adding visual elements"
+        ],
+        "estimated_budget": "MEDIUM"
+      },
+      "stage_adaptation": {
+        "feasible": true,
+        "format": "PLAY",
+        "strengths": [
+          "Limited locations suitable for staging",
+          "Strong dialogue-driven narrative",
+          "Intimate character moments work well in theater"
+        ],
+        "challenges": [
+          "Creating hospital environment on stage",
+          "Portraying text message communication effectively"
+        ],
+        "venue_type": "INTIMATE"
+      },
+      "novel_adaptation": {
+        "feasible": true,
+        "format": "NOVEL",
+        "strengths": [
+          "Rich internal character exploration potential",
+          "Ability to expand on themes and backstories",
+          "Text message format easily translated to prose"
+        ],
+        "challenges": [
+          "Creating sufficient narrative tension without audio elements",
+          "Balancing descriptive prose with dialogue"
+        ],
+        "target_audience": "Adult fiction readers interested in contemporary drama and relationship stories"
+      },
+      "other_formats": [
+        {
+          "format": "VIDEO_GAME",
+          "feasibility": "LOW",
+          "notes": "Narrative-driven game could work but would require significant gameplay mechanics development"
+        },
+        {
+          "format": "GRAPHIC_NOVEL",
+          "feasibility": "MEDIUM",
+          "notes": "Visual storytelling could enhance the contrast between hospital and personal spaces"
+        },
+        {
+          "format": "PODCAST",
+          "feasibility": "HIGH",
+          "notes": "Already audio-focused, could easily expand with additional episodes or character-focused content"
+        }
+      ],
+      "best_adaptation_path": "LIMITED_SERIES",
+      "adaptation_barriers": [
+        "Balancing the intimate nature of the story with broader visual elements",
+        "Effectively translating text message communication across different formats",
+        "Maintaining the emotional impact of the audio format in visual adaptations"
+      ]
+    },
+    "recommended_next_steps": [
+      "Develop a detailed series bible for potential television adaptation",
+      "Create pilot script for limited series focusing on the visual potential of the story",
+      "Outline character backstories for potential spin-off development",
+      "Research international co-production partners to maximize global appeal",
+      "Develop social media strategy to build audience engagement around the themes of connection and mental health"
+    ]
+  },
+  "recommended_formats": [
+    {
+      "format": "LIMITED_SERIES",
+      "feasibility": "HIGH",
+      "notes": [
+        "Strong visual contrast between hospital and personal spaces",
+        "Text message visualization potential",
+        "Rich character dynamics that translate well to screen"
+      ]
+    },
+    {
+      "format": "PLAY",
+      "feasibility": "MEDIUM",
+      "notes": [
+        "Limited locations suitable for staging",
+        "Strong dialogue-driven narrative",
+        "Intimate character moments work well in theater"
+      ]
+    }
+  ],
+  "international_markets": [
+    "United Kingdom",
+    "Canada",
+    "Australia",
+    "Germany",
+    "Japan"
+  ],
+  "expansion_opportunities": [
+    "Prequel exploring Tom's career-ending injury and mental health journey",
+    "Sequel following Tom and Julia's relationship development",
+    "Parallel stories about other healthcare workers at the hospital",
+    "Anthology series about the impact of digital communication on modern relationships"
+  ]
+}

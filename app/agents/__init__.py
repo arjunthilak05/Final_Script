@@ -9,7 +9,7 @@ from .station_01_seed_processor import Station01SeedProcessor
 from .station_02_project_dna_builder import Station02ProjectDNABuilder
 from .station_03_age_genre_optimizer import Station03AgeGenreOptimizer
 from .station_04_reference_mining import Station04ReferenceMining
-from .station_045_narrator_strategy_designer import Station045NarratorStrategyDesigner
+from .station_4_5_narrator_strategy_designer import Station045NarratorStrategyDesigner
 from .station_05_season_architect import Station05SeasonArchitect
 from .station_06_master_style_guide_builder import Station06MasterStyleGuideBuilder
 from .station_07_character_architect import Station07CharacterArchitect
@@ -49,6 +49,8 @@ from .station_40_format_verifier import Station40FormatVerifier
 from .station_41_cross_episode_dependency_check import Station41CrossEpisodeDependencyCheck
 from .station_42_listener_experience_simulator import Station42ListenerExperienceSimulator
 from .station_43_final_polish_pass import Station43FinalPolishPass
+from .station_44_package_assembly import Station44PackageAssembly
+from .station_45_future_proofing_review import Station45FutureProofingReview
 
 __all__ = [
     'Station01SeedProcessor',
@@ -95,4 +97,6 @@ __all__ = [
     'Station41CrossEpisodeDependencyCheck',
     'Station42ListenerExperienceSimulator',
     'Station43FinalPolishPass',
+    'Station44PackageAssembly',
+    'Station45FutureProofingReview',
 ]

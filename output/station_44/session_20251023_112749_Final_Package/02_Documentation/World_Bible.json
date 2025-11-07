@@ -1,0 +1,233 @@
+{
+  "setting_overview": "The world of 'The Accidental Lifeline' is set in the present day, early 2020s, in the aftermath of the global pandemic. This post-pandemic era is characterized by strained healthcare systems, increased mental health challenges, and remote digital connections becoming even more central to human connection. The story reflects a society grappling with increased mental health awareness yet still struggling with stigmas around depression and seeking help.",
+  "primary_locations": [
+    {
+      "location_name": "Hospital ER",
+      "description": "A large metropolitan hospital emergency room serving a diverse urban population",
+      "acoustic_signature": "Constant beeping of medical monitors, hurried footsteps on linoleum, urgent pages over the intercom, hushed urgent consultations, and the occasional wail of ambulance sirens approaching",
+      "distinctive_sounds": [
+        "Medical monitor beeps",
+        "Emergency pages",
+        "Ambulance sirens",
+        "Hurried footsteps"
+      ],
+      "episodes_appearing": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "importance": "CRITICAL"
+    },
+    {
+      "location_name": "Tom's coaching studio",
+      "description": "A carefully designed space for recording motivational messages and conducting coaching sessions",
+      "acoustic_signature": "Subtle background music, the clear tones of Tom's voice as he records messages, the gentle tapping of keyboard keys, the occasional sip of coffee, and the soft chime of notification alerts",
+      "distinctive_sounds": [
+        "Keyboard tapping",
+        "Coffee sipping",
+        "Notification chimes",
+        "Recording equipment hum"
+      ],
+      "episodes_appearing": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "importance": "HIGH"
+    },
+    {
+      "location_name": "Julia's apartment",
+      "description": "A quiet, minimally decorated space reflecting Julia's solitary lifestyle",
+      "acoustic_signature": "The hum of a refrigerator, distant city traffic, the soft tapping of Julia's phone screen as she rereads messages, and the occasional sound of fatigue like a deep sigh or the clink of a wine glass",
+      "distinctive_sounds": [
+        "Refrigerator hum",
+        "City traffic",
+        "Phone tapping",
+        "Wine glass clink"
+      ],
+      "episodes_appearing": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12
+      ],
+      "importance": "HIGH"
+    },
+    {
+      "location_name": "Hospital hallway",
+      "description": "Busy corridor connecting different parts of the hospital",
+      "acoustic_signature": "Squeak of rolling carts, soft footsteps on linoleum, distant medical alarms, conversations, occasional announcements",
+      "distinctive_sounds": [
+        "Rolling carts",
+        "Footsteps",
+        "Medical alarms",
+        "Announcements"
+      ],
+      "episodes_appearing": [
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "importance": "MEDIUM"
+    },
+    {
+      "location_name": "Cafe",
+      "description": "Neutral meeting ground for characters",
+      "acoustic_signature": "Clatter of dishes, espresso machine hissing, soft music in the background, chatter of patrons",
+      "distinctive_sounds": [
+        "Dish clatter",
+        "Espresso machine",
+        "Patron chatter"
+      ],
+      "episodes_appearing": [
+        5,
+        9
+      ],
+      "importance": "MEDIUM"
+    }
+  ],
+  "geography": {
+    "primary_setting": "Large metropolitan city (Chicago or Philadelphia)",
+    "key_places": [
+      "Metropolitan Hospital",
+      "Tom's Coaching Studio",
+      "Julia's Apartment",
+      "Downtown Cafe"
+    ],
+    "travel_times": [
+      {
+        "from": "Tom's Coaching Studio",
+        "to": "Metropolitan Hospital",
+        "time": "25 minutes by car, 45 minutes by public transport"
+      },
+      {
+        "from": "Julia's Apartment",
+        "to": "Metropolitan Hospital",
+        "time": "15 minutes by car, 30 minutes by public transport"
+      },
+      {
+        "from": "Tom's Coaching Studio",
+        "to": "Downtown Cafe",
+        "time": "10 minutes by car, 20 minutes by public transport"
+      }
+    ]
+  },
+  "social_systems": {
+    "government": "Democratic system with a strong emphasis on healthcare and social services",
+    "economic_structure": "Mixed economy with a strong healthcare sector and a growing tech industry",
+    "social_hierarchies": "Generally egalitarian, with respect for medical professionals and community leaders",
+    "cultural_norms": [
+      "Community gatherings",
+      "Family dinners",
+      "Health-focused lifestyles",
+      "Digital communication as primary connection method"
+    ]
+  },
+  "technology_magic": {
+    "tech_level": "modern",
+    "special_systems": [
+      {
+        "name": "Telemedicine",
+        "how_it_works": "Remote medical consultations and monitoring through digital platforms",
+        "how_it_sounds": "Soft computer beeps, clear digital voice transmission, occasional connection alerts",
+        "limitations": "Dependence on reliable internet and power, occasional system glitches",
+        "availability": "common in hospitals and clinics, less common in rural areas"
+      },
+      {
+        "name": "Text Messaging",
+        "how_it_works": "Instant text-based communication between mobile devices",
+        "how_it_sounds": "Distinctive notification chimes, soft keyboard tapping",
+        "limitations": "Requires signal and battery, limited to text without tone or body language",
+        "availability": "ubiquitous across all social groups"
+      }
+    ]
+  },
+  "history_lore": {
+    "key_past_events": [
+      {
+        "event": "The Great Pandemic of 2025",
+        "when": "2025-2027",
+        "impact": "Led to significant advancements in telemedicine and increased focus on mental health, while straining healthcare systems and amplifying digital connections"
+      },
+      {
+        "event": "Founding of the city's main hospital",
+        "when": "1950",
+        "impact": "Established by Dr. Martinez's grandfather, creating a legacy of care that influences current hospital culture"
+      }
+    ],
+    "common_knowledge": [
+      "Everyone knows about the hospital's history",
+      "General awareness of pandemic impacts on mental health",
+      "Acceptance of digital communication as primary connection method"
+    ],
+    "secrets": [
+      "Experimental treatments being conducted in the hospital",
+      "Personal struggles of key medical figures",
+      "Julia's anonymous funding of Tom's business"
+    ]
+  },
+  "sensory_palette": [
+    {
+      "location": "Hospital ER",
+      "ambient_sounds": [
+        "Continuous hum of medical equipment",
+        "Soft beeping of monitors",
+        "Background chatter of nurses and patients"
+      ],
+      "distinctive_noises": [
+        "Urgent pages",
+        "Ambulance sirens",
+        "Rushed footsteps",
+        "Medical equipment alarms"
+      ],
+      "acoustic_properties": "Echoes slightly due to hard surfaces, but dampened by curtains and carpet"
+    },
+    {
+      "location": "Tom's coaching studio",
+      "ambient_sounds": [
+        "Subtle background music",
+        "Soft hum of recording equipment",
+        "Occasional keyboard tapping"
+      ],
+      "distinctive_noises": [
+        "Coffee sipping",
+        "Notification chimes",
+        "Clear voice recording",
+        "Door opening and closing"
+      ],
+      "acoustic_properties": "Dry, slightly muffled due to soundproofing, with a slight echo that speaks of a dedicated room"
+    },
+    {
+      "location": "Julia's apartment",
+      "ambient_sounds": [
+        "Hum of a refrigerator",
+        "Distant city traffic",
+        "Occasional neighbor sounds"
+      ],
+      "distinctive_noises": [
+        "Phone screen tapping",
+        "Deep sighs",
+        "Wine glass clinking",
+        "Text notification chimes"
+      ],
+      "acoustic_properties": "Quiet and minimally reverberant, with the silence feeling heavy and text notifications piercing"
+    }
+  ],
+  "world_overview": "The world of 'The Accidental Lifeline' is a realistic contemporary setting in the post-pandemic era, where digital connections have become even more central to human relationships and healthcare systems are strained. The story takes place primarily in three key locations: the high-stress environment of a metropolitan hospital ER, the carefully designed acoustic space of Tom's coaching studio, and the quiet solitude of Julia's apartment. These locations are acoustically distinct, with the hospital characterized by urgent beeps and hurried footsteps, the coaching studio by clear recording quality and subtle background music, and the apartment by heavy silence punctuated by text notifications. The society reflects increased mental health awareness alongside ongoing stigmas, creating a complex backdrop for the exploration of human connection and healing."
+}

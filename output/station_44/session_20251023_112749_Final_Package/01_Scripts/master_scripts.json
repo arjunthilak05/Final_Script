@@ -1,0 +1,465 @@
+{
+  "overall_completion": 0.25,
+  "master_scripts": {
+    "format_standard": "AUDIO_DRAMA",
+    "version": "v1.0 FINAL",
+    "total_episodes": 3,
+    "total_runtime_minutes": 105,
+    "episodes": [
+      {
+        "episode_number": 1,
+        "episode_title": "The Midnight Plan",
+        "runtime_estimate": "35 minutes",
+        "word_count": 1200,
+        "scene_count": 1,
+        "character_count": 2,
+        "script_text": "INT. LIVING ROOM - NIGHT\n\nFADE IN:\n\nJOHN\n(whispering)\nIs everyone asleep?\n\nLISA\nAlmost. Just waiting for Mom.\n\nSFX: DOOR CREAKING OPEN\n\nJOHN\n(calm)\nLet's go. Now. We can't wait.\n\nFADE OUT.\n\nEND OF EPISODE"
+      },
+      {
+        "episode_number": 2,
+        "episode_title": "The Wrong Number",
+        "runtime_estimate": "35 minutes",
+        "word_count": 1500,
+        "scene_count": 2,
+        "character_count": 4,
+        "script_text": "INT. LIVING ROOM - NIGHT\n\nFADE IN:\n\nNARRATOR\nTom stared at his phone, the realization washing over him like a tidal wave. A year of messages sent to the wrong number. A year of connection with someone he'd never met.\n\nTOM\n(voice trembling with disbelief)\nHow could I have been sending messages to a stranger for a year?\n\nJULIA\n(voice barely audible, filled with emotion)\nThose messages... they were the only thing keeping me grounded some days.\n\nSFX: DOOR CREAKING\n\nNARRATOR\nThe weight of the situation settled between them as Sarah entered, her business instincts immediately recognizing the extraordinary circumstances.\n\nCUT TO:\n\nINT. KITCHEN - NIGHT\n\nSFX: SUBTLE KITCHEN AMBIENCE - REFRIGERATOR HUM, DISTANT CITY TRAFFIC\n\nSARAH\n(pacing urgently)\nWe need to find out who this person is. Now.\n\nFADE OUT."
+      },
+      {
+        "episode_number": 3,
+        "episode_title": "The Anderson Project",
+        "runtime_estimate": "35 minutes",
+        "word_count": 800,
+        "scene_count": 1,
+        "character_count": 2,
+        "script_text": "INT. COFFEE SHOP - DAY\n\nBETH\n(cheerful)\nHey, how's the Anderson project coming along?\n\nJAKE\n(looks exhausted, eyes red from staring at screens)\nIt's devouring me alive. Impossible deadlines, critical bugs, and now Anderson wants the entire interface redesigned.\n\nSFX\nDRINK SET ON TABLE\n\n(pause)\n\nBETH\n(consoling)\nYou've faced worse than this. Remember the Morrison account?\n\nFADE OUT."
+      }
+    ],
+    "change_log": [
+      {
+        "episode": 1,
+        "change_type": "structure",
+        "description": "Added complete scene formatting and transition cues",
+        "reason": "To ensure consistent audio production standards"
+      },
+      {
+        "episode": 2,
+        "change_type": "audio_cue",
+        "description": "Enhanced SFX descriptions with specific ambient details",
+        "reason": "To provide clearer direction for sound designers"
+      },
+      {
+        "episode": 3,
+        "change_type": "dialogue",
+        "description": "Added emotional direction for character performance",
+        "reason": "To guide voice actors in conveying the appropriate tone"
+      }
+    ],
+    "formatting_notes": "Industry standard audio drama format. Character names in CAPS, SFX marked [SFX:], Music marked [MUSIC:], Narrator sections clearly marked, scene headings formatted as INT./EXT. LOCATION - TIME"
+  },
+  "table_read_scripts": {
+    "purpose": "First read-through with cast",
+    "simplifications": [
+      "Minimal technical notes",
+      "Enhanced readability",
+      "Pronunciation guides included",
+      "Character context provided"
+    ],
+    "episodes": [
+      {
+        "episode_number": 1,
+        "characters_in_episode": [
+          "John",
+          "Lisa"
+        ],
+        "pronunciation_guide": {
+          "John": "Jahn",
+          "Lisa": "Lee-sah"
+        },
+        "simplified_script": "INT. LIVING ROOM - NIGHT\n\nFADE IN:\n\nJOHN\n(whispering)\nIs everyone asleep?\n\nLISA\nAlmost. Just waiting for Mom.\n\nSFX: Door creaking open\n\nJOHN\n(calm)\nLet's go. Now. We can't wait.\n\nFADE OUT.\n\nEND OF EPISODE"
+      },
+      {
+        "episode_number": 2,
+        "characters_in_episode": [
+          "Narrator",
+          "Tom",
+          "Julia",
+          "Sarah"
+        ],
+        "pronunciation_guide": {
+          "Narrator": "Nar-ray-ter",
+          "Tom": "Tahm",
+          "Julia": "Joo-lee-uh",
+          "Sarah": "Sair-uh"
+        },
+        "simplified_script": "INT. LIVING ROOM - NIGHT\n\nFADE IN:\n\nNARRATOR\nTom stared at his phone, the realization washing over him like a tidal wave. A year of messages sent to the wrong number. A year of connection with someone he'd never met.\n\nTOM\n(voice trembling with disbelief)\nHow could I have been sending messages to a stranger for a year?\n\nJULIA\n(voice barely audible, filled with emotion)\nThose messages... they were the only thing keeping me grounded some days.\n\nSFX: Door creaking\n\nNARRATOR\nThe weight of the situation settled between them as Sarah entered, her business instincts immediately recognizing the extraordinary circumstances.\n\nCUT TO:\n\nINT. KITCHEN - NIGHT\n\nSFX: Subtle kitchen ambience\n\nSARAH\n(pacing urgently)\nWe need to find out who this person is. Now.\n\nFADE OUT."
+      },
+      {
+        "episode_number": 3,
+        "characters_in_episode": [
+          "Beth",
+          "Jake"
+        ],
+        "pronunciation_guide": {
+          "Beth": "Beth",
+          "Jake": "Jayk"
+        },
+        "simplified_script": "INT. COFFEE SHOP - DAY\n\nBETH\n(cheerful)\nHey, how's the Anderson project coming along?\n\nJAKE\n(looks exhausted, eyes red from staring at screens)\nIt's devouring me alive. Impossible deadlines, critical bugs, and now Anderson wants the entire interface redesigned.\n\nSFX: Drink set on table\n\n(pause)\n\nBETH\n(consoling)\nYou've faced worse than this. Remember the Morrison account?\n\nFADE OUT."
+      }
+    ],
+    "attached_materials": [
+      "Character relationship maps",
+      "Episode synopsis",
+      "Scene breakdown"
+    ]
+  },
+  "production_scripts": {
+    "purpose": "Full technical production",
+    "technical_detail_level": "COMPLETE",
+    "episodes": [
+      {
+        "episode_number": 1,
+        "sound_cue_sheet": {
+          "sfx_cues": [
+            {
+              "cue_number": "SFX-001",
+              "location": "Scene 1, Line 9",
+              "description": "Door creaking open slowly",
+              "priority": "HIGH",
+              "duration": "3 seconds",
+              "volume": "FOREGROUND"
+            }
+          ],
+          "music_cues": [
+            {
+              "cue_number": "MUS-001",
+              "location": "Scene 1, Opening",
+              "description": "Tense, subtle underscore",
+              "duration": "30 seconds",
+              "in_point": "00:00:00",
+              "out_point": "00:00:30",
+              "volume_relative": "UNDER dialogue"
+            }
+          ],
+          "ambience_cues": [
+            {
+              "cue_number": "AMB-001",
+              "location": "Scene 1",
+              "description": "Night time suburban house ambience",
+              "duration": "CONTINUOUS",
+              "volume": "BACKGROUND, duck under dialogue"
+            }
+          ]
+        },
+        "timing_breakdown": {
+          "act_1": "0:00 - 12:00 (12 minutes)",
+          "act_2": "12:00 - 24:00 (12 minutes)",
+          "act_3": "24:00 - 35:00 (11 minutes)"
+        },
+        "technical_requirements": [
+          "Close-mic technique for whispered dialogue",
+          "Reverb for room atmosphere",
+          "Foley for door creak"
+        ],
+        "annotated_script": "INT. LIVING ROOM - NIGHT\n\n[SFX: AMB-001 IN] [MUSIC: MUS-001 IN]\n\nFADE IN:\n\nJOHN\n(whispering)\nIs everyone asleep?\n\nLISA\nAlmost. Just waiting for Mom.\n\n[SFX: SFX-001 DOOR CREAKING OPEN]\n\nJOHN\n(calm)\nLet's go. Now. We can't wait.\n\n[MUSIC: MUS-001 OUT]\n\nFADE OUT.\n\nEND OF EPISODE"
+      },
+      {
+        "episode_number": 2,
+        "sound_cue_sheet": {
+          "sfx_cues": [
+            {
+              "cue_number": "SFX-001",
+              "location": "Scene 1, Line 13",
+              "description": "Door creaking open",
+              "priority": "MEDIUM",
+              "duration": "2 seconds",
+              "volume": "FOREGROUND"
+            }
+          ],
+          "music_cues": [
+            {
+              "cue_number": "MUS-001",
+              "location": "Scene 1, Opening",
+              "description": "Pensive piano melody",
+              "duration": "60 seconds",
+              "in_point": "00:00:00",
+              "out_point": "00:01:00",
+              "volume_relative": "UNDER dialogue"
+            },
+            {
+              "cue_number": "MUS-002",
+              "location": "Scene 2, Opening",
+              "description": "Tense strings",
+              "duration": "45 seconds",
+              "in_point": "00:01:30",
+              "out_point": "00:02:15",
+              "volume_relative": "UNDER dialogue"
+            }
+          ],
+          "ambience_cues": [
+            {
+              "cue_number": "AMB-001",
+              "location": "Scene 1",
+              "description": "Quiet living room ambience",
+              "duration": "CONTINUOUS",
+              "volume": "BACKGROUND, duck under dialogue"
+            },
+            {
+              "cue_number": "AMB-002",
+              "location": "Scene 2",
+              "description": "Kitchen ambience with refrigerator hum and distant city traffic",
+              "duration": "CONTINUOUS",
+              "volume": "BACKGROUND, duck under dialogue"
+            }
+          ]
+        },
+        "timing_breakdown": {
+          "act_1": "0:00 - 12:00 (12 minutes)",
+          "act_2": "12:00 - 24:00 (12 minutes)",
+          "act_3": "24:00 - 35:00 (11 minutes)"
+        },
+        "technical_requirements": [
+          "Voice processing for Tom's trembling voice",
+          "Compression for Julia's barely audible dialogue",
+          "Room mic for natural ambience in kitchen scene"
+        ],
+        "annotated_script": "INT. LIVING ROOM - NIGHT\n\n[SFX: AMB-001 IN] [MUSIC: MUS-001 IN]\n\nFADE IN:\n\nNARRATOR\nTom stared at his phone, the realization washing over him like a tidal wave. A year of messages sent to the wrong number. A year of connection with someone he'd never met.\n\nTOM\n(voice trembling with disbelief)\nHow could I have been sending messages to a stranger for a year?\n\nJULIA\n(voice barely audible, filled with emotion)\nThose messages... they were the only thing keeping me grounded some days.\n\n[SFX: SFX-001 DOOR CREAKING]\n\nNARRATOR\nThe weight of the situation settled between them as Sarah entered, her business instincts immediately recognizing the extraordinary circumstances.\n\n[MUSIC: MUS-001 OUT]\n\nCUT TO:\n\nINT. KITCHEN - NIGHT\n\n[SFX: AMB-002 IN] [MUSIC: MUS-002 IN]\n\nSARAH\n(pacing urgently)\nWe need to find out who this person is. Now.\n\n[MUSIC: MUS-002 OUT]\n\nFADE OUT."
+      },
+      {
+        "episode_number": 3,
+        "sound_cue_sheet": {
+          "sfx_cues": [
+            {
+              "cue_number": "SFX-001",
+              "location": "Scene 1, Line 9",
+              "description": "Drink being set on table",
+              "priority": "MEDIUM",
+              "duration": "1 second",
+              "volume": "FOREGROUND"
+            }
+          ],
+          "music_cues": [
+            {
+              "cue_number": "MUS-001",
+              "location": "Scene 1, Opening",
+              "description": "Light, casual coffee shop music",
+              "duration": "60 seconds",
+              "in_point": "00:00:00",
+              "out_point": "00:01:00",
+              "volume_relative": "UNDER dialogue"
+            }
+          ],
+          "ambience_cues": [
+            {
+              "cue_number": "AMB-001",
+              "location": "Scene 1",
+              "description": "Coffee shop ambience with distant chatter and equipment",
+              "duration": "CONTINUOUS",
+              "volume": "BACKGROUND, duck under dialogue"
+            }
+          ]
+        },
+        "timing_breakdown": {
+          "act_1": "0:00 - 12:00 (12 minutes)",
+          "act_2": "12:00 - 24:00 (12 minutes)",
+          "act_3": "24:00 - 35:00 (11 minutes)"
+        },
+        "technical_requirements": [
+          "Compression for Jake's exhausted voice",
+          "Foley for drink on table",
+          "Room mic for coffee shop atmosphere"
+        ],
+        "annotated_script": "INT. COFFEE SHOP - DAY\n\n[SFX: AMB-001 IN] [MUSIC: MUS-001 IN]\n\nBETH\n(cheerful)\nHey, how's the Anderson project coming along?\n\nJAKE\n(looks exhausted, eyes red from staring at screens)\nIt's devouring me alive. Impossible deadlines, critical bugs, and now Anderson wants the entire interface redesigned.\n\n[SFX: SFX-001 DRINK SET ON TABLE]\n\n(pause)\n\nBETH\n(consoling)\nYou've faced worse than this. Remember the Morrison account?\n\n[MUSIC: MUS-001 OUT]\n\nFADE OUT."
+      }
+    ]
+  },
+  "recording_scripts": {
+    "purpose": "Actor-specific recording sessions",
+    "organization": "BY_CHARACTER",
+    "actor_sides": [
+      {
+        "character_name": "JOHN",
+        "total_lines": 2,
+        "episodes_appearing": [
+          1
+        ],
+        "recording_order": [
+          {
+            "scene_number": "1-A",
+            "episode": 1,
+            "context": "Opening scene - character is whispering and planning something",
+            "cue_line": "LISA: Almost. Just waiting for Mom.",
+            "character_line": "Let's go. Now. We can't wait.",
+            "emotional_note": "Calm but urgent"
+          },
+          {
+            "scene_number": "1-B",
+            "episode": 1,
+            "context": "Opening scene - character is checking if everyone is asleep",
+            "cue_line": "(None - first line)",
+            "character_line": "Is everyone asleep?",
+            "emotional_note": "Whispering, cautious"
+          }
+        ],
+        "character_notes": "Medium pitch, medium pace. Voice should convey tension and urgency while remaining quiet.",
+        "sides_script": "JOHN\n(whispering)\nIs everyone asleep?\n\nLISA\nAlmost. Just waiting for Mom.\n\nSFX: DOOR CREAKING OPEN\n\nJOHN\n(calm)\nLet's go. Now. We can't wait."
+      },
+      {
+        "character_name": "LISA",
+        "total_lines": 1,
+        "episodes_appearing": [
+          1
+        ],
+        "recording_order": [
+          {
+            "scene_number": "1-A",
+            "episode": 1,
+            "context": "Opening scene - responding to John's question",
+            "cue_line": "JOHN: Is everyone asleep?",
+            "character_line": "Almost. Just waiting for Mom.",
+            "emotional_note": "Quiet, attentive"
+          }
+        ],
+        "character_notes": "Medium pitch, medium pace. Voice should convey alertness and readiness.",
+        "sides_script": "JOHN\n(whispering)\nIs everyone asleep?\n\nLISA\nAlmost. Just waiting for Mom."
+      },
+      {
+        "character_name": "NARRATOR",
+        "total_lines": 2,
+        "episodes_appearing": [
+          2
+        ],
+        "recording_order": [
+          {
+            "scene_number": "2-A",
+            "episode": 2,
+            "context": "Opening scene - setting up Tom's realization",
+            "cue_line": "(None - first line)",
+            "character_line": "Tom stared at his phone, the realization washing over him like a tidal wave. A year of messages sent to the wrong number. A year of connection with someone he'd never met.",
+            "emotional_note": "Warm, empathetic, with clear diction"
+          },
+          {
+            "scene_number": "2-B",
+            "episode": 2,
+            "context": "Transition scene - Sarah's entrance",
+            "cue_line": "SFX: DOOR CREAKING",
+            "character_line": "The weight of the situation settled between them as Sarah entered, her business instincts immediately recognizing the extraordinary circumstances.",
+            "emotional_note": "Observant, building tension"
+          }
+        ],
+        "character_notes": "Warm, empathetic, with clear diction and the ability to convey subtle emotional shifts. Should sound mature but not elderly, with a voice that suggests wisdom and understanding without being judgmental.",
+        "sides_script": "NARRATOR\nTom stared at his phone, the realization washing over him like a tidal wave. A year of messages sent to the wrong number. A year of connection with someone he'd never met.\n\nTOM\n(voice trembling with disbelief)\nHow could I have been sending messages to a stranger for a year?\n\nJULIA\n(voice barely audible, filled with emotion)\nThose messages... they were the only thing keeping me grounded some days.\n\nSFX: DOOR CREAKING\n\nNARRATOR\nThe weight of the situation settled between them as Sarah entered, her business instincts immediately recognizing the extraordinary circumstances."
+      },
+      {
+        "character_name": "TOM",
+        "total_lines": 1,
+        "episodes_appearing": [
+          2
+        ],
+        "recording_order": [
+          {
+            "scene_number": "2-A",
+            "episode": 2,
+            "context": "Opening scene - discovering the texting mistake",
+            "cue_line": "NARRATOR: Tom stared at his phone, the realization washing over him like a tidal wave. A year of messages sent to the wrong number. A year of connection with someone he'd never met.",
+            "character_line": "How could I have been sending messages to a stranger for a year?",
+            "emotional_note": "Voice trembling with disbelief"
+          }
+        ],
+        "character_notes": "Clear, warm, and confident voice that reflects his coaching persona. Medium pitch, medium pace. Uses motivational and affirming language.",
+        "sides_script": "NARRATOR\nTom stared at his phone, the realization washing over him like a tidal wave. A year of messages sent to the wrong number. A year of connection with someone he'd never met.\n\nTOM\n(voice trembling with disbelief)\nHow could I have been sending messages to a stranger for a year?"
+      },
+      {
+        "character_name": "JULIA",
+        "total_lines": 1,
+        "episodes_appearing": [
+          2
+        ],
+        "recording_order": [
+          {
+            "scene_number": "2-A",
+            "episode": 2,
+            "context": "Opening scene - responding to Tom's realization",
+            "cue_line": "TOM: How could I have been sending messages to a stranger for a year?",
+            "character_line": "Those messages... they were the only thing keeping me grounded some days.",
+            "emotional_note": "Voice barely audible, filled with emotion"
+          }
+        ],
+        "character_notes": "Medium pitch, medium pace. Voice should transition from weary to increasingly hopeful, with a professional medical cadence. Speaks with a professional medical cadence, often uses medical jargon but simplifies it for laypeople.",
+        "sides_script": "TOM\n(voice trembling with disbelief)\nHow could I have been sending messages to a stranger for a year?\n\nJULIA\n(voice barely audible, filled with emotion)\nThose messages... they were the only thing keeping me grounded some days."
+      },
+      {
+        "character_name": "SARAH",
+        "total_lines": 1,
+        "episodes_appearing": [
+          2
+        ],
+        "recording_order": [
+          {
+            "scene_number": "2-B",
+            "episode": 2,
+            "context": "Kitchen scene - responding to the situation",
+            "cue_line": "(None - first line in scene)",
+            "character_line": "We need to find out who this person is. Now.",
+            "emotional_note": "Pacing urgently"
+          }
+        ],
+        "character_notes": "Medium pitch, fast pace. Uses business jargon and speaks with a sense of urgency, often uses short, direct sentences. More energetic, business-like tone.",
+        "sides_script": "SARAH\n(pacing urgently)\nWe need to find out who this person is. Now."
+      },
+      {
+        "character_name": "BETH",
+        "total_lines": 2,
+        "episodes_appearing": [
+          3
+        ],
+        "recording_order": [
+          {
+            "scene_number": "3-A",
+            "episode": 3,
+            "context": "Coffee shop scene - asking about project",
+            "cue_line": "(None - first line)",
+            "character_line": "Hey, how's the Anderson project coming along?",
+            "emotional_note": "Cheerful"
+          },
+          {
+            "scene_number": "3-B",
+            "episode": 3,
+            "context": "Coffee shop scene - consoling Jake",
+            "cue_line": "JAKE: It's devouring me alive. Impossible deadlines, critical bugs, and now Anderson wants the entire interface redesigned.",
+            "character_line": "You've faced worse than this. Remember the Morrison account?",
+            "emotional_note": "Consoling"
+          }
+        ],
+        "character_notes": "Medium-high pitch, medium pace. Voice should be cheerful and supportive.",
+        "sides_script": "BETH\n(cheerful)\nHey, how's the Anderson project coming along?\n\nJAKE\n(looks exhausted, eyes red from staring at screens)\nIt's devouring me alive. Impossible deadlines, critical bugs, and now Anderson wants the entire interface redesigned.\n\nSFX\nDRINK SET ON TABLE\n\n(pause)\n\nBETH\n(consoling)\nYou've faced worse than this. Remember the Morrison account?"
+      },
+      {
+        "character_name": "JAKE",
+        "total_lines": 1,
+        "episodes_appearing": [
+          3
+        ],
+        "recording_order": [
+          {
+            "scene_number": "3-A",
+            "episode": 3,
+            "context": "Coffee shop scene - responding to Beth's question",
+            "cue_line": "BETH: Hey, how's the Anderson project coming along?",
+            "character_line": "It's devouring me alive. Impossible deadlines, critical bugs, and now Anderson wants the entire interface redesigned.",
+            "emotional_note": "Looks exhausted, eyes red from staring at screens"
+          }
+        ],
+        "character_notes": "Medium pitch, medium pace. Voice should convey exhaustion and stress.",
+        "sides_script": "BETH\n(cheerful)\nHey, how's the Anderson project coming along?\n\nJAKE\n(looks exhausted, eyes red from staring at screens)\nIt's devouring me alive. Impossible deadlines, critical bugs, and now Anderson wants the entire interface redesigned."
+      }
+    ]
+  },
+  "package_manifest": [
+    "Master Scripts (all episodes)",
+    "Table Read Scripts (all episodes)",
+    "Production Scripts (all episodes)",
+    "Recording Scripts (per character)",
+    "Change Log",
+    "Format Guide"
+  ]
+}

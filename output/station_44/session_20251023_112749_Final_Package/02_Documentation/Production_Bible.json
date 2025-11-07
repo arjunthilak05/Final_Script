@@ -1,0 +1,143 @@
+{
+  "technical_requirements": {
+    "recording_equipment": [
+      "High-quality condenser microphones",
+      "Pop filters",
+      "Acoustic treatment for recording spaces",
+      "Headphone monitoring system"
+    ],
+    "editing_software": [
+      "Professional audio editing software (Pro Tools, Adobe Audition, or similar)",
+      "Audio restoration plugins",
+      "Noise reduction tools"
+    ],
+    "processing_plugins": [
+      "EQ plugins",
+      "Compression plugins",
+      "Reverb plugins",
+      "Noise reduction plugins",
+      "Audio restoration tools"
+    ],
+    "quality_standards": {
+      "bit_rate": "192kbps minimum for final delivery, 24-bit for recording",
+      "sample_rate": "48kHz",
+      "format": "WAV for raw files, MP3 for final delivery"
+    }
+  },
+  "sound_library_needs": {
+    "sfx_categories": [
+      {
+        "category": "AMBIENCE",
+        "specific_sounds_needed": [
+          "Hospital ER background",
+          "Coaching studio atmosphere",
+          "Apartment silence",
+          "Cafe background chatter",
+          "City traffic"
+        ],
+        "priority": "CRITICAL",
+        "sources": [
+          "Professional sound libraries",
+          "Custom recordings"
+        ]
+      },
+      {
+        "category": "TECH",
+        "specific_sounds_needed": [
+          "Medical monitor beeps",
+          "Text notification chimes",
+          "Keyboard typing",
+          "Coffee machine",
+          "Door opening/closing"
+        ],
+        "priority": "HIGH",
+        "sources": [
+          "Professional sound libraries",
+          "Custom recordings"
+        ]
+      },
+      {
+        "category": "HUMAN",
+        "specific_sounds_needed": [
+          "Hospital footsteps",
+          "Sighs",
+          "Coffee sipping",
+          "Wine glass clinking",
+          "Pages turning"
+        ],
+        "priority": "MEDIUM",
+        "sources": [
+          "Professional sound libraries",
+          "Custom recordings"
+        ]
+      },
+      {
+        "category": "DOORS",
+        "specific_sounds_needed": [
+          "Hospital doors",
+          "Apartment door",
+          "Studio door",
+          "Cafe door"
+        ],
+        "priority": "MEDIUM",
+        "sources": [
+          "Professional sound libraries",
+          "Custom recordings"
+        ]
+      }
+    ],
+    "total_unique_sfx": 50,
+    "total_unique_ambiences": 10
+  },
+  "music_guidelines": {
+    "style": "Minimalist piano compositions with ambient textures, blending classical and electronic elements",
+    "usage_rules": "Music should be used sparingly to enhance emotional moments without overwhelming dialogue. Main themes should be established for key characters and locations.",
+    "themes": [
+      {
+        "theme_name": "Main Theme",
+        "when_used": "Opening of episodes, emotional climaxes, ending of series",
+        "emotional_goal": "Establish the emotional core of connection and serendipity"
+      },
+      {
+        "theme_name": "Tom's Theme",
+        "when_used": "Scenes in Tom's coaching studio, when he's recording messages",
+        "emotional_goal": "Convey warmth, confidence, and motivational energy"
+      },
+      {
+        "theme_name": "Julia's Theme",
+        "when_used": "Scenes in Julia's apartment, during her reflective moments",
+        "emotional_goal": "Convey vulnerability, hope, and emotional transformation"
+      },
+      {
+        "theme_name": "Hospital Theme",
+        "when_used": "ER scenes, medical emergencies",
+        "emotional_goal": "Convey urgency, stress, and the high-stakes environment"
+      }
+    ],
+    "composer_notes": "Composers should reference Max Richter's minimalist piano compositions for emotional depth and introspection, Olafur Arnalds' ambient textures for creating atmospheric tension and release, and Nils Frahm's blend of classical and electronic elements for bridging the clinical and emotional aspects of the story. The overall audio identity should balance clinical precision (hospital), motivational clarity (coaching studio), and intimate vulnerability (apartment)."
+  },
+  "post_production_notes": {
+    "mixing_guidelines": [
+      "Mix dialogue at -3dB to ensure clarity",
+      "Sound effects and music should be mixed at -6dB to -9dB to support but not overwhelm dialogue",
+      "Use EQ to enhance vocal clarity and reduce muddiness",
+      "Apply gentle compression to maintain consistent audio levels",
+      "Use reverb sparingly and differently for each location to create acoustic distinction"
+    ],
+    "mastering_standards": [
+      "Loudness: -16 LUFS for final delivery",
+      "True peak: -1dB TP",
+      "Dynamic range: Maintain natural dynamics while ensuring audibility in various listening environments",
+      "Consistency: Ensure consistent audio levels across all episodes"
+    ],
+    "quality_checks": [
+      "Check for clipping or distortion",
+      "Check for phase issues, especially in scenes with multiple characters",
+      "Check for background noise and mouth clicks",
+      "Verify that all text notification sounds are consistent",
+      "Ensure location acoustic signatures are maintained throughout",
+      "Test on multiple playback systems (headphones, speakers, car audio)"
+    ]
+  },
+  "production_overview": "The production of 'The Accidental Lifeline' requires careful attention to audio quality and consistency, with a focus on creating distinct acoustic signatures for each key location. Technical requirements include high-quality recording equipment and professional editing software to ensure clear voice distinction and high-quality audio production, especially for hospital environment scenes. The sound library needs emphasize ambient backgrounds for key locations, technological sounds for the digital communication aspects, and human sounds for character moments. Music should draw inspiration from minimalist composers like Max Richter, Olafur Arnalds, and Nils Frahm, with specific themes established for main characters and locations. Post-production should prioritize dialogue clarity while maintaining the distinct acoustic characteristics of each setting, with careful attention to consistent text notification sounds and location-specific audio signatures throughout the series."
+}

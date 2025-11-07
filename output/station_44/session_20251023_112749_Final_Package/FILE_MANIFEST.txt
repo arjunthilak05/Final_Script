@@ -1,0 +1,38 @@
+======================================================================
+FILE MANIFEST
+======================================================================
+
+Package: session_20251023_112749_Final_Package
+Generated: 2025-11-08 00:38:05
+
+======================================================================
+CONTENTS
+======================================================================
+
+  COVER_LETTER.txt (0.0 KB)
+  README.md (0.8 KB)
+  01_Scripts/
+    Episode_01_MASTER.txt (0.2 KB)
+    Episode_02_MASTER.txt (0.8 KB)
+    Episode_03_MASTER.txt (0.4 KB)
+    README.md (0.5 KB)
+    master_scripts.json (22.1 KB)
+  02_Documentation/
+    Character_Bible.json (10.8 KB)
+    Production_Bible.json (6.1 KB)
+    README.md (0.4 KB)
+    Series_Bible.json (3.6 KB)
+    Series_Bible.txt (1.0 KB)
+    World_Bible.json (8.9 KB)
+  03_Tracking/
+    Change_Log.json (3.8 KB)
+    Dependency_Chart.json (2.4 KB)
+    Episode_Guide.json (3.9 KB)
+    Plant_Payoff_Matrix.json (2.4 KB)
+    README.md (0.3 KB)
+  04_Audio_Specs/
+    README.md (0.3 KB)
+
+======================================================================
+END OF MANIFEST
+======================================================================

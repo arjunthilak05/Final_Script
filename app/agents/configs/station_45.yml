@@ -1,320 +1,674 @@
-# Station 4.5: Narrator Strategy Designer Configuration
+# Station 45: Future-Proofing Review Configuration
 
-station_name: "Station 4.5: Narrator Strategy Designer"
-description: "Analyzes narrator requirements, generates with/without narrator sample scenes, and provides a final strategy recommendation for human review."
 model: "glm-4.5"
-temperature: 0.7
-max_tokens: 4000
+temperature: 0.3
+max_tokens: 16000
 
 prompts:
-  quantitative_analysis: |
-    You are a Narrator Necessity Analyst for audiobook production.
+  timelessness_check: |
+    You are the Future-Proofing Reviewer ensuring content longevity for audio series production.
 
-    Based on this project data:
-    - Working Title: {working_title}
-    - Primary Genre: {primary_genre}
-    - Target Age: {target_age}
-    - Episode Count: {episode_count}
-    - Episode Length: {episode_length}
-    - Story Complexity: {story_complexity}
-    - Tone: {tone}
+    This is the FINAL review to ensure the series will remain relevant and accessible for years to come.
 
-    Analyze the story against three factor groups. For each sub-point, assign a score from 0 (not applicable) to 5 (highly applicable).
+    SESSION CONTEXT:
+    Session ID: {session_id}
 
-    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
+    COMPLETE PACKAGE:
+    {complete_package}
+
+    ALL SCRIPTS:
+    {all_scripts}
+
+    PROJECT DNA:
+    {project_dna}
+
+    TASK 1: TIMELESSNESS CHECK - Review for dating factors
+
+    Analyze all content to ensure it won't feel dated in 5-10 years:
+
+    1. **TECHNOLOGY REFERENCES**:
+       - Are specific devices mentioned (iPhone, Samsung, etc.)?
+       - Are generic terms used instead (smartphone, computer, device)?
+       - Is language future-proof (avoid "in 2024" or "this year")?
+       - List all technology references found
+       - Rate each: TIMELESS|ACCEPTABLE|DATING
+       - Suggest replacements for dating references
+
+    2. **CULTURAL REFERENCES**:
+       - Are internet memes mentioned?
+       - Is slang used that may not age well?
+       - Are universal themes emphasized over trendy ones?
+       - List all cultural references found
+       - Rate each: TIMELESS|ACCEPTABLE|DATING
+       - Assess cultural shelf-life (years)
+
+    3. **TEMPORAL MARKERS**:
+       - Are specific years mentioned?
+       - Are current events referenced?
+       - Are conflicts timeless (human nature vs trending topics)?
+       - List all temporal markers found
+       - Rate each: TIMELESS|ACCEPTABLE|DATING
+       - Suggest more timeless alternatives
+
+    4. **SOUND CHOICES**:
+       - Is music style timeless (orchestral vs EDM trends)?
+       - Are SFX trendy or classic?
+       - Are voice directions classic (not "valley girl" or passing trends)?
+       - List all sound/music style references
+       - Rate each: TIMELESS|ACCEPTABLE|DATING
+       - Recommend adjustments if needed
+
+    Return ONLY valid JSON:
+
+    ```json
     {{
-        "quantitative_analysis": {{
-            "complexity_factors": {{
-                "multiple_timelines_locations": 0-5,
-                "large_cast": 0-5,
-                "crucial_internal_thoughts": 0-5,
-                "exposition_cant_be_shown_via_dialogue": 0-5,
-                "world_building_requirements": 0-5,
-                "historical_technical_context": 0-5,
-                "time_jumps_between_scenes": 0-5
-            }},
-            "audio_clarity_factors": {{
-                "scene_transition_clarity": 0-5,
-                "character_identification_challenges": 0-5,
-                "action_sequence_comprehension": 0-5,
-                "emotional_subtext_needing_voice": 0-5,
-                "pacing_control_requirements": 0-5
-            }},
-            "stylistic_factors": {{
-                "genre_conventions_expectation": 0-5,
-                "intimate_vs_distant_tone_desired": 0-5,
-                "literary_vs_cinematic_approach": 0-5,
-                "poetic_thematic_commentary_value": 0-5,
-                "humor_delivery_opportunities": 0-5
-            }},
-            "total_score": "calculated_total",
-            "classification": "0-30: Strong candidate for no narrator | 31-50: Could work either way | 51-75: Narrator recommended"
-        }}
-    }}
-
-    Requirements:
-    - Score each factor honestly based on the story characteristics
-    - Calculate total score (sum of all individual scores)
-    - Provide classification based on exact thresholds
-    - Consider the target age and genre conventions
-
-  sample_scenes_generation: |
-    You are a Sample Scene Generator for audiobook production.
-
-    Based on this project data:
-    - Working Title: {working_title}
-    - Primary Genre: {primary_genre}
-    - Target Age: {target_age}
-    - Story Complexity: {story_complexity}
-    - Tone: {tone}
-    - Core Premise: {core_premise}
-
-    Generate two distinct sample scenes (approximately 500 words each) of the same pivotal story moment.
-
-    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
-    {{
-        "sample_scenes": {{
-            "scene_context": "Brief description of the pivotal moment being demonstrated",
-            "version_a_with_narrator": {{
-                "title": "Scene title with narrator",
-                "content": "Complete scene text demonstrating narrator usage for scene setting, context, character thoughts, and transitions. Approximately 500 words.",
-                "narrator_functions": ["scene setting", "character thoughts", "transitions", "context"]
-            }},
-            "version_b_without_narrator": {{
-                "title": "Scene title without narrator", 
-                "content": "Complete scene text conveying all information through character dialogue, explicit sound effect cues [SFX: description], and character vocal reactions. Approximately 500 words.",
-                "alternative_strategies": ["dialogue exposition", "sound effects", "character reactions"]
+      "timelessness_check": {{
+        "overall_score": 0.0-1.0,
+        "overall_rating": "HIGHLY_TIMELESS|MOSTLY_TIMELESS|SOME_CONCERNS|SIGNIFICANT_CONCERNS",
+        "projected_shelf_life_years": 0,
+        "technology_references": {{
+          "rating": "TIMELESS|ACCEPTABLE|DATING",
+          "references_found": [
+            {{
+              "reference": "specific technology mentioned",
+              "location": "episode/scene",
+              "concern_level": "NONE|LOW|MEDIUM|HIGH",
+              "dating_risk": "Will this feel old in X years?",
+              "suggested_replacement": "Generic alternative"
             }}
-        }}
+          ],
+          "generic_terms_used": true/false,
+          "future_proof_language": true/false,
+          "recommendations": ["How to improve"]
+        }},
+        "cultural_references": {{
+          "rating": "TIMELESS|ACCEPTABLE|DATING",
+          "references_found": [
+            {{
+              "reference": "meme/slang/trend mentioned",
+              "location": "episode/scene",
+              "concern_level": "NONE|LOW|MEDIUM|HIGH",
+              "shelf_life_estimate": "X years",
+              "universality": "How universal is this?",
+              "suggested_replacement": "More timeless alternative"
+            }}
+          ],
+          "memes_avoided": true/false,
+          "slang_minimal": true/false,
+          "universal_themes": true/false,
+          "recommendations": ["How to improve"]
+        }},
+        "temporal_markers": {{
+          "rating": "TIMELESS|ACCEPTABLE|DATING",
+          "markers_found": [
+            {{
+              "marker": "year/event/date mentioned",
+              "location": "episode/scene",
+              "concern_level": "NONE|LOW|MEDIUM|HIGH",
+              "specificity": "How specific is the reference?",
+              "suggested_alternative": "More vague/timeless version"
+            }}
+          ],
+          "specific_years_avoided": true/false,
+          "current_events_avoided": true/false,
+          "timeless_conflicts": true/false,
+          "recommendations": ["How to improve"]
+        }},
+        "sound_choices": {{
+          "rating": "TIMELESS|ACCEPTABLE|DATING",
+          "choices_analyzed": [
+            {{
+              "choice": "music/sfx style",
+              "location": "episode/scene",
+              "concern_level": "NONE|LOW|MEDIUM|HIGH",
+              "trend_risk": "Is this a passing trend?",
+              "longevity": "Will this sound dated?",
+              "suggested_adjustment": "More classic approach"
+            }}
+          ],
+          "music_timeless": true/false,
+          "sfx_classic": true/false,
+          "voice_directions_timeless": true/false,
+          "recommendations": ["How to improve"]
+        }},
+        "critical_issues": [
+          {{
+            "issue": "What will date the content",
+            "severity": "CRITICAL|MAJOR|MINOR",
+            "location": "where found",
+            "fix": "how to address"
+          }}
+        ],
+        "strengths": [
+          "What ensures longevity"
+        ]
+      }}
     }}
+    ```
 
-    Requirements:
-    - Both scenes must be the exact same story moment
-    - Version A must demonstrate effective narrator usage
-    - Version B must convey all information without narrator
-    - Include explicit sound effect cues in Version B
-    - Both scenes must be age-appropriate for {target_age}
-    - Maintain genre consistency
+    CRITICAL: Be thorough but realistic. Not everything needs to be changed.
 
-  narrator_strategy_options: |
-    You are a Narrator Strategy Options Designer for audiobook production.
+  adaptation_potential: |
+    You are the Future-Proofing Reviewer assessing adaptation potential.
 
-    Based on this project data:
-    - Working Title: {working_title}
-    - Primary Genre: {primary_genre}
-    - Target Age: {target_age}
-    - Story Complexity: {story_complexity}
-    - Tone: {tone}
-    - Analysis Score: {analysis_score}
+    Consider how this series could evolve and expand into other formats and markets.
 
-    Define detailed analysis of all potential narrator approaches. This section is required if the score is above 30.
+    SESSION CONTEXT:
+    Session ID: {session_id}
 
-    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
+    COMPLETE PACKAGE:
+    {complete_package}
+
+    PROJECT DNA:
+    {project_dna}
+
+    CHARACTER BIBLE:
+    {character_bible}
+
+    WORLD BIBLE:
+    {world_bible}
+
+    TASK 2: ADAPTATION POTENTIAL - Consider future possibilities
+
+    Assess how adaptable this content is:
+
+    1. **INTERNATIONAL POTENTIAL**:
+       - Is content culturally translatable (no US-only references)?
+       - Are themes universal (love, loss, hope vs local politics)?
+       - Should localization notes be included?
+       - Which markets would this work in?
+       - What cultural barriers exist?
+       - Rate international appeal: 0-10
+
+    2. **EXPANSION POTENTIAL**:
+       - Is Season 2 possible (story threads left open)?
+       - Are spin-offs available (interesting side characters)?
+       - Is universe expandable (rich world to explore)?
+       - List expansion opportunities
+       - Assess commercial viability
+       - Rate expansion potential: 0-10
+
+    3. **FORMAT FLEXIBILITY**:
+       - Could this be visual (film/TV adaptation)?
+       - Is stage adaptation feasible (limited locations/effects)?
+       - Could this become a novel (rich prose potential)?
+       - What format would work best?
+       - What barriers exist to adaptation?
+       - Rate format flexibility: 0-10
+
+    Return ONLY valid JSON:
+
+    ```json
     {{
-        "narrator_strategy_options": {{
-            "narrator_identity_options": [
-                {{
-                    "option": "A: Omniscient third-person",
-                    "description": "Knows all, professional, neutral voice",
-                    "pros": ["advantages"],
-                    "cons": ["disadvantages"],
-                    "best_for": "when this works best"
-                }},
-                {{
-                    "option": "B: Character narrator (retrospective)",
-                    "description": "A character tells the story later; biased, emotional",
-                    "pros": ["advantages"],
-                    "cons": ["disadvantages"],
-                    "best_for": "when this works best"
-                }},
-                {{
-                    "option": "C: Character narrator (real-time)",
-                    "description": "Internal monologue style; present tense, intimate",
-                    "pros": ["advantages"],
-                    "cons": ["disadvantages"],
-                    "best_for": "when this works best"
-                }},
-                {{
-                    "option": "D: Witness narrator",
-                    "description": "Secondary character observing; limited knowledge",
-                    "pros": ["advantages"],
-                    "cons": ["disadvantages"],
-                    "best_for": "when this works best"
-                }},
-                {{
-                    "option": "E: Themed narrator",
-                    "description": "A conceptual entity (e.g., Death, Time, The City); unique perspective, affected voice",
-                    "pros": ["advantages"],
-                    "cons": ["disadvantages"],
-                    "best_for": "when this works best"
-                }}
+      "adaptation_potential": {{
+        "overall_score": 0.0-1.0,
+        "overall_rating": "HIGHLY_ADAPTABLE|MODERATELY_ADAPTABLE|LIMITED_ADAPTABILITY|FORMAT_SPECIFIC",
+        "international_potential": {{
+          "rating": "EXCELLENT|GOOD|MODERATE|LIMITED",
+          "appeal_score": 0-10,
+          "culturally_translatable": true/false,
+          "universal_themes": true/false,
+          "target_markets": [
+            {{
+              "market": "Country/Region",
+              "appeal": "HIGH|MEDIUM|LOW",
+              "barriers": ["Cultural issues to address"],
+              "opportunities": ["Why it would work"]
+            }}
+          ],
+          "localization_notes": [
+            {{
+              "element": "What needs localization",
+              "reason": "Why it needs adaptation",
+              "approach": "How to localize"
+            }}
+          ],
+          "cultural_barriers": [
+            "Issues that limit international appeal"
+          ],
+          "universal_elements": [
+            "What works everywhere"
+          ]
+        }},
+        "expansion_potential": {{
+          "rating": "EXCELLENT|GOOD|MODERATE|LIMITED",
+          "expansion_score": 0-10,
+          "season_2_possible": true/false,
+          "season_2_hooks": [
+            "Story threads left open for continuation"
+          ],
+          "spinoff_opportunities": [
+            {{
+              "title": "Potential spinoff name",
+              "focus": "What/who it centers on",
+              "appeal": "Why audiences would watch",
+              "viability": "HIGH|MEDIUM|LOW"
+            }}
+          ],
+          "universe_expandable": true/false,
+          "expansion_directions": [
+            "Prequels, sequels, parallel stories, anthology, etc."
+          ],
+          "world_richness": "Is there enough world to explore?",
+          "character_depth": "Are characters rich enough to sustain more?",
+          "commercial_viability": "Would expansions be profitable?"
+        }},
+        "format_flexibility": {{
+          "rating": "HIGHLY_FLEXIBLE|MODERATELY_FLEXIBLE|LIMITED_FLEXIBILITY|AUDIO_ONLY",
+          "flexibility_score": 0-10,
+          "visual_adaptation": {{
+            "feasible": true/false,
+            "best_format": "FILM|TV_SERIES|LIMITED_SERIES|WEB_SERIES|ANIMATION",
+            "strengths": ["Why it would work visually"],
+            "challenges": ["What makes visual adaptation difficult"],
+            "estimated_budget": "LOW|MEDIUM|HIGH|VERY_HIGH"
+          }},
+          "stage_adaptation": {{
+            "feasible": true/false,
+            "format": "PLAY|MUSICAL|RADIO_PLAY|IMMERSIVE_THEATER",
+            "strengths": ["Why it would work on stage"],
+            "challenges": ["Technical/creative obstacles"],
+            "venue_type": "INTIMATE|REGIONAL|BROADWAY|TOURING"
+          }},
+          "novel_adaptation": {{
+            "feasible": true/false,
+            "format": "NOVEL|NOVELLA|GRAPHIC_NOVEL|SHORT_STORIES",
+            "strengths": ["Why it would work as prose"],
+            "challenges": ["What makes prose difficult"],
+            "target_audience": "Who would read this?"
+          }},
+          "other_formats": [
+            {{
+              "format": "PODCAST|AUDIOBOOK|VIDEO_GAME|VR_EXPERIENCE|COMIC",
+              "feasibility": "HIGH|MEDIUM|LOW",
+              "notes": "Why this format works or doesn't"
+            }}
+          ],
+          "best_adaptation_path": "Which format to pursue first",
+          "adaptation_barriers": [
+            "What limits format flexibility"
+          ]
+        }},
+        "recommended_next_steps": [
+          "Concrete actions to maximize adaptation potential"
+        ]
+      }}
+    }}
+    ```
+
+    CRITICAL: Be optimistic but realistic about commercial potential.
+
+  archive_preparation: |
+    You are the Future-Proofing Reviewer preparing archival materials.
+
+    Ensure all materials are properly documented and preserved for long-term storage.
+
+    SESSION CONTEXT:
+    Session ID: {session_id}
+
+    COMPLETE PACKAGE:
+    {complete_package}
+
+    REVISION HISTORY:
+    {revision_history}
+
+    TASK 3: ARCHIVE PREPARATION - Prepare for long-term storage
+
+    Verify everything is ready for archival:
+
+    1. **DOCUMENTATION COMPLETENESS**:
+       - Are all creative decisions recorded?
+       - Are all script versions saved?
+       - Are all reference materials archived?
+       - Check for gaps in documentation
+       - Rate completeness: 0-10
+
+    2. **RIGHTS CLARITY**:
+       - Is ownership clearly documented?
+       - Are all credits complete and accurate?
+       - Are licenses noted (music, SFX, source material)?
+       - Are contributor agreements filed?
+       - Are copyright notices proper?
+       - Rate rights clarity: 0-10
+
+    3. **TECHNICAL PRESERVATION**:
+       - Are files in future-proof formats?
+       - Are multiple backups maintained?
+       - Are both cloud and physical copies secured?
+       - Is version control clear?
+       - Are file naming conventions consistent?
+       - Rate preservation quality: 0-10
+
+    Return ONLY valid JSON:
+
+    ```json
+    {{
+      "archive_preparation": {{
+        "overall_score": 0.0-1.0,
+        "overall_rating": "ARCHIVE_READY|MOSTLY_READY|NEEDS_WORK|INCOMPLETE",
+        "archival_quality": "EXCELLENT|GOOD|ADEQUATE|POOR",
+        "documentation_completeness": {{
+          "rating": "COMPLETE|MOSTLY_COMPLETE|GAPS_EXIST|INCOMPLETE",
+          "completeness_score": 0-10,
+          "creative_decisions_recorded": true/false,
+          "decision_log": [
+            {{
+              "decision": "Major creative choice made",
+              "recorded": true/false,
+              "location": "Where documented"
+            }}
+          ],
+          "script_versions_saved": true/false,
+          "version_inventory": [
+            {{
+              "version": "v0.1, v0.5, v1.0, etc.",
+              "saved": true/false,
+              "location": "Where stored"
+            }}
+          ],
+          "reference_materials_archived": true/false,
+          "reference_inventory": [
+            "List of all reference materials"
+          ],
+          "documentation_gaps": [
+            {{
+              "gap": "What's missing",
+              "severity": "CRITICAL|MAJOR|MINOR",
+              "recommendation": "How to fill gap"
+            }}
+          ]
+        }},
+        "rights_clarity": {{
+          "rating": "CLEAR|MOSTLY_CLEAR|UNCLEAR|UNDOCUMENTED",
+          "clarity_score": 0-10,
+          "ownership_documented": true/false,
+          "ownership_details": {{
+            "creator": "Name/Entity",
+            "copyright_holder": "Name/Entity",
+            "production_company": "Name if applicable",
+            "documentation_location": "Where ownership is documented"
+          }},
+          "credits_complete": true/false,
+          "credits_inventory": [
+            {{
+              "role": "Writer|Director|Producer|Actor|etc.",
+              "name": "Person name",
+              "verified": true/false
+            }}
+          ],
+          "licenses_documented": true/false,
+          "license_inventory": [
+            {{
+              "asset_type": "MUSIC|SFX|SOURCE_MATERIAL|OTHER",
+              "asset_name": "Specific asset",
+              "license_type": "PUBLIC_DOMAIN|CREATIVE_COMMONS|PURCHASED|ORIGINAL",
+              "documentation": "Where license is filed"
+            }}
+          ],
+          "contributor_agreements": true/false,
+          "copyright_notices": true/false,
+          "rights_issues": [
+            {{
+              "issue": "Rights concern",
+              "severity": "CRITICAL|MAJOR|MINOR",
+              "resolution": "How to address"
+            }}
+          ]
+        }},
+        "technical_preservation": {{
+          "rating": "EXCELLENT|GOOD|ADEQUATE|POOR",
+          "preservation_score": 0-10,
+          "future_proof_formats": true/false,
+          "file_formats": [
+            {{
+              "file_type": "SCRIPT|AUDIO|DATA",
+              "current_format": "File extension",
+              "future_proof": true/false,
+              "recommendation": "Better format if needed"
+            }}
+          ],
+          "backup_strategy": {{
+            "multiple_backups": true/false,
+            "backup_locations": [
+              {{
+                "location_type": "CLOUD|PHYSICAL|NETWORK",
+                "location": "Specific location/service",
+                "frequency": "How often backed up",
+                "verified": true/false
+              }}
             ],
-            "presence_level_options": [
-                {{
-                    "level": "Heavy",
-                    "percentage": "40-50% of runtime",
-                    "description": "Narrator guides most scenes",
-                    "use_case": "when to use this level"
-                }},
-                {{
-                    "level": "Moderate", 
-                    "percentage": "20-30% of runtime",
-                    "description": "Narrator appears regularly",
-                    "use_case": "when to use this level"
-                }},
-                {{
-                    "level": "Light",
-                    "percentage": "10-15% of runtime", 
-                    "description": "Narrator appears occasionally",
-                    "use_case": "when to use this level"
-                }},
-                {{
-                    "level": "Minimal",
-                    "percentage": "<5% (transitions only)",
-                    "description": "Narrator only for transitions",
-                    "use_case": "when to use this level"
-                }}
-            ],
-            "narrator_functions": [
-                "Scene setting",
-                "Time transitions", 
-                "Character identification",
-                "Internal thoughts",
-                "Thematic commentary",
-                "Humor delivery",
-                "Emotional guidance",
-                "Plot clarification",
-                "World-building",
-                "Tension control"
+            "backup_redundancy": "1x|2x|3x|3+x"
+          }},
+          "version_control": {{
+            "system_used": "GIT|MANUAL|OTHER|NONE",
+            "clear_versioning": true/false,
+            "version_scheme": "How versions are numbered"
+          }},
+          "file_naming": {{
+            "conventions_consistent": true/false,
+            "naming_pattern": "Pattern used",
+            "clarity": "EXCELLENT|GOOD|ADEQUATE|POOR"
+          }},
+          "preservation_issues": [
+            {{
+              "issue": "Preservation concern",
+              "severity": "CRITICAL|MAJOR|MINOR",
+              "fix": "How to address"
+            }}
+          ]
+        }},
+        "archive_checklist": [
+          {{
+            "item": "Checklist item",
+            "status": "COMPLETE|INCOMPLETE|PARTIAL",
+            "notes": "Additional context"
+          }}
+        ],
+        "archival_recommendations": [
+          "Steps to improve archival quality"
+        ]
+      }}
+    }}
+    ```
+
+    CRITICAL: Flag any missing documentation or unclear rights immediately.
+
+  legacy_notes: |
+    You are the Future-Proofing Reviewer creating legacy documentation.
+
+    Document the creator's vision and production insights for future reference.
+
+    SESSION CONTEXT:
+    Session ID: {session_id}
+
+    PROJECT DNA:
+    {project_dna}
+
+    ALL PRODUCTION NOTES:
+    {production_notes}
+
+    TASK 4: LEGACY NOTES - Create future reference documentation
+
+    Create comprehensive legacy documentation:
+
+    1. **CREATOR'S INTENT**:
+       - What was the original vision?
+       - What key themes were intended?
+       - What elements are most important?
+       - What should never change in adaptations?
+       - Document creative philosophy
+
+    2. **PRODUCTION NOTES**:
+       - What lessons were learned during production?
+       - What problems were solved and how?
+       - What recommendations for future productions?
+       - What worked exceptionally well?
+       - What would you do differently?
+
+    3. **AUDIENCE NOTES**:
+       - Who is the target audience precisely?
+       - What experience goals were set?
+       - How should success be measured?
+       - What emotional journey is intended?
+       - What should audiences take away?
+
+    Return ONLY valid JSON:
+
+    ```json
+    {{
+      "legacy_notes": {{
+        "overall_completion": 0.0-1.0,
+        "creators_intent": {{
+          "original_vision": "Comprehensive description of creative vision",
+          "core_concept": "The fundamental idea at the heart of this series",
+          "key_themes": [
+            {{
+              "theme": "Theme name",
+              "importance": "Why this theme matters",
+              "execution": "How theme is explored",
+              "preservation_note": "How to maintain in adaptations"
+            }}
+          ],
+          "essential_elements": [
+            {{
+              "element": "Story/character/world element",
+              "why_essential": "Why this can't be removed",
+              "non_negotiable": true/false,
+              "adaptation_notes": "How to preserve across formats"
+            }}
+          ],
+          "creative_philosophy": "Overall approach to storytelling",
+          "artistic_goals": [
+            "What we were trying to achieve artistically"
+          ],
+          "never_change": [
+            "Elements that must remain constant in any adaptation"
+          ],
+          "open_to_interpretation": [
+            "Elements that can vary in adaptations"
+          ]
+        }},
+        "production_notes": {{
+          "lessons_learned": [
+            {{
+              "lesson": "What was learned",
+              "context": "Situation that taught this",
+              "application": "How to apply in future",
+              "importance": "HIGH|MEDIUM|LOW"
+            }}
+          ],
+          "problems_solved": [
+            {{
+              "problem": "Challenge faced",
+              "solution": "How it was resolved",
+              "outcome": "Result of solution",
+              "reusable": true/false
+            }}
+          ],
+          "recommendations": [
+            {{
+              "for": "Future productions|Adaptations|Season 2",
+              "recommendation": "Specific guidance",
+              "priority": "HIGH|MEDIUM|LOW",
+              "rationale": "Why this recommendation"
+            }}
+          ],
+          "exceptional_successes": [
+            {{
+              "success": "What worked brilliantly",
+              "why": "Reasons for success",
+              "repeatability": "Can this be replicated?"
+            }}
+          ],
+          "do_differently": [
+            {{
+              "what": "What would change",
+              "why": "Reason for change",
+              "impact": "Expected improvement"
+            }}
+          ],
+          "process_insights": [
+            "Insights about the production process itself"
+          ]
+        }},
+        "audience_notes": {{
+          "target_audience": {{
+            "primary": {{
+              "age_range": "Age range",
+              "demographics": "Key demographics",
+              "psychographics": "Interests, values, preferences",
+              "why_appeal": "Why this audience will love it"
+            }},
+            "secondary": [
+              {{
+                "audience_type": "Secondary audience description",
+                "appeal_factors": "Why they'll enjoy it"
+              }}
             ]
-        }}
-    }}
-
-    Requirements:
-    - Provide all 5 identity options with detailed analysis
-    - Provide all 4 presence level options
-    - List all 10 narrator functions
-    - Consider the specific story characteristics and target audience
-
-  definitive_recommendation: |
-    You are a Narrator Strategy Recommendation Specialist for audiobook production.
-
-    Based on this project data:
-    - Working Title: {working_title}
-    - Primary Genre: {primary_genre}
-    - Target Age: {target_age}
-    - Analysis Score: {analysis_score}
-    - Story Complexity: {story_complexity}
-    - Tone: {tone}
-
-    And the analysis results:
-    - Quantitative Analysis: {quantitative_analysis}
-    - Sample Scenes: {sample_scenes}
-    - Strategy Options: {strategy_options}
-
-    Provide a single, clearly justified recommendation: "With Narrator", "Without Narrator", or "Hybrid Approach".
-
-    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
-    {{
-        "definitive_recommendation": {{
-            "recommendation": "With Narrator|Without Narrator|Hybrid Approach",
-            "justification": "Detailed explanation of why this recommendation was chosen",
-            "implementation_details": {{
-                "if_with_narrator": {{
-                    "narrator_type": "chosen identity option",
-                    "presence_level": "chosen presence level",
-                    "voice_casting_notes": {{
-                        "gender": "male|female|non-binary|any",
-                        "age_range": "age range",
-                        "voice_quality": "voice characteristics"
-                    }},
-                    "key_functions": ["top 3-5 functions"],
-                    "example_narrator_lines": [
-                        "5 distinct example narrator lines"
-                    ]
-                }},
-                "if_without_narrator": {{
-                    "character_identification_strategy": "how to identify characters",
-                    "scene_transition_strategy": "how to handle transitions",
-                    "exposition_delivery_strategy": "how to deliver exposition",
-                    "internal_thought_alternatives": "how to show internal thoughts",
-                    "timeline_clarification_strategy": "how to clarify timeline"
-                }},
-                "if_hybrid": {{
-                    "when_narrator_appears": "specific episodes or contexts",
-                    "presence_triggers": "what triggers narrator presence",
-                    "absence_justification": "how absence/presence is justified",
-                    "implementation_guidelines": "how to execute hybrid approach"
-                }}
+          }},
+          "experience_goals": [
+            {{
+              "goal": "Intended experience",
+              "how_achieved": "Methods used to create experience",
+              "success_indicator": "How to know if achieved"
             }}
-        }}
-    }}
-
-    Requirements:
-    - Choose ONE recommendation based on analysis
-    - Provide detailed justification
-    - Include complete implementation details for chosen approach
-    - Consider target age and genre conventions
-    - Ensure recommendation aligns with quantitative analysis
-
-  pipeline_impact_assessment: |
-    You are a Pipeline Impact Assessor for audiobook production.
-
-    Based on this project data:
-    - Working Title: {working_title}
-    - Primary Genre: {primary_genre}
-    - Target Age: {target_age}
-    - Episode Count: {episode_count}
-    - Episode Length: {episode_length}
-    - Chosen Strategy: {chosen_strategy}
-
-    Assess how the chosen narrator strategy affects downstream processes.
-
-    IMPORTANT: Return ONLY valid, complete JSON - no explanatory text before or after:
-    {{
-        "pipeline_impact_assessment": {{
-            "episode_structure_impact": {{
-                "openings": "how narrator strategy affects episode openings",
-                "scene_transitions": "impact on scene transitions",
-                "cliffhanger_delivery": "how cliffhangers are handled",
-                "runtime_allocation": "how runtime is distributed"
-            }},
-            "writing_style_impact": {{
-                "dialogue_naturalism": "how dialogue must be written",
-                "sound_design_complexity": "impact on sound design needs",
-                "character_voice_burden": "burden on character voices",
-                "pacing_control": "how pacing is managed"
-            }},
-            "production_impact": {{
-                "additional_casting": "casting requirements",
-                "recording_logistics": "recording complexity",
-                "edit_complexity": "editing requirements",
-                "budget_implications": "cost considerations"
-            }},
-            "audience_experience_impact": {{
-                "intimacy_vs_distance": "emotional distance from story",
-                "clarity_vs_discovery": "balance of clarity and discovery",
-                "guided_vs_independent": "level of audience guidance",
-                "cognitive_load": "mental effort required from listeners"
+          ],
+          "success_metrics": [
+            {{
+              "metric": "How to measure success",
+              "target": "Goal to achieve",
+              "measurement_method": "How to measure"
             }}
-        }}
+          ],
+          "emotional_journey": {{
+            "intended_arc": "Overall emotional progression",
+            "key_moments": [
+              {{
+                "moment": "Scene/beat description",
+                "emotion": "Intended feeling",
+                "importance": "Why this moment matters"
+              }}
+            ],
+            "final_feeling": "How audience should feel at the end"
+          }},
+          "takeaways": [
+            {{
+              "takeaway": "What audiences should remember",
+              "type": "THEME|MESSAGE|FEELING|QUESTION",
+              "importance": "HIGH|MEDIUM|LOW"
+            }}
+          ],
+          "intended_impact": "Long-term impact on audience"
+        }},
+        "future_reference_document": "COMPREHENSIVE LEGACY DOCUMENTATION TEXT",
+        "time_capsule_summary": "If only one paragraph could be preserved, what would it say?"
+      }}
     }}
+    ```
 
-    Requirements:
-    - Assess impact across all four categories
-    - Be specific about how the chosen strategy changes each aspect
-    - Consider the target age and episode constraints
-    - Provide actionable insights for production team
+    CRITICAL: Write for people who may work with this material years from now.
 
 dependencies:
-  - station: 1
-    name: "Seed Processor"
+  - station: 44
+    name: "Package Assembly"
+  - station: 43
+    name: "Final Polish Pass"
   - station: 2
     name: "Project DNA Builder"
-  - station: 3
-    name: "Age Genre Optimizer"
-  - station: 4
-    name: "Reference Mining & Seed Extraction"
+  - station: 8
+    name: "Character Architect"
+  - station: 9
+    name: "World Builder"
 
 # Enable/disable this station in the pipeline
 enabled: true
+
+# Configuration values
+input_path: "output/station_44"
+output_path: "output/station_45"
+
+# Output enhancements
+output_enhancements:
+  encoding: "utf-8"
+  include_statistics: true
+  generate_legacy_archive: true

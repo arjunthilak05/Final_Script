@@ -1,0 +1,95 @@
+{
+  "episode_dependencies": [
+    {
+      "episode": 2,
+      "depends_on_episodes": [
+        1
+      ],
+      "dependency_type": "AUDIO|CHARACTER|PLOT",
+      "description": "Episode 2 requires the lighter click, tension theme, and coffee shop chatter audio elements from episode 1. Also depends on introduction of Alex and Mysterious Stranger.",
+      "reorder_possible": false
+    },
+    {
+      "episode": 3,
+      "depends_on_episodes": [
+        1,
+        2
+      ],
+      "dependency_type": "AUDIO|CHARACTER|PLOT|WORLD",
+      "description": "Episode 3 requires lighter click and tension theme from both previous episodes, plus footsteps callback from episode 1. Depends on character relationships established in both episodes and safe house mention from episode 2.",
+      "reorder_possible": false
+    }
+  ],
+  "information_flow": [
+    {
+      "information": "Lighter as a signal device",
+      "revealed_in_episode": 1,
+      "required_for_episodes": [
+        2,
+        3
+      ],
+      "critical": true
+    },
+    {
+      "information": "Safe house location",
+      "revealed_in_episode": 2,
+      "required_for_episodes": [
+        3
+      ],
+      "critical": true
+    },
+    {
+      "information": "Jordan's true identity",
+      "revealed_in_episode": 3,
+      "required_for_episodes": [],
+      "critical": false
+    }
+  ],
+  "critical_paths": [
+    {
+      "path_description": "Lighter motif progression",
+      "episodes_in_sequence": [
+        1,
+        2,
+        3
+      ],
+      "cannot_reorder": true,
+      "reason": "Audio motif must be established and developed sequentially"
+    },
+    {
+      "path_description": "Character introduction and development",
+      "episodes_in_sequence": [
+        1,
+        2,
+        3
+      ],
+      "cannot_reorder": true,
+      "reason": "Character relationships and revelations build progressively"
+    }
+  ],
+  "character_knowledge_tracking": [
+    {
+      "character": "Alex",
+      "learns_what": "Significance of the lighter",
+      "learns_in_episode": 3,
+      "affects_episodes": [],
+      "cannot_know_before": true
+    },
+    {
+      "character": "Alex",
+      "learns_what": "About the safe house",
+      "learns_in_episode": 2,
+      "affects_episodes": [
+        3
+      ],
+      "cannot_know_before": true
+    },
+    {
+      "character": "Alex",
+      "learns_what": "Jordan's true identity",
+      "learns_in_episode": 3,
+      "affects_episodes": [],
+      "cannot_know_before": true
+    }
+  ]
+}

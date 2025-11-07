@@ -1,0 +1,947 @@
+# Station 44: Package Assembly Configuration
+
+model: "glm-4.5"
+temperature: 0.2
+max_tokens: 16000
+
+prompts:
+  master_script_package: |
+    You are the Package Assembler preparing final delivery for audio series production.
+
+    This is the FINAL ASSEMBLY. Every script version must be packaged correctly for different teams.
+
+    SESSION CONTEXT:
+    Session ID: {session_id}
+    Total Episodes: {total_episodes}
+
+    POLISHED SCRIPTS (All Episodes):
+    {polished_scripts}
+
+    PROJECT DNA:
+    {project_dna}
+
+    STYLE GUIDE:
+    {style_guide}
+
+    CHARACTER BIBLE:
+    {character_bible}
+
+    TASK 1: MASTER SCRIPT PACKAGE - ASSEMBLE FINAL SCRIPTS
+
+    Create multiple script versions for different purposes:
+
+    1. **MASTER SCRIPTS**:
+       - All episodes complete and in order
+       - Formatted consistently per industry standards
+       - Version numbered (v1.0 FINAL)
+       - Change log included (what changed from draft to final)
+       - Each episode clearly labeled with episode number and title
+       - Runtime estimates per episode
+
+    2. **TABLE READ SCRIPTS**:
+       - Simplified format for actors' first read
+       - Performance notes included but minimal
+       - Character sheets attached (who's in this episode)
+       - Pronunciation guide for names/places
+       - Less technical detail, more readability
+
+    3. **PRODUCTION SCRIPTS**:
+       - Full technical annotation from Station 43
+       - Sound cue sheets embedded
+       - Music spotting notes included
+       - SFX priority markers clear
+       - Technical requirements per scene
+       - Timing breakdowns per act
+
+    4. **RECORDING SCRIPTS**:
+       - Actor sides prepared (character-specific)
+       - Only their lines + cue lines
+       - Recording schedule order
+       - Scene numbers for continuity
+       - Character emotional state notes
+
+    Return ONLY valid JSON:
+
+    ```json
+    {{
+      "master_script_package": {{
+        "overall_completion": 0.0-1.0,
+        "master_scripts": {{
+          "format_standard": "AUDIO_DRAMA|SCREENPLAY|HYBRID",
+          "version": "v1.0 FINAL",
+          "total_episodes": 0,
+          "total_runtime_minutes": 0,
+          "episodes": [
+            {{
+              "episode_number": 1,
+              "episode_title": "Episode Title",
+              "runtime_estimate": "45 minutes",
+              "word_count": 7500,
+              "scene_count": 12,
+              "character_count": 8,
+              "script_text": "FORMATTED MASTER SCRIPT TEXT"
+            }}
+          ],
+          "change_log": [
+            {{
+              "episode": 1,
+              "change_type": "dialogue|structure|audio_cue|character",
+              "description": "what changed from draft",
+              "reason": "why change was made"
+            }}
+          ],
+          "formatting_notes": "Industry standard audio drama format. Character names CAPS, SFX marked [SFX:], Music marked [MUSIC:]"
+        }},
+        "table_read_scripts": {{
+          "purpose": "First read-through with cast",
+          "simplifications": [
+            "Minimal technical notes",
+            "Enhanced readability",
+            "Pronunciation guides included",
+            "Character context provided"
+          ],
+          "episodes": [
+            {{
+              "episode_number": 1,
+              "characters_in_episode": ["Character names"],
+              "pronunciation_guide": {{
+                "NAME": "pronunciation",
+                "PLACE": "pronunciation"
+              }},
+              "simplified_script": "TABLE READ VERSION SCRIPT TEXT"
+            }}
+          ],
+          "attached_materials": [
+            "Character relationship maps",
+            "Episode synopsis",
+            "Scene breakdown"
+          ]
+        }},
+        "production_scripts": {{
+          "purpose": "Full technical production",
+          "technical_detail_level": "COMPLETE",
+          "episodes": [
+            {{
+              "episode_number": 1,
+              "sound_cue_sheet": {{
+                "sfx_cues": [
+                  {{
+                    "cue_number": "SFX-001",
+                    "location": "Scene 1, Line 5",
+                    "description": "Door opens",
+                    "priority": "CRITICAL|HIGH|MEDIUM|LOW",
+                    "duration": "2 seconds",
+                    "volume": "FOREGROUND|BACKGROUND"
+                  }}
+                ],
+                "music_cues": [
+                  {{
+                    "cue_number": "MUS-001",
+                    "location": "Scene 1, Opening",
+                    "description": "Tense strings",
+                    "duration": "15 seconds",
+                    "in_point": "00:00:30",
+                    "out_point": "00:00:45",
+                    "volume_relative": "UNDER dialogue"
+                  }}
+                ],
+                "ambience_cues": [
+                  {{
+                    "cue_number": "AMB-001",
+                    "location": "Scene 1",
+                    "description": "Busy restaurant",
+                    "duration": "CONTINUOUS",
+                    "volume": "BACKGROUND, duck under dialogue"
+                  }}
+                ]
+              }},
+              "timing_breakdown": {{
+                "act_1": "0:00 - 12:00 (12 minutes)",
+                "act_2": "12:00 - 32:00 (20 minutes)",
+                "act_3": "32:00 - 45:00 (13 minutes)"
+              }},
+              "technical_requirements": [
+                "Reverb processing for warehouse scenes",
+                "Phone filter for dialogue",
+                "Layered crowd effects"
+              ],
+              "annotated_script": "PRODUCTION SCRIPT WITH FULL TECHNICAL NOTES"
+            }}
+          ]
+        }},
+        "recording_scripts": {{
+          "purpose": "Actor-specific recording sessions",
+          "organization": "BY_CHARACTER",
+          "actor_sides": [
+            {{
+              "character_name": "CHARACTER_NAME",
+              "total_lines": 150,
+              "episodes_appearing": [1, 2, 3, 5, 8],
+              "recording_order": [
+                {{
+                  "scene_number": "1-A",
+                  "episode": 1,
+                  "context": "Opening scene - character is nervous",
+                  "cue_line": "Previous character's line",
+                  "character_line": "This character's line",
+                  "emotional_note": "Hesitant, fearful"
+                }}
+              ],
+              "character_notes": "Voice type, accent, emotional arc notes",
+              "sides_script": "CHARACTER-SPECIFIC SCRIPT WITH CUES"
+            }}
+          ]
+        }},
+        "package_manifest": [
+          "Master Scripts (all episodes)",
+          "Table Read Scripts (all episodes)",
+          "Production Scripts (all episodes)",
+          "Recording Scripts (per character)",
+          "Change Log",
+          "Format Guide"
+        ]
+      }}
+    }}
+    ```
+
+    CRITICAL: Every script version must be internally consistent and serve its specific purpose.
+
+  documentation_package: |
+    You are the Package Assembler compiling support materials for production.
+
+    Documentation ensures everyone understands the project world, characters, and rules.
+
+    SESSION CONTEXT:
+    Session ID: {session_id}
+
+    MASTER SCRIPTS:
+    {master_scripts}
+
+    PROJECT DNA:
+    {project_dna}
+
+    STYLE GUIDE:
+    {style_guide}
+
+    CHARACTER BIBLE:
+    {character_bible}
+
+    WORLD BIBLE:
+    {world_bible}
+
+    SEASON ARCHITECTURE:
+    {season_architecture}
+
+    TASK 2: DOCUMENTATION PACKAGE - COMPILE SUPPORT MATERIALS
+
+    Create comprehensive documentation for production teams:
+
+    1. **SERIES BIBLE**:
+       - Complete and updated from all stations
+       - All world rules documented clearly
+       - Reference materials indexed
+       - Visual aids if helpful (relationship maps, timelines)
+
+    2. **CHARACTER BIBLE**:
+       - All characters documented (main, supporting, recurring)
+       - Voice references and casting notes
+       - Relationship maps (who knows who, how they feel)
+       - Character arc summaries per episode
+       - Audio identification markers
+
+    3. **WORLD BIBLE**:
+       - All locations documented with descriptions
+       - Sound signatures per location listed
+       - World rules clarified (technology, magic, social systems)
+       - Maps or spatial descriptions if needed
+       - Timeline of events (past and present)
+
+    4. **PRODUCTION BIBLE**:
+       - Technical requirements (equipment, software)
+       - Sound library needs (what SFX to acquire)
+       - Music guidelines (style, when to use, composers)
+       - Post-production notes (mixing, mastering)
+       - Quality standards
+
+    Return ONLY valid JSON:
+
+    ```json
+    {{
+      "documentation_package": {{
+        "overall_completion": 0.0-1.0,
+        "series_bible": {{
+          "title": "Series Title",
+          "genre": "Primary genre + secondary elements",
+          "format": "Audio-only drama",
+          "episode_count": 0,
+          "target_runtime_per_episode": "45 minutes",
+          "target_audience": "Age range and rating",
+          "creative_promises": [
+            "Must-have elements guaranteed"
+          ],
+          "world_rules": [
+            {{
+              "rule_category": "PHYSICAL|SOCIAL|TECHNOLOGY|MAGIC",
+              "rule": "Specific rule description",
+              "importance": "CRITICAL|HIGH|MEDIUM",
+              "exceptions": "Any exceptions to the rule"
+            }}
+          ],
+          "tone_descriptors": ["adjective", "adjective"],
+          "similar_shows": ["Reference 1", "Reference 2"],
+          "reference_materials": [
+            {{
+              "title": "Reference title",
+              "type": "SHOW|BOOK|FILM|ARTICLE",
+              "relevance": "Why referenced",
+              "url_or_location": "Where to find it"
+            }}
+          ],
+          "series_overview": "COMPREHENSIVE SERIES BIBLE TEXT"
+        }},
+        "character_bible": {{
+          "total_characters": 0,
+          "character_tiers": {{
+            "protagonists": [
+              {{
+                "name": "Character Name",
+                "role": "protagonist|deuteragonist",
+                "age": "Age or range",
+                "voice_type": "Male/Female, Age, Accent, Quality",
+                "voice_signature": {{
+                  "pitch": "low|medium|high",
+                  "pace": "fast|moderate|slow",
+                  "vocabulary": "simple|educated|formal|casual",
+                  "verbal_tics": ["um", "you know", "like"]
+                }},
+                "character_arc": "Overall journey across series",
+                "episodes_appearing": [1, 2, 3],
+                "relationships": [
+                  {{
+                    "with_character": "Other character name",
+                    "relationship_type": "friend|enemy|family|romantic",
+                    "dynamic": "Relationship description"
+                  }}
+                ],
+                "audio_identification": "How listeners know it's them",
+                "casting_notes": "Specific guidance for voice casting"
+              }}
+            ],
+            "major_supporting": [
+              {{
+                "name": "Character Name",
+                "role": "supporting",
+                "voice_type": "Voice description",
+                "function_in_story": "Why they exist",
+                "episodes_appearing": [1, 3, 5]
+              }}
+            ],
+            "recurring": [
+              {{
+                "name": "Character Name",
+                "defining_trait": "Single memorable trait",
+                "voice_hook": "Distinctive voice element",
+                "narrative_function": "Plot purpose"
+              }}
+            ]
+          }},
+          "relationship_map": [
+            {{
+              "character_a": "Name",
+              "character_b": "Name",
+              "relationship": "Description",
+              "emotional_temperature": "warm|neutral|cold|hostile"
+            }}
+          ],
+          "character_overview": "COMPREHENSIVE CHARACTER BIBLE TEXT"
+        }},
+        "world_bible": {{
+          "setting_overview": "High-level world description",
+          "primary_locations": [
+            {{
+              "location_name": "Location Name",
+              "description": "Physical description",
+              "acoustic_signature": "How it sounds (reverb, ambience, echo)",
+              "distinctive_sounds": ["Sound 1", "Sound 2"],
+              "episodes_appearing": [1, 2, 5],
+              "importance": "CRITICAL|HIGH|MEDIUM|LOW"
+            }}
+          ],
+          "geography": {{
+            "primary_setting": "City/Country/World",
+            "key_places": ["Place 1", "Place 2"],
+            "travel_times": [
+              {{
+                "from": "Location A",
+                "to": "Location B",
+                "time": "Duration"
+              }}
+            ]
+          }},
+          "social_systems": {{
+            "government": "Type and description",
+            "economic_structure": "How economy works",
+            "social_hierarchies": "Class/status systems",
+            "cultural_norms": ["Norm 1", "Norm 2"]
+          }},
+          "technology_magic": {{
+            "tech_level": "modern|futuristic|historical",
+            "special_systems": [
+              {{
+                "name": "Technology/Magic name",
+                "how_it_works": "Description",
+                "how_it_sounds": "Audio signature",
+                "limitations": "What it can't do",
+                "availability": "common|rare|unique"
+              }}
+            ]
+          }},
+          "history_lore": {{
+            "key_past_events": [
+              {{
+                "event": "Event name",
+                "when": "Time frame",
+                "impact": "How it affects present story"
+              }}
+            ],
+            "common_knowledge": ["What everyone knows"],
+            "secrets": ["What few know"]
+          }},
+          "sensory_palette": [
+            {{
+              "location": "Location name",
+              "ambient_sounds": ["Sound 1", "Sound 2"],
+              "distinctive_noises": ["Noise 1", "Noise 2"],
+              "acoustic_properties": "How sound behaves here"
+            }}
+          ],
+          "world_overview": "COMPREHENSIVE WORLD BIBLE TEXT"
+        }},
+        "production_bible": {{
+          "technical_requirements": {{
+            "recording_equipment": ["Equipment list"],
+            "editing_software": ["Software list"],
+            "processing_plugins": ["Plugin list"],
+            "quality_standards": {{
+              "bit_rate": "192kbps minimum",
+              "sample_rate": "48kHz",
+              "format": "WAV for raw, MP3 for final"
+            }}
+          }},
+          "sound_library_needs": {{
+            "sfx_categories": [
+              {{
+                "category": "DOORS|AMBIENCE|TECH|NATURE|HUMAN",
+                "specific_sounds_needed": ["Sound 1", "Sound 2"],
+                "priority": "CRITICAL|HIGH|MEDIUM|LOW",
+                "sources": ["Where to get these sounds"]
+              }}
+            ],
+            "total_unique_sfx": 0,
+            "total_unique_ambiences": 0
+          }},
+          "music_guidelines": {{
+            "style": "Genre and feel",
+            "usage_rules": "When and how to use music",
+            "themes": [
+              {{
+                "theme_name": "Main theme",
+                "when_used": "Opening, climax, ending",
+                "emotional_goal": "What feeling to evoke"
+              }}
+            ],
+            "composer_notes": "Guidance for composer"
+          }},
+          "post_production_notes": {{
+            "mixing_guidelines": ["Mix dialogue at -3dB", "SFX at -6dB"],
+            "mastering_standards": ["Loudness: -16 LUFS", "True peak: -1dB"],
+            "quality_checks": [
+              "Check for clipping",
+              "Check for phase issues",
+              "Check for background noise"
+            ]
+          }},
+          "production_overview": "COMPREHENSIVE PRODUCTION BIBLE TEXT"
+        }},
+        "package_manifest": [
+          "Series Bible",
+          "Character Bible",
+          "World Bible",
+          "Production Bible"
+        ]
+      }}
+    }}
+    ```
+
+    CRITICAL: Documentation must be comprehensive enough for new team members to understand everything.
+
+  tracking_documents: |
+    You are the Package Assembler creating tracking materials for project management.
+
+    Tracking documents help producers and directors manage the complex production.
+
+    SESSION CONTEXT:
+    Session ID: {session_id}
+
+    ALL EPISODES:
+    {all_episodes}
+
+    PLANT/PAYOFF DATA:
+    {plant_payoff_data}
+
+    DEPENDENCY DATA:
+    {dependency_data}
+
+    REVISION HISTORY:
+    {revision_history}
+
+    TASK 3: TRACKING DOCUMENTS - INCLUDE PLANNING MATERIALS
+
+    Create production management documents:
+
+    1. **EPISODE GUIDE**:
+       - One-paragraph synopsis per episode
+       - Character appearances per episode
+       - Location usage per episode
+       - Runtime estimates
+       - Recording priorities
+
+    2. **PLANT/PAYOFF MATRIX**:
+       - All story setups tracked with episode number
+       - All payoffs noted with episode number
+       - Timeline visualization (when planted → when paid off)
+       - Orphan warnings (plants without payoffs)
+
+    3. **DEPENDENCY CHART**:
+       - Episode dependencies (which must come before which)
+       - Information flow (what knowledge is required when)
+       - Critical paths (episodes that can't be reordered)
+       - Character knowledge tracking
+
+    4. **CHANGE LOG**:
+       - All script revisions tracked by date
+       - All decisions documented (why changes were made)
+       - Problem resolutions noted
+       - Version history complete
+
+    Return ONLY valid JSON:
+
+    ```json
+    {{
+      "tracking_documents": {{
+        "overall_completion": 0.0-1.0,
+        "episode_guide": {{
+          "total_episodes": 0,
+          "episodes": [
+            {{
+              "episode_number": 1,
+              "episode_title": "Title",
+              "synopsis": "Brief 2-3 sentence synopsis",
+              "characters_appearing": [
+                {{
+                  "character_name": "Name",
+                  "role_in_episode": "protagonist|supporting|cameo",
+                  "line_count_estimate": 50
+                }}
+              ],
+              "locations_used": [
+                {{
+                  "location_name": "Location",
+                  "scene_count": 3,
+                  "importance": "HIGH|MEDIUM|LOW"
+                }}
+              ],
+              "runtime_estimate": "45 minutes",
+              "recording_priority": "HIGH|MEDIUM|LOW",
+              "production_notes": "Any special requirements for this episode"
+            }}
+          ]
+        }},
+        "plant_payoff_matrix": {{
+          "total_plants": 0,
+          "total_payoffs": 0,
+          "plants": [
+            {{
+              "plant_id": "P-001",
+              "type": "MAJOR|MINOR|THEMATIC|AUDIO",
+              "episode_planted": 1,
+              "scene_description": "Where planted",
+              "what_planted": "Description of setup",
+              "audio_signature": "Sound/music associated",
+              "payoff_episode": 5,
+              "payoff_description": "How it pays off",
+              "time_between": "4 episodes",
+              "status": "COMPLETE|ORPHAN|WEAK"
+            }}
+          ],
+          "orphan_plants": [
+            {{
+              "plant_id": "P-XXX",
+              "problem": "No payoff found",
+              "recommendation": "Add payoff in episode X or remove plant"
+            }}
+          ],
+          "unearned_payoffs": [
+            {{
+              "payoff_location": "Episode X",
+              "problem": "No setup found",
+              "recommendation": "Add plant in earlier episode"
+            }}
+          ],
+          "timeline_visualization": [
+            {{
+              "episode": 1,
+              "plants": ["P-001", "P-002"],
+              "payoffs": []
+            }},
+            {{
+              "episode": 2,
+              "plants": ["P-003"],
+              "payoffs": ["P-001"]
+            }}
+          ]
+        }},
+        "dependency_chart": {{
+          "episode_dependencies": [
+            {{
+              "episode": 5,
+              "depends_on_episodes": [1, 2, 3],
+              "dependency_type": "INFORMATION|CHARACTER|PLOT|WORLD",
+              "description": "What must be known from previous episodes",
+              "reorder_possible": false
+            }}
+          ],
+          "information_flow": [
+            {{
+              "information": "Main character's secret",
+              "revealed_in_episode": 3,
+              "required_for_episodes": [4, 5, 6, 8],
+              "critical": true
+            }}
+          ],
+          "critical_paths": [
+            {{
+              "path_description": "Mystery revelation sequence",
+              "episodes_in_sequence": [1, 4, 7, 10],
+              "cannot_reorder": true,
+              "reason": "Clue discovery must be sequential"
+            }}
+          ],
+          "character_knowledge_tracking": [
+            {{
+              "character": "Character Name",
+              "learns_what": "Important information",
+              "learns_in_episode": 3,
+              "affects_episodes": [4, 5, 6],
+              "cannot_know_before": true
+            }}
+          ]
+        }},
+        "change_log": {{
+          "total_revisions": 0,
+          "revisions": [
+            {{
+              "date": "2024-01-15",
+              "version": "v0.8",
+              "episode_affected": 1,
+              "change_type": "DIALOGUE|STRUCTURE|CHARACTER|AUDIO|PLOT",
+              "description": "What changed",
+              "reason": "Why change was made",
+              "approved_by": "Decision maker name",
+              "impact": "What else this affects"
+            }}
+          ],
+          "major_decisions": [
+            {{
+              "decision": "Added narrator",
+              "date": "2024-01-10",
+              "reason": "Clarity needed for complex timeline",
+              "alternatives_considered": ["Pure dialogue", "Character voiceover"],
+              "outcome": "Improved comprehension significantly"
+            }}
+          ],
+          "problems_resolved": [
+            {{
+              "problem": "Episode 3 pacing too slow",
+              "identified_by": "Station 33",
+              "resolution": "Combined scenes 3 and 4, cut dialogue by 300 words",
+              "date_resolved": "2024-01-12",
+              "effective": true
+            }}
+          ],
+          "version_history": [
+            {{
+              "version": "v1.0 FINAL",
+              "date": "2024-01-20",
+              "status": "APPROVED",
+              "notes": "Production ready"
+            }}
+          ]
+        }},
+        "package_manifest": [
+          "Episode Guide",
+          "Plant/Payoff Matrix",
+          "Dependency Chart",
+          "Change Log"
+        ]
+      }}
+    }}
+    ```
+
+    CRITICAL: Tracking documents prevent production errors and help manage complex storytelling.
+
+  delivery_preparation: |
+    You are the Package Assembler preparing final delivery organization.
+
+    Final packaging ensures easy access to all materials for all teams.
+
+    SESSION CONTEXT:
+    Session ID: {session_id}
+    Project Title: {project_title}
+
+    ALL PACKAGES:
+    {all_packages}
+
+    TASK 4: DELIVERY PREPARATION - FINAL PACKAGE PREPARATION
+
+    Organize everything for professional delivery:
+
+    1. **FILE ORGANIZATION**:
+       - Clear folder structure (logical hierarchy)
+       - Consistent naming conventions (ProjectName_Type_Version.ext)
+       - Version control markers visible
+       - README files in each folder
+
+    2. **QUALITY VERIFICATION**:
+       - All files present (nothing missing)
+       - All formats correct (PDF, DOCX, TXT as appropriate)
+       - All internal links working
+       - All pages numbered properly
+       - File sizes reasonable
+
+    3. **DELIVERY FORMATS**:
+       - PDF versions (universal reading)
+       - Word/editable versions (for notes and changes)
+       - Cloud links prepared (Dropbox, Google Drive, etc.)
+       - Backups created (local and cloud)
+       - Compressed archives for easy download
+
+    4. **COVER LETTER**:
+       - Package contents listed clearly
+       - Key creative decisions highlighted
+       - Production recommendations
+       - Next steps outlined (table read, casting, recording)
+       - Contact information for questions
+
+    Return ONLY valid JSON:
+
+    ```json
+    {{
+      "delivery_preparation": {{
+        "overall_completion": 0.0-1.0,
+        "file_organization": {{
+          "folder_structure": {{
+            "root_folder": "ProjectName_Final_Package",
+            "subfolders": [
+              {{
+                "name": "01_Scripts",
+                "contents": ["Master Scripts", "Table Read Scripts", "Production Scripts", "Recording Scripts"],
+                "readme": "This folder contains all script versions"
+              }},
+              {{
+                "name": "02_Documentation",
+                "contents": ["Series Bible", "Character Bible", "World Bible", "Production Bible"],
+                "readme": "This folder contains all reference documentation"
+              }},
+              {{
+                "name": "03_Tracking",
+                "contents": ["Episode Guide", "Plant-Payoff Matrix", "Dependency Chart", "Change Log"],
+                "readme": "This folder contains production management documents"
+              }},
+              {{
+                "name": "04_Audio_Specs",
+                "contents": ["Sound Cue Sheets", "Music Spotting Notes", "SFX Library List"],
+                "readme": "This folder contains audio production specifications"
+              }}
+            ]
+          }},
+          "naming_convention": {{
+            "pattern": "ProjectName_Type_EpisodeNumber_Version.ext",
+            "examples": [
+              "MysteryShow_MasterScript_E01_v1.0.pdf",
+              "MysteryShow_CharacterBible_v1.0.docx",
+              "MysteryShow_RecordingSides_Character1_v1.0.pdf"
+            ],
+            "version_format": "v1.0 = FINAL, v0.X = DRAFT"
+          }},
+          "readme_files": [
+            {{
+              "location": "Root folder",
+              "content": "PACKAGE OVERVIEW AND NAVIGATION INSTRUCTIONS"
+            }},
+            {{
+              "location": "Scripts folder",
+              "content": "SCRIPT VERSIONS EXPLANATION"
+            }}
+          ]
+        }},
+        "quality_verification": {{
+          "verification_checks": [
+            {{
+              "check": "All files present",
+              "status": "PASS|FAIL",
+              "missing_files": [],
+              "notes": "Verification notes"
+            }},
+            {{
+              "check": "All formats correct",
+              "status": "PASS|FAIL",
+              "format_issues": [],
+              "notes": "PDF for finals, DOCX for editables"
+            }},
+            {{
+              "check": "All links working",
+              "status": "PASS|FAIL",
+              "broken_links": [],
+              "notes": "Internal document references"
+            }},
+            {{
+              "check": "All pages numbered",
+              "status": "PASS|FAIL",
+              "numbering_issues": [],
+              "notes": "Continuous numbering per document"
+            }},
+            {{
+              "check": "File sizes reasonable",
+              "status": "PASS|FAIL",
+              "large_files": [],
+              "notes": "Total package size estimate"
+            }}
+          ],
+          "all_checks_passed": true/false,
+          "total_files": 0,
+          "total_package_size_mb": 0
+        }},
+        "delivery_formats": {{
+          "pdf_versions": [
+            {{
+              "filename": "Filename.pdf",
+              "purpose": "Universal reading, no editing",
+              "size_mb": 0.0,
+              "pages": 0
+            }}
+          ],
+          "editable_versions": [
+            {{
+              "filename": "Filename.docx",
+              "purpose": "Notes and revisions during production",
+              "size_mb": 0.0,
+              "software": "Microsoft Word or compatible"
+            }}
+          ],
+          "plain_text_versions": [
+            {{
+              "filename": "Filename.txt",
+              "purpose": "Import into other systems",
+              "size_mb": 0.0,
+              "encoding": "UTF-8"
+            }}
+          ],
+          "cloud_links": [
+            {{
+              "service": "Dropbox|Google Drive|OneDrive",
+              "link": "URL when uploaded",
+              "permissions": "View only|Edit allowed",
+              "expiration": "No expiration|30 days|Custom"
+            }}
+          ],
+          "backup_locations": [
+            "Local backup path",
+            "Cloud backup location",
+            "Archive location"
+          ],
+          "compressed_archives": [
+            {{
+              "filename": "ProjectName_Complete_Package.zip",
+              "contents": "All folders and files",
+              "size_mb": 0.0,
+              "format": "ZIP"
+            }}
+          ]
+        }},
+        "cover_letter": {{
+          "recipient": "Production Team",
+          "project_title": "Project Title",
+          "delivery_date": "2024-01-20",
+          "letter_text": "PROFESSIONAL COVER LETTER TEXT",
+          "package_contents_summary": [
+            "X episodes of master scripts",
+            "Complete documentation package",
+            "Production tracking materials",
+            "Audio specifications"
+          ],
+          "key_decisions_highlighted": [
+            "Narrator used for clarity",
+            "3-Act structure per episode",
+            "Character-driven mystery approach"
+          ],
+          "production_recommendations": [
+            "Suggest table read with full cast first",
+            "Begin casting for protagonist immediately",
+            "Sound design can begin with episode 1 specs"
+          ],
+          "next_steps": [
+            "1. Table read scheduled for [DATE]",
+            "2. Casting begins [DATE]",
+            "3. Recording sessions start [DATE]",
+            "4. Post-production timeline: [DURATION]"
+          ],
+          "contact_information": {{
+            "writer": "Name and email",
+            "showrunner": "Name and email",
+            "producer": "Name and email",
+            "questions_to": "Primary contact email"
+          }}
+        }},
+        "file_manifest": [
+          "Complete list of all files in package with descriptions"
+        ],
+        "delivery_confirmation_text": "DELIVERY PACKAGE READY - [PROJECT TITLE] - [DATE] - [TOTAL FILES] files, [SIZE] MB total",
+        "archive_secured": true/false
+      }}
+    }}
+    ```
+
+    CRITICAL: Professional delivery reflects quality of the work. Organization matters.
+
+dependencies:
+  - station: 43
+    name: "Final Polish Pass"
+  - station: 2
+    name: "Project DNA Builder"
+  - station: 6
+    name: "Master Style Guide Builder"
+  - station: 8
+    name: "Character Architect"
+  - station: 9
+    name: "World Builder"
+  - station: 5
+    name: "Season Architecture"
+  - station: 37
+    name: "Plant/Payoff Tracker"
+  - station: 41
+    name: "Cross-Episode Dependency Check"
+
+# Enable/disable this station in the pipeline
+enabled: true
+
+# Configuration values
+input_path: "output/station_43"
+output_path: "output/station_44"
+
+# Output enhancements
+output_enhancements:
+  encoding: "utf-8"
+  include_statistics: true
+  generate_complete_package: true
+  create_folder_structure: true

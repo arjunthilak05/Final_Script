@@ -1,0 +1,310 @@
+{
+  "total_characters": 10,
+  "character_tiers": {
+    "protagonists": [
+      {
+        "name": "Tom",
+        "role": "protagonist",
+        "age": "35-45",
+        "voice_type": "Male, 35-45, clear, warm, confident",
+        "voice_signature": {
+          "pitch": "medium",
+          "pace": "medium",
+          "vocabulary": "educated, accessible",
+          "verbal_tics": [
+            "Imagine",
+            "Think about",
+            "You can do this"
+          ]
+        },
+        "character_arc": "Tom begins as confident but somewhat isolated, and through his journey to find Julia, becomes more grounded and connected, with a deeper understanding of his clients' needs and the impact of his words",
+        "episodes_appearing": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "relationships": [
+          {
+            "with_character": "Julia",
+            "relationship_type": "romantic",
+            "dynamic": "Initially unknowingly connected through text messages, then develops a deep emotional bond when they meet"
+          },
+          {
+            "with_character": "Sarah",
+            "relationship_type": "professional",
+            "dynamic": "Tom's actual coaching client who complains about not receiving messages, leading to his discovery of the error"
+          },
+          {
+            "with_character": "Mark",
+            "relationship_type": "professional",
+            "dynamic": "Friendly but competitive relationship with a fellow life coach"
+          }
+        ],
+        "audio_identification": "Warm, confident voice with motivational language, often starting sentences with 'Imagine' or 'Think about'",
+        "casting_notes": "Cast an actor who can convey emotional range through vocal subtlety rather than dramatic shifts. Coaching voice should be warm and encouraging without sounding saccharine."
+      },
+      {
+        "name": "Julia",
+        "role": "deuteragonist",
+        "age": "30-40",
+        "voice_type": "Female, 30-40, transitions from weary to hopeful",
+        "voice_signature": {
+          "pitch": "medium",
+          "pace": "medium",
+          "vocabulary": "professional, accessible",
+          "verbal_tics": [
+            "Alright, let's focus",
+            "I need to stay calm",
+            "We can handle this"
+          ]
+        },
+        "character_arc": "Julia begins weary and disillusioned from her ER work and depression, but through Tom's messages and their eventual meeting, she becomes more hopeful and reinvigorated, finding new ways to cope with stress",
+        "episodes_appearing": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "relationships": [
+          {
+            "with_character": "Tom",
+            "relationship_type": "romantic",
+            "dynamic": "Initially the unknown recipient of Tom's messages, develops a deep emotional connection with him"
+          },
+          {
+            "with_character": "Dr. Martinez",
+            "relationship_type": "professional",
+            "dynamic": "Colleague and mentor relationship, with Dr. Martinez providing guidance and support"
+          },
+          {
+            "with_character": "Nurse Linda",
+            "relationship_type": "professional",
+            "dynamic": "Colleague relationship with Linda providing support and practical advice"
+          }
+        ],
+        "audio_identification": "Professional medical cadence with occasional moments of vulnerability, voice becomes less tense as her character develops",
+        "casting_notes": "Cast an actor who can convey emotional range through vocal subtlety. Medical professional should sound authentic but not overly technical."
+      },
+      {
+        "name": "Sarah",
+        "role": "supporting protagonist",
+        "age": "30-40",
+        "voice_type": "Female, 30-40, energetic, business-like",
+        "voice_signature": {
+          "pitch": "medium",
+          "pace": "fast",
+          "vocabulary": "business-like, direct",
+          "verbal_tics": [
+            "Let's get to the point",
+            "Bottom line",
+            "We need to move forward"
+          ]
+        },
+        "character_arc": "Sarah begins as driven but unfulfilled, and through her coaching sessions with Tom, becomes more balanced and content, addressing her desire for deeper meaning and connection",
+        "episodes_appearing": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "relationships": [
+          {
+            "with_character": "Tom",
+            "relationship_type": "professional",
+            "dynamic": "Tom's coaching client who complains about not receiving messages, inadvertently setting the plot in motion"
+          },
+          {
+            "with_character": "Lena",
+            "relationship_type": "professional",
+            "dynamic": "Employer-employee relationship, with Lena looking up to Sarah as a role model"
+          },
+          {
+            "with_character": "Sarah's Mother",
+            "relationship_type": "family",
+            "dynamic": "Supportive family relationship with her mother providing care and perspective"
+          }
+        ],
+        "audio_identification": "Fast-paced and direct speech with a focus on efficiency, uses business jargon and speaks with a sense of urgency",
+        "casting_notes": "Cast an actor who can convey a business-like demeanor that gradually reveals underlying vulnerability and desire for connection."
+      }
+    ],
+    "major_supporting": [
+      {
+        "name": "Dr. Martinez",
+        "role": "supporting",
+        "voice_type": "Female, 45-55, professional, warm",
+        "function_in_story": "Provides guidance and support to Julia, advancing her character development and professional growth",
+        "episodes_appearing": [
+          2,
+          4,
+          6,
+          8,
+          10,
+          12
+        ],
+        "relationships": [
+          {
+            "with_character": "Julia",
+            "relationship_type": "professional",
+            "dynamic": "Mentor and colleague relationship, providing guidance and support"
+          },
+          {
+            "with_character": "Tom",
+            "relationship_type": "professional",
+            "dynamic": "Respected professional relationship"
+          }
+        ]
+      },
+      {
+        "name": "Mark",
+        "role": "supporting",
+        "voice_type": "Male, 30-40, professional, formal",
+        "function_in_story": "Challenges Tom's methods and beliefs, leading to growth and new insights",
+        "episodes_appearing": [
+          1,
+          4,
+          7,
+          10
+        ],
+        "relationships": [
+          {
+            "with_character": "Tom",
+            "relationship_type": "professional",
+            "dynamic": "Colleague and friendly rival relationship"
+          }
+        ]
+      },
+      {
+        "name": "Lena",
+        "role": "supporting",
+        "voice_type": "Female, 25-35, professional, polite",
+        "function_in_story": "Provides a contrast to Sarah's career-driven mindset, highlighting the importance of personal fulfillment",
+        "episodes_appearing": [
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "relationships": [
+          {
+            "with_character": "Sarah",
+            "relationship_type": "professional",
+            "dynamic": "Assistant to Sarah, looking up to her as a role model"
+          },
+          {
+            "with_character": "Tom",
+            "relationship_type": "professional",
+            "dynamic": "Seeks guidance from Tom for personal growth"
+          }
+        ]
+      }
+    ],
+    "recurring": [
+      {
+        "name": "Nurse Linda",
+        "defining_trait": "Seasoned and reliable",
+        "voice_hook": "Warm and reassuring",
+        "narrative_function": "Provides support and practical advice to Julia",
+        "episodes_appearing": [
+          2,
+          4,
+          6,
+          8
+        ]
+      },
+      {
+        "name": "Coach Emily",
+        "defining_trait": "Energetic and enthusiastic",
+        "voice_hook": "High-pitched and motivational",
+        "narrative_function": "Provides a contrasting coaching style to Tom",
+        "episodes_appearing": [
+          3,
+          5,
+          7
+        ]
+      },
+      {
+        "name": "Dr. Patel",
+        "defining_trait": "Practical and no-nonsense",
+        "voice_hook": "Authoritative and direct",
+        "narrative_function": "Provides a bureaucratic perspective on hospital operations",
+        "episodes_appearing": [
+          2,
+          4,
+          6,
+          8
+        ]
+      },
+      {
+        "name": "Sarah's Mother",
+        "defining_trait": "Supportive and caring",
+        "voice_hook": "Warm and maternal",
+        "narrative_function": "Provides a family perspective on Sarah's life",
+        "episodes_appearing": [
+          3,
+          5,
+          7
+        ]
+      }
+    ]
+  },
+  "relationship_map": [
+    {
+      "character_a": "Tom",
+      "character_b": "Julia",
+      "relationship": "Unknowingly connected through text messages, later develop romantic feelings",
+      "emotional_temperature": "warm"
+    },
+    {
+      "character_a": "Tom",
+      "character_b": "Sarah",
+      "relationship": "Professional coaching relationship",
+      "emotional_temperature": "neutral"
+    },
+    {
+      "character_a": "Julia",
+      "character_b": "Dr. Martinez",
+      "relationship": "Mentor and colleague",
+      "emotional_temperature": "warm"
+    },
+    {
+      "character_a": "Tom",
+      "character_b": "Mark",
+      "relationship": "Colleagues and friendly rivals",
+      "emotional_temperature": "neutral"
+    },
+    {
+      "character_a": "Sarah",
+      "character_b": "Lena",
+      "relationship": "Employer and employee",
+      "emotional_temperature": "warm"
+    },
+    {
+      "character_a": "Sarah",
+      "character_b": "Sarah's Mother",
+      "relationship": "Mother and daughter",
+      "emotional_temperature": "warm"
+    }
+  ],
+  "character_overview": "The character landscape of 'The Accidental Lifeline' is anchored by three protagonists: Tom, a life coach whose words unknowingly sustain Julia; Julia, an ER doctor struggling with depression who finds solace in Tom's accidental messages; and Sarah, Tom's actual client whose complaint about not receiving messages sets the plot in motion. The supporting characters enrich the narrative by providing professional context, personal challenges, and relationship dynamics that deepen the exploration of connection, mental health, and personal growth. Each character has been designed with distinct vocal characteristics and emotional arcs that support the series' themes of unexpected connection and transformative impact."
+}

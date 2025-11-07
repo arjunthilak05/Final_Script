@@ -1,0 +1,121 @@
+{
+  "total_episodes": 3,
+  "episodes": [
+    {
+      "episode_number": 1,
+      "episode_title": "First Light",
+      "synopsis": "Introduces the main character in a coffee shop where a mysterious lighter click draws their attention. As tension builds, footsteps approach, setting up a dangerous encounter that will have consequences in future episodes.",
+      "characters_appearing": [
+        {
+          "character_name": "Alex",
+          "role_in_episode": "protagonist",
+          "line_count_estimate": 85
+        },
+        {
+          "character_name": "Barista",
+          "role_in_episode": "supporting",
+          "line_count_estimate": 15
+        },
+        {
+          "character_name": "Mysterious Stranger",
+          "role_in_episode": "cameo",
+          "line_count_estimate": 5
+        }
+      ],
+      "locations_used": [
+        {
+          "location_name": "Coffee Shop",
+          "scene_count": 2,
+          "importance": "HIGH"
+        },
+        {
+          "location_name": "City Street",
+          "scene_count": 1,
+          "importance": "MEDIUM"
+        }
+      ],
+      "runtime_estimate": "25 minutes",
+      "recording_priority": "HIGH",
+      "production_notes": "Critical audio elements to establish: lighter click, tension theme, coffee shop ambiance, distinctive footsteps"
+    },
+    {
+      "episode_number": 2,
+      "episode_title": "The Meeting",
+      "synopsis": "Alex follows the线索 from the coffee shop to a clandestine meeting. The tension escalates as the lighter click motif returns, revealing connections between characters and setting up a crucial decision point.",
+      "characters_appearing": [
+        {
+          "character_name": "Alex",
+          "role_in_episode": "protagonist",
+          "line_count_estimate": 95
+        },
+        {
+          "character_name": "Jordan",
+          "role_in_episode": "supporting",
+          "line_count_estimate": 40
+        },
+        {
+          "character_name": "Contact",
+          "role_in_episode": "supporting",
+          "line_count_estimate": 25
+        }
+      ],
+      "locations_used": [
+        {
+          "location_name": "Abandoned Warehouse",
+          "scene_count": 3,
+          "importance": "HIGH"
+        },
+        {
+          "location_name": "Coffee Shop",
+          "scene_count": 1,
+          "importance": "MEDIUM"
+        }
+      ],
+      "runtime_estimate": "30 minutes",
+      "recording_priority": "HIGH",
+      "production_notes": "Production ready. Must maintain consistent lighter click sound and tension theme from episode 1."
+    },
+    {
+      "episode_number": 3,
+      "episode_title": "Revelation",
+      "synopsis": "As the mystery deepens, Alex confronts the truth about the lighter and its owner. The tension theme reaches its climax while returning footsteps signal a final confrontation that will change everything.",
+      "characters_appearing": [
+        {
+          "character_name": "Alex",
+          "role_in_episode": "protagonist",
+          "line_count_estimate": 110
+        },
+        {
+          "character_name": "Jordan",
+          "role_in_episode": "supporting",
+          "line_count_estimate": 35
+        },
+        {
+          "character_name": "Morgan",
+          "role_in_episode": "supporting",
+          "line_count_estimate": 45
+        },
+        {
+          "character_name": "Mysterious Stranger",
+          "role_in_episode": "supporting",
+          "line_count_estimate": 30
+        }
+      ],
+      "locations_used": [
+        {
+          "location_name": "Safe House",
+          "scene_count": 2,
+          "importance": "HIGH"
+        },
+        {
+          "location_name": "Rooftop",
+          "scene_count": 2,
+          "importance": "HIGH"
+        }
+      ],
+      "runtime_estimate": "35 minutes",
+      "recording_priority": "MEDIUM",
+      "production_notes": "Must incorporate callback audio elements from previous episodes, especially the lighter click, tension theme, and footsteps from episode 1."
+    }
+  ]
+}

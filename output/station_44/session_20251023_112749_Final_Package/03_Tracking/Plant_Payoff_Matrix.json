@@ -1,0 +1,84 @@
+{
+  "total_plants": 4,
+  "total_payoffs": 4,
+  "plants": [
+    {
+      "plant_id": "P-001",
+      "type": "AUDIO",
+      "episode_planted": 1,
+      "scene_description": "Coffee shop introduction",
+      "what_planted": "Distinctive lighter click sound associated with Mysterious Stranger",
+      "audio_signature": "Metallic flick followed by brief flame sound",
+      "payoff_episode": 3,
+      "payoff_description": "Lighter is revealed to be a signal device with hidden meaning",
+      "time_between": "2 episodes",
+      "status": "COMPLETE"
+    },
+    {
+      "plant_id": "P-002",
+      "type": "THEMATIC",
+      "episode_planted": 1,
+      "scene_description": "First encounter with Mysterious Stranger",
+      "what_planted": "Musical tension theme that plays during moments of danger",
+      "audio_signature": "Low strings with pulsing percussion, 15-second motif",
+      "payoff_episode": 3,
+      "payoff_description": "Tension theme reaches full crescendo during final confrontation",
+      "time_between": "2 episodes",
+      "status": "COMPLETE"
+    },
+    {
+      "plant_id": "P-003",
+      "type": "MAJOR",
+      "episode_planted": 1,
+      "scene_description": "Alex notices distinctive footsteps",
+      "what_planted": "Character with unique walking pattern following Alex",
+      "audio_signature": "Rhythmic footsteps with slight drag on right foot",
+      "payoff_episode": 3,
+      "payoff_description": "Footsteps revealed to belong to Jordan, who has been monitoring Alex",
+      "time_between": "2 episodes",
+      "status": "COMPLETE"
+    },
+    {
+      "plant_id": "P-004",
+      "type": "MINOR",
+      "episode_planted": 2,
+      "scene_description": "Meeting with Contact at warehouse",
+      "what_planted": "Mention of a 'safe house' location",
+      "audio_signature": "None",
+      "payoff_episode": 3,
+      "payoff_description": "Alex uses the safe house as a refuge in the climax",
+      "time_between": "1 episode",
+      "status": "COMPLETE"
+    }
+  ],
+  "orphan_plants": [],
+  "unearned_payoffs": [],
+  "timeline_visualization": [
+    {
+      "episode": 1,
+      "plants": [
+        "P-001",
+        "P-002",
+        "P-003"
+      ],
+      "payoffs": []
+    },
+    {
+      "episode": 2,
+      "plants": [
+        "P-004"
+      ],
+      "payoffs": []
+    },
+    {
+      "episode": 3,
+      "plants": [],
+      "payoffs": [
+        "P-001",
+        "P-002",
+        "P-003",
+        "P-004"
+      ]
+    }
+  ]
+}
